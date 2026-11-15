@@ -1,0 +1,231 @@
+{
+  "package": "laboratory/final",
+  "reviewer": "ratio_design",
+  "checked_at": "2026-11-15T10:31:26.821777+00:00",
+  "status": "passed",
+  "passed_groups": 6,
+  "total_groups": 6,
+  "checks": [
+    {
+      "name": "editable_source_preservation",
+      "passed": true,
+      "detail": {
+        "originals": [
+          {
+            "name": "connected-rooms.aseprite",
+            "sha256": "079bb3a78825ed4bcff39370c988e3a816a1a00e810f665abb82071d59920091",
+            "mtime_ns": 1794736926671278300,
+            "bytes_exact": true,
+            "mtime_exact": true
+          },
+          {
+            "name": "straight-corridor.aseprite",
+            "sha256": "92fea3a4f435b90b1f59c25aff47f97a8882cb91eeed1223a5bc0393497454b4",
+            "mtime_ns": 1794730115988880900,
+            "bytes_exact": true,
+            "mtime_exact": true
+          },
+          {
+            "name": "sliding-gate.aseprite",
+            "sha256": "9e0175e9ad9cc14ddb798205c863bb5b5465dd317aef3f334d6bcbe78cbd4734",
+            "mtime_ns": 1794730116551159400,
+            "bytes_exact": true,
+            "mtime_exact": true
+          },
+          {
+            "name": "exit-rising-slate.aseprite",
+            "sha256": "376a73dbc4536f0aaa94e7f3521b4b39c30d53436293be1aa6f7733a81bca6f3",
+            "mtime_ns": 1794736928902790900,
+            "bytes_exact": true,
+            "mtime_exact": true
+          }
+        ],
+        "repacked_tileset_is_intentional": true
+      }
+    },
+    {
+      "name": "compact_atlas_reconstructs_all_environment_layers",
+      "passed": true,
+      "detail": {
+        "atlas_px": [
+          128,
+          96
+        ],
+        "used_unique_tiles": 43,
+        "cells": 3848,
+        "layer_results": [
+          {
+            "name": "outside",
+            "cells": 2233,
+            "rgba_exact": true
+          },
+          {
+            "name": "corridor-floor",
+            "cells": 205,
+            "rgba_exact": true
+          },
+          {
+            "name": "corridor-walls",
+            "cells": 82,
+            "rgba_exact": true
+          },
+          {
+            "name": "next-floor",
+            "cells": 450,
+            "rgba_exact": true
+          },
+          {
+            "name": "next-cracks",
+            "cells": 18,
+            "rgba_exact": true
+          },
+          {
+            "name": "next-floor-border",
+            "cells": 72,
+            "rgba_exact": true
+          },
+          {
+            "name": "next-walls",
+            "cells": 124,
+            "rgba_exact": true
+          },
+          {
+            "name": "previous-floor",
+            "cells": 450,
+            "rgba_exact": true
+          },
+          {
+            "name": "previous-cracks",
+            "cells": 18,
+            "rgba_exact": true
+          },
+          {
+            "name": "previous-floor-border",
+            "cells": 72,
+            "rgba_exact": true
+          },
+          {
+            "name": "previous-walls",
+            "cells": 124,
+            "rgba_exact": true
+          }
+        ],
+        "integer_grid_nonduplicated_cells": true,
+        "layer_order_exact": true
+      }
+    },
+    {
+      "name": "door_sheets_preserve_47_native_frames_and_metadata",
+      "passed": true,
+      "detail": {
+        "animations": [
+          {
+            "animation": "entrance",
+            "sheet_size": [
+              2016,
+              64
+            ],
+            "frames": 18,
+            "exact_frames": 18,
+            "duration_ms": 2980
+          },
+          {
+            "animation": "exit",
+            "sheet_size": [
+              3248,
+              128
+            ],
+            "frames": 29,
+            "exact_frames": 29,
+            "duration_ms": 4200
+          }
+        ],
+        "frame_timing_and_tags_exact": true,
+        "native_pixels_are_not_resampled": true
+      }
+    },
+    {
+      "name": "geometry_anchors_and_resize_contract",
+      "passed": true,
+      "detail": {
+        "doors": [
+          {
+            "name": "next-outer-exit",
+            "valid": true
+          },
+          {
+            "name": "next-entrance",
+            "valid": true
+          },
+          {
+            "name": "previous-exit",
+            "valid": true
+          },
+          {
+            "name": "previous-outer-entrance",
+            "valid": true
+          }
+        ],
+        "room_floor_px": [
+          400,
+          288
+        ],
+        "entrance_pivot": [
+          0.5,
+          0
+        ],
+        "exit_pivot": [
+          0.5,
+          0
+        ],
+        "exit_anchor_px": [
+          0,
+          64
+        ],
+        "ppu": 16,
+        "resizable": true,
+        "size_policy": "Current dimensions and PPU are working defaults, not a locked final size. Rebuild the tile layout and door anchors together when resizing."
+      }
+    },
+    {
+      "name": "retained_previews_and_walkable_mask_exact",
+      "passed": true,
+      "detail": {
+        "closed_1080_preview_exact_6x": true,
+        "world_sample_exact": true,
+        "gif_byte_identical_to_reviewed_26frame_4200ms_output": true,
+        "walkable_art_mask_exact": true
+      }
+    },
+    {
+      "name": "self_contained_inputs_and_reference_preservation",
+      "passed": true,
+      "detail": {
+        "unity_input_files": [
+          "entrance-animation.json",
+          "entrance-sheet.png",
+          "environment-tileset.png",
+          "exit-animation.json",
+          "exit-sheet.png",
+          "layout.json"
+        ],
+        "animation_sheet_paths_resolve_inside_package": true,
+        "runtime_dependency_on_deleted_revision": false,
+        "historical_body_source_revision_is_provenance_only": "archive corridor-r14 exit-rising-slate",
+        "etg_reference_inventory_files": 433,
+        "etg_reference_inventory_bytes": 17628211,
+        "existing_measurements_and_validation_present": true,
+        "scale_choice_copy_byte_exact": true,
+        "base_layer_order_optional_field": null,
+        "authoritative_layer_order": "layers[].order and layers[].name"
+      }
+    }
+  ],
+  "scope": "One targeted final-art verification; only this report is written.",
+  "limitations": [
+    "This review verifies source art, exported pixels, metadata and package dependencies. Unity import, scene/prefab creation, Collider, Trigger and runtime behaviour are separate work.",
+    "README and final Unity import results were still being prepared by their owners during this review.",
+    "Source paths in this report identify historical evidence only and are not runtime dependencies. The final six unity input files resolve internally.",
+    "The art mask is not a verified Unity Collider."
+  ]
+}

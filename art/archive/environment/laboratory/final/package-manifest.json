@@ -1,0 +1,113 @@
+{
+  "package": "laboratory/final",
+  "files": [
+    {
+      "path": "aseprite/connected-rooms.aseprite",
+      "bytes": 81953,
+      "sha256": "079bb3a78825ed4bcff39370c988e3a816a1a00e810f665abb82071d59920091"
+    },
+    {
+      "path": "aseprite/environment-tileset.aseprite",
+      "bytes": 2005,
+      "sha256": "5b69d33d406c36bed4d0ddaca2a9a6414f7a58a7db846304e5a83c197e0eb579"
+    },
+    {
+      "path": "aseprite/exit-rising-slate.aseprite",
+      "bytes": 21040,
+      "sha256": "376a73dbc4536f0aaa94e7f3521b4b39c30d53436293be1aa6f7733a81bca6f3"
+    },
+    {
+      "path": "aseprite/sliding-gate.aseprite",
+      "bytes": 27440,
+      "sha256": "9e0175e9ad9cc14ddb798205c863bb5b5465dd317aef3f334d6bcbe78cbd4734"
+    },
+    {
+      "path": "aseprite/straight-corridor.aseprite",
+      "bytes": 7392,
+      "sha256": "92fea3a4f435b90b1f59c25aff47f97a8882cb91eeed1223a5bc0393497454b4"
+    },
+    {
+      "path": "preview/connected-rooms.png",
+      "bytes": 39641,
+      "sha256": "0653ed61fc158bbc7b41317bd1ffca1c8aae5c91ce0970d95ff272d79155de3d"
+    },
+    {
+      "path": "preview/exit-closed.png",
+      "bytes": 21016,
+      "sha256": "8c6dee94482f5c361c31f8158086260f00ca326df6635d624bdf1ae64b4ec760"
+    },
+    {
+      "path": "preview/exit-cycle.gif",
+      "bytes": 252459,
+      "sha256": "03e749693d09b1d4431235eb861226a2a0051bc2c9c145609d354fb538086075"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4664,
+      "sha256": "6c02f93d01ad95fa3cc4e71ca0282e39a5a94e84fa2544b59bbad5b97a083c35"
+    },
+    {
+      "path": "unity/entrance-animation.json",
+      "bytes": 5103,
+      "sha256": "c3bbabfe6b9aaaf14689c36879823d7cb699a7bc29687384f009cd7bdb76f5d4"
+    },
+    {
+      "path": "unity/entrance-sheet.png",
+      "bytes": 5459,
+      "sha256": "d5da5eefb04b0ee3267ca3f302dab9fcd8c5a530ef1f2889c5ae35aa5a04f4cc"
+    },
+    {
+      "path": "unity/environment-tileset.png",
+      "bytes": 2386,
+      "sha256": "f9d4b6e37fa715f31078d759952274703cf68231873d5185ed81d0472b91fdb3"
+    },
+    {
+      "path": "unity/exit-animation.json",
+      "bytes": 11648,
+      "sha256": "5fa7a8e34d678f578e59c26dfb76b5f2129cd205d609cf9c6320bf61ae6052c2"
+    },
+    {
+      "path": "unity/exit-sheet.png",
+      "bytes": 10183,
+      "sha256": "d3f66488f8ab0466675914e66c638542d67262dc834e4496bdd28f8c548d0589"
+    },
+    {
+      "path": "unity/layout.json",
+      "bytes": 143892,
+      "sha256": "1a678c9cd128e43b066ad6a484381ae5b507303afc1608bf60c6cc20ff5aecc5"
+    },
+    {
+      "path": "validation/art-preparation.json",
+      "bytes": 1425,
+      "sha256": "345bfd5ab0d1158f8e1131e72d13a012c1a4ced7fe5938a7dd116295495f00ef"
+    },
+    {
+      "path": "validation/art-review.json",
+      "bytes": 6911,
+      "sha256": "6ad0c3730c1de182fae90dd2709af64525a592db1f762fabe0b1a110c92fd0a2"
+    },
+    {
+      "path": "validation/art-walkable-mask.png",
+      "bytes": 2894,
+      "sha256": "5e11b7969acaa9ae42b9cc14154cc2b29ca70388dd1e94ea38ab4995935013ea"
+    },
+    {
+      "path": "validation/cleanup.json",
+      "bytes": 2451,
+      "sha256": "9fda814397494d30ea791b9747255a03a56dce8a6f91c8c4236d3c79a1affcf4"
+    },
+    {
+      "path": "validation/UnityImport.json",
+      "bytes": 26474,
+      "sha256": "bde0365be55b56bc9ab7e99795d9b275e017d16aed1d1fae0936aec542e6f9c1"
+    }
+  ],
+  "editable_sources": 5,
+  "unity_input_files": 6,
+  "generated_project_folder": "project/Assets/Art/Environment/Laboratory",
+  "generated_project_files": 133,
+  "unity_version": "6000.3.21f1",
+  "resizable": true,
+  "current_dimensions_are_permanent": false,
+  "game_scene_boss_collision_integration": "not performed"
+}

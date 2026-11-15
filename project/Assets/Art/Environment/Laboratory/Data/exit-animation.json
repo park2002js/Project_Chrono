@@ -1,0 +1,482 @@
+{
+  "activation_duration_ms": 900,
+  "anchor_px": [
+    0,
+    64
+  ],
+  "blink_count": 3,
+  "blink_half_period_ms": 100,
+  "body_preservation": "Every slab frame is an exact copy of the current R14 source_frame; gray palette, scratches, molding and bolts unchanged.",
+  "body_source_revision": "archive corridor-r14 exit-rising-slate",
+  "closed_slab_rect": [
+    16,
+    80,
+    80,
+    48
+  ],
+  "closing_duration_ms": 800,
+  "cycle_duration_ms": 4200,
+  "design_reference": "R14 plain central armor remains untouched. Only a small separate lamp is added to the upper narrow band.",
+  "dissolve": {
+    "alpha_values": [
+      0,
+      255
+    ],
+    "coverage_steps": [
+      1,
+      0.75,
+      0.5,
+      0.25,
+      0
+    ],
+    "mask_space": "closed slab local coordinates",
+    "native_block_px": 2,
+    "ranks": [
+      [
+        0,
+        2
+      ],
+      [
+        3,
+        1
+      ]
+    ]
+  },
+  "first_displacement_after_trigger_ms": 980,
+  "frame_size_px": [
+    112,
+    128
+  ],
+  "frames": [
+    {
+      "coverage": 1,
+      "duration_ms": 700,
+      "frame": 1,
+      "lamp_state": "black",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "closed",
+      "signal": "black",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "blink",
+      "coverage": 1,
+      "duration_ms": 100,
+      "frame": 2,
+      "lamp_state": "green",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "green",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "blink",
+      "coverage": 1,
+      "duration_ms": 100,
+      "frame": 3,
+      "lamp_state": "black",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "black",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "blink",
+      "coverage": 1,
+      "duration_ms": 100,
+      "frame": 4,
+      "lamp_state": "green",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "green",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "blink",
+      "coverage": 1,
+      "duration_ms": 100,
+      "frame": 5,
+      "lamp_state": "black",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "black",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "blink",
+      "coverage": 1,
+      "duration_ms": 100,
+      "frame": 6,
+      "lamp_state": "green",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "green",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "blink",
+      "coverage": 1,
+      "duration_ms": 100,
+      "frame": 7,
+      "lamp_state": "black",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "black",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "activation_step": "solid",
+      "coverage": 1,
+      "duration_ms": 300,
+      "frame": 8,
+      "lamp_state": "green",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "activation",
+      "signal": "green",
+      "source_frame": 1,
+      "travel_px": 0
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 9,
+      "lamp_state": "green",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 2,
+      "travel_px": 0
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 10,
+      "lamp_state": "green",
+      "lift_y": -6,
+      "passable_visual": false,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 3,
+      "travel_px": 6
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 11,
+      "lamp_state": "green",
+      "lift_y": -14,
+      "passable_visual": false,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 4,
+      "travel_px": 14
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 12,
+      "lamp_state": "green",
+      "lift_y": -26,
+      "passable_visual": false,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 5,
+      "travel_px": 26
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 13,
+      "lamp_state": "green",
+      "lift_y": -40,
+      "passable_visual": false,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 6,
+      "travel_px": 40
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 14,
+      "lamp_state": "green",
+      "lift_y": -48,
+      "passable_visual": true,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 7,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0.75,
+      "duration_ms": 80,
+      "frame": 15,
+      "lamp_state": "green",
+      "lift_y": -48,
+      "passable_visual": true,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 8,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0.5,
+      "duration_ms": 80,
+      "frame": 16,
+      "lamp_state": "green",
+      "lift_y": -48,
+      "passable_visual": true,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 9,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0.25,
+      "duration_ms": 80,
+      "frame": 17,
+      "lamp_state": "green",
+      "lift_y": -48,
+      "passable_visual": true,
+      "phase": "opening",
+      "signal": "green",
+      "source_frame": 10,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0,
+      "duration_ms": 80,
+      "frame": 18,
+      "lamp_state": "green",
+      "lift_y": -48,
+      "passable_visual": true,
+      "phase": "opening",
+      "signal": "none",
+      "source_frame": 11,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0,
+      "duration_ms": 1000,
+      "frame": 19,
+      "lamp_state": "green",
+      "lift_y": -48,
+      "passable_visual": true,
+      "phase": "open",
+      "signal": "none",
+      "source_frame": 12,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0,
+      "duration_ms": 80,
+      "frame": 20,
+      "lamp_state": "black",
+      "lift_y": -48,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "none",
+      "source_frame": 13,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0.25,
+      "duration_ms": 80,
+      "frame": 21,
+      "lamp_state": "black",
+      "lift_y": -48,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 14,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0.5,
+      "duration_ms": 80,
+      "frame": 22,
+      "lamp_state": "black",
+      "lift_y": -48,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 15,
+      "travel_px": 48
+    },
+    {
+      "coverage": 0.75,
+      "duration_ms": 80,
+      "frame": 23,
+      "lamp_state": "black",
+      "lift_y": -48,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 16,
+      "travel_px": 48
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 24,
+      "lamp_state": "black",
+      "lift_y": -48,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 17,
+      "travel_px": 48
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 25,
+      "lamp_state": "black",
+      "lift_y": -40,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 18,
+      "travel_px": 40
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 26,
+      "lamp_state": "black",
+      "lift_y": -26,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 19,
+      "travel_px": 26
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 27,
+      "lamp_state": "black",
+      "lift_y": -14,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 20,
+      "travel_px": 14
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 28,
+      "lamp_state": "black",
+      "lift_y": -6,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 21,
+      "travel_px": 6
+    },
+    {
+      "coverage": 1,
+      "duration_ms": 80,
+      "frame": 29,
+      "lamp_state": "black",
+      "lift_y": 0,
+      "passable_visual": false,
+      "phase": "closing",
+      "signal": "black",
+      "source_frame": 22,
+      "travel_px": 0
+    }
+  ],
+  "lamp": {
+    "alpha_values": [
+      0,
+      255
+    ],
+    "closed_rect": [
+      49,
+      85,
+      14,
+      4
+    ],
+    "glow": "crisp opaque pixel halo inside the module silhouette",
+    "layer": "signal"
+  },
+  "layer_order": [
+    "slab",
+    "signal"
+  ],
+  "max_travel_px": 48,
+  "motion": "Translate the complete 80x48 slab upward by travel_px; no scaling or aperture clipping; binary dissolve after reaching 48px.",
+  "opening_duration_ms": 800,
+  "opening_initial_zero_travel_ms": 80,
+  "palette_source": "Body: unchanged R14 gray steel. Lamp: AI-authored black inset and green pixel glow requested for R15.",
+  "preview_cycle_duration_ms": 4200,
+  "runtime_contract": {
+    "activation": "After the condition, play activation once: three green/black blinks, then solid green for 300ms.",
+    "closed": "Hold or loop closed indefinitely until the opening condition; the 700ms frame is only a preview sample.",
+    "closing": "Play closing once with a black module, then return to closed.",
+    "integration": "Unity condition checks, animation state transitions, Collider and Trigger are not implemented.",
+    "open": "Hold open until a separate closing request; 1000ms is only a preview sample.",
+    "opening": "Play opening after activation; first actual displacement occurs 980ms after activation begins."
+  },
+  "sheet": "exit-sheet.png",
+  "signal_semantics": "Exit black while idle/closing; green-black activation blinks; green after activation and during opening; absent after dissolve. Entrance red/blue is unchanged.",
+  "solid_green_duration_ms": 300,
+  "source_panel_rect": [
+    16,
+    80,
+    80,
+    48
+  ],
+  "tags": [
+    {
+      "from": 1,
+      "name": "closed",
+      "to": 1
+    },
+    {
+      "from": 2,
+      "name": "activation",
+      "to": 8
+    },
+    {
+      "from": 9,
+      "name": "opening",
+      "to": 18
+    },
+    {
+      "from": 19,
+      "name": "open",
+      "to": 19
+    },
+    {
+      "from": 20,
+      "name": "closing",
+      "to": 29
+    }
+  ],
+  "timing_status": "Art preview and runtime handoff contract only; waits and opening conditions require Unity integration.",
+  "world_placement": "Module origin = old gate origin - anchor_px. Preserve all 112x128 animation pixels. The top north exit may extend above the existing world canvas; only world preview export is cropped, map geometry is not enlarged.",
+  "sprite_pivot": [
+    0.5,
+    0
+  ],
+  "ppu": 16
+}

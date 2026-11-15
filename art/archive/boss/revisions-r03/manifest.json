@@ -1,0 +1,111 @@
+{
+  "bodyScale": 3,
+  "canvas": {
+    "height": 1280,
+    "width": 1440
+  },
+  "items": [
+    {
+      "bounds": {
+        "height": 78,
+        "width": 178,
+        "x": 7,
+        "y": 26
+      },
+      "frame": 1,
+      "position": {
+        "x": 22,
+        "y": 238
+      },
+      "scale": 3,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/guard-r03/aseprite/01-guard-robot-front.aseprite"
+    },
+    {
+      "bounds": {
+        "height": 122,
+        "width": 102,
+        "x": 5,
+        "y": 6
+      },
+      "frame": 1,
+      "position": {
+        "x": 854,
+        "y": 166
+      },
+      "scale": 3,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-r03/aseprite/02-military-robot-front.aseprite"
+    },
+    {
+      "bounds": {
+        "height": 144,
+        "width": 89,
+        "x": 6,
+        "y": 6
+      },
+      "frame": 1,
+      "position": {
+        "x": 158,
+        "y": 730
+      },
+      "scale": 3,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r03/aseprite/03-electric-worm-front.aseprite"
+    }
+  ],
+  "moduleDetailScale": 8,
+  "modules": [
+    {
+      "canvas": {
+        "height": 27,
+        "width": 27
+      },
+      "name": "SOURCE",
+      "position": {
+        "x": 792,
+        "y": 762
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r03/segment-reference-27x27.png"
+    },
+    {
+      "canvas": {
+        "height": 27,
+        "width": 27
+      },
+      "name": "IVORY",
+      "position": {
+        "x": 1104,
+        "y": 762
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r03/png/modules/normal-27x27.png"
+    },
+    {
+      "canvas": {
+        "height": 27,
+        "width": 27
+      },
+      "name": "CORRUPTED",
+      "position": {
+        "x": 792,
+        "y": 1016
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r03/png/modules/crystal-27x27.png"
+    },
+    {
+      "canvas": {
+        "height": 27,
+        "width": 27
+      },
+      "name": "HEAD",
+      "position": {
+        "x": 1104,
+        "y": 1016
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r03/png/modules/head-27x27.png"
+    }
+  ],
+  "playerHeight": 20,
+  "inputHashesUnchanged": true
+}

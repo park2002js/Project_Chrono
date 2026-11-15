@@ -1,0 +1,58 @@
+[
+  {
+    "originalPath": "art/archive/ui/hud-r03/aseprite/boss-hp.aseprite",
+    "finalPath": "art/archive/ui/final/hud/aseprite/boss-hp.aseprite",
+    "sha256": "970D6242A66EF0CAC195DE7D993E8C259FE4E9F233FF8AB16B2774BB6754982F",
+    "bytes": 656,
+    "originalWriteUtc": "2026-11-15T16:32:38.9130021Z",
+    "exactCopy": true
+  },
+  {
+    "originalPath": "art/archive/ui/hud-r03/aseprite/player-hp.aseprite",
+    "finalPath": "art/archive/ui/final/hud/aseprite/player-hp.aseprite",
+    "sha256": "0FD1379B673742C358757688A3267A2B26E0F21A5233BBCFDFAEB90B6FCA31A9",
+    "bytes": 574,
+    "originalWriteUtc": "2026-11-15T16:54:21.8683715Z",
+    "exactCopy": true
+  },
+  {
+    "originalPath": "art/archive/ui/hud-r03/aseprite/groggy.aseprite",
+    "finalPath": "art/archive/ui/final/hud/aseprite/groggy.aseprite",
+    "sha256": "C5F32BF6ECB3731D36F812C079AD6A163776BBA1B7AA35D0AA3D2F91B27A54A4",
+    "bytes": 504,
+    "originalWriteUtc": "2026-11-15T16:42:04.7632286Z",
+    "exactCopy": true
+  },
+  {
+    "originalPath": "art/archive/ui/hud-r03/aseprite/draw.aseprite",
+    "finalPath": "art/archive/ui/final/hud/aseprite/draw.aseprite",
+    "sha256": "F90B34781527DF6A833F1A37557F51826FD3EF876714E1126A5C35345576AAD5",
+    "bytes": 982,
+    "originalWriteUtc": "2026-11-15T16:28:06.2830305Z",
+    "exactCopy": true
+  },
+  {
+    "originalPath": "art/archive/ui/hud-r03/aseprite/slash.aseprite",
+    "finalPath": "art/archive/ui/final/hud/aseprite/slash.aseprite",
+    "sha256": "785BF9F9FBF087144F64EF221E550377B7305A8DD0B9D83CD612058D58561B3E",
+    "bytes": 1003,
+    "originalWriteUtc": "2026-11-15T16:27:57.4918810Z",
+    "exactCopy": true
+  },
+  {
+    "originalPath": "art/archive/ui/aimCursor/aimCursor.aseprite",
+    "finalPath": "art/archive/ui/final/aim-cursor/aseprite/aimCursor.aseprite",
+    "sha256": "5BDB9DDE66CB9F95928AF7D7BC7545420A3AB1FDB096F96CAE0F6CDB0B0FB5E3",
+    "bytes": 437,
+    "originalWriteUtc": "2026-11-15T15:48:13.9229871Z",
+    "exactCopy": true
+  },
+  {
+    "originalPath": "art/archive/ui/Keyboard Pixel Icon/kb_dark_all.png",
+    "finalPath": "art/archive/ui/final/keyboard/source/kb_dark_all.png",
+    "sha256": "1028AEB1ECCF838E361FFE90C1FA276889E84985F76D44AF3C651DD097FADD73",
+    "bytes": 7957,
+    "originalWriteUtc": "2020-02-14T14:44:22.0000000Z",
+    "exactCopy": true
+  }
+]

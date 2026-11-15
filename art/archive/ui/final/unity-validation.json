@@ -1,0 +1,2962 @@
+{
+  "unityVersion": "6000.3.21f1",
+  "generatedAtUtc": "2026-11-15T17:10:27.9039269Z",
+  "success": true,
+  "error": "",
+  "pixelsPerUnit": 16,
+  "settings": "Sprite Single / Point / Uncompressed / No mipmaps / FullRect / Clamp / Center pivot",
+  "scope": "Isolated import validation, no gameplay or scene binding",
+  "assets": [
+    {
+      "path": "Assets/Art/UI/Cursor/aimCursor.png",
+      "width": 31,
+      "height": 31,
+      "guid": "d91c98ca2e8d7b14cb31e4e400eeb914",
+      "spriteFileId": 21300000,
+      "readable": true
+    },
+    {
+      "path": "Assets/Art/UI/HUD/boss-hp.png",
+      "width": 125,
+      "height": 12,
+      "guid": "6ee0cee5f5775a14795dbf860cb08603",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/HUD/draw.png",
+      "width": 17,
+      "height": 17,
+      "guid": "5dce5e4c2bb70f64da1b5c16a508406e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/HUD/groggy.png",
+      "width": 49,
+      "height": 7,
+      "guid": "c80ab2d96fdc5944e90acbd50489c233",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/HUD/player-hp.png",
+      "width": 90,
+      "height": 11,
+      "guid": "9d4d108a5fe47c447b087bf1662dd2f7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/HUD/slash.png",
+      "width": 17,
+      "height": 17,
+      "guid": "62772e2230f37f04ea07c94201d3e10b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-acute-accent-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "60078f2cb407e06459b146c737834c7e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-acute-accent-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "39d2c0bb02076de45b389c5318e87447",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-acute-accent-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "36ca8857c1273d34e88b4eb0175b470b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-acute-accent-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9990ec388b9a05242ad470d6c51e2950",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-a-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "905e30ee818ad844f8cd5cfc20f4adea",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-a-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "67a9378441f8ab94da53c40af2b5a79e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-a-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "135b8b0b727c4c644b0085e91941ab9c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-a-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "251520ffc173b0149a97a26a6b9e1423",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-alt-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e632fe1d879f62f478ff83d7989915b4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-alt-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8a1de45c8d1b8214481384b739868eb3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-alt-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bd0486f010056034b9de6a136d6b6ea1",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-alt-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "328e5a8f9aeb93f4aba728eae3ce6eb6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-angle-brackets-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f49e98bd2376c524d8994768208e7653",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-angle-brackets-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "81c60e5e353538b48bad1b4e62fa2fbb",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-angle-brackets-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "251169d15e2f6324e91135c321a9aac0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-angle-brackets-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6e7472c515b1df3499ccf6aaaf5fa0b8",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-apostrophe-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "383e57db3047b4645b04b3b1aca9654b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-apostrophe-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5ad5f207bd4cdb245baf77bdd1ba9c5a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-apostrophe-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c09b706cdc06a794bb2b89ee2b72cfde",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-apostrophe-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6064f9fad87957b49b42af3adef82222",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-down-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "475d6760523b6994aaeb582fb1f32dd3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-down-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4859efc561798614db4b95c09f87fe24",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-down-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1c801a5570cfcd94abce986c9bb80f7b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-down-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1f0dfb0ee8a9f5d4c805234db2d64d70",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-left-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "02d653632dd50a844b8c7c6a388cc311",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-left-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6283ffba0dde7e343848a3d5d0607962",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-left-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6e1b877e9d7a68b41b2e434f051b535b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-left-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "452d88b6a27af50418e7fd93e1128cfa",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-right-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7236d9ce3a7d6f8489faf4895cdfa297",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-right-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8e3d7a84b9258664280b72047e032ee2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-right-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "273cc40c9880de141a8084754056e888",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-right-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ca141e90272a56b4ba82a27e5dea1786",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-up-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f4f4d69979893764ba63558c65cee001",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-up-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "76df3efdd3cc7e944adf66cd6356e60c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-up-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2b5ec06cd1a566d4b86f83402dc314d5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-arrow-up-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4400c476914b08248b141bb1c120e875",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-asterisk-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "13bca2584b54bbb4199c201fe8d803c5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-asterisk-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e8572e292dda2d347b5933ecceac5eb0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-asterisk-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "015a04bdd20048c499eafcd99ce9ce49",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-asterisk-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "758b15653fa29914f987de1a3d4725a6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-backspace-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "58642797a1855134f97f28daf34ea20e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-backspace-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6e1be09ccf9d7404eb0a1f5d8feada00",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-backspace-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ad8aff070ee68ca4aac3010e0c7452de",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-backspace-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "627c2311b97b0f142a587790f47e4e07",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-b-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ea3e8c0071c507148a45907e5b0b0a8a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-b-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6af0b8626bd166b40a8eff34f382d133",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-b-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "17598bca0f166304d81e69d745acb550",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-b-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "42f42d0358f31d6458c6c9c9cf92c15f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caps-lock-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "01476351074b3b446aad60a1244c2e3d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caps-lock-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "95dce2603547fee4d96545e1da86be37",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caps-lock-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d4ffb70bc3b13e14cb497f7fcc7b9ee9",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caps-lock-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "af55c19b33b3dd84eaba6eb288c6b445",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caret-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "23719d5acb2320a4ea78a6a13f752cff",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caret-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "de8e5fa554989b54a9c65dfe6ca2fc5e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caret-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c46ae10ba01ed0d4ba55563636b289ae",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-caret-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "91a194933cc4f2340a2fd1f6b34f7ef6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-c-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c16014aaee4770c4fa3411a402a516ac",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-c-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2175dbc7043e8bf4ea00de2f9fff9f23",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-c-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8ed153cd24351a9448d6247ad9c5793e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-c-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "cd175031c8a982b4d9f0301ec20d0b5a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-colon-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "072915fec9000f743abb4fa537a724ac",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-colon-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d71d4878b6ff33746957f55e3951f51e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-colon-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "dd9c7ee5877ed494b8caf95187cfcee5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-colon-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7db59fa39897c2e44a9512cd2ba3ee8a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-comma-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bf77c2f8295c88442babdea50cc49c1d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-comma-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b71524faf27334c42b459db35dac876a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-comma-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b2f9485f63a4bbf478a7bc987951fda2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-comma-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "47edf5ea1dfa5e34bbc50e199bdc9c3f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-ctrl-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "99005de11f3a8884686cece402de7252",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-ctrl-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "453a902cc3078654ba74edc4b64e90e1",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-ctrl-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0814002550e3c494e9421a6421193b71",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-ctrl-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6ace1e811e2239b41a68038e4d4902cb",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-d-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4e589a09b2521f344b054fa49b631d23",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-d-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c9f37a6bb3c7c8c4cb3a2d9ff1efe75c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-degree-hyphen-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "65a54151f437b0a4eb5cddfece6ef73b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-degree-hyphen-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5ef23577527d2be44b5df0f56aeb07d7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-degree-hyphen-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "608b4b349dee35643b5267967c49ade2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-degree-hyphen-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5c0891ee473e6f446aa043ed98f1f8ff",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-delete-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "80ad943ffee3d6d4aabf365d7f17c3db",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-delete-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "29e909fcbaf97a64eb3b6b8fd811f67b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-delete-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "38ca5cf47ad48fc43adf19601c0c145e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-delete-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "dc2f1609c646f3c4b8cb450d192d5f95",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-0-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d543d5e5eac24aa4ca7a8ba212d7aa60",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-0-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "eed252af4297891419d9ef96f7db8848",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-0-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c212b8e8db475524d998f53fb92e21c1",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-0-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "24a1098ead04ec6498ba5fda9a547fec",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-1-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9d4a02e4b8e8f9e4e9431dd6c116632f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-1-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3b9ea8395e856854abfb11529199bf6e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-1-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f958dca971a2cbe4590b21d47caf3224",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-1-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "dea6a466a35882841af0554de2c00041",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-2-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "51509a9fbcbc6b84cb8457dd102a2522",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-2-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0d8d7b142786d5b4d9d3e4fda67163f7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-2-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b66400c61976d4441b2af2d4fe2e12d4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-2-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bd14433c16fddf64f99ad5cd444a85ea",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-3-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1dc5626bb3f01d94593954baf32b8e91",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-3-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e447413ae860f3d44b1085c3d6d34b20",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-3-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7934e2d8f3609d240b158e60f025bf91",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-3-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b2d9260b2f7d64f4fbaa9c0a43ec8472",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-4-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "044cfd274a56acc4a9d7db5060dcb57c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-4-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "71e885465983f14498967f95bd2ed3d0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-4-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "73a182da1ce465a44b28a86c48576349",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-4-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "db9cba8aebe58d14ebd69f62372fa7fa",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-5-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f541381c8bd9dfd499c701e80b877a9c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-5-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "48146cf6655b5204a9ceb0a6ddb570d3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-5-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4497e1db202579d48b0e9b782c035969",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-5-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b98479cbe27699246a088bf3aac01148",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-6-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0dada5536357f414481bcdafdeaa6ce4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-6-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b9a1c40dc2f8dc24fbbd3391832b32d3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-6-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0862f99e1e9073c4a8175525b3a6697a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-6-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7a8aed4434a76d345a03ce1ef656e05e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-7-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "043a5a82dc8ce134bab8acf2bfbb11df",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-7-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5441aff0372ef814194f65bc45312478",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-7-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3274083f93eea934284ac787200e9f7c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-7-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4be107695c356f441a83cd584039c372",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-8-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "392693a6105474342a19a703d603a136",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-8-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2b47d311f5a0ae14b9ff9a4052dde0cd",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-8-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "527517cbbc312674ca8f4e9e57bec350",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-8-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "41c5f2043216c8d4da7f80ed4b6f14ba",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-9-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b051791d9ccd3284cb6054bcf93c06f1",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-9-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ff1d1bf9a46be9a41a7f1788757b4aa2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-9-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2c5ad51a8ea35b64aa7fb756e1797717",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-digit-9-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5835f22af22cbed4b96e35ac0edcec62",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-d-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1bae7aa03181c9746bd022bc6146d071",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-d-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a11a0c9c54e1c4c4381868346c3e7c45",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-e-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1c7e733f0ae37f544a88bef779260360",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-e-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1e653c615d1a172479cece3678c13cad",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-e-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2e19bee1e9d974d4b96e5c6cf6b20a2d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-e-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "10b88c98e178dbb47abc0c41a5458a8e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-end-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1f1d4db3837c8c34fb172bc6f254be28",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-end-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8b2863ca87e18574583a0ccc8518220c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-end-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "09b21f442dadbed47ae3b6f8f49bb5f6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-end-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f7bdbddd8f6064d439ca0c6a75e63410",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-iso-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5eba60a5c29f0fa499c48f441ccd3fbe",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-iso-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2141291919cccc74f927b6a17912a0ab",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-iso-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a037175d143596644bd56acba31c9216",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-iso-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "59e9fc7426b4955489f96594e9190bc7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-wide-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6ac34aee58e8bbf45a63876ee89c44b0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-wide-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f66374600b6c06a4f8725301d89e2dcf",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-wide-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8281e5dc08245ae498d9fb1a3b86b55a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-enter-wide-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "efa3811dec80ef7458bf5bac51805efa",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-equals-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "924473c9290a1074d83f7d0965bd0dbd",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-equals-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9136c1cc1a07fd746a85747ecaad6d71",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-equals-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1093d8d7a3a4a7f49bd46b84a5cb463e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-equals-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "05a77149ed1163341bf595f46d5ccf7b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-escape-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "84b5f4c656fea0a46b0c2c0d6b5e8368",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-escape-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "69ea6021894c481488aef055e51ab132",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-escape-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "467f77bce4983f84a8205bb88214d96f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-escape-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9e91f86b0fef7e94ea6f955bc3452992",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f10-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "464c4aa783acde8429e1f5474fde7087",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f10-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a4ecd0b03545d194cac98d8216698a7b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f10-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f7951064eb611fa46b97c6884fb2ed5f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f10-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "afdca607af096e94691465310d379c75",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f11-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ff8e2071b8a6953408a209ed3136b8c5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f11-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "614e30b40ff97664b89c2705d7d38031",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f11-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8b6b251e498e3b143a43c7a5b515037e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f11-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "249d51611a5ee4e44b7e53cfc686eb50",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f12-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "59373890c0ea7b4458c834b95e916cdc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f12-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7256fb660fd125e45be8c0075b206fea",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f12-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "da059406234df8444858055f773063cf",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f12-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "015cb7a424239ea4ca591a7142eaf840",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f1-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d61226c9c2e9b734ebe61a5e011c3572",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f1-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3a3d7f190f4bf2041ada365ff215bda7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f1-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e24c82284bd4d524f902f52892956e32",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f1-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "cc8ff647eae6c6d448cca39b3dc3077c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f2-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8c48e8734c00e3c4c9a21808495716e5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f2-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "43f4cbb7e1d73c647b47352e2cb20daa",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f2-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1a6b69b77712b6c4a873ce190f554701",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f2-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e8f6067c907b599468a00175af35b405",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f3-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bac209f127f9426489734277f2aeb13e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f3-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6cf0216aab88ba54fbcf4b42bbed0b9a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f3-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "210cc354817e3294d940c8c9c2ee666d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f3-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ba3bd13dad45e6846b7e41bd5aed00d7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f4-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b304776cc1839764c8a4891cbceb0776",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f4-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "71df26bdfbbb97a48b486eed9787c772",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f4-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3cd90458d970ef04c9b1e4ff88fc3424",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f4-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "152f9051b137d774291ce8f241d5303f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f5-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c689424a21659b54dab52a4e75e2c724",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f5-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "514ea0910b8025149a1737311576cf54",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f5-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7f0d83847928386419bb146b0799a918",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f5-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f9cca10956a56284bba50c0ff98c36a9",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f6-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a2d7b46b199674f4eb1177aa3f180cdc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f6-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2eba3213a7a3c0843a1a15cbc911ef36",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f6-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "cee4c299c0d0aad4da1561a0fe90eda8",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f6-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3c59a842da0dea54e99be1fc4ba95e90",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f7-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f1b22a2d7d667a94b9c8faabe7257c92",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f7-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4aea5421918c20846a2c508a76792e25",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f7-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "03f360bef7aa50643882d85a2e95d8e3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f7-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a3dd65c98eeb6d1438ecc863974e7aea",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f8-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "115a73f786ccb0943ad68078c9daee2b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f8-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3d2e652b28617004196f1b22af8d31af",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f8-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c01ab94068cf39748ace4d853947fe75",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f8-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "691225ebf79ddb64b81e5802e10686e2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f9-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8edb42a529edbf943af731f6c93ec4bb",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f9-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "01aa334ceab59b548ba55681442f5c84",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f9-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f49760291990a794ba541864c381a64d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f9-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3a2f7dbd417ca8e4bbcf1c09be5868dd",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "66ea42d2b86c3e940a9d13b4ec36de6e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3cefbb68bbb4ec44ebf76c1dbc545251",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "dd5c0380af4f73e41b2162b9f494c17d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-f-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8ffc49ddfdba55942824222fc6b28d64",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-g-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b8fc5f354d5fbcf4c91c770dd359ac88",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-g-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3c9609df0d18dad49932008f91b2f032",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-g-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "55bfdd7ada86a6e40a1431bc955b9b3a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-g-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "71a4e86b36379254abb1d19031e07ce8",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-grave-accent-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "df0c9a6e94e4c0943a7cdd94aff46562",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-grave-accent-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6e794251946a85c4c97ef180eb240c9c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-grave-accent-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c597c21d5275e6941b7f3f523374b16f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-grave-accent-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "88703576a66422e48b19fe7b805e6472",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-greater-than-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2a1868cabbf628a4aa3618631332c5d0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-greater-than-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "32b04c282e547cf4a89502c1c1b109d9",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-greater-than-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "fb6eecafb832ca541baef5ecfc2f0fda",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-greater-than-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9dade49e15959ea4eb692370cc1fb608",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-hash-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "62f41ec67b2683b4dbed1e000e4bb877",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-hash-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b90114fb0476d394f8cc9d6f7693d5f0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-hash-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "27bd728c1036d4642b4410294b466ba2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-hash-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c5f48039d4df3804b817d11d6e2328f4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-h-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "50ce760f0a65baa49adb6f7602b096fc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-h-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "507c8d2f1e1cc6f469ceccb24b9e33e4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-h-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9f350cb260f73a1449c878e5619874f2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-h-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "34b3f299989aa884c91658eb3c1cdeb9",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-home-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "64e07a9ed1417f74fbf346d0dad2a632",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-home-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "fcb0d614e6036224d96be77fe4c9cda6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-home-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7fbf95e211380d04c96b384e95d53019",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-home-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e8ec01263803d5d4aaaf95b1e1624d62",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-i-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2a9917fdb92767c4db4aeb67f9c8f002",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-i-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c1f60d79b7fb71d4da58349c5b412e92",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-i-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bacbb01372e0f6449a32d0771ada3f99",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-i-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0477759660f4a5148bb8de4bdda1d547",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-insert-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5738d1c3aa927e24c9dc15e0da583df7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-insert-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "eac39077ec548784d9da75e2baef2156",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-insert-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "cdf85ded140ed6e44a93f27dec3bf9a2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-insert-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "cd21aa22df577534ab7baa8f927f0342",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-j-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "316b0a41d671d664bb1aff894dff2c02",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-j-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "30379a1e02b2e674b92d1f3ab442829c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-j-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c7f6e9b411f3dbd47a264833b769dc03",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-j-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "36078101b6d062d4fb22b25ba4c6a726",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-k-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "59f8f20dcfc94ac499379d24460edff5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-k-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "02304698eb5c50a4589917695cfbd42e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-k-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "13eaef267878bca40b30239a047adc60",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-k-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4415b4f3323aa9349ba43428a35b18d7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-l-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9fdceabadbd95044a8ada5823eec9241",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-l-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bf2909b5e359f634ba3a2278d0e14468",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-left-bracket-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "fcd85a35f60347f4aad7d12d52b6d4d3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-left-bracket-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9f54e7a5ee19825439e2d6ddbea41137",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-left-bracket-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "10cab40a39f9e184190ec95e650aaa13",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-left-bracket-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "42a811dd5d7f4ff44a5fac4abf702f21",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-less-than-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "84f56de34406d79469f6bae00e93e9cb",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-less-than-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b5b7fb11730233742bdde7175619262a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-less-than-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bf16494b117fa92419dde2ec26e7a582",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-less-than-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f1b0f4cbfe428a148a021b119c8f8da1",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-l-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9af0716c0da097f4889e18989f9a3855",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-l-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "bf480727d9b0e994684e39ca571d51dc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-lock-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "46e45d31c9ddb324fbf90eb9c9f6e332",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-lock-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3e0a0ee06a4bbe84db64ab2e60f035b7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-lock-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f37fe7a648915794491db88d79be9d4f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-lock-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "eeebb56655debcb4da36b49344e07845",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-m-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "92ed360155605a047af0600a2455df4c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-m-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ac7bc82580999764e98bd3b32ef21ced",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-minus-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "470091ec74f771a45b8e202329e1baee",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-minus-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "598b70128dff82644870f6fb022406af",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-minus-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0b0dfbb459ad0324ca618cc0e5623084",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-minus-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b3549d746fd51e34493e37c644e94ebc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-m-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e75cc32dd719d654f845a25e4e91a379",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-m-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "779029a649388a64f8eedf8c049a1f71",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-n-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b770e934d556c8f4a8525827339eacdf",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-n-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "065e5c88de11e164c9373a3a01c0b128",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-n-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "04606dd592943f24790094393630eeec",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-n-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b442eff876cbc0b489adcadebbb9e288",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-o-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "80303fcbb4b9f2c40abe86f175b455f4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-o-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "16171ff5226e35b43a9019cb628dd9fc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-o-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b7e23436ecc67684f910b79e99fa8abb",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-o-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b3b4856321dab97489c1d262605ca781",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-down-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "374b081fe662a2048a7f35ac914ab2cd",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-down-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3469a2bb85334e44e9ab8e644deab6a7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-down-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2aab28fbce724c64faaf48013c8930b3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-down-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3dcdba1a7577ff2498b4c89abe481e68",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-up-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9215bec5e9601164b924188cd1ea37b3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-up-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4a2730d24ead75a429e09c0573efd96c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-up-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "4f98653e85f13644688abb83275c1a1b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-page-up-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1a1e047bdba116740843d5ef7c2ea874",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-p-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b11e59576c7201543b055ed38f6babc5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-p-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "349f3f2eb7e49e0438f98d2b6db720ca",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-period-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ae30a2504a6175d449617cd949d62f4b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-period-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8d53855d620ea784d94b8b17661c87cf",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-period-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "adb7533ffdc294f448397521f163aecc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-period-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "59d46c164d0c6b84d98fd87e598e4c28",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-p-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ffdc50b242dd5b745a8b44ef9dad4b94",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-p-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0e868cec56ad1294fb249cded09e406b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-plus-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f2b03d9efb9370f4196a96b86a3dbb18",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-plus-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d296fa3421b7d024cbeed3c3cc5a23e6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-plus-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d9e6ba5d21031ac4d9b51a19fa4f76fa",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-plus-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d2a088dbd3442074b9dbbebf38811ea9",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-q-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "17b983a1f6b02574489b64a415687ae9",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-q-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f4079ab6e8321ec4f9fb9cf53648c6dc",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-q-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ef2de512c94e6b54587c516de58f9745",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-q-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "81f055f02829e634d8e0692226cc091b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-question-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5e408df6b48c7824bac6aa7399916816",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-question-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f556a13ef1a44aa4abd4f7ac12e4f7d4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-question-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "58dc9f6293d1a264085766d74e1cd140",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-question-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "947f635597bda65488bf67d6021ce25e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-r-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "568c26fce75606247b5e126a31f51353",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-r-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "526e5a22050da2343b4086fda7d1c8f5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-right-bracket-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8df608a7325bbfe40b80bf635a6a2f91",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-right-bracket-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6613c4135c21b3f48a640f45888b8283",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-right-bracket-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2e9584ef7b6aedc418ccc4901e9d05da",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-right-bracket-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "de2c9689496ac4f49842aedbc229d6fd",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-r-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "7a9d42875a6be1f47b1e9a1771fbdde5",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-r-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "f146c42831f1fa44eb151ba251464d86",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-s-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8d5e973c91691a24a929e57e804c4c42",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-s-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "6d91031685510964490d6b6353c7a33e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-section-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "fbc33124b5bd82f49b4ffd4211f59371",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-section-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "eac27297bc5a1ef47a703e0f93d29fde",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-section-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3fe7fe0816ac65e4998287a82cc18266",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-section-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "fe81e6182edf8b5458969f3838bbed11",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-shift-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a5efd8bedbfbbc04dbe63b03e09f9130",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-shift-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1c374f1b2cfdd094d938249ee75f875b",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-shift-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "ca117ee2ed238e344bd39c012da4e9dd",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-shift-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "80501c0202b8abc449895adf10e6737f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-slash-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "254ee008d163d5645876f09c7f16b453",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-slash-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9f223e1fa771d734a9a99616002fff7e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-slash-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "75a3609fad0d9704686442e4b5a3d074",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-slash-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8f684dccd6e7a09408d7eb0bf68c1879",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-s-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0021e04a5007c8e458dd438ce9c428cf",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-s-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0c880b68fe6bdb348afb226733715e0a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-space-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1d7be72951d0fec4d9de065ea6098baf",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-space-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "51d5fd5f747384f448424c13f11aa02d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-space-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9dba00ac02d138248bdfabb82dac3971",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-space-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "80c0626d21c0c5e44a334798bff03a2d",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-tab-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "922420d1cc200af4696f524d59452894",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-tab-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "b81aab7e24115084aa6e3f97f15885cb",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-tab-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e904edf1a2157c0438f41cd810fd7f21",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-tab-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "39a81927ede7dc24cad1b0828d9b2dde",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-t-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "efc133da5085a0d4c8ead6072f40f86e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-t-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "cf52be8b3d76ffe46949af54147c9090",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-t-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3632860d8cae3334baca73f63125227c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-t-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3ae8f3ca58c4e094190866e68bb3c62c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-u-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "5bc1884b53043a8469b2c57101cf7f0f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-u-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8ff9054e9e0526a4babaad3d413ddbda",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-u-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "279f76e4bdc7ff44c954163edb1508b3",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-u-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2c38634b1c1dc1448b1b8409e0bf152e",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-v-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "89ed06de28b87a24faee60df3893e1e2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-v-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "3d3529d0df76f8b41aaf52573063177a",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-v-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e78c7d8ce7f07b2478a72d6a44b69319",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-v-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "0d939e5477085644b9463e21c41ffbf2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-w-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "1eccc31386617ab45b804a7000dd32ac",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-w-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "361a35cf3c8c18d47b5a42660c9a59d6",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-w-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "91b1c5003af7b724aac4b2a4a336c1f0",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-w-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "e78cae6ad399d084d94a770fbf9fd7e7",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-x-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9c5c1e86463fede4d818a72c876ed009",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-x-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "849973b43acc8aa44bcb9f080f413a0f",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-x-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "a722f067608917342b66cd9c11b2d2e2",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-x-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "8339f8650ef372d4d961c64d06f5c6af",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-y-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "9bea321cfd7f7f44cac64c2f95a79786",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-y-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "2eb217822ca7cb4478c9f3954a695d06",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-y-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d4be085b44f51fd4c9103f578c1835c4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-y-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "433b2d651243bbb41ab5b95263131a5c",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-z-dark.png",
+      "width": 16,
+      "height": 16,
+      "guid": "d24bb2e5ba52c8d42b5059b20d868e29",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-z-dark-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "c0895911a6ae24e448a7dd67a559b1d4",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-z-light.png",
+      "width": 16,
+      "height": 16,
+      "guid": "73e47097ecd08fd4eac6427c9df0cb88",
+      "spriteFileId": 21300000,
+      "readable": false
+    },
+    {
+      "path": "Assets/Art/UI/Keyboard/key-z-light-outline.png",
+      "width": 16,
+      "height": 16,
+      "guid": "11b5e0df502936b41b31a927b9f4e2c5",
+      "spriteFileId": 21300000,
+      "readable": false
+    }
+  ],
+  "mainProjectCopy": {
+    "directory": "project/Assets/Art/UI",
+    "copiedFiles": 740,
+    "allFileHashesMatch": true,
+    "rootFolderMetaMatches": true,
+    "guidPreserved": true,
+    "mainProjectEditorImport": "Not run; same-version isolated Unity import validated",
+    "unityBatchExitCode": 0,
+    "scriptCompilerErrors": 0
+  },
+  "dataValidation": {
+    "success": true,
+    "layoutTextAsset": true,
+    "layoutElements": 5,
+    "anchorReconstructionMatches": true,
+    "keyboardTextAsset": true,
+    "keyboardSpritePaths": 360
+  },
+  "cleanup": {
+    "temporaryUnityProjectRemoved": true,
+    "temporaryEditorScriptAddedToMainProject": false,
+    "lockedRemnants": []
+  }
+}

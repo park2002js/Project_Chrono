@@ -1,0 +1,56 @@
+{
+  "unityVersion": "6000.3.21f1",
+  "success": true,
+  "generatedAtUtc": "2026-11-15T15:01:13.5163947Z",
+  "checks": [
+    "Existing LaboratoryUnlit material and shader resolve",
+    "Assets/Art/Environment/Amethyst/Textures/amethyst-inactive.png: Point, uncompressed, no mipmaps, 16 PPU",
+    "Assets/Art/Environment/Amethyst/Textures/amethyst-inactive.png: 1 slices, 16x40 canvas, pixel pivot (8,4)",
+    "Assets/Art/Environment/Amethyst/Textures/amethyst-active-float-sheet.png: Point, uncompressed, no mipmaps, 16 PPU",
+    "Assets/Art/Environment/Amethyst/Textures/amethyst-active-float-sheet.png: 8 slices, 16x40 canvas, pixel pivot (8,4)",
+    "Animator Active Bool defaults to false",
+    "Animator has Inactive default and Active states",
+    "Inactive: immediate conditional transition",
+    "Active: immediate conditional transition",
+    "Prefab saved with inactive sprite, existing material, controller, origin position",
+    "Active loop is 1.6 seconds; inactive clip is static and non-looping",
+    "Inactive clip samples the approved inactive sprite",
+    "Active frame 0 samples correctly with fixed object transform",
+    "Active frame 1 samples correctly with fixed object transform",
+    "Active frame 2 samples correctly with fixed object transform",
+    "Active frame 3 samples correctly with fixed object transform",
+    "Active frame 4 samples correctly with fixed object transform",
+    "Active frame 5 samples correctly with fixed object transform",
+    "Active frame 6 samples correctly with fixed object transform",
+    "Active frame 7 samples correctly with fixed object transform",
+    "Animator begins inactive",
+    "Animator Active=true switches to floating sprites",
+    "Animator active loop remains valid after a full cycle",
+    "Animator Active=false restores inactive sprite"
+  ],
+  "files": [
+    "Assets/Art/Environment/Amethyst/Animations/Amethyst.controller",
+    "Assets/Art/Environment/Amethyst/Animations/AmethystActiveFloat.anim",
+    "Assets/Art/Environment/Amethyst/Animations/AmethystInactive.anim",
+    "Assets/Art/Environment/Amethyst/Data/animation.json",
+    "Assets/Art/Environment/Amethyst/Prefabs/Amethyst.prefab",
+    "Assets/Art/Environment/Amethyst/Textures/amethyst-active-float-sheet.png",
+    "Assets/Art/Environment/Amethyst/Textures/amethyst-inactive.png"
+  ],
+  "error": "",
+  "scope": "Isolated Unity asset import and animation validation; no gameplay activation binding or MainWorld placement",
+  "fullMapLocalPosition": [
+    12.5,
+    48.0,
+    0.0
+  ],
+  "mainProjectCopy": {
+    "scriptCompilerExitCode": 0,
+    "directory": "project/Assets/Art/Environment/Amethyst",
+    "rootFolderMetaMatches": true,
+    "guidPreserved": true,
+    "allFileHashesMatch": true,
+    "mainProjectEditorImport": "Not run; assets validated in same-version isolated Unity",
+    "copiedFiles": 19
+  }
+}

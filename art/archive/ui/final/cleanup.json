@@ -1,0 +1,94 @@
+{
+  "sourceCopiesVerified": 7,
+  "unitySpritesVerified": 366,
+  "previousUi": [
+    {
+      "path": "art/archive/ui/hud-r01",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\ui\\hud-r01",
+      "files": 18,
+      "bytes": 942876.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/archive/ui/hud-r02",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\ui\\hud-r02",
+      "files": 26,
+      "bytes": 1063546.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/archive/ui/hud-r03",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\ui\\hud-r03",
+      "files": 31,
+      "bytes": 235869.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/archive/ui/aimCursor",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\ui\\aimCursor",
+      "files": 1,
+      "bytes": 437.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/archive/ui/Keyboard Pixel Icon",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\ui\\Keyboard Pixel Icon",
+      "files": 1,
+      "bytes": 7957.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/ui/hud-r01",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\ui\\hud-r01",
+      "files": 432,
+      "bytes": 20735556.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/ui/hud-r02",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\ui\\hud-r02",
+      "files": 202,
+      "bytes": 5723259.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/ui/hud-r03",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\ui\\hud-r03",
+      "files": 197,
+      "bytes": 4951487.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/ui/hud-r03-native",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\ui\\hud-r03-native",
+      "files": 25,
+      "bytes": 21797.0,
+      "removed": true,
+      "error": ""
+    },
+    {
+      "path": "art/ui/hud-r03-user-update",
+      "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\ui\\hud-r03-user-update",
+      "files": 8,
+      "bytes": 98980.0,
+      "removed": true,
+      "error": ""
+    }
+  ],
+  "currentWorkingCleanup": {
+    "path": "art/ui/ui-finalize",
+    "absolutePath": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\ui\\ui-finalize",
+    "files": 19,
+    "bytes": 141691.0,
+    "removed": true,
+    "unityTemporaryProjectRemoved": true
+  }
+}

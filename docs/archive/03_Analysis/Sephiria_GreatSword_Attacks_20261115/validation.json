@@ -1,0 +1,304 @@
+{
+  "date": "2026-11-15 Asia/Seoul",
+  "kind": "static source/asset reconstruction; no original game runtime capture",
+  "checks": [
+    {
+      "name": "source clip hashes, CSV/JSON records, pivot, tip, event frames",
+      "pass": true,
+      "records": 124
+    },
+    {
+      "name": "four nonempty FX frames, binary alpha, common pivot",
+      "pass": true
+    },
+    {
+      "name": "referenced source files exist",
+      "pass": true,
+      "files": 68
+    },
+    {
+      "name": "report tables inserted and local links resolve",
+      "pass": true
+    }
+  ],
+  "independent_review": "A second reader checked source hashes, 124 CSV/JSON records, affine transform and timing caveats; no blocking error found",
+  "sources": [
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/PlayerInputController.cs",
+      "sha256": "7163827355e4ce6a6624e345f39d666be1e41824014c48cb86259493a8b10d20"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/PlayerAvatar.cs",
+      "sha256": "efc233bbe412c3be6b759a02c035a1f88c31ab6a5ee115e8c8111b1b850794e3"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/WeaponControllerSimple.cs",
+      "sha256": "d23aa3a8f246a73be3b8b731a9f1ff10d990d761fb882c33923bc09556833241"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/WeaponSimple.cs",
+      "sha256": "bf6bed23f486caac625379b778525ad6d2235fec46bcd0b3bcb55e8df4572d7b"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/WeaponSimple_GreatSword.cs",
+      "sha256": "64b8aa677c89e0e38d2db99df6bb97cc676fa815be7f6c47134ff5d6e6855a31"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/WeaponControlAnimator.cs",
+      "sha256": "5a981c8bf3fc66a3c24ae710b0bccd3bd4b851c0bf0f7a72b098b654d5b83b14"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/WeaponShoulder.cs",
+      "sha256": "09f731edd5df68a5b523e81ad7a169a07f095e38e72b66e44a539fb6e620444a"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/HorayUtility.cs",
+      "sha256": "5976acd611fba44d80e096c5c5a2a6cc02376833dd90421d02e9d486e5aa05ad"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/TopdownRigidbody.cs",
+      "sha256": "8aea37b7fce6677204c59b587a4c4db5bab5965ab7f6412ec9345f905b66b0b0"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/UnitAvatar.cs",
+      "sha256": "4647ee086fe5b40deed6772b607b3cbd9088b03b4aba47f029cefc72409e396f"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/NewWeaponFireData.cs",
+      "sha256": "9541f5c953926f64657dbf3ec09171cfa232eae7f9ea4144e24b50b5d857cc9d"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/SpriteFx.cs",
+      "sha256": "b758880f45e37ed12b36d07713784b7063656f8ae546a21b05572fb32b01f16b"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/Animator2D_Basic.cs",
+      "sha256": "6fb8662c05c67d1b36979c571783ad5585637e4ff8cad6ab4225e66ca494f4ab"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/Animator2D_SpriteRenderer.cs",
+      "sha256": "2ff35b39d64edcbace249f3c5f824f4ea2c09bb649a0ed46e5e889a666e948e0"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/Timer.cs",
+      "sha256": "a8071ae9dad9be5e66642eceb32212f7b1a80e93110df45bd0aa2ce36cc1cb4f"
+    },
+    {
+      "file": "docs/reference/sephiria/code/ingame code/Assembly-CSharp/NewWeaponBody.cs",
+      "sha256": "0fce5c83fb0e1d39f74234ae3f390cee1d6cccaaa95aee8394d09a53e1814e5d"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/weapon/0010_GreatSword.asset",
+      "sha256": "9acc530dad4179362448111297e734df9d53d9313eb9080b82f055117f7720e7"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/GameObject/Weapon_GreatSword_1.prefab",
+      "sha256": "cff0d77f040bb7040bf7f30d963b5341bc1b52479076bd03096a3d552bb4232e"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/GameObject/PlayerAvatar.prefab",
+      "sha256": "b7a94f943304219fe846fdb781a0f95ca2d585ffd8ce3e3fd9e499866f53c2ec"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimatorController/AnimationWrapper.controller",
+      "sha256": "3504c4f60dec4134a3e490f41d9bcae949dee46948e566a04bc404c02bd00c41"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack1.anim",
+      "sha256": "ce8fb1cfab3d955a9eb34e803ff2bcb417fc0b3791ccf4ce5b199b84caab7de9"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack2.anim",
+      "sha256": "9e4cee3a7442f66d1822e64f0bb27402abd19cb7bf2543f1df1905cb19e0bf39"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_New_WaitForAttack2.anim",
+      "sha256": "58f42481dbf845ce7da63e220e5870ee75341ca1dff184794ed335dddda813c8"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/MonoBehaviour/Weapon_GreatSword_Attack1(M).asset",
+      "sha256": "b31ed592a2948512bc1513f32e2a28dcb95b1fc05fdab1338c97a211c91d397c"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/MonoBehaviour/Weapon_GreatSword_Attack2(M).asset",
+      "sha256": "055d75ecbdabed1b9094c18d6d33e91d1466193f3b2b11be16090bce7bbb9199"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/fx/GreatSwordSwingFx-Updown.prefab",
+      "sha256": "0bab3579b053db1cd658eca89792e0859097fc836fc5841de51865d8303264a5"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/fx/GreatSwordSwingFx-Downup.prefab",
+      "sha256": "954ff475a07edc6c5335c1841497de6a7709a9efe02858359538373268535e15"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/MonoBehaviour/GreatSwordSwingFx.asset",
+      "sha256": "e325895af2ecd3c80e96c9bef98048b22a0351845b66ec47cb5ee0d17f135bac"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword_Tier1.asset",
+      "sha256": "1f6ec61db5af2090c3792ab5b183f87d668b5a51421c71060a58eab28f291215"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword_Tier1.png",
+      "sha256": "9546af8f92147c3c8e0116bc5e355c2dbc572278250e8d9f748fd90c641295c7"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Material/Sprite-Unlit-Default.mat",
+      "sha256": "96fbee94f81a85b72dd2166c2864d9f4bd4b6488ef3188bd970766e9fbeda008"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/weaponwielddata/SwingWeapon_GreatSword_New.asset",
+      "sha256": "c45b3aa24eaad5b3abbe0f7bc83362dbddc996aa457c861f07c97280809bb7c6"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimatorController/GreatSword_New.controller",
+      "sha256": "b7a051d8046a471177beb2bd07636eee4623e912eaacd4ae325bf6f580c9a152"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing0.asset",
+      "sha256": "d5dfaea859b5a2304a1c0d697e64c7a1de0e3a9f8b87cc9fb1b6711c07a0e361"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing1.asset",
+      "sha256": "6f73261481743dc365d0e2fb3981fbfabaea79199c4d2608583c6b27cbebe95d"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing2.asset",
+      "sha256": "11098f74617fd1269430ac8fb8cbc9dacf156ab1ee25e5914eabe5f643fd3d5c"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing3.asset",
+      "sha256": "d05cf4a1a83052a34737f95b43c1fa32db696f6c8dd31605896af78f13100a6a"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing0.png",
+      "sha256": "d112907d5e3f5d55435b108af7361f2f96e9e69bad7ae37d14598937290595e5"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing1.png",
+      "sha256": "8a2d75c9ea9150a06ed4fd1d5d0607b1c5cafe37bc5adc9d49e8b05180a25b5a"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing2.png",
+      "sha256": "c54aa783352c7f23f8eed7c2751f18a6d7c52a22768d58654458bceef6edb6ee"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing3.png",
+      "sha256": "c5ce240a3e29640e2df4ce8ec3a8c86cff31d45a76315f02e823ee9d9d161ea2"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/ProjectSettings/ProjectVersion.txt",
+      "sha256": "b894626e3ea2591a55c40cf6c015dd7ecda4c5006ae6b5574e09f20a96aae508"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/ProjectSettings/ProjectSettings.asset",
+      "sha256": "9e5bab7978dec6c03bbcd8ffec4a6539f0643277d7b33e893cb0b5d256810205"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/weapon/0010_GreatSword.asset.meta",
+      "sha256": "a2ad9eb5714e020f0e4c9980d05d28399e7fe0899e146e8fb240c9a6ec48f49b"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/GameObject/Weapon_GreatSword_1.prefab.meta",
+      "sha256": "cd5d940cd2d3f2c33d6d19746ef6f55e62521cd0bb65960df7ed9aeaa63716b1"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/GameObject/PlayerAvatar.prefab.meta",
+      "sha256": "005de19a2142f5d06c9454ff515823cf794ac5ee5c814619f380c29d1ffab35f"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimatorController/AnimationWrapper.controller.meta",
+      "sha256": "ec4b08576fea2f68b99bbe75686d2543b3310b59437e7e62620dce14c6fe9bf9"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack1.anim.meta",
+      "sha256": "fff0d5352301f9f559bf08f51d7ce5be8c311852521d9ab512a27f146b4b4b19"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack2.anim.meta",
+      "sha256": "573cc1d6fa45524f0e4d124a9452f2de3f58c84ed2e65f0ebc27e8f4e24d08be"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_New_WaitForAttack2.anim.meta",
+      "sha256": "6bbb1df6a9653acf0f7edd55516ed930301c7f98050a6a1ec9628edc36e1e97b"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/MonoBehaviour/Weapon_GreatSword_Attack1(M).asset.meta",
+      "sha256": "271c01ed18626c08cc1ebddf410a08d4f8928712dc625bda10bdbc9ffe201fb2"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/MonoBehaviour/Weapon_GreatSword_Attack2(M).asset.meta",
+      "sha256": "470ccd59d99ca20a57dfaa9b30d8a1a316dcd1f47ca5e2869557616244aaeb90"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/fx/GreatSwordSwingFx-Updown.prefab.meta",
+      "sha256": "a0f6c1d2f952040980cb387d5ee708b38cd9c1c37a6b455d31d6bdc3ce95950c"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/fx/GreatSwordSwingFx-Downup.prefab.meta",
+      "sha256": "b0d937590ef2122a5e427b5d2167105a9b3cc055cefc709a2f4d33d224b13bf4"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/MonoBehaviour/GreatSwordSwingFx.asset.meta",
+      "sha256": "162b3f142f2644e02db56308c222624dcc88935547760d63221be972fff30c96"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword_Tier1.asset.meta",
+      "sha256": "8d834779d6630a7ab551f181562f811f424a021ee31386b51e0e72ebcec11d8a"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword_Tier1.png.meta",
+      "sha256": "f6b3f62d38b341fcb3bcd98c1ca9e1b45807deaaa4e1121874361fe1660d2d36"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Material/Sprite-Unlit-Default.mat.meta",
+      "sha256": "5661a366385ef2bd525c266aed3564d3bf71aa7fb1ca08d463c09a2311ee9d4a"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Resources/weaponwielddata/SwingWeapon_GreatSword_New.asset.meta",
+      "sha256": "4211c257d4a2f733559954f92b7bba1ac11417ba9254d1c3aeed322060fa5f53"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimatorController/GreatSword_New.controller.meta",
+      "sha256": "3addb3c6648c2a57270edc07541bf789ab8bbc5a8f426d1cb0898d85ea361ea0"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing0.asset.meta",
+      "sha256": "20d8ebdb9464e68a4bf0118d2371546bde0a4a42ace318a8a5916db4757ddcca"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing1.asset.meta",
+      "sha256": "6920cda3e9e1a8726e7e3d28e5553b14d5228099047919c823f192eae4ba438a"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing2.asset.meta",
+      "sha256": "6cf77c009b4b1d911b4b11769304d3e0dfffeb833a17138a08c7d8ebdbc1da21"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Sprite/GreatSword0_Swing3.asset.meta",
+      "sha256": "12eed185daf932f9b623c749d9441b5c902f03be824cd541d5935e15d92edba6"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing0.png.meta",
+      "sha256": "339619dce6e79cab89f28db86ce9d5edab35388b7e9248e93dc9a3e13ef49c2e"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing1.png.meta",
+      "sha256": "c0e18055f636ba54ca10c3e22dbec0a3d27aabc69c2746ffe0b973a47373b3b8"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing2.png.meta",
+      "sha256": "3c35166adf5bf4f0c6a02d6eda87984267094bc83e4a160e147091fb7fd3c6ef"
+    },
+    {
+      "file": "docs/reference/sephiria/assets/ExportedProject/Assets/Texture2D/GreatSword0_Swing3.png.meta",
+      "sha256": "4adf772cf1ad8d8d6c8fc283f3d96a28be485189e6b89843315f2b8a62812672"
+    }
+  ],
+  "not_run": [
+    "original-game playback/frame recording",
+    "left-facing runtime Transform matrix sampling",
+    "Project_Chrono compile/play (no game code changed)"
+  ]
+}

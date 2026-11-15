@@ -1,0 +1,225 @@
+{
+  "referenceResolution": [
+    1920,
+    1080
+  ],
+  "nativeScale": 6,
+  "screenCoordinates": "top-left, +x right, +y down",
+  "unityCoordinates": "+x right, +y up",
+  "elements": [
+    {
+      "name": "boss-hp",
+      "nativeSize": [
+        125,
+        12
+      ],
+      "screenRect": [
+        585,
+        36,
+        750,
+        72
+      ],
+      "topLeftRatio": [
+        0.3046875,
+        0.03333333333333333
+      ],
+      "anchorMin": [
+        0.5,
+        1
+      ],
+      "anchorMax": [
+        0.5,
+        1
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "anchoredPosition": [
+        0,
+        -36
+      ],
+      "nativeAnchorOffset": [
+        0,
+        -6
+      ],
+      "sizeDelta": [
+        750,
+        72
+      ],
+      "reconstructedRectMatches": true
+    },
+    {
+      "name": "player-hp",
+      "nativeSize": [
+        90,
+        11
+      ],
+      "screenRect": [
+        18,
+        900,
+        540,
+        66
+      ],
+      "topLeftRatio": [
+        0.009375,
+        0.8333333333333334
+      ],
+      "anchorMin": [
+        0,
+        0
+      ],
+      "anchorMax": [
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        0
+      ],
+      "anchoredPosition": [
+        18,
+        114
+      ],
+      "nativeAnchorOffset": [
+        3,
+        19
+      ],
+      "sizeDelta": [
+        540,
+        66
+      ],
+      "reconstructedRectMatches": true
+    },
+    {
+      "name": "groggy",
+      "nativeSize": [
+        49,
+        7
+      ],
+      "screenRect": [
+        18,
+        972,
+        294,
+        42
+      ],
+      "topLeftRatio": [
+        0.009375,
+        0.9
+      ],
+      "anchorMin": [
+        0,
+        0
+      ],
+      "anchorMax": [
+        0,
+        0
+      ],
+      "pivot": [
+        0,
+        0
+      ],
+      "anchoredPosition": [
+        18,
+        66
+      ],
+      "nativeAnchorOffset": [
+        3,
+        11
+      ],
+      "sizeDelta": [
+        294,
+        42
+      ],
+      "reconstructedRectMatches": true
+    },
+    {
+      "name": "draw",
+      "nativeSize": [
+        17,
+        17
+      ],
+      "screenRect": [
+        1608,
+        900,
+        102,
+        102
+      ],
+      "topLeftRatio": [
+        0.8375,
+        0.8333333333333334
+      ],
+      "anchorMin": [
+        1,
+        0
+      ],
+      "anchorMax": [
+        1,
+        0
+      ],
+      "pivot": [
+        1,
+        0
+      ],
+      "anchoredPosition": [
+        -210,
+        78
+      ],
+      "nativeAnchorOffset": [
+        -35,
+        13
+      ],
+      "sizeDelta": [
+        102,
+        102
+      ],
+      "reconstructedRectMatches": true
+    },
+    {
+      "name": "slash",
+      "nativeSize": [
+        17,
+        17
+      ],
+      "screenRect": [
+        1746,
+        900,
+        102,
+        102
+      ],
+      "topLeftRatio": [
+        0.909375,
+        0.8333333333333334
+      ],
+      "anchorMin": [
+        1,
+        0
+      ],
+      "anchorMax": [
+        1,
+        0
+      ],
+      "pivot": [
+        1,
+        0
+      ],
+      "anchoredPosition": [
+        -72,
+        78
+      ],
+      "nativeAnchorOffset": [
+        -12,
+        13
+      ],
+      "sizeDelta": [
+        102,
+        102
+      ],
+      "reconstructedRectMatches": true
+    }
+  ],
+  "cursorHotspot": [
+    15,
+    15
+  ]
+}

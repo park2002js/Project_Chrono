@@ -1,0 +1,99 @@
+{
+  "bodyScale": 3,
+  "canvas": {
+    "height": 1040,
+    "width": 1200
+  },
+  "details": [
+    {
+      "position": {
+        "x": 64,
+        "y": 790
+      },
+      "rect": {
+        "height": 40,
+        "width": 34,
+        "x": 7,
+        "y": 64
+      },
+      "scale": 4,
+      "type": "hand"
+    },
+    {
+      "position": {
+        "x": 252,
+        "y": 790
+      },
+      "rect": {
+        "height": 40,
+        "width": 34,
+        "x": 151,
+        "y": 64
+      },
+      "scale": 4,
+      "type": "hand"
+    },
+    {
+      "position": {
+        "x": 476,
+        "y": 780
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r04/png/modules/normal-27x27.png",
+      "type": "module"
+    },
+    {
+      "position": {
+        "x": 708,
+        "y": 780
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r04/png/modules/crystal-27x27.png",
+      "type": "module"
+    },
+    {
+      "position": {
+        "x": 940,
+        "y": 780
+      },
+      "scale": 8,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r04/png/modules/head-27x27.png",
+      "type": "module"
+    }
+  ],
+  "handDetailScale": 4,
+  "items": [
+    {
+      "bounds": {
+        "height": 78,
+        "width": 178,
+        "x": 7,
+        "y": 26
+      },
+      "position": {
+        "x": 18,
+        "y": 288
+      },
+      "scale": 3,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/guard-r04/aseprite/01-guard-robot-front.aseprite"
+    },
+    {
+      "bounds": {
+        "height": 144,
+        "width": 89,
+        "x": 6,
+        "y": 6
+      },
+      "position": {
+        "x": 729,
+        "y": 150
+      },
+      "scale": 3,
+      "source": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/worm-r04/aseprite/03-electric-worm-front.aseprite"
+    }
+  ],
+  "moduleDetailScale": 8,
+  "playerHeight": 20,
+  "referenceImageShown": false,
+  "inputHashesUnchanged": true
+}

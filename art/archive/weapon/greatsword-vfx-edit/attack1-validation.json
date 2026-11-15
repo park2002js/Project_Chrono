@@ -1,0 +1,89 @@
+{
+  "date": "2026-11-16 Asia/Seoul",
+  "revision": "r03 inward tips and direction-consistent flat palettes",
+  "input_native_sha256": "9ea1803b1bfa56cb2cf72a89f2c482aea689f7e3b9213f02d82f0397d03c581e",
+  "native_sha256": "9ebf1a1c32490977207b110bbe6ca4e73d0606e3b674a4fce86661a65104d43d",
+  "palette": [
+    "#E5D2FF"
+  ],
+  "canvas": [
+    70,
+    66
+  ],
+  "pivot": [
+    35,
+    33
+  ],
+  "timing": "Preview only; Unity display frames unassigned",
+  "checks": [
+    {
+      "frame": 1,
+      "opaque_pixels": 1895,
+      "bbox": [
+        0,
+        0,
+        70,
+        64
+      ],
+      "palette_counts": {
+        "#E5D2FF": 1895
+      },
+      "alpha_shape_unchanged": true
+    },
+    {
+      "frame": 2,
+      "opaque_pixels": 312,
+      "bbox": [
+        49,
+        17,
+        70,
+        65
+      ],
+      "palette_counts": {
+        "#E5D2FF": 312
+      },
+      "alpha_shape_unchanged": true
+    },
+    {
+      "frame": 3,
+      "opaque_pixels": 30,
+      "bbox": [
+        50,
+        59,
+        70,
+        66
+      ],
+      "palette_counts": {
+        "#E5D2FF": 30
+      },
+      "alpha_shape_unchanged": true
+    },
+    {
+      "frame": 4,
+      "opaque_pixels": 5,
+      "bbox": [
+        53,
+        62,
+        69,
+        66
+      ],
+      "palette_counts": {
+        "#E5D2FF": 5
+      },
+      "alpha_shape_unchanged": true
+    }
+  ],
+  "scope": "Recolor VFX_EDIT opaque pixels to one flat color; alpha geometry and hidden reference/guide preserved",
+  "output_native_sha256": "9ebf1a1c32490977207b110bbe6ca4e73d0606e3b674a4fce86661a65104d43d",
+  "horizontal_flip_in_game": false,
+  "export_cmd_executed_successfully": true,
+  "canonical_matches_reviewed_scratch": true,
+  "independent_review": {
+    "passed": true,
+    "native_visible_export_exact": true,
+    "canvas_pivot_4frames_layer_flags_verified": true,
+    "direction_color_mapping_consistent": true,
+    "source_alpha_cel_position_hidden_reference_guide_metadata_preserved": true,
+    "single_visible_color_only": true
+  }
+}

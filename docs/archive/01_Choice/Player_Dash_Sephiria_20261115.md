@@ -1,0 +1,40 @@
+# 선택 주제
+주제: F-P02 대시를 기존 Character 이동 요청·Body 적용 구조에 연결
+
+# 선택 사안 1
+- 선택: 사용자 확정 — 이동 입력이 있으면 그 방향으로, 정지 상태에서는 커서 방향으로 대시한다. 세피리아 코드를 먼저 확인하고 현재 PlayerCharacter 이동량 계산 → PlayerBodyController 누적·적용 구조를 유지한다.
+- 이유: 사용자 지정 구조와 원작의 책임 분리를 이어 적용하려는 요청. 별도 이유 미기록.
+- 기존 확정: Q9의 벽/Boss 몸체 차단·독립 타이머·게임 시간 정지, Q10의 쿨타임만 사용·공격 중 대시 차단, Q11의 Dodge와 전면 무적 구분을 따른다. 원문 Space 입력과 대시 입력 잠금 후 유지한 WASD 재개 규칙을 반영한다.
+- 채택: Sephiria PlayerInputController.HandleOnDash → UnitAvatar.Dash → CharacterDash/FastMove의 방향 고정·변위 교체 → TopdownRigidbody.RequestMove 흐름.
+- 변형: 원작 감속·충전 횟수·아이템/네트워크 구조 대신 현재 게임의 단일 대시·독립 쿨타임과 FixedUpdate0 → Body100 순서를 사용한다. 입력은 콜백 요청을 캐시한 뒤 최신 Move/Aim을 전달한 Update에서 한 번 소비한다.
+- 수치: 속도14·이동0.18초·회피0.16초·입력 잠금0.24초·쿨타임0.65초는 구현 시 조정 가능한 초기 튜닝값이며 사용자 확정 밸런스가 아니다.
+- 경계: 대시의 회피 상태 창구를 제공하되 실제 Hitbox 피해 처리·일반 공격 실행은 각각 F-P08·F-P03의 구현 범위다. 최종 잔상·Sprite·모션은 아트 의존 작업으로 남긴다.
+- 기준 원본: 현재 API·원작 파일/메서드·시퀀스·검사 결과는 [GAME_SPEC 2.1.2](../../GAME_SPEC.md#212-f-p02-대시-구현확인과-sequence-diagram)와 [REFERENCE_CODE_MAP](../../REFERENCE_CODE_MAP.md)을 따른다.
+
+# 선택 사안 2 — 이동 계산·타이머와 물리 적용의 소유권
+- 선택: 이후 사용자 요청으로 PlayerCharacter.Update가 일반 이동·대시 등 모든 이동량과 대시의 설정·방향·타이머·허용/취소를 담당한다. PlayerBodyController는 전달된 이동의 유효성·충돌을 확인하고 실제 위치에 적용한다.
+- 이유: 대시의 역할 분배와 전용 변수의 소유 위치를 분명히 하려는 요청. 사용자가 타이머도 Character의 책임이라고 추가로 명시했다.
+- 반영: Body에서 대시 설정·상태·타이머·Player 수치/Rendering 참조와 커서 방향을 제거한다. CharacterRendering이 Body.ActualMovement를 직접 관찰하며 Character로 결과를 되돌리지 않는다.
+- 갱신 주기: Character.Update의 게임 시간으로 변위를 계산·타이머 진행, Body.FixedUpdate에서 유효한 누적 요청을 한 번 소비한다. Rendering은 물리 갱신200에서 실제 변위·시간을 모아 LateUpdate에 표시한다. 변위의 계산과 실제 소비는 별도 단계다.
+- 대체 관계: 선택 사안1의 방향·입력·독립 시간 규칙은 유지하고, 초기 구현의 Body 타이머 소유 및 Character.FixedUpdate 계산을 이번 요청으로 대체한다. 최초 구현·검사 이력은 보존한다.
+
+# 선택 사안 3 — Player 위치/몸체 Update 전환 방향과 선행 분석
+- 선택: 2026-11-16 사용자는 Player 위치 적용과 몸체 애니메이션의 갱신을 세피리아처럼 Update 단계로 맞추는 방향을 제시하고, 먼저 현재 이동 수집의 도입 경위와 원작의 대응 방식을 분석하도록 요청했다.
+- 이유: 주요 실행 순서 비교 후 이 두 기능부터 원작과 맞춰보려는 요청. 이동 수집의 필요성과 원작의 처리 방식을 먼저 확인한다.
+- 현재 상태: [실행 순서 비교11절](../03_Analysis/Update_Order_Comparison_20261116.md#11-update-전환-전-분석--이동-수집의-도입-경위와-원작의-판단-원본)의 선행 분석 완료. 런타임은 아직 Body.FixedUpdate·Rendering.FixedUpdate 수집/LateUpdate 표시이며 Update 전환은 미적용이다.
+- 범위 구분: 실행 단계 변경과 실제 변위→입력 기준의 표시 정책 변경은 별개다. 벽에서의 걷기·우리 뒷걸음 역재생·고정 재생 FPS까지 이번 방향 제시만으로 원작 값으로 바꾸지 않는다. 기존 선택 사안2는 현재 구현 이력으로 보존한다.
+
+# 선택 사안 4 — 누적 수집 제거와 Update0/3 확정
+- 선택: 2026-11-16 사용자는 이동량이 PlayerCharacter에서 전달되고 현재 넉백을 고려하지 않는다는 이유로 누적 수집을 제거하고 Player 갱신0·몸체 애니메이션3의 관계로 두도록 요청했다.
+- 이유: 현재 범위에서는 Character가 계산한 이동을 표시 원본으로 사용할 수 있고 별도 외력의 실제 이동 결과를 모을 필요가 없다는 사용자 판단.
+- 구현 방향: Character.Update0 안에서 Body.Move가 즉시 충돌 보정·위치를 적용하고, 같은 Character가 계산한 일반 이동 의도를 Rendering.SetMovement로 전달한다. Rendering.Update3은 몸체 모션·효과를 진행하며 Body의 별도 반복 콜백이나 물리 이동 수집은 두지 않는다.
+- 표시 정책: 벽의 충돌 보정 결과와 별개로 일반 이동 의도가 있으면 걷는다. 대시·생명주기 우선 자세, 뒷걸음 역재생·기존 고정 모션 시간은 유지한다. 새 넉백/외력 시스템은 도입하지 않는다.
+- 현재 상태: Update0/3·즉시 Body.Move·의도 기반 표시를 구현하고 관련 검사/문서를 갱신했다. 같은 Unity6000.3.21f1 격리본의 컴파일·Play19검사·배치 종료0, 원본/격리 C#69파일·Player 프리팹 일치를 확인했다. 실제 결과와 미측정 범위는 [분석12절](../03_Analysis/Update_Order_Comparison_20261116.md#12-사용자-확정-반영--characterupdate0와-renderingupdate3) 및 GAME_SPEC을 따른다. 선택 사안2·3은 이전 구조와 선행 분석 이력으로 보존한다.
+- 사용자 확인: 2026-11-16 변경 후 직접 플레이에서 기존 드득거림이 사라졌다고 보고했다. 실행환경 상세와 FPS/CPU/GPU 수치는 미기록이다. 도입 경위·변경 판단·해결 연결과 동시 변경의 인과 한계는 [해결 정리13절](../03_Analysis/Update_Order_Comparison_20261116.md#13-해결-경위--이동과-몸체-갱신을-같은-렌더-프레임에-연결)을 따른다.
+
+# 선택 사안 5 — Notion 해결 설명과 외부 논의 추가 확인
+- 선택: 2026-11-16 사용자 요청으로 Notion의 이번 이동 끊김 해결 설명과 현재 이동 책임 문장에서 특정 레퍼런스 게임명·코드 확인 문장을 빼고, 자체 구조·변경 판단·결과 중심으로 정리한다.
+- 이유: 사용자 요청. 별도 이유 미기록.
+- 사실 구분: 같은 날 외부 커뮤니티와 공식 문서를 실제 추가 검색했다. 이를 해결 후 추가 참고로 명시했으며 최초 발견 경위를 커뮤니티 검색으로 소급하거나 LateUpdate 자체의 결함으로 기록하지 않았다. 로컬의 실제 분석 출처와 선택1~4 이력은 유지한다.
+- 추가 근거: [Unity Discussions의 2D 패럴랙스·카메라 떨림 논의](https://discussions.unity.com/t/jittering-problems-with-my-camera-when-doing-a-2d-parallax-effect/873419)는 물리·렌더 갱신 시계의 차이와 보간을 설명하며 카메라 LateUpdate 유지를 안내한다. [Unity6000.3 Rigidbody2D.interpolation](https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/rigidbody2d/interpolation)은 화면 갱신이 물리보다 잦으면 이동이 계단처럼 보일 수 있음을 설명한다. 자료 확인일은2026-11-16이다.
+- 반영 결과: 기존 [Notion 정리 페이지](https://app.notion.com/p/41857a6d6d24809a8d15f1a5aa34d48a)의 해결 기록과 현재 이동 책임 두 부분을 수정해 저장했다. 기능별 SequenceDiagram·기존 Case와 무관한 레퍼런스 기록은 보존했다. 코드 변경·Unity 검사 재실행은 없다.

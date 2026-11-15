@@ -108,5 +108,9 @@ InitTestScene*.unity*
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
 
+# Art working files; keep finished results
+/art/*
+!/art/archive/
+
 # Local reference files
 /docs/reference/

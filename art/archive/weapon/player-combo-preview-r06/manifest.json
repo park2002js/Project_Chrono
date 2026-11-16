@@ -1,0 +1,3654 @@
+{
+  "date": "2026-11-16 Asia/Seoul",
+  "scope": "Static frame composites; game code/clips unchanged",
+  "frame_counts": {
+    "attack1": 37,
+    "attack2": 45,
+    "attack3": 54
+  },
+  "frame_numbering": "Attack3 PNG first drawing is1; read left-to-right then next row. Confirmed by user 2026-11-16. Final sample is endpoint snapshot",
+  "time_basis": "60 timeline frames per second; first/second retain measured reference clip times; GIF intentionally slow",
+  "canvas": [
+    128,
+    128
+  ],
+  "player_origin": [
+    64,
+    88
+  ],
+  "pixels_per_unit": 16,
+  "player": "idle-left-back first20x20 cell, fixed body pose; not newly drawn body attack animation",
+  "sword": "weapon_00 sheathed first7x29 cell; original pixels rotated180 for up-facing source",
+  "vfx": "Current pale-purple1, pale-blue2 flipped, combined original1+2 arcs for3; 70x66 pivot35,33 at player relative2.5,24px",
+  "third_splice": [
+    {
+      "output": [
+        1,
+        31
+      ],
+      "source_attack": 1,
+      "source_frames": [
+        1,
+        31
+      ]
+    },
+    {
+      "output": [
+        32,
+        54
+      ],
+      "source_attack": 2,
+      "source_frames": [
+        23,
+        45
+      ]
+    }
+  ],
+  "intermediate_frames_added": false,
+  "third_vfx_ranges": {
+    "V1": [
+      31,
+      33
+    ],
+    "V2": [
+      34,
+      36
+    ],
+    "V3": [
+      37,
+      39
+    ],
+    "V4": [
+      40,
+      42
+    ]
+  },
+  "third_vfx_composition": "Complete unmodified attack1 purple + mirrored attack2 blue at same pivot; only shared pixels occluded by left blue/right purple; non-overlapping pixels preserved",
+  "purple_copy_reference": {
+    "target_ordinal": 40,
+    "source": "attached R03 PNG",
+    "source_ordinal": 41,
+    "image": 4
+  },
+  "third_color_overrides": {
+    "purple_only_frames": [
+      37,
+      38
+    ],
+    "purple_image_overrides": {
+      "37": 1,
+      "38": 1,
+      "39": 1,
+      "40": 4
+    },
+    "blue_image_overrides": {
+      "39": 1,
+      "40": 1
+    },
+    "other_frames_unchanged": true
+  },
+  "third_actual_stage_fields": "fx_purple_image and fx_blue_image are authoritative; fx_image is the original base schedule",
+  "length_policy": "Exact user splice:31+23=54 samples; last is the original attack2 ending sample",
+  "third_damage": "one stronger damage event remains policy; this preview does not implement damage",
+  "sources": [
+    {
+      "path": "docs/archive/03_Analysis/Sephiria_GreatSword_Attacks_20261115/motion_curves_and_frames.json",
+      "sha256": "6fc1bf92d6e4f7860312640b49a488dacddc8bdc734a70b3a52d51185fb27eb6"
+    },
+    {
+      "path": "art/archive/weapon/sephiria-motion-our-player-r02/manifest.json",
+      "sha256": "5396be5e53751542f5336af30dab7103c2f01cadfb57b9bc53c5a0521480b1af"
+    },
+    {
+      "path": "project/Assets/Art/Weapons/weapon.png",
+      "sha256": "35f804b6a89f00ac7886384a31728fb63dde85aa2ce168f82c35fba7a6d83d2e"
+    },
+    {
+      "path": "project/Assets/Art/Weapons/weapon.png.meta",
+      "sha256": "c1455194967c29539b32ed2c34a2e9f40c327ba20fecb485641847da0215bd47"
+    },
+    {
+      "path": "art/archive/player/final/unity/idle-left-back.png",
+      "sha256": "e6d16c575e7062c483c5d98e1bbfbd160f12e9409f7cc9ab9e48e1ef5cdb729f"
+    },
+    {
+      "path": "art/archive/weapon/weapon.aseprite",
+      "sha256": "bab2506c3f97e2ba94a2e033eced866f8d9d6e1ef8bc7320c9c9f6f258f30416"
+    },
+    {
+      "path": "art/archive/player/final/aseprite/idle-left-back.aseprite",
+      "sha256": "c22356e83ee911cff0d33b180644d7bf1eeab92b72e48524ecd859bd478eca6a"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-01.png",
+      "sha256": "e00448f0ae07372d41dda9545570c7079a06799c9b26caabb8b579ef9c5dbafd"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-02.png",
+      "sha256": "1af1315f0cd3259f8d338f0b63334cc49adeec5604d7d7489a8ba713ec431cab"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-03.png",
+      "sha256": "ae4ca24b9bb82c3a69e42b758871ae1ba3562a2376b547e7ab08705c49d6578c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-04.png",
+      "sha256": "2b955be4dfc0dc37031b8c4ccf5f8c1a383f4155880570d7e699bd46064ba0ea"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/frames.json",
+      "sha256": "2131ed6fab3abef8265359d0a21f65bd16a6846a8d18d2ff4225964a312fc96b"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-01.png",
+      "sha256": "357bdf784b5ec8403bd87e2b1ee8ca9bdab49fef4461ca0207cee649c9cf9568"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-02.png",
+      "sha256": "578bf84221bdf8466e52bd6ad1a5011d6c0471f011a7305bc7a625a0f0ca4a68"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-03.png",
+      "sha256": "721765c4dc86b13777277f39b3f61ddfb8e1a785a0fa6a852edf2bda43f1b58c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-04.png",
+      "sha256": "126f53c12934da0cc88ff09bc6e1f5b14047b0e74151eab990e0b4550b528448"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/frames.json",
+      "sha256": "cbe2eb98591dbf538a518dd75fba152cb69c7dc33c02839e264613eaed3feb73"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-01.png",
+      "sha256": "676be5f4e8436d6340bbfec95206077d235f1baac90c94dbc880495e22e18e4c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-02.png",
+      "sha256": "982056c60ef46e7250c370dcab43c7ffc79b28ea438e4de88ae86bff84fee0b3"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-03.png",
+      "sha256": "dacadd02cbf27bfb1fb9c2bc63cedf89163ff9a11f2b7911233e5fd6c5e9dd55"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-04.png",
+      "sha256": "7a465ad1b12334acd25b560b858b7e67c0deca799c6555f68e26f07fd95c2b2c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/frames.json",
+      "sha256": "d2ad8c2f664a1498d8510ff547821e869bcd4a12ab96955481a9735a42a65377"
+    },
+    {
+      "path": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack1.anim",
+      "sha256": "ce8fb1cfab3d955a9eb34e803ff2bcb417fc0b3791ccf4ce5b199b84caab7de9"
+    },
+    {
+      "path": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack2.anim",
+      "sha256": "9e4cee3a7442f66d1822e64f0bb27402abd19cb7bf2543f1df1905cb19e0bf39"
+    }
+  ],
+  "checks": {
+    "input_files_untouched": true,
+    "first_second_all_82_motion_timing_sorting_vfx_indices_unchanged": true,
+    "third_exact_splice_and_only_F37_to_F40_changed": true,
+    "all_nonoverlapping_source_pixels_retained": true,
+    "all_rendered_pixels_inside_common_review_crop": true,
+    "purple_at40_exactly_matches_attached41": true,
+    "only40_changed_from_r05": true
+  },
+  "frames": [
+    {
+      "attack": 1,
+      "frame": 1,
+      "time_seconds": 0.0,
+      "reference_frame_zero_based": 0,
+      "grip_pixels": [
+        3.316,
+        10.32
+      ],
+      "angle_degrees": 159.3,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-01.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 2,
+      "time_seconds": 0.016666667,
+      "reference_frame_zero_based": 1,
+      "grip_pixels": [
+        3.311248,
+        10.274592016
+      ],
+      "angle_degrees": 159.71910004,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-02.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "3a778a8380e9aca6e0637ad879e5804d2aa249671e608313ca81d56bd2a76035",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 3,
+      "time_seconds": 0.033333333,
+      "reference_frame_zero_based": 2,
+      "grip_pixels": [
+        3.299103984,
+        10.158549376
+      ],
+      "angle_degrees": 160.790133416,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-03.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "95fecae25e34fe84ae4cfeeee1f9f60c10ad20a91fe19f0ab52336d656beb5d5",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 4,
+      "time_seconds": 0.05,
+      "reference_frame_zero_based": 3,
+      "grip_pixels": [
+        3.282735968,
+        10.002144048
+      ],
+      "angle_degrees": 162.233700009,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-04.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "68d3f0db20cf063a40b661277be89fc418f752cc6b1e2bed3102b2c436241946",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 5,
+      "time_seconds": 0.066666667,
+      "reference_frame_zero_based": 4,
+      "grip_pixels": [
+        3.265311952,
+        9.835648
+      ],
+      "angle_degrees": 163.7704,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-05.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "6d2758ca776f2b05c9f3db2189e66ccdf49538dfa4c1df5070680a7bc230d99b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 6,
+      "time_seconds": 0.083333333,
+      "reference_frame_zero_based": 5,
+      "grip_pixels": [
+        3.11636648,
+        9.557536912
+      ],
+      "angle_degrees": 165.714351379,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-06.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b9aa14e16591e053ad08ed1e31266d6856d201ae90d366bcc387f54b14dbd9ba",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 7,
+      "time_seconds": 0.1,
+      "reference_frame_zero_based": 6,
+      "grip_pixels": [
+        2.751723968,
+        9.09219616
+      ],
+      "angle_degrees": 168.367049364,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-07.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "10f305d4fb4cfed87e1d6581858f1b0c3029c8dea6ffa8bed23c924194700744",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 8,
+      "time_seconds": 0.116666667,
+      "reference_frame_zero_based": 7,
+      "grip_pixels": [
+        2.243987424,
+        8.508762752
+      ],
+      "angle_degrees": 171.430155983,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-08.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7f4c6304dda604cd8cdea6943a8fcc9c4e3e7942175fd4ede245c4fe33733495",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 9,
+      "time_seconds": 0.133333333,
+      "reference_frame_zero_based": 8,
+      "grip_pixels": [
+        1.665759888,
+        7.876373664
+      ],
+      "angle_degrees": 174.605333562,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-09.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "77dcf76e88ac460a9de46fa09f629a2e41bcd5f9a453799de89b0e04e3dfe9fd",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 10,
+      "time_seconds": 0.15,
+      "reference_frame_zero_based": 9,
+      "grip_pixels": [
+        1.089644352,
+        7.264165856
+      ],
+      "angle_degrees": 177.594244428,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-10.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2c97033f2fa8ccbd359e87d94fe22f8eb83650f599c6e218162841774ecc24b4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 11,
+      "time_seconds": 0.166666667,
+      "reference_frame_zero_based": 10,
+      "grip_pixels": [
+        0.588243856,
+        6.741276336
+      ],
+      "angle_degrees": 180.098550905,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-11.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "4b7fb309d2c1fb97b664a021b0ab010ec7e515438525893d9dd87be67d0f8767",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 12,
+      "time_seconds": 0.183333333,
+      "reference_frame_zero_based": 11,
+      "grip_pixels": [
+        0.234161392,
+        6.376842048
+      ],
+      "angle_degrees": 181.81991532,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-12.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2ca163b142b4e9426f62fefe3548d67796aaf9d7838100009d1a18224b49bce9",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 13,
+      "time_seconds": 0.2,
+      "reference_frame_zero_based": 12,
+      "grip_pixels": [
+        0.1,
+        6.24
+      ],
+      "angle_degrees": 182.46,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-13.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7ac6ab6f9049e3d5d46446c8117dbd402803e43a15430e95fb94ef9f31a48bc4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 14,
+      "time_seconds": 0.216666667,
+      "reference_frame_zero_based": 13,
+      "grip_pixels": [
+        0.103703696,
+        6.277314816
+      ],
+      "angle_degrees": 182.445412069,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-14.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7ac6ab6f9049e3d5d46446c8117dbd402803e43a15430e95fb94ef9f31a48bc4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 15,
+      "time_seconds": 0.233333333,
+      "reference_frame_zero_based": 14,
+      "grip_pixels": [
+        0.129629632,
+        6.387851856
+      ],
+      "angle_degrees": 182.3432964,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-15.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "fae929a7cf7782edfb223b55f60f0bcdf57634bcaae59fe2b7ca7216a44d367f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 16,
+      "time_seconds": 0.25,
+      "reference_frame_zero_based": 15,
+      "grip_pixels": [
+        0.2,
+        6.569500016
+      ],
+      "angle_degrees": 182.066125175,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-16.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "f2fbaf75dd3f07ba3cfcc45c1ec7e4092d1010f482bc2a3ebdbd85c430312240",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 17,
+      "time_seconds": 0.266666667,
+      "reference_frame_zero_based": 16,
+      "grip_pixels": [
+        0.33703704,
+        6.820148176
+      ],
+      "angle_degrees": 181.526370578,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-17.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2ca163b142b4e9426f62fefe3548d67796aaf9d7838100009d1a18224b49bce9",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 18,
+      "time_seconds": 0.283333333,
+      "reference_frame_zero_based": 17,
+      "grip_pixels": [
+        0.56296296,
+        7.1376852
+      ],
+      "angle_degrees": 180.636504792,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-18.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e3a7b19488afb70e92d5b707f06f3472ca7e6ad751d79830c131506f8f05d2a4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 19,
+      "time_seconds": 0.3,
+      "reference_frame_zero_based": 18,
+      "grip_pixels": [
+        0.9,
+        7.52
+      ],
+      "angle_degrees": 179.309,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-19.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e3a7b19488afb70e92d5b707f06f3472ca7e6ad751d79830c131506f8f05d2a4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 20,
+      "time_seconds": 0.316666667,
+      "reference_frame_zero_based": 19,
+      "grip_pixels": [
+        2.303999504,
+        8.639499856
+      ],
+      "angle_degrees": 116.787521197,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-20.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "91fcab24e1b5992863d33c3048b882a01f0e8591fad827b943c6bc8d04357927",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 21,
+      "time_seconds": 0.333333333,
+      "reference_frame_zero_based": 20,
+      "grip_pixels": [
+        4.516,
+        9.552
+      ],
+      "angle_degrees": 22.5,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-21.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "a27a22e51a5b1084b38fb9ba753b6f8c16ceee93f0ace2c17b7c7f9a8742134c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 22,
+      "time_seconds": 0.35,
+      "reference_frame_zero_based": 21,
+      "grip_pixels": [
+        6.939999248,
+        8.731000464
+      ],
+      "angle_degrees": -37.949105913,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-22.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "78b0558dbd5e1a341c6afc0cdb340d86f9ed802522e864232c31cf079ced8bba",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 23,
+      "time_seconds": 0.366666667,
+      "reference_frame_zero_based": 22,
+      "grip_pixels": [
+        8.964,
+        6.576
+      ],
+      "angle_degrees": -81.121,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-23.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "bf2aadabcfc778a4b6c92ac140e86a2e3a469cb6da453c8e029cc4afe3324af4",
+      "fx_rgba_sha256": "db4e8a5764e2e96b40fac77fd4f846b2cc77b1dd777e0e3e4fd327b702c6d54c"
+    },
+    {
+      "attack": 1,
+      "frame": 24,
+      "time_seconds": 0.383333333,
+      "reference_frame_zero_based": 23,
+      "grip_pixels": [
+        9.875999824,
+        2.15242936
+      ],
+      "angle_degrees": -103.22726862,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-24.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "0078122494641958216a919f808630bf3e480e6f152763c35ff7da53511ef987",
+      "fx_rgba_sha256": "db4e8a5764e2e96b40fac77fd4f846b2cc77b1dd777e0e3e4fd327b702c6d54c"
+    },
+    {
+      "attack": 1,
+      "frame": 25,
+      "time_seconds": 0.4,
+      "reference_frame_zero_based": 24,
+      "grip_pixels": [
+        10.18,
+        -1.12
+      ],
+      "angle_degrees": -111.674,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-25.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b35b1bcea10b44e50962ab29cb9296f47adc3dfae42af4f736655d7c1c0b9040",
+      "fx_rgba_sha256": "db4e8a5764e2e96b40fac77fd4f846b2cc77b1dd777e0e3e4fd327b702c6d54c"
+    },
+    {
+      "attack": 1,
+      "frame": 26,
+      "time_seconds": 0.416666667,
+      "reference_frame_zero_based": 25,
+      "grip_pixels": [
+        10.154814816,
+        -1.45248672
+      ],
+      "angle_degrees": -114.68106711,
+      "fx_image": 2,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-26.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "9e42f6eecc6a8ad7ac302e42fe769be37da63e2b6db2701fc1c9430a7da4d55b",
+      "fx_rgba_sha256": "7f2e9dccbb5f1f9de55a46593fed307cb8e1b8999e29ec1993f5c9af9788f7f4"
+    },
+    {
+      "attack": 1,
+      "frame": 27,
+      "time_seconds": 0.433333333,
+      "reference_frame_zero_based": 26,
+      "grip_pixels": [
+        10.085185184,
+        -1.722751232
+      ],
+      "angle_degrees": -117.256085704,
+      "fx_image": 2,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-27.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "86350773323798f470e0e345f3bfb75918dcd4b35d193b1f992740852ea4173c",
+      "fx_rgba_sha256": "7f2e9dccbb5f1f9de55a46593fed307cb8e1b8999e29ec1993f5c9af9788f7f4"
+    },
+    {
+      "attack": 1,
+      "frame": 28,
+      "time_seconds": 0.45,
+      "reference_frame_zero_based": 27,
+      "grip_pixels": [
+        9.98,
+        -1.937142768
+      ],
+      "angle_degrees": -119.431566676,
+      "fx_image": 2,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-28.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "443a7d161e697d59cf4a4cb728d7ed0fc5f531e2da8a31374fb8323dc7bb3d41",
+      "fx_rgba_sha256": "7f2e9dccbb5f1f9de55a46593fed307cb8e1b8999e29ec1993f5c9af9788f7f4"
+    },
+    {
+      "attack": 1,
+      "frame": 29,
+      "time_seconds": 0.466666667,
+      "reference_frame_zero_based": 28,
+      "grip_pixels": [
+        9.848148144,
+        -2.102010496
+      ],
+      "angle_degrees": -121.24002092,
+      "fx_image": 3,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-29.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "6f866b14922a9cb527518948ec88fd65678d764451b626d47742814f503d6ccf",
+      "fx_rgba_sha256": "bffbac0c0239af3f2cd7e30f53ceb9ae95d9574871bcce73fec4e2b06810bcfe"
+    },
+    {
+      "attack": 1,
+      "frame": 30,
+      "time_seconds": 0.483333333,
+      "reference_frame_zero_based": 29,
+      "grip_pixels": [
+        9.698518512,
+        -2.223703632
+      ],
+      "angle_degrees": -122.713959331,
+      "fx_image": 3,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-30.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "dd90b6d3ec211bd1997f02beab9c32a7a7bacf202d119b41660fcb7c347eb59b",
+      "fx_rgba_sha256": "bffbac0c0239af3f2cd7e30f53ceb9ae95d9574871bcce73fec4e2b06810bcfe"
+    },
+    {
+      "attack": 1,
+      "frame": 31,
+      "time_seconds": 0.5,
+      "reference_frame_zero_based": 30,
+      "grip_pixels": [
+        9.539999984,
+        -2.308571392
+      ],
+      "angle_degrees": -123.885892803,
+      "fx_image": 3,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-31.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "f4662ad33a158a1b2df214f2431a4f9f5cf511a414546c576ace9de900287ea0",
+      "fx_rgba_sha256": "bffbac0c0239af3f2cd7e30f53ceb9ae95d9574871bcce73fec4e2b06810bcfe"
+    },
+    {
+      "attack": 1,
+      "frame": 32,
+      "time_seconds": 0.516666667,
+      "reference_frame_zero_based": 31,
+      "grip_pixels": [
+        9.381481472,
+        -2.362962944
+      ],
+      "angle_degrees": -124.78833223,
+      "fx_image": 4,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-32.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "67787bec067a9d68daf0432aa6a2b8853986ac727e6b12df4c7ae1d40a2c0e09",
+      "fx_rgba_sha256": "1ae46456fe24843e732fe364aa822af3e22c703f78b2a9c72a4874e63d970451"
+    },
+    {
+      "attack": 1,
+      "frame": 33,
+      "time_seconds": 0.533333333,
+      "reference_frame_zero_based": 32,
+      "grip_pixels": [
+        9.23185184,
+        -2.393227536
+      ],
+      "angle_degrees": -125.453788507,
+      "fx_image": 4,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-33.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "654e3390124032ba3d32f045fcb455c8dd9c4495649a74e2e11950b78313023c",
+      "fx_rgba_sha256": "1ae46456fe24843e732fe364aa822af3e22c703f78b2a9c72a4874e63d970451"
+    },
+    {
+      "attack": 1,
+      "frame": 34,
+      "time_seconds": 0.55,
+      "reference_frame_zero_based": 33,
+      "grip_pixels": [
+        9.099999984,
+        -2.40571432
+      ],
+      "angle_degrees": -125.914772528,
+      "fx_image": 4,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-34.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "9d857b1e0532a74abc715664355524d10375c95121a5c7a756ed8942cc60026b",
+      "fx_rgba_sha256": "1ae46456fe24843e732fe364aa822af3e22c703f78b2a9c72a4874e63d970451"
+    },
+    {
+      "attack": 1,
+      "frame": 35,
+      "time_seconds": 0.566666667,
+      "reference_frame_zero_based": 34,
+      "grip_pixels": [
+        8.9948148,
+        -2.406772528
+      ],
+      "angle_degrees": -126.203795188,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-35.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "767d44bca1a281a91973d22b5034db675e0ea5b886c57feff3152733adcd0305",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 36,
+      "time_seconds": 0.583333333,
+      "reference_frame_zero_based": 35,
+      "grip_pixels": [
+        8.925185184,
+        -2.40275136
+      ],
+      "angle_degrees": -126.35336738,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-01/native/frame-36.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "77c02a568c120672b49c45de898deca13ebd30e33fb5773abfb6937977b71401",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 1,
+      "frame": 37,
+      "time_seconds": 0.6,
+      "reference_frame_zero_based": 36,
+      "grip_pixels": [
+        8.9,
+        -2.4
+      ],
+      "angle_degrees": -126.396,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "종료 경계",
+      "endpoint_only": true,
+      "file": "attack-01/native/frame-37.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2931e474a2b0d619b3027bd51475bf02db1c312063402d01688dd87962bacf3c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 1,
+      "time_seconds": 0.0,
+      "reference_frame_zero_based": 0,
+      "grip_pixels": [
+        9.22000032,
+        -0.71999936
+      ],
+      "angle_degrees": -131.60126,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-01.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "c49ae42a7a19d2217aafc7a7c300f670fa2197fc834cb2b335bc502ab6ef952e",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 2,
+      "time_seconds": 0.016666667,
+      "reference_frame_zero_based": 1,
+      "grip_pixels": [
+        9.256250288,
+        -0.50343688
+      ],
+      "angle_degrees": -132.038696144,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-02.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "4604d1cc171eb29b9cb9d3baa8450c1760d62c8b729e08fe5f5012452f35f79f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 3,
+      "time_seconds": 0.033333333,
+      "reference_frame_zero_based": 2,
+      "grip_pixels": [
+        9.35285736,
+        0.06750056
+      ],
+      "angle_degrees": -133.240467307,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-03.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "695462b251c9a51355a6eaf37e8104e2c51cb358e3861b7e26251df23bda0cc8",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 4,
+      "time_seconds": 0.05,
+      "reference_frame_zero_based": 3,
+      "grip_pixels": [
+        9.491607248,
+        0.874687984
+      ],
+      "angle_degrees": -135.040767587,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-04.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "d3b3acf568d98f32f62ae049082ef15316d4744886cf0469b40866d1a6082209",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 5,
+      "time_seconds": 0.066666667,
+      "reference_frame_zero_based": 4,
+      "grip_pixels": [
+        9.654285712,
+        1.800000384
+      ],
+      "angle_degrees": -137.273791081,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-05.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "dbcbb6d61af50a3d3bb1d1cb72417cf13d759d79610de865978b2e50208d35e5",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 6,
+      "time_seconds": 0.083333333,
+      "reference_frame_zero_based": 5,
+      "grip_pixels": [
+        9.82267848,
+        2.725312768
+      ],
+      "angle_degrees": -139.773731887,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-06.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "06e626e109d63806a7fb5c24ec1ce3cd179bf2d06f354bd273cf69c5a819fb62",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 7,
+      "time_seconds": 0.1,
+      "reference_frame_zero_based": 6,
+      "grip_pixels": [
+        9.978571296,
+        3.532500176
+      ],
+      "angle_degrees": -142.374784101,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-07.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "bed07b89aac40b8064daf439df5d66aad402080618f087d31e04297331a5b7a5",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 8,
+      "time_seconds": 0.116666667,
+      "reference_frame_zero_based": 7,
+      "grip_pixels": [
+        10.103749888,
+        4.103437568
+      ],
+      "angle_degrees": -144.911141822,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-08.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "5d598d7c5def62795308eef3ad79c0a5db6d19608257c3a156e747627341bc21",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 9,
+      "time_seconds": 0.133333333,
+      "reference_frame_zero_based": 8,
+      "grip_pixels": [
+        10.18,
+        4.32
+      ],
+      "angle_degrees": -147.217,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-09.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "27f278116d76aa8abcb7ffbbbb289952f1f43e40f78e88d9c31b88d04863b1e4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 10,
+      "time_seconds": 0.15,
+      "reference_frame_zero_based": 9,
+      "grip_pixels": [
+        10.223597936,
+        4.225185216
+      ],
+      "angle_degrees": -149.757576984,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-10.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "2b5ac8a4f4259cfe82810151198480cd83cc11cb2f3a910e90ff2f5c2f206ea0",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 11,
+      "time_seconds": 0.166666667,
+      "reference_frame_zero_based": 10,
+      "grip_pixels": [
+        10.26211648,
+        3.98814816
+      ],
+      "angle_degrees": -152.817041424,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-11.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "864b01b7e1a74d1a1a695b79195081296fa0710bcb44bcc79d19b60e34507c95",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 12,
+      "time_seconds": 0.183333333,
+      "reference_frame_zero_based": 11,
+      "grip_pixels": [
+        10.294285776,
+        3.679999952
+      ],
+      "angle_degrees": -155.958004206,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-12.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "6e0a81cad831d747cf6b615c7e66b7a83c51547670840b0153b8937c58224235",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 13,
+      "time_seconds": 0.2,
+      "reference_frame_zero_based": 12,
+      "grip_pixels": [
+        10.318836016,
+        3.37185176
+      ],
+      "angle_degrees": -158.743077069,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-13.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "5ddc3b3255631ffcdc69c417d99e85bd82b93b20915fe4fca4b2e16ce6a1860f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 14,
+      "time_seconds": 0.216666667,
+      "reference_frame_zero_based": 13,
+      "grip_pixels": [
+        10.334497376,
+        3.13481472
+      ],
+      "angle_degrees": -160.734871754,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "준비",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-14.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "d4490b414da6b0daabad85f9755581e4eee0b6b46110f815b89db9a9785f3606",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 15,
+      "time_seconds": 0.233333333,
+      "reference_frame_zero_based": 14,
+      "grip_pixels": [
+        10.34,
+        3.04
+      ],
+      "angle_degrees": -161.496,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-15.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "063f4eb5fd1d0288d1bab98103e366a5f09960b0d155f47874e1f42775fe85ab",
+      "fx_rgba_sha256": "d8213dbc97a4f3df876af35d5b107f01112ef508bfdd97d37e6a85b0907f9e22"
+    },
+    {
+      "attack": 2,
+      "frame": 16,
+      "time_seconds": 0.25,
+      "reference_frame_zero_based": 15,
+      "grip_pixels": [
+        8.290001536,
+        10.159996384
+      ],
+      "angle_degrees": -99.515658794,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-16.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "62297edf2e6a4ed5807aec6c3e7d92cd2dee987485a0504c833cad0f377b9c92",
+      "fx_rgba_sha256": "d8213dbc97a4f3df876af35d5b107f01112ef508bfdd97d37e6a85b0907f9e22"
+    },
+    {
+      "attack": 2,
+      "frame": 17,
+      "time_seconds": 0.266666667,
+      "reference_frame_zero_based": 16,
+      "grip_pixels": [
+        4.58,
+        17.28
+      ],
+      "angle_degrees": -9.117,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-17.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "87efa61001e220175093249038ff2eeb7d0a99d30af0ce6987789db8ba3d7bf4",
+      "fx_rgba_sha256": "d8213dbc97a4f3df876af35d5b107f01112ef508bfdd97d37e6a85b0907f9e22"
+    },
+    {
+      "attack": 2,
+      "frame": 18,
+      "time_seconds": 0.283333333,
+      "reference_frame_zero_based": 17,
+      "grip_pixels": [
+        0.150001776,
+        14.490001088
+      ],
+      "angle_degrees": 34.851668272,
+      "fx_image": 2,
+      "weapon_order": 1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-18.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "ca77ea27ae5faec33c400ed7ad473357dd9ae6b8442e838c565f3aeb1dbb2d43",
+      "fx_rgba_sha256": "81659e74e8774f053ee528bce33579f2dd10fb700041b886531f1a67622edc42"
+    },
+    {
+      "attack": 2,
+      "frame": 19,
+      "time_seconds": 0.3,
+      "reference_frame_zero_based": 18,
+      "grip_pixels": [
+        -2.94,
+        9.76
+      ],
+      "angle_degrees": 65.85,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-19.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "5e0e4e148ae9bea3520c2eaecd4c7fd6e3f4f2ebcb605c3041b48dbcc9eebe1c",
+      "fx_rgba_sha256": "81659e74e8774f053ee528bce33579f2dd10fb700041b886531f1a67622edc42"
+    },
+    {
+      "attack": 2,
+      "frame": 20,
+      "time_seconds": 0.316666667,
+      "reference_frame_zero_based": 19,
+      "grip_pixels": [
+        -3.419999936,
+        4.870000176
+      ],
+      "angle_degrees": 97.189822589,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-20.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "c75702e8d72f2ef58ea8a2eb3a53c9fd79f7340e40e6a39c599a6f7b54d9078b",
+      "fx_rgba_sha256": "81659e74e8774f053ee528bce33579f2dd10fb700041b886531f1a67622edc42"
+    },
+    {
+      "attack": 2,
+      "frame": 21,
+      "time_seconds": 0.333333333,
+      "reference_frame_zero_based": 20,
+      "grip_pixels": [
+        -3.58,
+        1.76
+      ],
+      "angle_degrees": 114.466,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "휘두름",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-21.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "19e539be66afde4bcf9c5130a27373fe53ce1e0f7abc4b2b4d3d2530cf305e59",
+      "fx_rgba_sha256": "2931885884b0fb00bbedb404caa38d8822fe6275f9f1f94d3b2fd9dae9a3686a"
+    },
+    {
+      "attack": 2,
+      "frame": 22,
+      "time_seconds": 0.35,
+      "reference_frame_zero_based": 21,
+      "grip_pixels": [
+        -3.577109376,
+        1.46257816
+      ],
+      "angle_degrees": 116.936791974,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-22.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "3343794f246fc754c199e3344854d01acf19052c7a574b3bcfc19b479f28c6e8",
+      "fx_rgba_sha256": "2931885884b0fb00bbedb404caa38d8822fe6275f9f1f94d3b2fd9dae9a3686a"
+    },
+    {
+      "attack": 2,
+      "frame": 23,
+      "time_seconds": 0.366666667,
+      "reference_frame_zero_based": 22,
+      "grip_pixels": [
+        -3.568375008,
+        1.208124976
+      ],
+      "angle_degrees": 118.858492131,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-23.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "4e23e661aa2c120d42a5fed4041acc90e9b666ec01e714b9c19e71377bb23de8",
+      "fx_rgba_sha256": "2931885884b0fb00bbedb404caa38d8822fe6275f9f1f94d3b2fd9dae9a3686a"
+    },
+    {
+      "attack": 2,
+      "frame": 24,
+      "time_seconds": 0.383333333,
+      "reference_frame_zero_based": 23,
+      "grip_pixels": [
+        -3.553703136,
+        0.993359312
+      ],
+      "angle_degrees": 120.300414477,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-24.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "23e57886568803098b844c3956da77f933d59e7051deac9c310c964325f1fb7b",
+      "fx_rgba_sha256": "3fb24fe25c77ddb3e5efdde799689010a9246aae98818d269836a5e31d949616"
+    },
+    {
+      "attack": 2,
+      "frame": 25,
+      "time_seconds": 0.4,
+      "reference_frame_zero_based": 24,
+      "grip_pixels": [
+        -3.533,
+        0.81499992
+      ],
+      "angle_degrees": 121.331874122,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-25.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "752e952edbce0fca52cb838f4293539182d4327f6fee4a23c5fe2dca48e7e67e",
+      "fx_rgba_sha256": "3fb24fe25c77ddb3e5efdde799689010a9246aae98818d269836a5e31d949616"
+    },
+    {
+      "attack": 2,
+      "frame": 26,
+      "time_seconds": 0.416666667,
+      "reference_frame_zero_based": 25,
+      "grip_pixels": [
+        -3.506171888,
+        0.669765536
+      ],
+      "angle_degrees": 122.022186179,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-26.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "26b1afb8a7e84946a636d31df376e5f32e7ada66ae656ed5a9f28f1291ec9dfa",
+      "fx_rgba_sha256": "3fb24fe25c77ddb3e5efdde799689010a9246aae98818d269836a5e31d949616"
+    },
+    {
+      "attack": 2,
+      "frame": 27,
+      "time_seconds": 0.433333333,
+      "reference_frame_zero_based": 26,
+      "grip_pixels": [
+        -3.473125008,
+        0.554374912
+      ],
+      "angle_degrees": 122.44066576,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-27.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "df38a7299faa1a189cea51fa06907d06ad4f80c61aace4e1cbf1fb1a5b7bcd9e",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 28,
+      "time_seconds": 0.45,
+      "reference_frame_zero_based": 27,
+      "grip_pixels": [
+        -3.433765632,
+        0.4655468
+      ],
+      "angle_degrees": 122.656627977,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-28.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "03dea00b39e3522d952151b7ed4d42c23f1ede58935131126133b12587f995db",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 29,
+      "time_seconds": 0.466666667,
+      "reference_frame_zero_based": 28,
+      "grip_pixels": [
+        -3.388,
+        0.399999952
+      ],
+      "angle_degrees": 122.739387941,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-29.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "1f96e52343b4d165655c65fcbd9facff0404d34a319250ae83c98179d61f3a99",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 30,
+      "time_seconds": 0.483333333,
+      "reference_frame_zero_based": 29,
+      "grip_pixels": [
+        -3.335734384,
+        0.354453104
+      ],
+      "angle_degrees": 122.758260765,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-30.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "228229ac11fd327a172c94febf3d1b800214ab7f1d94be2f9be8a5ffd3a50318",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 31,
+      "time_seconds": 0.5,
+      "reference_frame_zero_based": 30,
+      "grip_pixels": [
+        -3.276875008,
+        0.325624992
+      ],
+      "angle_degrees": 122.78256156,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-31.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "642b1827e53dd9940ed4884c491e8b50aa7ddd8ab105a9dd6c139093655915c4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 32,
+      "time_seconds": 0.516666667,
+      "reference_frame_zero_based": 31,
+      "grip_pixels": [
+        -3.211328128,
+        0.3102344
+      ],
+      "angle_degrees": 122.881605439,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-32.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "8b4727220c0f204f01fa085792529ba1b6bab18dd5d7cad2a944926e97b04806",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 33,
+      "time_seconds": 0.533333333,
+      "reference_frame_zero_based": 32,
+      "grip_pixels": [
+        -3.139,
+        0.305000032
+      ],
+      "angle_degrees": 123.124707512,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-33.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "7e427c3f68ef1ed2c9f070ba5868731afbcbe5512da99c4e3714fe496d88ad76",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 34,
+      "time_seconds": 0.55,
+      "reference_frame_zero_based": 33,
+      "grip_pixels": [
+        -3.05979688,
+        0.306640672
+      ],
+      "angle_degrees": 123.581182894,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-34.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "703e459bbb1c5027ee3e6bbc9fe16d841db20f484dc2da6e15e16c96285a8d3b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 35,
+      "time_seconds": 0.566666667,
+      "reference_frame_zero_based": 34,
+      "grip_pixels": [
+        -2.973625008,
+        0.31187504
+      ],
+      "angle_degrees": 124.320346694,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-35.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "e4276e1b068815b571a7f3cab5d0ce950c11dcf1c41f40abdc7a24bec098791c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 36,
+      "time_seconds": 0.583333333,
+      "reference_frame_zero_based": 35,
+      "grip_pixels": [
+        -2.880390624,
+        0.317421904
+      ],
+      "angle_degrees": 125.411514025,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-36.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "b9b87813db0ee6ee388c714b0965cfd47eb0d84c391e14ec8e6b4f96690dd74f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 37,
+      "time_seconds": 0.6,
+      "reference_frame_zero_based": 36,
+      "grip_pixels": [
+        -2.78,
+        0.32
+      ],
+      "angle_degrees": 126.924,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-37.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "4a53d7dc8246d7d74643ef6d14a9fd1884ff33c6a23226fabdab651f632e1342",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 38,
+      "time_seconds": 0.616666667,
+      "reference_frame_zero_based": 37,
+      "grip_pixels": [
+        -2.64150016,
+        0.419999808
+      ],
+      "angle_degrees": 130.657919702,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-38.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "8d0bdc9f28f9f62caa09cf91cb4092f3ad12e46aef45fb9e6fddda6721d48093",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 39,
+      "time_seconds": 0.633333333,
+      "reference_frame_zero_based": 38,
+      "grip_pixels": [
+        -2.408000528,
+        0.719999376
+      ],
+      "angle_degrees": 137.007118365,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-39.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "f982fcf580dd8082cb55813e9c652d3c3771378b51fd86cfd42578fc76291ee2",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 40,
+      "time_seconds": 0.65,
+      "reference_frame_zero_based": 39,
+      "grip_pixels": [
+        -2.04050096,
+        1.219998848
+      ],
+      "angle_degrees": 143.931505821,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-40.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "2881f8abc96adfae41e5e9adefa876e9f956fcc390458178bd5540e2bb4dd5e0",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 41,
+      "time_seconds": 0.666666667,
+      "reference_frame_zero_based": 40,
+      "grip_pixels": [
+        -1.5,
+        1.92
+      ],
+      "angle_degrees": 149.391,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-41.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "b1dae8370ea3e88bf8709d847981919cd76f16626d975f9e4c1105f00d3ad370",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 42,
+      "time_seconds": 0.683333333,
+      "reference_frame_zero_based": 41,
+      "grip_pixels": [
+        -0.387502608,
+        3.682495712
+      ],
+      "angle_degrees": 153.215712015,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-42.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "ae146e2eb415d7d567652805629034cdd6803710dedefba7b6dc9b746a0c4123",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 43,
+      "time_seconds": 0.7,
+      "reference_frame_zero_based": 42,
+      "grip_pixels": [
+        1.22799744,
+        6.519996016
+      ],
+      "angle_degrees": 156.368995541,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-43.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "80f2fcfef06e79672fadd5a69a2dd23b0c3ba5145c9aaa7f8d7629fd2aba2237",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 44,
+      "time_seconds": 0.716666667,
+      "reference_frame_zero_based": 43,
+      "grip_pixels": [
+        2.683498448,
+        9.157497904
+      ],
+      "angle_degrees": 158.510529274,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "회복",
+      "endpoint_only": false,
+      "file": "attack-02/native/frame-44.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "bb26259a1ba63ccfe40b1712c277933dab15127d35d34e509334923c46dc6e01",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 2,
+      "frame": 45,
+      "time_seconds": 0.733333333,
+      "reference_frame_zero_based": 44,
+      "grip_pixels": [
+        3.316,
+        10.32
+      ],
+      "angle_degrees": 159.3,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "종료 경계",
+      "endpoint_only": true,
+      "file": "attack-02/native/frame-45.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 1,
+      "time_seconds": 0.0,
+      "reference_frame_zero_based": 0,
+      "grip_pixels": [
+        3.316,
+        10.32
+      ],
+      "angle_degrees": 159.3,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F01",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 1,
+      "source_time_seconds": 0.0,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-01.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 2,
+      "time_seconds": 0.016666666666666666,
+      "reference_frame_zero_based": 1,
+      "grip_pixels": [
+        3.311248,
+        10.274592016
+      ],
+      "angle_degrees": 159.71910004,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F02",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 2,
+      "source_time_seconds": 0.016666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-02.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "3a778a8380e9aca6e0637ad879e5804d2aa249671e608313ca81d56bd2a76035",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 3,
+      "time_seconds": 0.03333333333333333,
+      "reference_frame_zero_based": 2,
+      "grip_pixels": [
+        3.299103984,
+        10.158549376
+      ],
+      "angle_degrees": 160.790133416,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F03",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 3,
+      "source_time_seconds": 0.033333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-03.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "95fecae25e34fe84ae4cfeeee1f9f60c10ad20a91fe19f0ab52336d656beb5d5",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 4,
+      "time_seconds": 0.05,
+      "reference_frame_zero_based": 3,
+      "grip_pixels": [
+        3.282735968,
+        10.002144048
+      ],
+      "angle_degrees": 162.233700009,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F04",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 4,
+      "source_time_seconds": 0.05,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-04.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "68d3f0db20cf063a40b661277be89fc418f752cc6b1e2bed3102b2c436241946",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 5,
+      "time_seconds": 0.06666666666666667,
+      "reference_frame_zero_based": 4,
+      "grip_pixels": [
+        3.265311952,
+        9.835648
+      ],
+      "angle_degrees": 163.7704,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F05",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 5,
+      "source_time_seconds": 0.066666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-05.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "6d2758ca776f2b05c9f3db2189e66ccdf49538dfa4c1df5070680a7bc230d99b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 6,
+      "time_seconds": 0.08333333333333333,
+      "reference_frame_zero_based": 5,
+      "grip_pixels": [
+        3.11636648,
+        9.557536912
+      ],
+      "angle_degrees": 165.714351379,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F06",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 6,
+      "source_time_seconds": 0.083333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-06.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b9aa14e16591e053ad08ed1e31266d6856d201ae90d366bcc387f54b14dbd9ba",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 7,
+      "time_seconds": 0.1,
+      "reference_frame_zero_based": 6,
+      "grip_pixels": [
+        2.751723968,
+        9.09219616
+      ],
+      "angle_degrees": 168.367049364,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F07",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 7,
+      "source_time_seconds": 0.1,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-07.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "10f305d4fb4cfed87e1d6581858f1b0c3029c8dea6ffa8bed23c924194700744",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 8,
+      "time_seconds": 0.11666666666666667,
+      "reference_frame_zero_based": 7,
+      "grip_pixels": [
+        2.243987424,
+        8.508762752
+      ],
+      "angle_degrees": 171.430155983,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F08",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 8,
+      "source_time_seconds": 0.116666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-08.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7f4c6304dda604cd8cdea6943a8fcc9c4e3e7942175fd4ede245c4fe33733495",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 9,
+      "time_seconds": 0.13333333333333333,
+      "reference_frame_zero_based": 8,
+      "grip_pixels": [
+        1.665759888,
+        7.876373664
+      ],
+      "angle_degrees": 174.605333562,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F09",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 9,
+      "source_time_seconds": 0.133333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-09.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "77dcf76e88ac460a9de46fa09f629a2e41bcd5f9a453799de89b0e04e3dfe9fd",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 10,
+      "time_seconds": 0.15,
+      "reference_frame_zero_based": 9,
+      "grip_pixels": [
+        1.089644352,
+        7.264165856
+      ],
+      "angle_degrees": 177.594244428,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F10",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 10,
+      "source_time_seconds": 0.15,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-10.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2c97033f2fa8ccbd359e87d94fe22f8eb83650f599c6e218162841774ecc24b4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 11,
+      "time_seconds": 0.16666666666666666,
+      "reference_frame_zero_based": 10,
+      "grip_pixels": [
+        0.588243856,
+        6.741276336
+      ],
+      "angle_degrees": 180.098550905,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F11",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 11,
+      "source_time_seconds": 0.166666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-11.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "4b7fb309d2c1fb97b664a021b0ab010ec7e515438525893d9dd87be67d0f8767",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 12,
+      "time_seconds": 0.18333333333333332,
+      "reference_frame_zero_based": 11,
+      "grip_pixels": [
+        0.234161392,
+        6.376842048
+      ],
+      "angle_degrees": 181.81991532,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F12",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 12,
+      "source_time_seconds": 0.183333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-12.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2ca163b142b4e9426f62fefe3548d67796aaf9d7838100009d1a18224b49bce9",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 13,
+      "time_seconds": 0.2,
+      "reference_frame_zero_based": 12,
+      "grip_pixels": [
+        0.1,
+        6.24
+      ],
+      "angle_degrees": 182.46,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F13",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 13,
+      "source_time_seconds": 0.2,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-13.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7ac6ab6f9049e3d5d46446c8117dbd402803e43a15430e95fb94ef9f31a48bc4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 14,
+      "time_seconds": 0.21666666666666667,
+      "reference_frame_zero_based": 13,
+      "grip_pixels": [
+        0.103703696,
+        6.277314816
+      ],
+      "angle_degrees": 182.445412069,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F14",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 14,
+      "source_time_seconds": 0.216666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-14.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7ac6ab6f9049e3d5d46446c8117dbd402803e43a15430e95fb94ef9f31a48bc4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 15,
+      "time_seconds": 0.23333333333333334,
+      "reference_frame_zero_based": 14,
+      "grip_pixels": [
+        0.129629632,
+        6.387851856
+      ],
+      "angle_degrees": 182.3432964,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F15",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 15,
+      "source_time_seconds": 0.233333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-15.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "fae929a7cf7782edfb223b55f60f0bcdf57634bcaae59fe2b7ca7216a44d367f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 16,
+      "time_seconds": 0.25,
+      "reference_frame_zero_based": 15,
+      "grip_pixels": [
+        0.2,
+        6.569500016
+      ],
+      "angle_degrees": 182.066125175,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F16",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 16,
+      "source_time_seconds": 0.25,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-16.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "f2fbaf75dd3f07ba3cfcc45c1ec7e4092d1010f482bc2a3ebdbd85c430312240",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 17,
+      "time_seconds": 0.26666666666666666,
+      "reference_frame_zero_based": 16,
+      "grip_pixels": [
+        0.33703704,
+        6.820148176
+      ],
+      "angle_degrees": 181.526370578,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F17",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 17,
+      "source_time_seconds": 0.266666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-17.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2ca163b142b4e9426f62fefe3548d67796aaf9d7838100009d1a18224b49bce9",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 18,
+      "time_seconds": 0.2833333333333333,
+      "reference_frame_zero_based": 17,
+      "grip_pixels": [
+        0.56296296,
+        7.1376852
+      ],
+      "angle_degrees": 180.636504792,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F18",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 18,
+      "source_time_seconds": 0.283333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-18.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e3a7b19488afb70e92d5b707f06f3472ca7e6ad751d79830c131506f8f05d2a4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 19,
+      "time_seconds": 0.3,
+      "reference_frame_zero_based": 18,
+      "grip_pixels": [
+        0.9,
+        7.52
+      ],
+      "angle_degrees": 179.309,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F19",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 19,
+      "source_time_seconds": 0.3,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-19.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e3a7b19488afb70e92d5b707f06f3472ca7e6ad751d79830c131506f8f05d2a4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 20,
+      "time_seconds": 0.31666666666666665,
+      "reference_frame_zero_based": 19,
+      "grip_pixels": [
+        2.303999504,
+        8.639499856
+      ],
+      "angle_degrees": 116.787521197,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F20",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 20,
+      "source_time_seconds": 0.316666667,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-20.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "91fcab24e1b5992863d33c3048b882a01f0e8591fad827b943c6bc8d04357927",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 21,
+      "time_seconds": 0.3333333333333333,
+      "reference_frame_zero_based": 20,
+      "grip_pixels": [
+        4.516,
+        9.552
+      ],
+      "angle_degrees": 22.5,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F21",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 21,
+      "source_time_seconds": 0.333333333,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-21.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "a27a22e51a5b1084b38fb9ba753b6f8c16ceee93f0ace2c17b7c7f9a8742134c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 22,
+      "time_seconds": 0.35,
+      "reference_frame_zero_based": 21,
+      "grip_pixels": [
+        6.939999248,
+        8.731000464
+      ],
+      "angle_degrees": -37.949105913,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 F22",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 22,
+      "source_time_seconds": 0.35,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-22.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "78b0558dbd5e1a341c6afc0cdb340d86f9ed802522e864232c31cf079ced8bba",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 23,
+      "time_seconds": 0.36666666666666664,
+      "reference_frame_zero_based": 22,
+      "grip_pixels": [
+        8.964,
+        6.576
+      ],
+      "angle_degrees": -81.121,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F23",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 23,
+      "source_time_seconds": 0.366666667,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-23.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "bf2aadabcfc778a4b6c92ac140e86a2e3a469cb6da453c8e029cc4afe3324af4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 24,
+      "time_seconds": 0.38333333333333336,
+      "reference_frame_zero_based": 23,
+      "grip_pixels": [
+        9.875999824,
+        2.15242936
+      ],
+      "angle_degrees": -103.22726862,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F24",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 24,
+      "source_time_seconds": 0.383333333,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-24.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "0078122494641958216a919f808630bf3e480e6f152763c35ff7da53511ef987",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 25,
+      "time_seconds": 0.4,
+      "reference_frame_zero_based": 24,
+      "grip_pixels": [
+        10.18,
+        -1.12
+      ],
+      "angle_degrees": -111.674,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F25",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 25,
+      "source_time_seconds": 0.4,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-25.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b35b1bcea10b44e50962ab29cb9296f47adc3dfae42af4f736655d7c1c0b9040",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 26,
+      "time_seconds": 0.4166666666666667,
+      "reference_frame_zero_based": 25,
+      "grip_pixels": [
+        10.154814816,
+        -1.45248672
+      ],
+      "angle_degrees": -114.68106711,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F26",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 26,
+      "source_time_seconds": 0.416666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-26.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "9e42f6eecc6a8ad7ac302e42fe769be37da63e2b6db2701fc1c9430a7da4d55b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 27,
+      "time_seconds": 0.43333333333333335,
+      "reference_frame_zero_based": 26,
+      "grip_pixels": [
+        10.085185184,
+        -1.722751232
+      ],
+      "angle_degrees": -117.256085704,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F27",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 27,
+      "source_time_seconds": 0.433333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-27.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "86350773323798f470e0e345f3bfb75918dcd4b35d193b1f992740852ea4173c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 28,
+      "time_seconds": 0.45,
+      "reference_frame_zero_based": 27,
+      "grip_pixels": [
+        9.98,
+        -1.937142768
+      ],
+      "angle_degrees": -119.431566676,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F28",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 28,
+      "source_time_seconds": 0.45,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-28.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "443a7d161e697d59cf4a4cb728d7ed0fc5f531e2da8a31374fb8323dc7bb3d41",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 29,
+      "time_seconds": 0.4666666666666667,
+      "reference_frame_zero_based": 28,
+      "grip_pixels": [
+        9.848148144,
+        -2.102010496
+      ],
+      "angle_degrees": -121.24002092,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F29",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 29,
+      "source_time_seconds": 0.466666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-29.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "6f866b14922a9cb527518948ec88fd65678d764451b626d47742814f503d6ccf",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 30,
+      "time_seconds": 0.48333333333333334,
+      "reference_frame_zero_based": 29,
+      "grip_pixels": [
+        9.698518512,
+        -2.223703632
+      ],
+      "angle_degrees": -122.713959331,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 F30",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 30,
+      "source_time_seconds": 0.483333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-30.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "dd90b6d3ec211bd1997f02beab9c32a7a7bacf202d119b41660fcb7c347eb59b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 31,
+      "time_seconds": 0.5,
+      "reference_frame_zero_based": 30,
+      "grip_pixels": [
+        9.539999984,
+        -2.308571392
+      ],
+      "angle_degrees": -123.885892803,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "1타 F31",
+      "endpoint_only": false,
+      "source_attack": 1,
+      "source_frame": 31,
+      "source_time_seconds": 0.5,
+      "source_phase": "회복",
+      "fx_purple_image": 1,
+      "fx_blue_image": 1,
+      "file": "attack-03/native/frame-31.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "f4662ad33a158a1b2df214f2431a4f9f5cf511a414546c576ace9de900287ea0",
+      "fx_rgba_sha256": "981959062d5b21404fd27a11cab88c33e869ae0a0520de2fd347161788a5978a"
+    },
+    {
+      "attack": 3,
+      "frame": 32,
+      "time_seconds": 0.5166666666666667,
+      "reference_frame_zero_based": 22,
+      "grip_pixels": [
+        -3.568375008,
+        1.208124976
+      ],
+      "angle_degrees": 118.858492131,
+      "fx_image": 1,
+      "weapon_order": -1,
+      "phase": "2타 F23",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 23,
+      "source_time_seconds": 0.366666667,
+      "source_phase": "회복",
+      "fx_purple_image": 1,
+      "fx_blue_image": 1,
+      "file": "attack-03/native/frame-32.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "4e23e661aa2c120d42a5fed4041acc90e9b666ec01e714b9c19e71377bb23de8",
+      "fx_rgba_sha256": "981959062d5b21404fd27a11cab88c33e869ae0a0520de2fd347161788a5978a"
+    },
+    {
+      "attack": 3,
+      "frame": 33,
+      "time_seconds": 0.5333333333333333,
+      "reference_frame_zero_based": 23,
+      "grip_pixels": [
+        -3.553703136,
+        0.993359312
+      ],
+      "angle_degrees": 120.300414477,
+      "fx_image": 1,
+      "weapon_order": -1,
+      "phase": "2타 F24",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 24,
+      "source_time_seconds": 0.383333333,
+      "source_phase": "회복",
+      "fx_purple_image": 1,
+      "fx_blue_image": 1,
+      "file": "attack-03/native/frame-33.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "23e57886568803098b844c3956da77f933d59e7051deac9c310c964325f1fb7b",
+      "fx_rgba_sha256": "981959062d5b21404fd27a11cab88c33e869ae0a0520de2fd347161788a5978a"
+    },
+    {
+      "attack": 3,
+      "frame": 34,
+      "time_seconds": 0.55,
+      "reference_frame_zero_based": 24,
+      "grip_pixels": [
+        -3.533,
+        0.81499992
+      ],
+      "angle_degrees": 121.331874122,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "2타 F25",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 25,
+      "source_time_seconds": 0.4,
+      "source_phase": "회복",
+      "fx_purple_image": 2,
+      "fx_blue_image": 2,
+      "file": "attack-03/native/frame-34.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "752e952edbce0fca52cb838f4293539182d4327f6fee4a23c5fe2dca48e7e67e",
+      "fx_rgba_sha256": "d3463d9e5b1fe268e8a317ce1fcf8ca1903f1317cd6f83e5624b2db2e64cdcb5"
+    },
+    {
+      "attack": 3,
+      "frame": 35,
+      "time_seconds": 0.5666666666666667,
+      "reference_frame_zero_based": 25,
+      "grip_pixels": [
+        -3.506171888,
+        0.669765536
+      ],
+      "angle_degrees": 122.022186179,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "2타 F26",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 26,
+      "source_time_seconds": 0.416666667,
+      "source_phase": "회복",
+      "fx_purple_image": 2,
+      "fx_blue_image": 2,
+      "file": "attack-03/native/frame-35.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "26b1afb8a7e84946a636d31df376e5f32e7ada66ae656ed5a9f28f1291ec9dfa",
+      "fx_rgba_sha256": "d3463d9e5b1fe268e8a317ce1fcf8ca1903f1317cd6f83e5624b2db2e64cdcb5"
+    },
+    {
+      "attack": 3,
+      "frame": 36,
+      "time_seconds": 0.5833333333333334,
+      "reference_frame_zero_based": 26,
+      "grip_pixels": [
+        -3.473125008,
+        0.554374912
+      ],
+      "angle_degrees": 122.44066576,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "2타 F27",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 27,
+      "source_time_seconds": 0.433333333,
+      "source_phase": "회복",
+      "fx_purple_image": 2,
+      "fx_blue_image": 2,
+      "file": "attack-03/native/frame-36.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "df38a7299faa1a189cea51fa06907d06ad4f80c61aace4e1cbf1fb1a5b7bcd9e",
+      "fx_rgba_sha256": "d3463d9e5b1fe268e8a317ce1fcf8ca1903f1317cd6f83e5624b2db2e64cdcb5"
+    },
+    {
+      "attack": 3,
+      "frame": 37,
+      "time_seconds": 0.6,
+      "reference_frame_zero_based": 27,
+      "grip_pixels": [
+        -3.433765632,
+        0.4655468
+      ],
+      "angle_degrees": 122.656627977,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "2타 F28",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 28,
+      "source_time_seconds": 0.45,
+      "source_phase": "회복",
+      "fx_purple_image": 1,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-37.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "03dea00b39e3522d952151b7ed4d42c23f1ede58935131126133b12587f995db",
+      "fx_rgba_sha256": "db4e8a5764e2e96b40fac77fd4f846b2cc77b1dd777e0e3e4fd327b702c6d54c"
+    },
+    {
+      "attack": 3,
+      "frame": 38,
+      "time_seconds": 0.6166666666666667,
+      "reference_frame_zero_based": 28,
+      "grip_pixels": [
+        -3.388,
+        0.399999952
+      ],
+      "angle_degrees": 122.739387941,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "2타 F29",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 29,
+      "source_time_seconds": 0.466666667,
+      "source_phase": "회복",
+      "fx_purple_image": 1,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-38.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "1f96e52343b4d165655c65fcbd9facff0404d34a319250ae83c98179d61f3a99",
+      "fx_rgba_sha256": "db4e8a5764e2e96b40fac77fd4f846b2cc77b1dd777e0e3e4fd327b702c6d54c"
+    },
+    {
+      "attack": 3,
+      "frame": 39,
+      "time_seconds": 0.6333333333333333,
+      "reference_frame_zero_based": 29,
+      "grip_pixels": [
+        -3.335734384,
+        0.354453104
+      ],
+      "angle_degrees": 122.758260765,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "2타 F30",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 30,
+      "source_time_seconds": 0.483333333,
+      "source_phase": "회복",
+      "fx_purple_image": 1,
+      "fx_blue_image": 1,
+      "file": "attack-03/native/frame-39.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "228229ac11fd327a172c94febf3d1b800214ab7f1d94be2f9be8a5ffd3a50318",
+      "fx_rgba_sha256": "981959062d5b21404fd27a11cab88c33e869ae0a0520de2fd347161788a5978a"
+    },
+    {
+      "attack": 3,
+      "frame": 40,
+      "time_seconds": 0.65,
+      "reference_frame_zero_based": 30,
+      "grip_pixels": [
+        -3.276875008,
+        0.325624992
+      ],
+      "angle_degrees": 122.78256156,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "2타 F31",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 31,
+      "source_time_seconds": 0.5,
+      "source_phase": "회복",
+      "fx_purple_image": 4,
+      "fx_blue_image": 1,
+      "file": "attack-03/native/frame-40.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "642b1827e53dd9940ed4884c491e8b50aa7ddd8ab105a9dd6c139093655915c4",
+      "fx_rgba_sha256": "f77cb8129a81aacf469b09201451807da3b5e601d549d35a981af3259ff35273"
+    },
+    {
+      "attack": 3,
+      "frame": 41,
+      "time_seconds": 0.6666666666666666,
+      "reference_frame_zero_based": 31,
+      "grip_pixels": [
+        -3.211328128,
+        0.3102344
+      ],
+      "angle_degrees": 122.881605439,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "2타 F32",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 32,
+      "source_time_seconds": 0.516666667,
+      "source_phase": "회복",
+      "fx_purple_image": 4,
+      "fx_blue_image": 4,
+      "file": "attack-03/native/frame-41.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "8b4727220c0f204f01fa085792529ba1b6bab18dd5d7cad2a944926e97b04806",
+      "fx_rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1"
+    },
+    {
+      "attack": 3,
+      "frame": 42,
+      "time_seconds": 0.6833333333333333,
+      "reference_frame_zero_based": 32,
+      "grip_pixels": [
+        -3.139,
+        0.305000032
+      ],
+      "angle_degrees": 123.124707512,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "2타 F33",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 33,
+      "source_time_seconds": 0.533333333,
+      "source_phase": "회복",
+      "fx_purple_image": 4,
+      "fx_blue_image": 4,
+      "file": "attack-03/native/frame-42.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7e427c3f68ef1ed2c9f070ba5868731afbcbe5512da99c4e3714fe496d88ad76",
+      "fx_rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1"
+    },
+    {
+      "attack": 3,
+      "frame": 43,
+      "time_seconds": 0.7,
+      "reference_frame_zero_based": 33,
+      "grip_pixels": [
+        -3.05979688,
+        0.306640672
+      ],
+      "angle_degrees": 123.581182894,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F34",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 34,
+      "source_time_seconds": 0.55,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-43.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "703e459bbb1c5027ee3e6bbc9fe16d841db20f484dc2da6e15e16c96285a8d3b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 44,
+      "time_seconds": 0.7166666666666667,
+      "reference_frame_zero_based": 34,
+      "grip_pixels": [
+        -2.973625008,
+        0.31187504
+      ],
+      "angle_degrees": 124.320346694,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F35",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 35,
+      "source_time_seconds": 0.566666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-44.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e4276e1b068815b571a7f3cab5d0ce950c11dcf1c41f40abdc7a24bec098791c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 45,
+      "time_seconds": 0.7333333333333333,
+      "reference_frame_zero_based": 35,
+      "grip_pixels": [
+        -2.880390624,
+        0.317421904
+      ],
+      "angle_degrees": 125.411514025,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F36",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 36,
+      "source_time_seconds": 0.583333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-45.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b9b87813db0ee6ee388c714b0965cfd47eb0d84c391e14ec8e6b4f96690dd74f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 46,
+      "time_seconds": 0.75,
+      "reference_frame_zero_based": 36,
+      "grip_pixels": [
+        -2.78,
+        0.32
+      ],
+      "angle_degrees": 126.924,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F37",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 37,
+      "source_time_seconds": 0.6,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-46.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "4a53d7dc8246d7d74643ef6d14a9fd1884ff33c6a23226fabdab651f632e1342",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 47,
+      "time_seconds": 0.7666666666666667,
+      "reference_frame_zero_based": 37,
+      "grip_pixels": [
+        -2.64150016,
+        0.419999808
+      ],
+      "angle_degrees": 130.657919702,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F38",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 38,
+      "source_time_seconds": 0.616666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-47.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "8d0bdc9f28f9f62caa09cf91cb4092f3ad12e46aef45fb9e6fddda6721d48093",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 48,
+      "time_seconds": 0.7833333333333333,
+      "reference_frame_zero_based": 38,
+      "grip_pixels": [
+        -2.408000528,
+        0.719999376
+      ],
+      "angle_degrees": 137.007118365,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F39",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 39,
+      "source_time_seconds": 0.633333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-48.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "f982fcf580dd8082cb55813e9c652d3c3771378b51fd86cfd42578fc76291ee2",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 49,
+      "time_seconds": 0.8,
+      "reference_frame_zero_based": 39,
+      "grip_pixels": [
+        -2.04050096,
+        1.219998848
+      ],
+      "angle_degrees": 143.931505821,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F40",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 40,
+      "source_time_seconds": 0.65,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-49.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2881f8abc96adfae41e5e9adefa876e9f956fcc390458178bd5540e2bb4dd5e0",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 50,
+      "time_seconds": 0.8166666666666667,
+      "reference_frame_zero_based": 40,
+      "grip_pixels": [
+        -1.5,
+        1.92
+      ],
+      "angle_degrees": 149.391,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F41",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 41,
+      "source_time_seconds": 0.666666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-50.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b1dae8370ea3e88bf8709d847981919cd76f16626d975f9e4c1105f00d3ad370",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 51,
+      "time_seconds": 0.8333333333333334,
+      "reference_frame_zero_based": 41,
+      "grip_pixels": [
+        -0.387502608,
+        3.682495712
+      ],
+      "angle_degrees": 153.215712015,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F42",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 42,
+      "source_time_seconds": 0.683333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-51.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "ae146e2eb415d7d567652805629034cdd6803710dedefba7b6dc9b746a0c4123",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 52,
+      "time_seconds": 0.85,
+      "reference_frame_zero_based": 42,
+      "grip_pixels": [
+        1.22799744,
+        6.519996016
+      ],
+      "angle_degrees": 156.368995541,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F43",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 43,
+      "source_time_seconds": 0.7,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-52.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "80f2fcfef06e79672fadd5a69a2dd23b0c3ba5145c9aaa7f8d7629fd2aba2237",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 53,
+      "time_seconds": 0.8666666666666667,
+      "reference_frame_zero_based": 43,
+      "grip_pixels": [
+        2.683498448,
+        9.157497904
+      ],
+      "angle_degrees": 158.510529274,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F44",
+      "endpoint_only": false,
+      "source_attack": 2,
+      "source_frame": 44,
+      "source_time_seconds": 0.716666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-53.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "bb26259a1ba63ccfe40b1712c277933dab15127d35d34e509334923c46dc6e01",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "attack": 3,
+      "frame": 54,
+      "time_seconds": 0.8833333333333333,
+      "reference_frame_zero_based": 44,
+      "grip_pixels": [
+        3.316,
+        10.32
+      ],
+      "angle_degrees": 159.3,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 F45",
+      "endpoint_only": true,
+      "source_attack": 2,
+      "source_frame": 45,
+      "source_time_seconds": 0.733333333,
+      "source_phase": "종료 경계",
+      "fx_purple_image": null,
+      "fx_blue_image": null,
+      "file": "attack-03/native/frame-54.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    }
+  ]
+}

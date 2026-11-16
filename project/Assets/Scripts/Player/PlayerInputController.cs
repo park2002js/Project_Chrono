@@ -27,6 +27,7 @@ public class PlayerInputController : MonoBehaviour
     private GameManager gameManager; // Start에서 확보해 앱 수명 동안 유지되는 세션 상태 조회 대상
     private Camera worldCamera; // MainWorld의 모든 Awake가 끝난 뒤 확보해 씬 수명 동안 사용할 카메라
     private bool dashRequested; // 이번 Update에서 한 번만 판단할 대시 누름 요청
+    private bool attackRequested; // 눌렀다 같은 프레임에 놓아도 한 번 전달할 공격 누름
     private PlayerInput playerInput; // Awake에서 확보해 액션 맵을 전환할 자기 입력 컴포넌트
     private bool drawRequested; // 이번 갱신에서 소비할 Draw 진입 또는 취소 누름
     private bool pointRequested; // Draw에서만 해석할 점 배치 누름
@@ -67,6 +68,8 @@ public class PlayerInputController : MonoBehaviour
     {
         // 차단 중 누른 대시가 해제 이후 실행되지 않도록 매 프레임 한 번 소비
         bool requestDash = dashRequested;
+        bool requestAttack = attackRequested;
+        attackRequested = false;
         bool requestDraw = drawRequested;
         bool requestPoint = pointRequested;
         bool requestReset = resetRequested;
@@ -148,6 +151,8 @@ public class PlayerInputController : MonoBehaviour
 
         // 입력 계층은 버튼 유지 사실만 전달하고 공격 허용·조준 결정은 Player에 위임
         Player.SetAttackInput(!BlockInput && AttackHeld);
+        if (requestAttack && !BlockInput)
+            Player.ApplyAttack();
     }
 
     private void OnDisable()
@@ -191,7 +196,7 @@ public class PlayerInputController : MonoBehaviour
     public void HandleOnAttack(InputAction.CallbackContext input)
     {
         if (!isActiveAndEnabled) return;
-        if (input.performed) AttackHeld = true;
+        if (input.performed) { AttackHeld = true; attackRequested = true; }
         else if (input.canceled) AttackHeld = false;
     }
 
@@ -324,6 +329,7 @@ public class PlayerInputController : MonoBehaviour
     {
         dashRequested = drawRequested = pointRequested = resetRequested = confirmRequested = slashRequested = false;
         AttackHeld = false;
+        attackRequested = false;
         MoveInput = Vector2.zero;
     }
 }

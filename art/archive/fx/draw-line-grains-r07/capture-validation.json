@@ -1,0 +1,22 @@
+{
+  "tracked_particles": 72,
+  "diameter_range_world": [
+    0.04644,
+    0.084193
+  ],
+  "max_width_height_difference_world": 0.0,
+  "max_size_change_world": 0.0,
+  "leftmost_displacement_world": -1.3450399999999991,
+  "rightmost_displacement_world": 1.4192,
+  "largest_rise_world": 2.17859,
+  "particles_with_fading_alpha": 72,
+  "last_frame_particle_count": 0,
+  "source_frames": 48,
+  "gif_frames_after_identical_frame_merge": 46,
+  "gif_ms": 4000,
+  "sample_mean_pixel_error_0_255": [
+    0.007467348854286027,
+    0.05820268433722098,
+    0.008254943935665919
+  ]
+}

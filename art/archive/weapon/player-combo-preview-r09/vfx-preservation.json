@@ -1,0 +1,74 @@
+{
+  "source": "../player-combo-preview-r07",
+  "shift": -8,
+  "every_available_source_tail_slot_preserved": true,
+  "omitted_source_tail_slots": [],
+  "mapping": [
+    {
+      "source_frame": 44,
+      "destination_frame": 36,
+      "nontransparent_pixels": 60,
+      "rgba_sha256": "03274502afff2d70fef15a876c4a067e0ca3231d05c83dea11454d1a674e1999"
+    },
+    {
+      "source_frame": 45,
+      "destination_frame": 37,
+      "nontransparent_pixels": 60,
+      "rgba_sha256": "03274502afff2d70fef15a876c4a067e0ca3231d05c83dea11454d1a674e1999"
+    },
+    {
+      "source_frame": 46,
+      "destination_frame": 38,
+      "nontransparent_pixels": 60,
+      "rgba_sha256": "03274502afff2d70fef15a876c4a067e0ca3231d05c83dea11454d1a674e1999"
+    },
+    {
+      "source_frame": 47,
+      "destination_frame": 39,
+      "nontransparent_pixels": 10,
+      "rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1"
+    },
+    {
+      "source_frame": 48,
+      "destination_frame": 40,
+      "nontransparent_pixels": 10,
+      "rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1"
+    },
+    {
+      "source_frame": 49,
+      "destination_frame": 41,
+      "nontransparent_pixels": 10,
+      "rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1"
+    },
+    {
+      "source_frame": 50,
+      "destination_frame": 42,
+      "nontransparent_pixels": 0,
+      "rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "source_frame": 51,
+      "destination_frame": 43,
+      "nontransparent_pixels": 0,
+      "rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "source_frame": 52,
+      "destination_frame": 44,
+      "nontransparent_pixels": 0,
+      "rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "source_frame": 53,
+      "destination_frame": 45,
+      "nontransparent_pixels": 0,
+      "rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    },
+    {
+      "source_frame": 54,
+      "destination_frame": 46,
+      "nontransparent_pixels": 0,
+      "rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+    }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "change": "Laboratory palette R02: approved C compromise",
+  "checked_at": "2026-11-16T11:06:34.956379+09:00",
+  "baseline_at": "2026-11-16T11:00:36.983219+09:00",
+  "scope": "Read-only file and Editor.log inspection; only this validation report was written.",
+  "result": {
+    "final_to_unity_pngs": "passed",
+    "protected_meta_atlas_material_content": "passed",
+    "attack_vfx_14_pngs": "passed",
+    "unity_automatic_import": "not_observed",
+    "live_play_visual_check": "not_performed"
+  },
+  "published_pngs": [
+    {
+      "name": "environment-tileset.png",
+      "final_path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\environment\\laboratory\\final\\unity\\environment-tileset.png",
+      "unity_path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\Textures\\environment-tileset.png",
+      "sha256": "547bb3be64cb8cf00be1fcb0f8ff82285ccdc5c80b1f184f20a34050d7403a9f",
+      "byte_identical": true,
+      "changed_from_baseline": true
+    },
+    {
+      "name": "entrance-sheet.png",
+      "final_path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\environment\\laboratory\\final\\unity\\entrance-sheet.png",
+      "unity_path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\Textures\\entrance-sheet.png",
+      "sha256": "4f0fa51f247b47b220bf2b261dba7760282c65abb6e2aa652e358ca6519ce320",
+      "byte_identical": true,
+      "changed_from_baseline": true
+    },
+    {
+      "name": "exit-sheet.png",
+      "final_path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\environment\\laboratory\\final\\unity\\exit-sheet.png",
+      "unity_path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\Textures\\exit-sheet.png",
+      "sha256": "7e3c6015580906de21fc9ed418e76e1e495b46a89e90936400fd1215fdb517fc",
+      "byte_identical": true,
+      "changed_from_baseline": true
+    }
+  ],
+  "protected_files": [
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\Textures\\environment-tileset.png.meta",
+      "baseline_sha256": "df94d57def2445ba2611c7cd5262c8fcc9175d53b1b468bd39cefb03352aa884",
+      "current_sha256": "df94d57def2445ba2611c7cd5262c8fcc9175d53b1b468bd39cefb03352aa884",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794739080612244700,
+      "current_mtime_ns": 1794739080612244700,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\Textures\\entrance-sheet.png.meta",
+      "baseline_sha256": "cc3ef2e82448bb5becaaece6e11178d65e649720db8a14f608b491a547a9093a",
+      "current_sha256": "cc3ef2e82448bb5becaaece6e11178d65e649720db8a14f608b491a547a9093a",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794739083907971300,
+      "current_mtime_ns": 1794739083907971300,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\Textures\\exit-sheet.png.meta",
+      "baseline_sha256": "727f629b14a58c64dcfb201e087ce1277632fd33e3a881cef7935f9f76053299",
+      "current_sha256": "727f629b14a58c64dcfb201e087ce1277632fd33e3a881cef7935f9f76053299",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794739085155980300,
+      "current_mtime_ns": 1794739085155980300,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\map.spriteatlasv2",
+      "baseline_sha256": "9120f13ed9eab99c93dc5b8ffbf79216b8c81bfe53698ea6f1bb2ad43efa13a2",
+      "current_sha256": "9120f13ed9eab99c93dc5b8ffbf79216b8c81bfe53698ea6f1bb2ad43efa13a2",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794790206302746400,
+      "current_mtime_ns": 1794790206302746400,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\map.spriteatlasv2.meta",
+      "baseline_sha256": "fbef5e093b799151fdfffb5e480972f7aa737a42496c8f455dbfb0bc25a60f31",
+      "current_sha256": "fbef5e093b799151fdfffb5e480972f7aa737a42496c8f455dbfb0bc25a60f31",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794790206325015600,
+      "current_mtime_ns": 1794790206325015600,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\LaboratoryUnlit.mat",
+      "baseline_sha256": "a579d1f3780f30fdada0240de5883cf7b050016c5c190b5dd0343f30e74df46f",
+      "current_sha256": "a579d1f3780f30fdada0240de5883cf7b050016c5c190b5dd0343f30e74df46f",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794739083722333400,
+      "current_mtime_ns": 1794739083722333400,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Environment\\Laboratory\\LaboratoryUnlit.mat.meta",
+      "baseline_sha256": "ef5e7eabee3dbe24c05bc5bd788b4406af87664ec4518d4654842a68ff751d54",
+      "current_sha256": "ef5e7eabee3dbe24c05bc5bd788b4406af87664ec4518d4654842a68ff751d54",
+      "sha256_unchanged": true,
+      "baseline_mtime_ns": 1794739083725870300,
+      "current_mtime_ns": 1794739083725870300,
+      "mtime_unchanged": false
+    }
+  ],
+  "protected_file_note": "All seven file contents are byte-identical to the baseline. Four mtimes changed; content, serialized settings and GUIDs did not.",
+  "attack_vfx_pngs": [
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack1_01.png",
+      "baseline_sha256": "e00448f0ae07372d41dda9545570c7079a06799c9b26caabb8b579ef9c5dbafd",
+      "current_sha256": "e00448f0ae07372d41dda9545570c7079a06799c9b26caabb8b579ef9c5dbafd",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack1_02.png",
+      "baseline_sha256": "1af1315f0cd3259f8d338f0b63334cc49adeec5604d7d7489a8ba713ec431cab",
+      "current_sha256": "1af1315f0cd3259f8d338f0b63334cc49adeec5604d7d7489a8ba713ec431cab",
+      "sha256_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack1_03.png",
+      "baseline_sha256": "ae4ca24b9bb82c3a69e42b758871ae1ba3562a2376b547e7ab08705c49d6578c",
+      "current_sha256": "ae4ca24b9bb82c3a69e42b758871ae1ba3562a2376b547e7ab08705c49d6578c",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack1_04.png",
+      "baseline_sha256": "2b955be4dfc0dc37031b8c4ccf5f8c1a383f4155880570d7e699bd46064ba0ea",
+      "current_sha256": "2b955be4dfc0dc37031b8c4ccf5f8c1a383f4155880570d7e699bd46064ba0ea",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack2_01.png",
+      "baseline_sha256": "357bdf784b5ec8403bd87e2b1ee8ca9bdab49fef4461ca0207cee649c9cf9568",
+      "current_sha256": "357bdf784b5ec8403bd87e2b1ee8ca9bdab49fef4461ca0207cee649c9cf9568",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack2_02.png",
+      "baseline_sha256": "578bf84221bdf8466e52bd6ad1a5011d6c0471f011a7305bc7a625a0f0ca4a68",
+      "current_sha256": "578bf84221bdf8466e52bd6ad1a5011d6c0471f011a7305bc7a625a0f0ca4a68",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack2_03.png",
+      "baseline_sha256": "721765c4dc86b13777277f39b3f61ddfb8e1a785a0fa6a852edf2bda43f1b58c",
+      "current_sha256": "721765c4dc86b13777277f39b3f61ddfb8e1a785a0fa6a852edf2bda43f1b58c",
+      "sha256_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\Attack2_04.png",
+      "baseline_sha256": "126f53c12934da0cc88ff09bc6e1f5b14047b0e74151eab990e0b4550b528448",
+      "current_sha256": "126f53c12934da0cc88ff09bc6e1f5b14047b0e74151eab990e0b4550b528448",
+      "sha256_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\P1_B0.png",
+      "baseline_sha256": "f8745e629ff1f68c7367cd4a4400c71d2e027e9a85d7aa0fe9141f252239488b",
+      "current_sha256": "f8745e629ff1f68c7367cd4a4400c71d2e027e9a85d7aa0fe9141f252239488b",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\P1_B1.png",
+      "baseline_sha256": "5365bd619a3dae3d6ad1b1797b68f7b0b3e26151459fb84d989d16719e032e54",
+      "current_sha256": "5365bd619a3dae3d6ad1b1797b68f7b0b3e26151459fb84d989d16719e032e54",
+      "sha256_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\P2_B1.png",
+      "baseline_sha256": "738cb7e30198744d470359e4ab0fcf529375b37998469b29ed63293973a7f138",
+      "current_sha256": "738cb7e30198744d470359e4ab0fcf529375b37998469b29ed63293973a7f138",
+      "sha256_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\P2_B2.png",
+      "baseline_sha256": "aaa04518b77941793357be6b0cd0396418bf6c68d351271fb82f2a60bff24b79",
+      "current_sha256": "aaa04518b77941793357be6b0cd0396418bf6c68d351271fb82f2a60bff24b79",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\P3_B3.png",
+      "baseline_sha256": "ebda4d8e479c3806a6350a90d9c8f08c4d0484a46e9789f8a0ff4b856eb55bae",
+      "current_sha256": "ebda4d8e479c3806a6350a90d9c8f08c4d0484a46e9789f8a0ff4b856eb55bae",
+      "sha256_unchanged": true,
+      "mtime_unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Assets\\Art\\Weapons\\AttackVfx\\P4_B4.png",
+      "baseline_sha256": "37a67e38e8c65e95dd1a0f58d7e0b1fd4025e7aeead3bd8e4926056ebb7579a9",
+      "current_sha256": "37a67e38e8c65e95dd1a0f58d7e0b1fd4025e7aeead3bd8e4926056ebb7579a9",
+      "sha256_unchanged": true,
+      "mtime_unchanged": false
+    }
+  ],
+  "editor_log": {
+    "path": "C:\\Users\\park2\\AppData\\Local\\Unity\\Editor\\Editor.log",
+    "baseline_bytes": 2383571,
+    "current_bytes": 2383571,
+    "baseline_mtime_ns": 1794794306513024300,
+    "current_mtime_ns": 1794794306513024300,
+    "baseline_prefix_unchanged": true,
+    "appended_bytes": 0,
+    "matching_lines": [],
+    "baseline_prefix_sha256": "39126d0f1108ebc6f92df2b6aff4e82928ee02be5bd5783cd5374c4f89eabe47"
+  },
+  "per_texture_import": [
+    {
+      "name": "environment-tileset.png",
+      "status": "not_observed",
+      "evidence": [],
+      "reason": "The Editor.log baseline prefix is unchanged and zero bytes were appended after the pre-publication baseline. Actual import completion cannot be established from this observation."
+    },
+    {
+      "name": "entrance-sheet.png",
+      "status": "not_observed",
+      "evidence": [],
+      "reason": "The Editor.log baseline prefix is unchanged and zero bytes were appended after the pre-publication baseline. Actual import completion cannot be established from this observation."
+    },
+    {
+      "name": "exit-sheet.png",
+      "status": "not_observed",
+      "evidence": [],
+      "reason": "The Editor.log baseline prefix is unchanged and zero bytes were appended after the pre-publication baseline. Actual import completion cannot be established from this observation."
+    }
+  ],
+  "observation_limit": "Missing new import log entries is not proof that import failed or did not happen. Runtime appearance was not observed.",
+  "state_control": {
+    "unity_ui_used": false,
+    "play_or_scene_changed": false,
+    "asset_refresh_invoked": false,
+    "generator_run": false,
+    "clone_project_created": false,
+    "project_files_modified": false
+  }
+}

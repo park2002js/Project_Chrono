@@ -18,6 +18,9 @@ public static class StartupFlowChecks
     private const string DirectoryKey = "Chrono.StartupFlowChecks.Directory"; // 사용자 저장과 분리한 검사 폴더 보관 키
     private const string ScenePathKey = "Chrono.StartupFlowChecks.ScenePath"; // 검사 종료 후 복원할 원래 씬 경로 키
     private const string ArtKey = "Chrono.StartupFlowChecks.Art"; // 이번 실행에서 완성 아트 연결 검사만 선택할 키
+    private const string DrawKey = "Chrono.StartupFlowChecks.Draw"; // 이번 실행에서 Draw·선 수명·Slash 영향 범위만 선택할 키
+    private const string SlashKey = "Chrono.StartupFlowChecks.SlashPresentation"; // 이번 실행에서 새 Slash 연출의 시간·아트·화면 효과만 선택할 키
+    private const string TitleKey = "Chrono.StartupFlowChecks.TitlePresentation"; // 이번 실행에서 Title 이미지·반짝임·재진입만 선택할 키
     private static Stack<IEnumerator> _routines; // 현재 검사와 중첩 대기를 차례로 진행할 실행 스택
     private static CheckReport _report; // 이번 검사 항목·오류·저장 경로를 기록할 결과
     private static double _deadline; // 전체 검사의 무한 대기를 막는 Editor 기준 종료 시각
@@ -37,7 +40,7 @@ public static class StartupFlowChecks
             throw new InvalidOperationException("Startup checks must begin outside Play Mode.");
 
         // 열린 Editor에서 저장되지 않은 편집을 덮어쓰지 않도록 제한
-        if (!Application.isBatchMode)
+        if (!Application.isBatchMode && Array.IndexOf(Environment.GetCommandLineArgs(), "-chronoTitleCheck") < 0)
         {
             Scene originalScene = SceneManager.GetActiveScene();
             if (SceneManager.sceneCount != 1 || originalScene.isDirty || string.IsNullOrEmpty(originalScene.path))
@@ -72,6 +75,31 @@ public static class StartupFlowChecks
         Run();
     }
 
+    /// <summary>최종 맵에서 기존 장치·저장 격리를 재사용해 Draw와 Slash만 검사</summary>
+    public static void RunDraw()
+    {
+        SessionState.SetBool(DrawKey, true);
+        Run();
+    }
+
+    /// <summary>같은 Title·저장 격리 장치로 단계별 Slash 연출과 취소 복구 검사</summary>
+    public static void RunSlash()
+    {
+        SessionState.SetBool(SlashKey, true);
+        Run();
+    }
+
+    /// <summary>같은 저장 격리 장치로 Title 이미지와 실시간 반짝임 검사</summary>
+    public static void RunTitle()
+    {
+        // IMGUI 화면은 일반 Editor의 Game View에서 실제 렌더링
+        EditorWindow.GetWindow(typeof(EditorWindow).Assembly.GetType("UnityEditor.GameView")).Show();
+
+        // 기존 전투 검사를 실행하지 않고 Title 표시 범위만 선택
+        SessionState.SetBool(TitleKey, true);
+        Run();
+    }
+
     /// <summary>검사를 시작하고 완료 후 배치는 종료하며 열린 Editor는 원래 씬으로 복귀</summary>
     private static void HandlePlayModeChanged(PlayModeStateChange state)
     {
@@ -91,7 +119,7 @@ public static class StartupFlowChecks
         else if (state == PlayModeStateChange.EnteredEditMode && SessionState.GetBool(FinishedKey, false))
         {
             SessionState.SetBool(ActiveKey, false);
-            if (Application.isBatchMode)
+            if (Application.isBatchMode || Array.IndexOf(Environment.GetCommandLineArgs(), "-chronoTitleCheck") >= 0)
                 EditorApplication.Exit(SessionState.GetBool(SuccessKey, false) ? 0 : 1);
             else
                 EditorSceneManager.OpenScene(SessionState.GetString(ScenePathKey, "Assets/Scenes/Title.unity"));
@@ -141,6 +169,51 @@ public static class StartupFlowChecks
     /// <summary>실제 슬롯 선택과 씬 이동을 통해 정상·손상·완료·실패 복구를 검사</summary>
     private static IEnumerator CheckStartupFlow()
     {
+        // 실제 Title 표시·슬롯 진입과 복귀만 검사
+        if (SessionState.GetBool(TitleKey, false))
+        {
+            SessionState.SetBool(TitleKey, false);
+            yield return TitlePresentationChecks.Run(Passed); // Title 이미지와 씬 재진입 검사 완료 대기
+            yield break;
+        }
+
+        // 새 연출은 최종 맵의 현재 Player에서 검사하고 기존 고정좌표 이동 검사를 재사용하지 않음
+        if (SessionState.GetBool(SlashKey, false))
+        {
+            SessionState.SetBool(SlashKey, false);
+            yield return WaitFor(() => GameManager.Instance != null && GetTitle() != null && GetTitle().IsReady, "Slash presentation Title readiness"); // 실제 Title 슬롯 준비 완료 대기
+            GameManager slashManager = GameManager.Instance;
+            GetTitle().SelectSlot(0);
+            yield return WaitFor(() => !slashManager.IsLoading && slashManager.Stage.IsReady, "Slash presentation session readiness"); // 서비스·Player 생성과 초기 Spawn 완료 대기
+            yield return SlashPresentationChecks.Run(slashManager, Passed); // 새 연출과 마지막 공간참 판정·중단 복원 검사 대기
+            slashManager.ReturnToTitle();
+            yield return WaitFor(() => IsTitleReady(slashManager), "Slash presentation Title cleanup"); // 세션의 재질·오디오·정적 효과 소유자 정리 대기
+            Require(SlashPresentationFx.ActiveSpaceSlash == null && GameCamera.Instance == null
+                && UnityEngine.Object.FindObjectsByType<SlashPresentationFx>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length == 0,
+                "Title must release the scene's Slash camera, FX owner and prepared Player effects.");
+            Passed("Slash presentation resources and world-camera effect ownership are released on Title return");
+            yield break;
+        }
+
+        // Draw 전용 요청은 이전 임시 맵 좌표를 가정하는 이동 검사와 분리
+        if (SessionState.GetBool(DrawKey, false))
+        {
+            SessionState.SetBool(DrawKey, false);
+            yield return WaitFor(() => GameManager.Instance != null && GetTitle() != null && GetTitle().IsReady, "Draw check Title readiness"); // 실제 슬롯 UI 준비 완료 대기
+            GameManager drawManager = GameManager.Instance;
+            GetTitle().SelectSlot(0);
+            yield return WaitFor(() => !drawManager.IsLoading && drawManager.Stage.IsReady, "Draw check session readiness"); // Player 생성·입력과 Spawn 모션 완료 대기
+            yield return PlayerMovementChecks.Run(drawManager, Passed, true); // 기존 입력 격리에서 Draw·편집·수명·Slash 검사 완료 대기
+            drawManager.ReturnToTitle();
+            yield return WaitFor(() => IsTitleReady(drawManager), "Draw check Title cleanup"); // 세션과 월드 표현 객체 정리 완료 대기
+            Require(UnityEngine.Object.FindObjectsByType<DrawLineVfx>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length == 0,
+                "Returning to Title must remove all scene-owned Draw and Slash visuals.");
+            Require(UnityEngine.Object.FindObjectsByType<DrawEvaporationVfx>(FindObjectsInactive.Include, FindObjectsSortMode.None).Length == 0,
+                "Returning to Title must remove the scene-owned Draw evaporation particles.");
+            Passed("Draw image FX and Slash visuals are released when the session returns to Title");
+            yield break;
+        }
+
         // 아트 검사는 임시 맵 좌표를 가정하는 이전 기능 검사와 독립 실행
         if (SessionState.GetBool(ArtKey, false))
         {

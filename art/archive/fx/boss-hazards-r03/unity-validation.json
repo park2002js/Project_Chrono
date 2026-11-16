@@ -1,0 +1,20 @@
+{
+    "success": true,
+    "checks": [
+        "Production and existing Dummy normal/gold prefabs use their new Sprites and geometry while area references remain intact",
+        "Existing laser keeps its rectangular Sprite path after the optional circle warning change",
+        "Actual Player takes no damage during the red outline telegraph",
+        "Pause freezes both warning and pixel bullet lifetime and movement",
+        "Warning activation changes the red outline and delivers one actual damage event; color=RGBA(1.0000, 0.1216, 0.1608, 0.8000)",
+        "The same area ignores Slash and does not damage again after re-entry",
+        "Boss groggy keeps existing circular areas and pixel bullets running",
+        "The pixel bullet and circular area despawn at their game-time lifetime",
+        "Pixel bullet preserves actual flight damage, one Slash removal and one groggy award",
+        "Gold pixel bullet reflects to Owner, rejects duplicate Slash and grants Fever, heal and groggy once",
+        "Reflected gold pixel bullet reaches its Owner, applies configured damage once and despawns",
+        "Actual Unity camera captures Player and normal/gold bullets at the same 6x native pixels and baseline, translucent radius-1/radius-2 fills and darker outlines",
+        "Isolated save session returns to Title after removing hazard fixtures"
+    ],
+    "error": "",
+    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Temp\\GuardVfxVerification\\Temp\\BossHazardArtChecks\\5819fb03876a4310b893e0c8c62f5380"
+}

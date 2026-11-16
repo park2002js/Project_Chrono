@@ -1,0 +1,61 @@
+{
+  "normal": {
+    "canvas": [
+      18,
+      18
+    ],
+    "opaque_bounds": [
+      1,
+      1,
+      17,
+      17
+    ],
+    "opaque_size": [
+      16,
+      16
+    ],
+    "flat_boundary_pixels": {
+      "top": 8,
+      "bottom": 8,
+      "left": 8,
+      "right": 8
+    },
+    "opaque_pixels": 216,
+    "native_layers": 3,
+    "native_cels": 3,
+    "native_reopen_equal": true,
+    "source_project_equal": true,
+    "symmetric": true,
+    "sha256": "ad93ec7baac261ac0cc03e635e23b2f605a85bc014ba1d231516af50c1f835cc"
+  },
+  "gold": {
+    "canvas": [
+      18,
+      18
+    ],
+    "opaque_bounds": [
+      1,
+      1,
+      17,
+      17
+    ],
+    "opaque_size": [
+      16,
+      16
+    ],
+    "flat_boundary_pixels": {
+      "top": 8,
+      "bottom": 8,
+      "left": 8,
+      "right": 8
+    },
+    "opaque_pixels": 216,
+    "native_layers": 3,
+    "native_cels": 3,
+    "native_reopen_equal": true,
+    "source_project_equal": true,
+    "symmetric": true,
+    "sha256": "27f8ea2beb7f945fd03df8487dae4f08e6e7e543b34ff161194a5c7db390c7f6"
+  },
+  "gold_only_palette_changed": true
+}

@@ -3515,5 +3515,15 @@
       "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
       "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
     }
-  ]
+  ],
+  "independent_review": {
+    "passed": true,
+    "all54_spliced_source_poses_sorting_and_sword_hashes_exact": true,
+    "no_added_interpolation_or_pause": true,
+    "vfx_unmodified_source1_plus_once_mirrored_source2": true,
+    "left_blue_front621_right_purple_front621": true,
+    "both_start31_last_visible42_absent43": true,
+    "native_recomposites_4x_png_gif_csv_and_no_clipping_verified": true,
+    "first_second_native_hashes_and168_output_files_preserved": true
+  }
 }

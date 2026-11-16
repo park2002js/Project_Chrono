@@ -1,0 +1,23 @@
+{
+  "canvas": [
+    8,
+    8
+  ],
+  "opaque_bounds": [
+    1,
+    1,
+    7,
+    7
+  ],
+  "alpha": [
+    0,
+    255
+  ],
+  "colors_including_transparency": 4,
+  "symmetric_xy": true,
+  "project_png_identical": true,
+  "sha256": "413a9815a46c587ae0dcda6d3712313749fed29c30467d98aa772eb2051ca693",
+  "native_reopened_pixel_equal": true,
+  "native_layers": 3,
+  "native_cels": 3
+}

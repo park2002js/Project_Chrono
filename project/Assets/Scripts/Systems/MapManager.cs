@@ -30,10 +30,13 @@ public class MapManager : MonoBehaviour
 
     public CheckpointSpawn[] Checkpoints = Array.Empty<CheckpointSpawn>(); // 체크포인트 식별자로 Player 배치 위치를 찾기 위한 목록
     public BossSpawn[] BossPositions = Array.Empty<BossSpawn>(); // Boss 식별자로 기본 위치와 조우 영역을 찾기 위한 목록
+    public Transform EntranceSpawnPoint; // 새 게임의 최초 입장 걷기를 시작할 복도 아래 위치
+    public Transform EntranceStopPoint; // 최초 입장 걷기를 멈추고 조작 권한을 인계할 위치
     public bool IsInitialized; // 배치 정보와 저장 체크포인트 검증이 완료됐는지 표시
     private CrystalCheckPoint[] crystals = Array.Empty<CrystalCheckPoint>(); // 이번 Map에서 초기화·구독할 수정 목록
     private PlayerSpawner playerSpawner; // Player 생성 뒤 한 번 연결해 활성 체크포인트 캐시를 갱신할 대상
     private SaveData saveData; // 이번 세션에서 유지되는 활성 수정·처치 기록의 원본
+    private readonly HashSet<Collider2D> walls = new HashSet<Collider2D>(); // 이번 맵의 벽과 문에서 탄환을 막을 물리 Collider 목록
 
     /// <summary>Player 생성 전에 이번 세션의 Map 조회 대상 등록</summary>
     private void Awake()
@@ -110,6 +113,18 @@ public class MapManager : MonoBehaviour
             if (!crystal.IsActivated) crystal.OnActivated += HandleCheckpointActivated; // 새 수정 활성화 뒤 문·로컬 배치 갱신
         }
         RestoreCheckpointDoors();
+
+        // 같은 맵 수명에서 벽과 비활성 문을 한 번 확보하고 발사 중에는 집합만 조회
+        walls.Clear();
+        foreach (Collider2D shape in GetComponentsInChildren<Collider2D>(true))
+            if (!shape.isTrigger) walls.Add(shape);
+    }
+
+    /// <summary>이번 맵이 보유한 벽과 문의 물리 Collider인지 조회</summary>
+    public bool IsWall(Collider2D shape)
+    {
+        // Boss와 Player 및 경고 Trigger는 맵 물리 목록에 포함하지 않음
+        return shape != null && walls.Contains(shape);
     }
 
     /// <summary>Map 준비 뒤 생성된 Player의 배치 캐시를 한 번 연결</summary>

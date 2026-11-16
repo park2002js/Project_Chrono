@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>게임 시간 전조 뒤 원형 범위를 타격하고 자체 수명으로 종료하는 장판</summary>
+/// <summary>전조 뒤에 원형 범위를 타격하고 자체 수명으로 종료하는 장판</summary>
 public class AreaProjectile : Projectile
 {
     public float Radius = 1f; // 장판 중심에서 피해가 닿는 원형 판정 반경
@@ -12,6 +12,7 @@ public class AreaProjectile : Projectile
     public bool IsArmed { get; private set; } // 전조를 마치고 피해 판정을 시작했는지 조회
 
     protected SpriteRenderer visual; // 최초 생성 때 확보할 범위 표시용 Sprite
+    private CircleWarningVfx circleWarning; // 원형 프리팹에 연결된 선 경고 표시
     private ContactFilter2D areaFilter; // 실제 Player Trigger를 수집할 재사용 조건
     private Collider2D[] overlaps = new Collider2D[8]; // 위험 영역 질의에 재사용할 결과 버퍼
     private readonly HashSet<PlayerCharacter> hitPlayers = new HashSet<PlayerCharacter>(); // 같은 발사에서 성공한 Player 피해의 중복 방지
@@ -22,6 +23,7 @@ public class AreaProjectile : Projectile
         // 구체 Collider와 공통 피해·종료 상태 준비
         base.Awake();
         visual = GetComponentInChildren<SpriteRenderer>();
+        if (shape is CircleCollider2D) circleWarning = GetComponentInChildren<CircleWarningVfx>(true);
         areaFilter = new ContactFilter2D { useTriggers = true };
         SlashResponse = ProjectileSlashResponse.Ignore;
     }
@@ -40,7 +42,8 @@ public class AreaProjectile : Projectile
         IsArmed = false;
         hitPlayers.Clear();
         ConfigureShape();
-        if (visual != null) visual.color = TelegraphColor;
+        if (circleWarning != null) circleWarning.SetColor(TelegraphColor);
+        else if (visual != null) visual.color = TelegraphColor;
     }
 
     /// <summary>장판에 맞는 원형 Collider를 최초 한 번 확보</summary>
@@ -58,7 +61,8 @@ public class AreaProjectile : Projectile
         {
             if (Lifetime - RemainingLifetime < TelegraphDuration) return;
             IsArmed = true;
-            if (visual != null) visual.color = ActiveColor;
+            if (circleWarning != null) circleWarning.SetColor(ActiveColor);
+            else if (visual != null) visual.color = ActiveColor;
         }
 
         // 여러 Collider나 재진입도 한 발사의 동일 Player 피해로 합산
@@ -94,7 +98,12 @@ public class AreaProjectile : Projectile
         CircleCollider2D circle = (CircleCollider2D)shape;
         circle.radius = Radius;
         circle.offset = Vector2.zero;
-        if (visual != null)
+        if (circleWarning != null)
+        {
+            circleWarning.Configure(circle.radius, TelegraphColor);
+            if (visual != null) visual.enabled = false;
+        }
+        else if (visual != null)
         {
             visual.drawMode = SpriteDrawMode.Sliced;
             visual.size = Vector2.one * (Radius * 2f);

@@ -12,6 +12,8 @@ public static class PlayerArtSetup
     private const string PrefabPath = "Assets/Prefabs/Startup/Player.prefab"; // 기존 GUID·기능 연결을 유지할 Player 프리팹
     private const string AnimationFolder = "Assets/Art/Player/Animations"; // Player Sprite 상태 세트를 저장할 에셋 폴더
     private const string AnimationSetPath = AnimationFolder + "/PlayerSpriteAnimationSet.asset"; // 몸체 재생의 단일 상태 데이터
+    private const string SlashFolder = PlayerRoot + "Slash"; // 사용자 선택 R02 발도 시트와 전용 상태 데이터의 에셋 폴더
+    private const string SlashAnimationSetPath = SlashFolder + "/SlashSpriteAnimationSet.asset"; // 기존 기본 모션과 구분해 연결할 발도 전용 상태 데이터
 
     /// <summary>20px 셀·16PPU로 최종 Player 프레임을 준비하고 기존 컴포넌트에 연결</summary>
     [MenuItem("Tools/Chrono/Connect Player Art")]
@@ -47,9 +49,21 @@ public static class PlayerArtSetup
             rendering.BodySprite.transform.localPosition = Vector3.zero;
             if (rendering.FacingMarker != null) rendering.FacingMarker.gameObject.SetActive(false);
 
-            // 조준 피벗 아래의 무기 모션만 Animator가 쓰도록 계층 분리
+            // 원작 공격 시간·입력과 현재 확정한 공격 전진 거리 연결
             AttackController attack = root.GetComponent<AttackController>();
-            attack.WeaponPivot.localPosition = new Vector3(0f, 0.5f, 0f);
+            attack.AttackDuration = 0.6f;
+            attack.HitWindowStart = 11f / 30f;
+            attack.HitWindowEnd = 11f / 30f + 0.15f;
+            attack.AttackCooldown = 0f;
+            attack.ComboDuration = 1f / 6f;
+            attack.AttackMoveMultiplier = 0f;
+            attack.InputIgnoreDuration = 1f / 30f;
+            attack.ThirdInputBufferTime = 35f / 60f;
+            attack.AttackDashSpeed = 10f / 3f;
+            attack.AttackDashDuration = 0.3f;
+
+            // 조준 피벗 아래의 무기 모션만 Animator가 쓰도록 계층 분리
+            attack.WeaponPivot.localPosition = new Vector3(0.15625f, 0.5f, 0f);
             Transform motion = attack.WeaponPivot.Find("WeaponMotion");
             if (motion == null)
             {
@@ -71,25 +85,82 @@ public static class PlayerArtSetup
             // 7×29 검의 손잡이를 모션 기준점에 놓고 Sprite 자체의 세로 방향 복원
             weapon.sprite = swords[0];
             weapon.color = Color.white;
-            weapon.sortingOrder = 21;
+            weapon.sortingOrder = rendering.BodySprite.sortingOrder - 1;
             weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
             weapon.transform.localScale = Vector3.one;
             rendering.WeaponSprite = weapon;
 
-            // 보행 충돌은 발 아래만 검사하고 사망·기상은 실제 시트의 여섯 자세 표시
+            // 확정된 두 색의 원본과 전체 가림 합성을 같은 어깨 피벗의 재사용 표시로 연결
+            PlayerAttackVfxSetup.ApplyToPrefab(attack, weapon);
+
+            // 보행 충돌은 발 아래만 검사
             BoxCollider2D feet = root.GetComponent<BoxCollider2D>();
             feet.size = new Vector2(0.5f, 0.35f);
             feet.offset = new Vector2(0f, 0.175f);
+
+            // 실제 원작 Player 프리팹의 대시 값만 적용하고 기존 쿨타임은 보존
+            PlayerCharacter player = root.GetComponent<PlayerCharacter>();
+            player.DashSpeed = 24f;
+            player.DashDeceleration = 87f;
+            player.DashDuration = 0.14f;
+            player.DodgeDuration = 0.1f;
+            player.InputBlockDuration = 0.14f;
+
+            // 기본 보행 속도와 실제 여섯 자세의 사망·기상 시간 연결
+            player.basicSP = 4.4f;
+            player.SP = 4.4f;
             PlayerSpawner spawner = root.GetComponent<PlayerSpawner>();
             spawner.DeathAnimationDuration = 1.42f;
             spawner.DeathDuration = 0.8f;
             spawner.SpawnDuration = 1.42f;
+
+            // 새 생성·재적용에서도 자기 소리와 적중 섬광 연결 유지
+            PlayerFeedbackSetup.ApplyToPrefab(root);
+
+            // 새 생성·재적용에서도 각성 상태와 황금 오라 연결 유지
+            FeverAuraSetup.ApplyToPrefab(root);
             PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
         }
         finally { PrefabUtility.UnloadPrefabContents(root); }
         AssetDatabase.SaveAssets();
         Debug.Log("[PlayerArtSetup] Connected 33 Player frames, four dash directions and the current sheathed sword at 16 PPU.");
+    }
+
+    /// <summary>선택된 발도 R02 원본을 준비·대기·납도로 나눠 기존 Player의 전용 참조만 연결</summary>
+    [MenuItem("Tools/Chrono/Connect Slash Art")]
+    public static void ApplySlash()
+    {
+        // 기존20px 몸체의 피벗을 새32×40셀 배치(4,8)에 맞춰 유지
+        AssetDatabase.Refresh();
+        Sprite[] frames = Slice(SlashFolder + "/iaido-front.png", 32, 40, 9, new Vector2(14f / 32f, 12f / 40f));
+        PlayerSpriteAnimationSet set = AssetDatabase.LoadAssetAtPath<PlayerSpriteAnimationSet>(SlashAnimationSetPath);
+        if (set == null)
+        {
+            set = ScriptableObject.CreateInstance<PlayerSpriteAnimationSet>();
+            AssetDatabase.CreateAsset(set, SlashAnimationSetPath);
+        }
+
+        // 원본의 자세·상대 시간은 보존하고 실제 구간 길이는 Skill의 외부 시간으로 샘플
+        set.States = new[]
+        {
+            State(PlayerSpriteAnimationState.SlashDraw, frames.Take(5).ToArray(), 50f, false, false, new[] { 0.10f, 0.10f, 0.12f, 0.09f, 0.12f }),
+            State(PlayerSpriteAnimationState.SlashHold, new[] { frames[5] }, 50f, false, false, new[] { 0.60f }),
+            State(PlayerSpriteAnimationState.SlashSheathe, frames.Skip(6).ToArray(), 50f, false, false, new[] { 0.09f, 0.09f, 0.22f })
+        };
+        EditorUtility.SetDirty(set);
+        AssetDatabase.SaveAssets();
+
+        // 기본 몸체·무기·입력 참조를 바꾸지 않고 새 발도 데이터만 기존 컴포넌트에 연결
+        GameObject root = PrefabUtility.LoadPrefabContents(PrefabPath);
+        try
+        {
+            root.GetComponent<CharacterRendering>().SlashAnimationSet = set;
+            PrefabUtility.SaveAsPrefabAsset(root, PrefabPath);
+        }
+        finally { PrefabUtility.UnloadPrefabContents(root); }
+        AssetDatabase.SaveAssets();
+        Debug.Log("[PlayerArtSetup] Connected the selected R02 iaido: five draw frames, one hold pose and three sheathe frames at 16 PPU.");
     }
 
     /// <summary>방향별 몸체 상태와 생명주기 시간을 재실행 가능한 단일 에셋에 연결</summary>

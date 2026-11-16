@@ -1,0 +1,65 @@
+{
+  "allChecksPassed": true,
+  "originalLayerCount": 10,
+  "originalLayerPixelsAndMetadataPreserved": true,
+  "originalCrossRemainsTopmost": true,
+  "newNativeLayerCount": 11,
+  "outlineWhitePixelCount": 96,
+  "changedCompositePixelCount": 96,
+  "changedCompositeBounds": [
+    124,
+    15,
+    137,
+    69
+  ],
+  "frameDurationMilliseconds": 100,
+  "sizeFramesDepth": [
+    1,
+    200,
+    80,
+    32
+  ],
+  "sourceAndUnityPngIdentical": true,
+  "phases": [
+    {
+      "phase": 0,
+      "alphaBounds": [
+        3,
+        20,
+        197,
+        51
+      ],
+      "alphaPixelCount": 1112,
+      "maximumPerpendicularDistance": 2.890983414372235
+    },
+    {
+      "phase": 1,
+      "alphaBounds": [
+        3,
+        20,
+        197,
+        51
+      ],
+      "alphaPixelCount": 1114,
+      "maximumPerpendicularDistance": 2.885848452712604
+    },
+    {
+      "phase": 2,
+      "alphaBounds": [
+        3,
+        20,
+        197,
+        51
+      ],
+      "alphaPixelCount": 1112,
+      "maximumPerpendicularDistance": 2.880713491052973
+    }
+  ],
+  "sha256": {
+    "title-logo-17-natural-cut.aseprite": "04afd0dd4421841d68449b05e3937f9cfe272a4de2d6162c3e1372730e494671",
+    "title-logo-17-natural-cut.png": "2896f5c48d882f83b7506cd57ad3f4de50632aa92b5b6c68174501dc19e8e555",
+    "title-fissure-glow-0.png": "03db87957818c303f7c7961c6aa12509b9ef1b865943a89c9db53396ae6207df",
+    "title-fissure-glow-1.png": "1e2205c4b9cf3d15c0780db22b9bcf87eb55c96308fb6b9041824f483c91f444",
+    "title-fissure-glow-2.png": "417455736b363179a124650ecdd4fb7a91c9885ce85f162d5dc1e4785c2ba1e0"
+  }
+}

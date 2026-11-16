@@ -88,6 +88,8 @@ public static class WorldArtSetup
             AddWall(collision, new Rect(-1f, 0f, 1f, 77f));
             AddWall(collision, new Rect(29f, 0f, 1f, 77f));
             if (prompt.sprite == null || map.Checkpoints.Length != 2) throw new InvalidOperationException("World art requires F sprite and existing start/mid checkpoints.");
+            // 전체 월드 아트를 다시 연결해도 남쪽 입장 복도와 두 배치점 유지
+            MapEntranceSetup.ApplyToPrefab(root);
             PrefabUtility.SaveAsPrefabAsset(root, MapPath);
         }
         finally { PrefabUtility.UnloadPrefabContents(root); }
@@ -100,6 +102,7 @@ public static class WorldArtSetup
             cameraRoot.GetComponent<GameCamera>().DefaultZoom = 5.625f;
             cameraRoot.GetComponent<GameCamera>().VerticalLimits = new Vector2(0f, 77f);
             cameraRoot.GetComponent<Camera>().orthographicSize = 5.625f;
+            MapEntranceSetup.ApplyToCameraPrefab(cameraRoot);
             PrefabUtility.SaveAsPrefabAsset(cameraRoot, cameraPath);
         }
         finally { PrefabUtility.UnloadPrefabContents(cameraRoot); }

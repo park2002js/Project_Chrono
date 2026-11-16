@@ -19,6 +19,9 @@ public static class UIArtSetup
         // 원본 PNG와 레이어 출력을 픽셀 Sprite로 가져오기
         foreach (string file in Directory.GetFiles(Art + "HUD/Layers", "*.png")) ImportSprite(file.Replace('\\', '/'));
         ImportSprite(Art + "Title/title-logo.png");
+        ImportSprite(Art + "Title/title-blade-glint-vfx.png");
+        for (int phase = 0; phase < 3; phase++) ImportSprite(Art + $"Title/title-fissure-glow-{phase}.png");
+        ImportSprite(Art + "Windows/window-frame.png");
         Font font = AssetDatabase.LoadAssetAtPath<Font>(FontPath);
         if (font == null) throw new InvalidOperationException("PF스타더스트 font is missing.");
 
@@ -74,6 +77,14 @@ public static class UIArtSetup
             UI_Title title = UnityEngine.Object.FindFirstObjectByType<UI_Title>();
             if (title == null) throw new InvalidOperationException("UI_Title is missing from Title scene.");
             title.TitleLogo = AssetDatabase.LoadAssetAtPath<Texture2D>(Art + "Title/title-logo.png");
+            title.TitleLogoGlint = AssetDatabase.LoadAssetAtPath<Texture2D>(Art + "Title/title-blade-glint-vfx.png");
+            title.TitleFissureGlowFrames = new[]
+            {
+                AssetDatabase.LoadAssetAtPath<Texture2D>(Art + "Title/title-fissure-glow-0.png"),
+                AssetDatabase.LoadAssetAtPath<Texture2D>(Art + "Title/title-fissure-glow-1.png"),
+                AssetDatabase.LoadAssetAtPath<Texture2D>(Art + "Title/title-fissure-glow-2.png")
+            };
+            title.SlotFrame = AssetDatabase.LoadAssetAtPath<Texture2D>(Art + "Windows/window-frame.png");
             title.TitleFont = font;
             EditorUtility.SetDirty(title);
             EditorSceneManager.SaveScene(scene);
@@ -211,6 +222,16 @@ public static class UIArtSetup
         importer.mipmapEnabled = false;
         importer.alphaIsTransparency = true;
         importer.npotScale = TextureImporterNPOTScale.None;
+        if (path == Art + "Windows/window-frame.png")
+        {
+            // 저장 카드와 설정창이 같은 모서리·색을 유지하며 크기를 바꿀 공용 창 프레임
+            importer.spriteBorder = new Vector4(12f, 12f, 12f, 12f);
+            TextureImporterSettings settings = new TextureImporterSettings();
+            importer.ReadTextureSettings(settings);
+            settings.spriteMeshType = SpriteMeshType.FullRect;
+            importer.SetTextureSettings(settings);
+            importer.wrapMode = TextureWrapMode.Clamp;
+        }
         importer.SaveAndReimport();
     }
 }

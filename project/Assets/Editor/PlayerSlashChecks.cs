@@ -15,6 +15,7 @@ public static class PlayerSlashChecks
         PlayerCharacter player = manager.CurrentPlayer;
         SkillController skills = player.Skills;
         DrawVfx vfx = player.GetComponent<DrawVfx>();
+        SlashPresentationFx slashFx = player.GetComponent<SlashPresentationFx>();
         Rigidbody2D body = player.GetComponent<Rigidbody2D>();
         GameCamera gameCamera = GameCamera.Instance;
         UIController ui = UIController.Instance;
@@ -30,7 +31,8 @@ public static class PlayerSlashChecks
         float attackSpeed = player.AS;
         float groggy = player.Groggy;
         float duration = skills.SlashDuration;
-        float flashDuration = vfx.SlashFlashDuration;
+        float spaceDuration = slashFx.SpaceSlashDuration;
+        Material spaceMaterial = slashFx.SpaceMaterial;
         float multiplier = skills.SlashDamageMultiplier;
         LayerMask targetMask = skills.SlashTargetMask;
         float lifetime = skills.LineLifetime;
@@ -61,7 +63,7 @@ public static class PlayerSlashChecks
             player.AD = 11f;
             player.SP = 0f;
             skills.SlashDuration = 0.35f;
-            vfx.SlashFlashDuration = 0.25f;
+            slashFx.SpaceSlashDuration = 0.25f;
             skills.SlashDamageMultiplier = 3f;
             skills.SlashTargetMask = ~0;
             skills.LineLifetime = 5f;
@@ -91,6 +93,8 @@ public static class PlayerSlashChecks
                 "Slash must own its pause, input lock, HUD hiding, camera and full damage protection.");
             Require(flash != null && !vfx.IsSlashPlaying && !flash.activeSelf,
                 "Slash must reserve its prepared flash until the final hit completes.");
+            Require(vfx.IsSlashLineVisible && vfx.LineObject.activeSelf && vfx.LineOpacity == 1f,
+                "Consuming the Line must reserve one attack while retaining its visible map path until the final hit.");
             Require(!player.ApplyDamage(new DamageInstance(manager.CurrentBoss, health + 1f, DamageType.Effect, DamageInstance.NextAttackId(), false))
                 && player.HP == health, "Full Slash protection must reject even lethal non-Hitbox damage.");
             Require(!player.ApplyAttack() && !player.ApplyDash() && !player.ApplyDraw() && !player.ApplySlash(), "A running Slash must reject overlapping Player actions.");
@@ -107,13 +111,13 @@ public static class PlayerSlashChecks
             Require(moving.transform.position == frozenBulletPosition && moving.RemainingLifetime == frozenBulletLifetime,
                 "A moving projectile outside the Slash area must freeze its movement and lifetime during the action.");
             Require(camera.orthographicSize < zoom, "Slash camera zoom must advance while game time is frozen.");
+            Require(vfx.IsSlashLineVisible && vfx.LineObject.activeSelf,
+                "The original map Line must remain visible while unscaled Slash presentation advances.");
             yield return Until(() => !player.IsSlashing, "Slash final hit and completion"); // 마지막 정지 시점의 판정 뒤 입력·시간·표현 복구 대기
             Require(Mathf.Abs(inputTarget.HP - 967f) < 0.001f, "The final one-frame query must apply current AD times the Slash multiplier once to a multi-Collider target.");
             AssertRestored(manager, input, ui, gameCamera, player, vfx, true);
-            Require(flash.GetComponentInChildren<Renderer>().bounds.size.sqrMagnitude > 0f,
-                "Successful Slash must display its temporary flash after the final hit and state restoration.");
-            Require(flash.transform.lossyScale.x > line.Length && flash.transform.lossyScale.y > 0f && flash.transform.lossyScale.y < line.Width,
-                "The completed temporary flash must extend past both Line ends while remaining thinner than the original Line.");
+            Require(slashFx.IsSpaceSlashPlaying && slashFx.SpaceMaterial == spaceMaterial && !flash.activeSelf,
+                "Successful Slash must reuse the world-space energy VFX without a second opaque LineRenderer bar.");
             ScreenCapture.CaptureScreenshot("Temp/SlashValidation.png");
             Require(camera.orthographicSize == zoom && gameCamera.Target == player.transform && ui.IsPlayerHudVisible == playerHud
                 && ui.IsBossHudVisible == bossHud, "Natural completion must restore the previous camera and HUD state.");
@@ -156,13 +160,21 @@ public static class PlayerSlashChecks
             skills.ResetSkills();
             passed("F-P07 Character restrictions and confirmation delay reject Slash without consuming Line or reserving rejected input");
 
+            // 원래 Line과 표시 배율을 보존한 채 희미한 오라 전체까지 판정하는지 확인
+            yield return CheckAuraWidth(manager, player, vfx, camera, fixtures, passed); //30도 오라 경계·폭 스냅샷·다음 시전 배율 확인 대기
+
+            // 실제 Slash 각 전달과 반사 탄의 직진·피격·벽 우선 경계 확인
+            yield return CheckGoldReflection(manager, player, fixtures, passed); // 반사각과 실제 빠른 이동·정지·벽 충돌 확인 대기
+
             // 회전한 경로 내부·끝점·벽 너머를 조회하고 같은 수신자의 여러 Collider는 한 번 처리
             Line diagonal = new Line(body.position + Vector2.up * 8f, new Vector2(1f, 1f), 6f, 1f);
             Vector2 across = new Vector2(-diagonal.Direction.y, diagonal.Direction.x);
+            float diagonalHalfWidth = vfx.GetLineEffectWidth(diagonal) * 0.5f;
             Character inside = CreateTarget(fixtures, "SlashRotatedInside", diagonal.StartPoint + diagonal.Direction * 2f + across * 0.3f, TargetKind.Boss, 4);
+            Character auraInside = CreateTarget(fixtures, "SlashRotatedAuraInside", diagonal.StartPoint + diagonal.Direction * 3f + across * (diagonalHalfWidth - 0.15f), TargetKind.Boss);
             Character behindWall = CreateTarget(fixtures, "SlashBehindWall", diagonal.StartPoint + diagonal.Direction * 4.5f, TargetKind.Boss);
             Character atEnd = CreateTarget(fixtures, "SlashAtEnd", diagonal.EndPoint - diagonal.Direction * 0.02f, TargetKind.NormalStructure);
-            Character outsideWidth = CreateTarget(fixtures, "SlashOutsideWidth", diagonal.StartPoint + diagonal.Direction * 3f + across * 0.7f, TargetKind.Boss);
+            Character outsideWidth = CreateTarget(fixtures, "SlashOutsideWidth", diagonal.StartPoint + diagonal.Direction * 3f + across * (diagonalHalfWidth + 0.2f), TargetKind.Boss);
             Character outsideEnd = CreateTarget(fixtures, "SlashOutsideEnd", diagonal.EndPoint + diagonal.Direction * 0.15f, TargetKind.Boss);
             CreateWall(fixtures, diagonal.StartPoint + diagonal.Direction * 3.5f);
             int hits = 0;
@@ -174,12 +186,13 @@ public static class PlayerSlashChecks
                 Start(player, diagonal);
                 int attackId = skills.Slasher.AttackId;
                 yield return Until(() => !player.IsSlashing, "rotated Slash query"); // 실제 마지막 시점의 회전 사각 질의 결과 대기
-                Require(inside.HP == 967f && behindWall.HP == 967f && atEnd.HP == 967f && outsideWidth.HP == 1000f && outsideEnd.HP == 1000f,
+                Require(inside.HP == 967f && auraInside.HP == 967f && behindWall.HP == 967f && atEnd.HP == 967f && outsideWidth.HP == 1000f && outsideEnd.HP == 1000f,
                     "The rotated Line must hit its interior, end and targets behind walls while excluding targets outside its width or length.");
                 Require(hits == 1 && received.Kind == DamageType.Slash && received.Source == player && received.AttackId == attackId,
                     "One Slash must deliver a shared attack identity and one damage event per Character.");
-                Require(vfx.SlashObject == flash && vfx.IsSlashPlaying, "Repeated successful Slash must reuse the same temporary flash object.");
-                yield return Until(() => !vfx.IsSlashPlaying, "successful flash tail finishes"); // 복원 뒤 남은 unscaled 번쩍임이 스스로 끝날 때까지 대기
+                Require(slashFx.SpaceMaterial == spaceMaterial && slashFx.IsSpaceSlashPlaying && !vfx.IsSlashPlaying,
+                    "Repeated successful Slash must reuse the same space-cut material without an opaque temporary bar.");
+                yield return Until(() => !slashFx.IsSpaceSlashPlaying, "space-cut energy tail finishes"); // 복원 뒤 남은 unscaled 검격 잔광이 스스로 끝날 때까지 대기
                 Require(!flash.activeSelf, "The successful flash tail must hide its reusable object after completion.");
             }
             finally
@@ -294,7 +307,7 @@ public static class PlayerSlashChecks
 
             // Inspector 튜닝값·기존 수치·위치·화면과 시간 소유 복원
             skills.SlashDuration = duration;
-            vfx.SlashFlashDuration = flashDuration;
+            slashFx.SpaceSlashDuration = spaceDuration;
             skills.SlashDamageMultiplier = multiplier;
             skills.SlashTargetMask = targetMask;
             skills.LineLifetime = lifetime;
@@ -317,6 +330,301 @@ public static class PlayerSlashChecks
             manager.SetGameplayPaused(paused);
             input.BlockInput = blocked;
         }
+    }
+
+    /// <summary>30도 오라 경계와 원본·표시·판정 폭의 시전별 보존 확인</summary>
+    private static IEnumerator CheckAuraWidth(GameManager manager, PlayerCharacter player, DrawVfx vfx, Camera camera, List<GameObject> fixtures, Action<string> passed)
+    {
+        // 다른 수신 검사와 겹치지 않는 곳에 기존 폭 밖·오라 안의 작은 중복 피격 영역 준비
+        SkillController skills = player.Skills;
+        DrawLineVfx style = vfx.LineObject.GetComponent<DrawLineVfx>();
+        float previousMultiplier = style.WidthMultiplier;
+        Line line = new Line((Vector2)player.transform.position + new Vector2(-12f, -8f),
+            new Vector2(Mathf.Cos(Mathf.PI / 6f), Mathf.Sin(Mathf.PI / 6f)), 6f, 0.25f);
+        Vector2 normal = new Vector2(-line.Direction.y, line.Direction.x);
+        Character left = CreateTarget(fixtures, "SlashAuraLeft", line.StartPoint + line.Direction * 2f + normal * 0.31f, TargetKind.Boss, 3);
+        Character right = CreateTarget(fixtures, "SlashAuraRight", line.StartPoint + line.Direction * 4f - normal * 0.31f, TargetKind.Boss, 2);
+        Character outsideWidth = CreateTarget(fixtures, "SlashAuraOutside", line.StartPoint + line.Direction * 3f + normal * 0.5f, TargetKind.Boss);
+        Character outsideEnd = CreateTarget(fixtures, "SlashAuraBeyondEnd", line.EndPoint + line.Direction * 0.15f, TargetKind.Boss);
+        float expectedDamage = player.AD * skills.SlashDamageMultiplier;
+        int leftHits = 0;
+        int rightHits = 0;
+        int leftAttackId = 0;
+        int rightAttackId = 0;
+        Action<DamageInstance> onLeft = damage => { leftHits++; leftAttackId = damage.AttackId; };
+        Action<DamageInstance> onRight = damage => { rightHits++; rightAttackId = damage.AttackId; };
+        left.OnDamaged += onLeft; // 중복 Collider를 가진 오라 왼쪽의 일회 피해 수집
+        right.OnDamaged += onRight; // 오라 반대쪽의 일회 피해와 동일 공격 번호 수집
+        try
+        {
+            // 원본 폭은 보관하고 실제 표시와 판정 폭만0.75로 일치
+            style.WidthMultiplier = 3f;
+            skills.ResetSkills();
+            Start(player, line);
+            int firstAttackId = skills.Slasher.AttackId;
+            Require(SameLine(skills.Slasher.ActiveLine, line) && Mathf.Approximately(skills.Slasher.HitWidth, 0.75f),
+                "Slash must preserve its raw 0.25 Line and snapshot the full 0.75 image FX width.");
+            AssertRenderedLineWidth(vfx.LineObject, line, camera, 0.75f);
+            Require(leftHits == 0 && rightHits == 0, "Aura receivers must remain unharmed until the final Slash query.");
+
+            // 테스트용 스타일 변경이 이번 판정을 바꾸지 않고 다음 시전에서만 적용되는지 확인
+            style.WidthMultiplier = 4f;
+            yield return Frames(2); // 변경한 스타일이 표시에는 반영되지만 현재 판정 폭은 고정되는지 관찰
+            Require(player.IsSlashing && SameLine(skills.Slasher.ActiveLine, line) && Mathf.Approximately(skills.Slasher.HitWidth, 0.75f),
+                "Changing the style during a cast must not replace the active hit width snapshot.");
+            AssertRenderedLineWidth(vfx.LineObject, line, camera, 1f);
+            yield return Until(() => !player.IsSlashing, "30 degree aura query"); // 최초 폭으로 실행할 실제 마지막 사각 판정 대기
+            Require(Mathf.Approximately(left.HP, 1000f - expectedDamage) && Mathf.Approximately(right.HP, 1000f - expectedDamage)
+                && outsideWidth.HP == 1000f && outsideEnd.HP == 1000f && leftHits == 1 && rightHits == 1
+                && leftAttackId == firstAttackId && rightAttackId == firstAttackId,
+                "Both faint aura sides must hit once beyond the old width while excluding the new width and length exterior.");
+            Require(Mathf.Approximately(skills.Slasher.HitBox.Area.height, 0.75f) && Mathf.Approximately(skills.Slasher.HitBox.Area.width, line.Length)
+                && Mathf.Abs(skills.Slasher.HitBox.Angle - 30f) < 0.01f && skills.Slasher.HitWidth == 0f,
+                "The actual query must retain its start-time width and angle, then clear its running snapshot.");
+            Require(skills.Slasher.ApplyHits(player, manager.CurrentBoss) == 0, "A completed Slash must reject another aura query.");
+
+            // 다음 Slash는 새 배율의1.0 폭을 적용하고 끝점 밖은 계속 제외
+            skills.ResetSkills();
+            Start(player, line);
+            int secondAttackId = skills.Slasher.AttackId;
+            Require(SameLine(skills.Slasher.ActiveLine, line) && Mathf.Approximately(skills.Slasher.HitWidth, 1f),
+                "The next Slash must use the new multiplier without widening the stored Line itself.");
+            AssertRenderedLineWidth(vfx.LineObject, line, camera, 1f);
+            yield return Until(() => !player.IsSlashing, "next aura width query"); // 다음 시전에서 넓어진 오라의 실제 판정 대기
+            Require(Mathf.Approximately(skills.Slasher.HitBox.Area.height, 1f) && Mathf.Approximately(outsideWidth.HP, 1000f - expectedDamage)
+                && outsideEnd.HP == 1000f && leftHits == 2 && rightHits == 2 && firstAttackId != secondAttackId
+                && leftAttackId == secondAttackId && rightAttackId == secondAttackId && skills.Slasher.HitWidth == 0f,
+                "Only the next Slash may reach the wider aura receiver while retaining deduplication and the same end boundary.");
+            Require(skills.Slasher.ApplyHits(player, manager.CurrentBoss) == 0, "The second completed Slash must remain a single query.");
+            passed("F-P07 full image FX aura hits both 30 degree sides once, excludes bounds, preserves raw geometry and snapshots width per cast");
+        }
+        finally
+        {
+            // 수집과 스타일을 되돌리고 진행 중인 테스트 공격 정리
+            left.OnDamaged -= onLeft; // 오라 왼쪽 피해 수집 종료
+            right.OnDamaged -= onRight; // 오라 오른쪽 피해 수집 종료
+            style.WidthMultiplier = previousMultiplier;
+            skills.ResetSkills();
+        }
+    }
+
+    /// <summary>판정 폭 확대가 선 표시를 다시 곱하거나 실제 끝점을 바꾸지 않는지 확인</summary>
+    private static void AssertRenderedLineWidth(GameObject visual, Line line, Camera camera, float expectedWidth)
+    {
+        // 표시 Transform에는 확장한 판정 폭이 아닌 원본 Line 폭 유지
+        LineRenderer renderer = visual.GetComponent<LineRenderer>();
+        Require(renderer != null && renderer.positionCount == 2 && Mathf.Abs(visual.transform.localScale.y - line.Width) < 0.001f,
+            "The image FX transform must keep the raw Line width instead of receiving the expanded hit width.");
+        Vector3 first = renderer.GetPosition(0);
+        Vector3 last = renderer.GetPosition(1);
+        if (!renderer.useWorldSpace)
+        {
+            first = renderer.transform.TransformPoint(first);
+            last = renderer.transform.TransformPoint(last);
+        }
+        Require(Vector2.Distance(first, line.StartPoint) < 0.002f && Vector2.Distance(last, line.EndPoint) < 0.002f,
+            "The rendered Line start, end and length must survive hit rectangle widening.");
+
+        // 실제 메시를 선의 수직축에 투영해 표시 배율의 중복 적용 검출
+        Mesh mesh = new Mesh();
+        try
+        {
+            renderer.BakeMesh(mesh, camera, true);
+            Require(mesh.vertexCount >= 4, "The Slash marker must produce actual ribbon geometry.");
+            Vector2 normal = new Vector2(-line.Direction.y, line.Direction.x);
+            float minimum = float.PositiveInfinity;
+            float maximum = float.NegativeInfinity;
+            foreach (Vector3 vertex in mesh.vertices)
+            {
+                float projection = Vector2.Dot(vertex, normal);
+                minimum = Mathf.Min(minimum, projection);
+                maximum = Mathf.Max(maximum, projection);
+            }
+            Require(Mathf.Abs(maximum - minimum - expectedWidth) < 0.005f,
+                $"The actual ribbon width must apply the FX style once: expected={expectedWidth}, actual={maximum - minimum}.");
+        }
+        finally
+        {
+            UnityEngine.Object.DestroyImmediate(mesh);
+        }
+    }
+
+    /// <summary>Slash 각도 전달과 위치에 무관한 반사·직진·실제 피격 경계 확인</summary>
+    private static IEnumerator CheckGoldReflection(GameManager manager, PlayerCharacter player, List<GameObject> fixtures, Action<string> passed)
+    {
+        // 기존 전투 대상과 분리한 작은 Boss 피격 영역과 실제 맵 벽 준비
+        var root = new GameObject("SlashAngleReflectionBoss");
+        fixtures.Add(root);
+        BossCharacter boss = root.AddComponent<BossCharacter>();
+        boss.maxHP = 1000f;
+        boss.InitializeHealth(1000f);
+        AddHitPart(boss, 1);
+        AddHitPart(boss, 2);
+        Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+        Vector2 playerPosition = body.position;
+        float playerHealth = player.HP;
+        bool invulnerable = player.IsInvulnerable;
+        bool paused = manager.IsGameplayPaused;
+        MapManager map = MapManager.Instance;
+        Transform walls = map != null ? map.transform.Find("WorldCollision") : null;
+        BoxCollider2D wall = walls != null ? walls.GetComponentInChildren<BoxCollider2D>() : null;
+        Require(wall != null && map.IsWall(wall) && wall.enabled && wall.gameObject.activeInHierarchy,
+            "Reflection checks require an active BoxCollider already registered in the real map wall cache.");
+        Vector3 wallPosition = wall.transform.position;
+        Quaternion wallRotation = wall.transform.rotation;
+        Vector3 wallScale = wall.transform.localScale;
+        Vector2 wallSize = wall.size;
+        Vector2 wallOffset = wall.offset;
+        int bossHits = 0;
+        Action<DamageInstance> onBossHit = damage => bossHits++;
+        boss.OnDamaged += onBossHit; // 실제 원궤적의 중복 피격 영역이 피해를 한 번 전달하는지 수집
+        try
+        {
+            // 수평·수직·30도·반대 Line 방향을 실제 사각 Query로 전달
+            manager.SetGameplayPaused(true);
+            float[] angles = { 0f, 90f, 30f, 210f };
+            Vector2[] expected = { Vector2.up, Vector2.down, new Vector2(-Mathf.Sqrt(3f) * 0.5f, 0.5f), new Vector2(-Mathf.Sqrt(3f) * 0.5f, 0.5f) };
+            for (int i = 0; i < angles.Length; i++)
+            {
+                Vector2 center = new Vector2(400f, 400f + i * 10f);
+                Vector2 tangent = new Vector2(Mathf.Cos(angles[i] * Mathf.Deg2Rad), Mathf.Sin(angles[i] * Mathf.Deg2Rad));
+                Vector2 normal = new Vector2(-tangent.y, tangent.x);
+                boss.transform.position = center + Vector2.up * 20f;
+                GoldProjectile before = CreateGoldReflection(fixtures, boss, center - tangent * 2f + normal * 0.1f, Vector2.down, 0.2f);
+                GoldProjectile after = CreateGoldReflection(fixtures, boss, center + tangent * 2f - normal * 0.1f, Vector2.down, 0.2f);
+                Vector3 beforePosition = before.transform.position;
+                Vector3 afterPosition = after.transform.position;
+                DamageInstance damage = new DamageInstance(player, 1f, DamageType.Slash, DamageInstance.NextAttackId());
+                var query = new CollisionBox();
+                query.Begin(damage, ~0);
+                Physics2D.SyncTransforms();
+                Require(query.QuerySlash(center, new Vector2(6f, 0.75f), angles[i], player, boss) == 2
+                    && Vector2.Distance(before.Direction, expected[i]) < 0.0001f && Vector2.Distance(after.Direction, expected[i]) < 0.0001f
+                    && before.transform.position == beforePosition && after.transform.position == afterPosition
+                    && before.ReflectionSpeed == 6f && after.ReflectionSpeed == 6f && before.RemainingLifetime >= 1f && after.RemainingLifetime >= 1f,
+                    "Actual Slash query angle must reflect incoming direction equally on both sides of its center without moving the bullet or changing reflection speed.");
+                Require(query.QuerySlash(center, new Vector2(6f, 0.75f), angles[i], player, boss) == 0
+                    && !before.OnSlashed(player, boss, damage, tangent) && !after.OnSlashed(player, boss, damage, -tangent),
+                    "Duplicate Colliders and another Slash must not reflect an already reflected gold bullet again.");
+                query.End();
+                UnityEngine.Object.DestroyImmediate(before.gameObject);
+                UnityEngine.Object.DestroyImmediate(after.gameObject);
+            }
+            passed("F-P07 actual Slash angles reflect horizontal, vertical and 30 degree incidence independently of center position and reversed Line direction");
+
+            // 유도 없이 직진하며 일시정지는 위치와 반사 후 양수 수명도 함께 보존
+            Vector2 origin = new Vector2(400f, 500f);
+            boss.transform.position = origin + new Vector2(4f, 1f);
+            GoldProjectile miss = CreateGoldReflection(fixtures, boss, origin, Vector2.left, 0.2f);
+            Require(miss.Reflect(boss, player, Vector2.up) && miss.Direction == Vector2.right, "A vertical mirror must turn left incidence into rightward flight.");
+            manager.SetGameplayPaused(false);
+            yield return GameSeconds(0.06f); // Boss 중심과 다른 직선 경로를 실제 Update로 비행시키는 동안 관찰
+            Require(miss != null && miss.IsActive && miss.transform.position.x > origin.x && Mathf.Abs(miss.transform.position.y - origin.y) < 0.0001f
+                && miss.Direction == Vector2.right && boss.HP == 1000f, "A reflected bullet must stay straight and miss an off-path Boss instead of homing.");
+            manager.SetGameplayPaused(true);
+            Vector3 frozenPosition = miss.transform.position;
+            float frozenLifetime = miss.RemainingLifetime;
+            boss.transform.position += Vector3.up * 2f;
+            yield return RealSeconds(0.07f); // 목표가 이동해도 정지한 반사탄의 방향·위치·수명은 그대로인지 관찰
+            Require(miss.transform.position == frozenPosition && miss.RemainingLifetime == frozenLifetime && miss.Direction == Vector2.right,
+                "Pause must freeze reflected movement and lifetime while moving the Owner cannot steer its direction.");
+            manager.SetGameplayPaused(false);
+            yield return Until(() => miss == null || !miss.IsActive, "straight reflected finite expiry"); // 빗나간 반사탄이 보존한 양수 수명으로 자연 종료되는지 대기
+            Require(boss.HP == 1000f && bossHits == 0, "An off-path Boss must never receive reflected damage from proximity or target tracking.");
+            passed("F-P07 reflected gold keeps its straight direction and finite lifetime, misses an off-path moving Owner and freezes completely during pause");
+
+            // 원 반경과 작은 Boss 범위 바로 밖의 초고속 경로는 적중으로 확장하지 않음
+            origin += Vector2.up * 5f;
+            boss.transform.position = origin + new Vector2(4f, 0.14f);
+            GoldProjectile fastMiss = CreateGoldReflection(fixtures, boss, origin, Vector2.left, 0.2f);
+            fastMiss.ReflectionSpeed = 10000f;
+            Require(fastMiss.Reflect(boss, player, Vector2.up), "A near-miss fixture must enter reflected straight flight.");
+            yield return Until(() => fastMiss == null || !fastMiss.IsActive || fastMiss.transform.position.x > origin.x + 5f, "fast reflected near miss"); // 고속 경로가 작은 피격 영역 옆을 실제로 지나칠 때까지 대기
+            Require(fastMiss != null && fastMiss.IsActive && boss.HP == 1000f && bossHits == 0,
+                "Continuous reflection collision must not damage a Boss beyond the circle radius and actual hitbox bounds.");
+            fastMiss.Despawn();
+
+            // 초고속 반사는 Player를 통과하되 작은 Boss의 실제 Hitbox를 놓치지 않음
+            origin += Vector2.up * 10f;
+            boss.transform.position = origin + Vector2.right * 4f;
+            Hitbox playerHitbox = null;
+            foreach (Hitbox candidate in player.GetComponentsInChildren<Hitbox>())
+                if (candidate.Owner == player && candidate.IsEnabled) { playerHitbox = candidate; break; }
+            Require(playerHitbox != null && !player.IsHitProtected && !player.IsDodge, "Player immunity must be checked with a real unprotected Player hitbox.");
+            Vector2 hitboxOffset = (Vector2)playerHitbox.Bounds.center - body.position;
+            SetPosition(body, origin + Vector2.right * 2f - hitboxOffset);
+            player.IsInvulnerable = false;
+            bool crossesPlayer = false;
+            foreach (RaycastHit2D hit in Physics2D.CircleCastAll(origin, 0.08f, Vector2.right, 3f))
+                if (hit.collider != null && hit.collider.GetComponent<Hitbox>() == playerHitbox) crossesPlayer = true;
+            Require(crossesPlayer, "The reflected test path must actually cross the live Player hitbox.");
+            GoldProjectile fast = CreateGoldReflection(fixtures, boss, origin, Vector2.left, 0f);
+            fast.ReflectionSpeed = 10000f;
+            Require(fast.Reflect(boss, player, Vector2.up) && fast.RemainingLifetime == 0f, "Zero-lifetime reflection must retain unlimited flight.");
+            Physics2D.SyncTransforms();
+            yield return Until(() => fast == null || !fast.IsActive, "fast reflected Boss hitbox crossing"); // 한 프레임 거리보다 작은 Boss 피격 영역의 연속 경로 접촉 대기
+            Require(boss.HP == 993f && bossHits == 1 && player.HP == playerHealth,
+                "A high-speed reflected circle must hit its allowed Boss once through duplicate hitboxes while passing through Player unharmed.");
+            SetPosition(body, playerPosition);
+
+            // 같은 맵 캐시의 벽을 옮겨 Boss 전·후와 동거리 접촉의 우선순위 확인
+            wall.transform.rotation = Quaternion.identity;
+            wall.transform.localScale = Vector3.one;
+            wall.offset = Vector2.zero;
+            wall.size = new Vector2(0.08f, 4f);
+            for (int i = 0; i < 3; i++)
+            {
+                origin += Vector2.up * 10f;
+                boss.InitializeHealth(1000f);
+                bossHits = 0;
+                boss.transform.position = origin + Vector2.right * (i == 0 ? 2f : 4f);
+                wall.transform.position = origin + Vector2.right * (i == 1 ? 2f : 4f);
+                Physics2D.SyncTransforms();
+                GoldProjectile blocked = CreateGoldReflection(fixtures, boss, origin, Vector2.left, 0f);
+                blocked.ReflectionSpeed = 10000f;
+                Require(blocked.Reflect(boss, player, Vector2.up), "A wall must not reject a valid reflection before its flight starts.");
+                yield return Until(() => blocked == null || !blocked.IsActive, "reflected nearest wall or Boss contact"); // 실제 한 번의 원궤적 질의가 가장 가까운 접촉을 처리할 때까지 대기
+                Require(boss.HP == (i == 0 ? 993f : 1000f) && bossHits == (i == 0 ? 1 : 0),
+                    "Only a Boss strictly before the nearest wall may receive reflected damage; a nearer or tied wall must win.");
+            }
+            passed("F-P07 high-speed reflected gold hits real Boss bounds once, never harms Player and gives nearer or equal-distance walls priority");
+        }
+        finally
+        {
+            // 실제 맵·Player·시간 상태를 되돌리고 임시 Boss 수집 해제
+            boss.OnDamaged -= onBossHit; // 실제 반사 피해 수집 종료
+            wall.transform.SetPositionAndRotation(wallPosition, wallRotation);
+            wall.transform.localScale = wallScale;
+            wall.size = wallSize;
+            wall.offset = wallOffset;
+            SetPosition(body, playerPosition);
+            player.HP = playerHealth;
+            player.IsInvulnerable = invulnerable;
+            manager.SetGameplayPaused(paused);
+            Physics2D.SyncTransforms();
+        }
+    }
+
+    /// <summary>각도·경로 검사에 사용할 실제 Gold 탄과 중복 피격 영역 준비</summary>
+    private static GoldProjectile CreateGoldReflection(List<GameObject> fixtures, BossCharacter boss, Vector2 position, Vector2 direction, float lifetime)
+    {
+        // 표시와 무관한 실제 Gold 수명·이동을 작은 Trigger로 구성
+        var root = new GameObject("SlashAngleGold");
+        fixtures.Add(root);
+        root.transform.position = position;
+        root.AddComponent<CircleCollider2D>().radius = 0.04f;
+        GoldProjectile projectile = root.AddComponent<GoldProjectile>();
+        projectile.Initialize(boss, direction, 0f, lifetime, 7f);
+        projectile.ReflectionSpeed = 6f;
+        projectile.GroggyGain = 0f;
+        projectile.GrantsFever = false;
+        root.AddComponent<Hitbox>();
+        var duplicate = new GameObject("DuplicateGoldCollider");
+        duplicate.transform.SetParent(root.transform, false);
+        duplicate.AddComponent<CircleCollider2D>().radius = 0.04f;
+        duplicate.AddComponent<Hitbox>();
+        Physics2D.SyncTransforms();
+        return projectile;
     }
 
     /// <summary>실제 부위 집계·탄환 제거와 반사·각성 획득의 연결 확인</summary>
@@ -358,6 +666,7 @@ public static class PlayerSlashChecks
         Projectile ordinary = CreateProjectile(fixtures, reflectionBoss, line.StartPoint + Vector2.right * 3f, ProjectileSlashResponse.Destroy, 30f);
         Projectile goldenFirst = CreateProjectile(fixtures, reflectionBoss, line.StartPoint + Vector2.right * 4f, ProjectileSlashResponse.Reflect, 35f);
         Projectile goldenSecond = CreateProjectile(fixtures, reflectionBoss, line.StartPoint + Vector2.right * 4.5f, ProjectileSlashResponse.Reflect, 35f);
+        goldenFirst.Direction = goldenSecond.Direction = Vector2.right;
         Projectile ignored = CreateProjectile(fixtures, reflectionBoss, line.StartPoint + Vector2.right * 5f, ProjectileSlashResponse.Ignore, 100f);
         Action<int> onCompleted = attackId =>
         {
@@ -373,7 +682,12 @@ public static class PlayerSlashChecks
         try
         {
             // 반사 목표를 경로 밖에 두고 각 탄의 마지막 정지 시점 반응 확인
-            reflectionBoss.transform.position = line.EndPoint + Vector2.right * 2f;
+            Physics2D.SyncTransforms();
+            float leftExtent = 0f;
+            foreach (Collider2D shape in reflectionBoss.GetComponentsInChildren<Collider2D>())
+                if (shape.enabled && shape.gameObject.activeInHierarchy)
+                    leftExtent = Mathf.Max(leftExtent, reflectionBoss.transform.position.x - shape.bounds.min.x);
+            reflectionBoss.transform.position = line.EndPoint + Vector2.right * (leftExtent + 0.25f);
             if (bossBody != null) bossBody.position = reflectionBoss.transform.position;
             player.Groggy = 0f;
             player.HP = player.maxHP * 0.5f;
@@ -390,8 +704,10 @@ public static class PlayerSlashChecks
             Require(finalResponses && groggyEvents == 1 && goldenFirst.ReflectionTarget == reflectionBoss && goldenSecond.ReflectionTarget == reflectionBoss,
                 "The final paused query must remove ordinary bullets, reflect gold bullets, ignore configured bullets and trigger one groggy at 100.");
             yield return Until(() => buffs.IsFever, "gold reflection Fever next-frame application"); // 금색 반사의 예약된 각성이 다음 프레임에 적용될 때까지 대기
-            Require(player.HP == player.maxHP * 0.5f + 4f && player.AD == player.basicAD * buffs.AttackMultiplier
-                && player.AS == player.basicAS * buffs.AttackSpeedMultiplier && player.SP == player.basicSP * buffs.MoveSpeedMultiplier,
+            Require(Mathf.Approximately(player.HP, player.maxHP * 0.5f + 4f)
+                && Mathf.Approximately(player.AD, player.basicAD * buffs.AttackMultiplier)
+                && Mathf.Approximately(player.AS, player.basicAS * buffs.AttackSpeedMultiplier)
+                && Mathf.Approximately(player.SP, player.basicSP * buffs.MoveSpeedMultiplier),
                 "Two gold bullets must heal once each but apply one non-stacking set of Fever stats.");
             float healedHealth = player.HP;
             yield return Until(() => reflectionBoss.HP <= bossHealth - 2f, "reflected projectiles reach Boss"); // 반사 탄이 게임 시간으로 Boss까지 이동해 각각 한 번 피해를 주는지 대기
@@ -512,11 +828,12 @@ public static class PlayerSlashChecks
     }
 
     /// <summary>Slash가 소유한 입력·시간·표현·보호가 모두 복구됐는지 확인</summary>
-    private static void AssertRestored(GameManager manager, PlayerInputController input, UIController ui, GameCamera camera, PlayerCharacter player, DrawVfx vfx, bool successFlash = false)
+    private static void AssertRestored(GameManager manager, PlayerInputController input, UIController ui, GameCamera camera, PlayerCharacter player, DrawVfx vfx, bool successEffect = false)
     {
+        SlashPresentationFx effect = player.GetComponent<SlashPresentationFx>();
         Require(!player.IsSlashing && !manager.IsSlashPaused && !input.IsSlashInput && !ui.IsSlashMode && !camera.IsSlashMode
-            && vfx.IsSlashPlaying == successFlash && vfx.SlashObject.activeSelf == successFlash,
-            "Slash completion or interruption must restore all owned state synchronously and show a flash only on success.");
+            && !vfx.IsSlashPlaying && !vfx.SlashObject.activeSelf && !vfx.IsSlashLineVisible && effect.IsSpaceSlashPlaying == successEffect,
+            "Slash completion or interruption must restore all owned state and show energy VFX only on success.");
     }
 
     /// <summary>일반 수신자를 생성하고 여러 Collider를 같은 Character로 연결</summary>

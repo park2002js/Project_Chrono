@@ -1,6 +1,6 @@
 # 보스 6종 정면 시안 R01
 
-**이전 시안 보관본:** 이후 사용자 피드백으로 경비는 [R04](../guard-r04/README.md), 군용은 [R03](../military-r03/README.md), 뱀은 [R04](../worm-r04/README.md), 연구자는 [R02](../researcher-r02/README.md)를 사용한다. 꽃은 2D 제작 대상에서 제외했으며 사용자는3D 모델 import를 의도했다. 기존 꽃 파일은 이전 제작 이력으로 남긴 것이고 현재 채택 자산이 아니다. [현재 수정 모음](../revisions-r04/README.md)과 GAME_SPEC3.3.12를 따른다.
+**이전 시안 보관본:** 이후 사용자 피드백으로 경비는 [R05](../guard-r05/README.md), 군용은 등 수정을 제거하고 몸통을 보강한 [8방향 R02](../military-8dir-r02/README.md), 뱀은 [R04](../worm-r04/README.md), 연구자는 [R02](../researcher-r02/README.md)를 사용한다. 꽃은 2D 제작 대상에서 제외했으며 사용자는3D 모델 import를 의도했다. 기존 꽃 파일은 이전 제작 이력으로 남긴 것이고 현재 채택 자산이 아니다. [현재 정면 전체 비교](../lineup-r06/README.md)와 GAME_SPEC3.3.12를 따른다.
 
 2026-11-16 제작. 화면 아래(S)를 바라보는 탑다운 정면 정지 이미지다. Aseprite에서 실제 1px 단위로 제작했으며 각 원본에는 편집 가능한 부위 레이어와 `Front_S` 1프레임 태그가 있다. 배경과 바닥 그림자는 투명하다.
 

@@ -14,6 +14,7 @@ public class PlayerCharacter : Character
     public SkillController Skills { get; private set; } // Draw 편집·Line 수명과 Slash 실행·전환을 담당할 자기 능력 컴포넌트
     public Line? CurrentLine; // SkillController가 확정·해제하고 외부가 조회할 현재 경로의 유일한 원본
     public CharacterBuff Buffs { get; private set; } // 각성의 적용·기간·수치 복구를 담당할 자기 효과 컴포넌트
+    public PlayerFeedback Feedback { get; private set; } // 자기 공격·적중·걷기의 소리와 피격 섬광 담당
     public PlayerSpawner Spawner { get; private set; } // 같은 인스턴스의 배치·부활과 활성 체크포인트를 관리할 자기 컴포넌트
     public bool IsSlashing => Skills != null && Skills.IsSlashing; // 일반 이동·공격·대시를 막을 Slash 실행 상태
     public override bool IsInvulnerable { get => base.IsInvulnerable || IsSlashing || IsSpawning || IsInteracting; set => base.IsInvulnerable = value; } // 외부 무적과 능력·생성·상호작용의 전면 보호 합산
@@ -31,10 +32,11 @@ public class PlayerCharacter : Character
     public Vector2 MoveDirection; // 반대 입력 상쇄·대각 정규화를 마친 이동 의도
     public Vector2 AimDirection = Vector2.down; // 마지막 유효 커서 방향, 커서가 중심이면 기존 값 유지
     public Vector2 AimWorldPosition; // 입력 측에서 전달한 커서의 월드 좌표
-    public float DashSpeed = 14f; // 대시 중 초당 이동 거리의 초기 튜닝값
-    public float DashDuration = 0.18f; // 대시 이동량을 계산할 시간의 초기 튜닝값(초)
-    public float DodgeDuration = 0.16f; // Hitbox 피해 회피 상태를 유지할 독립 시간(초)
-    public float InputBlockDuration = 0.24f; // 대시 시작 뒤 일반 이동·새 행동을 잠글 독립 시간(초)
+    public float DashSpeed = 24f; // 원작 Player 프리팹의 대시 시작 속도
+    public float DashDeceleration = 87f; // 원작 대시의 초당 감속량
+    public float DashDuration = 0.14f; // 원작 Player 프리팹의 대시 이동 시간
+    public float DodgeDuration = 0.1f; // 대시 시작부터 Hitbox 피해를 회피할 독립 시간
+    public float InputBlockDuration = 0.14f; // 대시가 일반 이동을 대체하는 동안의 입력 적용 제한
     public float DashCooldown = 0.65f; // 대시 시작부터 다음 사용까지의 독립 재사용 시간(초)
     public Vector2 DashDirection; // 대시 시작 순간 정규화해 고정한 이동 방향
     public float DashRemaining; // 대시 이동량을 계산할 남은 게임 시간
@@ -50,6 +52,7 @@ public class PlayerCharacter : Character
     private CharacterRendering rendering; // 조준 방향과 계산한 이동 의도를 모션으로 표시할 컴포넌트
     private AttackController attack; // 허용된 공격의 애니메이션·판정·피해 적용 담당
     private bool attackHeld; // 입력 계층에서 전달한 공격 버튼 유지 의도
+    private Vector2? cutsceneMoveTarget; // 일반 입력과 분리해 컷씬 권한으로만 이동할 목표 위치
     private bool hitProtectionActive; // 보호 진입을 알린 뒤 종료 알림이 필요한 상태
     private double hitProtectionEndsAt; // 정지 중 흐르지 않는 게임 시각으로 정한 보호 만료 기한
     private float hitProtectionTotal; // 이번 피격에서 고정한 보호 길이이며 중간 설정 변경과 구분
@@ -62,6 +65,7 @@ public class PlayerCharacter : Character
         // 입력 의도를 실행하고 표시할 자기 컴포넌트 확보
         base.Awake();
         Buffs = GetComponent<CharacterBuff>();
+        Feedback = GetComponent<PlayerFeedback>();
         Spawner = GetComponent<PlayerSpawner>();
         body = GetComponent<PlayerBodyController>();
         rendering = GetComponent<CharacterRendering>();
@@ -101,23 +105,31 @@ public class PlayerCharacter : Character
         if (!CanMove)
         {
             SetMoveInput(Vector2.zero);
-            rendering.SetMovement(Vector2.zero, AimDirection);
             if (!IsInitialized || IsDead || IsCutScene)
                 CancelDash();
             if (!IsInitialized)
                 CancelAttack();
+            if (IsCutScene && IsInitialized && !IsDead && !IsSpawning && Time.timeScale > 0f && cutsceneMoveTarget.HasValue)
+                MoveInCutscene();
+            else
+            {
+                rendering.SetMovement(Vector2.zero, AimDirection);
+                if (Feedback != null) Feedback.AddWalkingMovement(Vector2.zero);
+            }
             return;
         }
 
         // 커서가 중심이면 이전 방향을 유지하고 몸체·무기에 같은 방향 적용
         Vector2 direction = AimWorldPosition - (Vector2)transform.position;
-        if (direction.sqrMagnitude > 0.000001f)
+        if (IsAttacking)
+            AimDirection = attack.AttackDirection;
+        else if (direction.sqrMagnitude > 0.000001f)
             AimDirection = direction.normalized;
         rendering.SetFacing(AimDirection);
         attack.UpdateAim(AimDirection);
 
-        // 입력 유지 중에도 캐릭터가 새 공격의 허용 상태와 조준 좌표 결정
-        if (attackHeld)
+        // 홀드와 허용 구간의 클릭 예약은 현재 타가 끝난 뒤 최신 조준으로 한 번 시작
+        if (!IsAttacking && (attackHeld || attack.HasBufferedAttack))
             ApplyAttack();
 
         // 한 Update 안에서 대시·입력 잠금 종료 전후의 시간만큼 각각 이동량 계산
@@ -126,9 +138,18 @@ public class PlayerCharacter : Character
         float moveTime = Mathf.Max(0f, deltaTime - Mathf.Max(DashRemaining, InputBlockRemaining));
         float moveMultiplier = IsAttacking ? Mathf.Clamp01(attack.AttackMoveMultiplier) : 1f;
         Vector2 moveDisplacement = MoveDirection * Mathf.Max(0f, SP) * moveMultiplier * moveTime;
-        Vector2 displacement = DashDirection * DashSpeed * dashTime + moveDisplacement;
+
+        // 원작처럼 대시 중에는 남은 공격 전진 시간만 소모하고 해당 구간의 변위는 대시로 대체
+        if (dashTime > 0f) attack.GetAttackDisplacement(dashTime);
+        Vector2 attackDisplacement = attack.GetAttackDisplacement(deltaTime - dashTime);
+        Vector2 displacement = GetDashDisplacement(dashTime) + moveDisplacement + attackDisplacement;
         body.Move(displacement);
         rendering.SetMovement(moveDisplacement, AimDirection);
+
+        // 강제 전진·대시가 섞이지 않은 프레임의 실제 걷기만 발소리에 전달
+        if (Feedback != null)
+            Feedback.AddWalkingMovement(!IsAttacking && dashTime <= 0f && attackDisplacement.sqrMagnitude <= 0.0000001f
+                && moveDisplacement.sqrMagnitude > 0.0000001f ? body.ActualMovement : Vector2.zero);
 
         // 같은 Update에서 캐릭터가 소유한 행동 시간 진행
         DashRemaining = Mathf.Max(0f, DashRemaining - deltaTime);
@@ -139,6 +160,7 @@ public class PlayerCharacter : Character
 
     private void OnDisable()
     {
+        SetCutsceneMoveTarget(null);
         CancelInteraction();
         ResetHitProtection();
         CancelDash();
@@ -168,6 +190,28 @@ public class PlayerCharacter : Character
     public void SetMoveInput(Vector2 direction)
     {
         MoveDirection = Vector2.ClampMagnitude(direction, 1f);
+    }
+
+    /// <summary>컷씬의 실제 이동 목표를 지정하거나 지우며 사용자 입력과 별도로 보관</summary>
+    public void SetCutsceneMoveTarget(Vector2? destination)
+    {
+        if (destination.HasValue && (float.IsNaN(destination.Value.x) || float.IsInfinity(destination.Value.x)
+            || float.IsNaN(destination.Value.y) || float.IsInfinity(destination.Value.y)))
+            throw new ArgumentOutOfRangeException(nameof(destination));
+        cutsceneMoveTarget = IsCutScene ? destination : null;
+        if (cutsceneMoveTarget.HasValue)
+        {
+            // 로딩 아래에서도 몸체·검을 먼저 정렬해 첫 표시부터 입장 방향 유지
+            Vector2 direction = cutsceneMoveTarget.Value - (Vector2)transform.position;
+            if (direction.sqrMagnitude > 0.000001f) AimDirection = direction.normalized;
+            if (rendering != null) rendering.SetFacing(AimDirection);
+            if (attack != null) attack.UpdateAim(AimDirection);
+        }
+        else
+        {
+            if (rendering != null) rendering.SetMovement(Vector2.zero, AimDirection);
+            if (Feedback != null) Feedback.AddWalkingMovement(Vector2.zero);
+        }
     }
 
     /// <summary>화면 입력 계층이 변환한 커서 월드 좌표 보관</summary>
@@ -208,7 +252,7 @@ public class PlayerCharacter : Character
         // 행동 상태·입력 잠금·재사용 제한과 대시 설정을 캐릭터에서 확인
         if (!isActiveAndEnabled || !CanMove || IsDrawing || IsSlashing || IsAttacking || body == null || !body.isActiveAndEnabled ||
             IsDashing || IsInputBlocked || DashCooldownRemaining > 0f ||
-            !ValidActionValue(DashSpeed, false) || !ValidActionValue(DashDuration, false) ||
+            !ValidActionValue(DashSpeed, false) || !ValidActionValue(DashDeceleration, true) || !ValidActionValue(DashDuration, false) ||
             !ValidActionValue(DodgeDuration, true) || !ValidActionValue(InputBlockDuration, true) || !ValidActionValue(DashCooldown, true))
             return false;
 
@@ -243,6 +287,7 @@ public class PlayerCharacter : Character
     /// <summary>재배치 전에 이동 의도와 대시의 모든 시간을 초기화</summary>
     public void ResetMotion()
     {
+        SetCutsceneMoveTarget(null);
         CancelInteraction();
         ResetHitProtection();
         MoveDirection = Vector2.zero;
@@ -395,6 +440,41 @@ public class PlayerCharacter : Character
     {
         if (Skills != null)
             Skills.ResetSkills();
+    }
+
+    /// <summary>컷씬 목표까지 일반 보행 속도로 이동하고 같은 충돌·몸체·발소리 경로 적용</summary>
+    private void MoveInCutscene()
+    {
+        // 조작 권한이 잠겨 있어도 연출 담당이 지정한 목표 방향으로만 조준
+        Vector2 delta = cutsceneMoveTarget.Value - (Vector2)transform.position;
+        if (delta.sqrMagnitude > 0.000001f) AimDirection = delta.normalized;
+        rendering.SetFacing(AimDirection);
+        attack.UpdateAim(AimDirection);
+
+        // 목표를 지나치지 않도록 변위를 제한하고 실제 충돌 결과로 보행 표시
+        Vector2 movement = Vector2.ClampMagnitude(delta, Mathf.Max(0f, SP) * Time.deltaTime);
+        body.Move(movement);
+        rendering.SetMovement(movement, AimDirection);
+        if (Feedback != null) Feedback.AddWalkingMovement(body.ActualMovement);
+    }
+
+    /// <summary>원작 감속 곡선을 구간 적분해 프레임 간격과 무관한 대시 변위 계산</summary>
+    private Vector2 GetDashDisplacement(float dashTime)
+    {
+        // 대시 종료 경계를 넘는 시간과 속도가0이 된 뒤의 역방향 이동 제외
+        if (dashTime <= 0f) return Vector2.zero;
+        float from = Mathf.Max(0f, DashDuration - DashRemaining);
+        float to = from + dashTime;
+        if (DashDeceleration > 0f)
+        {
+            float stoppedAt = DashSpeed / DashDeceleration;
+            from = Mathf.Min(from, stoppedAt);
+            to = Mathf.Min(to, stoppedAt);
+        }
+
+        // v(t)=초기속도-감속*t의 면적만 적용하고 일반 이동속도 배율은 사용하지 않음
+        float distance = Mathf.Max(0f, (DashSpeed - DashDeceleration * (from + to) * 0.5f) * (to - from));
+        return DashDirection * distance;
     }
 
     /// <summary>이동·보호에 사용할 행동 설정이 유한하며 허용된 범위인지 확인</summary>

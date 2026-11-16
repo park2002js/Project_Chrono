@@ -3,48 +3,63 @@
   "files": [
     {
       "path": "aseprite/connected-rooms.aseprite",
-      "bytes": 81953,
-      "sha256": "079bb3a78825ed4bcff39370c988e3a816a1a00e810f665abb82071d59920091"
+      "bytes": 82614,
+      "sha256": "96b81d696e492d5e7a275d821518a15884ab1a73eba957b462d1b12cadc044cb"
     },
     {
       "path": "aseprite/environment-tileset.aseprite",
-      "bytes": 2005,
-      "sha256": "5b69d33d406c36bed4d0ddaca2a9a6414f7a58a7db846304e5a83c197e0eb579"
+      "bytes": 2039,
+      "sha256": "8b17f86df1e853b4e829f1ca526157881f91afb2ca7d579f9274c77905d58797"
     },
     {
       "path": "aseprite/exit-rising-slate.aseprite",
-      "bytes": 21040,
-      "sha256": "376a73dbc4536f0aaa94e7f3521b4b39c30d53436293be1aa6f7733a81bca6f3"
+      "bytes": 19781,
+      "sha256": "bb369d15df499cab8f91781e9ce0facff4e821e879737eb85fd24e75e5da1cf6"
     },
     {
       "path": "aseprite/sliding-gate.aseprite",
-      "bytes": 27440,
-      "sha256": "9e0175e9ad9cc14ddb798205c863bb5b5465dd317aef3f334d6bcbe78cbd4734"
+      "bytes": 26652,
+      "sha256": "5132d88f3cf116a71ac00f64e53d4ef4bc2a204e21c366fcc7ac7b5d767f95b2"
     },
     {
       "path": "aseprite/straight-corridor.aseprite",
-      "bytes": 7392,
-      "sha256": "92fea3a4f435b90b1f59c25aff47f97a8882cb91eeed1223a5bc0393497454b4"
+      "bytes": 7113,
+      "sha256": "cd28001f883444c66fb55091703909badb373f14020108f327f36effedba88c5"
+    },
+    {
+      "path": "palette.json",
+      "bytes": 9135,
+      "sha256": "8b8777d2b4b3cd975ad7bfe4a28d0275729923353f96f47752931d1ac93bc10e"
     },
     {
       "path": "preview/connected-rooms.png",
-      "bytes": 39641,
-      "sha256": "0653ed61fc158bbc7b41317bd1ffca1c8aae5c91ce0970d95ff272d79155de3d"
+      "bytes": 41038,
+      "sha256": "cf3c12ce305f7194386bbad81c890132db6d1af1cec34514efa0fb401dd72504"
     },
     {
       "path": "preview/exit-closed.png",
-      "bytes": 21016,
-      "sha256": "8c6dee94482f5c361c31f8158086260f00ca326df6635d624bdf1ae64b4ec760"
+      "bytes": 17509,
+      "sha256": "f7547f769537870fe591fb6d9bf1629e414502970ca2dad2b8c26f3062907555"
     },
     {
       "path": "preview/exit-cycle.gif",
-      "bytes": 252459,
-      "sha256": "03e749693d09b1d4431235eb861226a2a0051bc2c9c145609d354fb538086075"
+      "bytes": 1935808,
+      "sha256": "aa0d3d3b3a602576145e3119cd5f046c96bde5c6dc7dc3afd4955e57cf970ef8"
+    },
+    {
+      "path": "preview/palette-before-after.png",
+      "bytes": 19971,
+      "sha256": "0f0ef38e7093fa4c8649ade0d9ac3c3a3203771316ae3ecdf37b6776d625096a"
+    },
+    {
+      "path": "preview/palette-vfx-1920x1080.png",
+      "bytes": 20858,
+      "sha256": "6aa1cd8dc560e65225594852f32ee65f92a561a1f7c1b51afb9f1267b3f9d371"
     },
     {
       "path": "README.md",
-      "bytes": 4664,
-      "sha256": "6c02f93d01ad95fa3cc4e71ca0282e39a5a94e84fa2544b59bbad5b97a083c35"
+      "bytes": 7099,
+      "sha256": "dd3831e88d13807843538a0870a603a441d04e5812abebab5491e73ad2cb2355"
     },
     {
       "path": "unity/entrance-animation.json",
@@ -53,13 +68,13 @@
     },
     {
       "path": "unity/entrance-sheet.png",
-      "bytes": 5459,
-      "sha256": "d5da5eefb04b0ee3267ca3f302dab9fcd8c5a530ef1f2889c5ae35aa5a04f4cc"
+      "bytes": 5354,
+      "sha256": "4f0fa51f247b47b220bf2b261dba7760282c65abb6e2aa652e358ca6519ce320"
     },
     {
       "path": "unity/environment-tileset.png",
-      "bytes": 2386,
-      "sha256": "f9d4b6e37fa715f31078d759952274703cf68231873d5185ed81d0472b91fdb3"
+      "bytes": 2282,
+      "sha256": "547bb3be64cb8cf00be1fcb0f8ff82285ccdc5c80b1f184f20a34050d7403a9f"
     },
     {
       "path": "unity/exit-animation.json",
@@ -68,8 +83,8 @@
     },
     {
       "path": "unity/exit-sheet.png",
-      "bytes": 10183,
-      "sha256": "d3f66488f8ab0466675914e66c638542d67262dc834e4496bdd28f8c548d0589"
+      "bytes": 10280,
+      "sha256": "7e3c6015580906de21fc9ed418e76e1e495b46a89e90936400fd1215fdb517fc"
     },
     {
       "path": "unity/layout.json",
@@ -97,6 +112,41 @@
       "sha256": "9fda814397494d30ea791b9747255a03a56dce8a6f91c8c4236d3c79a1affcf4"
     },
     {
+      "path": "validation/palette-r01.json",
+      "bytes": 5019,
+      "sha256": "f513c7646ba9d724fcf36f5816b7f66533b201c0389f8b151964398bd98f7202"
+    },
+    {
+      "path": "validation/PaletteImport.json",
+      "bytes": 6644,
+      "sha256": "ea5486f50f9e51a31d69967c6036b3b142c26ca3805d93931f47ea2a157f2f08"
+    },
+    {
+      "path": "validation/PalettePublish.json",
+      "bytes": 54487,
+      "sha256": "41b16a776d9ef1b734a961ba6c8d26782fbd03178674226a4b0be508d6bccd91"
+    },
+    {
+      "path": "validation/PaletteR02Import.json",
+      "bytes": 12729,
+      "sha256": "85ae546abf440126782c6454173c3a8119e1479ef0be1181b6d65a266d0ae870"
+    },
+    {
+      "path": "validation/PaletteR02Publish.json",
+      "bytes": 65541,
+      "sha256": "e3d7d65014879ed4b552cca3cf5c745fafa9d38ee0b9363a17410bf3cd2ad628"
+    },
+    {
+      "path": "validation/PaletteR02Review.json",
+      "bytes": 7537,
+      "sha256": "e85ece71504aef5b1946a67cda7925f4ffd5d7073ccccd4cb967b0c349d0cc77"
+    },
+    {
+      "path": "validation/PaletteReview.json",
+      "bytes": 10637,
+      "sha256": "512447252ffa9204ad1b6bab0ad8a606b7033d4a01e0a867190a72b32626a6e2"
+    },
+    {
       "path": "validation/UnityImport.json",
       "bytes": 26474,
       "sha256": "bde0365be55b56bc9ab7e99795d9b275e017d16aed1d1fae0936aec542e6f9c1"
@@ -109,5 +159,27 @@
   "unity_version": "6000.3.21f1",
   "resizable": true,
   "current_dimensions_are_permanent": false,
-  "game_scene_boss_collision_integration": "not performed"
+  "game_scene_boss_collision_integration": "Added after initial packaging; current integration is recorded in docs/GAME_SPEC.md 3.3.10 and subsequent sections. Preserved, not regenerated or play-tested in this palette pass.",
+  "palette_revision": "palette-r02-c",
+  "palette_updated": "2026-11-16",
+  "geometry_revision": "corridor-r15",
+  "palette_import_observation": "C sources and Unity PNGs match. No Editor.log growth after copy; actual automatic import and gameplay rendering remain unconfirmed.",
+  "historical_validation": [
+    "validation/art-review.json",
+    "validation/art-preparation.json",
+    "validation/UnityImport.json",
+    "validation/cleanup.json"
+  ],
+  "palette_validation": [
+    "validation/PaletteR02Review.json",
+    "validation/PaletteR02Publish.json",
+    "validation/PaletteR02Import.json"
+  ],
+  "user_selected": "C compromise",
+  "historical_palette_r01": [
+    "validation/PaletteReview.json",
+    "validation/PalettePublish.json",
+    "validation/PaletteImport.json",
+    "validation/palette-r01.json"
+  ]
 }

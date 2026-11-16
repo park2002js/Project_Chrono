@@ -28,6 +28,7 @@ public static class PlayerAttackChecks
         float cooldown = attack.AttackCooldown;
         float comboDuration = attack.ComboDuration;
         float moveMultiplier = attack.AttackMoveMultiplier;
+        float attackDashSpeed = attack.AttackDashSpeed;
         Vector2 boxSize = attack.HitboxSize;
         Vector2 boxOffset = attack.HitboxOffset;
         LayerMask targetMask = attack.TargetMask;
@@ -115,10 +116,13 @@ public static class PlayerAttackChecks
             Require(fastElapsed < normalElapsed * 0.8f && Mathf.Abs(target.HP - 980f) < 0.001f, $"AS must speed the swing and each new attack must read current AD: normal={normalElapsed}, fast={fastElapsed}, HP={target.HP}.");
             Require(normalCooldown > 0f && fastCooldown > 0f && fastCooldown < normalCooldown * 0.8f, "AS must scale the recovery cooldown as well as the swing.");
             player.CancelAttack();
+
+            // 수동 이동 배율만 측정하도록 별도 공격 전진을 이 구간에서 제외
             player.AS = 1f;
             player.SP = 4f;
             attack.AttackDuration = 0.8f;
             attack.AttackMoveMultiplier = 0.25f;
+            attack.AttackDashSpeed = 0f;
             Start(player, body.position + Vector2.up);
             player.SetMoveInput(Vector2.right);
             Require(!player.ApplyDash(), "Dash must not cancel an active attack.");
@@ -128,9 +132,10 @@ public static class PlayerAttackChecks
             float elapsed = Time.time - beganAt;
             float expected = player.SP * attack.AttackMoveMultiplier * elapsed;
             float tolerance = player.SP * Mathf.Max(Time.deltaTime, Time.fixedDeltaTime) * 2f + 0.02f;
-            Require(player.IsAttacking && Mathf.Abs(Vector2.Distance(begin, body.position) - expected) < tolerance, "Character must calculate slowed attack movement through the normal Body queue.");
+            Require(player.IsAttacking && Mathf.Abs(Vector2.Distance(begin, body.position) - expected) < tolerance, "Character must apply only the configured input movement through Body.Move when separate attack advance is disabled.");
             player.SetMoveInput(Vector2.zero);
             player.CancelAttack();
+            attack.AttackDashSpeed = attackDashSpeed;
             player.SP = 0f;
             passed("F-P03 current AD and AS control damage and timing while Character applies slowed movement and rejects Dash");
 
@@ -280,8 +285,8 @@ public static class PlayerAttackChecks
                 Require(closedDuringDamage && !attack.IsAttacking && !attack.HitBox.IsActive && attack.HitBox.HitTargets.Count == 0 && attack.ComboIndex == -1 && attack.AttackCooldownRemaining == 0f, "Query-time cutscene entry must synchronously clear the action and remain cancelled after Attack.Update returns from its query.");
                 float idleAngle = Mathf.Atan2(attack.AimDirection.y, attack.AimDirection.x) * Mathf.Rad2Deg;
                 Require(Mathf.Abs(Mathf.DeltaAngle(attack.WeaponPivot.eulerAngles.z, idleAngle)) < 0.01f
-                    && attack.WeaponMotion.localPosition == Vector3.zero
-                    && Mathf.Abs(Mathf.DeltaAngle(attack.WeaponMotion.localEulerAngles.z, 0f)) < 0.01f,
+                    && attack.WeaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle")
+                    && Mathf.Approximately(attack.WeaponAnimator.speed, 1f),
                     "Attack.Update must not restore the cancelled swing after a damage callback interrupts it.");
             }
             finally
@@ -349,6 +354,7 @@ public static class PlayerAttackChecks
             attack.AttackCooldown = cooldown;
             attack.ComboDuration = comboDuration;
             attack.AttackMoveMultiplier = moveMultiplier;
+            attack.AttackDashSpeed = attackDashSpeed;
             attack.HitboxSize = boxSize;
             attack.HitboxOffset = boxOffset;
             attack.TargetMask = targetMask;

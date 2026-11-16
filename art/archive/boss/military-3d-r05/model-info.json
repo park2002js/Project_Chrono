@@ -1,0 +1,661 @@
+{
+  "name": "Military robot OBJ study R05",
+  "reference": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-8dir-r02\\png\\S.png",
+  "referenceSha256": "90ff8a0f2cf780d2bbf8a9fd8ece094ddfd1d3e98689c5d150cd6c5bcf0db636",
+  "source": "military-8dir-r02 front S",
+  "upAxis": "Y",
+  "frontAxis": "+Z",
+  "units": "arbitrary model units",
+  "groundY": 0,
+  "dimensions": [
+    3.9678,
+    3.42,
+    3.3819999999999997
+  ],
+  "bounds": {
+    "min": [
+      -1.9839,
+      0.0,
+      -2.2929999999999997
+    ],
+    "max": [
+      1.9839,
+      3.42,
+      1.089
+    ]
+  },
+  "objectCount": 95,
+  "vertexCount": 13510,
+  "triangleCount": 26676,
+  "materialCount": 21,
+  "objects": [
+    {
+      "name": "Torso_Rectangular_Armor",
+      "vertices": 386,
+      "triangles": 768,
+      "smooth": true
+    },
+    {
+      "name": "Torso_Lower_Armor_Band",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Pelvis_Joint",
+      "vertices": 182,
+      "triangles": 360,
+      "smooth": true
+    },
+    {
+      "name": "Pelvis_Front_Plate",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Belly_Inset_Surround",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Belly_Sand_Insert",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Head_Armor",
+      "vertices": 386,
+      "triangles": 768,
+      "smooth": true
+    },
+    {
+      "name": "Head_Visor_Frame",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Head_Visor_Inset",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_1_Recess",
+      "vertices": 98,
+      "triangles": 192,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_1_Red",
+      "vertices": 98,
+      "triangles": 192,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_1_Highlight",
+      "vertices": 26,
+      "triangles": 48,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_2_Recess",
+      "vertices": 98,
+      "triangles": 192,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_2_Red",
+      "vertices": 98,
+      "triangles": 192,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_2_Highlight",
+      "vertices": 26,
+      "triangles": 48,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_3_Recess",
+      "vertices": 98,
+      "triangles": 192,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_3_Red",
+      "vertices": 98,
+      "triangles": 192,
+      "smooth": true
+    },
+    {
+      "name": "Face_Slit_3_Highlight",
+      "vertices": 26,
+      "triangles": 48,
+      "smooth": true
+    },
+    {
+      "name": "Head_Chin_Trim",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Socket_L",
+      "vertices": 114,
+      "triangles": 224,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Armor_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Sand_Insert_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Bolt_L_1",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Bolt_L_2",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Arm_Piston_L",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Arm_Upper_Collar_L",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Arm_Lower_Collar_L",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Elbow_Joint_L",
+      "vertices": 114,
+      "triangles": 224,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Wrist_L",
+      "vertices": 50,
+      "triangles": 96,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Casing_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Top_Armor_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Rocket_Tube_1_L",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Rocket_Tube_2_L",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Sand_Stripe_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Dorsal_Plate_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Dorsal_Amethyst_L",
+      "vertices": 6,
+      "triangles": 8,
+      "smooth": false
+    },
+    {
+      "name": "Torso_Service_Marker_L",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Leg_Servo_L",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Leg_Piston_Trim_L",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Knee_Joint_L",
+      "vertices": 114,
+      "triangles": 224,
+      "smooth": true
+    },
+    {
+      "name": "Boot_Sole_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Boot_Armor_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Boot_Toe_Sand_Band_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Socket_R",
+      "vertices": 114,
+      "triangles": 224,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Armor_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Sand_Insert_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Bolt_R_1",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Shoulder_Bolt_R_2",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Arm_Piston_R",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Arm_Upper_Collar_R",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Arm_Lower_Collar_R",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Elbow_Joint_R",
+      "vertices": 114,
+      "triangles": 224,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Wrist_R",
+      "vertices": 50,
+      "triangles": 96,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Casing_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Top_Armor_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Rocket_Tube_1_R",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Rocket_Tube_2_R",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Launcher_Sand_Stripe_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Dorsal_Plate_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Hand_Dorsal_Amethyst_R",
+      "vertices": 6,
+      "triangles": 8,
+      "smooth": false
+    },
+    {
+      "name": "Torso_Service_Marker_R",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Leg_Servo_R",
+      "vertices": 34,
+      "triangles": 64,
+      "smooth": true
+    },
+    {
+      "name": "Leg_Piston_Trim_R",
+      "vertices": 56,
+      "triangles": 108,
+      "smooth": true
+    },
+    {
+      "name": "Knee_Joint_R",
+      "vertices": 114,
+      "triangles": 224,
+      "smooth": true
+    },
+    {
+      "name": "Boot_Sole_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Boot_Armor_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Boot_Toe_Sand_Band_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Mount_Pad_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Mount_Pad_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Side_L",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Side_R",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Front",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Rear",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Base",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Rear_Strap_1",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Rear_Strap_2",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    },
+    {
+      "name": "Back_Rocket_Tube_1_1",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_1_1",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_1_2",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_1_2",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_1_3",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_1_3",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_2_1",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_2_1",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_2_2",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_2_2",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_2_3",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_2_3",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_3_1",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_3_1",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_3_2",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_3_2",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Rocket_Tube_3_3",
+      "vertices": 146,
+      "triangles": 288,
+      "smooth": true
+    },
+    {
+      "name": "Back_Box_Deck_3_3",
+      "vertices": 112,
+      "triangles": 224,
+      "smooth": false
+    },
+    {
+      "name": "Back_Box_Service_Label",
+      "vertices": 218,
+      "triangles": 432,
+      "smooth": true
+    }
+  ],
+  "backCrystal": false,
+  "handCrystals": 2,
+  "handCrystalLocation": "outward-facing dorsal side of each launcher hand",
+  "torsoShape": "rectangular",
+  "backLauncherTubes": 9,
+  "backGrid": [
+    3,
+    3
+  ],
+  "handLauncherTubes": 4,
+  "handTubesPerSide": 2,
+  "torsoWidth": 2.2,
+  "backLauncherShape": "rectangular box",
+  "backLauncherWidth": 1.76,
+  "backToTorsoWidthRatio": 0.8,
+  "launcherColor": "354333",
+  "torsoColor": "74834e",
+  "handCasingWidth": 0.7,
+  "previousHandCasingWidth": 0.82,
+  "handCasingCenterXZ": [
+    [
+      -1.51,
+      0.4
+    ],
+    [
+      1.51,
+      0.4
+    ]
+  ],
+  "armPistonCenterXZ": [
+    [
+      -1.51,
+      0.4
+    ],
+    [
+      1.51,
+      0.4
+    ]
+  ],
+  "handLauncherDirection": [
+    0,
+    -1,
+    0
+  ],
+  "backLauncherDirection": [
+    0,
+    1,
+    0
+  ],
+  "tubeCountStatus": "User specified 3x3 on back and two bores per hand; opening directions are a design interpretation.",
+  "rigged": false,
+  "animated": false,
+  "UVs": false,
+  "inferredGeometry": "Depth and rear volumes are an interpretation of the supplied front sprite.",
+  "files": [
+    "military-robot.obj",
+    "military-robot.mtl"
+  ]
+}

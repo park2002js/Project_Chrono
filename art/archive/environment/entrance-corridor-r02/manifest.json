@@ -1,0 +1,319 @@
+{
+  "date": "2026-11-16",
+  "revision": "r02",
+  "supersedes": "art/archive/environment/entrance-corridor-r01",
+  "purpose": "Keep the existing six-row map extension, start the whole Player below the fixed stop-centered camera, and hand control over at the normal camera target center",
+  "status": "Final isolated Unity Play verification complete; Map marker published with original GUID; original direct Play/build not executed",
+  "authoring": {
+    "path": "project/Assets/Editor/MapEntranceSetup.cs",
+    "archive": "authoring/MapEntranceSetup.cs",
+    "sha256": "0c3ca67eee7e448536579ef85769a676d095be3b04c0dec2d0d67b1793c69edc",
+    "metaGuid": "09d32b3e00524cddbc921ac662028bcf",
+    "metaSha256": "3ddfc26e7d08c01de08fe9c63022b4690d74da0e1da1a9adc3bd2a732bcc4b1a",
+    "change": "Spawn offset only: SouthExtensionRows + 1 = 7world, plus related explanatory comments",
+    "apiUnchanged": [
+      "Apply()",
+      "ApplyToPrefab(GameObject)",
+      "ApplyToCameraPrefab(GameObject)"
+    ]
+  },
+  "geometry": {
+    "unitsPerCell": 1,
+    "pixelsPerUnit": 16,
+    "addedRowsPreserved": 6,
+    "addedCellsPreserved": 216,
+    "changedBoundaryCountPreserved": 5,
+    "worldFloorMinimumY": -6,
+    "spawnWorld": [
+      14.5,
+      -5.6
+    ],
+    "stopWorld": [
+      14.5,
+      1.4
+    ],
+    "automaticWalkDistance": 7,
+    "cameraFixedTarget": "EntranceStopPoint during entrance; normal Player root after arrival",
+    "cameraTargetHandoffViewport": [
+      0.5,
+      0.5
+    ],
+    "cameraDefaultZoomPreserved": 5.625,
+    "fixedCameraBottomY": -4.225,
+    "fixedCameraTopY": 7.025,
+    "cameraVerticalLimitsPreserved": [
+      -6,
+      77
+    ],
+    "followDurationPreserved": 0.1283,
+    "bodySpriteFullRectPixels": [
+      20,
+      20
+    ],
+    "bodySpritePivot": [
+      0.5,
+      0
+    ],
+    "bodySpriteRelativeYRange": [
+      0,
+      1.25
+    ],
+    "bodyAtSpawnYRange": [
+      -5.6,
+      -4.35
+    ],
+    "bodyHiddenMarginWorld": 0.125,
+    "bodyHiddenMarginPixels": 2,
+    "upAimIdleWeaponRelativeMaxYApprox": 0.929,
+    "bodyColliderSize": [
+      0.5,
+      0.35
+    ],
+    "bodyColliderOffset": [
+      0,
+      0.175
+    ],
+    "bodyLowerPointAtSpawn": -5.6,
+    "clearanceAboveSouthWallTop": 0.4,
+    "existingSkinWidth": 0.01,
+    "permittedSpawnYApprox": {
+      "minimumWithSkin": -5.99,
+      "exclusiveMaximumForFullBodyHidden": -5.475
+    },
+    "firstPassageBlockerCenterY": 4.5,
+    "doorSpriteBoundsCenterY": 5,
+    "doorRootY": 3,
+    "spawnToDoorBlockerDistance": 10.1,
+    "oldCheckpointToDoorBlockerDistance": 3.1,
+    "spawnToDoorRatio": 3.258064516129032,
+    "measured": {
+      "spawn": {
+        "x": 14.5,
+        "y": -5.599999904632568
+      },
+      "stop": {
+        "x": 14.5,
+        "y": 1.399999976158142
+      },
+      "walkDistance": 7.0,
+      "newDoorDistance": 10.100000381469727,
+      "distanceRatio": 3.2580647468566895,
+      "fixedCameraPosition": {
+        "x": 14.5,
+        "y": 1.399999976158142,
+        "z": -10.0
+      },
+      "fixedCameraZoom": 5.625,
+      "initialBodyViewport": {
+        "serializedVersion": "2",
+        "x": 0.45833340287208557,
+        "y": -0.12222225219011307,
+        "width": 0.0833333432674408,
+        "height": 0.11111117154359818
+      },
+      "initialWeaponViewport": {
+        "serializedVersion": "2",
+        "x": 0.462617963552475,
+        "y": -0.20428329706192017,
+        "width": 0.06999543309211731,
+        "height": 0.1644567847251892
+      },
+      "handoffViewport": {
+        "x": 0.5,
+        "y": 0.5,
+        "z": 10.0
+      },
+      "handoffBodyViewport": {
+        "serializedVersion": "2",
+        "x": 0.45833340287208557,
+        "y": 0.5,
+        "width": 0.0833333432674408,
+        "height": 0.1111111044883728
+      },
+      "enteredViewport": true,
+      "fineMoveError": 0.0,
+      "boundaries": [
+        {
+          "direction": "S",
+          "position": {
+            "x": 15.028966903686523,
+            "y": -5.986149311065674,
+            "z": 0.0
+          },
+          "minimum": {
+            "x": 14.778966903686523,
+            "y": -5.986149787902832,
+            "z": 0.0
+          },
+          "maximum": {
+            "x": 15.278966903686523,
+            "y": -5.6361494064331055,
+            "z": 0.0
+          }
+        },
+        {
+          "direction": "A",
+          "position": {
+            "x": 12.26386547088623,
+            "y": -5.986149311065674,
+            "z": 0.0
+          },
+          "minimum": {
+            "x": 12.01386547088623,
+            "y": -5.986149787902832,
+            "z": 0.0
+          },
+          "maximum": {
+            "x": 12.51386547088623,
+            "y": -5.6361494064331055,
+            "z": 0.0
+          }
+        },
+        {
+          "direction": "D",
+          "position": {
+            "x": 16.73615837097168,
+            "y": -5.986149311065674,
+            "z": 0.0
+          },
+          "minimum": {
+            "x": 16.48615837097168,
+            "y": -5.986149787902832,
+            "z": 0.0
+          },
+          "maximum": {
+            "x": 16.98615837097168,
+            "y": -5.6361494064331055,
+            "z": 0.0
+          }
+        }
+      ],
+      "initialBodyViewportMaxY": -0.011111080646514893,
+      "initialWeaponViewportMaxY": -0.03982651233673096,
+      "arrivalError": 0.0
+    }
+  },
+  "runtimePreparedByParent": {
+    "files": [
+      "project/Assets/Scripts/Systems/TutorialController.cs",
+      "project/Assets/Scripts/Systems/StageManager.cs",
+      "project/Assets/Scripts/Player/PlayerCharacter.cs"
+    ],
+    "sourceRead": true,
+    "behavior": "Create Player then Bind then Prepare; prepare the upward body/weapon pose under loading, clear move target, snap camera to existing stop Transform; keep a first empty frame, walk through the real collision path, restore normal follow at arrival; preserve existing completion/cancel rules",
+    "gameCameraClassChanged": false,
+    "normalFollowOffsetChanged": false,
+    "spriteCenterMeaning": "The viewport center requirement uses the Player root, which normal GameCamera.Target follows. Sprite bounds center is offset above the foot pivot and is measured separately."
+  },
+  "preserved": "R01 archive remains intact. Six extension rows, 216 tiles, five existing extended boundaries, south wall top -6, north rooms, checkpoint/door/crystal/boss transforms, existing palette and GUIDs are unchanged by this helper revision.",
+  "baselineBeforeR02Publication": [
+    {
+      "path": "project/Assets/Prefabs/Startup/Map.prefab",
+      "sha256": "54c210482b23498969438997d9cd386381c4562b2e4b67d5e716bcdf9d56831c"
+    },
+    {
+      "path": "project/Assets/Prefabs/Startup/WorldCamera.prefab",
+      "sha256": "a2c4248276a90c030f4a43a5f117e2a5ea86b57144e3cb08ada6758d6f775f7e"
+    },
+    {
+      "path": "project/Assets/Prefabs/Startup/GameSystems.prefab",
+      "sha256": "8c7728549bd7329525df9afeb9e8e45f545122d670911d99c30a1fc237c839c8"
+    },
+    {
+      "path": "project/Assets/Prefabs/Startup/Player.prefab",
+      "sha256": "8c9a6ebbb076e32ebae4cd5578923f96bf2813d5d17e975ee177e9c26e01363f"
+    }
+  ],
+  "validation": {
+    "static": "Read current Player sprite import rectangles/pivots, hierarchy transforms, upward idle weapon curve, collider bounds, map south boundary and camera size; calculated hidden spawn range. Authoring bytes match canonical helper. Original prefabs and helper meta remain unchanged by asset agent.",
+    "unity": "Final isolated Unity6000.3.21f1 Play: seven of seven checks passed; first empty frame, whole body/weapon outside viewport, centered root handoff and subsequent boundary restrictions actually observed",
+    "originalDirectPlay": false,
+    "build": false,
+    "success": true,
+    "checks": [
+      "Actual Title new game prepares one locked Player entirely below the first camera frame while preserving the checkpoint and centering the fixed camera on handoff",
+      "Entrance preserves the six-row extension and saved checkpoint while placing its offscreen spawn seven units below handoff inside the world bounds",
+      "Actual blocked actions do not leak after release and gameplay pause freezes the entrance without releasing its control ownership",
+      "Real walking enters the fixed camera continuously, hands off at viewport center, restores follow and keeps subsequent walking and dashing inside southern and side boundaries",
+      "Completion survives disk reload and both completed saves and legacy saves missing the marker resume their saved checkpoint without replay",
+      "Actual collision stops entrance walking, removing the wall resumes it, and Title interruption releases old references without saving completion",
+      "Interrupted entrances retry, explicit cancellation never saves completion, and stale coroutines cannot unlock a later session before its own arrival"
+    ],
+    "checkCount": 7,
+    "batchExitCode": 0,
+    "compileSeconds": 3.36383,
+    "compileErrors": 0,
+    "shaderErrors": 0,
+    "knownEditorSearchException": 1,
+    "allCsharpCount": 102,
+    "runtimeCsharpCount": 56,
+    "relatedCsharpAndMetaFileCount": 24,
+    "relatedCsharpCount": 12,
+    "allCsharpMismatchCount": 0,
+    "runtimeCsharpMismatchCount": 0,
+    "relatedMismatchCount": 0,
+    "sourceComparisonUtc": "2026-11-16T04:28:17.841529+00:00",
+    "arrivalError": 0.0,
+    "fineMoveCaseWorld": 0.0002,
+    "fineMoveError": 0.0,
+    "distinctWalkingSprites": 6,
+    "footsteps": 5,
+    "limits": [
+      "Original project Editor Play and standalone build were not executed.",
+      "The same isolated project was fully resynced from canonical; old aura Guard/Map fixtures were replaced and were not regenerated.",
+      "Tests used isolated Temp save files only; actual user Documents saves were untouched.",
+      "Door distance uses the physical passage blocker center y4.5; sprite bounds center is y5 and object origin y3.",
+      "R01 evidence and GIF were preserved before updating the first-frame and centered-camera behavior.",
+      "The first R02 run passed the old tolerance but observed0.0097523-world early handoff; it was preserved in Temp/TutorialEntryR02Visual1Evidence before lowering entrance and body movement thresholds and requiring1e-5 precision plus a0.0002-world residual case.",
+      "GIF captures the first empty frame, actual clean entry and centered handoff at default world camera zoom; OnGUI HUD is excluded and the last frame has an added800ms hold."
+    ],
+    "evidence": [
+      "project/Logs/TutorialEntryR02-result.json",
+      "project/Logs/TutorialEntryR02-metrics.json",
+      "project/Logs/TutorialEntryR02-verification.json",
+      "project/Logs/TutorialEntryR02-outputs.json",
+      "project/Logs/TutorialEntryR02-publication.json",
+      "project/Logs/TutorialEntryR02-gif-verification.json"
+    ]
+  },
+  "publication": {
+    "record": "project/Logs/TutorialEntryR02-publication.json",
+    "publishedUtc": "2026-11-16T04:29:41.3788308Z",
+    "path": "Assets/Prefabs/Startup/Map.prefab",
+    "previousSha256": "54C210482B23498969438997D9CD386381C4562B2E4B67D5E716BCDF9D56831C",
+    "publishedSha256": "AC855739323560D7CE11290687680E7F4D51B1523D57A9EB5DF8634D94FFEED7",
+    "guidPreserved": true,
+    "otherPrefabsCopied": false,
+    "postPublicationCheckedUtc": "2026-11-16T04:29:56.629400+00:00",
+    "mapAndMetaBothEqualToTested": true,
+    "otherPrefabsUnchanged": [
+      "Assets/Prefabs/Startup/GameSystems.prefab",
+      "Assets/Prefabs/Startup/WorldCamera.prefab",
+      "Assets/Prefabs/Startup/Player.prefab"
+    ],
+    "playerPrefabHash": "8C9A6EBBB076E32EBAE4CD5578923F96BF2813D5D17E975EE177E9C26E01363F"
+  },
+  "capture": {
+    "archive": "art/archive/map/player-entrance-r02",
+    "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\map\\player-entrance-r02\\player-entrance.gif",
+    "sourceFrames": 39,
+    "frames": 38,
+    "consecutiveIdenticalFramesMerged": 1,
+    "durationMs": 2420,
+    "observedGameSeconds": 1.624673398526077,
+    "lastFrameHoldMs": 800,
+    "firstPosition": {
+      "x": 14.5,
+      "y": -5.599999904632568,
+      "z": 0.0
+    },
+    "lastPosition": {
+      "x": 14.5,
+      "y": 1.399999976158142,
+      "z": 0.0
+    },
+    "exactQuantizedFrameRoundTrip": true,
+    "bytes": 1369013,
+    "captureScope": "Actual world camera at unmodified default zoom; first frame fully hides body and weapon below view, then continuous entry to exact viewport center and handoff; test pause excluded by observed game-time boundaries, no boundary/wall/cancellation fixture or OnGUI HUD"
+  }
+}

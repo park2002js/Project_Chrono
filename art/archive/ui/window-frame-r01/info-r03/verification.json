@@ -1,0 +1,146 @@
+{
+  "scope": [
+    {
+      "path": "Assets/Scripts/UI/UI_Title.cs",
+      "sourceSha256": "8de7f9ade7a1ff58cbcd291e2b01d075f190a6c13072a9a7e027659d3cc173d5",
+      "testedSha256": "8de7f9ade7a1ff58cbcd291e2b01d075f190a6c13072a9a7e027659d3cc173d5",
+      "equal": true
+    },
+    {
+      "path": "Assets/Scripts/UI/UI_Title.cs.meta",
+      "sourceSha256": "787a31a431fbfc449096f5727f6ed6d3dee3941c93a4a6e258312737be0a31f5",
+      "testedSha256": "787a31a431fbfc449096f5727f6ed6d3dee3941c93a4a6e258312737be0a31f5",
+      "equal": true
+    },
+    {
+      "path": "Assets/Editor/TitlePresentationChecks.cs",
+      "sourceSha256": "5ca6e6c82a763a689389181c1111dc5977aae4cacfb33bf8b0e50bf2a4a8019a",
+      "testedSha256": "5ca6e6c82a763a689389181c1111dc5977aae4cacfb33bf8b0e50bf2a4a8019a",
+      "equal": true
+    },
+    {
+      "path": "Assets/Editor/TitlePresentationChecks.cs.meta",
+      "sourceSha256": "fc0f9fc28b290e4d3f562be2c43926eec6f6927b08fe6a83c422a7cda07bbb52",
+      "testedSha256": "fc0f9fc28b290e4d3f562be2c43926eec6f6927b08fe6a83c422a7cda07bbb52",
+      "equal": true
+    },
+    {
+      "path": "Assets/Editor/StartupFlowChecks.cs",
+      "sourceSha256": "b17c183f60111d1e29dce2c21205a4d0b4a80d78aa709e66e52b359fdd9e1a05",
+      "testedSha256": "b17c183f60111d1e29dce2c21205a4d0b4a80d78aa709e66e52b359fdd9e1a05",
+      "equal": true
+    },
+    {
+      "path": "Assets/Editor/StartupFlowChecks.cs.meta",
+      "sourceSha256": "077db5dc41ba9a9d1bcfc7d97125783efb582aed8f71a507e9558f2974054be0",
+      "testedSha256": "077db5dc41ba9a9d1bcfc7d97125783efb582aed8f71a507e9558f2974054be0",
+      "equal": true
+    },
+    {
+      "path": "Assets/Scenes/Title.unity",
+      "sourceSha256": "660cf5c5618c77e109c49a7c2321e3055f2703e2b07218910aff89aa54f32a4a",
+      "testedSha256": "660cf5c5618c77e109c49a7c2321e3055f2703e2b07218910aff89aa54f32a4a",
+      "equal": true
+    },
+    {
+      "path": "Assets/Scenes/Title.unity.meta",
+      "sourceSha256": "9b04b2ef9e161d73fe56b2a35e29cbf8677a514a5082678251543224609e44d2",
+      "testedSha256": "9b04b2ef9e161d73fe56b2a35e29cbf8677a514a5082678251543224609e44d2",
+      "equal": true
+    },
+    {
+      "path": "Assets/Art/UI/Windows/window-frame.png",
+      "sourceSha256": "12b597205ff2444f183de454b4aa29a71a604f65cb41756a94e9927538c5bf51",
+      "testedSha256": "12b597205ff2444f183de454b4aa29a71a604f65cb41756a94e9927538c5bf51",
+      "equal": true
+    },
+    {
+      "path": "Assets/Art/UI/Windows/window-frame.png.meta",
+      "sourceSha256": "37b18d5b71b086588b223e8453bab5a45161bea2bdd1adb65c4b1cf3a6c34e72",
+      "testedSha256": "37b18d5b71b086588b223e8453bab5a45161bea2bdd1adb65c4b1cf3a6c34e72",
+      "equal": true
+    },
+    {
+      "path": "Assets/Font/PF스타더스트 3.0.ttf",
+      "sourceSha256": "14e09873c3d5b9a0237759c9abd7ccb851eaac938ea7b05ab37e3311dff56da2",
+      "testedSha256": "14e09873c3d5b9a0237759c9abd7ccb851eaac938ea7b05ab37e3311dff56da2",
+      "equal": true
+    },
+    {
+      "path": "Assets/Font/PF스타더스트 3.0.ttf.meta",
+      "sourceSha256": "1270cdf8cc792f4425aceee47b0af110b7d6be98090a07d618fcdcbf2d2eff29",
+      "testedSha256": "1270cdf8cc792f4425aceee47b0af110b7d6be98090a07d618fcdcbf2d2eff29",
+      "equal": true
+    }
+  ],
+  "scopeMismatch": 0,
+  "snapshotCsharp": 93,
+  "snapshotRuntime": 53,
+  "result": {
+    "success": true,
+    "checks": [
+      "Bold Title and save-slot styles preserve centered144x206 cards; normal/bold screenshots show empty,72-minute and completed125-minute data samples",
+      "Real Esc closes slots to Title, remains inactive on the menu and preserves non-null Current and save selection",
+      "Esc from both displayed and directly opened completed confirmations returns to Title without overwriting completed or current data",
+      "Esc is ignored during incomplete preparation and loading, then a new allowed press returns to Title",
+      "Title disable/reenable releases Esc, ignores an already held key and reconnects the next press without changing saves"
+    ],
+    "error": "",
+    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\verification\\title-fissure-r02\\Temp\\StartupFlowChecks\\d7750e39dd9545b6a9f71faa75d46cf2"
+  },
+  "unityVersion": "6000.3.21f1",
+  "exitCode": 0,
+  "verifiedUtc": "2026-11-16T02:38:06.790202+00:00",
+  "textMetrics": {
+    "menu": {
+      "normalBrightPixels": 2379,
+      "boldBrightPixels": 4541,
+      "ratio": 1.908785203867171,
+      "differenceBounds": [
+        245,
+        14,
+        331,
+        201
+      ]
+    },
+    "slots": {
+      "normalBrightPixels": 2545,
+      "boldBrightPixels": 4709,
+      "ratio": 1.850294695481336,
+      "differenceBounds": [
+        94,
+        163,
+        256,
+        373
+      ]
+    },
+    "centerCardTextBands": [
+      [
+        518,
+        543
+      ],
+      [
+        578,
+        603
+      ],
+      [
+        639,
+        664
+      ],
+      [
+        700,
+        725
+      ]
+    ]
+  },
+  "runtimeDifferences": [
+    "Assets\\Scripts\\Player\\CharacterBuff.cs",
+    "Assets\\Scripts\\Player\\FeverAuraFx.cs",
+    "Assets\\Scripts\\Player\\Line.cs",
+    "Assets\\Scripts\\Player\\LineSlasher.cs",
+    "Assets\\Scripts\\Player\\SkillController.cs",
+    "Assets\\Scripts\\Systems\\DrawVfx.cs"
+  ],
+  "initialCompileAttempt": "Unrelated GuardHandChecks.cs was copied between CheckBodyHitbox call and helper definition. Only the complete current Editor check file was recopied; final compilation passed.",
+  "scopeNote": "Focused5 checks use actual Input System synthetic Keyboard events and memory-only save samples; original Editor Play, world entry/return and submission build not executed."
+}

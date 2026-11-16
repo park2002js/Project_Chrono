@@ -215,8 +215,8 @@ Camera:
   m_GameObject: {fileID: 1219757847}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.08235294, g: 0.08235294, b: 0.09411765, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -308,6 +308,18 @@ MonoBehaviour:
   IntroDuration: 0.25
   TitleLogo: {fileID: 2800000, guid: 6682ceeb6c5bb264abcd05db1fe0207d, type: 3}
   TitleFont: {fileID: 12800000, guid: 238ce7a1de31bda47966a72e28f73945, type: 3}
+  TitleLogoGlint: {fileID: 2800000, guid: e338107e18044d7db31400437260b96a, type: 3}
+  TitleFissureGlowFrames:
+  - {fileID: 2800000, guid: fed540c345814f98b8e7aba1991115ec, type: 3}
+  - {fileID: 2800000, guid: 8bf87d36c3444a8bbcdcbc7088cf4817, type: 3}
+  - {fileID: 2800000, guid: d2c80a343f924e96acd59d09df7cc5c2, type: 3}
+  SlotFrame: {fileID: 2800000, guid: 662a92fe29ad429ba68a2bf6889f3c19, type: 3}
+  BackgroundColor: {r: 0.08235294, g: 0.08235294, b: 0.09411765, a: 1}
+  GlintPivot: {x: 130.5, y: 31.5}
+  GlintDuration: 1.25
+  GlintInterval: 3.2
+  GlintRotation: 90
+  FissureGlowCycle: 2.4
 --- !u!4 &2074398358
 Transform:
   m_ObjectHideFlags: 0

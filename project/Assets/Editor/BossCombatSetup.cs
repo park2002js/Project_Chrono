@@ -62,6 +62,7 @@ public static class BossCombatSetup
         PrepareMap(pixel);
         PrepareTestScene();
         AssetDatabase.SaveAssets();
+        BossHazardArtSetup.Run(); // 더미를 다시 준비해도 연결한 픽셀 탄환과 원형 선 표시 유지
         Debug.Log("[BossCombatSetup] DummyBoss, four projectile prefabs, exit and BossTestArena scene prepared.");
     }
 

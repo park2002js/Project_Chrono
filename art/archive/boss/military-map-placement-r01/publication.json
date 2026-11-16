@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "mapOriginalBytesPreservedAfterRemovingNewChild": true,
+  "staticUnityCheckPassed": true,
+  "playCheckPassed": true,
+  "unityExitCode": 0,
+  "baselineMapSha256": "11B907D66AD77D98FBE56FBF03CE7C979F03DE3F308332BA92138D75124A9E1F",
+  "prepublishMapSha256": "11B907D66AD77D98FBE56FBF03CE7C979F03DE3F308332BA92138D75124A9E1F",
+  "publishedMapSha256": "01991AC5EF2A800A64BB282688B9D1B512387091044673657011334B128F110A",
+  "newMapObjectIds": [
+    "1677149485183666162",
+    "6270645816447917305"
+  ],
+  "rootTransformId": "7264443905407710855",
+  "childTransformId": "6270645816447917305",
+  "militaryPrefabGuid": "7e495bb5f87a75947833a3120f322ed2",
+  "mapChangedByAnotherTaskBeforePublish": false,
+  "publishedAssets": [
+    {
+      "path": "Assets/Art/Enemy/Military.meta",
+      "sha256": "DE679C5EF03547457BBC5766C89B3D7DF76A79E249DD0B3AAB840535977DA21A",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/E.png",
+      "sha256": "A3F280D5169693AF40D6BC42F0CB2FED38EFAAC4184C0BC034D3FD5E4EDF670A",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/E.png.meta",
+      "sha256": "09B0A9B85B89408F9505D10CBFABE7F923559C450C261516D73163FAD6E09891",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/N.png",
+      "sha256": "B94144221B68B5ADBAC5CBBA21472656A760A100B7790683D595CE47BBEA323C",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/N.png.meta",
+      "sha256": "66CE30DE261E199E6BB6844AD349E6BED5A53CDF268D9E083F772C1F8DB06A30",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/NE.png",
+      "sha256": "9D8DF796378208411E0FEE0DF6AA94B35ABF3216BCCC49565D2E1017BDED5CF8",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/NE.png.meta",
+      "sha256": "AC274CAAA0DE05825C98C72D0E6E7644F76B4D29C11ACC2465449F909DA5CECB",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/NW.png",
+      "sha256": "E2B9734960274D88919E01BB865571BF135DA5E9969EBD3D9203A3FF31545A61",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/NW.png.meta",
+      "sha256": "F402DFE46E8068DD1A7F2D37AD3CB473A540038B6FBB20DDB285E7F09AB4BFD0",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/S.png",
+      "sha256": "C361985925DB1D83ED2DA5935D9B5927B278424AC9AB67D204C432EE1DFB1FE5",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/S.png.meta",
+      "sha256": "C6FEA4735F34FD6B235C285A5A8CCCC3F06DE216E46964D0DA1C5939A9E74662",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/SE.png",
+      "sha256": "37D2B67E3CF364A70358A686F688931B6EBC4EB4F44B8296FCCAB1198974B799",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/SE.png.meta",
+      "sha256": "20D80B93E7BCDC437572A0AD6C56546A6862A6F211F0419388A1008012AA4524",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/SW.png",
+      "sha256": "69C45BCCD3C5BA7BF8795E4BD5B7C9FCE334AF95582CB2F4703010C3BD52CC55",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/SW.png.meta",
+      "sha256": "548B5B576C2601A90898F72985AFC2C0CDBC3CD5CBC1E99D967AFFD9ECE6553D",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/W.png",
+      "sha256": "4BE09644267E34473AB9F126BE2DB08964796453532B95E4D7FCD4CDCDC9E55F",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Military/W.png.meta",
+      "sha256": "97FC3F05964827EA796464BA90DF599D4E0B05B727B3932FAE55683BECF06880",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/MilitaryRobot.prefab",
+      "sha256": "7964BE8FD4FED15CD9FFDEC2F01002DED15729A6F7B618E2503FEB6F0D49F3A7",
+      "equalsTested": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/MilitaryRobot.prefab.meta",
+      "sha256": "69DB88AF6E4B8E5560E04EF59AEF10443F069791CBE499383F7EB941CA7E383B",
+      "equalsTested": true
+    }
+  ],
+  "playUnityExitCode": 0,
+  "finalVerification": "verification.json"
+}

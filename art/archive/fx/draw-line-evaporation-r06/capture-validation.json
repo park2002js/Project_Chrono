@@ -1,0 +1,16 @@
+{
+  "tracked_particles": 72,
+  "max_size_error_world": 0.0,
+  "leftmost_displacement_world": -1.45824,
+  "rightmost_displacement_world": 1.5259,
+  "largest_rise_world": 2.3209800000000005,
+  "particles_with_fading_alpha": 72,
+  "source_frames": 64,
+  "gif_frames_after_identical_frame_merge": 63,
+  "sample_mean_pixel_error_0_255": [
+    0.027278622123131313,
+    0.035495666746610526,
+    0.008254943935665919
+  ],
+  "last_frame_particle_count": 0
+}

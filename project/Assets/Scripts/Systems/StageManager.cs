@@ -3,7 +3,8 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>MainWorld의 프리팹 생성·초기화 순서와 세션 수명을 관리</summary>
-[RequireComponent(typeof(CutsceneController))]
+[RequireComponent(typeof(CutsceneController), typeof(TutorialController))]
+[RequireComponent(typeof(TempDemoEnding))]
 public class StageManager : MonoBehaviour
 {
     public MapManager MapPrefab; // 세션의 맵과 배치 정보를 생성할 원본 프리팹
@@ -21,16 +22,25 @@ public class StageManager : MonoBehaviour
     public float BossDeathDuration = 0.5f; // 처치 뒤 사체·문 전환 전 임시 연출 시간
     public bool IsBossSequencePlaying { get; private set; } // 조우·사망 전환 중 중복 요청을 막는 상태
     public CutsceneController Cutscene { get; private set; } // 자기 앱 객체에 붙은 Boss 연출 담당
+    public TutorialController Tutorial { get; private set; } // 실제 Player의 새 게임 최초 입장을 관리할 자기 연출 담당
+    public TempDemoEnding DemoEnding { get; private set; } // 경비 처치 뒤 임시 데모 엔딩을 연결할 자기 담당
     private BossCharacter encounterBoss; // 현재 Player와 사망 사건을 연결한 전투 상대
     private Coroutine bossSequence; // 세션 이탈 때 중단할 조우·사망 코루틴
     private int sequenceVersion; // 취소된 연출이 뒤늦게 전투를 열지 않도록 구분
     private UIController ui; // 이번 MainWorld 수명 동안 유지할 HUD 참조
 
     /// <summary>같은 앱 객체의 연출 담당을 최초 생성 때 한 번 확보</summary>
-    private void Awake() => Cutscene = GetComponent<CutsceneController>();
+    private void Awake()
+    {
+        Cutscene = GetComponent<CutsceneController>();
+        Tutorial = GetComponent<TutorialController>();
+        DemoEnding = GetComponent<TempDemoEnding>();
+    }
 
     private void OnDisable()
     {
+        if (DemoEnding != null) DemoEnding.Unbind();
+        if (Tutorial != null) Tutorial.Cancel();
         CancelBossSequence();
         EndEncounter();
     }
@@ -65,6 +75,8 @@ public class StageManager : MonoBehaviour
             CreateBosses(save);
             CreatePlayer();
             Player.GetComponent<PlayerSpawner>().Bind();
+            Tutorial.Prepare();
+            DemoEnding.Bind();
             UIController.Instance.SetPlayerHudVisible(false);
         }
         catch (Exception exception)
@@ -80,13 +92,14 @@ public class StageManager : MonoBehaviour
         yield return null;
         try
         {
-            if (Map == null || !Map.IsInitialized || Player == null || !Player.IsInitialized || !Player.Spawner.IsReady || Bosses.Length != 1 || Bosses[0] == null || !Bosses[0].IsInitialized || UIController.Instance == null || GameCamera.Instance == null || PlayerInputController.Instance == null || UIController.Instance.Player != Player || GameCamera.Instance.Target != Player.transform || PlayerInputController.Instance.Player != Player)
+            // 최초 입장 중에는 준비된 고정 시점, 그 외에는 Player 추적 연결 확인
+            if (Map == null || !Map.IsInitialized || Player == null || !Player.IsInitialized || !Player.Spawner.IsReady || Bosses.Length != 1 || Bosses[0] == null || !Bosses[0].IsInitialized || UIController.Instance == null || GameCamera.Instance == null || PlayerInputController.Instance == null || UIController.Instance.Player != Player || GameCamera.Instance.Target != (Tutorial.HasPendingEntrance ? Map.EntranceStopPoint : Player.transform) || PlayerInputController.Instance.Player != Player)
                 throw new InvalidOperationException("A MainWorld object was not initialized or its binding was lost.");
 
             // 초기화가 모두 끝난 월드의 조우 감지와 Player 표시 허용
             foreach (BossCharacter boss in Bosses)
                 boss.GetComponent<BossSpawner>().EncounterTrigger.enabled = !boss.IsDead;
-            UIController.Instance.SetPlayerHudVisible(true);
+            UIController.Instance.SetPlayerHudVisible(!Tutorial.HasPendingEntrance);
             IsReady = true;
         }
         catch (Exception exception)
@@ -143,6 +156,8 @@ public class StageManager : MonoBehaviour
     /// <summary>Title 복귀·실패 시 연결을 해제하고 세션 객체를 모두 제거</summary>
     public void Clear()
     {
+        if (DemoEnding != null) DemoEnding.Unbind();
+        if (Tutorial != null) Tutorial.Cancel();
         CancelBossSequence();
         EndEncounter();
         ClearBossHazards();

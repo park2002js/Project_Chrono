@@ -1,0 +1,97 @@
+{
+  "unity_version": "6000.3.21f1",
+  "snapshot_comparison_kst": "2026-11-16T11:49:00",
+  "production_copy": [
+    "Assets/Prefabs/Startup/GuardRobot.prefab"
+  ],
+  "owned_targets": [
+    {
+      "path": "Assets/Scripts/Enemy/Boss_01.cs",
+      "sha256": "7eefeeac8e39120cf7f33109b3e7b764a954f98ca70a3ffb597382c33a78df6b",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/GuardHandAttack.cs",
+      "sha256": "06512459c88e158d42f478dca807e376ecfc1eed758dbf5e6a1e9ebe68e45027",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardBossSetup.cs",
+      "sha256": "8dceef7ef87e0b8b4784a67a1c5700591f1ad29d1494023c39bc4e331cd70670",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardHandChecks.cs",
+      "sha256": "1adea21fed911ec08badb0c4f5b15876f9120548f2d938cf148b983e5523c19c",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardBossChecks.cs",
+      "sha256": "5253b5cdd1753a1c63e624a5c454b3db37118fbdb2c84c21412e6aee3d570a30",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/GuardRobot.prefab",
+      "sha256": "740b203515c3b6ce80466081f1a8a331645d2089512776f410acfd8d9d48f18a",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/Boss_01.cs.meta",
+      "sha256": "f7b97dbcbaee3539972bc76e72c651d9e1d51aad218a8f2e11b3c49cc57f078c",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/GuardHandAttack.cs.meta",
+      "sha256": "6613596a7a6a32f72463b9bad7f46876ad3ffe078fa9af6993f78d5411dd2436",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardBossSetup.cs.meta",
+      "sha256": "b63e0010d56a1b0cc98a18b56e111c0a0a8591cd63c9204acc6c528fda01d7f4",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardHandChecks.cs.meta",
+      "sha256": "4d3ff1986f45a38e83497ee7d4a0bd78c2c2318db6e3f0c33b0481e0ee42025b",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardBossChecks.cs.meta",
+      "sha256": "8b24e7a52183a2ccde91cc688a39801cc26b01dd91b1961b69e14749539b50c2",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/GuardRobot.prefab.meta",
+      "sha256": "d4f0d896ffb0a0c93a34f8b57c59a4cd122f0f0bea94baa9292aba81c85dd5ba",
+      "matches_validation": true
+    }
+  ],
+  "source_csharp_count": 96,
+  "clone_csharp_count": 96,
+  "csharp_differences": [
+    "Assets/Editor/FeverAuraChecks.cs"
+  ],
+  "runtime_csharp_count": 54,
+  "runtime_differences": [],
+  "final_full_editor_restored": true,
+  "final_guard_checks": 16,
+  "final_guard_batch_exit": 0,
+  "gold_regression_checks": 10,
+  "gold_batch_exit": 0,
+  "body_hitbox_size": [
+    5.75,
+    4.875
+  ],
+  "body_hitbox_offset": [
+    0,
+    2.4375
+  ],
+  "physical_body_size_unchanged": [
+    5.5,
+    3
+  ],
+  "map_not_copied_back": true,
+  "map_clone_serializer_reordered_military_prefab_blocks": true,
+  "original_editor_manual_play": "not_run",
+  "submission_build": "not_run"
+}

@@ -1,0 +1,88 @@
+{
+  "captureSize": [
+    1920,
+    1080
+  ],
+  "previewSize": [
+    960,
+    540
+  ],
+  "capturedFrames": 60,
+  "previewDurationMs": 7300,
+  "background": [
+    21,
+    21,
+    24
+  ],
+  "glintChangeBounds": [
+    1004,
+    191,
+    1283,
+    467
+  ],
+  "pausedChangeBounds": [
+    1014,
+    201,
+    1272,
+    456
+  ],
+  "menuPixelsUnchanged": true,
+  "menuBackgroundSamples": [
+    {
+      "x": 696,
+      "y": 704,
+      "rgb": [
+        21,
+        21,
+        24
+      ]
+    },
+    {
+      "x": 1224,
+      "y": 704,
+      "rgb": [
+        21,
+        21,
+        24
+      ]
+    },
+    {
+      "x": 696,
+      "y": 776,
+      "rgb": [
+        21,
+        21,
+        24
+      ]
+    },
+    {
+      "x": 1224,
+      "y": 776,
+      "rgb": [
+        21,
+        21,
+        24
+      ]
+    },
+    {
+      "x": 696,
+      "y": 848,
+      "rgb": [
+        21,
+        21,
+        24
+      ]
+    },
+    {
+      "x": 1224,
+      "y": 848,
+      "rgb": [
+        21,
+        21,
+        24
+      ]
+    }
+  ],
+  "gifFrames": 30,
+  "gifDurationMs": 7300
+}

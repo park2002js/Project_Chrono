@@ -1,0 +1,16 @@
+{
+  "raw_frames": 84,
+  "encoded_frames": 84,
+  "size": [
+    960,
+    720
+  ],
+  "duration_ms": 3500,
+  "file_bytes": 6590770,
+  "source_game_seconds": 3.4583333333333326,
+  "camera": "Actual Player-following GameCamera; controlled Player position fixture; unchanged camera settings",
+  "inspection": "firing-full-boss-inspection.png temporarily uses a named review anchor",
+  "image_processing": "Only shared-palette GIF encoding; no compositing, recoloring or frame interpolation",
+  "maximum_aim_error": 0.0,
+  "maximum_irregular_aim_error": 0.0
+}

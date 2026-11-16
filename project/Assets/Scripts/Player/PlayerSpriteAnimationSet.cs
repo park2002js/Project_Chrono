@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-/// <summary>Player의 방향별 기본 모션과 생성·사망을 구분할 표시 상태</summary>
+/// <summary>Player의 방향별 기본 모션과 생성·사망·발도를 구분할 표시 상태</summary>
 public enum PlayerSpriteAnimationState
 {
     IdleLeftFront, // 왼쪽 앞을 바라보는 정지 모션
@@ -17,7 +17,10 @@ public enum PlayerSpriteAnimationState
     DashLeftBack, // 왼쪽 뒤 방향의 대시 자세
     DashRightBack, // 오른쪽 뒤 방향의 대시 자세
     Death, // 사망 후 마지막 자세를 유지할 모션
-    Spawn // 체크포인트에서 일어서는 모션
+    Spawn, // 체크포인트에서 일어서는 모션
+    SlashDraw, // 몸을 낮추며 검을 일부 꺼내는 Slash 준비 모션
+    SlashHold, // 일부 꺼낸 검을 유지하는 Slash 대기 자세
+    SlashSheathe // 칼날이 완전히 닫힐 때까지의 Slash 납도 모션
 }
 
 /// <summary>Sephiria AnimationSet처럼 상태별 Sprite·재생 시간·반전을 보관할 Player 전용 데이터</summary>

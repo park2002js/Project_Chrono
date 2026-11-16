@@ -1,0 +1,75 @@
+{
+  "comparison_kst": "2026-11-16T13:42:14",
+  "unity_version": "6000.3.21f1",
+  "source_csharp_count": 102,
+  "validation_csharp_count": 102,
+  "csharp_differences": [],
+  "source_runtime_count": 56,
+  "validation_runtime_count": 56,
+  "runtime_differences": [],
+  "owned_targets": [
+    {
+      "path": "Assets/Scripts/Enemy/GuardEyeLaser.cs",
+      "sha256": "f6d61092dc32ae6f7c51b9ec0190601d98a857654e5fe15278537df30d3cc842",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Scripts/Enemy/GuardEyeLaser.cs.meta",
+      "sha256": "ed5edfcafc80f50844daa5e320fc356e18de6103af695d3c2d1f91885abb0dd5",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardBossSetup.cs",
+      "sha256": "cc00e3151b468f7efd93af5f0c312a07db43cbc8cc4e7692ecbe4074adcb018c",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardLaserChecks.cs",
+      "sha256": "297f7d9cc0e087de6b0c43abf4d1acea5fd22f04c7b7e183e6c5880c3215f329",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardLaserChecks.cs.meta",
+      "sha256": "23ec89d2832e9991fded2ea473d50656abd77a1eb9fdb11f401dceffd65c574f",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/GuardHandChecks.cs",
+      "sha256": "fafba0684cf0f985664c0edc029def4d980f270aaa91d2a8999a2cc92fb630d8",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/GuardRobot.prefab",
+      "sha256": "6bac4f3c5905643c052b27e968b038819f09501cb5b5cb74f8ad0fb8bbf9e64d",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/GuardRobot.prefab.meta",
+      "sha256": "d4f0d896ffb0a0c93a34f8b57c59a4cd122f0f0bea94baa9292aba81c85dd5ba",
+      "matches_validation": true
+    }
+  ],
+  "integration_assets": [
+    {
+      "path": "Assets/Prefabs/Startup/Map.prefab",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/GameSystems.prefab",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Startup/Player.prefab",
+      "matches_validation": true
+    }
+  ],
+  "guard_prefab_guid_preserved": true,
+  "guard_internal_references": {
+    "count": 166,
+    "missing": []
+  },
+  "comment_only_sync": "After Laser12, three comment-only changes were compared and synced, then Hand16 recompiled and passed; executable logic unchanged",
+  "source_manual_play": "not_run",
+  "submission_build": "not_run",
+  "startup_editor_issue": "Existing UnityEditor.Search.SearchDatabase ArgumentOutOfRangeException observed; compile and checks passed"
+}

@@ -9,7 +9,7 @@ using UnityEngine.InputSystem.Users;
 public static class PlayerMovementChecks
 {
     /// <summary>초기화된 MainWorld에서 F-P01을 검사하고 입력·위치·수치를 원래 상태로 복구</summary>
-    public static IEnumerator Run(GameManager manager, Action<string> passed)
+    public static IEnumerator Run(GameManager manager, Action<string> passed, bool drawOnly = false)
     {
         // 실제 씬 연결을 확인하고 검사 후 복원할 장치·바인딩 상태 보관
         PlayerCharacter player = manager.CurrentPlayer;
@@ -70,6 +70,16 @@ public static class PlayerMovementChecks
             Require(actions.notificationBehavior == PlayerNotifications.InvokeUnityEvents && moveAction.enabled && !input.BlockInput, "PlayerInput must invoke action events and GameManager must release the startup input block.");
             Require(rendering.BodySprite != null && rendering.FacingMarker != null && attack.WeaponPivot != null, "Facing and weapon visuals must be wired.");
             passed("F-P01 input, body, facing and fixed weapon are bound to the spawned Player");
+
+            // 최종 맵에서도 이전 고정 좌표 이동 검사를 거치지 않고 Draw 영향 범위만 확인
+            if (drawOnly)
+            {
+                yield return PlayerDrawChecks.Run(manager, input, actions, keyboard, mouse, camera, passed); // 실제 Draw 입력·선 표시·중단 검사 완료 대기
+                yield return PlayerLineEditingChecks.Run(manager, input, keyboard, passed); // 점 데이터·두 클릭·확정 기하 검사 완료 대기
+                yield return PlayerLineLifetimeChecks.Run(manager, input, passed); // 경고·자연 만료·정지 검사 완료 대기
+                yield return PlayerSlashChecks.Run(manager, input, actions, keyboard, mouse, camera, passed); // Draw 선 소비와 Slash 연결 검사 완료 대기
+                yield break;
+            }
 
             // 실제 장치 이벤트가 Action·콜백을 거쳐 고정 프레임 이동에 전달되는지 검사
             Keys(keyboard, Key.W, Key.S, Key.A, Key.D);
@@ -400,6 +410,7 @@ public static class PlayerMovementChecks
         InputAction dashAction = actions.actions.FindAction("Player/Dash", true);
         float originalSpeed = player.SP;
         float dashSpeed = player.DashSpeed;
+        float dashDeceleration = player.DashDeceleration;
         float duration = player.DashDuration;
         float dodgeDuration = player.DodgeDuration;
         float inputDuration = player.InputBlockDuration;
@@ -415,6 +426,7 @@ public static class PlayerMovementChecks
             // 일반 이동 거리를 제외하고 대시의 방향과 적용 거리만 관찰
             Require(dashAction.enabled, "The Player Dash action must be enabled and connected.");
             player.DashSpeed = 4f;
+            player.DashDeceleration = 0f;
             player.DashDuration = 0.2f;
             player.DodgeDuration = 0.1f;
             player.InputBlockDuration = 0.3f;
@@ -578,6 +590,7 @@ public static class PlayerMovementChecks
             movement.enabled = true;
             player.ResetMotion();
             player.DashSpeed = dashSpeed;
+            player.DashDeceleration = dashDeceleration;
             player.DashDuration = duration;
             player.DodgeDuration = dodgeDuration;
             player.InputBlockDuration = inputDuration;
@@ -598,6 +611,7 @@ public static class PlayerMovementChecks
         float fixedStep = Time.fixedDeltaTime;
         float speed = player.SP;
         float dashSpeed = player.DashSpeed;
+        float dashDeceleration = player.DashDeceleration;
         float dashDuration = player.DashDuration;
         float dodgeDuration = player.DodgeDuration;
         float inputDuration = player.InputBlockDuration;
@@ -609,6 +623,7 @@ public static class PlayerMovementChecks
             input.enabled = false;
             player.SP = 0f;
             player.DashSpeed = 3f;
+            player.DashDeceleration = 0f;
             player.DashDuration = 0.23f;
             player.DodgeDuration = 0.1f;
             player.InputBlockDuration = 0.3f;
@@ -632,6 +647,7 @@ public static class PlayerMovementChecks
             Time.fixedDeltaTime = fixedStep;
             player.SP = speed;
             player.DashSpeed = dashSpeed;
+            player.DashDeceleration = dashDeceleration;
             player.DashDuration = dashDuration;
             player.DodgeDuration = dodgeDuration;
             player.InputBlockDuration = inputDuration;

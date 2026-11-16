@@ -32,7 +32,7 @@ public class CollisionBox
     }
 
     /// <summary>지정한 사각 Cast로 피격 대상을 찾아 같은 수신자에 한 번만 피해 전달</summary>
-    public int Query(Vector2 center, Vector2 size, float angle)
+    public int Query(Vector2 center, Vector2 size, float angle, Action<Vector2, float> onHit = null)
     {
         int count = Collect(center, size, angle);
         int version = queryVersion;
@@ -44,19 +44,25 @@ public class CollisionBox
             Collider2D collider = Results[i].collider;
             if (collider == null || !collider.TryGetComponent(out Hitbox hitbox) || !hitbox.isActiveAndEnabled || !hitbox.IsEnabled)
                 continue;
+
+            // 겹친 BoxCast의 접점을 수신 범위에 붙인 뒤 피해 콜백 전 위치·방향 보존
+            Vector2 point = collider.ClosestPoint(Results[i].point);
+            DamageInstance damage = Damage;
             if (hitbox.Structure != null)
             {
-                if (hitStructures.Add(hitbox.Structure) && hitbox.ReceiveHit(Damage)) applied++;
+                if (hitStructures.Add(hitbox.Structure) && hitbox.ReceiveHit(damage))
+                { applied++; onHit?.Invoke(point, angle); }
                 continue;
             }
             Character target = hitbox.Owner;
             if (target == null || target == Damage.Source || HitTargets.Contains(target))
                 continue;
-            if (hitbox.ReceiveHit(Damage))
+            if (hitbox.ReceiveHit(damage))
             {
                 if (IsActive && version == queryVersion)
                     HitTargets.Add(target);
                 applied++;
+                onHit?.Invoke(point, angle);
             }
         }
         return applied;
@@ -69,6 +75,7 @@ public class CollisionBox
         int count = Collect(center, size, angle);
         int version = queryVersion;
         int applied = 0;
+        Vector2 lineDirection = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
         for (int i = 0; i < count && IsActive && version == queryVersion; i++)
         {
             Collider2D collider = Results[i].collider;
@@ -77,7 +84,7 @@ public class CollisionBox
             // 탄·구조물의 독립 반응을 일반 캐릭터 피해와 구분
             if (hitbox.Projectile != null)
             {
-                if (hitProjectiles.Add(hitbox.Projectile) && hitbox.Projectile.OnSlashed(player, boss, Damage)) applied++;
+                if (hitProjectiles.Add(hitbox.Projectile) && hitbox.Projectile.OnSlashed(player, boss, Damage, lineDirection)) applied++;
                 continue;
             }
             if (hitbox.Structure != null)

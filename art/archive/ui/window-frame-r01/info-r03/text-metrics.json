@@ -1,0 +1,42 @@
+{
+  "menu": {
+    "normalBrightPixels": 2379,
+    "boldBrightPixels": 4541,
+    "ratio": 1.908785203867171,
+    "differenceBounds": [
+      245,
+      14,
+      331,
+      201
+    ]
+  },
+  "slots": {
+    "normalBrightPixels": 2545,
+    "boldBrightPixels": 4709,
+    "ratio": 1.850294695481336,
+    "differenceBounds": [
+      94,
+      163,
+      256,
+      373
+    ]
+  },
+  "centerCardTextBands": [
+    [
+      518,
+      543
+    ],
+    [
+      578,
+      603
+    ],
+    [
+      639,
+      664
+    ],
+    [
+      700,
+      725
+    ]
+  ]
+}

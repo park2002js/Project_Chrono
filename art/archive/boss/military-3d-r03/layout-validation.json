@@ -1,0 +1,339 @@
+{
+  "status": "passed",
+  "objSha256": "b9297e337d7ac36e58cfb3229ce531c8d0b449d0394b789fb86dafdf7f6634b3",
+  "actualPartWidths": {
+    "Torso_Rectangular_Armor": 2.2,
+    "Back_Canister_Shell": 2.13,
+    "Back_Canister_Lower_Belt": 2.2,
+    "Back_Canister_Upper_Belt": 2.2
+  },
+  "backTubeCount": 9,
+  "backTubeCenterXZ": [
+    [
+      -0.55,
+      -1.87
+    ],
+    [
+      0.0,
+      -1.87
+    ],
+    [
+      0.55,
+      -1.87
+    ],
+    [
+      -0.55,
+      -1.5
+    ],
+    [
+      0.0,
+      -1.5
+    ],
+    [
+      0.55,
+      -1.5
+    ],
+    [
+      -0.55,
+      -1.13
+    ],
+    [
+      0.0,
+      -1.13
+    ],
+    [
+      0.55,
+      -1.13
+    ]
+  ],
+  "handTubeCount": 4,
+  "hands": [
+    {
+      "side": "L",
+      "tubeNames": [
+        "Hand_Rocket_Tube_1_L",
+        "Hand_Rocket_Tube_2_L"
+      ],
+      "tubeCenterXZ": [
+        [
+          -1.68,
+          0.4
+        ],
+        [
+          -1.34,
+          0.4
+        ]
+      ],
+      "pistonCenterXZ": [
+        -1.51,
+        0.4
+      ],
+      "tubePairCenterXZ": [
+        -1.51,
+        0.4
+      ],
+      "tubeOffsetsFromPistonX": [
+        -0.16999999999999993,
+        0.16999999999999993
+      ],
+      "pairCenterMatchesPiston": true
+    },
+    {
+      "side": "R",
+      "tubeNames": [
+        "Hand_Rocket_Tube_1_R",
+        "Hand_Rocket_Tube_2_R"
+      ],
+      "tubeCenterXZ": [
+        [
+          1.34,
+          0.4
+        ],
+        [
+          1.68,
+          0.4
+        ]
+      ],
+      "pistonCenterXZ": [
+        1.51,
+        0.4
+      ],
+      "tubePairCenterXZ": [
+        1.51,
+        0.4
+      ],
+      "tubeOffsetsFromPistonX": [
+        -0.16999999999999993,
+        0.16999999999999993
+      ],
+      "pairCenterMatchesPiston": true
+    }
+  ],
+  "axisChecks": [
+    {
+      "part": "Back_Rocket_Tube_1_1",
+      "centerXZ": [
+        -0.55,
+        -1.87
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_1_2",
+      "centerXZ": [
+        0.0,
+        -1.87
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_1_3",
+      "centerXZ": [
+        0.55,
+        -1.87
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_2_1",
+      "centerXZ": [
+        -0.55,
+        -1.5
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_2_2",
+      "centerXZ": [
+        0.0,
+        -1.5
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_2_3",
+      "centerXZ": [
+        0.55,
+        -1.5
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_3_1",
+      "centerXZ": [
+        -0.55,
+        -1.13
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_3_2",
+      "centerXZ": [
+        0.0,
+        -1.13
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Back_Rocket_Tube_3_3",
+      "centerXZ": [
+        0.55,
+        -1.13
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Hand_Rocket_Tube_1_L",
+      "centerXZ": [
+        -1.68,
+        0.4
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Hand_Rocket_Tube_1_R",
+      "centerXZ": [
+        1.34,
+        0.4
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Hand_Rocket_Tube_2_L",
+      "centerXZ": [
+        -1.34,
+        0.4
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Hand_Rocket_Tube_2_R",
+      "centerXZ": [
+        1.68,
+        0.4
+      ],
+      "distinctYSections": 5,
+      "maximumCrossSectionCenterDeviation": 2.220446049250313e-16,
+      "parallelToY": true
+    },
+    {
+      "part": "Arm_Piston_L",
+      "centerXZ": [
+        -1.51,
+        0.4
+      ],
+      "distinctYSections": 2,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    },
+    {
+      "part": "Arm_Piston_R",
+      "centerXZ": [
+        1.51,
+        0.4
+      ],
+      "distinctYSections": 2,
+      "maximumCrossSectionCenterDeviation": 0.0,
+      "parallelToY": true
+    }
+  ],
+  "axisMethod": "At each distinct OBJ vertex Y level, X/Z cross-section bbox centers stay on the same centerline; no generated mesh assumptions used.",
+  "r02FilesPreserved": true,
+  "r02PreservationChecks": [
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\front-reference.png",
+      "sha256": "90ff8a0f2cf780d2bbf8a9fd8ece094ddfd1d3e98689c5d150cd6c5bcf0db636",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\military-robot-obj-package.zip",
+      "sha256": "33d0819cc32527912dff78ff3f1ef1c441dceeb03162973e72d2da6f8af19f66",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\military-robot.mtl",
+      "sha256": "c1696e1de68cd7b987949a9a9929822880b8dac112014f64633e7b737e5cdd78",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\military-robot.obj",
+      "sha256": "7b386835f6428703c19c69b62b1a1f6f0a5f52ec4b9ddf808b051f516096e15c",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\model-info.json",
+      "sha256": "6ba4d580d42b36a15a95c62db50853373e723fd5a75cb3c81f466f6a22bb6a2a",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\preview-final.png",
+      "sha256": "b03f8ff02178254181fc2d1bbfe64734112658c523b489aaff8e1225bedeabd5",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\preview.png",
+      "sha256": "b03f8ff02178254181fc2d1bbfe64734112658c523b489aaff8e1225bedeabd5",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\README.md",
+      "sha256": "ea6da54b03446491b6c77938fe06256da922d5598af67a988e72206920a1eeb5",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\side-back-preview.png",
+      "sha256": "f1d84bd05c997ce86cd41cc59e7cad0183f51208cf3be26c4a3b06cff86773b1",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\validation.json",
+      "sha256": "e709d934993f92c03b0df1351d75ba2a0e4c792ad15ff626d29287d81c08deca",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\renders\\back.png",
+      "sha256": "46d835a41bfaec611e172c6dafa11352e856948eb31b09faf970db411d291dac",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\renders\\front.png",
+      "sha256": "1a7c55ab82b1d785b4ca0a7c5ca835cee29b5ab1f3dac139a3771ed8ea9e3ec1",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\renders\\side.png",
+      "sha256": "c3ec5500aa2a1803ec71320711e9ade11bb57f1ab8377033f398367c7d61c31d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-3d-r02\\renders\\three-quarter.png",
+      "sha256": "9aa4a76b09484cbdc756ba2c37ec21055a1fe6f715efea7c84cbbaa45f5f075a",
+      "unchanged": true
+    }
+  ],
+  "errors": []
+}

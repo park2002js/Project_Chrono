@@ -189,13 +189,31 @@ public class GameManager : MonoBehaviour
                 yield break;
             if (Stage.IsReady)
             {
+                PlayerCharacter initialPlayer = Stage.Player;
+                bool entrance = Stage.Tutorial.HasPendingEntrance;
                 Loading.Hide();
-                yield return Stage.Player.Spawner.PlayInitialSpawn(); // 실제 생성·기상 입력 게이트가 끝날 때까지 대기
-                if (_isQuitting) yield break;
-                IsLoading = false;
-                SetGameplayPaused(false); // 게임 시간 정지 해제
-                PlayerInputController.Instance.BlockInput = false; // 월드 준비가 끝나 사용자 이동 입력 허용
-                yield break;
+                if (entrance)
+                {
+                    // 월드는 준비됐으므로 게임 시간만 먼저 열고 컷씬 권한으로 실제 보행
+                    IsLoading = false;
+                    SetGameplayPaused(false);
+                    yield return Stage.Tutorial.PlayEntrance(); // 새 게임의 실제 입장·정지·완료 기록까지 대기
+                }
+                else
+                    yield return initialPlayer.Spawner.PlayInitialSpawn(); // 기존 저장은 체크포인트 기상 입력 게이트까지 대기
+
+                // 중단된 이전 세션이 Title이나 새 Player의 입력을 뒤늦게 열지 않도록 차단
+                if (_isQuitting || !IsSessionActive || !Stage.IsReady || Stage.Player != initialPlayer) yield break;
+                if (entrance && !Stage.Tutorial.WasCompleted)
+                    Stage.LastError = Stage.Tutorial.LastError ?? "Player entrance was cancelled.";
+                else
+                {
+                    IsLoading = false;
+                    SetGameplayPaused(false); // 게임 시간 정지 해제
+                    UIController.Instance.SetPlayerHudVisible(true);
+                    PlayerInputController.Instance.BlockInput = false; // 입장 또는 기상이 끝난 실제 Player로 조작 인계
+                    yield break;
+                }
             }
             LastError = Stage.LastError;
         }

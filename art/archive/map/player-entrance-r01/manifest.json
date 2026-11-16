@@ -1,0 +1,206 @@
+{
+  "date": "2026-11-16",
+  "purpose": "Actual first-entry Player walk and control handoff capture, not an authored motion mockup",
+  "sourceEvidence": "project/Logs/TutorialEntry-verification.json",
+  "capture": {
+    "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\map\\player-entrance-r01\\player-entrance.gif",
+    "frames": 27,
+    "durationMs": 2290,
+    "observedRealSeconds": 1.4875793000000002,
+    "lastFrameHoldMs": 800,
+    "firstPosition": {
+      "x": 14.5,
+      "y": -4.57341194152832,
+      "z": 0.0
+    },
+    "lastPosition": {
+      "x": 14.5,
+      "y": 1.399999976158142,
+      "z": 0.0
+    },
+    "exactQuantizedFrameRoundTrip": true,
+    "bytes": 1019013,
+    "captureScope": "Actual world camera at unmodified default zoom; clean walking after blocked-input/pause test, ending at normal arrival and handoff; no wall/cancellation fixture or OnGUI HUD"
+  },
+  "files": [
+    {
+      "file": "player-entrance-contact-sheet.png",
+      "bytes": 72922,
+      "sha256": "3f6f4e8e7293dddf35aed5736b4644a5d27bf4cb1bea1f8621bc3d208a47f066"
+    },
+    {
+      "file": "player-entrance-handoff.png",
+      "bytes": 35388,
+      "sha256": "b272cb0a89730dc530ce58c661f656c1d9daa93e9eb6a4ea015b2d42994f01c1"
+    },
+    {
+      "file": "player-entrance-start.png",
+      "bytes": 38873,
+      "sha256": "92532e5059975cc3cf1507231bae6a2827c06ef0abefa0a9f6e4f1556e78003c"
+    },
+    {
+      "file": "player-entrance.gif",
+      "bytes": 1019013,
+      "sha256": "7f7966d757aed05f649655ce5da3243dfb931c3264ad647957c2729e6444dbb2"
+    }
+  ],
+  "rawFrames": [
+    {
+      "file": "entrance-000.png",
+      "sha256": "2b83936b0ad3c93f782d2eb5d040c965ddbbdcb21d7cc1827157f34b87f42cd0"
+    },
+    {
+      "file": "entrance-001.png",
+      "sha256": "1f77159534dda56ce54d64bdcfadf52077ae869bde37757cf5ebd1d5880c1978"
+    },
+    {
+      "file": "entrance-002.png",
+      "sha256": "85e005da83f14c3499936b3584ae004ff4168c4c85eb27a925885f4ce92ec2a3"
+    },
+    {
+      "file": "entrance-003.png",
+      "sha256": "00d5b0b458703ce4e68f96fe82ffb949195637eee9ec845d6810558e7e81ae43"
+    },
+    {
+      "file": "entrance-004.png",
+      "sha256": "ba9a2fed157de095ca71f1994e35c93fc1e14e9466b157c37fb6b6613af601b3"
+    },
+    {
+      "file": "entrance-005.png",
+      "sha256": "f1bc7af824f1bcd708424a190c1c2cb7d68357b95261a9384a506f9c77bb61e1"
+    },
+    {
+      "file": "entrance-006.png",
+      "sha256": "1c810d7f60793d1cf7813a2c097465cf2b2ae9a432c9e4ab31cbb90b750d1b21"
+    },
+    {
+      "file": "entrance-007.png",
+      "sha256": "37a3cd07216039be30f3d6ef6eaf477fabf707e55cd01ce84912df472936089e"
+    },
+    {
+      "file": "entrance-008.png",
+      "sha256": "2db2a2b13b807018dfc7148a2e319e8d0ecc198bf46bef12a4a1c19d0d999f1a"
+    },
+    {
+      "file": "entrance-009.png",
+      "sha256": "c97ee7d54ccd70a9b5c5938798497beb7f167c2a5ade918a63b6510070400d89"
+    },
+    {
+      "file": "entrance-010.png",
+      "sha256": "65110f9092982fd80c7aba6d754b752c9fb80e48a0d4532cbb637aed4f13927b"
+    },
+    {
+      "file": "entrance-011.png",
+      "sha256": "7bbe84b8118f28c2c614ebfb958e1fb2d9422169fd446b8263c403f9845af059"
+    },
+    {
+      "file": "entrance-012.png",
+      "sha256": "a97372f336833d15371865a3e1c226596827c79d77b7618e402d41c099e33475"
+    },
+    {
+      "file": "entrance-013.png",
+      "sha256": "3bb52250a0427d22f97ffd7a217dad3774b73871d115ca7149cb7a9911002f8c"
+    },
+    {
+      "file": "entrance-014.png",
+      "sha256": "b4199f6e35fcdbe36749046958cf6f265caf367c282061136fbc9ac7679dfec0"
+    },
+    {
+      "file": "entrance-015.png",
+      "sha256": "4a8323933c50b6103f727fab29c04624b099deb3c6ebb66908947195c4c8e3e9"
+    },
+    {
+      "file": "entrance-016.png",
+      "sha256": "32e4286d0f397de2615e8ce4b88cecc59efefcfc59e2016c9620ea01ac3dc0ff"
+    },
+    {
+      "file": "entrance-017.png",
+      "sha256": "6cda1831f5334339af85070bb8eb674ba435da3005d221f0a931182c01fe9e1f"
+    },
+    {
+      "file": "entrance-018.png",
+      "sha256": "463d7368ec79dacf27aa79cacb4492bc7d84ecfea82de40b7f02c778e8e9ddf3"
+    },
+    {
+      "file": "entrance-019.png",
+      "sha256": "c12133bc0a066d8efcde01dfbf2851423dce4deadf9edbf3c7f981b3bc8c153c"
+    },
+    {
+      "file": "entrance-020.png",
+      "sha256": "daf36c854bcd7bd7e5992cf33d5e3a0287a6143bd080e85229fda5f8b4854b53"
+    },
+    {
+      "file": "entrance-021.png",
+      "sha256": "1bbd6a53390fa6ad0211cf691a037ddac1cbab22757f1d73caa47017d99da3f2"
+    },
+    {
+      "file": "entrance-022.png",
+      "sha256": "e09818f888bec15da53e916b7a40b3400f04fbcee5be605692fe93127d475772"
+    },
+    {
+      "file": "entrance-023.png",
+      "sha256": "419b7d01a7d1c27790143860f42b3e88824baa8f7bedfb7d1db09706d05274e8"
+    },
+    {
+      "file": "entrance-024.png",
+      "sha256": "3e7ab6e43b7fd172c3852f9e7dd62f11bc32ba44af1fae238447862224c79e21"
+    },
+    {
+      "file": "entrance-025.png",
+      "sha256": "941f242bb6d5561dee8fb6012f2db74b5a278fb9380cc02d3dfa231adbd583aa"
+    },
+    {
+      "file": "entrance-026.png",
+      "sha256": "27196a0c290b45b179ca5c5d27961e11c13774b693fa0d87a5ce6103d0492893"
+    }
+  ],
+  "metrics": {
+    "spawn": {
+      "x": 14.5,
+      "y": -4.599999904632568
+    },
+    "stop": {
+      "x": 14.5,
+      "y": 1.399999976158142
+    },
+    "initialPosition": {
+      "x": 14.5,
+      "y": -4.599999904632568,
+      "z": 0.0
+    },
+    "arrived": {
+      "x": 14.5,
+      "y": 1.399999976158142,
+      "z": 0.0
+    },
+    "speed": 4.400000095367432,
+    "walkDistance": 6.0,
+    "doorY": 4.5,
+    "doorSpriteCenterY": 5.0,
+    "oldDoorDistance": 3.0999999046325684,
+    "newDoorDistance": 9.100000381469727,
+    "distanceRatio": 2.9354841709136963,
+    "extensionTileCount": 216,
+    "cameraLimits": {
+      "x": -6.0,
+      "y": 77.0
+    },
+    "distinctWalkingSprites": 6,
+    "footsteps": 5
+  },
+  "verification": {
+    "success": true,
+    "checkCount": 7,
+    "batchExitCode": 0,
+    "compileErrors": 0,
+    "shaderErrors": 0
+  },
+  "limits": [
+    "Original project Editor Play and standalone build were not executed.",
+    "The same isolated project was fully resynced from canonical; old aura Guard/Map fixtures were replaced and were not regenerated.",
+    "Tests used isolated Temp save files only; actual user Documents saves were untouched.",
+    "Door distance uses the physical passage blocker center y4.5; sprite bounds center is y5 and object origin y3.",
+    "Attempt1 and attempt2 were test-coordinate expectation fixes, not runtime or map failures.",
+    "GIF captures actual clean entry at default world camera zoom and excludes OnGUI HUD; last frame has an added800ms hold."
+  ]
+}

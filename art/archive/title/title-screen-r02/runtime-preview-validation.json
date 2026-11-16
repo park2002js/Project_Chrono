@@ -1,0 +1,26 @@
+{
+  "capturedFrames": 60,
+  "captureSize": [
+    1920,
+    1080
+  ],
+  "gifSize": [
+    960,
+    540
+  ],
+  "gifFrames": 60,
+  "gifDurationMs": 6990,
+  "fissureChangeBounds": [
+    378,
+    261,
+    1542,
+    447
+  ],
+  "visibleGlowBounds": [
+    378,
+    261,
+    1542,
+    447
+  ],
+  "menuIdentical": true
+}

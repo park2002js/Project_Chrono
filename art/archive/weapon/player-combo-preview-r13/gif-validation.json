@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-16 Asia/Seoul",
+  "output": "attack-03-preview.gif",
+  "frames": 54,
+  "duration_per_frame_ms": 80,
+  "scope": "Slow inspection only, not Unity timing",
+  "white_background": true,
+  "all54_decoded_RGB_frames_exact": true,
+  "source_png_and_manifest_unchanged": true,
+  "output_sha256": "084a3b49c366d47fe50176d5092fa9a63cef50a336dc263cfdc7c44e40002900"
+}

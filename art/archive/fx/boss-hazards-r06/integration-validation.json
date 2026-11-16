@@ -1,0 +1,121 @@
+{
+  "unity_version": "6000.3.21f1",
+  "verification_time_kst": "2026-11-16 09:48:48",
+  "play_checks": 17,
+  "batch_exit_code": 0,
+  "source_csharp_count": 85,
+  "validation_csharp_count": 85,
+  "source_csharp_differences": [],
+  "runtime_csharp_count": 50,
+  "runtime_csharp_differences": [],
+  "owned_targets": [
+    {
+      "path": "Assets/Scripts/Enemy/ProjectileVfx.cs",
+      "sha256": "27765144371f2348f948667814c33583867fbaf0de1673258253839c4497ac8f",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/BossHazardArtSetup.cs",
+      "sha256": "a65cb2e21adac779c7d42ef39196bd3b62d4cfe4bec37a2190852c948cd43a4a",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Editor/BossHazardArtChecks.cs",
+      "sha256": "84495a3efae4ba833f9b76e6b528db8b3d13978713e8d53428623566591d4c2e",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/NormalBullet.prefab",
+      "sha256": "03f2bdc42864970e216f397ebba773db55fe8df405f9c818b265ed8704cbe505",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/Enemy/GoldBullet.prefab",
+      "sha256": "581a46d67bf958f24a551864ca6449461771aebf445c0296112da4314bc48260",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/BossTests/Normal.prefab",
+      "sha256": "d10536f35e2489e8956243269b346cc51dcfca9f05d5a69f1827d77384c1c438",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Prefabs/BossTests/Gold.prefab",
+      "sha256": "ac546a2aab0931bae242046ed247a9951e2cc0158849739dac9d8dd950f38887",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/normal-bullet.png",
+      "sha256": "a8e3535d44725f6c7eeb4db050d6ab85d4445deb4e9161118c6b35e196e7fa13",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/normal-bullet.png.meta",
+      "sha256": "9f818c055acd288e71bedb265ae0d06f4d986defddc164184630064f0cd367e0",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/gold-bullet.png",
+      "sha256": "dc1869c51298fc27cacf5213f8707c23794b5e5417c89d478f4553ad0bb5b707",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/gold-bullet.png.meta",
+      "sha256": "f6678f4e8df311423efab0ba45b8c2459e2b92b9ca9f9d14fe088b1b983d513b",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/normal-halo.png",
+      "sha256": "4b8126b02a7ce6e3d9a1b033ddd5304eeeff61ad077faaeeab5c6c6ec2945f7a",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/normal-halo.png.meta",
+      "sha256": "3944f0e222990b06f85cd4d140a2e108c66bd8d917790ceb7041ba82c3f3a494",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/gold-halo.png",
+      "sha256": "8a912aeb90210792e42a68f7d95de2c783b52710b77ed2640072842f47e8fa41",
+      "matches_validation": true
+    },
+    {
+      "path": "Assets/Art/Enemy/Projectiles/gold-halo.png.meta",
+      "sha256": "c276fba8922c1edbb64df5760412de4bf0a3f23e1ada0d0840d0cb980e59681e",
+      "matches_validation": true
+    }
+  ],
+  "pure_warnings_preserved": [
+    "Assets/Scripts/Enemy/AreaWarningVfx.cs",
+    "Assets/Scripts/Enemy/AreaWarningVfx.cs.meta",
+    "Assets/Art/Enemy/Warnings.meta",
+    "Assets/Prefabs/Enemy/Warnings.meta",
+    "Assets/Art/Enemy/Warnings/Circle.asset",
+    "Assets/Art/Enemy/Warnings/Circle.asset.meta",
+    "Assets/Art/Enemy/Warnings/Rectangle.asset",
+    "Assets/Art/Enemy/Warnings/Rectangle.asset.meta",
+    "Assets/Prefabs/Enemy/Warnings/CircleWarning.prefab",
+    "Assets/Prefabs/Enemy/Warnings/CircleWarning.prefab.meta",
+    "Assets/Prefabs/Enemy/Warnings/RectangleWarning.prefab",
+    "Assets/Prefabs/Enemy/Warnings/RectangleWarning.prefab.meta",
+    "Assets/Prefabs/Enemy/Warnings/SectorWarning.prefab",
+    "Assets/Prefabs/Enemy/Warnings/SectorWarning.prefab.meta",
+    "Assets/Prefabs/Enemy/Warnings/StraightWarning.prefab",
+    "Assets/Prefabs/Enemy/Warnings/StraightWarning.prefab.meta"
+  ],
+  "legacy_area_preserved": [
+    "Assets/Scripts/Enemy/CircleWarningVfx.cs",
+    "Assets/Scripts/Enemy/AreaProjectile.cs",
+    "Assets/Art/Enemy/Projectiles/CircleFill.asset",
+    "Assets/Art/Enemy/Projectiles/CircleFill.asset.meta",
+    "Assets/Prefabs/Enemy/WarningArea.prefab",
+    "Assets/Prefabs/BossTests/Area.prefab"
+  ],
+  "body_and_halo_shape_alpha_identical": true,
+  "gold_only_color_variant": true,
+  "extra_interaction_ring_removed": true,
+  "obsolete_project_ring_asset_removed": true,
+  "body_collision_radius": 0.39,
+  "original_editor_play_import": "not_checked",
+  "submission_build": "not_run"
+}

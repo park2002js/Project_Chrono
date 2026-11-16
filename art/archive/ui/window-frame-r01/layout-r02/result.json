@@ -1,0 +1,9 @@
+{
+    "success": true,
+    "checks": [
+        "Current production runtime displays three206px-tall horizontal cards with source blue lower borders and no Back text in its former area",
+        "Completed horizontal card opens confirmation and cancellation preserves data and session ownership"
+    ],
+    "error": "",
+    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\verification\\title-presentation-r01\\Temp\\StartupFlowChecks\\642cf96f31bb43cbb2807ff3f916139e"
+}

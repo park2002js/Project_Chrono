@@ -153,7 +153,7 @@ public static class ArtIntegrationChecks
             "Spawn zoom restoration must keep the rendered view inside map limits.");
         passed("Camera remains inside map bounds immediately after Spawn zoom restoration");
 
-        // 실제 Player의 새 검 클립이 공격 중 자식만 움직이고 중단에서 원점으로 돌아오는지 확인
+        // 실제 Player의 검 곡선이 공격 중 자식만 움직이고 중단에서 원작 Idle로 돌아오는지 확인
         AttackController attack = player.GetComponent<AttackController>();
         Vector2 originalPosition = player.transform.position;
         Vector2 originalAim = player.AimWorldPosition;
@@ -167,8 +167,8 @@ public static class ArtIntegrationChecks
             && Mathf.Abs(Mathf.DeltaAngle(aimAngle, attack.WeaponPivot.eulerAngles.z)) < 0.01f,
             "Weapon clip must animate its child without changing the fixed aim parent.");
         player.CancelAttack();
-        Require(!attack.IsAttacking && attack.WeaponMotion.localPosition == Vector3.zero
-            && Mathf.Abs(Mathf.DeltaAngle(attack.WeaponMotion.localEulerAngles.z, 0f)) < 0.01f,
+        Require(!attack.IsAttacking && attack.WeaponAnimator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.Idle")
+            && Mathf.Approximately(attack.WeaponAnimator.speed, 1f),
             "Cancelling an attack must restore the weapon Animator to its idle pose.");
 
         // 같은 Player의 1·2·3타가 서로 다른 클립을 재생하고 한 타 종료 뒤 다음 콤보를 허용하는지 확인

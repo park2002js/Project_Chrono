@@ -1,0 +1,259 @@
+{
+  "canvas": {
+    "height": 144,
+    "width": 112
+  },
+  "errors": [],
+  "frameCount": 8,
+  "frameOrder": [
+    "S",
+    "SE",
+    "E",
+    "NE",
+    "N",
+    "NW",
+    "W",
+    "SW"
+  ],
+  "frames": [
+    {
+      "bounds": {
+        "height": 122,
+        "width": 102,
+        "x": 5,
+        "y": 6
+      },
+      "colorCount": 31,
+      "direction": "S",
+      "frame": 1,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 8690,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/S.png",
+      "softAlphaPixels": 0,
+      "sourceFrontMismatchPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 132,
+        "width": 84,
+        "x": 14,
+        "y": 6
+      },
+      "colorCount": 25,
+      "direction": "SE",
+      "frame": 2,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 7696,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/SE.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 125,
+        "width": 49,
+        "x": 25,
+        "y": 12
+      },
+      "colorCount": 18,
+      "direction": "E",
+      "frame": 3,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 4220,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/E.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 118,
+        "width": 84,
+        "x": 14,
+        "y": 17
+      },
+      "colorCount": 20,
+      "direction": "NE",
+      "frame": 4,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 7147,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/NE.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 103,
+        "width": 104,
+        "x": 4,
+        "y": 22
+      },
+      "colorCount": 14,
+      "direction": "N",
+      "frame": 5,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 8202,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/N.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 118,
+        "width": 84,
+        "x": 14,
+        "y": 17
+      },
+      "colorCount": 20,
+      "direction": "NW",
+      "frame": 6,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 7147,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/NW.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 125,
+        "width": 49,
+        "x": 38,
+        "y": 12
+      },
+      "colorCount": 18,
+      "direction": "W",
+      "frame": 7,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 4220,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/W.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    },
+    {
+      "bounds": {
+        "height": 132,
+        "width": 84,
+        "x": 14,
+        "y": 6
+      },
+      "colorCount": 25,
+      "direction": "SW",
+      "frame": 8,
+      "nativePngMismatchPixels": 0,
+      "opaquePixels": 7696,
+      "outsideSourcePalettePixels": 0,
+      "png": "D:/00_Works/02_GameDev/Unity/Project_Chrono/art/archive/boss/military-8dir-r01/png/SW.png",
+      "softAlphaPixels": 0,
+      "touchesCanvasEdge": false
+    }
+  ],
+  "layerCount": 14,
+  "method": "Native file reopened independently; every RGBA pixel compared with PNG exports; source front compared with R03 plus eight transparent bottom rows; palette compared with R03; mirror pairs compared at X=55.5",
+  "mirrorComparisons": [
+    {
+      "axisX": 55.5,
+      "directions": [
+        "SE",
+        "SW"
+      ],
+      "mismatchPixels": 0
+    },
+    {
+      "axisX": 55.5,
+      "directions": [
+        "E",
+        "W"
+      ],
+      "mismatchPixels": 0
+    },
+    {
+      "axisX": 55.5,
+      "directions": [
+        "NE",
+        "NW"
+      ],
+      "mismatchPixels": 0
+    },
+    {
+      "axisX": 55.5,
+      "directions": [
+        "N",
+        "N"
+      ],
+      "mismatchPixels": 0
+    }
+  ],
+  "sourceFront": "military-r03/png/02-military-robot-front.png",
+  "sourceFrontPadding": {
+    "bottomTransparentRows": 8,
+    "offsetX": 0,
+    "offsetY": 0
+  },
+  "sourcePaletteColorCount": 31,
+  "status": "passed",
+  "tags": [
+    {
+      "fromFrame": 1,
+      "name": "S",
+      "toFrame": 1
+    },
+    {
+      "fromFrame": 2,
+      "name": "SE",
+      "toFrame": 2
+    },
+    {
+      "fromFrame": 3,
+      "name": "E",
+      "toFrame": 3
+    },
+    {
+      "fromFrame": 4,
+      "name": "NE",
+      "toFrame": 4
+    },
+    {
+      "fromFrame": 5,
+      "name": "N",
+      "toFrame": 5
+    },
+    {
+      "fromFrame": 6,
+      "name": "NW",
+      "toFrame": 6
+    },
+    {
+      "fromFrame": 7,
+      "name": "W",
+      "toFrame": 7
+    },
+    {
+      "fromFrame": 8,
+      "name": "SW",
+      "toFrame": 8
+    }
+  ],
+  "sourceHashesUnchanged": true,
+  "sourceHashComparisons": [
+    {
+      "Path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-r03\\aseprite\\02-military-robot-front.aseprite",
+      "BeforeSha256": "3E4253B233AD007E5FD2323F4B0171BE1BA8716E133D659BCCEC299F3CA47415",
+      "AfterSha256": "3E4253B233AD007E5FD2323F4B0171BE1BA8716E133D659BCCEC299F3CA47415",
+      "Unchanged": true
+    },
+    {
+      "Path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\boss\\military-r03\\png\\02-military-robot-front.png",
+      "BeforeSha256": "A69A97D1540648B88BB71B12153039525B56A256C664D3AEFC851D2DEA791FA0",
+      "AfterSha256": "A69A97D1540648B88BB71B12153039525B56A256C664D3AEFC851D2DEA791FA0",
+      "Unchanged": true
+    }
+  ],
+  "outputNativeSha256": "9B319D2FDD305D9336E362014D8D36D823D5FFBBB5713A2C3A3DAC7D3819E503"
+}

@@ -364,7 +364,7 @@ public static class BossCombatChecks
         }
         passed("F-B06 real laser and area prefabs telegraph before one damage per Player, remain active and ignore Slash without gauge rewards");
 
-        // 같은 Slash에서 일반·금색을 한 번 처리하고 현재 Boss 대신 실제 발사자에게 반사
+        // 수평 Line과 평행한 금색은 오른쪽 직진을 유지해 실제 발사자의 Hitbox에 적중
         player.IsInvulnerable = true;
         player.Groggy = 0f;
         player.Buffs.Clear();
@@ -374,7 +374,7 @@ public static class BossCombatChecks
         Rigidbody2D bossBody = boss.GetComponent<Rigidbody2D>();
         if (bossBody != null) bossBody.position = boss.transform.position;
         NormalProjectile removed = Spawn<NormalProjectile>("Normal", boss, slashCenter + Vector2.left, Vector2.up, 0f, 5f, 4f, fixtures);
-        GoldProjectile gold = Spawn<GoldProjectile>("Gold", boss, slashCenter + Vector2.right, Vector2.up, 0f, 5f, 4f, fixtures);
+        GoldProjectile gold = Spawn<GoldProjectile>("Gold", boss, slashCenter + Vector2.right, Vector2.right, 0f, 5f, 4f, fixtures);
         AreaProjectile retained = Spawn<AreaProjectile>("Area", boss, slashCenter + Vector2.up * 4f, Vector2.right, 0f, 5f, 1f, fixtures);
         removed.GroggyGain = 60f;
         gold.GroggyGain = 40f;
@@ -397,9 +397,9 @@ public static class BossCombatChecks
             Physics2D.SyncTransforms();
             Require(slash.QuerySlash(slashCenter, new Vector2(4f, 1f), 0f, player, manager.CurrentBoss) == 2,
                 "A single real Slash query must apply one reaction to each projectile despite duplicate Collider children.");
-            Require(!removed.IsActive && gold.IsReflected && gold.ReflectionTarget == boss && retained.IsActive
+            Require(!removed.IsActive && gold.IsReflected && gold.ReflectionTarget == boss && Vector2.Dot(gold.Direction, Vector2.right) > 0.9999f && retained.IsActive
                 && player.Groggy == 0f && boss.IsGroggy && boss.CurrentPattern == null && !pattern.IsRunning && groggyEvents == 1,
-                "At 100 gauge, Slash must immediately consume it, groggy the owning Boss, cancel its pattern and preserve existing field hazards.");
+                "At 100 gauge, Slash must consume it, groggy the owning Boss, cancel its pattern, preserve hazards and keep parallel gold moving right.");
             Require(slash.QuerySlash(slashCenter, new Vector2(4f, 1f), 0f, player, manager.CurrentBoss) == 0 && player.Groggy == 0f,
                 "Repeating one Slash query must not repeat projectile rewards.");
             slash.End();
@@ -447,11 +447,11 @@ public static class BossCombatChecks
         player.Groggy = 0f;
         GoldProjectile invalid = Spawn<GoldProjectile>("Gold", boss, slashCenter, Vector2.up, 0f, 5f, 1f, fixtures);
         boss.IsDead = true;
-        Require(!invalid.OnSlashed(player, boss, new DamageInstance(player, 1f, DamageType.Slash, DamageInstance.NextAttackId()))
+        Require(!invalid.OnSlashed(player, boss, new DamageInstance(player, 1f, DamageType.Slash, DamageInstance.NextAttackId()), Vector2.right)
             && !invalid.IsReflected && player.Groggy == 0f, "A dead reflection target must reject gold without granting rewards.");
         boss.IsDead = false;
         invalid.ReflectionSpeed = float.NaN;
-        Require(!invalid.Reflect(boss, player), "A non-finite reflection speed must not enter reflected movement.");
+        Require(!invalid.Reflect(boss, player, Vector2.right), "A non-finite reflection speed must not enter reflected movement.");
         invalid.Despawn();
         NormalProjectile frozen = Spawn<NormalProjectile>("Normal", boss, slashCenter, Vector2.right, 1f, 0.8f, 1f, fixtures);
         AreaProjectile frozenArea = Spawn<AreaProjectile>("Area", boss, slashCenter + Vector2.up * 2f, Vector2.right, 0f, 0.8f, 1f, fixtures);

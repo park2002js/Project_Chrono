@@ -38,3 +38,11 @@
 - 사실 구분: 같은 날 외부 커뮤니티와 공식 문서를 실제 추가 검색했다. 이를 해결 후 추가 참고로 명시했으며 최초 발견 경위를 커뮤니티 검색으로 소급하거나 LateUpdate 자체의 결함으로 기록하지 않았다. 로컬의 실제 분석 출처와 선택1~4 이력은 유지한다.
 - 추가 근거: [Unity Discussions의 2D 패럴랙스·카메라 떨림 논의](https://discussions.unity.com/t/jittering-problems-with-my-camera-when-doing-a-2d-parallax-effect/873419)는 물리·렌더 갱신 시계의 차이와 보간을 설명하며 카메라 LateUpdate 유지를 안내한다. [Unity6000.3 Rigidbody2D.interpolation](https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/rigidbody2d/interpolation)은 화면 갱신이 물리보다 잦으면 이동이 계단처럼 보일 수 있음을 설명한다. 자료 확인일은2026-11-16이다.
 - 반영 결과: 기존 [Notion 정리 페이지](https://app.notion.com/p/41857a6d6d24809a8d15f1a5aa34d48a)의 해결 기록과 현재 이동 책임 두 부분을 수정해 저장했다. 기능별 SequenceDiagram·기존 Case와 무관한 레퍼런스 기록은 보존했다. 코드 변경·Unity 검사 재실행은 없다.
+
+# 선택 사안 6 — 실제 원작 Player의 대시 값과 기존 쿨타임 보존
+- 선택: 2026-11-16 사용자는 대시 거리·회피 시간·이동 불가 시간을 세피리아와 맞추되 대시 쿨타임은 유지하도록 요청했다.
+- 이유: 사용자 요청, 별도 이유 미기록.
+- 적용 기준: 실제 `PlayerAvatar.prefab`의 FastMove 연결과 직렬화 값인 시작속도24·이동0.14초·회피0.1초를 사용한다. `CharacterDash_FastMove`의 감속87을 적용하고 이동 종료 뒤 추가 잠금은0으로 맞춘다. 클래스 선언 초기값20/0.33초를 실제 Player 값으로 오인하지 않는다.
+- 유지: 현재 쿨타임0.65초·단일 대시·방향 고정·벽/보스 충돌·공격 중 대시와 대시 중 공격 전환 제한은 유지한다. 원작 충전/장비 보너스/네트워크는 추가하지 않는다.
+- 계산 차이: 같은 감속 곡선 `max(24-87t,0)`을0.14초까지 적분한 거리2.5074를 사용한다. 원작의 프레임별 Euler 이동·종료 프레임 초과에 따른 거리 차이를 복제하지 않으며, 원작 실행 거리 실측값과 동일하다고 기록하지 않는다.
+- 결과 원본: 구현·연결·실제 검사와 남은 확인 범위는 [GAME_SPEC 2.1.2](../../GAME_SPEC.md#212-f-p02-대시-구현확인과-sequence-diagram), 검 정렬 오류의 분석·수정은2.1.3을 따른다.

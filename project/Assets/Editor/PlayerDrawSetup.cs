@@ -2,7 +2,7 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-/// <summary>기존 프리팹의 참조를 보존하며 Draw 입력·임시 표현만 연결</summary>
+/// <summary>기존 프리팹의 참조를 보존하며 Draw 입력과 이미지 FX 연결</summary>
 public static class PlayerDrawSetup
 {
     /// <summary>명시적으로 만든 검사 요청 파일이 있을 때만 다음 Editor 갱신에서 실행</summary>
@@ -14,7 +14,7 @@ public static class PlayerDrawSetup
         EditorApplication.delayCall += RunChecks; // 도메인 재로드 완료 후 자산 연결·기존 Play 검사 시작
     }
 
-    /// <summary>기존 자산 연결 후 전투·피격·수정·부활·효과와 흑백 재질을 포함한 통합 Play Mode 검사 실행</summary>
+    /// <summary>이미지 FX 연결 후 기존 검사 장치로 Draw·편집·수명·Slash Play Mode 검사 실행</summary>
     [MenuItem("Tools/Chrono/Run Draw And Slash Checks")]
     public static void RunChecks()
     {
@@ -32,14 +32,14 @@ public static class PlayerDrawSetup
         }
         EditorApplication.isPaused = false;
         if (File.Exists("Temp/RunDrawChecks")) File.Delete("Temp/RunDrawChecks");
-        StartupFlowChecks.Run();
+        StartupFlowChecks.RunDraw();
     }
 
     /// <summary>Draw에 필요한 프리팹·표현·입력을 기존 구성에 추가</summary>
     [MenuItem("Tools/Chrono/Connect Draw Mode")]
     public static void Run()
     {
-        // 임시 시각 자산을 재사용하고 처음에만 생성
+        // 암전·검격 재질은 유지하고 Draw 전용 알파 텍스처 재질 준비
         Directory.CreateDirectory("Assets/Prefabs/Draw");
         Directory.CreateDirectory("Assets/Graphics/TemporaryDraw");
         Sprite pixel = PreparePixel();
@@ -50,11 +50,12 @@ public static class PlayerDrawSetup
             material = new Material(AssetDatabase.LoadAssetAtPath<Material>("Packages/com.unity.render-pipelines.universal/Runtime/Materials/Sprite-Unlit-Default.mat"));
             AssetDatabase.CreateAsset(material, materialPath);
         }
-        GameObject point = PrepareSprite("DrawPoint", pixel, new Color(0.3f, 1f, 1f), 100, Vector3.one * 0.18f);
         GameObject shade = PrepareSprite("DrawShade", pixel, new Color(0f, 0f, 0.04f, 0.65f), 50, Vector3.one);
-        GameObject preview = PrepareLine("DrawPreview", material, new Color(0.3f, 0.9f, 1f, 0.6f));
-        GameObject line = PrepareLine("DrawLine", material, new Color(0.3f, 1f, 0.85f));
-        GameObject expired = PrepareLine("DrawExpired", material, new Color(1f, 0.55f, 0.2f));
+        Material imageMaterial = PrepareImageMaterial(material);
+        Material evaporationMaterial = PrepareEvaporationMaterial(imageMaterial);
+        GameObject preview = PrepareLine("DrawPreview", imageMaterial, new Color(1f, 1f, 1f, 0.75f), true);
+        GameObject line = PrepareLine("DrawLine", imageMaterial, Color.white, true);
+        GameObject expired = PrepareLine("DrawExpired", imageMaterial, Color.white, true);
         GameObject slash = PrepareLine("SlashFlash", material, Color.white);
 
         // Player에서 표현과 능력을 연결하고 기존 몸체·무기·GUID 보존
@@ -65,10 +66,10 @@ public static class PlayerDrawSetup
             if (player.GetComponent<SkillController>() == null) player.AddComponent<SkillController>();
             if (player.GetComponent<CharacterBuff>() == null) player.AddComponent<CharacterBuff>();
             DrawVfx vfx = player.GetComponent<DrawVfx>();
-            if (vfx.PointPrefab == null) vfx.PointPrefab = point;
             if (vfx.PreviewLinePrefab == null) vfx.PreviewLinePrefab = preview;
             if (vfx.LinePrefab == null) vfx.LinePrefab = line;
             if (vfx.ExpiryLinePrefab == null) vfx.ExpiryLinePrefab = expired;
+            vfx.EvaporationMaterial = evaporationMaterial;
             if (vfx.SlashPrefab == null) vfx.SlashPrefab = slash;
             PrefabUtility.SaveAsPrefabAsset(player, playerPath);
         }
@@ -95,9 +96,60 @@ public static class PlayerDrawSetup
             PrefabUtility.SaveAsPrefabAsset(input, inputPath);
         }
         finally { PrefabUtility.UnloadPrefabContents(input); }
-        PlayerProgressionSetup.Run();
         AssetDatabase.SaveAssets();
-        Debug.Log("[PlayerDrawSetup] Draw actions, editable points, line prefabs and shade connected.");
+        Debug.Log("[PlayerDrawSetup] Draw image FX, logical point editing and shade connected without point visuals.");
+    }
+
+    /// <summary>흰 중심·청록 잔광 PNG를 부드러운 알파 경계의 공용 Draw 재질로 연결</summary>
+    private static Material PrepareImageMaterial(Material source)
+    {
+        // 압축·픽셀 필터 없이 텍스처의 연속 알파를 그대로 사용
+        string texturePath = "Assets/Art/FX/Draw/draw-line-profile.png";
+        AssetDatabase.ImportAsset(texturePath);
+        TextureImporter importer = (TextureImporter)AssetImporter.GetAtPath(texturePath);
+        if (importer == null) throw new FileNotFoundException("Draw image FX texture is missing.", texturePath);
+        importer.textureType = TextureImporterType.Default;
+        importer.alphaSource = TextureImporterAlphaSource.FromInput;
+        importer.alphaIsTransparency = true;
+        importer.filterMode = FilterMode.Bilinear;
+        importer.wrapMode = TextureWrapMode.Clamp;
+        importer.mipmapEnabled = false;
+        importer.textureCompression = TextureImporterCompression.Uncompressed;
+        importer.SaveAndReimport();
+
+        // 같은 재질 자산과 GUID를 재사용하고 최초 연결 때만 생성
+        string path = "Assets/Art/FX/Draw/DrawImageFX.mat";
+        Material material = AssetDatabase.LoadAssetAtPath<Material>(path);
+        if (material == null)
+        {
+            material = new Material(source);
+            AssetDatabase.CreateAsset(material, path);
+        }
+        Shader shader = Shader.Find("Chrono/DrawImageFx");
+        if (shader == null) throw new FileNotFoundException("Draw image FX shader is missing.");
+        material.shader = shader;
+        material.mainTexture = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
+        EditorUtility.SetDirty(material);
+        return material;
+    }
+
+    /// <summary>작은 원형 알갱이의 재질을 Line 원본 팔레트에 연결</summary>
+    private static Material PrepareEvaporationMaterial(Material imageMaterial)
+    {
+        // 원형은 셰이더로 유지하고 실제 선 이미지에서는 팔레트 색만 참조
+        Shader shader = Shader.Find("Chrono/DrawEvaporationParticle");
+        if (shader == null) throw new FileNotFoundException("Draw evaporation particle shader is missing.");
+        string path = "Assets/Art/FX/Draw/DrawEvaporation.mat";
+        Material material = AssetDatabase.LoadAssetAtPath<Material>(path);
+        if (material == null)
+        {
+            material = new Material(shader);
+            AssetDatabase.CreateAsset(material, path);
+        }
+        material.shader = shader;
+        material.SetTexture("_LinePaletteTex", imageMaterial.mainTexture);
+        EditorUtility.SetDirty(material);
+        return material;
     }
 
     /// <summary>임시 Sprite의 단위 크기를 명시한 흰 픽셀 자산 준비</summary>
@@ -124,7 +176,7 @@ public static class PlayerDrawSetup
         return AssetDatabase.LoadAssetAtPath<Sprite>(path);
     }
 
-    /// <summary>지정한 Sprite와 정렬 순서의 임시 점·암전 프리팹 작성</summary>
+    /// <summary>지정한 Sprite와 정렬 순서의 암전 프리팹 작성</summary>
     private static GameObject PrepareSprite(string name, Sprite pixel, Color color, int order, Vector3 scale)
     {
         GameObject existing = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Prefabs/Draw/" + name + ".prefab");
@@ -140,20 +192,30 @@ public static class PlayerDrawSetup
         return prefab;
     }
 
-    /// <summary>교체 규격인 로컬 X 길이1·폭1의 임시 선 프리팹 작성</summary>
-    private static GameObject PrepareLine(string name, Material material, Color color)
+    /// <summary>로컬 X 길이1·폭1의 선 프리팹을 준비하고 요청한 Draw 스타일만 갱신</summary>
+    private static GameObject PrepareLine(string name, Material material, Color color, bool applyStyle = false)
     {
         string path = "Assets/Prefabs/Draw/" + name + ".prefab";
         GameObject existing = AssetDatabase.LoadAssetAtPath<GameObject>(path);
         if (existing != null)
         {
-            // 이미 만든 임시 선의 스타일·GUID를 보존하며 필수 폭 보정만 보완
-            if (existing.GetComponent<LineRenderer>() != null && existing.GetComponent<DrawLineVfx>() == null)
+            // 기존 프리팹 GUID와 검격 스타일은 보존하고 Draw 재질만 교체
+            if (existing.GetComponent<LineRenderer>() != null && (applyStyle || existing.GetComponent<DrawLineVfx>() == null))
             {
                 GameObject contents = PrefabUtility.LoadPrefabContents(path);
                 try
                 {
-                    contents.AddComponent<DrawLineVfx>();
+                    DrawLineVfx width = contents.GetComponent<DrawLineVfx>();
+                    if (width == null) width = contents.AddComponent<DrawLineVfx>();
+                    if (applyStyle)
+                    {
+                        LineRenderer existingLine = contents.GetComponent<LineRenderer>();
+                        existingLine.sharedMaterial = material;
+                        existingLine.startColor = existingLine.endColor = color;
+                        existingLine.textureMode = LineTextureMode.Stretch;
+                        existingLine.numCapVertices = 0;
+                        width.WidthMultiplier = 3f;
+                    }
                     PrefabUtility.SaveAsPrefabAsset(contents, path);
                 }
                 finally { PrefabUtility.UnloadPrefabContents(contents); }
@@ -170,7 +232,7 @@ public static class PlayerDrawSetup
         renderer.startWidth = renderer.endWidth = 1f;
         renderer.startColor = renderer.endColor = color;
         renderer.sortingOrder = 100;
-        root.AddComponent<DrawLineVfx>();
+        root.AddComponent<DrawLineVfx>().WidthMultiplier = applyStyle ? 3f : 1f;
         GameObject prefab = PrefabUtility.SaveAsPrefabAsset(root, "Assets/Prefabs/Draw/" + name + ".prefab");
         Object.DestroyImmediate(root);
         return prefab;

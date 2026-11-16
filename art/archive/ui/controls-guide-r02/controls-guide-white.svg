@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1200" viewBox="0 0 2400 1200">
+<g fill="none" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<rect x="660" y="300" width="110" height="110" rx="13"/>
+<text x="715" y="353" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">W</text>
+<rect x="990" y="300" width="110" height="110" rx="13"/>
+<text x="1045" y="353" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">R</text>
+<rect x="590" y="440" width="110" height="110" rx="13"/>
+<text x="645" y="493" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">A</text>
+<rect x="720" y="440" width="110" height="110" rx="13"/>
+<text x="775" y="493" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">S</text>
+<rect x="850" y="440" width="110" height="110" rx="13"/>
+<text x="905" y="493" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">D</text>
+<rect x="980" y="440" width="110" height="110" rx="13"/>
+<text x="1035" y="493" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">F</text>
+<rect x="450" y="600" width="260" height="110" rx="13"/>
+<text x="580" y="653" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">SHIFT</text>
+<rect x="730" y="760" width="640" height="110" rx="13"/>
+<text x="1050" y="813" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="55">SPACE</text>
+<path d="M 715 300 L 715 250"/>
+<path d="M 715 250 L 470 250"/>
+<text x="470" y="200" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="44">이동 / —</text>
+<path d="M 1045 300 L 1045 225"/>
+<text x="1045" y="180" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="44">— / 점 초기화</text>
+<path d="M 1090 495 L 1180 495"/>
+<text x="1215" y="495" fill="white" stroke="none" text-anchor="start" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="44">공간참 / 선 확정</text>
+<path d="M 450 655 L 410 655"/>
+<text x="380" y="655" fill="white" stroke="none" text-anchor="end" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="44">선 그리기 / 취소</text>
+<path d="M 1050 870 L 1050 960"/>
+<text x="1050" y="1010" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="44">대시 / —</text>
+<path d="M1900 525 C1900 331 2150 331 2150 525 L2150 655 C2150 875 1900 875 1900 655 Z"/>
+<path d="M 2025 380 L 2025 445"/>
+<rect x="2011" y="445" width="28" height="65" rx="14"/>
+<path d="M 2025 510 L 2025 570"/>
+<path d="M 1900 570 L 2150 570"/>
+<path d="M 1960 490 L 1960 315"/>
+<text x="1960" y="265" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="44">공격 / 점 찍기</text>
+<text x="1200" y="1130" fill="white" stroke="none" text-anchor="middle" dominant-baseline="central" font-family="Malgun Gothic, sans-serif" font-size="32">일반 상태 / 선 그리기 상태</text>
+</g></svg>

@@ -1,0 +1,17 @@
+{
+  "raw_frames": 84,
+  "encoded_frames": 84,
+  "size": [
+    960,
+    720
+  ],
+  "duration_ms": 3500,
+  "file_bytes": 6345440,
+  "source_game_seconds": 3.458333333333333,
+  "camera": "Actual Player-following GameCamera; controlled Player position fixture; unchanged camera settings",
+  "inspection": "firing-full-boss-inspection.png temporarily uses a named review anchor",
+  "damage": "Only the two grounded circular impact areas; the airborne beam is cosmetic",
+  "image_processing": "Only shared-palette GIF encoding; no compositing, recoloring or frame interpolation",
+  "maximum_aim_error": 0.0,
+  "maximum_irregular_aim_error": 0.0
+}

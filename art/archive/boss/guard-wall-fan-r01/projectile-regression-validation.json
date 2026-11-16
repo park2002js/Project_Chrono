@@ -1,0 +1,24 @@
+{
+    "success": true,
+    "checks": [
+        "Production and existing Dummy normal/gold prefabs use their new Sprites and geometry while area references remain intact",
+        "Four pure warning prefabs preserve shared geometry/materials, translucent fill and closed/open outline contracts",
+        "Actual warning instances stretch into ellipse/rectangle bounds and reuse their sector mesh across 90/120/360-degree changes",
+        "Existing laser keeps its rectangular Sprite path after the optional circle warning change",
+        "Actual Player takes no damage during the red outline telegraph",
+        "Pause freezes both warning and pixel bullet lifetime and movement",
+        "The scaled halo pulse freezes on pause, resumes within its opacity range and reuses its renderer/material without changing the body",
+        "Warning activation changes the red outline and delivers one actual damage event; color=RGBA(1.0000, 0.1216, 0.1608, 0.8000)",
+        "The same area ignores Slash and does not damage again after re-entry",
+        "Boss groggy keeps existing circular areas and pixel bullets running",
+        "The pixel bullet and circular area despawn at their game-time lifetime",
+        "Pixel bullet preserves actual flight damage, one Slash removal and one groggy award",
+        "Projectile disable restores the original halo opacity and phase while keeping the pixel body unchanged",
+        "Gold pixel bullet reflects to Owner, rejects duplicate Slash and grants Fever, heal and groggy once",
+        "Reflected gold pixel bullet reaches its Owner, applies configured damage once and despawns",
+        "Actual Unity camera captures Player and normal/gold halos at the same 6x pixels/baseline, six warning forms, and a dark bullet close-up",
+        "Isolated save session returns to Title after removing hazard fixtures"
+    ],
+    "error": "",
+    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Temp\\GuardVfxVerification\\Temp\\BossHazardArtChecks\\20d318eb51d9438283ae39266cab736f"
+}

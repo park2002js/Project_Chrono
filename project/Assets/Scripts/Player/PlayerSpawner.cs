@@ -92,12 +92,20 @@ public class PlayerSpawner : MonoBehaviour
         // 체크포인트와 상호작용할 때 로컬 위치를 갱신해 같은 맵의 배열 재조회 생략
         if (SpawnPoint == null) throw new InvalidOperationException("Player checkpoint is not prepared.");
 
-        // Transform·물리 위치와 기본 조준 위치를 체크포인트에 맞춰 동기화
+        PlacePlayer(SpawnPoint);
+    }
+
+    /// <summary>최초 입장이나 부활의 지정 위치로 배치하되 저장된 체크포인트 참조는 유지</summary>
+    public void PlacePlayer(Transform point)
+    {
+        if (point == null) throw new ArgumentNullException(nameof(point));
+
+        // Transform·물리 위치와 기본 조준 위치를 지정한 배치점에 맞춰 동기화
         Player.ResetMotion();
-        base.transform.position = SpawnPoint.position;
-        base.transform.rotation = SpawnPoint.rotation;
-        body.position = SpawnPoint.position;
-        Player.SetAimPosition((Vector2)SpawnPoint.position + Player.AimDirection);
+        base.transform.position = point.position;
+        base.transform.rotation = point.rotation;
+        body.position = point.position;
+        Player.SetAimPosition((Vector2)point.position + Player.AimDirection);
         if (gameCamera != null && gameCamera.Target == Player.transform) gameCamera.Follow(Player.transform, true);
     }
 

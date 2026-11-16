@@ -1,0 +1,336 @@
+{
+  "stage": "unpublished_palette_candidate",
+  "reviewer": "ratio_design",
+  "checked_at": "2026-11-16T01:33:57.953881+00:00",
+  "status": "passed",
+  "passed_groups": 6,
+  "total_groups": 6,
+  "checks": [
+    {
+      "name": "five_aseprite_sources_rgb_only",
+      "passed": true,
+      "detail": [
+        {
+          "source": "connected-rooms.aseprite",
+          "rgba_equals_declared_rgb_substitution": true,
+          "alpha_exact": true,
+          "frames": 1,
+          "cel_images_compared": 15,
+          "pixels_compared": 8574720,
+          "structure_nonpixel_nonpalette_exact": true,
+          "palette_serialization": {
+            "before_color_count": 3,
+            "after_color_count": 3,
+            "before_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 38
+              }
+            ],
+            "after_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 38
+              }
+            ],
+            "scope": "Color-table encoding only; RGB32 cels, frame/layer/cel metadata, tags and timings are checked separately."
+          },
+          "candidate_sha256": "48057d439d310c8cb494e3e0e85883c8d7927495036a60678f9919bfbd918e37"
+        },
+        {
+          "source": "environment-tileset.aseprite",
+          "rgba_equals_declared_rgb_substitution": true,
+          "alpha_exact": true,
+          "frames": 1,
+          "cel_images_compared": 1,
+          "pixels_compared": 12288,
+          "structure_nonpixel_nonpalette_exact": true,
+          "palette_serialization": {
+            "before_color_count": 24,
+            "after_color_count": 24,
+            "before_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 164
+              }
+            ],
+            "after_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 164
+              }
+            ],
+            "scope": "Color-table encoding only; RGB32 cels, frame/layer/cel metadata, tags and timings are checked separately."
+          },
+          "candidate_sha256": "0e094e2114cff11e042817303ef8b40e6f27391532cbad50063cddc131d9c450"
+        },
+        {
+          "source": "exit-rising-slate.aseprite",
+          "rgba_equals_declared_rgb_substitution": true,
+          "alpha_exact": true,
+          "frames": 29,
+          "cel_images_compared": 58,
+          "pixels_compared": 831488,
+          "structure_nonpixel_nonpalette_exact": true,
+          "palette_serialization": {
+            "before_color_count": 256,
+            "after_color_count": 29,
+            "before_chunks": [
+              {
+                "frame": 1,
+                "type": "0x4",
+                "bytes": 772
+              }
+            ],
+            "after_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 194
+              }
+            ],
+            "scope": "Color-table encoding only; RGB32 cels, frame/layer/cel metadata, tags and timings are checked separately."
+          },
+          "candidate_sha256": "492abfd1c2778bbc02d5f872dbe42c496dc548c1bfdba060f7ba2f1e13f041b2"
+        },
+        {
+          "source": "sliding-gate.aseprite",
+          "rgba_equals_declared_rgb_substitution": true,
+          "alpha_exact": true,
+          "frames": 18,
+          "cel_images_compared": 90,
+          "pixels_compared": 645120,
+          "structure_nonpixel_nonpalette_exact": true,
+          "palette_serialization": {
+            "before_color_count": 256,
+            "after_color_count": 43,
+            "before_chunks": [
+              {
+                "frame": 1,
+                "type": "0x4",
+                "bytes": 772
+              }
+            ],
+            "after_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 278
+              }
+            ],
+            "scope": "Color-table encoding only; RGB32 cels, frame/layer/cel metadata, tags and timings are checked separately."
+          },
+          "candidate_sha256": "afdcf466c677f83a1cf279be219b5444123672bb65cfbe9fb2f6b60216b3b429"
+        },
+        {
+          "source": "straight-corridor.aseprite",
+          "rgba_equals_declared_rgb_substitution": true,
+          "alpha_exact": true,
+          "frames": 1,
+          "cel_images_compared": 2,
+          "pixels_compared": 103936,
+          "structure_nonpixel_nonpalette_exact": true,
+          "palette_serialization": {
+            "before_color_count": 13,
+            "after_color_count": 13,
+            "before_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 98
+              }
+            ],
+            "after_chunks": [
+              {
+                "frame": 1,
+                "type": "0x2019",
+                "bytes": 98
+              }
+            ],
+            "scope": "Color-table encoding only; RGB32 cels, frame/layer/cel metadata, tags and timings are checked separately."
+          },
+          "candidate_sha256": "ecfa49dc1ccf62139f978e5355619d2d9247f20e151488bebc3326c1ad7adc78"
+        }
+      ]
+    },
+    {
+      "name": "three_pngs_and_47_frames_native_exact",
+      "passed": true,
+      "detail": {
+        "pngs": [
+          {
+            "name": "environment-tileset",
+            "size_px": [
+              128,
+              96
+            ],
+            "size_preserved": true,
+            "alpha_preserved": true,
+            "native_aseprite_render_exact": true
+          },
+          {
+            "name": "entrance-sheet",
+            "size_px": [
+              2016,
+              64
+            ],
+            "size_preserved": true,
+            "alpha_preserved": true,
+            "native_aseprite_render_exact": true
+          },
+          {
+            "name": "exit-sheet",
+            "size_px": [
+              3248,
+              128
+            ],
+            "size_preserved": true,
+            "alpha_preserved": true,
+            "native_aseprite_render_exact": true
+          }
+        ],
+        "frame_pngs_exact": 47
+      }
+    },
+    {
+      "name": "43_tiles_rebuild_11_runtime_layers",
+      "passed": true,
+      "detail": {
+        "tiles": 43,
+        "cells": 3848,
+        "layers": [
+          {
+            "layer": "outside",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "corridor-floor",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "corridor-walls",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "next-floor",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "next-cracks",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "next-floor-border",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "next-walls",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "previous-floor",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "previous-cracks",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "previous-floor-border",
+            "runtime_rebuild_exact": true
+          },
+          {
+            "layer": "previous-walls",
+            "runtime_rebuild_exact": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "protected_metadata_assets_and_unpublished_sources",
+      "passed": true,
+      "detail": {
+        "protected_files": 144,
+        "protected_mismatches": [],
+        "still_unpublished_sources_unchanged": 11,
+        "before_backups_exact": 8
+      }
+    },
+    {
+      "name": "functional_signals_and_two_vfx_colors_preserved",
+      "passed": true,
+      "detail": {
+        "signal_colors_pixel_samples": {
+          "0E1210": 288,
+          "65AAF0": 204,
+          "B8D8FF": 84,
+          "E96870": 1156,
+          "FFAAA0": 476,
+          "285B3A": 332,
+          "98EFAD": 110,
+          "36B967": 110
+        },
+        "signal_colors_unmodified": true,
+        "current_vfx_opaque_rgb": [
+          [
+            "E5D2FF"
+          ],
+          [
+            "C3EAFF"
+          ]
+        ],
+        "vfx_source_files": [
+          "project/Assets/Art/Weapons/AttackVfx/Attack1_01.png",
+          "project/Assets/Art/Weapons/AttackVfx/Attack2_01.png"
+        ]
+      }
+    },
+    {
+      "name": "6x_previews_gif_and_source_contrast",
+      "passed": true,
+      "detail": {
+        "vfx_preview_exact_6x": true,
+        "comparison_exact_3x_per_half": true,
+        "exit_gif_exact_rgb_order_timing": true,
+        "exit_gif_decoded_frames": 26,
+        "exit_gif_duration_ms": 4200,
+        "exit_closed_exact_6x": true,
+        "old_base_ratios": [
+          1.032,
+          1.068
+        ],
+        "new_base_ratios": [
+          4.142,
+          4.568
+        ],
+        "actual_floor_rgb_ratio_ranges": [
+          [
+            3.232,
+            6.558
+          ],
+          [
+            3.564,
+            7.232
+          ]
+        ],
+        "interpretation": "Ratios compare source RGB luminance; do not imply in-game measured visibility or accessibility compliance."
+      }
+    }
+  ],
+  "visual_review": {
+    "inspected": [
+      "candidate/preview/palette-before-after.png"
+    ],
+    "result": "Both light-purple and cyan slashes are distinct against the dark gray floor; cell borders, subtle floor variation, cracks and the wall structure remain visible. No required art correction found."
+  },
+  "limits": [
+    "Candidate validation only. Final/Unity files remain original until publication by the task owner.",
+    "No Unity execution, import, game capture or performance test performed.",
+    "Preview is static composition with current VFX textures; the split comparison is 3x per half and the standalone preview is exact 6x."
+  ],
+  "allowed_source_change": "Aseprite cel RGB and exported PNG RGB; Aseprite may reserialize color-table metadata. Alpha, geometry, timing, layer/cel/tag metadata, IDs and protected Unity assets are preserved."
+}

@@ -1,0 +1,14 @@
+{
+    "success": true,
+    "checks": [
+        "Title connects intact200x80 logo and independent256x256 star VFX, point imports, gray-black background and three unselected slots",
+        "All eight menu states and high-DPI variants have no box background",
+        "Actual Title screenshots preserve the original cyan highlight without VFX and cover peak/disappearance/repeat plus real-time samples at timeScale0",
+        "Sixty actual OnGUI frames are saved for animated visual review",
+        "Three horizontal cards use the imported12px nine-slice frame, point filtering and centered bounds across720p/1080p/1440p plus wide/tall screens",
+        "Completed card opens the restart overlay and cancel preserves save data, Current and usable horizontal slot selection",
+        "Start opens slots, slot0 enters the real world, and Title return resets presentation while preserving Current"
+    ],
+    "error": "",
+    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\verification\\title-presentation-r01\\Temp\\StartupFlowChecks\\2df294a0587f410899c312bd83543c18"
+}

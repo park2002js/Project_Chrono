@@ -1,0 +1,89 @@
+{
+  "bounds": {
+    "height": 78,
+    "width": 178,
+    "x": 7,
+    "y": 26
+  },
+  "canvas": {
+    "height": 120,
+    "width": 192
+  },
+  "colorCount": 13,
+  "fingerCreaseLocalRowsAtX20": [
+    18,
+    28
+  ],
+  "frameCount": 1,
+  "handDimensionsUnchanged": true,
+  "hands": [
+    {
+      "alphaDifferencePixels": 0,
+      "bounds": {
+        "height": 40,
+        "width": 34,
+        "x": 7,
+        "y": 64
+      },
+      "changedPixels": 574,
+      "foldedFingerPlates": 3,
+      "layer": "06_Fist_Left_BackFacesLeft",
+      "thumbPlates": 1,
+      "transverseSeams": 2
+    },
+    {
+      "alphaDifferencePixels": 0,
+      "bounds": {
+        "height": 40,
+        "width": 34,
+        "x": 151,
+        "y": 64
+      },
+      "changedPixels": 574,
+      "foldedFingerPlates": 3,
+      "layer": "07_Fist_Right_BackFacesRight",
+      "thumbPlates": 1,
+      "transverseSeams": 2
+    }
+  ],
+  "layers": [
+    "01_Flat_Base_Torso",
+    "02_Five_Gun_Muzzles",
+    "03_Head",
+    "05_Embedded_Shoulder_Crystals",
+    "06_Fist_Left_BackFacesLeft",
+    "07_Fist_Right_BackFacesRight"
+  ],
+  "mainCreaseWidthPixels": 1,
+  "opaquePixels": 8969,
+  "pngMismatchPixels": 0,
+  "softAlphaPixels": 0,
+  "sourceColorCount": 13,
+  "sourceNativeSha256": "E4E8F24D4F1747FA85206FC9FA496CCBBF32BE7164B57AD3B1E0BFEDF498383A",
+  "sourceRevision": "guard-r04",
+  "status": "passed",
+  "topPlaneDepthPixels": 9,
+  "touchesCanvasEdge": false,
+  "unchangedLayers": [
+    {
+      "layer": "01_Flat_Base_Torso",
+      "mismatchPixels": 0
+    },
+    {
+      "layer": "02_Five_Gun_Muzzles",
+      "mismatchPixels": 0
+    },
+    {
+      "layer": "03_Head",
+      "mismatchPixels": 0
+    },
+    {
+      "layer": "05_Embedded_Shoulder_Crystals",
+      "mismatchPixels": 0
+    }
+  ],
+  "visualReview": "Top, front and outer side planes are distinct; three curled fingers and one bent inner thumb are readable",
+  "sourceNativeHashVerified": true,
+  "outputNativeSha256": "C4903BE695D81A5CC0566EC3B425EDE641D282BE0EACCED689A428EBFD9788A0",
+  "outputPngSha256": "AB2AA00F5767DB4ADD1ED55E01D4985641F0C9EB701A7DDCBDD61E3130E366C4"
+}

@@ -132,7 +132,7 @@
       }
     ]
   },
-  "timing": "Both start F31; V1 31-33,V2 34-36,V3 37-39,V4 40-42; both absent F43 onward; preview only, game not connected",
+  "timing": "R08: move previous R07 frame44 FX to38 and clear44; all other frames unchanged. Game not connected.",
   "damage_policy": "Two visual swings, one stronger damage event",
   "checks": {
     "source_shapes_and_colors_exact": true,
@@ -141,5 +141,64 @@
     "native_export_sheet_exact": true,
     "first_second_native_hashes_preserved": true,
     "export_cmd_executed_successfully": true
+  },
+  "independent_review": {
+    "passed": true,
+    "native_A_matches_attack1_all_RGBA_and_alpha": true,
+    "native_B_matches_once_mirrored_attack2_all_RGBA_and_alpha": true,
+    "left_overlap621_blue_front_right_overlap621_purple_front": true,
+    "native_export_sheet_expected_match": true,
+    "canvas70x66_pivot35_33_4frames_metadata_preserved": true,
+    "original_first_second_natives_and8_source_PNGs_unchanged": true,
+    "source_bank_same_phase_composites_verified": true,
+    "r04_color_overrides_and_full_nonoverlap_pixels_preserved": true,
+    "r05_actual_large_slashes_then_right_purple_arc_over_blue111px_verified": true,
+    "r07_user_attached40_to49_and_other_frames_preserved": true
+  },
+  "timeline_overrides": {
+    "purple_only_frames": [
+      37
+    ],
+    "purple_image_overrides": {
+      "37": 1,
+      "38": 3,
+      "39": 1,
+      "40": 2
+    },
+    "blue_image_overrides": {
+      "39": 1,
+      "40": 1,
+      "38": 3
+    },
+    "preview_manifest": "art/archive/weapon/player-combo-preview-r08/manifest.json",
+    "both_image_ranges": [
+      {
+        "frames": [
+          41,
+          43
+        ],
+        "image": 2
+      },
+      {
+        "frames": [
+          45,
+          46
+        ],
+        "image": 3
+      },
+      {
+        "frames": [
+          47,
+          49
+        ],
+        "image": 4
+      }
+    ],
+    "last_visible_frame": 49,
+    "absent_from_frame": 50,
+    "cleared_frames": [
+      44
+    ],
+    "otherwise_unchanged_from_r07": true
   }
 }

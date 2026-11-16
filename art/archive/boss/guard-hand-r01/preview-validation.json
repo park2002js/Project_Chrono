@@ -1,0 +1,301 @@
+{
+  "unity_frame_count": 69,
+  "capture_framerate": 20,
+  "gif_selected_frames": 40,
+  "gif_size": [
+    960,
+    720
+  ],
+  "gif_durations_ms": [
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    50,
+    50,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    100,
+    50,
+    50,
+    100,
+    50,
+    50,
+    50,
+    50,
+    50,
+    50,
+    100,
+    100,
+    50,
+    50,
+    100,
+    100,
+    100,
+    50,
+    500
+  ],
+  "gif_last_frame_hold_ms": 500,
+  "game_time_from_full_display_to_falling": 0.20000000000000018,
+  "game_time_from_falling_to_impact": 0.1499999999999999,
+  "actual_unity_frames": true,
+  "source_frame_directory": "project/Temp/GuardVfxVerification/Logs/GuardHandVerification/frames",
+  "export_only": "Nearest resize and256-color GIF conversion; no sprite compositing, no image interpolation",
+  "camera": "Existing GameCamera with actual Player follow; no inspection anchor",
+  "test_position_changes": "Harness repositions Player during tracking, just after warning lock, and after impact to test chase and late entry; these include camera snaps",
+  "selected_frames": [
+    {
+      "source_index": 0,
+      "phase": "Tracking",
+      "time": 1.2404485898526076,
+      "sha256": "cf63d6dc10a9770e00c90a608acc834ef9a4b24388e3be2e3c5a05d278654b1d"
+    },
+    {
+      "source_index": 2,
+      "phase": "Tracking",
+      "time": 1.3404485898526077,
+      "sha256": "b3bbbabfb1f3ed278ce9262c94cb273a9c6e9d54c95098e7099e69030a12bde7"
+    },
+    {
+      "source_index": 4,
+      "phase": "Tracking",
+      "time": 1.4404485898526076,
+      "sha256": "b7aa114ce958856ce22cf59357fcb377ea809010cf8ae7f1ab5e9e1afc6aeffa"
+    },
+    {
+      "source_index": 6,
+      "phase": "Tracking",
+      "time": 1.5404485898526077,
+      "sha256": "4b89ed532a733a5f97151d3663fe0f59259bfc57e7dc173271d55d3cc82440b0"
+    },
+    {
+      "source_index": 8,
+      "phase": "Tracking",
+      "time": 1.6404485898526076,
+      "sha256": "5a8aa3978ff460476665f5380f324bd536b2e9a0be81b4a22166e05fba457acb"
+    },
+    {
+      "source_index": 10,
+      "phase": "Tracking",
+      "time": 1.7404485898526076,
+      "sha256": "a763edbe08f40b5927f057c52af290cd71b3b76b28915000379b2ca7a5bb5279"
+    },
+    {
+      "source_index": 12,
+      "phase": "Tracking",
+      "time": 1.8404485898526077,
+      "sha256": "3bdcd03e0f9651751176d1d68da867dc8b0033b98e20a93ca495448338efcc43"
+    },
+    {
+      "source_index": 14,
+      "phase": "Tracking",
+      "time": 1.9404485898526076,
+      "sha256": "41e1e9a628042cf9c30a0deaef7597ea7e849169fa0ee16887638ef1812a133e"
+    },
+    {
+      "source_index": 16,
+      "phase": "Tracking",
+      "time": 2.0404485898526077,
+      "sha256": "f6bcaf2ec61ec1df9ee73750c5621b9719d2cdf36e23dd75794963326e3ad816"
+    },
+    {
+      "source_index": 18,
+      "phase": "Tracking",
+      "time": 2.1404485898526078,
+      "sha256": "7e5e9654ae19a90d3335671deb7a99af863fdc834f3ef126ae8553bbc23ed1ef"
+    },
+    {
+      "source_index": 20,
+      "phase": "Tracking",
+      "time": 2.2404485898526074,
+      "sha256": "38f3cc2100fe437f3bd067aab30febd606c997273f1a57ee2a0bc94ce18fa890"
+    },
+    {
+      "source_index": 22,
+      "phase": "Tracking",
+      "time": 2.3404485898526075,
+      "sha256": "1615752d8653a217e69c8c3d487d63d790ac31eaf7926b5f0f8dd952a2e527b8"
+    },
+    {
+      "source_index": 23,
+      "phase": "Tracking",
+      "time": 2.3904485898526078,
+      "sha256": "d8d6c4ed9de9961ab50cd47c7d76ec15f0b791b05c768033ab6c8186f47a13dd"
+    },
+    {
+      "source_index": 24,
+      "phase": "Filling",
+      "time": 2.4404485898526076,
+      "sha256": "f35e45058b4dfdba25ce99f185390cb40f943ee52d96b49684b0ec31d49e807d"
+    },
+    {
+      "source_index": 29,
+      "phase": "Filling",
+      "time": 2.5404485898526077,
+      "sha256": "736d8c5d1fbffe79a4266d459dec136a7ad315bf4b279cd3efca71b6fc5108e5"
+    },
+    {
+      "source_index": 31,
+      "phase": "Filling",
+      "time": 2.6404485898526078,
+      "sha256": "d0bdb1f8d6c0db97a79b07df7e5b40860c6f5753e7c6cc9475de3fcfac0133af"
+    },
+    {
+      "source_index": 33,
+      "phase": "Filling",
+      "time": 2.7404485898526074,
+      "sha256": "956bc3a44cc087dea03270007c05984a054b1d13df4168b183842a76a799d97e"
+    },
+    {
+      "source_index": 35,
+      "phase": "Filling",
+      "time": 2.8404485898526075,
+      "sha256": "6dc1300987d54b890b1f24996896f1e3eb247b147a197818d7c6223827f6f23c"
+    },
+    {
+      "source_index": 37,
+      "phase": "Filling",
+      "time": 2.9404485898526076,
+      "sha256": "3386b31936a17d64916b0f74ca25c32109885a58a0f6cd9fd169314fc33ebd03"
+    },
+    {
+      "source_index": 39,
+      "phase": "Filling",
+      "time": 3.0404485898526077,
+      "sha256": "785b85f7eff178dcfc6df311230a4e0e329306e38f44947fccc71e390c754836"
+    },
+    {
+      "source_index": 41,
+      "phase": "Filling",
+      "time": 3.1404485898526078,
+      "sha256": "7a78fec9b7072d387d6ab5c36316dd0481193f08a4ccc6647fa7ed28f90caec0"
+    },
+    {
+      "source_index": 43,
+      "phase": "Filling",
+      "time": 3.2404485898526074,
+      "sha256": "b7d3138d7979e29fde1a5f7da55ddce0badc184916a6d82e7a252b9b67f55671"
+    },
+    {
+      "source_index": 45,
+      "phase": "Filling",
+      "time": 3.3404485898526075,
+      "sha256": "20f41322dd131c2253b7313711d3a78cde0a6d401616efd43dcccdcb46b13f66"
+    },
+    {
+      "source_index": 46,
+      "phase": "Filling",
+      "time": 3.3904485898526078,
+      "sha256": "6a9057f7fec128d522825816e5115348087a63d10afb002a8a4b56949a4a7ef3"
+    },
+    {
+      "source_index": 47,
+      "phase": "Holding",
+      "time": 3.4404485898526076,
+      "sha256": "60be82cc2a78ee708efd6c8ebee70ef4e9696b9a490eae5ac95fda23aafd8a3e"
+    },
+    {
+      "source_index": 49,
+      "phase": "Holding",
+      "time": 3.5404485898526077,
+      "sha256": "0f33ba5de9bbe709b212c2758de3b559980c8eab5c70c7d6f49ad049f8790956"
+    },
+    {
+      "source_index": 50,
+      "phase": "Holding",
+      "time": 3.5904485898526075,
+      "sha256": "fb23b765e17bcd5318a5bbf1548760953d79dc4a821cf2dbae10a27682c0f7da"
+    },
+    {
+      "source_index": 51,
+      "phase": "Falling",
+      "time": 3.6404485898526078,
+      "sha256": "61e354cd2d501bcd8f9792d850c25441df62cea22f9ca82d9173b1f6d85f7e45"
+    },
+    {
+      "source_index": 52,
+      "phase": "Falling",
+      "time": 3.6904485898526076,
+      "sha256": "b23004cecea1c07a0d90f1828866de9cbd1250717c09e0eb392e37641f805568"
+    },
+    {
+      "source_index": 53,
+      "phase": "Falling",
+      "time": 3.7404485898526074,
+      "sha256": "71afbb2e9121aa09207e1b3e979cd57290dcd64ccad475343cacc8649bf03ff6"
+    },
+    {
+      "source_index": 54,
+      "phase": "Recovery",
+      "time": 3.7904485898526077,
+      "sha256": "a3a1d1a7d67621ead9b26c3a678adff1c838c9d953318d9677fbf493744c1cdc"
+    },
+    {
+      "source_index": 55,
+      "phase": "Recovery",
+      "time": 3.8404485898526075,
+      "sha256": "a54ef8f6d44845aa3be08763add80562a2b5b30b12612c8687577143e290210d"
+    },
+    {
+      "source_index": 57,
+      "phase": "Recovery",
+      "time": 3.9404485898526076,
+      "sha256": "048c09da18854769b0037d0a57bf3979a3f68a3f724769b6a7ad34351b231d4f"
+    },
+    {
+      "source_index": 59,
+      "phase": "Recovery",
+      "time": 4.040448589852607,
+      "sha256": "bac1c7604e333c2e3c28539198b67b5caa950acdcb0f60725de89f86cb182cb4"
+    },
+    {
+      "source_index": 60,
+      "phase": "Recovery",
+      "time": 4.090448589852608,
+      "sha256": "0e421a2636791037ea22ad23bb13a0ef889edae74f113a6dccacf412ada196b5"
+    },
+    {
+      "source_index": 61,
+      "phase": "Returning",
+      "time": 4.140448589852608,
+      "sha256": "cad4915a0bacbd89c0e854a3fd07b6817759bfd703096a1027f9e94430b546e5"
+    },
+    {
+      "source_index": 63,
+      "phase": "Returning",
+      "time": 4.240448589852607,
+      "sha256": "949c46a829fa14d2f0199df08782ee4cad5d7438ae76ec150a47942a011e4035"
+    },
+    {
+      "source_index": 65,
+      "phase": "Returning",
+      "time": 4.340448589852608,
+      "sha256": "767d8e12338497d3976ce8a20833967cb1786644d89819a02a33cbef0aed7bd3"
+    },
+    {
+      "source_index": 67,
+      "phase": "Returning",
+      "time": 4.440448589852608,
+      "sha256": "5646cf14f00be967a5c40060d3c013b7ecbefe258e2c10033e0bf9f842a523a6"
+    },
+    {
+      "source_index": 68,
+      "phase": "Idle",
+      "time": 4.490448589852607,
+      "sha256": "4e312def16371fb7d61d91c441825332e8319bf0c848ee41008c77b5f1ca11c4"
+    }
+  ]
+}

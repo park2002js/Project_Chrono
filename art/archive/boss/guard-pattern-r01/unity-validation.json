@@ -1,0 +1,31 @@
+{
+    "success": true,
+    "checks": [
+        "Actual Title session creates the stationary derived guard, five serialized muzzles and its single F-B07-01 pattern at the updated map placement",
+        "Actual crystal F and physical encounter start combat and HUD; the distant guard waits until the Player approaches within activation range",
+        "Pausing during the guard warmup freezes elapsed game time and prevents firing until resumed",
+        "The first actual golden projectile reconstructs to the center muzzle, keeps guard ownership and snapshots the Player direction exactly once",
+        "The actual Player-following GameCamera captures the visible shot; its temporary review anchor separately shows the guard, exit and twelve flight frames",
+        "The guard's gold shot reflects, grants Fever and damages its Owner once; recovery then preserves the current one-pattern Idle rule",
+        "Living retry reuses the same guard and clears usage history; groggy before firing cancels the pending shot",
+        "Groggy retains the fired gold shot; actual Player death removes owned hazards and automatically restores the same guard for retry",
+        "After automatic retry the guard fires again; actual Boss death records defeat, clears hazards, opens both doors and preserves the corpse on reset",
+        "The isolated guard verification session releases its combat objects and returns to Title"
+    ],
+    "frameTimes": [
+        2.2621443948412698,
+        2.5954777352607709,
+        2.676997335600907,
+        2.74895183531746,
+        2.8175628330498867,
+        2.8875297335600909,
+        2.956654535147392,
+        3.0284184311224489,
+        3.106703330498866,
+        3.1732931335034015,
+        3.2428888321995466,
+        3.3120940334467119
+    ],
+    "error": "",
+    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\project\\Temp\\GuardVfxVerification\\Temp\\GuardBossChecks\\8d30c3aa8c1a46a789ccc6888c3cb2ba"
+}

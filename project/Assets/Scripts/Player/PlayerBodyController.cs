@@ -11,6 +11,7 @@ public class PlayerBodyController : MonoBehaviour
 
     private Rigidbody2D body; // 직접 위치를 이동하고 몸체 충돌을 검사할 Rigidbody2D
     private RaycastHit2D[] hits = new RaycastHit2D[16]; // 이동 경로의 충돌 결과를 담아 반복 사용하는 배열
+    private const float MinimumMoveSqr = 0.000000000001f; // 목표 도착의 미세 변위도 기존 충돌 경로로 처리할 최소 이동량 제곱
 
     /// <summary>관성과 중력 없이 직접 이동시킬 2D 몸체 준비</summary>
     private void Awake()
@@ -68,7 +69,7 @@ public class PlayerBodyController : MonoBehaviour
         Vector2 remaining = displacement;
 
         // 최대 세 번 충돌을 보정하며 벽면을 따라 남은 거리 이동
-        for (int pass = 0; pass < 3 && remaining.sqrMagnitude > 0.0000001f; pass++)
+        for (int pass = 0; pass < 3 && remaining.sqrMagnitude > MinimumMoveSqr; pass++)
         {
             // 현재 경로에서 실제 이동을 막는 가장 가까운 충돌 선택
             float distance = remaining.magnitude;

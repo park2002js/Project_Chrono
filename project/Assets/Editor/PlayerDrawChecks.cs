@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
-/// <summary>실제 Draw 입력 전환·점과 경로 표시·정지 소유와 강제 종료 복구 확인</summary>
+/// <summary>실제 Draw 입력 전환·점 없는 이미지 경로·정지 소유와 강제 종료 복구 확인</summary>
 public static class PlayerDrawChecks
 {
     /// <summary>기존 검사 장치를 재사용해 Draw를 확인하고 수치·표시·시간·입력을 복구</summary>
@@ -41,7 +43,6 @@ public static class PlayerDrawChecks
         bool blocked = input.BlockInput;
         bool paused = manager.IsGameplayPaused;
         string actionMap = actions.currentActionMap.name;
-        GameObject pointVisual = vfx.PointObjects[0];
         GameObject previewVisual = vfx.PreviewObject;
         GameObject lineVisual = vfx.LineObject;
         int attackRequests = 0;
@@ -50,6 +51,12 @@ public static class PlayerDrawChecks
         attackAction.performed += countAttack; // Draw의 클릭이 일반 공격으로 누출되는지 수집
         try
         {
+            // 실제 이미지 자산·재질 연결과 점 표시 객체의 부재 확인
+            AssertImageProfile();
+            AssertImageMaterial(previewVisual);
+            AssertImageMaterial(lineVisual);
+            AssertNoPoints();
+
             // 점 편집과 복귀를 반복할 수 있도록 검사 값과 일반 조작 상태 준비
             Require(!skills.IsDrawing && !manager.IsDrawPaused, "Draw checks must begin in normal gameplay.");
             manager.SetGameplayPaused(false);
@@ -66,6 +73,9 @@ public static class PlayerDrawChecks
             Keys(keyboard);
             MouseInput(mouse, camera, body.position + Vector2.right * 3f, false);
             yield return Frames(2); // 이전 공격·이동 입력의 해제와 커서 갱신 대기
+
+            // 실제 Draw 입력 전에 카메라의 거리별 조준 이동과 복귀 계약 확인
+            DrawCameraChecks.Run(gameCamera, passed);
 
             // 실제 Shift 한 번으로 전용 입력에 진입하고 같은 누름으로 즉시 취소되지 않는지 확인
             Keys(keyboard, Key.LeftShift);
@@ -94,12 +104,9 @@ public static class PlayerDrawChecks
             // 점 편집·동일 점 거부·미리보기·R 초기화와 실제 F 확정 연결 확인
             Keys(keyboard);
             yield return Click(mouse, camera, body.position + Vector2.right); // 첫 실제 클릭이 점 선택으로 전달될 때까지 대기
-            Require(skills.Drawer.PointCount == 1 && vfx.PointObjects[0].activeSelf && !vfx.PointObjects[1].activeSelf,
-                "The first Draw click must display one point without starting an attack.");
-            Renderer pointRenderer = vfx.PointObjects[0].GetComponentInChildren<Renderer>();
-            Require(pointRenderer != null && pointRenderer.enabled && pointRenderer.bounds.size.sqrMagnitude > 0f
-                && Vector2.Distance(vfx.PointObjects[0].transform.position, skills.Drawer.StartPoint) < 0.002f,
-                "The temporary point prefab must visibly render at the selected world position.");
+            Require(skills.Drawer.PointCount == 1,
+                "The first Draw click must store its start point without creating a visible point.");
+            AssertNoPoints();
             skills.PlacePoint(skills.Drawer.StartPoint);
             Require(skills.Drawer.PointCount == 1 && !skills.Drawer.CanConfirm, "The same point cannot provide a valid second direction.");
             MouseInput(mouse, camera, skills.Drawer.StartPoint + Vector2.up * 2f, false);
@@ -107,15 +114,21 @@ public static class PlayerDrawChecks
             Require(skills.Drawer.PreviewLine.HasValue && vfx.PreviewObject.activeSelf, "One point and the cursor must display a preview.");
             AssertPath(vfx.PreviewObject, skills.Drawer.PreviewLine.Value);
             yield return Press(keyboard, Key.R); // R이 임시 점과 미리보기만 초기화하는 시점 대기
-            Require(skills.IsDrawing && skills.Drawer.PointCount == 0 && !vfx.PointObjects[0].activeSelf && !vfx.PreviewObject.activeSelf,
-                "Reset must stay in Draw while hiding the previous points and preview.");
+            Require(skills.IsDrawing && skills.Drawer.PointCount == 0 && !vfx.PreviewObject.activeSelf,
+                "Reset must stay in Draw while clearing the selected points and hiding the preview.");
+            AssertNoPoints();
             yield return Click(mouse, camera, body.position + Vector2.right); // 초기화 뒤 새 시작점 선택 대기
-            MouseInput(mouse, camera, skills.Drawer.StartPoint + new Vector2(2f, 1f), true);
+            MouseInput(mouse, camera, skills.Drawer.StartPoint + new Vector2(Mathf.Cos(Mathf.PI / 6f), Mathf.Sin(Mathf.PI / 6f)) * 2f, true);
             yield return Until(() => skills.Drawer.PointCount == 2, "second point"); // 두 번째 실제 클릭으로 방향이 확정될 때까지 대기
-            Require(skills.Drawer.CanConfirm && vfx.PointObjects[1].activeSelf, "Two distinct points must enable confirmation and display the second point.");
+            Require(skills.Drawer.CanConfirm, "Two distinct points must enable confirmation without displaying either point.");
+            AssertNoPoints();
             Line selected = skills.Drawer.PreviewLine.Value;
-            ScreenCapture.CaptureScreenshot("Temp/DrawValidation.png");
-            yield return Frames(3); // 임시 점·선·암전의 실제 Game View 캡처가 저장될 때까지 대기
+            Require(Mathf.Abs(Vector2.Angle(selected.Direction, Vector2.right) - 30f) < 0.5f,
+                "The image FX preview must support the requested 30 degree comparison direction.");
+            AssertPath(vfx.PreviewObject, selected);
+            Directory.CreateDirectory("Logs");
+            ScreenCapture.CaptureScreenshot("Logs/DrawImageFxCaps-preview.png");
+            yield return Frames(3); // 점 없는 이미지 선과 암전의 실제 Game View 캡처 저장 대기
             Keys(keyboard, Key.F);
             yield return Until(() => !skills.IsDrawing, "F confirms line"); // 확정 액션의 데이터 저장과 일반 입력 복귀 대기
             yield return Frames(3); // 두 번째 점의 M1을 누른 채 일반 입력 맵으로 돌아가도 공격이 누출되지 않는지 관찰
@@ -126,13 +139,17 @@ public static class PlayerDrawChecks
             Require(!drawView.IsVisible && !drawView.ScreenShade.gameObject.activeInHierarchy, "Confirm must hide the temporary Draw screen shade.");
             Require(ui.IsPlayerHudVisible == playerHud && ui.IsBossHudVisible == bossHud && camera.orthographicSize == zoom && gameCamera.Target == cameraTarget,
                 "Confirm must restore the previous HUD visibility, zoom and camera target.");
-            Require(!vfx.PointObjects[0].activeSelf && !vfx.PointObjects[1].activeSelf && !vfx.PreviewObject.activeSelf && vfx.LineObject.activeSelf,
+            Require(!vfx.PreviewObject.activeSelf && vfx.LineObject.activeSelf,
                 "Confirm must hide editing VFX and keep the confirmed line visible.");
+            AssertNoPoints();
             AssertPath(vfx.LineObject, selected);
             Keys(keyboard);
             MouseInput(mouse, camera, body.position + Vector2.right, false);
             yield return Frames(2); // 복귀 검사 뒤 실제 버튼과 키 해제 대기
-            passed("F-P04 point input, preview, reset and confirm use temporary VFX and return to normal controls without click leakage");
+            passed("F-P04 point-free image FX uses the alpha profile, 30 degree preview, reset and confirmation without click leakage");
+
+            // 길이 튜닝은 다음 Draw와 실제 표시·Slash에 함께 반영하고 판정 폭은 유지
+            yield return CheckLengthScaling(player, skills, vfx, keyboard, mouse, camera, passed); // 실제 입력의 길이 배율·확정 후 밝은 화면 검증 대기
 
             // 재Draw의 미완 확정·취소는 기존 Line과 재사용 표현을 보존하고 새 확정만 교체
             Line firstLine = player.CurrentLine.Value;
@@ -144,8 +161,9 @@ public static class PlayerDrawChecks
             yield return Press(keyboard, Key.LeftShift); // Shift가 이번 편집만 취소하는 시점 대기
             Require(!skills.IsDrawing && skills.Drawer.PointCount == 0 && SameLine(player.CurrentLine.Value, firstLine) && vfx.LineObject.activeSelf,
                 "Cancelling a redraw must retain the previous line and remove only temporary points.");
-            Require(vfx.PointObjects[0] == pointVisual && vfx.PreviewObject == previewVisual && vfx.LineObject == lineVisual,
+            Require(vfx.PreviewObject == previewVisual && vfx.LineObject == lineVisual,
                 "Repeated edits must reuse the prepared visual instances.");
+            AssertNoPoints();
             SetPosition(body, body.position + Vector2.left);
             AssertPath(vfx.LineObject, firstLine);
             yield return EnterDraw(keyboard, skills); // Player를 재배치한 뒤 기존 월드 선과 독립적으로 새 편집 시작 대기
@@ -287,6 +305,247 @@ public static class PlayerDrawChecks
         Require(Time.timeScale == (manager.IsGameplayPaused ? 0f : 1f), "Draw cleanup must preserve the ordinary pause owner.");
     }
 
+    /// <summary>동일 클릭 방향의 길이 증가가 이미지 메시와 Slash에 이어지는지 확인</summary>
+    private static IEnumerator CheckLengthScaling(PlayerCharacter player, SkillController skills, DrawVfx vfx, Keyboard keyboard, Mouse mouse, Camera camera, Action<string> passed)
+    {
+        // 이미 확정된 경로와 검사 뒤 복원할 튜닝·위치·카메라 상태 보관
+        Line previousLine = player.CurrentLine.Value;
+        float length = skills.LineLength;
+        float slashCooldown = skills.ConfirmSlashCooldown;
+        Rigidbody2D body = player.GetComponent<Rigidbody2D>();
+        Vector2 position = body.position;
+        Vector2 aim = player.AimWorldPosition;
+        GameCamera gameCamera = GameCamera.Instance;
+        Transform target = gameCamera.Target;
+        Vector3 cameraPosition = camera.transform.position;
+        Require(Mathf.Abs(previousLine.Length - 6f) < 0.001f && Mathf.Abs(previousLine.Width - 0.25f) < 0.001f,
+            "Length scaling checks require the existing six-unit path with its unchanged collision width.");
+        try
+        {
+            // 비활성 조우는 그대로 두고 실험실 바닥 안에서 같은 두 클릭의 기준 경로 준비
+            Vector2 direction = new Vector2(Mathf.Cos(Mathf.PI / 6f), Mathf.Sin(Mathf.PI / 6f));
+            SetPosition(body, (Vector2)GameManager.Instance.CurrentBoss.transform.position - new Vector2(3f, 2f));
+            gameCamera.Follow(player.transform, true);
+            player.SetAimPosition(body.position + direction * 2f);
+            MouseInput(mouse, camera, player.AimWorldPosition, false);
+            yield return Frames(3); // 임시 방 안 위치와 카메라 추적을 실제 화면에 반영할 때까지 대기
+            skills.LineLength = 6f;
+            skills.ConfirmSlashCooldown = 0f;
+            yield return EnterDraw(keyboard, skills); // 밝은 바닥 위 기준 길이 편집 시작 대기
+            yield return Click(mouse, camera, body.position + new Vector2(-2f, -2f)); // 두 길이의 양 끝이 일반 시야에 들어오는 공통 시작점 선택 대기
+            yield return Click(mouse, camera, skills.Drawer.StartPoint + direction * 2f); // 같은30도와 클릭 간격의 기준 방향 선택 대기
+            Line shorter = skills.Drawer.PreviewLine.Value;
+            AssertPath(vfx.PreviewObject, shorter);
+            Directory.CreateDirectory("Logs");
+            ScreenCapture.CaptureScreenshot("Logs/DrawImageFxCaps-preview.png");
+            yield return Frames(3); // 실험실 바닥 위 이미지 선 편집 화면 캡처 저장 대기
+            yield return Press(keyboard, Key.F); // 기준 길이의 실제 확정 경로 생성 대기
+            AssertPath(vfx.LineObject, shorter);
+            yield return CaptureLineCaps(camera, gameCamera, shorter, "length6"); // 짧은 확정 선 양끝의 실제 확대 화면 저장 대기
+
+            // 튜닝 변경으로 이전 확정값을 소급 수정하지 않고 새 편집만 두 배로 준비
+            skills.LineLength = 12f;
+            skills.ConfirmSlashCooldown = 0f;
+            Require(SameLine(player.CurrentLine.Value, shorter), "Changing the next Draw length must not alter the confirmed snapshot.");
+            yield return EnterDraw(keyboard, skills); // 변경한 길이를 새 편집이 보관할 때까지 대기
+            yield return Click(mouse, camera, shorter.StartPoint); // 이전과 같은 시작 좌표의 실제 클릭 전달 대기
+            Vector2 secondPoint = skills.Drawer.StartPoint + direction * 2f;
+            MouseInput(mouse, camera, secondPoint, false);
+            yield return Frames(3); // 새 길이를 적용한 커서 미리보기와 실제 렌더 폭 갱신 대기
+            Require(skills.Drawer.PreviewLine.HasValue && Mathf.Abs(skills.Drawer.PreviewLine.Value.Length - 12f) < 0.001f
+                && SameLine(player.CurrentLine.Value, shorter), "The new preview must double in length while the previous confirmed snapshot remains intact.");
+            AssertPath(vfx.PreviewObject, skills.Drawer.PreviewLine.Value);
+            yield return Click(mouse, camera, secondPoint); // 클릭 간 거리는 유지한 채 두 번째 방향 선택 대기
+            Line longer = skills.Drawer.PreviewLine.Value;
+            Require(Mathf.Abs(longer.Length - shorter.Length * 2f) < 0.001f && Mathf.Abs(longer.Width - shorter.Width) < 0.001f
+                && Vector2.Distance(longer.StartPoint, shorter.StartPoint) < 0.002f && Vector2.Angle(longer.Direction, shorter.Direction) < 0.5f,
+                "The same two-click direction must double length without changing the start point, collision width or angle.");
+            AssertPath(vfx.PreviewObject, longer);
+            AssertNoPoints();
+            yield return Press(keyboard, Key.F); // 새 확정 경로와 일반 화면 복귀 대기
+            Require(!skills.IsDrawing && Time.timeScale == 1f && SameLine(player.CurrentLine.Value, longer) && vfx.LineObject.activeSelf,
+                "The doubled path must remain visible after leaving Draw and restoring normal gameplay.");
+            AssertPath(vfx.LineObject, longer);
+            Require(vfx.LineObject.GetComponent<DrawLineVfx>().WidthMultiplier == 3f,
+                "The confirmed Draw image must keep its three-times visual width independently of length.");
+            Directory.CreateDirectory("Logs");
+            ScreenCapture.CaptureScreenshot("Logs/DrawImageFxCaps-confirmed.png");
+            yield return Frames(3); // 암전이 사라진 실제 밝은 바닥의 확정 선 캡처 저장 대기
+            yield return CaptureLineCaps(camera, gameCamera, longer, "length12"); // 긴 확정 선 양끝의 실제 확대 화면 저장 대기
+
+            // 원본 경로는 유지하고 실제 Slash 판정만 이미지 오라 전체 폭으로 인계
+            Require(player.ApplySlash(), "The doubled confirmed path must be available to the actual Slash entry API.");
+            Require(skills.IsSlashing && SameLine(skills.Slasher.ActiveLine, longer)
+                && Mathf.Abs(skills.Slasher.ActiveLine.Length - 12f) < 0.001f && Mathf.Abs(skills.Slasher.ActiveLine.Width - 0.25f) < 0.001f
+                && Mathf.Abs(skills.Slasher.HitWidth - 0.75f) < 0.001f,
+                "Slash must preserve the original 0.25 path width and use its full 0.75 image aura for collision.");
+            passed("F-P04 image FX length 6 to 12 keeps its original path and passes the full 0.75 aura width to Slash collision");
+        }
+        finally
+        {
+            // 검사용 Slash·쿨타임을 정리하고 이전 경로·길이·위치·카메라 복원
+            player.CancelSlash();
+            skills.ResetSkills();
+            skills.LineLength = length;
+            skills.ConfirmSlashCooldown = slashCooldown;
+            skills.SetLine(previousLine);
+            SetPosition(body, position);
+            player.SetAimPosition(aim);
+            gameCamera.Follow(target);
+            camera.transform.position = cameraPosition;
+            Keys(keyboard);
+            MouseInput(mouse, camera, aim, false);
+        }
+    }
+
+    /// <summary>실제 게임 카메라의 임시 확대 화면으로 확정 선 양끝을 따로 기록</summary>
+    private static IEnumerator CaptureLineCaps(Camera camera, GameCamera gameCamera, Line line, string lengthName)
+    {
+        // 저장할 두 끝점과 이후 복원할 일반 카메라 상태 보관
+        Transform target = gameCamera.Target;
+        Vector3 position = camera.transform.position;
+        float zoom = camera.orthographicSize;
+        Vector2[] endpoints = { line.StartPoint, line.EndPoint };
+        try
+        {
+            // 게임 표시 설정을 바꾸지 않고 추적만 잠시 끈 상태에서 실제 프레임 확대
+            gameCamera.Follow(null);
+            camera.orthographicSize = 1.2f;
+            for (int i = 0; i < endpoints.Length; i++)
+            {
+                Vector2 point = endpoints[i];
+                camera.transform.position = new Vector3(point.x, point.y, position.z);
+                yield return Frames(2); // 확대 카메라로 양끝 텍스처가 실제 렌더링될 때까지 대기
+                ScreenCapture.CaptureScreenshot($"Logs/DrawImageFxCaps-{lengthName}-{(i == 0 ? "start" : "end")}.png");
+                yield return Frames(3); // 해당 끝점의 확대 PNG가 저장된 뒤 다음 위치로 이동
+            }
+        }
+        finally
+        {
+            // 확대 관찰이 다음 Draw와 Slash의 일반 시야에 남지 않도록 복원
+            camera.orthographicSize = zoom;
+            gameCamera.Follow(target);
+            camera.transform.position = position;
+        }
+    }
+
+    /// <summary>선택 좌표를 처리해도 활성·비활성 입력 점 객체가 생성되지 않는지 확인</summary>
+    private static void AssertNoPoints()
+    {
+        // 씬의 비활성 객체까지 살펴 남은 점 표시나 숨긴 점 복제 검출
+        Transform[] objects = UnityEngine.Object.FindObjectsByType<Transform>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (Transform item in objects)
+            Require(!item.name.StartsWith("DrawPoint", StringComparison.Ordinal),
+                "Draw must not create or retain a point visual, including inactive point objects.");
+    }
+
+    /// <summary>실제 경로 렌더러가 부드러운 알파 이미지 재질을 공유하는지 확인</summary>
+    private static void AssertImageMaterial(GameObject visual)
+    {
+        // 선 종류가 달라도 선택한 이미지 자산과 부드러운 필터 연결 유지
+        LineRenderer renderer = visual.GetComponentInChildren<LineRenderer>(true);
+        Material material = renderer != null ? renderer.sharedMaterial : null;
+        Require(material != null && AssetDatabase.GetAssetPath(material) == "Assets/Art/FX/Draw/DrawImageFX.mat",
+            "The Draw preview and confirmed path must use the connected image FX material.");
+        Texture2D texture = material.mainTexture as Texture2D;
+        Require(texture != null && AssetDatabase.GetAssetPath(texture) == "Assets/Art/FX/Draw/draw-line-profile.png"
+            && texture.filterMode == FilterMode.Bilinear && texture.wrapMode == TextureWrapMode.Clamp,
+            "The Draw image material must sample its alpha PNG with bilinear filtering and clamped edges.");
+        DrawLineVfx style = visual.GetComponent<DrawLineVfx>();
+        Require(style != null && Mathf.Abs(style.WidthMultiplier - 3f) < 0.001f,
+            "The preview and confirmed Draw images must use the configured three-times visual width.");
+    }
+
+    /// <summary>GPU 읽기 설정을 바꾸지 않고 원본 PNG의 흰 발광 중심·푸른 코로나·연속 광륜 확인</summary>
+    private static void AssertImageProfile()
+    {
+        // 원본 파일을 별도 검사 텍스처로 읽어 게임용 import 설정 보존
+        var texture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+        try
+        {
+            Require(ImageConversion.LoadImage(texture, File.ReadAllBytes("Assets/Art/FX/Draw/draw-line-profile.png")),
+                "The Draw image profile must be a decodable PNG.");
+            Require(texture.width == 1536 && texture.height == 1024, "The Draw image profile must preserve its generated 1536 by 1024 source dimensions.");
+            int centerX = texture.width / 2;
+            Color center = texture.GetPixel(centerX, texture.height / 2);
+            Require(center.a > 0.9f && center.r > 0.9f && center.g > 0.9f && center.b > 0.9f,
+                "The Draw image profile must contain an opaque near-white luminous core.");
+            Require(texture.GetPixel(centerX, 0).a < 0.01f && texture.GetPixel(centerX, texture.height - 1).a < 0.01f,
+                "The Draw image profile must reach transparency before the outer ribbon edges.");
+
+            // 발광 중심에서 청록·푸른 코로나와 여러 투명도로 이어지는 광륜 확인
+            bool hasCyanCorona = false;
+            bool hasBlueCorona = false;
+            bool hasFaintAlpha = false;
+            bool hasMediumAlpha = false;
+            bool hasStrongAlpha = false;
+            bool[] alphaLevels = new bool[256];
+            int alphaCount = 0;
+            for (int y = 0; y < texture.height; y++)
+            {
+                Color sample = texture.GetPixel(centerX, y);
+                hasCyanCorona |= sample.a > 0.02f && sample.g > sample.r + 0.08f && sample.b > sample.r + 0.08f;
+                hasBlueCorona |= sample.a > 0.02f && sample.b > sample.g + 0.02f && sample.b > sample.r + 0.1f;
+                hasFaintAlpha |= sample.a > 0.02f && sample.a < 0.2f;
+                hasMediumAlpha |= sample.a >= 0.2f && sample.a < 0.7f;
+                hasStrongAlpha |= sample.a >= 0.7f && sample.a < 0.95f;
+                int alpha = Mathf.RoundToInt(sample.a * 255f);
+                if (!alphaLevels[alpha])
+                {
+                    alphaLevels[alpha] = true;
+                    alphaCount++;
+                }
+            }
+            Require(hasCyanCorona && hasBlueCorona && hasFaintAlpha && hasMediumAlpha && hasStrongAlpha && alphaCount >= 16,
+                "The Draw image profile must retain cyan and blue corona colors with varied alpha levels from its luminous body to a soft halo.");
+
+            // 반려된 불투명 검은 테두리가 이미지 어느 위치에도 남지 않았는지 확인
+            Color32[] pixels = texture.GetPixels32();
+            foreach (Color32 pixel in pixels)
+            {
+                Color sample = pixel;
+                Require(!(sample.a > 0.75f && sample.r < 0.15f && sample.g < 0.3f && sample.b < 0.4f),
+                    "The Draw image FX must not contain the rejected opaque dark outline.");
+            }
+
+            // 양끝 메시 경계에 발광 단면이 남지 않도록 전체 끝 열의 알파 확인
+            for (int y = 0; y < texture.height; y++)
+                Require(pixels[y * texture.width].a <= 5 && pixels[y * texture.width + texture.width - 1].a <= 5,
+                    "Both complete edge columns must reach near transparency before the ribbon boundary.");
+
+            // 흰 중심이 먼저 닫힌 뒤 양쪽으로 청록·푸른 중간 알파 광륜이 남는지 확인
+            int firstWhite = texture.width;
+            int lastWhite = -1;
+            int centerRow = texture.height / 2 * texture.width;
+            for (int x = 0; x < texture.width; x++)
+            {
+                Color sample = pixels[centerRow + x];
+                if (sample.a > 0.9f && sample.r > 0.9f && sample.g > 0.9f && sample.b > 0.9f)
+                {
+                    firstWhite = Mathf.Min(firstWhite, x);
+                    lastWhite = x;
+                }
+            }
+            Require(firstWhite > 0 && lastWhite > firstWhite && lastWhite < texture.width - 1,
+                "The white luminous core must close inside both image endpoints.");
+            bool hasStartHalo = false;
+            bool hasEndHalo = false;
+            for (int x = 0; x < texture.width; x++)
+            {
+                Color sample = pixels[centerRow + x];
+                bool halo = sample.a > 0.02f && sample.a < 0.9f && sample.b > sample.r + 0.1f && sample.g > sample.r + 0.05f;
+                hasStartHalo |= x < firstWhite && halo;
+                hasEndHalo |= x > lastWhite && halo;
+            }
+            Require(hasStartHalo && hasEndHalo,
+                "Cyan or blue translucent aura must surround the closed white core at both ends.");
+        }
+        finally
+        {
+            UnityEngine.Object.DestroyImmediate(texture);
+        }
+    }
+
     /// <summary>표현 프리팹의 실제 선 끝점이 확정 기하와 같은 월드 좌표인지 확인</summary>
     private static void AssertPath(GameObject visual, Line line)
     {
@@ -303,7 +562,7 @@ public static class PlayerDrawChecks
         Require(Vector2.Distance(first, line.StartPoint) < 0.002f && Vector2.Distance(last, line.EndPoint) < 0.002f,
             "The visual line must match the fixed world-space start and end points.");
 
-        // 회전·배율을 반영한 실제 메시를 선의 수직축에 투영해 표시 폭 확인
+        // 회전·배율을 반영한 실제 메시의 길이와 표시 전용 폭을 각각 확인
         var mesh = new Mesh();
         try
         {
@@ -313,15 +572,25 @@ public static class PlayerDrawChecks
             Vector2 perpendicular = new Vector2(-line.Direction.y, line.Direction.x);
             float minimum = float.PositiveInfinity;
             float maximum = float.NegativeInfinity;
+            float start = float.PositiveInfinity;
+            float end = float.NegativeInfinity;
             foreach (Vector3 vertex in vertices)
             {
                 float projection = Vector2.Dot(vertex, perpendicular);
                 minimum = Mathf.Min(minimum, projection);
                 maximum = Mathf.Max(maximum, projection);
+                float along = Vector2.Dot(vertex, line.Direction);
+                start = Mathf.Min(start, along);
+                end = Mathf.Max(end, along);
             }
             float actualWidth = maximum - minimum;
-            Require(Mathf.Abs(actualWidth - line.Width) < 0.005f,
-                $"The rendered ribbon width must match Line.Width after scale and rotation: expected={line.Width}, actual={actualWidth}.");
+            DrawLineVfx style = visual.GetComponent<DrawLineVfx>();
+            Require(style != null, "The line must provide its explicit visual width multiplier.");
+            float expectedWidth = line.Width * style.WidthMultiplier;
+            Require(Mathf.Abs(actualWidth - expectedWidth) < 0.005f,
+                $"The rendered ribbon width must apply only its visual multiplier: expected={expectedWidth}, actual={actualWidth}.");
+            Require(Mathf.Abs(end - start - line.Length) < 0.005f,
+                $"The rendered ribbon length must match the stored Line length: expected={line.Length}, actual={end - start}.");
         }
         finally
         {

@@ -28,6 +28,14 @@
 ---
 
 ## 1. 01_Choice
+- [Controls_Guide_20261116.md](01_Choice/Controls_Guide_20261116.md) : 검은 배경용 자판/마우스 안내·일반/특수 슬래시 구분과 F 상호작용 설명 제외 요청, 이미지 제작/게임 코드 변경 구분
+- [Player_Entrance_Cutscene_20261116.md](01_Choice/Player_Entrance_Cutscene_20261116.md) : 남쪽 입구 복도 약3배·실제 Player의 컷씬 보행/조작 인계와 새 게임 최초1회·계속/부활 체크포인트 유지 선택
+- [Player_Fever_Aura_20261116.md](01_Choice/Player_Fever_Aura_20261116.md) : 각성 중 몸에서 피어오르는 황금 오라 요청과 상태 사건·재사용 입자 연결, 초기 제작값/미술 승인 구분
+- [Player_Feedback_Audio_20261116.md](01_Choice/Player_Feedback_Audio_20261116.md) : Bank 추출·Unity 내장 오디오 선택과 콤보1=A/2=B/3=A→B, 실제 성공 적중 섬광 요청 및 초기 튜닝 구분
+- [SaveSlot_Frame_20261116.md](01_Choice/SaveSlot_Frame_20261116.md) : 검정·파랑/어두운 보라의 SaveSlot 단일 픽셀 프레임과 여러 해상도·설정창 재사용 요청
+- [Boss_Guard_Pattern_20261116.md](01_Choice/Boss_Guard_Pattern_20261116.md) : 출구를 가리는 경비 배치·Gold 단발/한 손 충전 낙하의 첫 두 패턴 요청과 단독R01/2개 등록·재도전 경계
+- [Boss_Hazard_Visuals_20261116.md](01_Choice/Boss_Hazard_Visuals_20261116.md) : 픽셀 일반탄·반투명 빨강 원형 선 경고 요청과 구체 제작 초기값·레이저 분석/미구현 범위 구분
+- [Player_Slash_Presentation_20261116.md](01_Choice/Player_Slash_Presentation_20261116.md) : Slash의 빠른/느린 줌·발도 유지·칼날 섬광·납도음·지연 공간참 순서와 조정 가능한 초기값, 전투 판정 시점의 답변 상태
 - [Boss_Front_Concept_Brief_20261116.md](01_Choice/Boss_Front_Concept_Brief_20261116.md) : 보스 8방향 목표와 스케치·Notion 레퍼런스를 이용한 6종 탑다운 정면 Aseprite 제작 요청
 - [Art_First_Integration_20261116.md](01_Choice/Art_First_Integration_20261116.md) : 완성 Title·맵/수정/문·Player/검·HUD/키보드/조준점을 게임에1차 반영하는 요청과 애니메이션·이동 조건
 - [Boss_Common_Combat_20261116.md](01_Choice/Boss_Common_Combat_20261116.md) : F-B01~F-B06 공통 기반·실제 더미/임시 패턴 통합 검증 요청과 최종 콘텐츠·초기 튜닝 구분
@@ -36,6 +44,7 @@
 - [Player_Hit_Protection_Events_20261115.md](01_Choice/Player_Hit_Protection_Events_20261115.md) : F-P08 상태 발생자의 사건 알림·구독자 책임과 피격 시 빨강/원본색 표시 요청.
 - [Sword_Size_First_20261115.md](01_Choice/Sword_Size_First_20261115.md) : 상단을 바라보는 Player의 왼쪽 허리 착용 검을 크기부터 비교하고 디테일·FX를 이후 정하는 요청.
 - [Player_Draw_Responsibilities_20261115.md](01_Choice/Player_Draw_Responsibilities_20261115.md) : F-P04의 실제 전용 입력 전환·역할 분담과 이후 교체하기 쉬운 임시 점·Line VFX 요청.
+- [Camera_Follow_Response_20261116.md](01_Choice/Camera_Follow_Response_20261116.md) : 일반·컷씬 타깃의90% 접근 약0.25초와 즉시 이동·Draw 예외를 유지하는 요청
 - [Art_Archive_Git_20261115.md](01_Choice/Art_Archive_Git_20261115.md) : 완성 아트 보관과 작업 자료 Git 제외 요청 및 이유.
 - [Player_Attack_Sephiria_20261115.md](01_Choice/Player_Attack_Sephiria_20261115.md) : F-P03의 입력·허용·공격 책임, 원작/우리 검 프레임 검토·FPS·검기 편집 요청과 선택8의 시간 부족·리스크 축소를 위한 Player 애니메이션 구조 이관 이유. 분석·실제 적용·별도 아트 범위를 구분한다.
 - [Player_Dash_Sephiria_20261115.md](01_Choice/Player_Dash_Sephiria_20261115.md) : F-P02의 이동 우선·정지 커서 방향, 세피리아 대시 흐름 적용과 현재 Character 요청·Body 적용 구조 유지 요청.
@@ -67,6 +76,16 @@
 - [Notion_Comparisons_20261115.md](02_Hold/Notion_Comparisons_20261115.md) : 직접 OnDie·처치 Boss 배치·4/8방향·반사 방식·FSM·Map 책임 분리·컷씬 skip의 후속 검토와 미검증 범위. Profiler 성능 비교 계획은 GAME_SPEC 3.1.1로 연결함.
 
 ## 3. 03_Analysis
+
+- [Sephiria_Melee_Hit_Feedback_20261116.md](03_Analysis/Sephiria_Melee_Hit_Feedback_20261116.md) : 원작 성공 타격의 실제 접점·수직±10도·반경0.2·7장20Hz 섬광과 Bank 음원 연결, 우리 단일 적중음·절대시간 재생의 차이
+
+- [Tilemap_Texture_Bleeding_20261116.md](03_Analysis/Tilemap_Texture_Bleeding_20261116.md) : 타일 간격의 밝은 가로줄과 이웃 픽셀 대조, 맵 Atlas·4px 패딩 적용 후 사용자 해결 확인, 실제 Bilinear 설정과 UX 경험용 문장. 해결 전 캡처2장·미측정 범위를 함께 보관한다.
+
+- [Draw_Camera_Gungeon_20261116.md](03_Analysis/Draw_Camera_Gungeon_20261116.md) : 원작 마우스 카메라의 실제 분기·화면비/거리 가중/상한·즉시 반영과 기존 Draw의 답답함 원인, 적용 범위·정적 비교·미확인 한계
+
+- [Player_Dash_And_Weapon_Sorting_20261116.md](03_Analysis/Player_Dash_And_Weapon_Sorting_20261116.md) : 실제 Player 대시24/87·0.14/0.10·정적분2.5074와 그룹 내부±1의 전역 적용 오류·몸체 정렬 캐시 수정 근거
+
+- [Sephiria_Attack_Integration_20261116.md](03_Analysis/Sephiria_Attack_Integration_20261116.md) : 원작대검의피벗/반사·입력무시/버퍼·콤보/AS·기본속도/공격전진과R14실게임이식,추론한3타회복정책의근거. 실제검증상태는GAME_SPEC2.1.3을따른다.
 원본에서 확인한 사실·정적 계산·실제 실행 관측을 구분하고 제작용 수치와 재현 자료를 보관한다. 분석 완료는 게임에 적용하거나 미술을 확정한 사실과 구분한다.
 
 - [Update_Order_Comparison_20261116.md](03_Analysis/Update_Order_Comparison_20261116.md) : 조사 시점44런타임 파일·원작74코드/meta와 예정 기능의 실행 순서 비교.1~11절은 이전 분석,12절은 Update0/3 적용·자동19검사,13절은 Fixed/Late 도입 경위부터 사용자 직접 플레이의 드득거림 해소 확인까지 정리한 해결 기록이다.

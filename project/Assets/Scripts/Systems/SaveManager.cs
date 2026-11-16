@@ -117,6 +117,7 @@ public static class SaveManager
         current.Set("PlayTime", 0d);
         current.Set("LastSavedAt", string.Empty);
         current.Set("EncounteredBosses", new List<string>());
+        current.Set("EntranceCompleted", false);
 
         // 최초 저장을 요청하고 MainWorld에서 사용할 선택 데이터 반환
         Save();

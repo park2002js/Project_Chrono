@@ -1,0 +1,3870 @@
+{
+  "date": "2026-11-16 Asia/Seoul",
+  "scope": "Reset attack3 preview; no Unity code/clips changed",
+  "frame_numbering": "one-based, first drawing1 then left-to-right and next row",
+  "frame_count": 54,
+  "motion_splice": [
+    {
+      "output": [
+        1,
+        24
+      ],
+      "attack": 1,
+      "source_frames": [
+        1,
+        24
+      ]
+    },
+    {
+      "output": [
+        25,
+        54
+      ],
+      "attack": 2,
+      "source_frames": [
+        16,
+        45
+      ]
+    }
+  ],
+  "vfx_schedule": {
+    "purple": {
+      "V1": [
+        24,
+        25
+      ],
+      "V2": [
+        26,
+        29
+      ],
+      "V3": [
+        30,
+        32
+      ],
+      "V4": [
+        33,
+        35
+      ]
+    },
+    "blue": {
+      "V1": [
+        24,
+        26
+      ],
+      "V2": [
+        27,
+        29
+      ],
+      "V3": [
+        30,
+        32
+      ],
+      "V4": [
+        33,
+        35
+      ]
+    },
+    "absent_before": 24,
+    "absent_from": 36
+  },
+  "occlusion": "Preserve complete purple and mirrored blue originals. Only shared opaque pixels: x<35 blue on top; x>=35 purple on top.",
+  "checks": {
+    "54_poses_equal_attack1_1to24_plus_attack2_16to45": true,
+    "body_and_sword_pixels_grip_angle_sorting_exact": true,
+    "both_vfx_start24_finish35_absent36onward": true,
+    "purple_stage2_starts26_blue_starts27": true,
+    "all_nonoverlap_pixels_preserved_no_half_clipping": true,
+    "left_overlap_blue_right_overlap_purple_front": true,
+    "all_source_images_and_previous_revisions_unchanged": true
+  },
+  "overlap_proof": [
+    {
+      "frame": 1,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 2,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 3,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 4,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 5,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 6,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 7,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 8,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 9,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 10,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 11,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 12,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 13,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 14,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 15,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 16,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 17,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 18,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 19,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 20,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 21,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 22,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 23,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 24,
+      "purple_image": 1,
+      "blue_image": 1,
+      "purple_only": 653,
+      "blue_only": 653,
+      "left_overlap_blue_front": 621,
+      "right_overlap_purple_front": 621
+    },
+    {
+      "frame": 25,
+      "purple_image": 1,
+      "blue_image": 1,
+      "purple_only": 653,
+      "blue_only": 653,
+      "left_overlap_blue_front": 621,
+      "right_overlap_purple_front": 621
+    },
+    {
+      "frame": 26,
+      "purple_image": 2,
+      "blue_image": 1,
+      "purple_only": 201,
+      "blue_only": 1784,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 111
+    },
+    {
+      "frame": 27,
+      "purple_image": 2,
+      "blue_image": 2,
+      "purple_only": 312,
+      "blue_only": 312,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 28,
+      "purple_image": 2,
+      "blue_image": 2,
+      "purple_only": 312,
+      "blue_only": 312,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 29,
+      "purple_image": 2,
+      "blue_image": 2,
+      "purple_only": 312,
+      "blue_only": 312,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 30,
+      "purple_image": 3,
+      "blue_image": 3,
+      "purple_only": 30,
+      "blue_only": 30,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 31,
+      "purple_image": 3,
+      "blue_image": 3,
+      "purple_only": 30,
+      "blue_only": 30,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 32,
+      "purple_image": 3,
+      "blue_image": 3,
+      "purple_only": 30,
+      "blue_only": 30,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 33,
+      "purple_image": 4,
+      "blue_image": 4,
+      "purple_only": 5,
+      "blue_only": 5,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 34,
+      "purple_image": 4,
+      "blue_image": 4,
+      "purple_only": 5,
+      "blue_only": 5,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 35,
+      "purple_image": 4,
+      "blue_image": 4,
+      "purple_only": 5,
+      "blue_only": 5,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 36,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 37,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 38,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 39,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 40,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 41,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 42,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 43,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 44,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 45,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 46,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 47,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 48,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 49,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 50,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 51,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 52,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 53,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    },
+    {
+      "frame": 54,
+      "purple_image": null,
+      "blue_image": null,
+      "purple_only": 0,
+      "blue_only": 0,
+      "left_overlap_blue_front": 0,
+      "right_overlap_purple_front": 0
+    }
+  ],
+  "frames": [
+    {
+      "attack": 3,
+      "frame": 1,
+      "time_seconds": 0.0,
+      "reference_frame_zero_based": 0,
+      "grip_pixels": [
+        3.316,
+        10.32
+      ],
+      "angle_degrees": 159.3,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 1번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-01.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 1,
+      "source_time_seconds": 0.0,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 2,
+      "time_seconds": 0.016666666666666666,
+      "reference_frame_zero_based": 1,
+      "grip_pixels": [
+        3.311248,
+        10.274592016
+      ],
+      "angle_degrees": 159.71910004,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 2번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-02.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "3a778a8380e9aca6e0637ad879e5804d2aa249671e608313ca81d56bd2a76035",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 2,
+      "source_time_seconds": 0.016666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 3,
+      "time_seconds": 0.03333333333333333,
+      "reference_frame_zero_based": 2,
+      "grip_pixels": [
+        3.299103984,
+        10.158549376
+      ],
+      "angle_degrees": 160.790133416,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 3번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-03.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "95fecae25e34fe84ae4cfeeee1f9f60c10ad20a91fe19f0ab52336d656beb5d5",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 3,
+      "source_time_seconds": 0.033333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 4,
+      "time_seconds": 0.05,
+      "reference_frame_zero_based": 3,
+      "grip_pixels": [
+        3.282735968,
+        10.002144048
+      ],
+      "angle_degrees": 162.233700009,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 4번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-04.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "68d3f0db20cf063a40b661277be89fc418f752cc6b1e2bed3102b2c436241946",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 4,
+      "source_time_seconds": 0.05,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 5,
+      "time_seconds": 0.06666666666666667,
+      "reference_frame_zero_based": 4,
+      "grip_pixels": [
+        3.265311952,
+        9.835648
+      ],
+      "angle_degrees": 163.7704,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 5번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-05.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "6d2758ca776f2b05c9f3db2189e66ccdf49538dfa4c1df5070680a7bc230d99b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 5,
+      "source_time_seconds": 0.066666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 6,
+      "time_seconds": 0.08333333333333333,
+      "reference_frame_zero_based": 5,
+      "grip_pixels": [
+        3.11636648,
+        9.557536912
+      ],
+      "angle_degrees": 165.714351379,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 6번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-06.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "b9aa14e16591e053ad08ed1e31266d6856d201ae90d366bcc387f54b14dbd9ba",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 6,
+      "source_time_seconds": 0.083333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 7,
+      "time_seconds": 0.1,
+      "reference_frame_zero_based": 6,
+      "grip_pixels": [
+        2.751723968,
+        9.09219616
+      ],
+      "angle_degrees": 168.367049364,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 7번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-07.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "10f305d4fb4cfed87e1d6581858f1b0c3029c8dea6ffa8bed23c924194700744",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 7,
+      "source_time_seconds": 0.1,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 8,
+      "time_seconds": 0.11666666666666667,
+      "reference_frame_zero_based": 7,
+      "grip_pixels": [
+        2.243987424,
+        8.508762752
+      ],
+      "angle_degrees": 171.430155983,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 8번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-08.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7f4c6304dda604cd8cdea6943a8fcc9c4e3e7942175fd4ede245c4fe33733495",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 8,
+      "source_time_seconds": 0.116666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 9,
+      "time_seconds": 0.13333333333333333,
+      "reference_frame_zero_based": 8,
+      "grip_pixels": [
+        1.665759888,
+        7.876373664
+      ],
+      "angle_degrees": 174.605333562,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 9번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-09.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "77dcf76e88ac460a9de46fa09f629a2e41bcd5f9a453799de89b0e04e3dfe9fd",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 9,
+      "source_time_seconds": 0.133333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 10,
+      "time_seconds": 0.15,
+      "reference_frame_zero_based": 9,
+      "grip_pixels": [
+        1.089644352,
+        7.264165856
+      ],
+      "angle_degrees": 177.594244428,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 10번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-10.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2c97033f2fa8ccbd359e87d94fe22f8eb83650f599c6e218162841774ecc24b4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 10,
+      "source_time_seconds": 0.15,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 11,
+      "time_seconds": 0.16666666666666666,
+      "reference_frame_zero_based": 10,
+      "grip_pixels": [
+        0.588243856,
+        6.741276336
+      ],
+      "angle_degrees": 180.098550905,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 11번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-11.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "4b7fb309d2c1fb97b664a021b0ab010ec7e515438525893d9dd87be67d0f8767",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 11,
+      "source_time_seconds": 0.166666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 12,
+      "time_seconds": 0.18333333333333332,
+      "reference_frame_zero_based": 11,
+      "grip_pixels": [
+        0.234161392,
+        6.376842048
+      ],
+      "angle_degrees": 181.81991532,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 12번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-12.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2ca163b142b4e9426f62fefe3548d67796aaf9d7838100009d1a18224b49bce9",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 12,
+      "source_time_seconds": 0.183333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 13,
+      "time_seconds": 0.2,
+      "reference_frame_zero_based": 12,
+      "grip_pixels": [
+        0.1,
+        6.24
+      ],
+      "angle_degrees": 182.46,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 13번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-13.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7ac6ab6f9049e3d5d46446c8117dbd402803e43a15430e95fb94ef9f31a48bc4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 13,
+      "source_time_seconds": 0.2,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 14,
+      "time_seconds": 0.21666666666666667,
+      "reference_frame_zero_based": 13,
+      "grip_pixels": [
+        0.103703696,
+        6.277314816
+      ],
+      "angle_degrees": 182.445412069,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 14번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-14.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "7ac6ab6f9049e3d5d46446c8117dbd402803e43a15430e95fb94ef9f31a48bc4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 14,
+      "source_time_seconds": 0.216666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 15,
+      "time_seconds": 0.23333333333333334,
+      "reference_frame_zero_based": 14,
+      "grip_pixels": [
+        0.129629632,
+        6.387851856
+      ],
+      "angle_degrees": 182.3432964,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 15번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-15.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "fae929a7cf7782edfb223b55f60f0bcdf57634bcaae59fe2b7ca7216a44d367f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 15,
+      "source_time_seconds": 0.233333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 16,
+      "time_seconds": 0.25,
+      "reference_frame_zero_based": 15,
+      "grip_pixels": [
+        0.2,
+        6.569500016
+      ],
+      "angle_degrees": 182.066125175,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 16번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-16.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "f2fbaf75dd3f07ba3cfcc45c1ec7e4092d1010f482bc2a3ebdbd85c430312240",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 16,
+      "source_time_seconds": 0.25,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 17,
+      "time_seconds": 0.26666666666666666,
+      "reference_frame_zero_based": 16,
+      "grip_pixels": [
+        0.33703704,
+        6.820148176
+      ],
+      "angle_degrees": 181.526370578,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 17번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-17.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "2ca163b142b4e9426f62fefe3548d67796aaf9d7838100009d1a18224b49bce9",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 17,
+      "source_time_seconds": 0.266666667,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 18,
+      "time_seconds": 0.2833333333333333,
+      "reference_frame_zero_based": 17,
+      "grip_pixels": [
+        0.56296296,
+        7.1376852
+      ],
+      "angle_degrees": 180.636504792,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 18번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-18.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e3a7b19488afb70e92d5b707f06f3472ca7e6ad751d79830c131506f8f05d2a4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 18,
+      "source_time_seconds": 0.283333333,
+      "source_phase": "준비",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 19,
+      "time_seconds": 0.3,
+      "reference_frame_zero_based": 18,
+      "grip_pixels": [
+        0.9,
+        7.52
+      ],
+      "angle_degrees": 179.309,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 19번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-19.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "e3a7b19488afb70e92d5b707f06f3472ca7e6ad751d79830c131506f8f05d2a4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 19,
+      "source_time_seconds": 0.3,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 20,
+      "time_seconds": 0.31666666666666665,
+      "reference_frame_zero_based": 19,
+      "grip_pixels": [
+        2.303999504,
+        8.639499856
+      ],
+      "angle_degrees": 116.787521197,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 20번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-20.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "91fcab24e1b5992863d33c3048b882a01f0e8591fad827b943c6bc8d04357927",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 20,
+      "source_time_seconds": 0.316666667,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 21,
+      "time_seconds": 0.3333333333333333,
+      "reference_frame_zero_based": 20,
+      "grip_pixels": [
+        4.516,
+        9.552
+      ],
+      "angle_degrees": 22.5,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 21번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-21.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "a27a22e51a5b1084b38fb9ba753b6f8c16ceee93f0ace2c17b7c7f9a8742134c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 21,
+      "source_time_seconds": 0.333333333,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 22,
+      "time_seconds": 0.35,
+      "reference_frame_zero_based": 21,
+      "grip_pixels": [
+        6.939999248,
+        8.731000464
+      ],
+      "angle_degrees": -37.949105913,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "1타 22번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-22.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "78b0558dbd5e1a341c6afc0cdb340d86f9ed802522e864232c31cf079ced8bba",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 22,
+      "source_time_seconds": 0.35,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 23,
+      "time_seconds": 0.36666666666666664,
+      "reference_frame_zero_based": 22,
+      "grip_pixels": [
+        8.964,
+        6.576
+      ],
+      "angle_degrees": -81.121,
+      "fx_image": null,
+      "weapon_order": 1,
+      "phase": "1타 23번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-23.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "bf2aadabcfc778a4b6c92ac140e86a2e3a469cb6da453c8e029cc4afe3324af4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 1,
+      "source_frame": 23,
+      "source_time_seconds": 0.366666667,
+      "source_phase": "휘두름",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 24,
+      "time_seconds": 0.38333333333333336,
+      "reference_frame_zero_based": 23,
+      "grip_pixels": [
+        9.875999824,
+        2.15242936
+      ],
+      "angle_degrees": -103.22726862,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "1타 24번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-24.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": false,
+      "sword_rgba_sha256": "0078122494641958216a919f808630bf3e480e6f152763c35ff7da53511ef987",
+      "fx_rgba_sha256": "981959062d5b21404fd27a11cab88c33e869ae0a0520de2fd347161788a5978a",
+      "source_attack": 1,
+      "source_frame": 24,
+      "source_time_seconds": 0.383333333,
+      "source_phase": "휘두름",
+      "fx_purple_image": 1,
+      "fx_blue_image": 1
+    },
+    {
+      "attack": 3,
+      "frame": 25,
+      "time_seconds": 0.4,
+      "reference_frame_zero_based": 15,
+      "grip_pixels": [
+        8.290001536,
+        10.159996384
+      ],
+      "angle_degrees": -99.515658794,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "2타 16번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-25.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "62297edf2e6a4ed5807aec6c3e7d92cd2dee987485a0504c833cad0f377b9c92",
+      "fx_rgba_sha256": "981959062d5b21404fd27a11cab88c33e869ae0a0520de2fd347161788a5978a",
+      "source_attack": 2,
+      "source_frame": 16,
+      "source_time_seconds": 0.25,
+      "source_phase": "휘두름",
+      "fx_purple_image": 1,
+      "fx_blue_image": 1
+    },
+    {
+      "attack": 3,
+      "frame": 26,
+      "time_seconds": 0.4166666666666667,
+      "reference_frame_zero_based": 16,
+      "grip_pixels": [
+        4.58,
+        17.28
+      ],
+      "angle_degrees": -9.117,
+      "fx_image": 1,
+      "weapon_order": 1,
+      "phase": "2타 17번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-26.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "87efa61001e220175093249038ff2eeb7d0a99d30af0ce6987789db8ba3d7bf4",
+      "fx_rgba_sha256": "e0a23c11e64d7512982aa0cb1ff6ed4f4effa1ef1e37b7dcd13350fcd85e98c3",
+      "source_attack": 2,
+      "source_frame": 17,
+      "source_time_seconds": 0.266666667,
+      "source_phase": "휘두름",
+      "fx_purple_image": 2,
+      "fx_blue_image": 1
+    },
+    {
+      "attack": 3,
+      "frame": 27,
+      "time_seconds": 0.43333333333333335,
+      "reference_frame_zero_based": 17,
+      "grip_pixels": [
+        0.150001776,
+        14.490001088
+      ],
+      "angle_degrees": 34.851668272,
+      "fx_image": 2,
+      "weapon_order": 1,
+      "phase": "2타 18번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-27.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "ca77ea27ae5faec33c400ed7ad473357dd9ae6b8442e838c565f3aeb1dbb2d43",
+      "fx_rgba_sha256": "d3463d9e5b1fe268e8a317ce1fcf8ca1903f1317cd6f83e5624b2db2e64cdcb5",
+      "source_attack": 2,
+      "source_frame": 18,
+      "source_time_seconds": 0.283333333,
+      "source_phase": "휘두름",
+      "fx_purple_image": 2,
+      "fx_blue_image": 2
+    },
+    {
+      "attack": 3,
+      "frame": 28,
+      "time_seconds": 0.45,
+      "reference_frame_zero_based": 18,
+      "grip_pixels": [
+        -2.94,
+        9.76
+      ],
+      "angle_degrees": 65.85,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "2타 19번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-28.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "5e0e4e148ae9bea3520c2eaecd4c7fd6e3f4f2ebcb605c3041b48dbcc9eebe1c",
+      "fx_rgba_sha256": "d3463d9e5b1fe268e8a317ce1fcf8ca1903f1317cd6f83e5624b2db2e64cdcb5",
+      "source_attack": 2,
+      "source_frame": 19,
+      "source_time_seconds": 0.3,
+      "source_phase": "휘두름",
+      "fx_purple_image": 2,
+      "fx_blue_image": 2
+    },
+    {
+      "attack": 3,
+      "frame": 29,
+      "time_seconds": 0.4666666666666667,
+      "reference_frame_zero_based": 19,
+      "grip_pixels": [
+        -3.419999936,
+        4.870000176
+      ],
+      "angle_degrees": 97.189822589,
+      "fx_image": 2,
+      "weapon_order": -1,
+      "phase": "2타 20번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-29.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "c75702e8d72f2ef58ea8a2eb3a53c9fd79f7340e40e6a39c599a6f7b54d9078b",
+      "fx_rgba_sha256": "d3463d9e5b1fe268e8a317ce1fcf8ca1903f1317cd6f83e5624b2db2e64cdcb5",
+      "source_attack": 2,
+      "source_frame": 20,
+      "source_time_seconds": 0.316666667,
+      "source_phase": "휘두름",
+      "fx_purple_image": 2,
+      "fx_blue_image": 2
+    },
+    {
+      "attack": 3,
+      "frame": 30,
+      "time_seconds": 0.48333333333333334,
+      "reference_frame_zero_based": 20,
+      "grip_pixels": [
+        -3.58,
+        1.76
+      ],
+      "angle_degrees": 114.466,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "2타 21번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-30.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "19e539be66afde4bcf9c5130a27373fe53ce1e0f7abc4b2b4d3d2530cf305e59",
+      "fx_rgba_sha256": "03274502afff2d70fef15a876c4a067e0ca3231d05c83dea11454d1a674e1999",
+      "source_attack": 2,
+      "source_frame": 21,
+      "source_time_seconds": 0.333333333,
+      "source_phase": "휘두름",
+      "fx_purple_image": 3,
+      "fx_blue_image": 3
+    },
+    {
+      "attack": 3,
+      "frame": 31,
+      "time_seconds": 0.5,
+      "reference_frame_zero_based": 21,
+      "grip_pixels": [
+        -3.577109376,
+        1.46257816
+      ],
+      "angle_degrees": 116.936791974,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "2타 22번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-31.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "3343794f246fc754c199e3344854d01acf19052c7a574b3bcfc19b479f28c6e8",
+      "fx_rgba_sha256": "03274502afff2d70fef15a876c4a067e0ca3231d05c83dea11454d1a674e1999",
+      "source_attack": 2,
+      "source_frame": 22,
+      "source_time_seconds": 0.35,
+      "source_phase": "회복",
+      "fx_purple_image": 3,
+      "fx_blue_image": 3
+    },
+    {
+      "attack": 3,
+      "frame": 32,
+      "time_seconds": 0.5166666666666667,
+      "reference_frame_zero_based": 22,
+      "grip_pixels": [
+        -3.568375008,
+        1.208124976
+      ],
+      "angle_degrees": 118.858492131,
+      "fx_image": 3,
+      "weapon_order": -1,
+      "phase": "2타 23번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-32.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "4e23e661aa2c120d42a5fed4041acc90e9b666ec01e714b9c19e71377bb23de8",
+      "fx_rgba_sha256": "03274502afff2d70fef15a876c4a067e0ca3231d05c83dea11454d1a674e1999",
+      "source_attack": 2,
+      "source_frame": 23,
+      "source_time_seconds": 0.366666667,
+      "source_phase": "회복",
+      "fx_purple_image": 3,
+      "fx_blue_image": 3
+    },
+    {
+      "attack": 3,
+      "frame": 33,
+      "time_seconds": 0.5333333333333333,
+      "reference_frame_zero_based": 23,
+      "grip_pixels": [
+        -3.553703136,
+        0.993359312
+      ],
+      "angle_degrees": 120.300414477,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "2타 24번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-33.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "23e57886568803098b844c3956da77f933d59e7051deac9c310c964325f1fb7b",
+      "fx_rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1",
+      "source_attack": 2,
+      "source_frame": 24,
+      "source_time_seconds": 0.383333333,
+      "source_phase": "회복",
+      "fx_purple_image": 4,
+      "fx_blue_image": 4
+    },
+    {
+      "attack": 3,
+      "frame": 34,
+      "time_seconds": 0.55,
+      "reference_frame_zero_based": 24,
+      "grip_pixels": [
+        -3.533,
+        0.81499992
+      ],
+      "angle_degrees": 121.331874122,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "2타 25번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-34.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "752e952edbce0fca52cb838f4293539182d4327f6fee4a23c5fe2dca48e7e67e",
+      "fx_rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1",
+      "source_attack": 2,
+      "source_frame": 25,
+      "source_time_seconds": 0.4,
+      "source_phase": "회복",
+      "fx_purple_image": 4,
+      "fx_blue_image": 4
+    },
+    {
+      "attack": 3,
+      "frame": 35,
+      "time_seconds": 0.5666666666666667,
+      "reference_frame_zero_based": 25,
+      "grip_pixels": [
+        -3.506171888,
+        0.669765536
+      ],
+      "angle_degrees": 122.022186179,
+      "fx_image": 4,
+      "weapon_order": -1,
+      "phase": "2타 26번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-35.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "26b1afb8a7e84946a636d31df376e5f32e7ada66ae656ed5a9f28f1291ec9dfa",
+      "fx_rgba_sha256": "95af4dd38a1576a9199bf37f0ee4696246905359903b98a9443af93f55a4d6b1",
+      "source_attack": 2,
+      "source_frame": 26,
+      "source_time_seconds": 0.416666667,
+      "source_phase": "회복",
+      "fx_purple_image": 4,
+      "fx_blue_image": 4
+    },
+    {
+      "attack": 3,
+      "frame": 36,
+      "time_seconds": 0.5833333333333334,
+      "reference_frame_zero_based": 26,
+      "grip_pixels": [
+        -3.473125008,
+        0.554374912
+      ],
+      "angle_degrees": 122.44066576,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 27번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-36.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "df38a7299faa1a189cea51fa06907d06ad4f80c61aace4e1cbf1fb1a5b7bcd9e",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 27,
+      "source_time_seconds": 0.433333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 37,
+      "time_seconds": 0.6,
+      "reference_frame_zero_based": 27,
+      "grip_pixels": [
+        -3.433765632,
+        0.4655468
+      ],
+      "angle_degrees": 122.656627977,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 28번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-37.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "03dea00b39e3522d952151b7ed4d42c23f1ede58935131126133b12587f995db",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 28,
+      "source_time_seconds": 0.45,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 38,
+      "time_seconds": 0.6166666666666667,
+      "reference_frame_zero_based": 28,
+      "grip_pixels": [
+        -3.388,
+        0.399999952
+      ],
+      "angle_degrees": 122.739387941,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 29번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-38.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "1f96e52343b4d165655c65fcbd9facff0404d34a319250ae83c98179d61f3a99",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 29,
+      "source_time_seconds": 0.466666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 39,
+      "time_seconds": 0.6333333333333333,
+      "reference_frame_zero_based": 29,
+      "grip_pixels": [
+        -3.335734384,
+        0.354453104
+      ],
+      "angle_degrees": 122.758260765,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 30번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-39.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "228229ac11fd327a172c94febf3d1b800214ab7f1d94be2f9be8a5ffd3a50318",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 30,
+      "source_time_seconds": 0.483333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 40,
+      "time_seconds": 0.65,
+      "reference_frame_zero_based": 30,
+      "grip_pixels": [
+        -3.276875008,
+        0.325624992
+      ],
+      "angle_degrees": 122.78256156,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 31번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-40.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "642b1827e53dd9940ed4884c491e8b50aa7ddd8ab105a9dd6c139093655915c4",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 31,
+      "source_time_seconds": 0.5,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 41,
+      "time_seconds": 0.6666666666666666,
+      "reference_frame_zero_based": 31,
+      "grip_pixels": [
+        -3.211328128,
+        0.3102344
+      ],
+      "angle_degrees": 122.881605439,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 32번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-41.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "8b4727220c0f204f01fa085792529ba1b6bab18dd5d7cad2a944926e97b04806",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 32,
+      "source_time_seconds": 0.516666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 42,
+      "time_seconds": 0.6833333333333333,
+      "reference_frame_zero_based": 32,
+      "grip_pixels": [
+        -3.139,
+        0.305000032
+      ],
+      "angle_degrees": 123.124707512,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 33번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-42.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "7e427c3f68ef1ed2c9f070ba5868731afbcbe5512da99c4e3714fe496d88ad76",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 33,
+      "source_time_seconds": 0.533333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 43,
+      "time_seconds": 0.7,
+      "reference_frame_zero_based": 33,
+      "grip_pixels": [
+        -3.05979688,
+        0.306640672
+      ],
+      "angle_degrees": 123.581182894,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 34번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-43.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "703e459bbb1c5027ee3e6bbc9fe16d841db20f484dc2da6e15e16c96285a8d3b",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 34,
+      "source_time_seconds": 0.55,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 44,
+      "time_seconds": 0.7166666666666667,
+      "reference_frame_zero_based": 34,
+      "grip_pixels": [
+        -2.973625008,
+        0.31187504
+      ],
+      "angle_degrees": 124.320346694,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 35번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-44.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "e4276e1b068815b571a7f3cab5d0ce950c11dcf1c41f40abdc7a24bec098791c",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 35,
+      "source_time_seconds": 0.566666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 45,
+      "time_seconds": 0.7333333333333333,
+      "reference_frame_zero_based": 35,
+      "grip_pixels": [
+        -2.880390624,
+        0.317421904
+      ],
+      "angle_degrees": 125.411514025,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 36번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-45.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "b9b87813db0ee6ee388c714b0965cfd47eb0d84c391e14ec8e6b4f96690dd74f",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 36,
+      "source_time_seconds": 0.583333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 46,
+      "time_seconds": 0.75,
+      "reference_frame_zero_based": 36,
+      "grip_pixels": [
+        -2.78,
+        0.32
+      ],
+      "angle_degrees": 126.924,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 37번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-46.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "4a53d7dc8246d7d74643ef6d14a9fd1884ff33c6a23226fabdab651f632e1342",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 37,
+      "source_time_seconds": 0.6,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 47,
+      "time_seconds": 0.7666666666666667,
+      "reference_frame_zero_based": 37,
+      "grip_pixels": [
+        -2.64150016,
+        0.419999808
+      ],
+      "angle_degrees": 130.657919702,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 38번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-47.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "8d0bdc9f28f9f62caa09cf91cb4092f3ad12e46aef45fb9e6fddda6721d48093",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 38,
+      "source_time_seconds": 0.616666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 48,
+      "time_seconds": 0.7833333333333333,
+      "reference_frame_zero_based": 38,
+      "grip_pixels": [
+        -2.408000528,
+        0.719999376
+      ],
+      "angle_degrees": 137.007118365,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 39번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-48.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "f982fcf580dd8082cb55813e9c652d3c3771378b51fd86cfd42578fc76291ee2",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 39,
+      "source_time_seconds": 0.633333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 49,
+      "time_seconds": 0.8,
+      "reference_frame_zero_based": 39,
+      "grip_pixels": [
+        -2.04050096,
+        1.219998848
+      ],
+      "angle_degrees": 143.931505821,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 40번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-49.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "2881f8abc96adfae41e5e9adefa876e9f956fcc390458178bd5540e2bb4dd5e0",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 40,
+      "source_time_seconds": 0.65,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 50,
+      "time_seconds": 0.8166666666666667,
+      "reference_frame_zero_based": 40,
+      "grip_pixels": [
+        -1.5,
+        1.92
+      ],
+      "angle_degrees": 149.391,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 41번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-50.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "b1dae8370ea3e88bf8709d847981919cd76f16626d975f9e4c1105f00d3ad370",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 41,
+      "source_time_seconds": 0.666666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 51,
+      "time_seconds": 0.8333333333333334,
+      "reference_frame_zero_based": 41,
+      "grip_pixels": [
+        -0.387502608,
+        3.682495712
+      ],
+      "angle_degrees": 153.215712015,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 42번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-51.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "ae146e2eb415d7d567652805629034cdd6803710dedefba7b6dc9b746a0c4123",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 42,
+      "source_time_seconds": 0.683333333,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 52,
+      "time_seconds": 0.85,
+      "reference_frame_zero_based": 42,
+      "grip_pixels": [
+        1.22799744,
+        6.519996016
+      ],
+      "angle_degrees": 156.368995541,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 43번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-52.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "80f2fcfef06e79672fadd5a69a2dd23b0c3ba5145c9aaa7f8d7629fd2aba2237",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 43,
+      "source_time_seconds": 0.7,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 53,
+      "time_seconds": 0.8666666666666667,
+      "reference_frame_zero_based": 43,
+      "grip_pixels": [
+        2.683498448,
+        9.157497904
+      ],
+      "angle_degrees": 158.510529274,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 44번째",
+      "endpoint_only": false,
+      "file": "attack-03/native/frame-53.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "bb26259a1ba63ccfe40b1712c277933dab15127d35d34e509334923c46dc6e01",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 44,
+      "source_time_seconds": 0.716666667,
+      "source_phase": "회복",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    },
+    {
+      "attack": 3,
+      "frame": 54,
+      "time_seconds": 0.8833333333333333,
+      "reference_frame_zero_based": 44,
+      "grip_pixels": [
+        3.316,
+        10.32
+      ],
+      "angle_degrees": 159.3,
+      "fx_image": null,
+      "weapon_order": -1,
+      "phase": "2타 45번째",
+      "endpoint_only": true,
+      "file": "attack-03/native/frame-54.png",
+      "fx_pivot_player_relative_pixels": [
+        2.5,
+        24
+      ],
+      "fx_flip_x": true,
+      "sword_rgba_sha256": "aec559a28944aa12835f84075c82a49be4ebd240546e1a5c47791338062f210a",
+      "fx_rgba_sha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+      "source_attack": 2,
+      "source_frame": 45,
+      "source_time_seconds": 0.733333333,
+      "source_phase": "종료 경계",
+      "fx_purple_image": null,
+      "fx_blue_image": null
+    }
+  ],
+  "sources": [
+    {
+      "path": "art/archive/player/final/aseprite/idle-left-back.aseprite",
+      "sha256": "c22356e83ee911cff0d33b180644d7bf1eeab92b72e48524ecd859bd478eca6a"
+    },
+    {
+      "path": "art/archive/player/final/unity/idle-left-back.png",
+      "sha256": "e6d16c575e7062c483c5d98e1bbfbd160f12e9409f7cc9ab9e48e1ef5cdb729f"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/frames.json",
+      "sha256": "2131ed6fab3abef8265359d0a21f65bd16a6846a8d18d2ff4225964a312fc96b"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-01.png",
+      "sha256": "e00448f0ae07372d41dda9545570c7079a06799c9b26caabb8b579ef9c5dbafd"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-02.png",
+      "sha256": "1af1315f0cd3259f8d338f0b63334cc49adeec5604d7d7489a8ba713ec431cab"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-03.png",
+      "sha256": "ae4ca24b9bb82c3a69e42b758871ae1ba3562a2376b547e7ab08705c49d6578c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png/slash-04.png",
+      "sha256": "2b955be4dfc0dc37031b8c4ccf5f8c1a383f4155880570d7e699bd46064ba0ea"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/frames.json",
+      "sha256": "cbe2eb98591dbf538a518dd75fba152cb69c7dc33c02839e264613eaed3feb73"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-01.png",
+      "sha256": "357bdf784b5ec8403bd87e2b1ee8ca9bdab49fef4461ca0207cee649c9cf9568"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-02.png",
+      "sha256": "578bf84221bdf8466e52bd6ad1a5011d6c0471f011a7305bc7a625a0f0ca4a68"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-03.png",
+      "sha256": "721765c4dc86b13777277f39b3f61ddfb8e1a785a0fa6a852edf2bda43f1b58c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack2/slash-04.png",
+      "sha256": "126f53c12934da0cc88ff09bc6e1f5b14047b0e74151eab990e0b4550b528448"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-01.png",
+      "sha256": "676be5f4e8436d6340bbfec95206077d235f1baac90c94dbc880495e22e18e4c"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-02.png",
+      "sha256": "982056c60ef46e7250c370dcab43c7ffc79b28ea438e4de88ae86bff84fee0b3"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-03.png",
+      "sha256": "dacadd02cbf27bfb1fb9c2bc63cedf89163ff9a11f2b7911233e5fd6c5e9dd55"
+    },
+    {
+      "path": "art/archive/weapon/greatsword-vfx-edit/png-attack3/slash-04.png",
+      "sha256": "7a465ad1b12334acd25b560b858b7e67c0deca799c6555f68e26f07fd95c2b2c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-01.png",
+      "sha256": "0af2c46182fccefdcb97fb592fb80dc65b3dd067d39e478fe63ffd19c9c08a5a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-02.png",
+      "sha256": "13963e585c13d573656b902fd2c2423aff63b5fd8cbccf88d16afe3ef294384d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-03.png",
+      "sha256": "d3e4a9cef320cc2783f306366ae83735df47a1b7d6f45af88e8b8d94207e5a43"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-04.png",
+      "sha256": "307503fa7f5008f2808a1b945903478d6702748440da858655b5d2b777dea805"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-05.png",
+      "sha256": "185f80844a390a1785a42c25d4c11661e03baae7638055f36fe74ae27e7b2cc9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-06.png",
+      "sha256": "5066b8601c6eff29da8f67c424141547bd359f4f91fde84fc00077efcefe8997"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-07.png",
+      "sha256": "91ffc6b0800b7c0769719126a9fcf6cba15067b6e1039f2bd811d91adbd220ce"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-08.png",
+      "sha256": "1fa31c90628253479dba28e4c2237768a4f6f05e1eda7c3cc0272088c764fa8c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-09.png",
+      "sha256": "bf7facc6681472e164819ae0f3177147190bfaf9b4a17161e283d8f801901f5e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-10.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-11.png",
+      "sha256": "ee0db4d5c42bdb04a0b0226fe54070ea0673a56ed3ee82c6f0cf3ccc8e983803"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-12.png",
+      "sha256": "adbfbcfb5e783a1464e8ea43206a9efed852088f5db3ba5e9c5a8df6a4331381"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-13.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-14.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-15.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-16.png",
+      "sha256": "001fde9d25b3dd7d7ab383bef974b860725f79d0553f4f61c7e79277850f1720"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-17.png",
+      "sha256": "adbfbcfb5e783a1464e8ea43206a9efed852088f5db3ba5e9c5a8df6a4331381"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-18.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-19.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-20.png",
+      "sha256": "fe7039cff4b90fcd1105c63f82ffe7e378a87769c5c93ca8d16fb11f874e1a6f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-21.png",
+      "sha256": "8a8cad65d986ee1f6ce842926ea509fe9e4f7e90720c5f7d8b8cd28cea792e84"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-22.png",
+      "sha256": "9938f456947526126fc27c7d31d91686ea528cfed3457bcca8ff6a398e210b6c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-23.png",
+      "sha256": "e68be7fadfb6f32558067e67e61986b44bc708b42140aaa687410ee392953d90"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-24.png",
+      "sha256": "5bed519a224b1f39145573da2dad4216836eeac7baa8967d2214b8b18c2e00fd"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-25.png",
+      "sha256": "2c14287b1e67c42fdcb2cefe7c38dff70fd89a11b92e4075a696eea8b9764ba9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-26.png",
+      "sha256": "261646934df4b3bc5246724bcf30e789bab7689a759a8fac2d7bf684e032dcb7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-27.png",
+      "sha256": "399d43a5773559a0bbf1433ca7bccf139de7aa13b07312a2bcb51941d69f9f36"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-28.png",
+      "sha256": "2e03493e69cdb09d6b8f47841374dcd440aabdbc227edc63fe4ee83e29394285"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-29.png",
+      "sha256": "c4f1fd5300a28201fb241eb0d7b6d9547863b871299bc1da3c8c38853dd84615"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-30.png",
+      "sha256": "595ede6033c233942e521f79f52bf21ee3730c93623c7571a4d5963c9c6770ea"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-31.png",
+      "sha256": "e25679ca48ac2b295994129fb464e363cac2de74e0961113c66f9f33e163e60d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-32.png",
+      "sha256": "c58ce9a47ec51f34efbc476145fb51b740f0a653be906faffd14ca0617f62a50"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-33.png",
+      "sha256": "3f0defca046e0d4670ed996593738008bd0e84501900551ea2f42cfe3cdeabd9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-34.png",
+      "sha256": "523a817a27b55f3977f89ecd79cb3b1f1a6be9724e87f52a6c90978d56ac9851"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-35.png",
+      "sha256": "da2cc93b7e53aec796f92dcbb2dce06478fcc86d73045edf71cc56376a98e30e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-36.png",
+      "sha256": "57e3d7ee38468dd2116e6d65ef88298b5a8648f8ecfc2b2297f4ed10214dc7f6"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/4x/frame-37.png",
+      "sha256": "a4630a23283dda2bb131a535495bad1b6c28bb3f484f2f4150cb6ada2bad5b07"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-01.png",
+      "sha256": "956f114c9b691da5b58fe315d60360ac2a1e1a2c6ddab9421bab5f4257962a19"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-02.png",
+      "sha256": "9f3075ff30acbde954d0b083881c0f3f1f222df099b4550cece5ebe502d94494"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-03.png",
+      "sha256": "da4bfd7debee96cf7daf9ade9ebc891cfaf85acfd38ce142cd2adfe75b01973f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-04.png",
+      "sha256": "b6ce39c4738fa07e3ad0c080d8079d003558e7d9877cb8edf983fd6160dd7cd4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-05.png",
+      "sha256": "650da4781602b6d0074f87f25fa09d691873e5d7859d204c2abca8a2967d3100"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-06.png",
+      "sha256": "25f9dedf0624cd9ed32d125c292936ce5925711e8448ed21d417c73b78b750f7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-07.png",
+      "sha256": "406e5c395b4031ed00f0901e457277db8197f06ae2da2cf84995c2577c960bf8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-08.png",
+      "sha256": "bce9b9be192e83a1e25b3047be397090a916ec5c09b8bca2c8fbdc2f595b1260"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-09.png",
+      "sha256": "2ac8c51e9031c85b1678d493b70392474f6850fbb5107be2fbbda74730a2fb97"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-10.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-11.png",
+      "sha256": "a31a68c3dedc16f254470091db52e7a09ff893e8b437d522ebbb85700a3356e2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-12.png",
+      "sha256": "08166bcfcc954c648008848a85d7bceffe7b6bbbb7e4d7fa496fc1f27da450a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-13.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-14.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-15.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-16.png",
+      "sha256": "665cd01b525387906452227a9d47d1511064e5d219d6417d1d8045096ee1dca9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-17.png",
+      "sha256": "08166bcfcc954c648008848a85d7bceffe7b6bbbb7e4d7fa496fc1f27da450a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-18.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-19.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-20.png",
+      "sha256": "5eb48a46c185b514246c83134bbd511bb6a9d32e1cb2116377ef7952d0e731c5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-21.png",
+      "sha256": "e2432e217e7063333e036acb897e5df6d50aac9d52b1202863385dacc3d3387c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-22.png",
+      "sha256": "8d83d809febd97355b5fc0a0eedabd009b3dfaad68d296066c95cdae39d6f7b8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-23.png",
+      "sha256": "6eb3138e384f44fd0b9a4f06f305774c35bf904875c35120a8048ba2e72d3cc5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-24.png",
+      "sha256": "7a8e7290bfc0f3021ebdb7ad99e45d70548e1f5e97a96c3b19bf76b639bd47fc"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-25.png",
+      "sha256": "4dcf37028372ea8c3c01e31247b8a78b156af0357362d5362015ad8098206c92"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-26.png",
+      "sha256": "4d5c534e77a3488340ad13933c2d1aa14f19eed4151fa38e2eaa2c9ddf19b203"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-27.png",
+      "sha256": "e5ff86e0dae3b0f24eb5a4d5f0a4f46cd80dc31aad6ea2146ab8c501d9c61733"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-28.png",
+      "sha256": "2006bc234a65497d4a8fb6156eb28cd1a0e7dc98d6227a7ed5b37d3f446923f5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-29.png",
+      "sha256": "e7ce61092e20513c06fd1990f5c0612f78519a71d58a53db7fb9879c9b044ea3"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-30.png",
+      "sha256": "4b70d26b0ef2dc92deecdf3d21a0c6ace261e63b293857c0d3490aaa5aadd88d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-31.png",
+      "sha256": "c091bbfb3e7a876bd7066eafa7b178a8b07f3fa4b80d3aac16d1d4f8b9b062df"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-32.png",
+      "sha256": "041f3d86cd36d87e050bc173562b3e038e9749efe45a5156c3668fba667ee0b1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-33.png",
+      "sha256": "e13eb2731ae6dad7bbd311c49eee4f643d972e53611762b930dc4e335a4f10c2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-34.png",
+      "sha256": "42c02028d071ec9281378597c8fb3d9668af308268baceb5534c160f77a05344"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-35.png",
+      "sha256": "b3760c21fedaf1672a4672aa072532081fc31523beef18c97e6a319e22bb1806"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-36.png",
+      "sha256": "19c3c542c40eeb4ddebfb2e30eed721291f66900f2cf6925910fa40c59e443c8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01/native/frame-37.png",
+      "sha256": "3b56d5b2005d04aa5c4e0a20c865860c5b14c80dad13fc50e352245e2e41d5ed"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01-all-frames.png",
+      "sha256": "3f30f975603b599d0f14ea7d457a961b35ac5112aa363e685d477d91deaff779"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-01-preview.gif",
+      "sha256": "6ef26d9b441599ed3e6c243f8b9e984154ed6948059c2aad84205d2e248ac774"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-01.png",
+      "sha256": "088ac91e1887a2b4d7f4b2ebd08604f61aba59f649067ee56c1d2be85e8407a9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-02.png",
+      "sha256": "f49e6e59c9b61a2a0c22489214618b3df87909594ea1832ed87dbadbc21bc343"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-03.png",
+      "sha256": "694ecf57d158811646099f0a287011d3c683d983fda104fd6cc9cec07438ac09"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-04.png",
+      "sha256": "d9031a42c3b58421f6dd272c3feb1ec68106a292ee119a03abb863b0a76c661b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-05.png",
+      "sha256": "b614744cc1797562ac45ac77fb0b296ca70f604ea400b1273806451670e83143"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-06.png",
+      "sha256": "40d1b4e529ed5da05299f1edd348a144bd8d23370940603e0b33adbc49790e53"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-07.png",
+      "sha256": "c108a505e2c470de06b612bac0c06e6a15a88809fe3cecd286ebbdbda0e2dbdc"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-08.png",
+      "sha256": "da4c5bf3d2a7bcfaa959a3da3b57e0b54e8b489db41bbc51760c280b5b818075"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-09.png",
+      "sha256": "0e861e0d1464e47c266f73f17aa536430e1a73662ff7e003b19aa6a761e05328"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-10.png",
+      "sha256": "6251d93d2696aa8bc49316b7d4d1a9fa92822583fdcf62e950e244cb8a970237"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-11.png",
+      "sha256": "401fe31a0889fc74f1986f3c9f2140955e8e548b58838233076a1cbde8993047"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-12.png",
+      "sha256": "96f74cf7109ec0885f7e6f5e02f28f3c152d57d02a0b204295e0872d6d406f5f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-13.png",
+      "sha256": "7e061e9d145416fd69c7ded0ed90231d6c08ef6d276f52d259bdb3756a83a52e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-14.png",
+      "sha256": "f43b373b65ad06777ca9c2d566b9a09f10308ee487e700a0dfc6abcaccf2ae29"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-15.png",
+      "sha256": "5239a42c467b98c7b242b6d599ad0eb8506c649ae26491e0b499be91b3d8480b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-16.png",
+      "sha256": "b1a2ed8ff2ab66b161f8cc59f32ebd569cc6474dda15361e460b7d502b2d5129"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-17.png",
+      "sha256": "673b048a6d3b95a6c0ea7793b895876ad15b1a7f6956b9447dfef340b1b427a1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-18.png",
+      "sha256": "28aba8d99d9a380a3b51b4018fd5d9a8a0a6712413ff4e64702b13b16a9ddfe2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-19.png",
+      "sha256": "9c53202d0d773e3fe29e57864ca51fb0cf772bad0cd555c64f038ff0533844c6"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-20.png",
+      "sha256": "144631a82b62412c09baebda11146ccddf9bf34c1142cb45ce976c30e70fffe6"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-21.png",
+      "sha256": "1fa1e2e8e2a11a74e739dffaa050d3be5434711c7b661ede7867b8e63d428f94"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-22.png",
+      "sha256": "fafc9ccb2ab54816a92f8a3ae43b8facd099c0af9035062e78372010a9d646bc"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-23.png",
+      "sha256": "2c79502ece83754b4d42fb3fb6dfa5565927ee037bc0d7abd2e1b455da97cde0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-24.png",
+      "sha256": "55354b649de448e78c8c56b4824d8a16c2b90c3fb4d8599052ff62027f8c6906"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-25.png",
+      "sha256": "28983c156f0069c064368ef7c4d50894fee4293fb89c8bc1b4831c4d6b773cfb"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-26.png",
+      "sha256": "86e60418e89c5e18624add4daa41a8aeaac91a74d78d95b659807e70914e01f7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-27.png",
+      "sha256": "7b56600781a0c7019bff94c4b3f5961b9e44e9f79efccd635dee79deec1e5ac2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-28.png",
+      "sha256": "7af63795e2b2bf2b2866a77e1c7121f7a8e956d94e12daf1889615c6ba2902c1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-29.png",
+      "sha256": "3f2f4362539666abcdd5787b4e5f234a32f32dc3365f3c483cbcfed523e139e9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-30.png",
+      "sha256": "340b32ee3ca454b834f92fcca5f02f6967e9fd778368053a4b81617117173f24"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-31.png",
+      "sha256": "016131df7c056853d01767412768fdddabc4d66a128d6ae9c060e1724fc3fbc3"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-32.png",
+      "sha256": "f041fb1c2b810e13738d7ab33b079355f05b1fa5e247b2fffbeb2f0a35a568f9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-33.png",
+      "sha256": "0032628bcb555ea097b77fdd250e4763810c6de30cb0db99de28726035807b3a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-34.png",
+      "sha256": "d5b4fdc79c5c41dc5fd0ec527cf0f1b4dbea070fdcceaa111694bcbc10946864"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-35.png",
+      "sha256": "13fa7f33b2caa0f469a7c6cf8d352755be17ec289dd71fc3cf94623d8be29bb7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-36.png",
+      "sha256": "a92fa87656c7d5f9f9a5f620d3542f4626bf70b8984ac2b99fb78eacb8c4818e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-37.png",
+      "sha256": "820bccf836b38e41268a8a451402d22214b447b9599fc2186052f01d9846af4f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-38.png",
+      "sha256": "cee4eca9e07250dbdaeecbbffc81bf49a8a98c61e94a3c20768a2399de2fb055"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-39.png",
+      "sha256": "62c071ff2c0252fe62d52f35cc7cdd6a16a69e0157fdf2f376d10cf5c63f585f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-40.png",
+      "sha256": "7ce0c201bf2b58ac88b0630d561f295077ea3d8cc9951c09959820b4413dae37"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-41.png",
+      "sha256": "660e42cb5c97b8f04d8c155faa0db4d80ba6e256eed9ea82d86533c9e368da82"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-42.png",
+      "sha256": "ac996a59dbcf6359548bc03554f79a4c99c0d196943ae813263be6fe93c4aa34"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-43.png",
+      "sha256": "9270084ff30e795aff936114ffebeada04766be590f9b01230c12b90ed31696f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-44.png",
+      "sha256": "678d2bc05f328a7cc92e484c73e59e834d9a2db89c72f7faf97e7c97ae4f47c7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/4x/frame-45.png",
+      "sha256": "0af2c46182fccefdcb97fb592fb80dc65b3dd067d39e478fe63ffd19c9c08a5a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-01.png",
+      "sha256": "7c987c9f77e8d3295b5b1f8503f42abc3d497579b601ce661f5b07130011523c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-02.png",
+      "sha256": "e2e3c52d992585a4a84b82d0a786facd63c5f6740c1212a0ccc35ed872578052"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-03.png",
+      "sha256": "b2eed169ff9849556623f79fcb86aff696ffce4cd018a3f497148a5b9b8b6c38"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-04.png",
+      "sha256": "2edd8ce1af403850c3feb1a24fa82ed44a07c803554e09d71f34a6525a7efb66"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-05.png",
+      "sha256": "934a91cb7c66b1056936cd961ba24e1bc5996c8b3da6b3bb12b5acbb77716db4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-06.png",
+      "sha256": "c822427ecc1f989844c1e3a0a904be1ade5a714ce117fe3f30ea097cc03ab711"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-07.png",
+      "sha256": "8e2c5808c91959cbecb26402b483a610cfee32214a6e27c2fce82b2c89c4dc4f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-08.png",
+      "sha256": "7c4aa7a6f6d7584ada1a91507debe78d6f29ff22bc8642364bcdd995697bfa93"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-09.png",
+      "sha256": "79605b6e0acebf3c34de8cd10c7ddce5bb942041600e74a50cd39e645b4e3314"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-10.png",
+      "sha256": "0d70533e0e357c1e15ca976ff1b772bc81016c853e07e82b4b3a2f0357774080"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-11.png",
+      "sha256": "1472560ce8a9dbca7f8df338af69b7daee84da4d9dd9ab9973e274e0b0882f17"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-12.png",
+      "sha256": "6c7d27409293387ed8c559ffbb4189476e9a2a9d564a23cfe1e87a1b0d8f5233"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-13.png",
+      "sha256": "b9b5c10bcd134d6d41c96e0c4af91566c311f44b95e3b0c05dfb20108086dd85"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-14.png",
+      "sha256": "627248eb49dd1eccf1b2b0a7023722de1f49f6f4e992b5237689f2cbbdbacfb2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-15.png",
+      "sha256": "681771cac59deb0d7f5faba4b11e34b1856ba58f1191b9f73d53c2b8d333936e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-16.png",
+      "sha256": "5a92bb77a7df5446b981ec44f29a99a32bcd6ba60075b0c4e7c61520ccda4ef2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-17.png",
+      "sha256": "3117d5830640e53c849236ce36c128f8dccc5111c65ab73187d0107e0b6c6d2a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-18.png",
+      "sha256": "7c972516665d685029de34b35cf77ec8e987910b5563942659375a948f37e0e5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-19.png",
+      "sha256": "64ef316fac2e8c11d4742add3434381f29042bfbc0132e96b267cc2f08c6fb77"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-20.png",
+      "sha256": "c91cde0e2e20b0b1c5e1e86c906b57c619c3bca1b29fb4128ecbf97778aa1406"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-21.png",
+      "sha256": "398496cb7521db50838407d9f19c356d21e4829b6f2925452a4bdd48ab6f71ac"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-22.png",
+      "sha256": "441216cbe1154fc581f33e096eddcacdf8237c94647a4e6b11e4b5fefd8861b9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-23.png",
+      "sha256": "889f0a40c140a67dcc73b325ffda8e53aac20545e95ab565e9f7198edb96e58f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-24.png",
+      "sha256": "3bc5eab7cf97926cc849505d31e22a4faf04b6ee853d71e2d6439cf7823ca1ca"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-25.png",
+      "sha256": "fdf6a75988154f79daea36b2b926013edd246900ce1987146f4620226c3ea945"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-26.png",
+      "sha256": "967bb6efa739793bb899ce45c7dd10f3953f644226a1c4508f6eedfb64a66ff8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-27.png",
+      "sha256": "4eb93d07a15c7ec92cfb6fcac4416fec0259eb73d91e34c1f8c5573bbe2d740a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-28.png",
+      "sha256": "47b5f104df0ce0f9e26a7e08648175054a466197845b213ee4cebb6c3bb9c8a8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-29.png",
+      "sha256": "07f364555abe94b5d4a64e0f7615e771fd2be5f0afd0d98ef621914d9ed19e35"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-30.png",
+      "sha256": "9d7d087ac0bf983a0358413f100428d3d35d3bba3bb69c498e8ff0490863272e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-31.png",
+      "sha256": "8e1fb1f0c899547e14b0c817b891b5dbfe2d5b872a5dda2afadf01e2f7dd0d96"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-32.png",
+      "sha256": "5bd06dea52183439b93edd1ae00c82c79635024ce50bab39e429fde11d90f4fc"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-33.png",
+      "sha256": "3753e11a59cb2d5238a0297169ae6d2fd817e21992667dd5f2f9748ea78527cc"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-34.png",
+      "sha256": "a89a18061baf637569b40c879d889916bd7510f133e05408ae031dd18063532c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-35.png",
+      "sha256": "720e30a4ea06d513c3273096e21b741d67a48bb386e425d0ab6fa370d7be8ca5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-36.png",
+      "sha256": "70ff42037ebeb4e6b08755a4746762ad6d281ff87fe3c94013d67472895a1fe1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-37.png",
+      "sha256": "635645e0ab665b67c0102d7575592368344fe48f1f32bc80f60ff998c3f46c3f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-38.png",
+      "sha256": "3c7d928d9338d70e4c1cd793497202a427dca1b5a589f2e03ea86a6246dd69b8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-39.png",
+      "sha256": "b74f9d071df20e205acbd7fa2ed00cc1a038e87f389fabcb2bcb12f3c08a8375"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-40.png",
+      "sha256": "c57af7fd1d2b049a80d1dd3d401e75046770a7d170ba60039bce47f45bab9798"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-41.png",
+      "sha256": "358e9516716ba7c0a30c22d579c68c8c6657e1239af5fb72c55082ca67e85f16"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-42.png",
+      "sha256": "6dc877322c8691f18603e63be56d71292e253c1da440c29e524d7b66792e742c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-43.png",
+      "sha256": "7c60211cdadaf5956006ebc12488eef22e8dbba5e504f726ff0d431827ebc8df"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-44.png",
+      "sha256": "a1ce2430c490c110d3b540d0a033668619d561e06b6e541e72ac511bdbf0ba0c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02/native/frame-45.png",
+      "sha256": "956f114c9b691da5b58fe315d60360ac2a1e1a2c6ddab9421bab5f4257962a19"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02-all-frames.png",
+      "sha256": "10c32127bf32f5713251b77461949d4b2660098c4a0f9632f4414b92e5678512"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-02-preview.gif",
+      "sha256": "bb9cf5b863a782daf93dfff0d6f6331c6e73793fe873cb4d0fa0e104bf8a1f33"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-01.png",
+      "sha256": "0af2c46182fccefdcb97fb592fb80dc65b3dd067d39e478fe63ffd19c9c08a5a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-02.png",
+      "sha256": "13963e585c13d573656b902fd2c2423aff63b5fd8cbccf88d16afe3ef294384d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-03.png",
+      "sha256": "d3e4a9cef320cc2783f306366ae83735df47a1b7d6f45af88e8b8d94207e5a43"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-04.png",
+      "sha256": "307503fa7f5008f2808a1b945903478d6702748440da858655b5d2b777dea805"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-05.png",
+      "sha256": "185f80844a390a1785a42c25d4c11661e03baae7638055f36fe74ae27e7b2cc9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-06.png",
+      "sha256": "5066b8601c6eff29da8f67c424141547bd359f4f91fde84fc00077efcefe8997"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-07.png",
+      "sha256": "91ffc6b0800b7c0769719126a9fcf6cba15067b6e1039f2bd811d91adbd220ce"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-08.png",
+      "sha256": "1fa31c90628253479dba28e4c2237768a4f6f05e1eda7c3cc0272088c764fa8c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-09.png",
+      "sha256": "bf7facc6681472e164819ae0f3177147190bfaf9b4a17161e283d8f801901f5e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-10.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-11.png",
+      "sha256": "ee0db4d5c42bdb04a0b0226fe54070ea0673a56ed3ee82c6f0cf3ccc8e983803"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-12.png",
+      "sha256": "adbfbcfb5e783a1464e8ea43206a9efed852088f5db3ba5e9c5a8df6a4331381"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-13.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-14.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-15.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-16.png",
+      "sha256": "001fde9d25b3dd7d7ab383bef974b860725f79d0553f4f61c7e79277850f1720"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-17.png",
+      "sha256": "adbfbcfb5e783a1464e8ea43206a9efed852088f5db3ba5e9c5a8df6a4331381"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-18.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-19.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-20.png",
+      "sha256": "fe7039cff4b90fcd1105c63f82ffe7e378a87769c5c93ca8d16fb11f874e1a6f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-21.png",
+      "sha256": "8a8cad65d986ee1f6ce842926ea509fe9e4f7e90720c5f7d8b8cd28cea792e84"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-22.png",
+      "sha256": "9938f456947526126fc27c7d31d91686ea528cfed3457bcca8ff6a398e210b6c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-23.png",
+      "sha256": "eecbbb112cdc73fe80b15d25b4f17972209737680ab2a7a4457156f7b893308c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-24.png",
+      "sha256": "b3515c6864686c3cae627d274f4c7b9bca645d7ab2327f308c8cdb6e7fdb97be"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-25.png",
+      "sha256": "75bbdcaffc1b52762a8c57ad3a5407e2173634c86c307ec26ee4ee036a2edd4d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-26.png",
+      "sha256": "60413321588147963ae0465ab0bc4017f1f435a3d4d5905866ec800d07b6c1ef"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-27.png",
+      "sha256": "1c905d5fd22124a1ca2388d989725694f3ad1f46b05e3492e4dc5b062c1bb592"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-28.png",
+      "sha256": "a95ad388bb351a739a0bda4492b0d25fa03850f4900216f113ece142bb577a29"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-29.png",
+      "sha256": "97b11ee7c88f2db732de4249a0087d675753b54e46d05504ac62c2a956c328ba"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-30.png",
+      "sha256": "ff818120375368fcdd9227bf968a64724319129079ce2133e5f324e4b26af035"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-31.png",
+      "sha256": "edf4305daa4fa50de2174047fe85257a4e17283039028d26586a38be30059370"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-32.png",
+      "sha256": "f1b73e8d71db4127d0881dbba9bb617a8cb2dc8595dddfcd3d42c96da69cb496"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-33.png",
+      "sha256": "419ab6b811c9215118eb93b4ea35038fd6c976dd99ce7a651178918e519dbe90"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-34.png",
+      "sha256": "b73d59d710a27c3556e93b47e7280d300f0ca462ca6341c7bb30fd781a44f84a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-35.png",
+      "sha256": "f938f1111d89eb467e97e0015234e8f5343f7eda78493de9a6c98efb2e3f66da"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-36.png",
+      "sha256": "67437bdf2b8222f97338cbcaff486e53594863f8b8940d5a51a85690298ed9fd"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-37.png",
+      "sha256": "f633ef2fc0168b6d6f9aaeb3944764d1196704a18a871e5698152019e75088d0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-38.png",
+      "sha256": "da28fc969fd9327e0331b8404d5dc5bfafd72eddc340f75474156a6814341f30"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-39.png",
+      "sha256": "ac81035279d741e24420cc27ac14596d7380424df679ad83c84491cc8088440d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-40.png",
+      "sha256": "e14fd77173a30c81b4f0f96492f989e5474beb353e7a825d8fc8a78849f82f99"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-41.png",
+      "sha256": "db7ab49e9f26233c095640dbf77970a071f8189a755accf9ccebf6b035f1133d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-42.png",
+      "sha256": "cdfb9bc9b2e041cc42c84de81e1dca9d9b9efb656d60d41153d05c23fa9d87dd"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-43.png",
+      "sha256": "b14815ccabbd6bd097c90add924282c0a6cb6769c4bd5aa459169ae1bcfc65eb"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-44.png",
+      "sha256": "3103950b50841277bc419770fff5c8a4d33b0a12ac847eb449bbeb54993d0821"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-45.png",
+      "sha256": "ee26dcfbba9d74c40706a7d6a045e259cdb6dd78ea6f4fde5f5cb5ad287dd8a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-46.png",
+      "sha256": "5b06ee7048cb6131352db9dcb60bc4203b40826173dd5bf99ce630684215e21b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-47.png",
+      "sha256": "7dc55ba4cd7080df32b27ab890d50389768a484f5ddb54240df9fdd547e20fc3"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-48.png",
+      "sha256": "9b60ce1b0085d95db70d9e786267f1c890fb79927ae5d5ba8864a0068af69049"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-49.png",
+      "sha256": "51d3b4c1eeac9f0335998f44737e5145f863b9e9066ab1474ba0f77c96152a58"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-50.png",
+      "sha256": "660e42cb5c97b8f04d8c155faa0db4d80ba6e256eed9ea82d86533c9e368da82"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-51.png",
+      "sha256": "ac996a59dbcf6359548bc03554f79a4c99c0d196943ae813263be6fe93c4aa34"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-52.png",
+      "sha256": "9270084ff30e795aff936114ffebeada04766be590f9b01230c12b90ed31696f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-53.png",
+      "sha256": "678d2bc05f328a7cc92e484c73e59e834d9a2db89c72f7faf97e7c97ae4f47c7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/4x/frame-54.png",
+      "sha256": "0af2c46182fccefdcb97fb592fb80dc65b3dd067d39e478fe63ffd19c9c08a5a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-01.png",
+      "sha256": "956f114c9b691da5b58fe315d60360ac2a1e1a2c6ddab9421bab5f4257962a19"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-02.png",
+      "sha256": "9f3075ff30acbde954d0b083881c0f3f1f222df099b4550cece5ebe502d94494"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-03.png",
+      "sha256": "da4bfd7debee96cf7daf9ade9ebc891cfaf85acfd38ce142cd2adfe75b01973f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-04.png",
+      "sha256": "b6ce39c4738fa07e3ad0c080d8079d003558e7d9877cb8edf983fd6160dd7cd4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-05.png",
+      "sha256": "650da4781602b6d0074f87f25fa09d691873e5d7859d204c2abca8a2967d3100"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-06.png",
+      "sha256": "25f9dedf0624cd9ed32d125c292936ce5925711e8448ed21d417c73b78b750f7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-07.png",
+      "sha256": "406e5c395b4031ed00f0901e457277db8197f06ae2da2cf84995c2577c960bf8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-08.png",
+      "sha256": "bce9b9be192e83a1e25b3047be397090a916ec5c09b8bca2c8fbdc2f595b1260"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-09.png",
+      "sha256": "2ac8c51e9031c85b1678d493b70392474f6850fbb5107be2fbbda74730a2fb97"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-10.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-11.png",
+      "sha256": "a31a68c3dedc16f254470091db52e7a09ff893e8b437d522ebbb85700a3356e2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-12.png",
+      "sha256": "08166bcfcc954c648008848a85d7bceffe7b6bbbb7e4d7fa496fc1f27da450a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-13.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-14.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-15.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-16.png",
+      "sha256": "665cd01b525387906452227a9d47d1511064e5d219d6417d1d8045096ee1dca9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-17.png",
+      "sha256": "08166bcfcc954c648008848a85d7bceffe7b6bbbb7e4d7fa496fc1f27da450a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-18.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-19.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-20.png",
+      "sha256": "5eb48a46c185b514246c83134bbd511bb6a9d32e1cb2116377ef7952d0e731c5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-21.png",
+      "sha256": "e2432e217e7063333e036acb897e5df6d50aac9d52b1202863385dacc3d3387c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-22.png",
+      "sha256": "8d83d809febd97355b5fc0a0eedabd009b3dfaad68d296066c95cdae39d6f7b8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-23.png",
+      "sha256": "96daae452bfb4ec0ef5b5652a28d7594d546102f2d667eb561bc26f2b98576b0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-24.png",
+      "sha256": "b0c51c5b7187eba6d88b0251e9efb381cc6adea2ca4e8fe4d2382f17515e1e41"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-25.png",
+      "sha256": "0537418739871125294cb1079623ea461db4399dafde94c0144dff954d0fba1f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-26.png",
+      "sha256": "787ea39116f101efb48e74edde8abfdd807e3a94d2adcb535cd59e93a144ff88"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-27.png",
+      "sha256": "425e91c33279700591738fb77f2f48dacc59dad5ed1ff4ed3583ce2e6aa1beb3"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-28.png",
+      "sha256": "c837a298a098915e62ecc5255d71a7d16db09345b0f182a22989efdeb62e0a72"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-29.png",
+      "sha256": "768fe80e341ab4f6033c61f3f27c3dcfc42e1c7fc1f04836691bbdd76b220ae0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-30.png",
+      "sha256": "ec4a2d744a92b00f924985c17278d99a36113dcd5980eab78f7ac400863e540c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-31.png",
+      "sha256": "e456462c37aa19c12692f8b557cd92ff967ff7cee1f5803958677180410dea5e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-32.png",
+      "sha256": "4b0a16f316917bec4c3e8aa2cca0ead95b8e93d03403cfe12229506fbbc71800"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-33.png",
+      "sha256": "81e371995d9c0994120adbbb429df1296cc335969d18a3d0bb6f0ccbaaab4654"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-34.png",
+      "sha256": "6bbef5c3230569af52e39b21f539a02f2f704d3c943d564d10f85a52bb2f467c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-35.png",
+      "sha256": "df0ba4957e3771ee76e44469c1133e9f7761348346e16618ce70b8f41fc84ec1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-36.png",
+      "sha256": "c8472ba82c677e54d2d03fd78de7b2f45c4693b7ff9463da5dec8b2ca300d3a5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-37.png",
+      "sha256": "35e4f696d3b5cbb983108704e829fbed31f8dcd1fc02dc050f0a3e1633a862e0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-38.png",
+      "sha256": "1e8d9da4090619fb989f4105128e8551ccbb9387139fb5f3d85cf1c779032847"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-39.png",
+      "sha256": "2fe89d5c89736721fd9deef0b86f0ac2064dc7023d9d152dbbe6b11524c5b3ba"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-40.png",
+      "sha256": "f50c56dc7ec646deb2b15aaa289b29dab2f23183d4b878c7de83d829294e5a9d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-41.png",
+      "sha256": "3eaea1dc79ca409c690c379ecdc7aaacf8b5343bcff4405dddf9639ffe5b07ad"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-42.png",
+      "sha256": "789f7c0954ec3bcfe83cbcfd713a0f00a74f5cffd76350c94cad302f6446f3f2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-43.png",
+      "sha256": "a9f5f07e4821906feedf0ee7d3cb2354abcfcf9ac4a286ca367b711287295e1b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-44.png",
+      "sha256": "6e7abfda129e1630c92d79f50f5947faab5598d70f0f9fce4c87177f7d09b400"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-45.png",
+      "sha256": "1243f3c3539844ac68c6c197e0c262faf3742f6d7f7438d779a3af5c5e464bb8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-46.png",
+      "sha256": "3beb656118c95d668d9366ca09b92f31aad5581b7363b69c30d65769b18a12a7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-47.png",
+      "sha256": "41d3812f97b7930a65b2ec91ad28325a8180329b73b6e85c7dba3a3ffab4b839"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-48.png",
+      "sha256": "1f36af82789cafeb3fb8fe21cf84e7dff2d9db21a887def53bc562b5bf19e460"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-49.png",
+      "sha256": "5e50f1e117a425e9edbce5d06aca69a0095bd28022b77f515662ee716beba613"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-50.png",
+      "sha256": "358e9516716ba7c0a30c22d579c68c8c6657e1239af5fb72c55082ca67e85f16"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-51.png",
+      "sha256": "6dc877322c8691f18603e63be56d71292e253c1da440c29e524d7b66792e742c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-52.png",
+      "sha256": "7c60211cdadaf5956006ebc12488eef22e8dbba5e504f726ff0d431827ebc8df"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-53.png",
+      "sha256": "a1ce2430c490c110d3b540d0a033668619d561e06b6e541e72ac511bdbf0ba0c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03/native/frame-54.png",
+      "sha256": "956f114c9b691da5b58fe315d60360ac2a1e1a2c6ddab9421bab5f4257962a19"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03-all-frames-white.png",
+      "sha256": "a497291c7752aa0fe2194b2b2671a86a53eeb2e3a6bf4c05b2f5a4b1d681ce1d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03-all-frames.png",
+      "sha256": "3ad349cbd73509c58f42cd4b4a1ee7e1ef30945001bd749a8c5cb479e2f5e031"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03-ordinal40-49.png",
+      "sha256": "86041d0ea3277db7f5af21675df0283a2fe598547467c796fc36bd66b30b3ee4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03-ordinal41-49.png",
+      "sha256": "6e6a672bf4f9f0e2d58ba741fdc2c2c9db4e766379cdd30da54e6bb939de9ae2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/attack-03-preview.gif",
+      "sha256": "27ac3ccb128bc4b33feb7f8817d4b483bf2a43177ee2de36df05107c05e88b7e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/build_frames.py",
+      "sha256": "7d6b1534c77567e40a1632541716e12b660b436239df050187885c42cfcf4f9b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/manifest.json",
+      "sha256": "d33295c8e5dc49d172cb1d4f867069a7102b4c19b41fb7a80654263c33e31e0c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/README.md",
+      "sha256": "ace7d5ea6cd97ff08ea63b86e9e9c692345eced71c424b65ce70e4c8907c35fa"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/references/requested-40.png",
+      "sha256": "5cf486ca89a0320ae757a1ed3f1748c9d76ef3c66c216ced227e47a0cd1dab37"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/references/requested-41-42.png",
+      "sha256": "f587717571d31d0169d1d46e5b547e2313cd61e1d731db90bec74992355da054"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/references/requested-43-49.png",
+      "sha256": "d3a74a9e0232623a5cc64ee01c1410bd8227cf0be450a9b1ed3164fc4ef9f227"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/render_white_preview.py",
+      "sha256": "acbdcdfe19576ee0d1a24a030dbbe6c98d510bb7446f9f71ea3bbc44a3ea62e7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/vfx-timing.csv",
+      "sha256": "198281658013c24696a804037c4aca6ebcaa7a8f2f3c67ad28885245c4b6f6e5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r07/white-preview-validation.json",
+      "sha256": "6fb506024ebc82c7f9702fa2deaedcec4252bb39a25352ef5d723536fd55d9e5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-01.png",
+      "sha256": "0af2c46182fccefdcb97fb592fb80dc65b3dd067d39e478fe63ffd19c9c08a5a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-02.png",
+      "sha256": "13963e585c13d573656b902fd2c2423aff63b5fd8cbccf88d16afe3ef294384d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-03.png",
+      "sha256": "d3e4a9cef320cc2783f306366ae83735df47a1b7d6f45af88e8b8d94207e5a43"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-04.png",
+      "sha256": "307503fa7f5008f2808a1b945903478d6702748440da858655b5d2b777dea805"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-05.png",
+      "sha256": "185f80844a390a1785a42c25d4c11661e03baae7638055f36fe74ae27e7b2cc9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-06.png",
+      "sha256": "5066b8601c6eff29da8f67c424141547bd359f4f91fde84fc00077efcefe8997"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-07.png",
+      "sha256": "91ffc6b0800b7c0769719126a9fcf6cba15067b6e1039f2bd811d91adbd220ce"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-08.png",
+      "sha256": "1fa31c90628253479dba28e4c2237768a4f6f05e1eda7c3cc0272088c764fa8c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-09.png",
+      "sha256": "bf7facc6681472e164819ae0f3177147190bfaf9b4a17161e283d8f801901f5e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-10.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-11.png",
+      "sha256": "ee0db4d5c42bdb04a0b0226fe54070ea0673a56ed3ee82c6f0cf3ccc8e983803"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-12.png",
+      "sha256": "adbfbcfb5e783a1464e8ea43206a9efed852088f5db3ba5e9c5a8df6a4331381"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-13.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-14.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-15.png",
+      "sha256": "fbb43f69267147e06870aef2e4d19ace9d43af2b54b11a5cfb48bf23a710290e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-16.png",
+      "sha256": "001fde9d25b3dd7d7ab383bef974b860725f79d0553f4f61c7e79277850f1720"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-17.png",
+      "sha256": "adbfbcfb5e783a1464e8ea43206a9efed852088f5db3ba5e9c5a8df6a4331381"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-18.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-19.png",
+      "sha256": "9b94b992dc07045319c38844136c158f1d0aad3a7be72509314e0f3e0bbf3488"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-20.png",
+      "sha256": "fe7039cff4b90fcd1105c63f82ffe7e378a87769c5c93ca8d16fb11f874e1a6f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-21.png",
+      "sha256": "8a8cad65d986ee1f6ce842926ea509fe9e4f7e90720c5f7d8b8cd28cea792e84"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-22.png",
+      "sha256": "9938f456947526126fc27c7d31d91686ea528cfed3457bcca8ff6a398e210b6c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-23.png",
+      "sha256": "eecbbb112cdc73fe80b15d25b4f17972209737680ab2a7a4457156f7b893308c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-24.png",
+      "sha256": "b3515c6864686c3cae627d274f4c7b9bca645d7ab2327f308c8cdb6e7fdb97be"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-25.png",
+      "sha256": "75bbdcaffc1b52762a8c57ad3a5407e2173634c86c307ec26ee4ee036a2edd4d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-26.png",
+      "sha256": "60413321588147963ae0465ab0bc4017f1f435a3d4d5905866ec800d07b6c1ef"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-27.png",
+      "sha256": "1c905d5fd22124a1ca2388d989725694f3ad1f46b05e3492e4dc5b062c1bb592"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-28.png",
+      "sha256": "a95ad388bb351a739a0bda4492b0d25fa03850f4900216f113ece142bb577a29"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-29.png",
+      "sha256": "97b11ee7c88f2db732de4249a0087d675753b54e46d05504ac62c2a956c328ba"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-30.png",
+      "sha256": "c4ba8205eadfd89c52f784be99398b9af7bb86c694b04d2cf5dc4fb3e8d6eb4e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-31.png",
+      "sha256": "79dab2f1722ca1d976cbf77cc033c5b7ce4eb8af8157758c1636c00e5d022a60"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-32.png",
+      "sha256": "f1b73e8d71db4127d0881dbba9bb617a8cb2dc8595dddfcd3d42c96da69cb496"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-33.png",
+      "sha256": "5facc90899abd4b401f025b91d1e0d4776198f7f78b9fb90e250f38c9825828b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-34.png",
+      "sha256": "b73d59d710a27c3556e93b47e7280d300f0ca462ca6341c7bb30fd781a44f84a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-35.png",
+      "sha256": "f938f1111d89eb467e97e0015234e8f5343f7eda78493de9a6c98efb2e3f66da"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-36.png",
+      "sha256": "67437bdf2b8222f97338cbcaff486e53594863f8b8940d5a51a85690298ed9fd"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-37.png",
+      "sha256": "aeb1cccf04c2541a0803b231ef651106d74777a6f1b939ff9e34d03464460616"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-38.png",
+      "sha256": "3f69acb5b676e7fcade89856572ee5a252f6d1fa7e94e111c84cab2347b82072"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-39.png",
+      "sha256": "4ca57c57cfd3ab60c58498524c19a50a1f8174a1d262096fa8942d84ee6c44ce"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-40.png",
+      "sha256": "8abf5520704781fc53bb96c9d27d073abb58412126cc8bfc16603a76f9c6e8a0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-41.png",
+      "sha256": "42fcf6e09ddc7c4ae867c76dae0e0f036178dad336c73d3dd3a05c5af0d43a68"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-42.png",
+      "sha256": "4345fdc696d55f42e9523ee483f8c19cc09b762916a716ab4a0fcd5c9a2acbdb"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-43.png",
+      "sha256": "d5b4fdc79c5c41dc5fd0ec527cf0f1b4dbea070fdcceaa111694bcbc10946864"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-44.png",
+      "sha256": "13fa7f33b2caa0f469a7c6cf8d352755be17ec289dd71fc3cf94623d8be29bb7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-45.png",
+      "sha256": "a92fa87656c7d5f9f9a5f620d3542f4626bf70b8984ac2b99fb78eacb8c4818e"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-46.png",
+      "sha256": "820bccf836b38e41268a8a451402d22214b447b9599fc2186052f01d9846af4f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-47.png",
+      "sha256": "cee4eca9e07250dbdaeecbbffc81bf49a8a98c61e94a3c20768a2399de2fb055"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-48.png",
+      "sha256": "62c071ff2c0252fe62d52f35cc7cdd6a16a69e0157fdf2f376d10cf5c63f585f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-49.png",
+      "sha256": "7ce0c201bf2b58ac88b0630d561f295077ea3d8cc9951c09959820b4413dae37"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-50.png",
+      "sha256": "660e42cb5c97b8f04d8c155faa0db4d80ba6e256eed9ea82d86533c9e368da82"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-51.png",
+      "sha256": "ac996a59dbcf6359548bc03554f79a4c99c0d196943ae813263be6fe93c4aa34"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-52.png",
+      "sha256": "9270084ff30e795aff936114ffebeada04766be590f9b01230c12b90ed31696f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-53.png",
+      "sha256": "678d2bc05f328a7cc92e484c73e59e834d9a2db89c72f7faf97e7c97ae4f47c7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/4x/frame-54.png",
+      "sha256": "0af2c46182fccefdcb97fb592fb80dc65b3dd067d39e478fe63ffd19c9c08a5a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-01.png",
+      "sha256": "956f114c9b691da5b58fe315d60360ac2a1e1a2c6ddab9421bab5f4257962a19"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-02.png",
+      "sha256": "9f3075ff30acbde954d0b083881c0f3f1f222df099b4550cece5ebe502d94494"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-03.png",
+      "sha256": "da4bfd7debee96cf7daf9ade9ebc891cfaf85acfd38ce142cd2adfe75b01973f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-04.png",
+      "sha256": "b6ce39c4738fa07e3ad0c080d8079d003558e7d9877cb8edf983fd6160dd7cd4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-05.png",
+      "sha256": "650da4781602b6d0074f87f25fa09d691873e5d7859d204c2abca8a2967d3100"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-06.png",
+      "sha256": "25f9dedf0624cd9ed32d125c292936ce5925711e8448ed21d417c73b78b750f7"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-07.png",
+      "sha256": "406e5c395b4031ed00f0901e457277db8197f06ae2da2cf84995c2577c960bf8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-08.png",
+      "sha256": "bce9b9be192e83a1e25b3047be397090a916ec5c09b8bca2c8fbdc2f595b1260"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-09.png",
+      "sha256": "2ac8c51e9031c85b1678d493b70392474f6850fbb5107be2fbbda74730a2fb97"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-10.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-11.png",
+      "sha256": "a31a68c3dedc16f254470091db52e7a09ff893e8b437d522ebbb85700a3356e2"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-12.png",
+      "sha256": "08166bcfcc954c648008848a85d7bceffe7b6bbbb7e4d7fa496fc1f27da450a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-13.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-14.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-15.png",
+      "sha256": "008a9c0e9144ab30732db6175dc3f90c363b8d1cfec82b4d68068658576cc66b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-16.png",
+      "sha256": "665cd01b525387906452227a9d47d1511064e5d219d6417d1d8045096ee1dca9"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-17.png",
+      "sha256": "08166bcfcc954c648008848a85d7bceffe7b6bbbb7e4d7fa496fc1f27da450a4"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-18.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-19.png",
+      "sha256": "814869900db4d46166565cc4be67ab26ba0238d1db3b59786020dca641af738d"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-20.png",
+      "sha256": "5eb48a46c185b514246c83134bbd511bb6a9d32e1cb2116377ef7952d0e731c5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-21.png",
+      "sha256": "e2432e217e7063333e036acb897e5df6d50aac9d52b1202863385dacc3d3387c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-22.png",
+      "sha256": "8d83d809febd97355b5fc0a0eedabd009b3dfaad68d296066c95cdae39d6f7b8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-23.png",
+      "sha256": "96daae452bfb4ec0ef5b5652a28d7594d546102f2d667eb561bc26f2b98576b0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-24.png",
+      "sha256": "b0c51c5b7187eba6d88b0251e9efb381cc6adea2ca4e8fe4d2382f17515e1e41"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-25.png",
+      "sha256": "0537418739871125294cb1079623ea461db4399dafde94c0144dff954d0fba1f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-26.png",
+      "sha256": "787ea39116f101efb48e74edde8abfdd807e3a94d2adcb535cd59e93a144ff88"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-27.png",
+      "sha256": "425e91c33279700591738fb77f2f48dacc59dad5ed1ff4ed3583ce2e6aa1beb3"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-28.png",
+      "sha256": "c837a298a098915e62ecc5255d71a7d16db09345b0f182a22989efdeb62e0a72"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-29.png",
+      "sha256": "768fe80e341ab4f6033c61f3f27c3dcfc42e1c7fc1f04836691bbdd76b220ae0"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-30.png",
+      "sha256": "cf33c45304e90f227341292d26314278e8ed6cf628a0dc2a2d04d81bae2cf258"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-31.png",
+      "sha256": "d2db9b7b6aa14b235405e36448694651630a63eccfbfe03c00dd531eb7d72509"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-32.png",
+      "sha256": "4b0a16f316917bec4c3e8aa2cca0ead95b8e93d03403cfe12229506fbbc71800"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-33.png",
+      "sha256": "06169efb087fec8501fc850181c98415251a4fef303ecac0293938d12614e48b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-34.png",
+      "sha256": "6bbef5c3230569af52e39b21f539a02f2f704d3c943d564d10f85a52bb2f467c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-35.png",
+      "sha256": "df0ba4957e3771ee76e44469c1133e9f7761348346e16618ce70b8f41fc84ec1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-36.png",
+      "sha256": "c8472ba82c677e54d2d03fd78de7b2f45c4693b7ff9463da5dec8b2ca300d3a5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-37.png",
+      "sha256": "e81e4daf8a5ccc9689380b75ad544f443bd702c3d4ad99b614d478c405ec8bba"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-38.png",
+      "sha256": "46eeacc8b48bc6f89ea42ca816a70be14472999f6efcb2cb58e7a659c78b54df"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-39.png",
+      "sha256": "196a36327cb8044ad3ace10f97a7154629de8ca12493ba9775fd546a924c2ecb"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-40.png",
+      "sha256": "60a2e3d8606cadc438eb265f482e0aa0c0a6a3b2ea1c1d0a62dbd7ec77d29f6a"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-41.png",
+      "sha256": "c96d1dd2f8f7db812a292ee61a6be84260638fd83626d735dbb98e0fdaf3fd34"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-42.png",
+      "sha256": "dba4bb26b99bd35f0a81dfaf11afe6f9612a66fa16d9d5f1543085f0028501ac"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-43.png",
+      "sha256": "a89a18061baf637569b40c879d889916bd7510f133e05408ae031dd18063532c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-44.png",
+      "sha256": "720e30a4ea06d513c3273096e21b741d67a48bb386e425d0ab6fa370d7be8ca5"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-45.png",
+      "sha256": "70ff42037ebeb4e6b08755a4746762ad6d281ff87fe3c94013d67472895a1fe1"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-46.png",
+      "sha256": "635645e0ab665b67c0102d7575592368344fe48f1f32bc80f60ff998c3f46c3f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-47.png",
+      "sha256": "3c7d928d9338d70e4c1cd793497202a427dca1b5a589f2e03ea86a6246dd69b8"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-48.png",
+      "sha256": "b74f9d071df20e205acbd7fa2ed00cc1a038e87f389fabcb2bcb12f3c08a8375"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-49.png",
+      "sha256": "c57af7fd1d2b049a80d1dd3d401e75046770a7d170ba60039bce47f45bab9798"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-50.png",
+      "sha256": "358e9516716ba7c0a30c22d579c68c8c6657e1239af5fb72c55082ca67e85f16"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-51.png",
+      "sha256": "6dc877322c8691f18603e63be56d71292e253c1da440c29e524d7b66792e742c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-52.png",
+      "sha256": "7c60211cdadaf5956006ebc12488eef22e8dbba5e504f726ff0d431827ebc8df"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-53.png",
+      "sha256": "a1ce2430c490c110d3b540d0a033668619d561e06b6e541e72ac511bdbf0ba0c"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03/native/frame-54.png",
+      "sha256": "956f114c9b691da5b58fe315d60360ac2a1e1a2c6ddab9421bab5f4257962a19"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03-all-frames.png",
+      "sha256": "8c6c9e023bae7173856d8774adf34ddcb8787959cc3510b46ac83603920cd958"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/attack-03-preview.gif",
+      "sha256": "cafb9a242c5e03008710355553861619c82372cc6290e7f0c4044f12a0d8e545"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/build_frames.py",
+      "sha256": "f68e2a05dba5aed7623b3b9bd55a7eeb0a80b0ecca02400d0a40fe9c00a666cd"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/gif-validation.json",
+      "sha256": "b2c794de2bd7c2689c2df6e60dda7ebd7090ae7adbf430a45ce16bfce2372c8f"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/manifest.json",
+      "sha256": "c7c2898dfb59b214dfe57e0c72d5df492332de1a91f9f104058fa7ea45943d69"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/README.md",
+      "sha256": "0d9c6ac40a8dd109434ab4705ab29f57bdcb8a199cd2d42d376e7f384fb03efd"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/render_gif.py",
+      "sha256": "d54c607a10214b685354542670414fc092a50e8ada64d76ed125b27c6ffcbc5b"
+    },
+    {
+      "path": "art/archive/weapon/player-combo-preview-r12/vfx-timing.csv",
+      "sha256": "d2882f3bcfebcf8a7fa0ef24da5c2a9e0ff5e9bce5a665aa4c083e6223cb56ca"
+    },
+    {
+      "path": "art/archive/weapon/sephiria-motion-our-player-r02/manifest.json",
+      "sha256": "5396be5e53751542f5336af30dab7103c2f01cadfb57b9bc53c5a0521480b1af"
+    },
+    {
+      "path": "art/archive/weapon/weapon.aseprite",
+      "sha256": "bab2506c3f97e2ba94a2e033eced866f8d9d6e1ef8bc7320c9c9f6f258f30416"
+    },
+    {
+      "path": "docs/archive/03_Analysis/Sephiria_GreatSword_Attacks_20261115/motion_curves_and_frames.json",
+      "sha256": "6fc1bf92d6e4f7860312640b49a488dacddc8bdc734a70b3a52d51185fb27eb6"
+    },
+    {
+      "path": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack1.anim",
+      "sha256": "ce8fb1cfab3d955a9eb34e803ff2bcb417fc0b3791ccf4ce5b199b84caab7de9"
+    },
+    {
+      "path": "docs/reference/sephiria/assets/ExportedProject/Assets/AnimationClip/GreatSword_Attack2.anim",
+      "sha256": "9e4cee3a7442f66d1822e64f0bb27402abd19cb7bf2543f1df1905cb19e0bf39"
+    },
+    {
+      "path": "project/Assets/Art/Weapons/weapon.png",
+      "sha256": "35f804b6a89f00ac7886384a31728fb63dde85aa2ce168f82c35fba7a6d83d2e"
+    },
+    {
+      "path": "project/Assets/Art/Weapons/weapon.png.meta",
+      "sha256": "c1455194967c29539b32ed2c34a2e9f40c327ba20fecb485641847da0215bd47"
+    }
+  ],
+  "export_metadata_sync": {
+    "file": "art/archive/weapon/greatsword-vfx-edit/png-attack3/frames.json",
+    "sha256": "d17edc753d1dc1f8a86d9248a1e7ed8bdc345933e2b47eb181e213ea5d9e1aa6",
+    "Aseprite_temporary_export_success": true,
+    "temporary_PNG5_equal_canonical": true,
+    "all54_color_stages_match_manifest": true,
+    "native_and_attack1_attack2_unchanged": true
+  },
+  "independent_review": {
+    "passed": true,
+    "54_selected_source_sword_pose_layers_exact": true,
+    "all54_native_4x_white_panels_and_GIF_sprite_panels_exact": true,
+    "frame26_P2_B1_nonoverlap_and_occlusion_verified": true,
+    "all54_color_stages_and_CSV_exact": true,
+    "input_images_and_previous_revisions_unchanged": true
+  }
+}

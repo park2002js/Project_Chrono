@@ -7,7 +7,7 @@ public struct Line
     public Vector2 StartPoint; // 확정한 경로가 시작하는 월드 좌표
     public Vector2 Direction; // 두 입력 점으로 결정한 단위 방향
     public float Length; // 두 입력 점 사이 거리와 별개인 고정 경로 길이
-    public float Width; // 경로 표시와 이후 판정이 함께 사용할 폭
+    public float Width; // 표시 전체 폭과 Slash 판정 폭을 계산할 기준 경로 폭
     public Vector2 EndPoint => StartPoint + Direction * Length; // 고정 길이를 적용한 실제 경로 끝점
 
     /// <summary>유한하고 양수인 기하 값으로 확정 경로 구성</summary>

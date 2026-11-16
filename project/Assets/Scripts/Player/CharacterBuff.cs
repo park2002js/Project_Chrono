@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>현재 게임에서 사용하는 캐릭터 효과의 구분</summary>
@@ -14,6 +15,7 @@ public enum BuffType
 public class CharacterBuff : MonoBehaviour
 {
     public bool IsFever { get; private set; } // 각성 수치와 전용 Draw 대기가 적용된 상태
+    public event Action<bool> OnFeverChanged; // 각성 진입·해제를 자기 오라 등 표현 구독자에게 알릴 사건
     public float FeverRemaining { get; private set; } // 각성 종료까지 남은 게임 시간
     public float FeverDuration = 8f; // 각성 획득 때마다 갱신할 지속시간
     public float AttackMultiplier = 1.5f; // 기본 공격력에 적용할 각성 배율
@@ -185,7 +187,11 @@ public class CharacterBuff : MonoBehaviour
         }
 
         // 남아 있는 효과를 기본 수치에 다시 합성해 제거 순서와 무관한 결과 유지
-        if (changed) RefreshStats();
+        if (changed)
+        {
+            RefreshStats();
+            if (type == BuffType.Fever) OnFeverChanged?.Invoke(false);
+        }
     }
 
     /// <summary>Boss 처치 시 유익한 각성은 유지하고 부정 효과·예약만 제거</summary>
@@ -213,11 +219,14 @@ public class CharacterBuff : MonoBehaviour
     /// <summary>재획득에서도 배율을 다시 곱하지 않고 기본 수치와 기간 갱신</summary>
     private void ApplyFeverValues()
     {
+        // 재획득은 기간·수치만 갱신하고 오라를 처음부터 다시 재생하지 않음
+        bool entered = !IsFever;
         IsFever = true;
         FeverRemaining = FeverDuration;
         RefreshStats();
         if (skill != null)
             skill.RefreshDrawCooldown();
+        if (entered) OnFeverChanged?.Invoke(true);
     }
 
     /// <summary>생존 대상과 각성 설정의 유효성 확인</summary>

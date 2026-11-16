@@ -1,0 +1,185 @@
+{
+  "package": "laboratory/final",
+  "files": [
+    {
+      "path": "aseprite/connected-rooms.aseprite",
+      "bytes": 82614,
+      "sha256": "96b81d696e492d5e7a275d821518a15884ab1a73eba957b462d1b12cadc044cb"
+    },
+    {
+      "path": "aseprite/environment-tileset.aseprite",
+      "bytes": 2039,
+      "sha256": "8b17f86df1e853b4e829f1ca526157881f91afb2ca7d579f9274c77905d58797"
+    },
+    {
+      "path": "aseprite/exit-rising-slate.aseprite",
+      "bytes": 19781,
+      "sha256": "bb369d15df499cab8f91781e9ce0facff4e821e879737eb85fd24e75e5da1cf6"
+    },
+    {
+      "path": "aseprite/sliding-gate.aseprite",
+      "bytes": 26652,
+      "sha256": "5132d88f3cf116a71ac00f64e53d4ef4bc2a204e21c366fcc7ac7b5d767f95b2"
+    },
+    {
+      "path": "aseprite/straight-corridor.aseprite",
+      "bytes": 7113,
+      "sha256": "cd28001f883444c66fb55091703909badb373f14020108f327f36effedba88c5"
+    },
+    {
+      "path": "palette.json",
+      "bytes": 9135,
+      "sha256": "8b8777d2b4b3cd975ad7bfe4a28d0275729923353f96f47752931d1ac93bc10e"
+    },
+    {
+      "path": "preview/connected-rooms.png",
+      "bytes": 41038,
+      "sha256": "cf3c12ce305f7194386bbad81c890132db6d1af1cec34514efa0fb401dd72504"
+    },
+    {
+      "path": "preview/exit-closed.png",
+      "bytes": 17509,
+      "sha256": "f7547f769537870fe591fb6d9bf1629e414502970ca2dad2b8c26f3062907555"
+    },
+    {
+      "path": "preview/exit-cycle.gif",
+      "bytes": 1935808,
+      "sha256": "aa0d3d3b3a602576145e3119cd5f046c96bde5c6dc7dc3afd4955e57cf970ef8"
+    },
+    {
+      "path": "preview/palette-before-after.png",
+      "bytes": 19971,
+      "sha256": "0f0ef38e7093fa4c8649ade0d9ac3c3a3203771316ae3ecdf37b6776d625096a"
+    },
+    {
+      "path": "preview/palette-vfx-1920x1080.png",
+      "bytes": 20858,
+      "sha256": "6aa1cd8dc560e65225594852f32ee65f92a561a1f7c1b51afb9f1267b3f9d371"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7099,
+      "sha256": "dd3831e88d13807843538a0870a603a441d04e5812abebab5491e73ad2cb2355"
+    },
+    {
+      "path": "unity/entrance-animation.json",
+      "bytes": 5103,
+      "sha256": "c3bbabfe6b9aaaf14689c36879823d7cb699a7bc29687384f009cd7bdb76f5d4"
+    },
+    {
+      "path": "unity/entrance-sheet.png",
+      "bytes": 5354,
+      "sha256": "4f0fa51f247b47b220bf2b261dba7760282c65abb6e2aa652e358ca6519ce320"
+    },
+    {
+      "path": "unity/environment-tileset.png",
+      "bytes": 2282,
+      "sha256": "547bb3be64cb8cf00be1fcb0f8ff82285ccdc5c80b1f184f20a34050d7403a9f"
+    },
+    {
+      "path": "unity/exit-animation.json",
+      "bytes": 11648,
+      "sha256": "5fa7a8e34d678f578e59c26dfb76b5f2129cd205d609cf9c6320bf61ae6052c2"
+    },
+    {
+      "path": "unity/exit-sheet.png",
+      "bytes": 10280,
+      "sha256": "7e3c6015580906de21fc9ed418e76e1e495b46a89e90936400fd1215fdb517fc"
+    },
+    {
+      "path": "unity/layout.json",
+      "bytes": 143892,
+      "sha256": "1a678c9cd128e43b066ad6a484381ae5b507303afc1608bf60c6cc20ff5aecc5"
+    },
+    {
+      "path": "validation/art-preparation.json",
+      "bytes": 1425,
+      "sha256": "345bfd5ab0d1158f8e1131e72d13a012c1a4ced7fe5938a7dd116295495f00ef"
+    },
+    {
+      "path": "validation/art-review.json",
+      "bytes": 6911,
+      "sha256": "6ad0c3730c1de182fae90dd2709af64525a592db1f762fabe0b1a110c92fd0a2"
+    },
+    {
+      "path": "validation/art-walkable-mask.png",
+      "bytes": 2894,
+      "sha256": "5e11b7969acaa9ae42b9cc14154cc2b29ca70388dd1e94ea38ab4995935013ea"
+    },
+    {
+      "path": "validation/cleanup.json",
+      "bytes": 2451,
+      "sha256": "9fda814397494d30ea791b9747255a03a56dce8a6f91c8c4236d3c79a1affcf4"
+    },
+    {
+      "path": "validation/palette-r01.json",
+      "bytes": 5019,
+      "sha256": "f513c7646ba9d724fcf36f5816b7f66533b201c0389f8b151964398bd98f7202"
+    },
+    {
+      "path": "validation/PaletteImport.json",
+      "bytes": 6644,
+      "sha256": "ea5486f50f9e51a31d69967c6036b3b142c26ca3805d93931f47ea2a157f2f08"
+    },
+    {
+      "path": "validation/PalettePublish.json",
+      "bytes": 54487,
+      "sha256": "41b16a776d9ef1b734a961ba6c8d26782fbd03178674226a4b0be508d6bccd91"
+    },
+    {
+      "path": "validation/PaletteR02Import.json",
+      "bytes": 12729,
+      "sha256": "85ae546abf440126782c6454173c3a8119e1479ef0be1181b6d65a266d0ae870"
+    },
+    {
+      "path": "validation/PaletteR02Publish.json",
+      "bytes": 65541,
+      "sha256": "e3d7d65014879ed4b552cca3cf5c745fafa9d38ee0b9363a17410bf3cd2ad628"
+    },
+    {
+      "path": "validation/PaletteR02Review.json",
+      "bytes": 7537,
+      "sha256": "e85ece71504aef5b1946a67cda7925f4ffd5d7073ccccd4cb967b0c349d0cc77"
+    },
+    {
+      "path": "validation/PaletteReview.json",
+      "bytes": 10637,
+      "sha256": "512447252ffa9204ad1b6bab0ad8a606b7033d4a01e0a867190a72b32626a6e2"
+    },
+    {
+      "path": "validation/UnityImport.json",
+      "bytes": 26474,
+      "sha256": "bde0365be55b56bc9ab7e99795d9b275e017d16aed1d1fae0936aec542e6f9c1"
+    }
+  ],
+  "editable_sources": 5,
+  "unity_input_files": 6,
+  "generated_project_folder": "project/Assets/Art/Environment/Laboratory",
+  "generated_project_files": 133,
+  "unity_version": "6000.3.21f1",
+  "resizable": true,
+  "current_dimensions_are_permanent": false,
+  "game_scene_boss_collision_integration": "Added after initial packaging; current integration is recorded in docs/GAME_SPEC.md 3.3.10 and subsequent sections. Preserved, not regenerated or play-tested in this palette pass.",
+  "palette_revision": "palette-r02-c",
+  "palette_updated": "2026-11-16",
+  "geometry_revision": "corridor-r15",
+  "palette_import_observation": "C sources and Unity PNGs match. No Editor.log growth after copy; actual automatic import and gameplay rendering remain unconfirmed.",
+  "historical_validation": [
+    "validation/art-review.json",
+    "validation/art-preparation.json",
+    "validation/UnityImport.json",
+    "validation/cleanup.json"
+  ],
+  "palette_validation": [
+    "validation/PaletteR02Review.json",
+    "validation/PaletteR02Publish.json",
+    "validation/PaletteR02Import.json"
+  ],
+  "user_selected": "C compromise",
+  "historical_palette_r01": [
+    "validation/PaletteReview.json",
+    "validation/PalettePublish.json",
+    "validation/PaletteImport.json",
+    "validation/palette-r01.json"
+  ]
+}

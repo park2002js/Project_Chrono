@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d612671c1cba4bc1a99b937918c1406d, type: 3}
+  m_Name: PlayerSpriteAnimationSet
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpriteAnimationSet
+  States:
+  - State: 0
+    Frames:
+    - {fileID: -101736285, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+    - {fileID: 442155299, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+    - {fileID: 1263028313, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+    FramesPerSecond: 5
+    FrameDurations: []
+    Loop: 1
+    FlipX: 0
+  - State: 1
+    Frames:
+    - {fileID: -101736285, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+    - {fileID: 442155299, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+    - {fileID: 1263028313, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+    FramesPerSecond: 5
+    FrameDurations: []
+    Loop: 1
+    FlipX: 1
+  - State: 2
+    Frames:
+    - {fileID: 2143407051, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    - {fileID: -1028325956, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    - {fileID: 955771870, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    - {fileID: 1246834619, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    FramesPerSecond: 5
+    FrameDurations: []
+    Loop: 1
+    FlipX: 0
+  - State: 3
+    Frames:
+    - {fileID: 2143407051, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    - {fileID: -1028325956, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    - {fileID: 955771870, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    - {fileID: 1246834619, guid: 4397509f1ce7d234b9884c0c85a53515, type: 3}
+    FramesPerSecond: 5
+    FrameDurations: []
+    Loop: 1
+    FlipX: 1
+  - State: 4
+    Frames:
+    - {fileID: -1615824301, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: -1149857484, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: 524187539, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: 1130974564, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: 1197590794, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: -1777241681, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 1
+    FlipX: 0
+  - State: 5
+    Frames:
+    - {fileID: -1615824301, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: -1149857484, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: 524187539, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: 1130974564, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: 1197590794, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    - {fileID: -1777241681, guid: 04fba201ee6bf8545a9ed55bed9fdf35, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 1
+    FlipX: 1
+  - State: 6
+    Frames:
+    - {fileID: 843846074, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -1118128988, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: 247765967, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -744770416, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -1223257877, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -919119421, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 1
+    FlipX: 0
+  - State: 7
+    Frames:
+    - {fileID: 843846074, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -1118128988, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: 247765967, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -744770416, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -1223257877, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    - {fileID: -919119421, guid: b26a48fc461dd7f41b5384dcf1ffef18, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 1
+    FlipX: 1
+  - State: 8
+    Frames:
+    - {fileID: 29868374, guid: 174698f3ec723ee428e6053902ada4ea, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 0
+    FlipX: 0
+  - State: 9
+    Frames:
+    - {fileID: 29868374, guid: 174698f3ec723ee428e6053902ada4ea, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 0
+    FlipX: 1
+  - State: 10
+    Frames:
+    - {fileID: 108571540, guid: 3396b2fcec3a6ad4bbfb4752b0b8d9c0, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 0
+    FlipX: 0
+  - State: 11
+    Frames:
+    - {fileID: 108571540, guid: 3396b2fcec3a6ad4bbfb4752b0b8d9c0, type: 3}
+    FramesPerSecond: 10
+    FrameDurations: []
+    Loop: 0
+    FlipX: 1
+  - State: 12
+    Frames:
+    - {fileID: -874547956, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
+    - {fileID: 1717460728, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
+    - {fileID: 31037803, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
+    - {fileID: 8941300, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
+    - {fileID: 1613383217, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
+    - {fileID: 624030021, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
+    FramesPerSecond: 50
+    FrameDurations:
+    - 0.22
+    - 0.22
+    - 0.22
+    - 0.07
+    - 0.07
+    - 0.62
+    Loop: 0
+    FlipX: 0
+  - State: 13
+    Frames:
+    - {fileID: -829239145, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
+    - {fileID: 1729564388, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
+    - {fileID: 2012748433, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
+    - {fileID: -1869647655, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
+    - {fileID: -343250335, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
+    - {fileID: -2001770798, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
+    FramesPerSecond: 50
+    FrameDurations:
+    - 0.22
+    - 0.18
+    - 0.14
+    - 0.14
+    - 0.14
+    - 0.6
+    Loop: 0
+    FlipX: 0

@@ -1,55 +1,47 @@
 # Project_Chrono 현재 상태 및 맥락
 
-이 내용은 현재의 진행 상황 및 개발자 세부 요구 사항들을 기록하여, 다른 에이전트나 새로운 세션에서도 이전과 동일한 작업 환경 및 진행도를 갖추는 용도이다.
-
-진행 현황과 관련된 것이란 "현재 진행 중인 과제", "미완·보류 상태에 놓인 과제"들을 의미한다.
-"미완·보류 상태"란, 사용자가 과거에 한 번이라도 진행한 이후 완료를 하지 않고 다른 과제를 시작했을 때 놓이는 상태이다.
-과제를 기제할 때에는 '세부 과제' 단위로 기록한다. 세부 과제란 앞으로 남은 모든 과제를 말하는 것이 아닌, 다음 단계의 과제를 이루기 위해서 해야 하는 세부 과제들을 의미한다.
-
-과제가 완료되거나, 현재 진행 중인 상태를 보류하고 다른 과제를 진행하게 될 경우, `/docs/agents/PLANS.md`을 현재 상태에 맞게 갱신한다.
-
-마지막 상태가 과제 완료 상태라면 다음 과제가 무엇인지 `/docs/agents/PLANS.md`를 참고한다.
-
-
 ## 1. 현재 상황
+
 ### 마지막 갱신
-- 마지막 갱신 날짜
-  - 2026-11-15 (Asia/Seoul)
-- 마지막으로 진행한 과제
-  - 저장소 준비 : `/docs/reference/` 전체 Git 제외 적용 후 추적 파일·추가 대상 파일 0개를 확인함. 로컬 파일은 보존하며 현재 문서·아트·Unity 환경 파일을 요청한 커밋에 포함함. [선택 기록](../archive/01_Choice/Reference_Git_Ignore_20261115.md) 참조. 이번 작업에서 Unity 실행·컴파일은 수행하지 않음.
-  - Player 새 정면 Idle 시안 V2 : 현재 직접 요청에 따라 [새6종 비교표](../../art/player/idle_concepts_v2_20261115/player-idle-comparison.png)·개별/통합 Aseprite 원본·투명 PNG를 제작하고 파일·규격 검사 및 시각 검토를 마침. 상세 규격·검사·미선택 상태는 GAME_SPEC 3.3을 따름. 기존 시안은 보존했으며 이번 결과를 최종 채택으로 기록하지 않음.
-  - Player 시안 재작성 : 이전 왼앞10종은 사용자에게 각도·형태 붕괴로 반려됨. [새 수정안10종](../../art/player/idle_leftfront_redraw_02/player-leftfront-comparison.png)을 다시 그리고 Aseprite 원본/PNG 파일·규격 검사를 완료함. 각도와 미술 품질의 사용자 승인은 아직 없음. 상세 경위·결과는 GAME_SPEC 3.3을 따름. 나머지3방향·애니메이션·Unity 적용은 미실행.
-  - 문서 후속 정리 : QUESTIONS의 Q1~Q29를 4개 카테고리 표로 압축하고 GAME_SPEC 3.1.1에 Unity Profiler 비교 후보·동일 조건·측정/채택 기준을 별도 정리함. 콘텐츠·연출 중심의 완성 목표를 상단에 기록하고 Notion에도 같은 범위를 반영함. 비교·기반 구현 자체는 미실행임.
-  - Player 후속 R01 : 사용자가 선택한 04머리+06의상 방향을 [새 Aseprite 원본](../../art/player/idle_revision_01/player-front-idle-r01.aseprite)에 반영하고 검수 완료. 실제 규격·레이어·검사 결과는 GAME_SPEC 3.3을 따름. 수정 방향은 확정, 수정 이미지의 최종 승인과 애니메이션·Unity 적용은 아직 없음.
-  - Player 정면 Idle 시안 : 사용자 직접 요청에 따라 [6종 비교표](../../art/player/idle_concepts_20x20_20261115/player-idle-comparison.png)와 개별/통합 Aseprite 원본·투명 PNG 제작 및 검수 완료. 규격·검사 근거는 [GAME_SPEC 3.3](../GAME_SPEC.md), 이유는 [요청 기록](../archive/01_Choice/Player_Idle_Concept_Brief_20261115.md)에 기록함. 최종 디자인 선택·애니메이션·게임 적용은 미완료. 이번 아트 결과는 로컬 기록만 갱신했으며 Notion에 게시하지 않음.
-  - 계획 문서 통합 : Q1~Q29 답변 반영·사양 방향 정리·Notion 게시 완료.
-  - [QUESTIONS.md](../QUESTIONS.md)에 모든 답변을 기록함. 현재 추가 답변 대기는 없으며 이미 답한 항목을 다시 묻지 않음.
-  - 현재 사양 원본인 [GAME_SPEC.md](../GAME_SPEC.md), [선택 기록](../archive/01_Choice/Notion_Answers_20261115.md), [후속 비교·보류 기록](../archive/02_Hold/Notion_Comparisons_20261115.md)을 같은 작업에서 갱신하고 질문·원문 대조 검수를 마침. 저장 계약의 최신 답변은 Q16·Q26·Q29에 연결함.
-  - Unity 6.3 LTS는 Q23의 선택 조건 충족을 확인함. 도구 사용 범위는 GAME_SPEC 3.4와 Q21~Q23을 따르며 설치·프로젝트 생성은 미착수임.
-  - [Notion 정리 페이지](https://app.notion.com/p/41857a6d6d24809a8d15f1a5aa34d48a)에 최신 통합 사양과 Q1~Q29 답변을 반영했고 모든 갱신 요청이 경고 없이 성공함. 로컬 링크·39개 정의 필드·29개 답변 상태를 검사함. 자동 동기화는 없음.
-  - 완료 결과 : 문서 통합·현재 사양 방향 정리를 완료함. 프로젝트·패키지·실제 코드·기능/성능 검증은 미착수이며 게임 완성을 뜻하지 않음.
+
+- 날짜: 2026-11-16 (Asia/Seoul)
+- 후속 완료: 평가용 제출 폴더의 `README.md`에도 실제 Scripts4폴더·C#53개 전체 트리와 파일별 역할, 씬·프리팹 연결 및 코드 읽는 시작점을 추가했다. 기존 본문은 보존하고 README 내부 링크23개·실제 파일 목록 일치를 확인했다
+- 추가 완료: 루트 [README](../../README.md)의 게임 코드 구조에 실제 Scripts4폴더·C#53개와 폴더별 코드 목적을 표시했다. 코드·폴더 배치는 변경하지 않았다
+- 마지막 과제: 평가용 제출 폴더의 핵심 문서 선별·Notion 기획 Markdown·README 작성
+- 결과: `D:/00_Works/02_GameDev/Unity/temp/2026_Capstone_Project_Chrono`에 README·핵심 사양·결과·Notion 원문·외부 패키지 목록·README 사례 비교를 반영했다. 신규35개·기존3개 갱신이며 게임 프로젝트·실행 파일·기존 아트는 유지했다
+- 문서 구성: `개발 문서/00_결과`, `03_기획 및 설계`, `04_외부 도구 및 참고` 및 루트/개발 문서 README. Notion4페이지·참고 이미지14개, GitHub13링크 추출·README5개 비교, 패키지 직접53·전이13개 기록
+- 확인 자료: [제출 문서 확인](../results/Submission_Documents_20261116.json)에 실제 배치38파일 해시·Markdown34개 내부 링크615개·문서521파일 목록 일치 결과를 남겼다. 개발·빌드 확인은 기존 [검증 요약](../results/Verification_Summary.json)을 따른다
+- 원본 보존: 이번 요청은 선별 복사이며 원본 저장소·Notion은 유지했다. 앞선 불필요 자료 삭제의 범위와 복구 한계는 [정리 결과](../results/Cleanup_Result.json) 및 기존 정리 결정 기록을 따른다
+
+### 현재 결과
+
+| 영역 | 최종 정리 기준 |
+| --- | --- |
+| 현재 사양·구조 | [GAME_SPEC](../GAME_SPEC.md), Q1~Q29 답변 및 이후 사용자 변경 반영 |
+| 런타임 | F-S01·F-P01~P11, 보스 공통·경비5패턴·입장 R03·임시 데모 엔딩의 구현·격리 검사 기록. 제출 정리 후 C#53/Editor0 |
+| 아트·음향 | [아트 카탈로그](../../art/archive/README.md)의 현행 원본/출력/연결·승인 상태. 군용은 정적 배치이며 전투 미구현 |
+| Windows 빌드 | 2026-11-16 14:44:03~14:46:09 KST 성공. 최종 시각·출력·확인 범위를 [검증 요약](../results/Verification_Summary.json)에 남기고 원시 로그는 삭제. 전체 실행 파일 시연은 별도 |
+| 보고서·포스터 | [제출물 안내](../report/README.md). 최종 보고서는21쪽 DOCX·32211853_결과보고서.pdf, 포스터는PPTX·PDF |
+| 평가용 문서·README | 제출 폴더에 핵심 문서·Notion 컨셉 원문·실행/폴더/플러그인 안내를 배치. [선정·반영 기록](../archive/01_Choice/Evaluator_Documents_20261116.md) |
+| 결정·분석 근거 | [기록 보관소](../archive/README.md). 과거 버전의 검사와 현재 결과를 구분 |
+
+당시 빌드 출력은 `D:/00_Works/02_GameDev/Unity/temp/2026_Capstone_Project_Chrono/program/Project_Chrono.exe`다. 직전 대화의 `project/Builds/Windows/Project_Chrono.exe`는 제안 경로이며 실제 생성 경로로 기록하지 않는다. 최종 문서 정리에서 새 빌드를 실행하지 않았다.
 
 ### 미완·보류 상태로 놓인 것들
-- 후속 비교·연출 정의
-  - 사용자가 남긴 검토 항목은 [후속 비교·보류 기록](../archive/02_Hold/Notion_Comparisons_20261115.md)을 따름. 미실행 비교를 성능 우위나 구현 완료로 기록하지 않음.
+
+- 전체 실행 파일의 연속 플레이, 모든 보스 패턴·사망/재도전·Title 복귀·엔딩을 한 실행에서 확인한 최종 회귀는 미확인이다. 기능별 격리 검사 수를 합산해 대체하지 않는다
+- 설정 화면·키 재설정/저장, 전체 안내 튜토리얼·대사, 나머지 보스 전투, BGM·전체 오디오 구성은 후속 범위다. 임시 데모 엔딩은 사용자 요청으로 정식 스탭롤을 대체했다
+- 실제 연결한 FX의 최종 미술·청감 판단과 군용의 추가 전투 구현은 [아트 카탈로그](../../art/archive/README.md)를 따른다. 미확정 조작 안내 시안은 이번 파일 정리에서 제외했다
+- Profiler A/B 비교·FPS 성능 측정·사용자 평가는 미실행이다. 최적화 구조 설명과 실측 우위를 구분한다
+- 현재 맵 기준의 전체 회귀는 미확인이다. 기능별 검사와6개 스모크의 성공 범위만 최종 요약에 남겼으며, 오래된 실패 로그·검사 사본은 삭제했다
 
 ### 다음 행동
-저장소 준비 확인(2026-11-15): 현재 `/project`와 Unity 설정 파일이 존재함. 아래의 프로젝트 부재·생성 미착수 기록은 이전 문서 작업 시점의 상태이며, 이후 개발 착수 시 기존 프로젝트를 먼저 확인하고 재생성하지 않음. 이번 요청은 Git 제외 설정과 커밋이며 게임 기능 구현·검증 결과를 갱신하지 않음.
-이번 Player 시안 후속 요청은 `/art/player/idle_concepts_v2_20261115/`의01~06을 기준으로 반영한다. 정면 얼굴에 옆 귀/뒤통수가 보이는 현재 요청의 새 후보이며 최종 선택은 아직 없음. 기존4방향 정의와 `/art/player/idle_leftfront_redraw_02/`의 왼앞 후보10종은 별도 이력으로 보존한다. `/art/player/idle_leftfront_concepts_10/`은 사용자 반려 결과이므로 승인된 기준으로 사용하지 않는다. 픽셀 크기·알파·원본/PNG 일치 검사를 사용자 미술 승인으로 간주하지 않는다. 문서·코드 작업은 아래 기존 흐름을 따른다.
-1. AGENTS → STATUS → PLANS를 읽고 GAME_SPEC의 확정 사양과 QUESTIONS Q1~Q29의 답변을 확인한다. 원문 재정리나 기존 질문의 재선택부터 시작하지 않는다.
-2. 문서 작업은 완료됨. 신규 변경 요청이 있으면 GAME_SPEC 해당 정의·QUESTIONS 반영 이력·필요한 기록과 Notion을 함께 갱신한다.
-3. 이번 후속 요청은 질문 압축·Profiler 비교 계획·완성 목표 기록이며 Unity 개발 시작 명령은 아니다. `/project` 부재는 의도된 미착수 상태이므로 이 문서 갱신만으로 프로젝트·패키지·코드를 생성하지 않는다.
-4. 사용자가 개발 착수를 요청하면 GAME_SPEC의 개발 순서대로 Unity 6.3 LTS 프로젝트와 확정 도구를 준비한다. 정확한 설치 패치는 생성 시 공식 배포 목록으로 확인하며 기존 Q21~Q23 선택을 다시 묻지 않는다.
-5. 각 Case의 실제 코드·호출/데이터 연결과 함께 `+`, `→`, `if :` 상세 흐름을 작성하고 컴파일·동작을 검증한다. 연출 상세가 미정이어도 비아트 로직 확인을 아트 의존으로 미루지 않는다.
-6. 기능이 동작해 기준선이 확보되면 GAME_SPEC 3.1.1의 Profiler 비교를 수행하고 조건·수치·캡처·채택 이유를 기록한다. 비교 계획만으로 성능 개선이나 콘텐츠 추가 기반 완성을 보고하지 않는다.
+
+평가자는 제출 폴더의 `README.md` → `개발 문서/README.md` → 결과보고서·개발 결과 순서로 읽을 수 있다. 이번 문서 배치 요청은 완료했으며 새 빌드·게임 검사·GitHub 업로드는 수행하지 않았다. Notion 사본은 자동 동기화되지 않는다. 이후 수정 요청 시 [선정·반영 기록](../archive/01_Choice/Evaluator_Documents_20261116.md)의 대상 경로에서 이어가고, 게임 개발 재개는 위 남은 항목 중 요청한 범위만 수행한다.
 
 ### 세부 설명
-Current art deliverable: six new front-idle alternatives in art/player/idle_concepts_v2_20261115, based on the direct request for frontal facial features plus visible side ear/rear hair. Native Aseprite/PNG round-trip and geometry checks passed. Independent visual review led to a two-pixel face margin correction in03, then re-export/recheck. User selection remains pending. These six static designs do not replace the prior four-direction game specification or authorize animation/Unity integration. Local documentation only.
-The user rejected idle_leftfront_concepts_10 for incorrect angle and broken shapes; earlier visual sign-off was wrong. Ten candidates have been redrawn as complete connected silhouettes in art/player/idle_leftfront_redraw_02. Aseprite source/layer/native/PNG equality, 20px actual height, binary alpha, distinctness and connectivity passed technical checks. These checks do not establish artistic acceptance. New candidates are not user-approved. The four-direction requirement remains left-front/right-front/left-back/right-back; the other three directions, animation and Unity integration are unmade. Preserve rejected files as history only. This update is local.
-Latest documentation update: Q1–Q29 are compressed into four category tables; GAME_SPEC 3.1.1 holds five core and two conditional Profiler comparison plans. The user explicitly requested recording a completion goal that leaves further work focused on Boss content and FX/VFX except detailed system tuning; the implementation-goal section was updated within that request. Notion received these edits successfully. No profiling or foundation implementation has run. Preserve unrelated local art work and its unpublished status.
-Latest art: idle_revision_01, requested combination of concept 04 hair and 06 outfit. Actual height20px, head13px, symmetric outfit, separate left/right cloak layers. Aseprite native/PNG round-trip and geometry checks passed. Direction is user-selected; final appearance approval, animation and Unity integration remain outstanding. Preserve the original six concepts.
-Six player front-idle design alternatives are complete under art/player/idle_concepts_20x20_20261115. Aseprite authored/exported every image; native and PNG pixels were checked after reopening. The master holds six alternatives, not an animation. GAME_SPEC 3.3 records the canonical brief and results. No final variant, other-direction animation, or Unity integration is complete. This art addition was recorded locally and has not been published to Notion; prior document-publication results below remain unchanged.
-Emergency mode remains anchored to the original 2026-11-14 request; do not restart the 40-hour window. Q1–Q29 are answered, including the replacement save/backup/quit contract in Q29. GAME_SPEC is the canonical specification; answer integration and Notion publication are complete. All content-update calls succeeded without warnings; local links, definition fields, and 29 answer states were checked. Do not ask the same questions again. Unity 6.3 LTS meets the user's conditional choice. UniTask is limited to saves and title UI initialization; other waiting flows use coroutines. FMOD handles audio, and the camera remains custom. Documentation completion does not authorize starting development in this turn. No Unity project, package installation, code, compilation, play, build, or performance validation has begun. Detailed case sequences must accompany later code and verification. Preserve original source notes and the user-owned implementation-goal text. Reference evidence and untested comparisons are linked from GAME_SPEC; Notion is a manually updated review copy, not a background sync.
+
+Evaluator documentation is deployed to the sibling temp/2026_Capstone_Project_Chrono folder: 35 new files and 3 updates. Preserve source docs, Notion, project/program and existing art. The root README describes the one-boss demo, controls, actual folders and dependencies. Four Notion planning pages retain their text; 14 images use prior local exports because fresh download DNS resolution failed. Five READMEs were read from 13 school-listed GitHub links. All 615 local links and 521 document hashes passed. No new game/build validation or publication was performed. See Submission_Documents_20261116.json and the evaluator-document choice record.
 
 
 ## 2. 맥락
@@ -63,25 +55,39 @@ Emergency mode remains anchored to the original 2026-11-14 request; do not resta
 ### '프로젝트 관리' 관련 세부 요구
 | 구분 | 세부 요구 사항 |
 | --- | --- |
+| 최종 문서 정리 | 2026-11-16 사용자 요청: project를 제외한 자료를 결과로 종합한 뒤, 의미 없는 구버전·미확정/일회성 자료·지난 오류·로그를 실제 삭제. 앞선 과정 자료 보존 방식을 이 후속 요청으로 대체하고 확정 결과·편집 원본·결정 이유·검증 한계만 유지 |
+| 평가용 문서 배치 | 2026-11-16 후속 요청: 지정 제출 폴더에 주요 문서와 Notion 컨셉 기획 Markdown을 선별하고, 학교 졸업작품 GitHub README의 장단점을 조사해 첫인상·폴더 역할·사용 외부 플러그인을 설명하는 README 작성. [반영 기록](../archive/01_Choice/Evaluator_Documents_20261116.md) |
 | 비상 운영 기준 | 2026-11-14 요청 시점에 제출까지 약 40시간. 정책 원본은 [AGENTS.md](../../AGENTS.md)의 '현재 최우선 방침' 및 '계획 문서 통합과 일괄 질문'. |
 | 전환 이유·기록 | 반쪽짜리 계획 수준에서 확정 내용의 구현과 이후 결과 보고서 작성을 함께 가능하게 해야 함. [비상 운영 전환 결정](../archive/01_Choice/Emergency_Operation.md) 참조. |
 | Notion 통합 방식 | 원문을 최대한 보존한 클래스 정의 → 케이스별 실제 구현과 동시 흐름 → 고민/결정. 현재 사양은 [GAME_SPEC](../GAME_SPEC.md), 질문은 [QUESTIONS](../QUESTIONS.md), 사용자 선택 이유는 [정리 방식 결정](../archive/01_Choice/Notion_Organization.md). |
-| 문서·개발 착수 | 사용자 후속 확정: 문서가 완전히 끝나고 Sprite·FX·animation 연출을 제외한 로직 방향이 확실해진 뒤 개발 단계로 이동. 2026-11-15 별도 요청으로 Player 시안을 제작했으나 Unity 개발 시작 명령은 아직 없음. 프로젝트 부재는 의도된 미착수 상태. |
+| 코드별 시퀀스 동시 기록 | 기능별 `F-## SequenceDiagram` 토글·번호Case·설명·Mermaid 저장 유지.2026-11-15 최신 요청으로 미리보기 모드 설정·화면 확인·이를 위한 마우스 조작을 절차와 완료 체크에서 제외함. 실제 형식·범위는 AGENTS 3·4와 DESIGN 4.1을 따름. |
+| 문서·개발 착수 | 문서 완료 후 2026-11-15 사용자가 F-S01 Title 준비·슬롯 로드·MainWorld 초기화를 직접 요청하여 코드 단계에 착수함. 기존 프로젝트를 사용하고 요청한 Case의 구현·연결·검증을 진행함. |
 | 현재 사양 원본 | 제출 범위·구현 순서·도구·저장 규칙의 현재 원본은 [GAME_SPEC](../GAME_SPEC.md). 위 '구현 목표'는 2026-11-15 사용자의 명시적 목표 기록 요청 범위에서 갱신함. |
 
 ### '코드 작성 및 구조' 관련 세부 요구
 | 구분 | 세부 요구 사항 |
 | --- | --- |
+| 프레임률과 재생 시간 | 2026-11-16 사용자 요구: 제작 기준보다 높은 FPS 환경에서도 공격/VFX 속도가 달라지지 않도록 한다. 현재 공격 제작 설명은60fps 타임라인, 실행은 경과 시간 기준으로 처리한다. 적용/검증 기준과 미구현 범위는 GAME_SPEC3.3.8을 따름. |
 | 수행·완료 기준 | [AGENTS.md](../../AGENTS.md)의 'Unity 코드 작업'을 따름. 기존 `.cs`만 수정·컴파일만 확인 규칙은 비상 운영의 단계별 범위로 대체됨. |
-| 레퍼런스 적용 | AGENTS의 '레퍼런스 코드 활용'을 따름. 현재 `/docs/reference/`의 Dungreed·Sephiria 추출 코드가 존재하며, 읽은 파일·책임 분리 제안·실행 미검증 범위는 GAME_SPEC 3.5에 기록함. |
+| 레퍼런스 적용 | 이후 클래스·기능을 먼저 특정하고 [REFERENCE_CODE_MAP.md](../REFERENCE_CODE_MAP.md)의 Sephiria·필요한 Dungreed 실제 코드를 읽고 구조/호출/초기화를 파악한 뒤 현재 규모에 맞춰 적용함. Instance·MonoBehaviour는 준비 전 요청·중복/교체/씬 해제를 검사함. AGENTS '레퍼런스 코드 활용'·DESIGN 2.4를 따름. |
+| 고정 참조 초기화·재사용 | 2026-11-15 후속 요청: 유지 범위·생성 우선순위·참조 시점을 정하고 Awake/Start 또는 명시적 완료 순서로 한 번 확보해 재사용. 반복 호출부의 같은 조회·생성을 검사하고 실제 교체 경계에서만 참조 갱신. 상태값·일회 생성/해제 조회는 구분하며 원본은 AGENTS·DESIGN 2.4. |
 | 클래스 정의와 흐름 | class/struct/enum마다 역할·수명·공개 API/변수·연관 class를 정리함. 수명/관계는 원문과 확정 답변을 기준으로 작성. 흐름은 `+`, `→`, `if :`로 표현하며 실제 구현과 함께 작성. |
 | 최적화 비교와 근거 | 기능 동등성을 유지하는 대안을 Unity Profiler로 비교해 더 나은 성능이 확인된 안을 선택하고 프로젝트 결과의 논리를 강화함. 후보·동일 조건·채택 기준은 GAME_SPEC 3.1.1, 실제 결과는 측정 후 기록함. |
 | 명명·공개 범위 | Q4 사용자 확정: 새 기능에 필요한 이름은 AI가 정의하고 사용자가 이후 변경할 수 있음. Try보다 Apply/Handle/Get/Set을 선호하며 public/static을 간단히 사용하고 불필요한 readonly/sealed는 붙이지 않음. 확정한 기존 역할 이름은 유지함. |
+| namespace 미사용 | 2026-11-15 사용자 요청: 기존 프로젝트 코드의 namespace를 모두 제거하고 앞으로도 선언하지 않음. 원본 규칙은 AGENTS의 Unity 코드 작업 및 DESIGN 2.1, 이유·이력은 [선택 기록](../archive/01_Choice/No_Namespace_20261115.md)을 따름. |
+| 주석 형식과 목적 설명 | 2026-11-15 최신 요청: public·private 변수 옆 역할 설명, 함수의 목적별 구역 상단 요약, 구독/해제·코루틴 실행·불명확한 yield 대기 옆 목적 주석. 단일 문장은 `대기`, `복귀`처럼 끝내고 마침표 생략, 두 문장 이상을 구분할 때만 `~함.` 사용. yield break/null 제외. 원본은 AGENTS·DESIGN 2.2, 경위는 [선택 기록](../archive/01_Choice/Public_Variable_Comments_20261115.md). |
+| UI 네이밍 | 2026-11-15 사용자 요청: 특정 화면·요소는 `UI_` 접두사, 공통 UI 시스템·기반·헬퍼는 밑줄 없이 `UI` 접두사로 구분함. 이후 코드에도 AGENTS 및 DESIGN 2.1의 규칙을 적용함. |
+| 부팅·Title·저장 책임 | 2026-11-15 사용자 요청: GameManager는 UI_Title을 모르며 공통 저장 로드와 씬 전환만 주도함. Title은 자체 준비·입력을 담당하며 외부 저장은 `SaveManager.Current.Set` 후 `Save()` 요청으로 끝남. 현재 수명·API는 GAME_SPEC U03·S01·S05, 경위는 [선택 기록](../archive/01_Choice/Title_Save_UI_Responsibilities_20261115.md)을 따름. |
+| SaveData 단순화 | 2026-11-15 사용자 요청: 호출자가 key와 타입을 알고 있다고 가정하고 세피리아의 저장 구조를 적용함. 게임별 key·타입 검증 계층을 추가하지 않음. 현재 구현·파일 처리 규칙은 GAME_SPEC S05·S06, 선택 이유는 [선택 기록](../archive/01_Choice/SaveData_Simplification_20261115.md)을 따름. |
+| SaveData 저장 위치·키 | 2026-11-15 후속 요청: 문서/Project_Chrono와 ProjectChrono 기준 키를 사용함. 실제 관리자 레퍼런스는 Sephiria SaveManager이며 현재 경로 제공·폴더 생성 책임과 파일 계약은 GAME_SPEC S06·2.4, 선택 경위는 위 SaveData 선택 기록을 따름. |
 
 
 ### '아트 및 디자인' 관련 세부 요구
 | 구분 | 세부 요구 사항 |
 | --- | --- |
+| 그림 겹침과 가림 | 2026-11-16 사용자 설명: 각 원본 그림 전체를 유지하고 나중에 올린 앞그림이 겹친 부분만 가리게 한다. 겹치지 않은 부분은 모두 보이며,가림을 표현하려고 원본을 반쪽으로 자르지 않는다. 특정 프레임의 전체 숨김은 사용자 지정 예외로 따로 처리한다. [선택17](../archive/01_Choice/Player_Attack_Sephiria_20261115.md) 참조. |
+| 아트 보관·Git 제외 | 완성 결과물의 편집 원본과 필요한 출력물은 `/art/archive`에 대상별로 분류해 저장하고, 다른 하위 폴더의 작업 자료는 로컬에서 유지함. 원본 방침은 [AGENTS.md](../../AGENTS.md), 경위는 [선택 기록](../archive/01_Choice/Art_Archive_Git_20261115.md). |
+| Title 로고 최종 원본 | 사용자 직접 수정한 최종 Aseprite를 기준으로 후속 수정하며 옛 스크립트로 재생성하지 않음. 로고 최종 선택·정리는 완료했고 현재 원본·검사·남은 연결 작업은 [GAME_SPEC 3.3](../GAME_SPEC.md)을 따름. |
 | 단계 연결 | [AGENTS.md](../../AGENTS.md)의 '단계별 수행 범위'와 '코드 단계 완료 기준'을 따름. 실제 자산 의존 조정만 Sprite 단계에 남기고 나머지 확정 기능은 코드 단계에서 완료함. |
-| Player 시안 | Aseprite로 정면 Idle 5종 이상 제작 요청에 따라 6종 제작 완료. 규격·이유 원본은 [GAME_SPEC 3.3](../GAME_SPEC.md) 및 [요청 기록](../archive/01_Choice/Player_Idle_Concept_Brief_20261115.md). 시안 제작과 최종 디자인 확정을 구분함. |
+| Player 기본 디자인·Idle·Move | 정적 default 선택 이후 최신 사용자 개별 Idle 왼쪽 원본을 보존하고 오른쪽에 반영함.12장 레퍼런스의 발 구르기를 줄인6단계 Move를 별도 제작함. 사양·검사는 [GAME_SPEC 3.3](../GAME_SPEC.md), 선택 경위는 [요청 기록](../archive/01_Choice/Player_Idle_Concept_Brief_20261115.md). 사용자 미술 판단·다른 애니메이션·Unity 적용은 별도임. |
 

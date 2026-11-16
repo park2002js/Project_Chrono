@@ -1,0 +1,384 @@
+{
+  "date": "2026-11-16",
+  "revision": "r03",
+  "purpose": "Actual first entrance into a fixed camera with the first door fully above view throughout, ending at exact root-centered handoff",
+  "previousRevisionPreserved": "art/archive/map/player-entrance-r02",
+  "capture": {
+    "path": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\archive\\map\\player-entrance-r03\\player-entrance.gif",
+    "sourceFrames": 36,
+    "frames": 35,
+    "consecutiveIdenticalFramesMerged": 1,
+    "durationMs": 2460,
+    "observedGameSeconds": 1.6646502976190476,
+    "lastFrameHoldMs": 800,
+    "firstPosition": {
+      "x": 14.5,
+      "y": -11.600000381469727,
+      "z": 0.0
+    },
+    "lastPosition": {
+      "x": 14.5,
+      "y": -4.600000381469727,
+      "z": 0.0
+    },
+    "exactQuantizedFrameRoundTrip": true,
+    "bytes": 1319397,
+    "minimumDoorViewportY": 1.1755555868148804,
+    "captureScope": "Actual world camera at unmodified default zoom; first frame fully hides body and weapon below view, every frame keeps all first-door sprites above view, then continuous entry to exact viewport center and handoff; test pause excluded by observed game-time boundaries, no boundary/wall/cancellation fixture or OnGUI HUD"
+  },
+  "files": [
+    {
+      "file": "player-entrance-contact-sheet.png",
+      "bytes": 49960,
+      "sha256": "d5cdac7ef4581588cdaa313536499d75091a038bb657f475a9a58d9292e139f1"
+    },
+    {
+      "file": "player-entrance-handoff.png",
+      "bytes": 44002,
+      "sha256": "33c72282704e665270ac05419e808d46bf7ab3543b648e95b2a5c01af00eebfa"
+    },
+    {
+      "file": "player-entrance-start.png",
+      "bytes": 43837,
+      "sha256": "cbae5f4def3446aa6dc67c51202b175af4b11d353868c6b7c57a9fa933f16826"
+    },
+    {
+      "file": "player-entrance.gif",
+      "bytes": 1319397,
+      "sha256": "4ca44fdb049cca69c8459904c52d88eb9ecc6465447cc0246eec2e592b0c09c7"
+    }
+  ],
+  "rawFrames": [
+    {
+      "file": "entrance-000.png",
+      "sha256": "2d6282a39baa0a0ca3667d8adbe832b2fcedd16a0c3e9504d748d9b12e1fe3f7"
+    },
+    {
+      "file": "entrance-001.png",
+      "sha256": "2d6282a39baa0a0ca3667d8adbe832b2fcedd16a0c3e9504d748d9b12e1fe3f7"
+    },
+    {
+      "file": "entrance-002.png",
+      "sha256": "a6d18238d968f73b6c986a8df298e048f428b4ef66c8097403d4ea8f2eea8f63"
+    },
+    {
+      "file": "entrance-003.png",
+      "sha256": "16c91bbf1a893149bcdb3d736b837e3918896fec6757d8b1af31f7e241ece33b"
+    },
+    {
+      "file": "entrance-004.png",
+      "sha256": "3bcd28a47aa5e277081d181621aca1a43788b86c5b5602996a4348def8d74ef7"
+    },
+    {
+      "file": "entrance-005.png",
+      "sha256": "bf7a83ad76c7af661d8dc0e2d404293ebde71fdcf50c963266840f5cf1142fd7"
+    },
+    {
+      "file": "entrance-006.png",
+      "sha256": "fe250a5a11b69bd9b08413baaf3df7914b0bc213722cd31678e7b5b5644f6481"
+    },
+    {
+      "file": "entrance-007.png",
+      "sha256": "d0445a72b69b81d1e9fdf270e62114e7cb7e083cb095a07da08f8c59b450ec2c"
+    },
+    {
+      "file": "entrance-008.png",
+      "sha256": "df38524afe2e043f79c9d9cbb5f4653ceb8f85e917ec9f38fc39e4f20af261de"
+    },
+    {
+      "file": "entrance-009.png",
+      "sha256": "8dc1cf65f4706c8aa716997fa53b99f433d6ff1f6fd18c36b07699c0e8d8f9a1"
+    },
+    {
+      "file": "entrance-010.png",
+      "sha256": "710aa018db956595a8ed71f17f7df3d4bc6cd64a12960e84c5993e7a3e29dffc"
+    },
+    {
+      "file": "entrance-011.png",
+      "sha256": "d1694a5c05ed00d54bdbcecddb363d60fe3e3ecd118f4bfb2410ac599f9b9eba"
+    },
+    {
+      "file": "entrance-012.png",
+      "sha256": "e9cdc3dc4178253bb5c1b22b89f73ef48326c3b305b47bd2dc421cd49510a5f7"
+    },
+    {
+      "file": "entrance-013.png",
+      "sha256": "18af917f911ebfff36218b289855f4963a34108f70a0df3fe54cd9111aeff7ca"
+    },
+    {
+      "file": "entrance-014.png",
+      "sha256": "c9118fe0d5254d262ef65b023c9ffd178802d1b0c09c1008cc3ea52dab7cbe9c"
+    },
+    {
+      "file": "entrance-015.png",
+      "sha256": "8f76c7082ed3fd4b0c1bfd1a9ee226c738504adeae25a9c2973e3d15e797aa2f"
+    },
+    {
+      "file": "entrance-016.png",
+      "sha256": "091192b1876331153583bfebd11a568b96c16870c61f6e5e1eadcb2fc5cd3040"
+    },
+    {
+      "file": "entrance-017.png",
+      "sha256": "486f67edae0e856be07bb748c9c7a6436ed33caed5d87508363f5fa018d04bc1"
+    },
+    {
+      "file": "entrance-018.png",
+      "sha256": "32ebae8731f55c6fff8ed1252fe015458fd123bd8ea6bfe09903f38a851dc5e3"
+    },
+    {
+      "file": "entrance-019.png",
+      "sha256": "671a5f6b8cd3be8da76e111d6ce7096c32c6d8dcdb1fa3b3483d6b22bff790ca"
+    },
+    {
+      "file": "entrance-020.png",
+      "sha256": "b6bc53cb27003941af5cb055db56e95a2dab2b6f0bcf4dd0a1e991f319fd07bc"
+    },
+    {
+      "file": "entrance-021.png",
+      "sha256": "b6223de8def572fcb6493f9c52382ef8efe2b9a78aff15d934fc703220d495b9"
+    },
+    {
+      "file": "entrance-022.png",
+      "sha256": "1e5cb33f1c3908398e6f657a913f3b31e97b14a177a6213c00f5c665735a6ae5"
+    },
+    {
+      "file": "entrance-023.png",
+      "sha256": "96457d51d0339eed6944745d438b56c33b22bb33b1e5428d55ec6a9acc44e404"
+    },
+    {
+      "file": "entrance-024.png",
+      "sha256": "7fcd47830f4f641e1028b2953cbe2957c2b41a9eac44d98526820f2a472bbfc5"
+    },
+    {
+      "file": "entrance-025.png",
+      "sha256": "4fce0c8102516bbd81ed44f1de90057953cc2c04b7e92d3c15f8de2e24872224"
+    },
+    {
+      "file": "entrance-026.png",
+      "sha256": "e63b2337d98ce96bd581a50f8943137e7795a0a3805546012971464aaf6c9d7f"
+    },
+    {
+      "file": "entrance-027.png",
+      "sha256": "385efbbe53cd08987e620f1feb19b0adc841caa7a39fbdb5ae704c90cbb2e3e7"
+    },
+    {
+      "file": "entrance-028.png",
+      "sha256": "217fe973014ee4733ea1a0f9b72033dcac98efa508b068bd0caac7c2eea4946d"
+    },
+    {
+      "file": "entrance-029.png",
+      "sha256": "11a76a792bcae04794663e22ec6bb0387de24bed8470f444afe78386c66f1275"
+    },
+    {
+      "file": "entrance-030.png",
+      "sha256": "ee59482585a41d8273e1662e62517577afa17936b2247ebfa54ac577205a9aad"
+    },
+    {
+      "file": "entrance-031.png",
+      "sha256": "c473192e7504f336ea0b9f60be35329a53b17ac3622e24531044d2f99ec9b654"
+    },
+    {
+      "file": "entrance-032.png",
+      "sha256": "e24cbc5acb52a5f7257e75a78c664901d0114fd0c5f7de63151768166194a600"
+    },
+    {
+      "file": "entrance-033.png",
+      "sha256": "54f019b92be2b99262de1143f92b5ff6c78545e4083a96f74d3105dfbc2e4048"
+    },
+    {
+      "file": "entrance-034.png",
+      "sha256": "261bd2efb82fbeaafbe76c4f90fc20298c16f35ec0e5c91266f769e201221a81"
+    },
+    {
+      "file": "entrance-035.png",
+      "sha256": "6700a71fbed8db17cb7bb9db04fb886686f42d51352a74450da0a93df6a38b63"
+    }
+  ],
+  "metrics": {
+    "spawn": {
+      "x": 14.5,
+      "y": -11.600000381469727
+    },
+    "stop": {
+      "x": 14.5,
+      "y": -4.600000381469727
+    },
+    "checkpoint": {
+      "x": 14.5,
+      "y": 1.399999976158142,
+      "z": 0.0
+    },
+    "arrived": {
+      "x": 14.5,
+      "y": -4.600000381469727,
+      "z": 0.0
+    },
+    "walkDistance": 7.0,
+    "extensionTileCount": 432,
+    "cameraLimits": {
+      "x": -12.0,
+      "y": 77.0
+    },
+    "worldSouth": -12.0,
+    "worldLeft": 12.0,
+    "worldRight": 17.0,
+    "fixedCameraPosition": {
+      "x": 14.5,
+      "y": -4.600000381469727,
+      "z": -10.0
+    },
+    "fixedCameraZoom": 5.625,
+    "initialBodyViewport": {
+      "serializedVersion": "2",
+      "x": 0.45833340287208557,
+      "y": -0.1222221851348877,
+      "width": 0.0833333432674408,
+      "height": 0.11111104488372803
+    },
+    "initialWeaponViewport": {
+      "serializedVersion": "2",
+      "x": 0.462617963552475,
+      "y": -0.2042832374572754,
+      "width": 0.06999543309211731,
+      "height": 0.16445666551589966
+    },
+    "initialDoorViewport": {
+      "serializedVersion": "2",
+      "x": 0.2666666507720947,
+      "y": 1.1755555868148804,
+      "width": 0.46666669845581055,
+      "height": 0.3555556535720825
+    },
+    "handoffViewport": {
+      "x": 0.5,
+      "y": 0.5,
+      "z": 10.0
+    },
+    "handoffBodyViewport": {
+      "serializedVersion": "2",
+      "x": 0.45833340287208557,
+      "y": 0.5,
+      "width": 0.0833333432674408,
+      "height": 0.1111111044883728
+    },
+    "fineMoveError": 0.0,
+    "distinctWalkingSprites": 6,
+    "footsteps": 5,
+    "boundaries": [
+      {
+        "direction": "S",
+        "position": {
+          "x": 15.0281400680542,
+          "y": -11.986184120178223,
+          "z": 0.0
+        },
+        "minimum": {
+          "x": 14.7781400680542,
+          "y": -11.986184120178223,
+          "z": 0.0
+        },
+        "maximum": {
+          "x": 15.2781400680542,
+          "y": -11.636183738708496,
+          "z": 0.0
+        }
+      },
+      {
+        "direction": "A",
+        "position": {
+          "x": 12.26380443572998,
+          "y": -11.986184120178223,
+          "z": 0.0
+        },
+        "minimum": {
+          "x": 12.01380443572998,
+          "y": -11.986184120178223,
+          "z": 0.0
+        },
+        "maximum": {
+          "x": 12.51380443572998,
+          "y": -11.636183738708496,
+          "z": 0.0
+        }
+      },
+      {
+        "direction": "D",
+        "position": {
+          "x": 16.736234664916992,
+          "y": -11.986184120178223,
+          "z": 0.0
+        },
+        "minimum": {
+          "x": 16.486234664916992,
+          "y": -11.986184120178223,
+          "z": 0.0
+        },
+        "maximum": {
+          "x": 16.986234664916992,
+          "y": -11.636183738708496,
+          "z": 0.0
+        }
+      }
+    ]
+  },
+  "validation": {
+    "success": true,
+    "checks": [
+      "Actual Title new game prepares one locked Player entirely below the first camera frame while preserving the checkpoint and centering the fixed camera on handoff",
+      "Entrance preserves the original checkpoint, adds twelve southern rows and uses an independent hidden-door handoff marker with a seven-unit offscreen approach",
+      "Actual blocked actions do not leak after release and gameplay pause freezes the entrance without releasing its control ownership",
+      "Real walking enters the fixed camera continuously, hands off at viewport center, restores follow and keeps subsequent walking and dashing inside southern and side boundaries",
+      "Completion survives disk reload and both completed saves and legacy saves missing the marker resume their saved checkpoint without replay",
+      "Actual collision stops entrance walking, removing the wall resumes it, and Title interruption releases old references without saving completion",
+      "Interrupted entrances retry, explicit cancellation never saves completion, and stale coroutines cannot unlock a later session before its own arrival"
+    ],
+    "checkCount": 7,
+    "batchExitCode": 0,
+    "compileSeconds": 2.971914,
+    "compileErrors": 0,
+    "shaderErrors": 0,
+    "knownEditorSearchException": 1,
+    "initialBodyViewportMaxY": -0.011111140251159668,
+    "initialWeaponViewportMaxY": -0.03982657194137573,
+    "doorMinViewportYAcrossAllFrames": 1.1755555868148804,
+    "arrivalError": 0.0,
+    "fineMoveCaseWorld": 0.0002,
+    "fineMoveError": 0.0,
+    "sourceEvidence": [
+      "project/Logs/TutorialEntryR03-result.json",
+      "project/Logs/TutorialEntryR03-metrics.json",
+      "project/Logs/TutorialEntryR03-verification.json",
+      "project/Logs/TutorialEntryR03-outputs.json",
+      "project/Logs/TutorialEntryR03-publication.json",
+      "project/Logs/TutorialEntryR03-gif-verification.json"
+    ]
+  },
+  "publication": {
+    "publishedUtc": "2026-11-16T04:48:57.8552897Z",
+    "files": [
+      {
+        "path": "Assets/Prefabs/Startup/Map.prefab",
+        "beforeSha256": "AC855739323560D7CE11290687680E7F4D51B1523D57A9EB5DF8634D94FFEED7",
+        "sha256": "DC2F75B724C3EE634BAB9C29C9FAFA91C86FB9B33F92161C84B57B03A88B4AD2",
+        "guidPreserved": true
+      },
+      {
+        "path": "Assets/Prefabs/Startup/WorldCamera.prefab",
+        "beforeSha256": "A2C4248276A90C030F4A43A5F117E2A5EA86B57144E3CB08ADA6758D6F775F7E",
+        "sha256": "561726DFABBF84E568F251D780FDCEE13811C4095496374BCE694AD175F9F2AF",
+        "guidPreserved": true
+      }
+    ],
+    "systemsAndPlayerUnchanged": true
+  },
+  "allFourPublishedFilesEqualToTested": true,
+  "limits": [
+    "Original project Editor Play and standalone build were not executed.",
+    "The same isolated project was fully resynced from canonical; old aura Guard/Map fixtures were replaced and were not regenerated.",
+    "Tests used isolated Temp save files only; actual user Documents saves were untouched.",
+    "Door distance uses the physical passage blocker center y4.5; sprite bounds center is y5 and object origin y3.",
+    "R02 final evidence and GIF were preserved before moving entrance handoff to an independent southern marker and hiding the first door throughout playback.",
+    "R03 changed only map geometry and verification; the previously corrected exact-arrival and fine body movement runtime behavior remains unchanged.",
+    "GIF captures the first empty frame, continuous first-door invisibility and centered handoff at default world camera zoom; OnGUI HUD is excluded and the last frame has an added800ms hold."
+  ]
+}

@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1389081283493612659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7363782407644525664}
+  - component: {fileID: 1806224540982316195}
+  - component: {fileID: 1750979741748351633}
+  - component: {fileID: 6171050252790614657}
+  - component: {fileID: 8001915017557146330}
+  - component: {fileID: 3768140048029390240}
+  - component: {fileID: 7623100000000000001}
+  m_Layer: 0
+  m_Name: GameSystems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7363782407644525664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1806224540982316195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89334aa61e414344b73e4fbe6569bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StageManager
+  MapPrefab: {fileID: 1935068198656786963, guid: 100a347fdf0394947bb31dc183036941, type: 3}
+  PlayerPrefab: {fileID: 2999542222289297194, guid: ca956526153ca0e44938eb6480e22a88, type: 3}
+  BossPrefab: {fileID: 791264694040982933, guid: bfd61892ae26fe642bc1a474851de5e1, type: 3}
+  Map: {fileID: 0}
+  Player: {fileID: 0}
+  Bosses: []
+  SessionRoot: {fileID: 0}
+  IsReady: 0
+  LastError: 
+  FirstEncounterDuration: 0.6
+  ReencounterDuration: 0.2
+  BossDeathDuration: 0.5
+--- !u!114 &1750979741748351633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3effbf764eab2954ab456fe01ffbdcf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Loading
+  IsVisible: 0
+  FailureMessage: 
+--- !u!114 &6171050252790614657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e784da3fd3622546ac90bdc0d4a4fff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  Stage: {fileID: 1806224540982316195}
+  Loading: {fileID: 1750979741748351633}
+  IsLoading: 0
+  IsSessionActive: 0
+  IsGameplayPaused: 0
+  LastError: 
+--- !u!114 &8001915017557146330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 227e3176f61d0254ea7f4c6f4dedd0f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CutsceneController
+--- !u!114 &3768140048029390240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98824d6aab564586ab2d3dfd4d191b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialController
+
+--- !u!114 &7623100000000000001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8e43c677f144483ab96342ea16bca1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TempDemoEnding
+  FadeDuration: 2
+  MessageDuration: 3

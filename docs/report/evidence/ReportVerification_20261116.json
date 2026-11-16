@@ -1,0 +1,91 @@
+{
+  "pages": 21,
+  "tables": 11,
+  "images": 1,
+  "unitask_code_blocks": 4,
+  "collision_code_blocks": 2,
+  "draw_code_blocks": 1,
+  "docx_render_text_matches_final_pdf": true,
+  "external_links": [
+    "https://docs.unity3d.com/6000.3/Documentation/Manual/execution-order.html",
+    "https://docs.unity3d.com/Packages/com.unity.inputsystem@1.20/manual/Actions.html",
+    "https://github.com/Cysharp/UniTask/tree/2.5.11",
+    "https://docs.unity3d.com/6000.3/Documentation/ScriptReference/Physics2D.BoxCast.html",
+    "https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/"
+  ],
+  "forbidden_work_material_references": [],
+  "all_reference_games_present": true,
+  "fonts_embedded": {
+    "/BAAAAA+MalgunGothic": true,
+    "/CAAAAA+MalgunGothicBold": true,
+    "/DAAAAA+MalgunGothic": true,
+    "/EAAAAA+MalgunGothic": true,
+    "/FAAAAA+MalgunGothicBold": true,
+    "/GAAAAA+MalgunGothicBold": true,
+    "/HAAAAA+MalgunGothic": true,
+    "/IAAAAA+MalgunGothicBold": true,
+    "/JAAAAA+MalgunGothic": true,
+    "/KAAAAA+MalgunGothicBold": true,
+    "/LAAAAA+MalgunGothic": true,
+    "/MAAAAA+MalgunGothicBold": true,
+    "/NAAAAA+SegoeUI": true,
+    "/OAAAAA+Consolas": true,
+    "/PAAAAA+MalgunGothic": true,
+    "/QAAAAA+MalgunGothic": true,
+    "/RAAAAA+MalgunGothic": true
+  },
+  "replacement_characters": 0,
+  "source_changes_since_generation": [],
+  "changed_pages_from_reviewed_previous_render": [
+    1,
+    4,
+    10,
+    18,
+    21
+  ],
+  "outputs": {
+    "Project_Chrono_Report.docx": {
+      "bytes": 175230,
+      "sha256": "ce5aed7af50397429e938f068f62b2483292cd87a30a95b058a02cff7fe0c33a"
+    },
+    "Project_Chrono_Report.pdf": {
+      "bytes": 983137,
+      "sha256": "d9d1b9e7d2370e5ff8bb6703b45ef0797bd9568b9e85905bdaedea1f61860322"
+    }
+  },
+  "pdf_comments": {
+    "1_version_path_sentence_removed": true,
+    "2_subsections_in_toc": true,
+    "3_submission_word_removed_from_run_instruction": true,
+    "4_scene_folder_removed": true,
+    "5_build_statement_removed": true,
+    "6_external_asset_sentence_removed": true,
+    "7_ux_diagnosis_limitation_added": true,
+    "8_alpha_beta_gigdc_goal_added": true,
+    "9_motivation_and_exploration_added": true
+  },
+  "latest_requests": {
+    "minimal_interactions_and_two_point_principle": true,
+    "input_maps_and_future_rebinding": true,
+    "async_unitask_thread_distinction": true,
+    "save_snapshot_order_and_reason": true
+  },
+  "final_pdf_comments": {
+    "1_three_selection_reasons": true,
+    "2_cover_single_line": true,
+    "3_reference_description_replaced": true,
+    "4_version_overload_phrase_removed": true
+  },
+  "wording_pdf_comments": {
+    "1_reference_endnote_removed": true,
+    "2_contribution_sentence_replaced": true,
+    "3_hit_width_world_removed": true,
+    "4_cover_project_underscore": true
+  },
+  "visual_review": {
+    "pages_reviewed": 21,
+    "result": "passed",
+    "date": "2026-11-16",
+    "method": "Five changed page images inspected; sixteen unchanged pages pixel-identical to previous reviewed report"
+  }
+}

@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex" revision="Character-R03">
+  <diagram id="Character-R05" name="Character · 상속 / 소유">
+    <mxGraphModel adaptiveColors="auto" grid="1" gridSize="10" page="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="DummyBossFrame" value="DummyBoss · 시험" style="swimlane;horizontal=1;startSize=30;container=1;collapsible=0;fontSize=18;fontStyle=1;strokeColor=#94A3B8;fillColor=#FFF7ED;swimlaneFillColor=#FFFFFF;html=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="2380" y="690" width="480" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="Boss01Frame" value="Boss_01 · 경비" style="swimlane;horizontal=1;startSize=30;container=1;collapsible=0;fontSize=18;fontStyle=1;strokeColor=#94A3B8;fillColor=#FFF7ED;swimlaneFillColor=#FFFFFF;html=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="690" width="480" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="title" value="Character · 상속 / 소유" style="text;align=left;fontSize=26;fontStyle=1;strokeColor=none;fillColor=none;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="15" width="2820" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Character" value="Character" style="rounded=0;fontSize=20;fontStyle=1;strokeColor=#475569;strokeWidth=1.5;fillColor=#E2E8F0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="80" width="280" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="PlayerFrame" value="Player" style="swimlane;horizontal=1;startSize=30;container=1;collapsible=0;fontSize=18;fontStyle=1;strokeColor=#94A3B8;fillColor=#EFF6FF;swimlaneFillColor=#FFFFFF;html=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="225" width="1740" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="BossFrame" value="BossCharacter · 공통" style="swimlane;horizontal=1;startSize=30;container=1;collapsible=0;fontSize=18;fontStyle=1;strokeColor=#94A3B8;fillColor=#FFF7ED;swimlaneFillColor=#FFFFFF;html=1;align=left;spacingLeft=12;" vertex="1" parent="1">
+          <mxGeometry x="1820" y="225" width="1040" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="PlayerCharacter" value="PlayerCharacter" style="rounded=0;fontSize=19;fontStyle=1;strokeColor=#475569;strokeWidth=1.5;fillColor=#DBEAFE;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="730" y="50" width="280" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="BossCharacter" value="BossCharacter" style="rounded=0;fontSize=19;fontStyle=1;strokeColor=#475569;strokeWidth=1.5;fillColor=#FFEDD5;html=1;" vertex="1" parent="BossFrame">
+          <mxGeometry x="370" y="50" width="280" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="p_PlayerSpawner" value="PlayerSpawner" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="25" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_PlayerBodyController" value="PlayerBodyController" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="220" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_CharacterRendering" value="CharacterRendering" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="415" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_AttackController" value="AttackController" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="610" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_SkillController" value="SkillController" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="805" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_CharacterBuff" value="CharacterBuff" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="1000" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_PlayerFeedback" value="PlayerFeedback" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="1195" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_BossSpawner" value="BossSpawner" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="BossFrame">
+          <mxGeometry x="25" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_CharacterBuff" value="CharacterBuff" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="BossFrame">
+          <mxGeometry x="220" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="b_BossPatternSelector" value="BossPatternSelector" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="BossFrame">
+          <mxGeometry x="415" y="245" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="legend" value="△ 상속　 ◆ 소유·전용 구성　 ◇ 공유 에셋 보유&lt;br&gt;동일 관계: 자식들의 세로선 → 하나의 가로줄 → 부모로 세로선 하나 · Player/Boss의 CharacterBuff는 각자의 인스턴스" style="text;align=center;fontSize=17;fontColor=#475569;strokeColor=none;fillColor=none;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="910" width="2820" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="Boss_01" value="Boss_01" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="Boss01Frame">
+          <mxGeometry x="150" y="75" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="DummyBoss" value="DummyBoss" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="DummyBossFrame">
+          <mxGeometry x="150" y="75" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_PlayerSpriteAnimationSet" value="PlayerSpriteAnimationSet" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="385" y="440" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_AttackCollisionBox" value="CollisionBox" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="650" y="440" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_LineDrawer" value="LineDrawer" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="875" y="440" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_LineSlasher" value="LineSlasher" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="1080" y="440" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_DrawVfx" value="DrawVfx" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="1285" y="440" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p_SlashPresentationFx" value="SlashPresentationFx" style="rounded=0;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=16;fontColor=#0F172A;strokeColor=#475569;strokeWidth=1.4;fillColor=#FFFFFF;html=1;" vertex="1" parent="PlayerFrame">
+          <mxGeometry x="1490" y="440" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="bus_character" vertex="1" parent="1" value="" relationBus="1" ownerClass="Character" style="shape=line;direction=east;html=1;strokeColor=#334155;strokeWidth=1.6;fillColor=none;startArrow=none;endArrow=none;">
+          <mxGeometry x="910.0" y="189.5" width="1420.0" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trunk_character" edge="1" parent="1" source="bus_character" target="Character" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.3732394366197183;exitY=0.5;entryX=0.5;entryY=1;endArrow=block;endFill=0;endSize=16;" relationTrunk="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="PlayerCharacter" target="bus_character" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=0;entryX=0.0;entryY=0.5;" semanticSource="PlayerCharacter" semanticTarget="Character" semanticRelation="inheritance">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="BossCharacter" target="bus_character" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=0;entryX=1.0;entryY=0.5;" semanticSource="BossCharacter" semanticTarget="Character" semanticRelation="inheritance">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bus_player" vertex="1" parent="1" value="" relationBus="1" ownerClass="PlayerCharacter" style="shape=line;direction=east;html=1;strokeColor=#334155;strokeWidth=1.6;fillColor=none;startArrow=none;endArrow=none;">
+          <mxGeometry x="155.0" y="404.5" width="1170.0" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trunk_player" edge="1" parent="1" source="PlayerCharacter" target="bus_player" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=1;entryX=0.6452991452991453;entryY=0.5;startArrow=diamondThin;startFill=1;startSize=14;" relationTrunk="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="bus_player" target="p_PlayerSpawner" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.0;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_PlayerSpawner" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="bus_player" target="p_PlayerBodyController" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.16666666666666666;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_PlayerBodyController" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="bus_player" target="p_CharacterRendering" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.3333333333333333;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_CharacterRendering" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="bus_player" target="p_AttackController" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_AttackController" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="bus_player" target="p_SkillController" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.6666666666666666;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_SkillController" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="bus_player" target="p_CharacterBuff" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.8333333333333334;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_CharacterBuff" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="bus_player" target="p_PlayerFeedback" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=1.0;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="PlayerCharacter" semanticTarget="p_PlayerFeedback" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bus_boss" vertex="1" parent="1" value="" relationBus="1" ownerClass="BossCharacter" style="shape=line;direction=east;html=1;strokeColor=#334155;strokeWidth=1.6;fillColor=none;startArrow=none;endArrow=none;">
+          <mxGeometry x="1935.0" y="404.5" width="395.0" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trunk_boss" edge="1" parent="1" source="BossCharacter" target="bus_boss" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=1;entryX=1.0;entryY=0.5;startArrow=diamondThin;startFill=1;startSize=14;" relationTrunk="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="bus_boss" target="b_BossSpawner" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.0;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="BossCharacter" semanticTarget="b_BossSpawner" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="bus_boss" target="b_CharacterBuff" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.4936708860759494;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="BossCharacter" semanticTarget="b_CharacterBuff" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="bus_boss" target="b_BossPatternSelector" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.9873417721518988;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="BossCharacter" semanticTarget="b_BossPatternSelector" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bus_skill" vertex="1" parent="1" value="" relationBus="1" ownerClass="p_SkillController" style="shape=line;direction=east;html=1;strokeColor=#334155;strokeWidth=1.6;fillColor=none;startArrow=none;endArrow=none;">
+          <mxGeometry x="935.0" y="594.5" width="700.0" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trunk_skill" edge="1" parent="1" source="p_SkillController" target="bus_skill" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=1;entryX=0.0;entryY=0.5;startArrow=diamondThin;startFill=1;startSize=14;" relationTrunk="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_LineDrawer" edge="1" parent="1" source="bus_skill" target="p_LineDrawer" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.1;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="p_SkillController" semanticTarget="p_LineDrawer" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_LineSlasher" edge="1" parent="1" source="bus_skill" target="p_LineSlasher" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.39285714285714285;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="p_SkillController" semanticTarget="p_LineSlasher" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_DrawVfx" edge="1" parent="1" source="bus_skill" target="p_DrawVfx" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.6857142857142857;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="p_SkillController" semanticTarget="p_DrawVfx" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="skill_SlashPresentationFx" edge="1" parent="1" source="bus_skill" target="p_SlashPresentationFx" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=1.0;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="p_SkillController" semanticTarget="p_SlashPresentationFx" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bus_boss_subclasses" vertex="1" parent="1" value="" relationBus="1" ownerClass="BossCharacter" style="shape=line;direction=east;html=1;strokeColor=#334155;strokeWidth=1.6;fillColor=none;startArrow=none;endArrow=none;">
+          <mxGeometry x="2060.0" y="629.5" width="560.0" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trunk_boss_subclasses" edge="1" parent="1" source="bus_boss_subclasses" target="BossFrame" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=0.5;entryX=0.5;entryY=1;endArrow=block;endFill=0;endSize=16;" relationTrunk="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="boss_inherit_01" edge="1" parent="1" source="Boss_01" target="bus_boss_subclasses" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=0;entryX=0.0;entryY=0.5;" semanticSource="Boss_01" semanticTarget="BossCharacter" semanticRelation="inheritance">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="boss_inherit_dummy" edge="1" parent="1" source="DummyBoss" target="bus_boss_subclasses" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=0;entryX=1.0;entryY=0.5;" semanticSource="DummyBoss" semanticTarget="BossCharacter" semanticRelation="inheritance">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="bus_attack" vertex="1" parent="1" value="" relationBus="1" ownerClass="p_AttackController" style="shape=line;direction=east;html=1;strokeColor=#334155;strokeWidth=1.6;fillColor=none;startArrow=none;endArrow=none;">
+          <mxGeometry x="740.0" y="594.5" width="40.0" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="trunk_attack" edge="1" parent="1" source="p_AttackController" target="bus_attack" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=1;entryX=0.0;entryY=0.5;startArrow=diamondThin;startFill=1;startSize=14;" relationTrunk="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="attack_collision" edge="1" parent="1" source="bus_attack" target="p_AttackCollisionBox" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=1.0;exitY=0.5;entryX=0.5;entryY=0;" semanticSource="p_AttackController" semanticTarget="p_AttackCollisionBox" semanticRelation="composition">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="render_animation" edge="1" parent="1" source="p_CharacterRendering" target="p_PlayerSpriteAnimationSet" value="" style="html=1;edgeStyle=none;noEdgeStyle=1;rounded=0;strokeColor=#334155;strokeWidth=1.6;startArrow=none;endArrow=none;exitPerimeter=0;entryPerimeter=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;startArrow=diamondThin;startFill=0;startSize=14;" semanticSource="p_CharacterRendering" semanticTarget="p_PlayerSpriteAnimationSet" semanticRelation="aggregation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

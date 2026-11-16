@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-16",
+  "scope": "Retained final outcomes; intermediate logs, captures and verification projects are removed at the user's request",
+  "windows_player_build": {
+    "unity": "6000.3.21f1",
+    "target": "Windows64 Mono",
+    "result": "Succeeded",
+    "started_kst": "2026-11-16 14:44:03",
+    "finished_kst": "2026-11-16 14:46:09",
+    "output": "D:/00_Works/02_GameDev/Unity/temp/2026_Capstone_Project_Chrono/program/Project_Chrono.exe",
+    "full_continuous_playthrough_verified": false
+  },
+  "submission_source_cleanup": {
+    "runtime_csharp": 53,
+    "editor_csharp": 0,
+    "compile_errors": 0,
+    "process_exit_code": 0,
+    "prefabs_checked": 24,
+    "scenes_checked": 2,
+    "smoke_checks_passed": [
+      "Retained prefabs and scenes have no missing MonoBehaviour scripts",
+      "Title and shared save slots initialize",
+      "Fresh MainWorld creates and binds Map, Boss, Player, input, HUD, and camera",
+      "Normal input cache moves the real Player",
+      "Normal attack starts and finishes on the real Player",
+      "ReturnToTitle clears the session and restores ready Title"
+    ],
+    "test_save_scope": "Isolated test project; user saves were not used"
+  },
+  "report": {
+    "pages": 21,
+    "tables": 11,
+    "images": 1,
+    "code_blocks": 7,
+    "docx_render_text_matches_pdf": true,
+    "verification": "docs/report/evidence/ReportVerification_20261116.json"
+  },
+  "limitations": [
+    "Feature-specific isolated tests do not establish a final combined regression count",
+    "Profiler comparisons, FPS performance measurements and user evaluations were not run",
+    "Final visual approval is recorded separately from implementation and technical validation"
+  ]
+}

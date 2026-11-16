@@ -1,0 +1,21 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><title>Final HUD</title>
+<style>html,body{margin:0;overflow:hidden;background:#14252e}canvas{display:block;image-rendering:pixelated}</style>
+<canvas id="view" width="1920" height="1080" aria-label="최종 HUD 배치"></canvas><script>
+const canvas=document.getElementById('view'),ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;
+const names=['boss-hp','player-hp','groggy','draw','slash'];
+function image(path){return new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error(path));im.src=path;});}
+Promise.all([image('../../../environment/laboratory/final/preview/connected-rooms.png'),image('../../../player/final/unity/idle-left-front.png'),...names.map(n=>image('../hud/png/'+n+'.png'))]).then(([map,player,...sprites])=>{
+ const parts=Object.fromEntries(names.map((n,i)=>[n,sprites[i]])),scale=6;
+ const positions={'boss-hp':[585,36],'player-hp':[18,900],groggy:[18,972],draw:[1608,900],slash:[1746,900]};
+ ctx.drawImage(map,72,118,320,180,0,0,1920,1080);ctx.save();ctx.translate(1020,480);ctx.scale(-1,1);ctx.drawImage(player,0,0,20,20,0,0,120,120);ctx.restore();
+ const nativeSizes={},screenRects={};
+ for(const name of names){const im=parts[name],[x,y]=positions[name],w=im.width*scale,h=im.height*scale;
+  if(x<0||y<0||x+w>1920||y+h>1080)throw Error(name+' outside viewport');
+  ctx.drawImage(im,x,y,w,h);nativeSizes[name]=[im.width,im.height];screenRects[name]=[x,y,w,h];
+ }
+ const checks={fiveSprites:sprites.length===5,bossMovedUp2Native:48-positions['boss-hp'][1]===2*scale,othersMovedDown1Native:positions['player-hp'][1]===894+scale&&positions.groggy[1]===966+scale&&positions.draw[1]===894+scale&&positions.slash[1]===894+scale,bossCentered:screenRects['boss-hp'][0]*2+screenRects['boss-hp'][2]===1920,playerGroggyGap:positions.groggy[1]-positions['player-hp'][1]-parts['player-hp'].height*scale===6,playerAlignedWithSkills:positions['player-hp'][1]===positions.draw[1]&&positions.draw[1]===positions.slash[1],skillGap6Native:positions.slash[0]-positions.draw[0]-parts.draw.width*scale===6*scale,keyGuidesExcluded:true};
+ if(Object.values(checks).some(v=>!v))throw Error('Layout check failed');
+ const png=document.createElement('script');png.type='application/octet-stream';png.id='png';png.textContent=canvas.toDataURL('image/png').split(',')[1];document.body.appendChild(png);
+ const data=document.createElement('script');data.type='application/json';data.id='validation';data.textContent=JSON.stringify({preview:[1920,1080],scale,nativeSizes,screenRects,checks,playerScreenCenter:[960,540],states:'Visible layers as saved by user'});document.body.appendChild(data);document.title='READY';
+}).catch(e=>{document.title='ERROR';document.body.dataset.error=e.message;});
+</script></html>

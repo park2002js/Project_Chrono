@@ -1,0 +1,554 @@
+{
+  "revision": "palette-r02-c",
+  "date": "2026-11-16",
+  "user_selected": "C compromise; bright walls and unchanged VFX",
+  "floor_base": "B0ADA1",
+  "floor_rgb_from_r01": {
+    "10171B": "807D71",
+    "192126": "838074",
+    "202930": "878478",
+    "1B252B": "8A877B",
+    "242D32": "8E8B7F",
+    "2C363C": "939084",
+    "343E43": "989589",
+    "3E484D": "9D9A8E",
+    "4B5357": "A29F93",
+    "42494B": "A7A498",
+    "454C4D": "A7A498",
+    "535C5F": "ABA89C",
+    "5A5F61": "AEAB9F",
+    "626668": "B0ADA1",
+    "6B6F70": "B2AFA3",
+    "737778": "B3B0A4",
+    "767A79": "B4B1A5",
+    "7B7E7C": "B5B2A6",
+    "3E484B": "9C998D",
+    "454F50": "9F9C90",
+    "6D706A": "B2AFA3",
+    "82958E": "AAA79B",
+    "586F68": "A19E92"
+  },
+  "wall_rgb_from_r01": {
+    "10171B": "11212C",
+    "192126": "1C2C39",
+    "202930": "283B4B",
+    "1B252B": "344958",
+    "242D32": "435868",
+    "2C363C": "576D7D",
+    "343E43": "6B8191",
+    "3E484D": "7F95A4",
+    "4B5357": "94A8B5",
+    "42494B": "A9BBC3",
+    "454C4D": "A9BCC2",
+    "535C5F": "BDCCD0",
+    "5A5F61": "CBD7D8",
+    "626668": "D6DFDF",
+    "6B6F70": "DFE6E4",
+    "737778": "E7ECE9",
+    "767A79": "E9EEEA",
+    "7B7E7C": "F2F3EC",
+    "3E484B": "7D909D",
+    "454F50": "899DA8",
+    "6D706A": "E1E5DC",
+    "82958E": "87D5CF",
+    "586F68": "68B1B4"
+  },
+  "protected_signals": [
+    "0E1210",
+    "285B3A",
+    "36B967",
+    "65AAF0",
+    "98EFAD",
+    "B8D8FF",
+    "E96870",
+    "FFAAA0"
+  ],
+  "door_channel_scale": 1.48,
+  "door_channel_offset": 14,
+  "tiles": [
+    {
+      "id": 0,
+      "name": "environment-000",
+      "rect": [
+        0,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 1,
+      "name": "environment-001",
+      "rect": [
+        16,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 2,
+      "name": "environment-002",
+      "rect": [
+        32,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 3,
+      "name": "environment-003",
+      "rect": [
+        48,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 4,
+      "name": "environment-004",
+      "rect": [
+        64,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 5,
+      "name": "environment-005",
+      "rect": [
+        80,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 6,
+      "name": "environment-006",
+      "rect": [
+        96,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 7,
+      "name": "environment-007",
+      "rect": [
+        112,
+        0,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 8,
+      "name": "environment-008",
+      "rect": [
+        0,
+        16,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 9,
+      "name": "environment-009",
+      "rect": [
+        16,
+        16,
+        16,
+        16
+      ],
+      "role": "outside"
+    },
+    {
+      "id": 10,
+      "name": "environment-010",
+      "rect": [
+        32,
+        16,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 11,
+      "name": "environment-011",
+      "rect": [
+        48,
+        16,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 12,
+      "name": "environment-012",
+      "rect": [
+        64,
+        16,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 13,
+      "name": "environment-013",
+      "rect": [
+        80,
+        16,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 14,
+      "name": "environment-014",
+      "rect": [
+        96,
+        16,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 15,
+      "name": "environment-015",
+      "rect": [
+        112,
+        16,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 16,
+      "name": "environment-016",
+      "rect": [
+        0,
+        32,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 17,
+      "name": "environment-017",
+      "rect": [
+        16,
+        32,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 18,
+      "name": "environment-018",
+      "rect": [
+        32,
+        32,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 19,
+      "name": "environment-019",
+      "rect": [
+        48,
+        32,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 20,
+      "name": "environment-020",
+      "rect": [
+        64,
+        32,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 21,
+      "name": "environment-021",
+      "rect": [
+        80,
+        32,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 22,
+      "name": "environment-022",
+      "rect": [
+        96,
+        32,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 23,
+      "name": "environment-023",
+      "rect": [
+        112,
+        32,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 24,
+      "name": "environment-024",
+      "rect": [
+        0,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 25,
+      "name": "environment-025",
+      "rect": [
+        16,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 26,
+      "name": "environment-026",
+      "rect": [
+        32,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 27,
+      "name": "environment-027",
+      "rect": [
+        48,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 28,
+      "name": "environment-028",
+      "rect": [
+        64,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 29,
+      "name": "environment-029",
+      "rect": [
+        80,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 30,
+      "name": "environment-030",
+      "rect": [
+        96,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 31,
+      "name": "environment-031",
+      "rect": [
+        112,
+        48,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 32,
+      "name": "environment-032",
+      "rect": [
+        0,
+        64,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 33,
+      "name": "environment-033",
+      "rect": [
+        16,
+        64,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 34,
+      "name": "environment-034",
+      "rect": [
+        32,
+        64,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 35,
+      "name": "environment-035",
+      "rect": [
+        48,
+        64,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 36,
+      "name": "environment-036",
+      "rect": [
+        64,
+        64,
+        16,
+        16
+      ],
+      "role": "floor"
+    },
+    {
+      "id": 37,
+      "name": "environment-037",
+      "rect": [
+        80,
+        64,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 38,
+      "name": "environment-038",
+      "rect": [
+        96,
+        64,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 39,
+      "name": "environment-039",
+      "rect": [
+        112,
+        64,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 40,
+      "name": "environment-040",
+      "rect": [
+        0,
+        80,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 41,
+      "name": "environment-041",
+      "rect": [
+        16,
+        80,
+        16,
+        16
+      ],
+      "role": "wall"
+    },
+    {
+      "id": 42,
+      "name": "environment-042",
+      "rect": [
+        32,
+        80,
+        16,
+        16
+      ],
+      "role": "wall"
+    }
+  ],
+  "method": "Native Aseprite RGB substitution by layer/tile role; alpha, geometry, frames, durations and tags preserved.",
+  "vfx_colors": [
+    "E5D2FF",
+    "C3EAFF"
+  ],
+  "vfx_modified": false,
+  "source_color_luminance_ratios": [
+    1.606,
+    1.771
+  ],
+  "metric_limit": "Source sRGB base colors only, not gameplay visibility measurement."
+}

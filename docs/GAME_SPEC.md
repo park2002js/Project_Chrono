@@ -3496,6 +3496,8 @@ sequenceDiagram
 
 **확인 상태**: 전투/비전투 치명 피해·처치 중복 방지·구독 해제·위험물 제거·저장·사체·입구/출구·재진입을 96묶음 실행 검사에서 확인했다. 최종 사망 모션·화면 연출은 별도이며 Ending(F-S06)은 이번 완료 범위가 아니다.
 
+**후속 임시 엔딩(2026-11-16)**: 위96묶음은 기존 이력이다. 현재 제출 경비는 뒤에 구독한 TempDemoEnding이 사망 연출을 취소해 사체/문을 정리하고 F-S06의 암전·안내·Title 흐름으로 인계한다. 처치 저장은 기존 Stage 구독자가 먼저 수행하며 F-S06 전용4묶음 검사를 별도로 통과했다.
+
 **문 아트 연결(2026-11-16, 원본 실행 확인 완료)**: Stage의 개방 요청을 Map이 캐시한 MapDoor에 전달한다. 입구는 opening, 출구는 activation 점멸/점등→opening→open을 재생하고 open 상태에 도달해야 Collider를 해제한다. 처치 저장 재로드는 최종 open 상태로 즉시 복구한다. 이번 실행 확인은3.3.10을 따르며 이전96묶음과 구분한다.
 
 <details><summary>F-B05 SequenceDiagram</summary>
@@ -3515,6 +3517,7 @@ sequenceDiagram
     participant Map as MapManager
     participant Door as MapDoor
     participant Animator as 문 Animator
+    participant Ending as TempDemoEnding
     Attack->>Boss: ApplyDamage(치명 피해)
     Boss->>Boss: HP0·일회 OnDie·현재 패턴 종료
     Boss->>Stage: HandleBossDeath
@@ -3523,9 +3526,18 @@ sequenceDiagram
     Stage->>Save: DefeatedBosses·PlayerHP 갱신·Save 요청
     Stage->>Spawn: DisableCombatColliders
     Stage->>Cutscene: Play(BossDeath)
-    Cutscene-->>Stage: 실제 시간 연출 완료·상태 복원
-    Stage->>Spawn: ShowDefeated
-    Stage->>Map: 입구·출구 개방
+    alt TempDemoEnding에 연결한 제출 경비
+        Boss->>Ending: OnDie / HandleBossDeath
+        Ending->>Stage: CancelBossSequence
+        Stage->>Cutscene: Cancel / 이전 잠금·표시 복구
+        Stage->>Spawn: ShowDefeated
+        Stage->>Map: 입구·출구 개방
+        Note over Ending,Stage: F-S06 암전·안내·Title 복귀로 인계
+    else 임시 엔딩에 연결하지 않은 Boss
+        Cutscene-->>Stage: 실제 시간 연출 완료·상태 복원
+        Stage->>Spawn: ShowDefeated
+        Stage->>Map: 입구·출구 개방
+    end
     Map->>Door: SetOpen(true) / 양쪽 문 캐시 사용
     Door->>Animator: 입구 opening / 출구 activation부터 재생
     Note over Door,Animator: 출구 점멸·점등·상승 중 Collider 유지
@@ -4858,10 +4870,90 @@ sequenceDiagram
 | F-S03 | 체크포인트·Boss 처치·첫 조우·진행률 | S03~S06 | 다음 실행/부활에서 같은 진행 상태 복원 | 문·사체 표시 연결 |
 | F-S04 | 전체 정지/입력 차단·상태 우선순위 | S01·U07·P02·S07 | 죽음/로딩/Draw/Slash 전환 시 상태 잔류 없음 | 정의된 컷씬 타이밍 |
 | F-S05 일부 | 새 게임의 최초 입장 걷기·조작 인계 | S11·P03·P04·S01~03·S05 | 문 비가시·화면 밖/맵 안 시작·독립 중앙 marker/기존 체크포인트 보존, R03 최종7검사·원본 반영 확인 | 안내 UI·전체 튜토리얼 단계/대화는 후속 미구현 |
-| F-S06 | 마지막 Boss·엔딩·Title·새 게임 | S01·U03·U07·S05 | 마지막Boss사망순간 완료→컷씬→스탭롤→Title·완료슬롯 새게임확인 | 사망 컷씬·스탭롤·Title 전환 |
+| F-S06 | 경비 처치·임시 데모 엔딩·Title·새 게임 | TempDemoEnding·S01·S02·U02·S05 | 처치 저장→2초 암전→중앙 안내3초→Title·중단 복구·완료슬롯 새게임확인 | 정식 스탭롤은 임시 안내로 대체 |
 | F-S07 | Debug GUI·수치 변경 | S12 | Editor에서만 제어·소스제출·AI사용기록 | 최종 디자인 의존 없음 |
 
 케이스 구현 시 각 행을 `기능 ID | 사양 상태 | 코드·씬·프리팹 연결 | 구현 상태 | 실제 확인 결과 | 남은 아트 | 비아트 차단 사항`으로 갱신한다. 임시 시각물로 확인한 결과를 최종 아트 검증으로 기록하지 않는다.
+
+#### F-S06 임시 데모 엔딩 — 2026-11-16
+
+**사용자 임시 확정(2026-11-16)**: 경비 로봇 처치 후 `TempDemoEnding`이 Boss.OnDie를 구독해 암전→중앙 `Demo는 여기까지입니다..`→Title로 복귀한다. 기존 스탭롤 계획은 이번 데모에서 이 안내로 임시 대체하며 정식 스탭롤 구현 완료로 기록하지 않는다. 초기 조정값은 암전2초·안내3초이며 사용자 지정 수치가 아니다. 암전 시작부터 Player 컷씬·입력을 잠가 공격/Draw/Slash를 취소하고 HUD·Title 버튼을 숨긴다. 완전 암전 뒤 게임 시간을 정지하며 암전과 안내는 실제 시간으로 진행한다.
+
+**연결·수명**: GameSystems.prefab과 StageManager.RequireComponent에 컴포넌트를 연결한다. 자기 GameManager/StageManager는 Awake에서 확보하고 Player 생성·Bind 이후 DemoEnding.Bind에서 세션 참조와 OnDie를 연결한다. Stage의 기존 처치 저장/위험물 정리가 먼저 실행되고 TempDemoEnding은 기존 짧은 사망 연출을 취소·사체/문을 정리한 뒤 자기 엔딩을 시작한다. Clear/OnDisable/재Bind는 이전 구독·코루틴·표시·자기 시간 정지를 해제한다. 기존 ReturnToTitle·완료 슬롯 새게임 확인 계약을 사용한다.
+
+**레퍼런스**: Sephiria CutScenePlayer.PlayCutScene/CutSceneCoroutine의 일회 재생·입력 차단·순차 완료, ScreenFader.Update의 unscaled 암전, UIManager.Awake/OnDestroy의 화면 사건 연결을 읽었다. Dungreed GameManager.Leave/_Leave의 암전 뒤 기존 복귀 흐름 호출을 확인했다. 별도 범용 컷씬/노드·서버·진행 시스템은 도입하지 않는다.
+
+**확인 상태**: 같은 Unity6000.3.21f1 격리 검증 프로젝트에서 최신 Assets/Packages/ProjectSettings를 동기화한 뒤 C# 컴파일·Play Mode4묶음 success=true/error 빈값·배치 종료0을 확인했다. 실제 경비 치명 피해/OnDie·저장 선행·기존 연출 취소/잠금·timeScale0 부분 암전·중복 피해 거부·중도 Title/2.1초 지연 누출 없음·새 세션 재연결·기본2초/3초 타이밍·완전 암전 뒤 문구 상태·공격/Draw/Dash 거부·자동 Title/시간 복구·완료 슬롯 재로드/새게임 확인을 검증했다. 결과: `project/Logs/TempDemoEnding-result.json`, 로그: `project/Logs/TempDemoEndingCheck.log`. 원본 Editor가 열린 상태라 독립 프로젝트에서 실행했으며 원본 수동 Play·화면 캡처/시각 확인·제출 빌드는 미실행이다. 기존 Editor SearchDatabase의 ArgumentOutOfRangeException1건과 기존 ParticleSystemRenderer.BakeMesh obsolete 경고1건은 게임 검사/컴파일 통과와 구분한다.
+
+**저장·대조**: 원본/검증본 TempDemoEnding·StageManager·GameSystems.prefab SHA256 일치. Notion2.4의 F-S06 독립2Case와 F-B05 기존① 분기/후속 설명 저장 요청 성공·오류 없음 확인
+
+<details><summary>F-S06 SequenceDiagram</summary>
+
+**① 경비 로봇 치명 피해 → 암전·안내·Title 복귀**
+
+기존 F-B05의 처치 저장을 유지한 채 사망 연출에서 임시 엔딩으로 인계한다.
+
+```mermaid
+sequenceDiagram
+    participant Boss as BossCharacter
+    participant Stage as StageManager
+    participant Save as SaveManager
+    participant Ending as TempDemoEnding
+    participant Player as PlayerCharacter
+    participant Input as PlayerInputController
+    participant UI as UIController
+    participant GM as GameManager
+    Stage->>Ending: Bind / Player 생성·Bind 뒤 세션 참조 확보
+    Ending->>Boss: OnDie 구독 / 기존 저장 구독자 다음
+    Boss->>Boss: ApplyDamage 치명 피해 / 일회 OnDie
+    Boss->>Stage: HandleBossDeath
+    Stage->>Save: DefeatedBosses·PlayerHP / Save 요청
+    Stage->>Stage: 위험물·전투 정리 / 기존 사망 연출 시작
+    Boss->>Ending: HandleBossDeath
+    Ending->>Stage: CancelBossSequence / 사체·통로 정리
+    Ending->>Player: IsCutScene=true / 진행 중 공격·Draw·Slash 중단
+    Ending->>Input: BlockInput=true
+    Ending->>UI: SetDeathMode(true) / HUD·Title 버튼 숨김
+    loop 실제 시간 2초
+        Ending->>Ending: unscaledDeltaTime / FadeAlpha 0에서 1
+    end
+    Ending->>GM: SetBossCutscenePaused(true)
+    Ending->>Ending: 중앙 Demo는 여기까지입니다.. / 실제 시간 3초
+    Ending->>GM: ReturnToTitle
+    GM->>Stage: Clear
+    Stage->>Ending: Unbind / 구독·표시·정지 복구
+    GM->>Save: LoadSlotsAsync / 처치 기록 재로드
+    GM->>GM: Title 씬 로드 완료 / 로딩·일반 정지 해제
+```
+
+**② 암전 또는 안내 중 세션 중단 → 이전 실행 해제·새 게임 재연결**
+
+중단된 엔딩이 Title이나 다음 세션에 문구·정지·지연 전환을 남기지 않도록 한다.
+
+```mermaid
+sequenceDiagram
+    participant User as 외부 Title 복귀 또는 세션 중단
+    participant GM as GameManager
+    participant Stage as StageManager
+    participant Ending as TempDemoEnding
+    participant Boss as 이전 Boss
+    User->>GM: ReturnToTitle
+    GM->>Stage: Clear
+    Stage->>Ending: Unbind
+    Ending->>Boss: OnDie 구독 해제
+    Ending->>Ending: StopCoroutine / FadeAlpha0·문구 숨김
+    Ending->>Ending: 이전 Player 컷씬·입력·HUD 복구
+    opt 엔딩이 암전 뒤 시간 정지를 소유
+        Ending->>GM: SetBossCutscenePaused(false)
+    end
+    GM->>GM: Title 로드
+    Note over Ending: 앱 객체는 재사용 / 이전 코루틴의 지연 복귀 없음
+    User->>GM: 새 게임 확인 후 StartGame
+    Stage->>Ending: 새 Player·Boss 생성 뒤 Bind
+    Ending->>Boss: 새 경비 OnDie만 구독
+```
+
+</details>
 
 ### 2.4.1 F-S01 — Title 준비·슬롯 로드·MainWorld 초기화
 

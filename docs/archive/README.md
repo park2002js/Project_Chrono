@@ -28,6 +28,7 @@
 ---
 
 ## 1. 01_Choice
+- [Temp_Demo_Ending_20261116.md](01_Choice/Temp_Demo_Ending_20261116.md) : 경비 OnDie 구독·암전·중앙 데모 종료 안내·Title 복귀 임시 요청, 기존 스탭롤 대체와 초기 타이밍 구분
 - [Controls_Guide_20261116.md](01_Choice/Controls_Guide_20261116.md) : 검은 배경용 자판/마우스 안내·일반/특수 슬래시 구분과 F 상호작용 설명 제외 요청, 이미지 제작/게임 코드 변경 구분
 - [Player_Entrance_Cutscene_20261116.md](01_Choice/Player_Entrance_Cutscene_20261116.md) : 남쪽 입구 복도 약3배·실제 Player의 컷씬 보행/조작 인계와 새 게임 최초1회·계속/부활 체크포인트 유지 선택
 - [Player_Fever_Aura_20261116.md](01_Choice/Player_Fever_Aura_20261116.md) : 각성 중 몸에서 피어오르는 황금 오라 요청과 상태 사건·재사용 입자 연결, 초기 제작값/미술 승인 구분

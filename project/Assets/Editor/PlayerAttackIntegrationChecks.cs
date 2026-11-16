@@ -21,6 +21,7 @@ public static class PlayerAttackIntegrationChecks
     private const string CameraKey = "Chrono.AttackIntegration.Camera"; // 기존 실행기를 카메라 전용 검사로 사용할 분기 키
     private const string FeverKey = "Chrono.AttackIntegration.Fever"; // 기존 실행기를 각성 오라 검사로 사용할 분기 키
     private const string TutorialKey = "Chrono.AttackIntegration.Tutorial"; // 슬롯 선택 전부터 최초 입장 잠금을 관찰할 분기 키
+    private const string EndingKey = "Chrono.AttackIntegration.Ending"; // 경비 사망부터 임시 엔딩·Title 복귀만 검사할 분기 키
     private const string ReportPathKey = "Chrono.AttackIntegration.ReportPath"; // 대시 결과가 기존 공격 결과를 덮지 않도록 구분할 경로 키
     private static readonly BindingFlags InstanceMembers = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic; // 검사에서 실제 내부 경과시간·표현 경계를 관찰할 조회 범위
     private static Stack<IEnumerator> routines; // 중첩 대기를 포함한 실제 Play 검사 실행 스택
@@ -65,8 +66,14 @@ public static class PlayerAttackIntegrationChecks
         RunSession(false, false, false, true);
     }
 
+    /// <summary>기존 격리 저장·Play 실행기로 임시 엔딩만 확인</summary>
+    public static void RunEnding()
+    {
+        RunSession(false, ending: true);
+    }
+
     /// <summary>검사 종류만 분리하고 같은 실제 Title 준비 경로 사용</summary>
-    private static void RunSession(bool dash, bool camera = false, bool fever = false, bool tutorial = false)
+    private static void RunSession(bool dash, bool camera = false, bool fever = false, bool tutorial = false, bool ending = false)
     {
         // 실행 중인 Play와 편집 씬을 건드리지 않고 독립 검증 준비
         if (EditorApplication.isPlayingOrWillChangePlaymode)
@@ -89,7 +96,8 @@ public static class PlayerAttackIntegrationChecks
         SessionState.SetBool(CameraKey, camera);
         SessionState.SetBool(FeverKey, fever);
         SessionState.SetBool(TutorialKey, tutorial);
-        SessionState.SetString(ReportPathKey, tutorial ? "Logs/TutorialEntry-result.json" : fever ? "Logs/FeverAura-result.json" : camera ? "Logs/PlayerCameraFollow-result.json"
+        SessionState.SetBool(EndingKey, ending);
+        SessionState.SetString(ReportPathKey, ending ? "Logs/TempDemoEnding-result.json" : tutorial ? "Logs/TutorialEntry-result.json" : fever ? "Logs/FeverAura-result.json" : camera ? "Logs/PlayerCameraFollow-result.json"
             : dash ? "Logs/PlayerDashIntegration-result.json" : "Logs/PlayerAttackIntegration-result.json");
         EditorApplication.EnterPlaymode();
     }
@@ -164,6 +172,11 @@ public static class PlayerAttackIntegrationChecks
         // Title과 저장 준비가 끝난 실제 세션으로 진입
         yield return Until(() => GameManager.Instance != null && GetTitle() != null && GetTitle().IsReady, "Title readiness"); // 서비스·Title 슬롯 로드 완료 대기
         GameManager manager = GameManager.Instance;
+        if (SessionState.GetBool(EndingKey, false))
+        {
+            yield return TempDemoEndingChecks.Run(manager, Passed); // 경비 처치·중단·재연결·엔딩의 전용 검사 완료 대기
+            yield break;
+        }
         if (SessionState.GetBool(TutorialKey, false))
         {
             yield return TutorialEntryChecks.Run(manager, Passed); // 최초 슬롯 선택·입장·재진입·Title 정리의 전용 검사 완료 대기

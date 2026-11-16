@@ -1,15 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-/// <summary>플레이어 효과음 재생 종류</summary>
-public enum PlayerSoundCue
-{
-    Attack1, // 첫 휘두르기 소리
-    Attack2, // 두 번째 휘두르기 소리
-    Hit, // 실제 적중 소리
-    Footstep // 실제 걷기 발소리
-}
 
 /// <summary>자기 플레이어의 공격·적중·걷기 소리와 월드 고정 피격 섬광 표시</summary>
 [DefaultExecutionOrder(20)]
@@ -25,7 +15,6 @@ public class PlayerFeedback : MonoBehaviour
     public float Volume = 0.8f; // 자기 효과음의 공통 재생 음량
     public float FootstepVolume = 4f; // 원본의 작은 발소리를 보정할 추가 재생 배율
     public float StepDistance = 1.2f; // 정상 걷기의 다음 발소리까지 실제 이동할 거리
-    public event Action<PlayerSoundCue, AudioClip> OnSoundPlayed; // 실제 PlayOneShot 호출의 종류·클립을 관측할 알림
 
     private readonly List<HitVisual> visuals = new List<HitVisual>(8); // 동시 적중 수만큼 준비해 재사용할 섬광 표시
     private float walkingDistance; // 다음 발소리까지 누적한 실제 일반 이동 거리
@@ -85,7 +74,7 @@ public class PlayerFeedback : MonoBehaviour
     /// <summary>AttackController가 실제 휘두르기 시점에 지정한 소리 재생</summary>
     public void PlayAttackSound(int attack)
     {
-        Play(attack == 0 ? PlayerSoundCue.Attack1 : PlayerSoundCue.Attack2, attack == 0 ? Attack1Clip : Attack2Clip, 1f);
+        Play(attack == 0 ? Attack1Clip : Attack2Clip, 1f);
     }
 
     /// <summary>성공한 Cast 접점에 공격 수직 방향의 섬광과 적중음 한 번 생성</summary>
@@ -109,7 +98,7 @@ public class PlayerFeedback : MonoBehaviour
         visual.Renderer.enabled = true;
 
         // 피해가 성공한 수신자만 소리 재생
-        Play(PlayerSoundCue.Hit, HitClip, 1f);
+        Play(HitClip, 1f);
     }
 
     /// <summary>강제 이동을 제외한 실제 걷기 거리만 받아 타일 발소리 재생</summary>
@@ -126,15 +115,14 @@ public class PlayerFeedback : MonoBehaviour
         walkingDistance %= StepDistance;
         AudioClip clip = FootstepClips[footstepIndex];
         footstepIndex = (footstepIndex + 1) % FootstepClips.Length;
-        Play(PlayerSoundCue.Footstep, clip, Mathf.Max(0f, FootstepVolume));
+        Play(clip, Mathf.Max(0f, FootstepVolume));
     }
 
-    /// <summary>실제 재생과 동일 지점에서 소리 종류·클립을 알림</summary>
-    private void Play(PlayerSoundCue cue, AudioClip clip, float extraVolume)
+    /// <summary>자기 오디오 소스로 효과음을 겹쳐 재생</summary>
+    private void Play(AudioClip clip, float extraVolume)
     {
         if (!ready || !isActiveAndEnabled || Source == null || !Source.isActiveAndEnabled || clip == null) return;
         Source.PlayOneShot(clip, Mathf.Clamp01(Volume) * extraVolume);
-        OnSoundPlayed?.Invoke(cue, clip);
     }
 
     /// <summary>플레이어 수명 안에서 돌려쓸 월드 고정 섬광 표시 한 개 준비</summary>

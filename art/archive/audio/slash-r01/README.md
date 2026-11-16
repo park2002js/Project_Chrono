@@ -1,15 +1,10 @@
-# Slash 효과음 제작안 R01
+# Slash 합성 효과음
 
-2026-11-16 사용자 요청의 납도 끝 `탁`과 지연 뒤 공간참에 맞춘 신규 합성 제작안이다. 사용자 청음 전이며 최종 음색 승인을 뜻하지 않는다.
+| 출력 | 길이 | 연결 |
+| --- | --- | --- |
+| [sheath-clack-r01.wav](sheath-clack-r01.wav) | 0.14초 | 납도 완료 프레임 |
+| [space-slash-r01.wav](space-slash-r01.wav) | 0.42초 | 지연 종료 후 공간참 시작 |
 
-| 파일 | 길이 | 구성 | 연결 사건 |
-| --- | --- | --- | --- |
-| `sheath-clack-r01.wav` | 0.14초 | 짧은 접촉 잡음·금속 공진·낮은 검집 타격 | 칼이 완전히 닫힌 프레임 |
-| `space-slash-r01.wav` | 0.42초 | 날카로운 절단 잡음·하강 공진·공기 잔향 | 납도 이후 지연 끝·공간참 시작 |
+편집 원본은 [generate.py](generate.py)다. 고정 시드 잡음과 수식으로 이 프로젝트에서 합성했으며 외부 음원 표본을 사용하지 않았다. 같은 원본으로 같은 WAV를 다시 생성할 수 있다.
 
-- 형식: 48,000Hz·mono·signed PCM16·최대 절대 표본값 28,000(클리핑 없음)
-- 출처/사용 조건: 이 작업에서 `generate.py`의 수식·고정 시드 잡음으로 새로 제작. 외부 음원·게임 소리·샘플을 사용하지 않았으며 제3자 음원 라이선스 의존 없음
-- 편집 원본: `generate.py`. 같은 파일을 실행하면 바이트가 같은 WAV를 다시 생성한다
-- 게임 출력: `/project/Assets/Audio/Slash/`의 동명 WAV. 원본과 바이트 일치 검사 포함
-- 재생: unscaled 연출 사건에서 `AudioSource.PlayOneShot`, 2D·PCM 사전 읽기. 음량은 `SlashPresentationFx.Volume`으로 조정
-- 검증: 생성 시 표본 수·길이·헤드룸·Unity 복사 일치를 자체 확인. 실제 청음·Unity 재생 확인은 root의 통합 검증 결과와 구분
+48kHz·mono·PCM16이며 `project/Assets/Audio/Slash/`에 연결했다. 연출 사건에서 AudioSource.PlayOneShot으로 재생하며 음량은 SlashPresentationFx.Volume으로 조정한다. 실제 청음과 최종 음색 승인은 별도다.

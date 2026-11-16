@@ -1,12 +1,10 @@
-# SaveSlot 정보·입력 R03 실제 화면
+# 저장 슬롯 최종 정보·Esc 화면
 
-2026-11-16 사용자 요청의 Esc 메뉴 복귀·정보 빈 줄·Title/슬롯 Bold를 적용한 실제 Unity6000.3.21f1 격리1080p 캡처다. 기존 프레임 원본/PNG/meta와 카드144×206·12px 경계는 변경하지 않았다.
+- [슬롯 정보](slots-bold.png): 빈 슬롯·진행 중·완료의 예시 정보
+- [Title 메뉴](menu-bold.png): 최종 Bold 메뉴
+- [완료 확인창](slots-confirmation-bold.png)
+- [Esc 메뉴 복귀](esc-returned-title.png)
 
-- `slots-bold.png`: 빈 슬롯·진행 중72분/13회·완료125분/27회의 메모리 표본. 실제 저장 파일을 만들거나 덮어쓰지 않았다.
-- `menu-bold.png`·`esc-returned-title.png`: 최종 Title 메뉴와 실제 Input System Esc 복귀 결과.
-- `slots-confirmation-bold.png`: 동일 Bold가 적용된 완료 기록 확인창.
-- `menu-normal.png`·`slots-normal.png`: 같은 실행에서 굵기 비교만을 위해 잠깐 Normal로 표시한 검사 캡처. 실제 최종 스타일은 Bold다.
-- `text-metrics.json`: 동일 영역의 글자 면적 증가와4개 정보 행의 빈 간격. 일반적인 폰트 두께 배율이나 성능 측정이 아니다.
-- `verification.json`: focused5검사 success=true/종료0, 실제 키보드 상태 이벤트·저장 참조 보존·준비/로딩 차단·재활성화 검증과 소유12파일 일치 기록.
+실제 Unity1080p 화면이다. 표본 플레이 시간·사망 횟수는 화면 확인용 메모리 데이터이며 사용자 저장 파일을 만들거나 덮어쓰지 않았다.
 
-현재 사양은 docs/GAME_SPEC.md3.3.15 R03을 따른다. 동시6런타임은 이 실행 범위 밖이며 원본 Editor 직접Play·월드 진입/복귀·제출 빌드는 미실행이다.
+현재 글자는 Bold이고 항목 사이에 빈 줄이 있다. 슬롯·확인창에서 Esc는 함께 닫아 Title로 돌아가며 저장 내용을 유지한다. 입력 차단·재활성·참조 보존을 포함한5검사를 확인했다.

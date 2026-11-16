@@ -34,13 +34,11 @@ public class AttackController : MonoBehaviour
     public float AttackCooldownRemaining { get; private set; } // 추가 간격을 설정한 경우에만 남는 AS 적용 대기
     public bool IsAttacking { get; private set; } // 준비부터 회복까지 무기가 수행 중인 공격
     public bool HasBufferedAttack { get; private set; } // 허용 구간에서 받은 클릭 한 번의 다음 공격 예약
-    public float AttackElapsed => attackElapsed; // AS를 적용한 현재 공격 경과시간
     public float CurrentAttackDuration => attackClipLengths[Mathf.Clamp(ComboIndex, 0, 2)] * DurationScale; // 현재 타의 실제 기본 길이
     public float AttackInputOpenTime => (ComboIndex == 2 ? ThirdInputBufferTime : InputIgnoreDuration) * DurationScale; // 현재 공격의 새 클릭 허용 경계
     public bool IsAttackInputAllowed => !IsAttacking || attackElapsed + 0.000001f >= AttackInputOpenTime; // 초기 무시 구간이 끝났는지 조회
     public Vector2 AttackDirection { get; private set; } = Vector2.down; // 공격 시작 때 고정한 조준 방향
     public CollisionBox HitBox { get; private set; } = new CollisionBox(); // 가장 최근 생성된 공격 판정과 적중 대상 조회
-    public int ActiveHitWindows { get { int count = 0; foreach (AttackHit hit in hits) if (hit.Box.IsActive) count++; return count; } } // 배속 중 겹친 판정이 각 수명을 유지하는지 조회
 
     private Character owner; // 한 번 확보할 공격력·공격속도 원본
     private PlayerCharacter player; // 공격 시작의 이동 의도와 기본 이동 배율 조회 대상
@@ -153,12 +151,6 @@ public class AttackController : MonoBehaviour
     }
 
     private void OnDisable() { CancelAttack(); }
-
-    private void OnDrawGizmosSelected()
-    {
-        GetHitArea(out Vector2 center, out float angle);
-        HitBox.DrawGizmos(center, HitboxSize, angle);
-    }
 
     /// <summary>새 클릭을 시작하거나 허용 구간의 클릭 한 번을 다음 공격으로 예약</summary>
     internal bool ApplyAttack(Vector2 aimWorldPosition)

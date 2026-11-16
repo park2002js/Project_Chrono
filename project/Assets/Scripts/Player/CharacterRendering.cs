@@ -5,7 +5,6 @@ using UnityEngine;
 public class CharacterRendering : MonoBehaviour
 {
     public SpriteRenderer BodySprite; // 현재 방향·모션 프레임을 표시할 몸체 Sprite
-    public Transform FacingMarker; // 최종 아트 없이 현재 바라보는 사분면을 확인할 임시 표시
     public PlayerSpriteAnimationSet AnimationSet; // 상태별 Sprite·FPS·개별 프레임 시간을 보관한 단일 모션 원본
     public PlayerSpriteAnimationSet SlashAnimationSet; // 선택된 R02 발도 원본의 준비·대기·납도 프레임 데이터
     public PlayerSpriteAnimationState CurrentState { get; private set; } // 현재 선택한 몸체 모션 상태
@@ -14,9 +13,7 @@ public class CharacterRendering : MonoBehaviour
     public bool HasSlashAnimation => HasCompleteSlashAnimation(); // Line 소비 전에 준비·대기·납도 프레임 연결을 확인할 상태
     public Vector3 SlashBladeGlintPosition => BodySprite != null ? BodySprite.transform.TransformPoint(new Vector3(-0.21875f, 0.71875f, 0f)) : transform.position; // R02 대기 프레임의 노출 칼날 중앙 월드 위치
     public bool IsLifecycleAnimation { get; private set; } // 일반 이동 모션 대신 생성·사망 모션을 표시하는 상태
-    public bool IsDeathAnimation { get; private set; } // 현재 생명주기 모션이 사망인지 구분
     public float LifecycleElapsed { get; private set; } // 실제 시간으로 진행한 현재 생명주기 모션 경과
-    public int ActiveAfterimages { get; private set; } // 현재 남아 있는 대시 잔상 수
     public int FacingIndex = 1; // 왼앞0·오앞1·왼뒤2·오뒤3 중 현재 표시할 방향
     public int FrameIndex; // 현재 Sprite 배열에서 표시한 프레임 번호
     public bool IsMoving; // Character가 전달한 일반 이동 의도에 따른 모션 재생 여부
@@ -189,10 +186,6 @@ public class CharacterRendering : MonoBehaviour
         bool back = Mathf.Abs(direction.y) < 0.0001f ? FacingIndex >= 2 : direction.y > 0f;
         FacingIndex = (back ? 2 : 0) + (right ? 1 : 0);
 
-        // 최종 Sprite가 없어도 방향을 확인할 수 있도록 임시 표시 이동
-        if (FacingMarker != null)
-            FacingMarker.localPosition = new Vector3(right ? 0.22f : -0.22f, back ? 0.3f : -0.3f, 0f);
-
         // 사분면이 달라지면 새 상태의 첫 프레임을 요청 즉시 표시
         ChangeState(GetLocomotionState());
     }
@@ -232,7 +225,6 @@ public class CharacterRendering : MonoBehaviour
         // 기존 검 표시를 보관하고 Spawner의 실제 시간에 맞춰 전용 상태 진입
         if (!IsLifecycleAnimation && WeaponSprite != null) weaponWasVisible = WeaponSprite.enabled;
         IsLifecycleAnimation = true;
-        IsDeathAnimation = dead;
         LifecycleElapsed = 0f;
         lifecycleDuration = duration > 0f && !float.IsInfinity(duration) ? Mathf.Max(0.01f, duration) : 0.01f;
         dashPose = false;
@@ -465,7 +457,6 @@ public class CharacterRendering : MonoBehaviour
     private void UpdateAfterimages()
     {
         // 게임 정지 중에는 남은 수명과 색을 유지
-        ActiveAfterimages = 0;
         for (int i = 0; i < afterimages.Length; i++)
         {
             if (afterimageRemaining[i] <= 0f) continue;
@@ -474,7 +465,6 @@ public class CharacterRendering : MonoBehaviour
             image.transform.position = afterimagePositions[i];
             image.enabled = afterimageRemaining[i] > 0f;
             image.color = new Color(0.55f, 0.85f, 1f, 0.6f * afterimageRemaining[i] / AfterimageLifetime);
-            if (image.enabled) ActiveAfterimages++;
         }
     }
 
@@ -482,7 +472,6 @@ public class CharacterRendering : MonoBehaviour
     private void ClearAfterimages()
     {
         // 다음 대시에서 같은 표시 객체를 재사용할 수 있도록 수명만 초기화
-        ActiveAfterimages = 0;
         for (int i = 0; i < afterimages.Length; i++)
         {
             afterimageRemaining[i] = 0f;

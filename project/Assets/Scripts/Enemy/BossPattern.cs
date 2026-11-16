@@ -4,16 +4,14 @@ using UnityEngine;
 /// <summary>보스 패턴의 실행 조건·시간·완료와 아직 진행 중인 행동의 취소</summary>
 public abstract class BossPattern
 {
-    public string PatternId { get; private set; } // 선택 이력과 패턴별 사용 횟수를 구분할 고유 이름
+    public string PatternId { get; private set; } // 직전 패턴과 선택 후보를 구분할 고유 이름
     public float Weight = 1f; // 같은 우선순위 후보 사이의 상대 추첨 가중치
     public int Priority; // 특정 상황에서 일반 추첨보다 먼저 선택할 양수 우선값
     public float Cooldown; // 실제 시작 시점부터 다음 실행까지 필요한 게임 시간
     public float LastUsedTime { get; private set; } = float.NegativeInfinity; // 실제 실행이 시작된 마지막 게임 시간
-    public int UseCount { get; private set; } // 이번 전투에서 시작한 횟수와 다른 패턴 조건의 기준
     public bool IsRunning { get; private set; } // 완료 또는 취소 전까지 Tick을 받을 실행 상태
     public float Elapsed { get; private set; } // 이번 패턴이 실제로 진행한 게임 시간
     public BossCharacter Owner { get; private set; } // 실행 시작 때 연결한 같은 세션의 보스
-    public event Action<BossPattern> OnCompleted; // 정상 종료 뒤 보스가 Idle로 돌아갈 알림
 
     /// <summary>등록할 패턴의 고유 식별자 준비</summary>
     protected BossPattern(string patternId)
@@ -22,7 +20,7 @@ public abstract class BossPattern
         PatternId = patternId;
     }
 
-    /// <summary>공통 쿨타임을 확인하고 파생 패턴이 체력·거리·횟수 조건을 추가할 창구</summary>
+    /// <summary>공통 쿨타임을 확인하고 파생 패턴이 실행 조건을 추가할 창구</summary>
     public virtual bool CanRun(BossCharacter owner)
     {
         return owner != null && !IsRunning && !float.IsNaN(Cooldown) && !float.IsInfinity(Cooldown)
@@ -44,12 +42,11 @@ public abstract class BossPattern
     /// <summary>조건을 통과한 실제 시작만 기록하고 패턴별 준비 실행</summary>
     public bool Begin(BossCharacter owner)
     {
-        // 실패한 시작은 쿨타임이나 사용 횟수에 포함하지 않도록 먼저 검사
+        // 실패한 시작은 쿨타임에 포함하지 않도록 먼저 검사
         if (!CanRun(owner)) return false;
         Owner = owner;
         Elapsed = 0f;
         LastUsedTime = Time.time;
-        UseCount++;
         IsRunning = true;
         owner.HandlePatternStarted(this);
 
@@ -82,7 +79,6 @@ public abstract class BossPattern
         Owner = null;
         Elapsed = 0f;
         LastUsedTime = float.NegativeInfinity;
-        UseCount = 0;
     }
 
     /// <summary>정상 완료를 한 번 알리고 같은 실행의 후속 Tick 차단</summary>
@@ -91,7 +87,6 @@ public abstract class BossPattern
         if (!IsRunning) return;
         IsRunning = false;
         Owner.HandlePatternCompleted(this);
-        OnCompleted?.Invoke(this);
     }
 
     /// <summary>파생 패턴의 시작 시 조준·예고와 실행 변수 준비</summary>

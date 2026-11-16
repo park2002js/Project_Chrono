@@ -1,7 +1,0 @@
-Use case: ui-mockup
-Asset type: single reusable pixel-art save slot border for a dark 2D game; Aseprite style, production sprite design.
-Primary request: ONE empty wide rectangular save-slot frame, black mixed with deep blue, with occasional very dark violet highlight segments. It must also work as the border of a larger Settings window.
-Composition: one horizontal frame, roughly 4:1 width to height, straight orthographic front view, centered on a truly transparent background. Empty near-black flat interior. Thin layered bevel border with small stepped/chamfered pixel corners; subtle deep-blue top/left bevel, almost-black bottom/right shading. Sparse short dark-purple marks confined near the four corners so long middle edge strips remain uniform for nine-slice resizing.
-Style: clean deliberate hand-placed low-resolution pixel clusters, hard square pixels, small restrained palette, elegant and legible understated game menu frame. Aim for appearance of a 256x72 native sprite shown enlarged with nearest-neighbor.
-Constraints: asset only, NO text (the label "saveslot" and contents will be rendered separately in the UI), NO icons, NO characters, NO save files, NO entire screen, NO multiple examples. Keep the central area quiet and spacious. Transparent outside silhouette. Reusable unthemed corners.
-Avoid: bright neon, cyan glow, white highlights, noisy textures, gradients, antialiasing, rounded smooth corners, sci-fi circuit clutter, ornate fantasy decorations, labels, watermark, background checkerboard.

@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance; // 외부에서 GameManager 기능에 접근하는 단일 인스턴스
     public StageManager Stage; // MainWorld 생성·초기화·해제를 요청할 관리자
     public UI_Loading Loading; // 씬 전환·종료 대기 상태를 표시할 로딩 UI
-    public string SaveDirectory; // 기본 저장 위치 대신 사용할 경로이며 비어 있으면 문서의 Project_Chrono 폴더에 저장
     public bool IsLoading; // 씬 전환 또는 MainWorld 준비 중 중복 진입을 차단하는 상태
     public bool IsSessionActive; // 슬롯 선택부터 세션 종료까지 플레이 시간을 집계할지 표시
     public bool IsGameplayPaused; // 일반 정지 요청 여부이며 Draw의 별도 정지와 구분
@@ -48,8 +47,7 @@ public class GameManager : MonoBehaviour
         Application.wantsToQuit += HandleQuitRequested; // 창 닫기 요청도 저장 완료 후 종료 흐름으로 연결
 
         // Title UI와 독립적으로 공용 슬롯 데이터 준비
-        string directory = string.IsNullOrWhiteSpace(SaveDirectory) ? SaveData.CommonPath : SaveDirectory;
-        SaveManager.Initialize(directory);
+        SaveManager.Initialize(SaveData.CommonPath);
         SaveManager.LoadSlotsAsync().Forget(); // 부팅 흐름을 막지 않고 Title과 함께 공용 슬롯 로드 시작
     }
 

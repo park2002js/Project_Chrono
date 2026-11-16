@@ -6,8 +6,6 @@ using UnityEngine;
 public class CollisionBox
 {
     public DamageInstance Damage { get; private set; } // 이번 공격에서 Hitbox에 전달할 피해 정보
-    public Rect Area { get; private set; } // 회전 전 사각 영역의 월드 중심과 크기
-    public float Angle { get; private set; } // 사각 영역에 적용한 월드 Z 회전 각도
     public readonly HashSet<Character> HitTargets = new HashSet<Character>(); // 같은 공격에서 이미 판정한 피해 수신자
     public RaycastHit2D[] Results = new RaycastHit2D[16]; // 매 질의에 재사용하며 포화 시 확장할 Cast 결과 버퍼
     public bool IsActive { get; private set; } // 현재 피해 판정 구간이 열려 있는지 조회
@@ -137,21 +135,6 @@ public class CollisionBox
         bossCompletionOrder.Clear();
     }
 
-    /// <summary>실제 Cast와 같은 중심·크기·회전으로 사각 Gizmo 표시</summary>
-    public void DrawGizmos(Vector2 center, Vector2 size, float angle)
-    {
-        // 다른 Editor Gizmo에 영향을 주지 않도록 표시 상태 보관
-        Matrix4x4 previousMatrix = Gizmos.matrix;
-        Color previousColor = Gizmos.color;
-
-        // 질의와 동일한 기하로 판정 영역 표시 후 원래 상태 복구
-        Gizmos.matrix = Matrix4x4.TRS(center, Quaternion.Euler(0f, 0f, angle), Vector3.one);
-        Gizmos.color = IsActive ? Color.red : Color.yellow;
-        Gizmos.DrawWireCube(Vector3.zero, new Vector3(size.x, size.y, 0f));
-        Gizmos.matrix = previousMatrix;
-        Gizmos.color = previousColor;
-    }
-
     /// <summary>공간 질의에 사용할 두 좌표가 유한한지 확인</summary>
     private static bool IsFinite(Vector2 value)
     {
@@ -163,8 +146,6 @@ public class CollisionBox
     {
         // 비활성 판정과 유효하지 않은 기하 요청 제외
         if (!IsActive || !IsFinite(center) || !IsFinite(size) || size.x <= 0f || size.y <= 0f || !IsFinite(angle)) return 0;
-        Area = new Rect(center - size * 0.5f, size);
-        Angle = angle;
         if (Results == null || Results.Length == 0) Results = new RaycastHit2D[16];
 
         // 배열 포화에서 재조회해 임의의 최대 적중 수로 대상을 누락하지 않도록 처리

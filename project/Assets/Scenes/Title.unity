@@ -131,10 +131,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameSystems
       objectReference: {fileID: 0}
-    - target: {fileID: 6171050252790614657, guid: 105a0e9e1cdd31b40a55c1be834903ec, type: 3}
-      propertyPath: SaveDirectory
-      value: D:\00_Works\02_GameDev\Unity\Project_Chrono\project\Temp\StartupFlowChecks\ccf99ce0cbb5461e9a5725829f2ec9ae
-      objectReference: {fileID: 0}
     - target: {fileID: 7363782407644525664, guid: 105a0e9e1cdd31b40a55c1be834903ec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -1,8 +1,6 @@
 using System;
 using UnityEngine;
 
-public enum SlashPresentationPhase { Idle, FastZoom, SlowZoomHold, BladeGlint, Sheathing, ImpactWait }
-
 /// <summary>Draw 편집·Line 수명과 Slash 실행·판정 시점·전용 입력·시간·표시 전환 조정</summary>
 [DefaultExecutionOrder(20)]
 [RequireComponent(typeof(DrawVfx))]
@@ -21,13 +19,12 @@ public class SkillController : MonoBehaviour
     [Min(0f), InspectorName("납도 시간")] public float SlashSheatheDuration = 0.16f; // 섬광 뒤 칼이 완전히 닫히기까지의 시간
     [Min(0f), InspectorName("탁 → 공간참 대기")] public float SlashImpactDelay = 0.5f; // 납도 소리부터 실제 공간참 판정까지의 대기
     [Min(0f), InspectorName("탁 → 줌 복귀 시간")] public float SlashZoomOutDuration = 0.18f; // 납도 순간부터 원래 배율로 복귀할 시간이며 공간참 대기 안에서 제한
-    [Min(0.01f), InspectorName("전체 재생 속도")] public float SlashPlaybackSpeed = 1f; // 미리보기와 검사에서 모든 연출 구간을 같은 비율로 재생할 배속
+    [Min(0.01f), InspectorName("전체 재생 속도")] public float SlashPlaybackSpeed = 1f; // 모든 연출 구간을 같은 비율로 재생할 배속
     public AnimationCurve SlashFastZoomCurve = new AnimationCurve(new Keyframe(0f, 0f, 0f, 3f), new Keyframe(1f, 1f, 0f, 0f)); // 빠르게 접근한 뒤 느린 확대에 연결할 첫 확대 곡선
     public AnimationCurve SlashSlowZoomCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f); // 발도 유지부터 납도 직전까지의 느린 확대 곡선
     public AnimationCurve SlashZoomOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f); // 납도 뒤 원래 화면 배율로 돌아갈 확대 복귀 곡선
-    public float SlashDuration { get => SlashTimelineDuration / SlashPlaybackSpeed; set => SlashPlaybackSpeed = SlashTimelineDuration / value; } // 전체 실제 연출 길이를 조회하거나 모든 구간의 재생 배속으로 조정
+    public float SlashDuration => SlashTimelineDuration / SlashPlaybackSpeed; // 모든 구간의 배속을 반영한 전체 실제 연출 길이
     public float SlashTimelineDuration => SlashFastZoomDuration + SlashHoldDuration + SlashGlintDuration + SlashSheatheDuration + SlashImpactDelay; // 배속 적용 전 입력부터 공간참까지의 전체 길이
-    public SlashPresentationPhase SlashPhase { get; private set; } // 현재 확대·발도·섬광·납도·지연 중인 연출 구간
     public float SlashElapsed { get; private set; } // 이번 실행의 배속을 적용해 진행한 연출 시간
     public float SlashDamageMultiplier = 3f; // 현재 공격력에 적용할 Slash 피해의 초기 튜닝 배율
     public LayerMask SlashTargetMask = ~0; // Slash 사각에 포함할 피격 Collider의 레이어
@@ -42,7 +39,6 @@ public class SkillController : MonoBehaviour
     public float ConfirmSlashCooldown = 0.15f; // 새 확정 후 Slash 대기의 초기 튜닝값
     public float LineLifetime = 8f; // 새 확정 경로를 유지할 게임 시간의 초기 튜닝값
     public float LineRemaining { get; private set; } // Player의 현재 경로가 만료되기까지 남은 게임 시간
-    public float LineElapsed => HasLine ? totalLineLifetime - LineRemaining : 0f; // 현재 경로의 수명에 실제로 진행된 게임 시간
 
     private PlayerCharacter player; // 공통 시작 상태를 판단하고 요청을 전달할 자기 Player
     private CharacterRendering rendering; // Draw 중 Player를 암전 위에 표시할 자기 렌더링
@@ -275,7 +271,6 @@ public class SkillController : MonoBehaviour
         slashZoomOutTime = Mathf.Min(SlashZoomOutDuration, SlashImpactDelay);
         SlashElapsed = 0f;
         SlashRemaining = slashHitAt / slashSpeed;
-        SlashPhase = SlashPresentationPhase.FastZoom;
         slashGlintPlayed = false;
         slashClosePlayed = false;
         lastSlashSampleTime = Time.unscaledTimeAsDouble;
@@ -308,7 +303,6 @@ public class SkillController : MonoBehaviour
         // 외부 콜백이 새 실행을 요청하기 전에 현재 판정을 먼저 종료
         Slasher.Complete();
         SlashRemaining = 0f;
-        SlashPhase = SlashPresentationPhase.Idle;
         if (vfx != null)
         {
             vfx.ClearSlash();
@@ -399,7 +393,6 @@ public class SkillController : MonoBehaviour
         // 빠른 확대가 끝날 때 부분 발도가 이미 완료되어 유지 자세에 도착
         if (SlashElapsed < slashFastEnd)
         {
-            SlashPhase = SlashPresentationPhase.FastZoom;
             float progress = Progress(SlashElapsed, 0f, slashFastEnd);
             rendering.SetSlashDrawProgress(progress);
             gameCamera.SetSlashZoom(Mathf.Lerp(slashStartZoom, slashFastZoom, Curve(SlashFastZoomCurve, progress)));
@@ -410,12 +403,10 @@ public class SkillController : MonoBehaviour
         if (SlashElapsed < slashSheatheAt)
         {
             rendering.HoldSlashAnimation();
-            SlashPhase = SlashElapsed < slashGlintAt ? SlashPresentationPhase.SlowZoomHold : SlashPresentationPhase.BladeGlint;
         }
         else
         {
             rendering.SetSlashSheatheProgress(Progress(SlashElapsed, slashSheatheAt, slashCloseAt));
-            SlashPhase = SlashElapsed < slashCloseAt ? SlashPresentationPhase.Sheathing : SlashPresentationPhase.ImpactWait;
         }
         if (!slashGlintPlayed && SlashElapsed >= slashGlintAt)
         {

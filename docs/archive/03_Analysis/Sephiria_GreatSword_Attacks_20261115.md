@@ -334,7 +334,7 @@ A = (100 + AttackSpeed 능력치) / 100 × (1 + attackSpeedAmplify)
 - [1타 30fps CSV](Sephiria_GreatSword_Attacks_20261115/motion_attack1_30fps.csv), [2타 30fps CSV](Sephiria_GreatSword_Attacks_20261115/motion_attack2_30fps.csv)
 - [1타 60fps CSV](Sephiria_GreatSword_Attacks_20261115/motion_attack1_60fps.csv), [2타 60fps CSV](Sephiria_GreatSword_Attacks_20261115/motion_attack2_60fps.csv)
 - [원본 곡선·접선·이벤트·계산 표본 JSON](Sephiria_GreatSword_Attacks_20261115/motion_curves_and_frames.json), [FX 피벗·알파·GUID JSON](Sephiria_GreatSword_Attacks_20261115/vfx_metadata.json)
-- [분석 근거 파일 SHA-256 목록과 검증 결과](Sephiria_GreatSword_Attacks_20261115/validation.json)
+- 분석 근거 파일 SHA-256 목록과 검증 결과
 
 CSV의 위치는 Unity 단위이며 본문 표만16PPU 픽셀로 환산했다. `local_x/y`는 Shoulder 기준, `up_aim_player_relative_*`는 Player 기준이다. `sprite_top_center`는 이미지 사각 경계, `opaque_tip_center`는 실제 칼끝 픽셀 중심이다.
 

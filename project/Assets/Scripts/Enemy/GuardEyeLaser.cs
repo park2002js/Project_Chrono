@@ -33,7 +33,6 @@ public class GuardEyeLaser : MonoBehaviour
     public float PhaseElapsed { get; private set; } // 현재 표시 단계에서 경과한 게임 시간
     public float HistoryTime { get; private set; } // 이번 실행에서 위치 이력을 수집한 누적 게임 시간
     public Vector2 AimPosition { get; private set; } // 현재 두 눈이 함께 조준할 과거 Player 위치
-    public float DelaySeconds => AimDelay; // 사용자 확정으로 유지할 지연 조준 시간
     public float AimSampleTime => Mathf.Max(0f, HistoryTime - AimDelay); // 현재 보간에 사용하는 과거 게임 시각
 
     private const float AimDelay = 0.4f; // 현재 위치 대신 정확히 이 게임 시간 전의 위치를 조준

@@ -20,7 +20,6 @@ public class PlayerCharacter : Character
     public override bool IsInvulnerable { get => base.IsInvulnerable || IsSlashing || IsSpawning || IsInteracting; set => base.IsInvulnerable = value; } // 외부 무적과 능력·생성·상호작용의 전면 보호 합산
     public bool IsSpawning => Spawner != null && Spawner.IsSpawning; // 생성·부활 기상 중인지 자기 배치 컴포넌트에서 조회
     public bool IsInteracting => activeInteraction != null; // 수정의 완료·취소 사건을 기다리는 상호작용 상태
-    public event Action<bool> OnInteractionStateChanged; // 상호작용 진입·종료를 자기 표현 구독자에게 알릴 사건
     public float Groggy; // Slash로 제거·반사한 탄환에서 얻은 현재 그로기 게이지
     public const float MaxGroggy = 100f; // 보스 그로기를 즉시 발동하고 소모할 게이지 상한
     public float HitProtectionDuration = 0.75f; // 유효 피해 뒤 Hitbox 보호와 깜빡임을 유지할 게임 시간의 초기 튜닝값
@@ -57,7 +56,6 @@ public class PlayerCharacter : Character
     private double hitProtectionEndsAt; // 정지 중 흐르지 않는 게임 시각으로 정한 보호 만료 기한
     private float hitProtectionTotal; // 이번 피격에서 고정한 보호 길이이며 중간 설정 변경과 구분
     private CrystalCheckPoint activeInteraction; // 이번 상호작용의 완료·중단 알림을 받을 수정
-    private bool interactionNotified; // 수락 전 실패에서 종료 사건을 발행하지 않을 진입 알림 상태
 
     /// <summary>자신의 이동·표시·무기 컴포넌트와 초기 조준 위치 준비</summary>
     protected override void Awake()
@@ -371,8 +369,6 @@ public class PlayerCharacter : Character
         MoveDirection = Vector2.zero;
         attackHeld = false;
         body.Stop();
-        interactionNotified = true;
-        OnInteractionStateChanged?.Invoke(true);
         return true;
     }
 
@@ -390,9 +386,6 @@ public class PlayerCharacter : Character
         if (target != activeInteraction) return;
         if (target != null) target.OnActivationFinished -= HandleInteractionFinished; // 완료된 수정의 자기 구독 해제
         activeInteraction = null;
-        if (!interactionNotified) return;
-        interactionNotified = false;
-        OnInteractionStateChanged?.Invoke(false);
     }
 
     /// <summary>부활 사건에서 자기 행동·경로·게이지를 새 전투의 기본 상태로 복원</summary>

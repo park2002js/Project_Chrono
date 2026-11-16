@@ -89,7 +89,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   Stage: {fileID: 1806224540982316195}
   Loading: {fileID: 1750979741748351633}
-  SaveDirectory: 
   IsLoading: 0
   IsSessionActive: 0
   IsGameplayPaused: 0

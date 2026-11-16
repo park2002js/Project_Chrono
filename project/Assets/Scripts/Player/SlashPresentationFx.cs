@@ -18,7 +18,6 @@ public class SlashPresentationFx : MonoBehaviour
     public Camera BoundCamera { get; private set; } // 준비 단계에서 한 번 연결한 월드 전용 카메라
     public Material SpaceMaterial { get; private set; } // 다른 Player의 연출 값을 덮지 않을 실행 전용 재질
     public bool IsSpaceSlashPlaying => spaceRemaining > 0f; // 월드 화면의 어긋남 복원이 진행 중인지 조회
-    public bool IsBladeGlintPlaying => glintRemaining > 0f; // 칼날 중앙 섬광의 실제 시간 재생 여부
     public static SlashPresentationFx ActiveSpaceSlash { get; private set; } // 렌더러가 현재 공간참 소유자와 카메라만 확인할 창구
 
     private AudioSource audioSource; // 게임 시간 정지 중에도 효과음을 재생할 자기 오디오 소스

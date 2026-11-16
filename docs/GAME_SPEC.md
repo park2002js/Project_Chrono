@@ -1,6 +1,8 @@
 # Project Chrono — 통합 기획·클래스 정의
 
-최초 정리: 2026-11-14. 현재 갱신: **2026-11-16 (Asia/Seoul)**. 문서 통합·Q1~Q29 답변 반영과 **F-S01 초기화, F-P01~F-P11 이동·공격·Draw/Slash·피격·사망/부활·수정·고정 효과**를 구현·연결하고 기존73묶음 검사를 마쳤다. F-B01~F-B06의 보스 공통 기반·더미4패턴·탄환 상속·Slash/그로기를 포함한 최신96묶음도 통과했으며2.2.1~2.2.6에 구현·확인 근거를 기록한다. 최종 Sprite/FX/음향·경비 로봇 실제5패턴·Ending·제출 빌드 등 전체 게임 완료와 구분한다.
+최초 정리: 2026-11-14. 현재 갱신: **2026-11-16 (Asia/Seoul)**. 이 문서는 현재 사양·클래스·기능별 흐름과 개정 근거의 원본이다. 문서 통합·Q1~Q29 답변 반영 후 F-S01·F-P01~F-P11·보스 공통 기반, 경비 로봇5패턴, Sprite·FX·일부 음향, 최초 입장과 임시 데모 엔딩을 구현·연결했다. 제출 전 소스 정리와 Windows Player 빌드 성공까지의 결과는 [개발 결과 종합](results/Development_Results.md)에서 한 번에 읽는다. 기능별 격리 검사와 실제 전체 플레이·성능 실측·미술 승인은 각각의 범위를 구분한다.
+
+2026-11-16 사용자 요청에 따라 일회성 전송·검사·이전 판본·지난 오류 로그를 정리하고 최종 규칙·원본·확인 결과와 현재 한계만 남겼다. 기능별 검사와 미완 상태를 구분하며 `project`는 문서 정리에서 수정하지 않았다.
 
 사용자 후속 확정: **문서 작업이 완전히 끝나고 Sprite·FX·animation 등의 연출을 제외한 로직의 방향이 확실해진 뒤 Unity 개발을 시작한다.** 2026-11-15 후속 요청으로 시스템의 첫 Case인 F-S01 코드 작업을 시작했다. 기존 `/project`와 Title·MainWorld 씬을 사용하며, 실제 API 호출 흐름과 확인 결과를 해당 Case에 기록한다.
 
@@ -26,7 +28,7 @@
 | L1 | [핵심 기획 확정](notes/01_핵심_기획_확정.md) | 기존 규칙·튜토리얼·태엽 보스와의 충돌 |
 | L2 | [게임계획서](notes/게임계획서.md) | 캡스톤/PlayX4 범위, 시간 테마·회피 자원 |
 
-기존 02·03 기획 문서는 대부분 빈 양식이므로 구현·검증·범위 동결의 증거로 사용하지 않았다. 원문 파일과 이미지들은 수정하지 않는다.
+미작성 양식은 결과 근거로 사용하지 않는다. 개발자가 작성한 기획·Notion 원문과 이미지는 고유 출처로 유지한다.
 
 ### 제출 범위와 컨셉
 
@@ -37,7 +39,7 @@
 - N3 연구소·마도공학수정 컨셉을 원문으로 보존한다. 과거 시간 소녀·자유 보스 선택과의 세계관 통합을 이번 짧은 흐름에 필수인 신규 과제로 만들지 않는다.
 - 커서 기준 몸체·이동 모션 **왼앞·오앞·왼뒤·오뒤의 4방향** 우선(2026-11-15 Player 시안 후속 요청), 8방향 표현은 2차 목표. 실제 이동은 WASD 8방향·대각 속도 정규화. Player 이동/대시는 벽 통과 불가, Slash는 벽과 무관하게 Line 박스 영역 판정.
 - 저장·Title UI 초기화는 UniTask, 나머지는 Unity 코루틴. 현재 Player 음향은 추출 WAV와 Unity 내장 AudioSource를 사용하며 FMOD는 이전 선택 이력이다. 카메라는 자체 GameCamera. 사용자 조건과 호환 조사에 따라 **Unity 6.3 LTS 계열** 선택(3.4).
-- DebugController는 Editor에서만 개입한다. 제출 소스에는 포함하고 디버그 제어 코드의 제작 효율 향상에 AI를 사용했음을 기록한다. 플레이어 빌드에서 디버그 입력을 활성화한다는 뜻은 아니다.
+- 사용자 후속 요청(2026-11-16)에 따라 실제 게임 구동과 무관한 Editor 검사·제작 도구, 시험 씬/보스와 관측·기즈모 코드를 프로젝트에서 제거했다. 이전 DebugController 포함 계획을 대체하며 기존 검증·선택 이력은 보존한다. 정리 범위와 최종 확인은3.7을 따른다.
 - Windows 10/11·키보드/마우스, 1920×1080 목표 60FPS는 기존 원문 기준으로 유지한다. 새 플랫폼 변경 요청은 없음. 과거 11/27·30일 일정은 현재 마감으로 사용하지 않는다.
 
 ### 프로젝트 완성 목표 — 콘텐츠·연출 추가에 집중할 수 있는 기반
@@ -49,7 +51,7 @@
 - FX·VFX·animation·음원은 U01·U02·U06~U08의 행동·타격·완료/중단 신호에 연결하고, 수치·프레임·피벗·타이밍 같은 세부 조정을 계속할 수 있어야 한다.
 - 추가할 코드·데이터·프리팹·자산의 위치와 연결 방법을 실제 구현 결과와 함께 남긴다. 이름만 있는 API나 빈 함수, 미검증 연결을 기반 완성으로 보지 않는다.
 
-현재는 **F-S01 시작·초기화 흐름만 구현·검증한 상태**이며 전체 전투·콘텐츠 기반 완성과 구분한다. 현재 경비 로봇 1명 우선 범위는 유지한다. 범용 에디터나 대규모 콘텐츠 프레임워크를 새 필수 기능으로 추가하는 뜻은 아니다. 이 기반이 동작한 뒤 3.1.1의 성능 비교로 선택 이유를 실측 근거까지 보강한다.
+현재는 F-S01·Player F-P01~F-P11·경비5패턴·입장·임시 데모 엔딩을 구현·연결하고 기능별 검사를 수행했다. 전체 실행 파일의 연속 시연·최종 밸런스·Profiler 비교는 미확인이며 경비 로봇1명 우선 범위를 유지한다. 범용 에디터나 대규모 콘텐츠 프레임워크를 새 필수 기능으로 추가하는 뜻은 아니다. 이 기반이 동작한 뒤 3.1.1의 성능 비교로 선택 이유를 실측 근거까지 보강한다.
 
 ## 1. 클래스·구조체·enum 정의
 
@@ -107,7 +109,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 - **역할**: 입력받은 의도로 일반 이동·대시를 계산하고 AttackController의 강제 전진을 합산해 행동 상태를 확정한다. 위치에 실제로 갈 수 있는지와 충돌 후 위치 적용은 Body에 맡긴다. 무기·스킬 선택 시스템은 만들지 않는다.
 - **생명 주기**: Map 검증 후 복제된 Player의 Spawner.Awake가 최초 수치·위치를 준비한다. PlayerCharacter.Awake는 자기 컴포넌트 확보 후 OnDie·OnCutScene에 자기 CancelAttack을 연결하고 OnDestroy에서 해제한다. 입력 Update(-100) → Character.Update(0)의 일반/대시/공격 전진 합산·Body.Move 즉시 적용·Rendering.SetMovement 전달·타이머 진행 → Rendering.Update(3) → Attack.Update(10) 순서다. 이전 FixedUpdate·물리 결과 누적 계약은 2026-11-16 사용자 요청으로 대체했다. 앱/Title 종료 전까지 같은 Player를 사용하며 사망/부활에도 같은 개체와 서비스 연결을 유지하며 자기 OnRevive 구독은 OnDestroy에서 해제한다.
-- **보유 공개 API**: `SetMoveInput`, `SetAimPosition`, `SetAttackInput(bool)` — 의도 캐시; `ApplyAttack()` — 공통 행동 허용 확인 후 최신 커서 좌표로 새 타 또는 허용 구간의 클릭 예약 요청; `ApplyDraw()`·`CancelDraw()` — Draw 공통 시작 허용/취소 전달; `CancelAttack` — 공격 의도·진행·콤보 정리; `ApplyDash()` — 조건·방향·시간 설정과 시작 여부 반환; `CancelDash` — 대시 이동·Dodge·입력 잠금과 마지막 Body 결과 정리, 쿨타임 유지; `ResetMotion` — 재배치 때 대시·공격까지 초기화. `ApplyInteraction`·`CancelInteraction`은 수정 요청/진행 중단, `OnInteractionStateChanged(bool)`는 자기 진행 알림이며 부활 리셋은 자기 OnRevive 구독에서 실행한다.
+- **보유 공개 API**: `SetMoveInput`, `SetAimPosition`, `SetAttackInput(bool)` — 의도 캐시; `ApplyAttack()` — 공통 행동 허용 확인 후 최신 커서 좌표로 새 타 또는 허용 구간의 클릭 예약 요청; `ApplyDraw()`·`CancelDraw()` — Draw 공통 시작 허용/취소 전달; `CancelAttack` — 공격 의도·진행·콤보 정리; `ApplyDash()` — 조건·방향·시간 설정과 시작 여부 반환; `CancelDash` — 대시 이동·Dodge·입력 잠금과 마지막 Body 결과 정리, 쿨타임 유지; `ResetMotion` — 재배치 때 대시·공격까지 초기화. `ApplyInteraction`·`CancelInteraction`은 수정 요청/진행 중단이며 부활 리셋은 자기 OnRevive 구독에서 실행한다.
 - **보유 공개 변수**: `public Line? CurrentLine;` — 후속 사용자 요청으로 getter/internal setter 프로퍼티 대신 공개 원본 필드로 제공. 확정·수명·소비의 흐름은 SkillController가 관리한다. `HitProtectionDuration`, 현재 시각을 읽는 `HitProtectionRemaining`·`HitProtectionElapsed`·`IsHitProtected`, `OnHitProtectionChanged(bool)`, `Buffs`, `Spawner`, `IsSpawning`, `IsInteracting`, `IsSlashing`, `Groggy`·`MaxGroggy`, `MoveDirection`, `AimDirection`, `AimWorldPosition`, `IsInCombat`, AttackController를 읽는 `IsAttacking`, 자기 `Skills`·`IsDrawing`; 대시 설정 `DashSpeed`, `DashDeceleration`, `DashDuration`, `DodgeDuration`, `InputBlockDuration`, `DashCooldown`; `DashDirection`과 네 Remaining 시간, `IsDashing`, `IsDodge`, `IsInputBlocked` 조회. 공격·대시 전용 값은 Body에 중복 보관하지 않는다. 이동은 같은 Update 호출에서 끝나며 미처리 요청은 없다. CancelDash는 Body.Stop으로 마지막 결과·관성을 정리하고 ResetMotion·비활성화·이동 불가 분기는 Rendering에 이동0도 전달한다.
 - **F-P08 API**: `ResetHitProtection`은 기한/상태를 정리하고 필요한 false 사건만 발행한다. BeginHitProtection과 만료 전환은 자기 구독/Update에서 처리한다. 최초/재피격 기간은 시작 때 snapshot을 사용하고 Remaining은 기한으로 계산하므로 Update 이전의 피해도 최신 만료 상태를 본다.
 - **연관 class**: Input은 Character에 의도를 전달한다. Character는 일반/대시/공격 전진의 합산 변위를 Body.Move에 적용하고 Rendering에는 일반 변위·조준을 직접 전달한다. 공격 중 조준은 AttackDirection을 유지한다. 충돌 결과를 모션 입력으로 되돌리거나 누적하지 않는다. Character의 사망·컷씬·입력/자기 비활성화는 취소 경로, 재배치는 전체 리셋 경로를 사용한다. Body 비활성은 마지막 결과·관성을 비우며 Character의 다음 Update가 대시 시간과 이동 표시도 리셋한다.
@@ -133,7 +135,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **역할**: 고정 무기의 방향·어깨/반사·클립 샘플, 3회 콤보·입력 예약·타격 생성, 검기와 강제 전진을 관리한다. Character가 공통 허용을 검사하고 Body가 최종 충돌·위치를 적용한다.
 - **생명 주기**: Player.Awake에서 자기 Character·직렬화 Animator/렌더러·클립 길이/검기 배열을 한 번 확보한다. 같은 Player의 CharacterRendering.BodySprite 레이어·순서를 최초 준비에서 캐시하고 검은 몸체 순서±1,검기는+1로 표시한다. 기본 몸체20이면 검19/21·검기21이며 원작 SortingGroup 내부의±1을 전역값−1/1로 적용하지 않는다. 공격하지 않는 Idle·이동·Wait2/Wait3에서는 조준 방향과 무관하게 검을 몸체 뒤(기본19)에 둔다. 실제 공격 중 SampleAttack의 기존 앞뒤 전환과 Wait 클립의 위치/각도 곡선은 유지한다. 판정·검기는 각각3슬롯을 준비하고 동시 수명이 더 필요할 때만 늘린 뒤 재사용한다. 입력 Update(-100)→Character.Update(0)의 요청/합산 이동→Rendering.Update(3)→Attack.Update(10)의 모션·이벤트 순서다. 생성된 각 판정은 방향·피해·중복 대상·0.15게임초 수명을 독립 보존하므로 새 타 시작으로 이전 타를 닫지 않는다. 취소·자기 비활성화는 모든 판정·검기·전진·예약·콤보를 정리한다. Animator가 활성이면 원작 Idle 곡선을 즉시 평가하고 비활성 중이었다면 재활성 OnEnable에서 Idle·speed1을 복구한다. Motion의 위치/회전을0으로 덮지 않는다.
 - **보유 API**: `internal ApplyAttack(Vector2)` — 대기 중 새 타 시작 또는 공격 중 허용 시점 이후 클릭 한 번 예약; `UpdateAim` — 대기 중 어깨 위치/방향/좌우 반사; `GetAttackDisplacement(dt)` — 각 타 시작에 고정한 입력/커서 방향으로 기본거리0.5의0.3초 감속 전진 반환; `OpenHitWindow`, `CloseHitWindow` — 새 타 판정 생성/전체 종료; `ResetCombo`, `CancelAttack` — 콤보/강제 종료. 해제는 이미 허용한 예약을 지우지 않으며 처음 무시한 짧은 입력은 저장하지 않는다. 진행 중 대시 전환은 허용하지 않고 비치명 피격 자체는 중단하지 않는다.
-- **보유 공개 변수**: `WeaponPivot`, `WeaponMotion`, `WeaponAnimator`, `WeaponRenderer`, `AttackVfxRenderer`, `Attack1Vfx/Attack2Vfx/Attack3Vfx`; `AimDirection`, `AttackDirection`; `ComboIndex`, `ComboRemaining`, `AttackCooldownRemaining`, `IsAttacking`, `HasBufferedAttack`, `AttackElapsed`, `CurrentAttackDuration`, `AttackInputOpenTime`, `IsAttackInputAllowed`; 가장 최근 판정 `HitBox`와 독립 활성 수 `ActiveHitWindows`. 공격력·공격속도는 Character.AD/AS를 조회한다. `AttackDashSpeed=10f/3f`, `AttackDashDuration=0.3f`는 입력 유무와 무관하게 기본거리0.5를 만드는 사용자 확정값이다. 실제 거리는 SP/basicSP를 곱하며 원작 전진 거리0.6·시간과 프로젝트 사각 기하/3타 피해 배수는2.1.3에 구분한다.
+- **보유 공개 변수**: `WeaponPivot`, `WeaponMotion`, `WeaponAnimator`, `WeaponRenderer`, `AttackVfxRenderer`, `Attack1Vfx/Attack2Vfx/Attack3Vfx`; `AimDirection`, `AttackDirection`; `ComboIndex`, `ComboRemaining`, `AttackCooldownRemaining`, `IsAttacking`, `HasBufferedAttack`, `CurrentAttackDuration`, `AttackInputOpenTime`, `IsAttackInputAllowed`; 가장 최근 판정 `HitBox`. 공격력·공격속도는 Character.AD/AS를 조회한다. `AttackDashSpeed=10f/3f`, `AttackDashDuration=0.3f`는 입력 유무와 무관하게 기본거리0.5를 만드는 사용자 확정값이다. 실제 거리는 SP/basicSP를 곱하며 원작 전진 거리0.6·시간과 프로젝트 사각 기하/3타 피해 배수는2.1.3에 구분한다.
 - **연관 class**: WeaponPivot의 조준·반사 아래 WeaponMotion은 Animator의 Idle·Attack1~3·Wait2/3 곡선을 수동 샘플한다. 검기는 Player 위치만 추종하고 생성 당시 회전/반사/상대 위치를 보존한다.1·2타 검기는 생성 후0.2게임초를 AS와 별개로 재생하고 새3타는 R14 모션 시간으로6개 합성 상태를 표시한다. CollisionBox→Hitbox→Character로 한 타/수신자당1회 피해를 전달한다. 새3타의 두 색 검기도 판정/피해/전진은 한 번만 생성한다. 전용 공격 몸체 Sprite는 별도 아트 범위이며 현재 음향/적중 표현은 U08·F-U07을 따른다.
 
 #### P06. SkillController — 명칭 확정, MonoBehaviour
@@ -143,11 +145,11 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **역할**: 능력 자체 조건·모드·쿨타임·Line 수명·Slash 연출 시점과 입력/시간/UI/카메라 전환 조정. 공통 시작 허용은 Character와 중복 검사하지 않는다.
 - **생명 주기**: Awake에서 자기 컴포넌트와 Drawer/Slasher를 준비하고 Start에서 MainWorld 서비스를 한 번 보관한다. 새 Line만 수명/경고/낡은 만료 표현을 초기화한다. RefreshSkillTime은 공유 게임 시각으로 수명·쿨을 한 번 갱신하고 SlashRemaining은 unscaled로 진행한다. Skill 비활성화는 Draw/Slash를 즉시 취소하고 기존 미소비 Line·남은 수명을 보존한다. 실제 사망 ResetSkills는 Line·수명·대기·표현까지 정리한다.
 - **보유 API**: Character에서 요청하는 internal ApplyDraw/ApplySlash; 공개 UpdateDrawAim·PlacePoint·ResetPoints·ConfirmLine·CancelDraw·CancelSlash·SetLine(Line?)·ConsumeLine(out Line)·RefreshDrawCooldown·ResetSkills. ConsumeLine은 유효한 기하만 한 번 제거·반환하고 긴 Draw 대기를 설정하며 자연 만료 FX를 재생하지 않는다. 자연 만료는 짧은 대기·전용 꼬리로 구분한다. RefreshDrawCooldown은 Fever 획득 때 기본 대기 길이×현재 배율을 상한으로 현재 남은 대기를 줄이며 재획득마다 남은값을 반복 반감하지 않는다.
-- **보유 공개 변수**: IsDrawing·IsSlashing·HasLine·CanDraw, Drawer·Slasher, LineLifetime·LineRemaining·LineElapsed, DrawCooldownRemaining·SlashCooldownRemaining, SlashDuration·SlashRemaining·SlashDamageMultiplier·SlashTargetMask와 초기 기하/대기 튜닝값.
+- **보유 공개 변수**: IsDrawing·IsSlashing·HasLine·CanDraw, Drawer·Slasher, LineLifetime·LineRemaining, DrawCooldownRemaining·SlashCooldownRemaining, SlashDuration·SlashRemaining·SlashDamageMultiplier·SlashTargetMask와 초기 기하/대기 튜닝값.
 - **연관 class**: Player는 공통 행동·Line 원본, Skill은 전환/시간, Drawer/Slasher는 기하/질의, DrawVfx는 표현을 맡는다. Slash 시작에 소모한 Line은 취소해도 복원하지 않으며 일반 pause·기존 무적 상태를 덮어쓰지 않는다. 전역 CutsceneController 전체는 후속이다.
 - **후속 사용자 확정**: 이번 Line 소유 요청이 기존 Q7/P06의 Skill 보유·P07 타이머 배치를 대체한다. 원문/답변을 출처로 보존하며 P03 원본/P06 수명/P07 임시 기하를 따른다. SkillManager는 현재 SkillController의 별칭이다.
 
-**F-P07 연출 후속 코드(2026-11-16, 현재 연결·격리19/23묶음 확인)**: `SlashPresentationPhase`의 FastZoom→SlowZoomHold→BladeGlint→Sheathing→ImpactWait를 같은 unscaled 경과로 샘플한다. `SlashFastZoomDuration`·`SlashHoldDuration`·`SlashGlintDuration`·`SlashSheatheDuration`·`SlashImpactDelay`·`SlashZoomOutDuration`, `SlashPlaybackSpeed`와 빠른/느린/복귀의3개 AnimationCurve를 Inspector에서 조절한다. 시작에 시간·배속·줌 목표를 snapshot으로 고정하며 `SlashElapsed`·`SlashRemaining`·`SlashPhase`로 진행을 조회한다. `SlashDuration`은 별도 고정 대기 필드 대신 전체 길이/배속의 계산 프로퍼티이며 설정하면 전체 배속을 바꾸는 기존 검사 호환 창구다. 발도 데이터/FX 준비 실패는 Line 소비 전에 거부한다. `SlashPresentationFx`는 Skill.Start가 준비된 월드 카메라를 한 번 전달하고 칼날 빛·납도음·공간참음/화면 표현만 요청받는다. 실제 판정·전투 시간/입력 해제는 지연 공간참 시점이며 상세·검증 상태는2.1.7을 따른다.
+**F-P07 연출 후속 코드(2026-11-16, 현재 연결·격리19/23묶음 확인)**: 빠른 확대→느린 확대/발도 대기→칼날 빛→납도→공간참 대기의 구간을 같은 unscaled 경과로 샘플한다. `SlashFastZoomDuration`·`SlashHoldDuration`·`SlashGlintDuration`·`SlashSheatheDuration`·`SlashImpactDelay`·`SlashZoomOutDuration`, `SlashPlaybackSpeed`와 빠른/느린/복귀의3개 AnimationCurve를 Inspector에서 조절한다. 시작에 시간·배속·줌 목표를 snapshot으로 고정하며 `SlashElapsed`·`SlashRemaining`으로 진행을 조회한다. `SlashDuration`은 전체 길이/배속을 조회하는 계산 프로퍼티이며 검사 전용 setter는 제거했다. 발도 데이터/FX 준비 실패는 Line 소비 전에 거부한다. `SlashPresentationFx`는 Skill.Start가 준비된 월드 카메라를 한 번 전달하고 칼날 빛·납도음·공간참음/화면 표현만 요청받는다. 실제 판정·전투 시간/입력 해제는 지연 공간참 시점이며 상세·검증 상태는2.1.7을 따른다.
 
 **F-P07 시전 표시 연결 후속(2026-11-16, 연결·격리22/28묶음 확인)**: Skill.ApplySlash는 유효 Line을 시작1회 소비하고 Slasher.Execute에 snapshot을 넘긴 직후 DrawVfx.ShowSlashLine(snapshot)을 요청한다. Skill.SetLine은 시전 중에도 Player 원본·수명은 갱신하지만 유지 snapshot의 표시를 덮지 않으며, FinishSlash는 Slasher.Complete 뒤 ClearSlash·ShowLine(player.CurrentLine)으로 유지 표시를 끝내고 현재 원본을 다시 표시한다. 통상 원본은 이미 소비돼 null이며 취소가 소비한 Line을 복원하지 않는다. 이 책임은 LineDrawer의 임시 기하나 Draw R08 alpha/입자 정책을 변경하지 않는다.
 
@@ -213,12 +215,12 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 **현재 F-B01~06 구현, 실행 검증 완료**: Character의 체력·피해·사망을 상속하고 Awake에서 효과와 BossPatternSelector를 한 번 준비하며 구체 보스의 InitializePatterns를 호출한다. 등록 완료는 PatternsInitialized로 확인하고 BeginEncounter(Player)에서 대상을 연결한다. Update는 그로기 또는 현재 패턴만 진행하고 Idle이면 Selector에 요청한다. ApplyPattern은 등록·조건·직전 제외를 확인하며 패턴의 내부 완료 통지에서 현재 참조만 비워 Idle로 복귀한다. 그로기·사망·컷씬·재도전은 CancelPattern으로 후속 발사만 중단하고 필드 위험물 정리는 Stage의 전투 종료 경계로 분리한다. HandleSlashHit는 부위 집계 완료 뒤 보스별 기믹을 판단할 상속 창구다. 현재 실행 결과는2.2.1~2.2.6을 따른다.
 
-**기존 F-P07~11 지원**: ReportSlashPart는 같은 AttackId의 고유 PartId를 수집하고 CompleteSlash는 한 번만 HandleSlashHit·OnSlashCompleted를 호출한다. GroggyRemaining은 Boss가 가진 단일 게임 시간 원본이며 게이지100은 즉시 진입·0소모, 일반 Apply(Groggy)는 다음 프레임 진입한다. 재진입은 기간만 갱신하며 OnGroggy를 중복 발행하지 않는다. ResetCombatState는 효과·예약·부위·기본 수치에 더해 현재 패턴·쿨타임·횟수·직전 이력도 복구한다. 이전 지원 기능 확인은2.1.9·2.1.11에 보존한다.
+**기존 F-P07~11 지원**: ReportSlashPart는 같은 AttackId의 고유 PartId를 수집하고 CompleteSlash는 한 번만 HandleSlashHit를 호출한다. GroggyRemaining은 Boss가 가진 단일 게임 시간 원본이며 게이지100은 즉시 진입·0소모, 일반 Apply(Groggy)는 다음 프레임 진입한다. 재진입은 기간만 갱신한다. ResetCombatState는 효과·예약·부위·기본 수치에 더해 현재 패턴·쿨타임·직전 이력도 복구한다. 이전 지원 기능 확인은2.1.9·2.1.11에 보존한다.
 
 - **역할**: Boss의 공통 전투·행동 실행 창구. Idle에서는 패턴 목록을 직접 알지 않고 매 프레임 BossPatternSelector에 요청한다. 후보가 없으면 Idle 유지. 100 게이지 도달 즉시 그로기, 현재 패턴 중단. 기존 필드 투사체·장판은 유지한다(Q25·Q27·Q28).
 - **생명 주기**: StageManager가 프리팹을 복제, BossSpawner가 기본 수치·위치·Trigger를 준비한다. Player 사망 시 같은 Boss의 위치·수치를 초기화한다. 양쪽 OnDie 상호 구독은 어느 한쪽 사망 때 해제하고 재전투 시 연결한다. 처치 Boss는 우선 전체 프리팹의 사망 표시 B안, 사체 전용 A안과 비교는 보류.
 - **보유 공개 API**: `BeginEncounter(PlayerCharacter)`, `EndEncounter` — 전투 대상 연결/해제; `EnterGroggy`·`ExitGroggy` — 그로기 진입/종료; `ResetCombatState` — 재도전 상태·패턴 이력 복구; `ApplyPattern`·`CancelPattern` — 선택 패턴 시작/중단; `ReportSlashPart`·`CompleteSlash`·가상 `HandleSlashHit` — 같은 AttackId의 부위 수집·보스별 성공 판단. 전투 양쪽 OnDie 구독은 StageManager가 소유하며 피해 API는 Character 상속.
-- **보유 공개 변수**: BossId·BossName·IsInCombat·IsGroggy·GroggyDuration·GroggyRemaining·CurrentPattern·BasePosition·PatternSelector·Target·PatternsInitialized, SlashParts·LastCompletedSlashAttackId·Buffs·OnSlashCompleted·OnGroggy. 패턴 목록은 Selector, 전투 Target은 Boss가 보유한다. 몸체 Collider는 Player 진입을 막으며 접촉 자체의 피해는 없다.
+- **보유 공개 변수**: BossId·BossName·IsInCombat·IsGroggy·GroggyDuration·GroggyRemaining·CurrentPattern·BasePosition·PatternSelector·Target·PatternsInitialized, Buffs. 패턴 목록은 Selector, 전투 Target은 Boss가 보유한다. 몸체 Collider는 Player 진입을 막으며 접촉 자체의 피해는 없다.
 - **연관 class**: Boss_01~06이 상속; BossSpawner·BossPatternSelector·CharacterBuff 보유. Stage.BeginEncounter가 Player/Boss의 OnDie에 전투 종료를 구독하고 어느 한쪽 사망에서 그 전투 구독만 해제한다. EncounterTrigger·MapManager·SaveManager·UIController와 연결한다.
 
 #### B02. BossSpawner — Boss 프리팹 Component
@@ -233,7 +235,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 #### B03. Boss_01…Boss_06 — Boss_01 우선, 나머지 후속 범위
 
-**공통 기반용 시험 구현**: `DummyBoss : BossCharacter`와 내부 `DummyProjectilePattern : BossPattern`으로 일반탄·금색탄·레이저·장판을 각각 발사하는4개 임시 패턴을 등록한다. 체력50%의 Phase2, 금색탄 가중치2, Phase2 최초 금색탄 우선값10, Phase2 레이저 허용, 금색탄 실행 후 거리 조건을 만족한 장판을 예시로 사용한다. 같은 Slash의 부위1·2는 DummyBoss가 그로기를 요청한다. 이 값과 패턴은 검증용이며 아래 경비 로봇5패턴이나 후속 보스 콘텐츠가 완성됐다는 의미가 아니다. 상속과 새 패턴 추가 절차는2.2.3을 따른다.
+**이전 공통 기반 시험 구현 이력(현재 제출 코드에서 제거)**: `DummyBoss : BossCharacter`와 내부 `DummyProjectilePattern : BossPattern`으로 일반탄·금색탄·레이저·장판을 각각 발사하는4개 임시 패턴을 등록한다. 체력50%의 Phase2, 금색탄 가중치2, Phase2 최초 금색탄 우선값10, Phase2 레이저 허용, 금색탄 실행 후 거리 조건을 만족한 장판을 예시로 사용한다. 같은 Slash의 부위1·2는 DummyBoss가 그로기를 요청한다. 이 값과 패턴은 검증용이며 아래 경비 로봇5패턴이나 후속 보스 콘텐츠가 완성됐다는 의미가 아니다. 상속과 새 패턴 추가 절차는2.2.3을 따른다.
 
 - **역할**: Boss별 수치·패턴·기믹을 정의한다. N3 순서대로 Boss_01~06 이름을 사용한다(Q4). 현재 제출 대상은 경비 로봇 Boss_01과 아래 5패턴 전체(Q24), 나머지는 후속 확장 원문 목록이다.
 - **생명 주기**: BossCharacter/BossSpawner의 수명을 따른다. 패턴 전용 투사체·구조물은 패턴 실행에 맞춰 준비한다. 그로기 때 현재 패턴만 중단하고 이미 나온 위험물은 자체 수명까지 유지한다. 사망·재도전 정리는 그로기와 분리한다.
@@ -262,51 +264,51 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 - **05 FanShotPattern**: FanWarmup0.4·FanBurstInterval0.3·FanRecovery0.5·FanBulletCount5·FanSpread60·FanBulletSpeed6·FanBulletLifetime0·FanBulletDamage10. 0.3게임초/총구1→5 두 바퀴·10묶음은 사용자 확정이고 나머지는 초기값이다. CanRun은 중앙 총구↔Player4.5 접근 조건/설정을 확인한다. OnBegin은 count0·nextBurstAt=Warmup·interval 고정·completeAt=Infinity, OnTick은 최대1묶음 FireFan(count%5) 뒤 nextBurstAt=Elapsed+interval로 정하고10번째 뒤 회복을 확보한다. Cancel은 미래 묶음만 막는다.
 
-- **04 EyeLaserPattern**: Boss_01의 EyeLaser를 필수 참조로 확인한다. CanRun은 공통 조건·생존 Target·대기 실행체, OnBegin은 EyeLaser.Begin(Target)이 거부되면 Complete, OnTick은 EyeLaser.Tick(gameDelta) 뒤 !IsRunning이면 Complete, OnCancel은 EyeLaser.Cancel이다. 별도 Update나 우선 순서는 추가하지 않는다. GuardEyeLaser 독립 실행체의 실제 API/흐름은 B03.3·2.2.11을 따르며 기존 Projectile/AreaProjectile/LaserProjectile 상속표를 확장하지 않는다.
+- **04 EyeLaserPattern**: Boss_01의 EyeLaser를 필수 참조로 확인한다. CanRun은 공통 조건·생존 Target·대기 실행체, OnBegin은 EyeLaser.Begin(Target)이 거부되면 Complete, OnTick은 EyeLaser.Tick(gameDelta) 뒤 !IsRunning이면 Complete, OnCancel은 EyeLaser.Cancel이다. 별도 Update나 우선 순서는 추가하지 않는다. GuardEyeLaser 독립 실행체의 실제 API/흐름은 B03.3·2.2.11을 따르며 현재 비행 Projectile 상속 계층과 별도로 실행한다.
 
 #### B03.2 GuardHandAttack·GuardHandPhase — F-B07-02~03
 
 **R02 정정·03 공유 구현·연결·검증 완료(2026-11-16)**: 처음부터 손 지면 투영과 함께 움직이는 경고가 내부 충전 시간을 표시하고 full 순간 지면을 고정한다. 기존 경고 시작 고정/추적 후 별도 채움은 AI 오해/R01 이력이다. 자기 Boss·손2개·경고/채움·홈/지면 좌표·필터/질의 버퍼는 Prepare에서 한 번 준비하고 자체 Update 없이 패턴 Tick을 받는다.
 
-- **API/상태**: Begin(PlayerCharacter)·`BeginCentral(Vector2, Action<Vector2>)`·Tick(gameDelta)·Cancel. IsRunning·IsCentral·Phase(Idle/Tracking/Holding/Falling/Recovery/Returning)·SelectedHandIndex·FillProgress·ChargeElapsed·GroundPosition·PhaseElapsed·CurrentRadius/Damage/Duration을 제공한다. BeginRun은 한 손/중앙 모드의 수치를 이번 실행에 고정하고 새 attackId·runVersion을 준비한다.
+- **API/상태**: Begin(PlayerCharacter)·`BeginCentral(Vector2, Action<Vector2>)`·Tick(gameDelta)·Cancel. IsRunning·IsCentral·Phase(Idle/Tracking/Holding/Falling/Recovery/Returning)·SelectedHandIndex·FillProgress·ChargeElapsed·GroundPosition·PhaseElapsed를 제공하며 실행별 반경·피해·충전 시간은 private snapshot으로 보관한다. BeginRun은 한 손/중앙 모드의 수치를 이번 실행에 고정하고 새 attackId·runVersion을 준비한다.
 - **초기 설정**: Hands·Warning·Height2.5/RiseDuration0.35/TrackingSpeed10, ChargeDuration2.2, CentralChargeDuration1.2/CentralRadius3.5/CentralDamage15/CentralHandOffset1.1, FallDuration0.12·ImpactRadius1.35/ImpactDamage10·RecoveryDuration0.35/ReturnDuration0.35·CollisionMask. full 뒤0.2게임초는 사용자 확정 상수이며 나머지는 초기 튜닝이다.
 - **이동/충전/고정**: BeginRun은 빈 경고를 즉시 ShowWarning한다. 한 손은 MoveTowards한 손 지면을 GroundPosition/경고 중심으로 쓰고 중앙 모드는 지정 중앙을 유지하며 양손을 좌우 목표로 모은다. 같은 Tracking Tick에서 ChargeElapsed/FillProgress와 내부 scale을 함께 갱신한다. 도착/별도 Fill 단계 없이 타이머가 full이면 Holding·PhaseElapsed0으로 전환/반환해 그 순간부터0.2초를 보장한다. 낙하는 실제 시작 높이에서0으로 진행한다.
-- **착지/복원**: Impact는 impacted를 먼저 닫고 callback을 지역에 보관/필드 해제한 뒤 먼저 호출한다. runVersion/Owner가 유지되면 CurrentRadius/Damage로 원형1회 피해를 전달한다. 탄을 먼저 생성해 Player 사망의 Stage 정리가 새 탄도 함께 닫게 한다. 취소/새 실행의 버전 차이는 이전 Tick/피해 후속 처리를 중단하며 Cancel은 callback·대상·상태/채움·양손 홈을 복원한다. 이미 발사된 탄은 건드리지 않는다.
+- **착지/복원**: Impact는 impacted를 먼저 닫고 callback을 지역에 보관/필드 해제한 뒤 먼저 호출한다. runVersion/Owner가 유지되면 currentRadius/currentDamage로 원형1회 피해를 전달한다. 탄을 먼저 생성해 Player 사망의 Stage 정리가 새 탄도 함께 닫게 한다. 취소/새 실행의 버전 차이는 이전 Tick/피해 후속 처리를 중단하며 Cancel은 callback·대상·상태/채움·양손 홈을 복원한다. 이미 발사된 탄은 건드리지 않는다.
 
 #### B03.3 GuardEyeLaser·GuardEyeLaserPhase — F-B07-04
 
-**R02 착탄 정정 구현·연결·검증 완료(2026-11-16)**: Projectile/AreaProjectile/LaserProjectile과 별도의 연속 빔 실행체다. 눈에서 지면으로 이어진 공중 선분은 표시만 하며, 밝은 지면 착탄 원 두 개만 피해를 준다. 빔 전체 OverlapBox였던 R01의39검사는2.2.11의 이전 이력으로 보존한다.
+**R02 착탄 정정 구현·연결·검증 완료(2026-11-16)**: 비행 Projectile과 별도의 연속 빔 실행체다. 눈에서 지면으로 이어진 공중 선분은 표시만 하며, 밝은 지면 착탄 원 두 개만 피해를 준다. 빔 전체 OverlapBox였던 R01의39검사는2.2.11의 이전 이력으로 보존한다.
 
 - **수명/참조**: Awake의 Prepare는 자기 Boss·Eyes/BeamCores/BeamBodies/BeamGlows/ChargeLights와 ImpactWarnings/ImpactCores 각2개·광원 원색/Scale·재사용 필터를 한 번 준비하고 Cancel로 숨긴다. Begin에서 이번 Player와 MapManager.Instance를 한 번 연결하며 자체 Update/반복 Instance·Find 조회는 없다. OnDisable도 Cancel이다.
-- **API/설정**: Begin(PlayerCharacter) bool·Tick(float gameDelta)·Cancel()·GetBeamLength(index)·GetImpactPosition(index), IsRunning·Phase(Idle/Charging/Firing/Recovery)·PhaseElapsed·HistoryTime·AimPosition·DelaySeconds0.4·AimSampleTime=max(0,HistoryTime-0.4). 초기값은 ChargeDuration1.2/FiringDuration3/RecoveryDuration0.5/BeamWidth0.5/MaxLength40/ImpactRadius0.35/BeamDamage10이다. BeamWidth는 공중 표시 폭과 지면 두 점의 x간격이며 피해 반경은 ImpactRadius다.
+- **API/설정**: Begin(PlayerCharacter) bool·Tick(float gameDelta)·Cancel()·GetBeamLength(index)·GetImpactPosition(index), IsRunning·Phase(Idle/Charging/Firing/Recovery)·PhaseElapsed·HistoryTime·AimPosition·AimSampleTime=max(0,HistoryTime-0.4). 지연0.4초는 private 상수 AimDelay로 유지한다. 초기값은 ChargeDuration1.2/FiringDuration3/RecoveryDuration0.5/BeamWidth0.5/MaxLength40/ImpactRadius0.35/BeamDamage10이다. BeamWidth는 공중 표시 폭과 지면 두 점의 x간격이며 피해 반경은 ImpactRadius다.
 - **실행 순서/이력 유지**: PlayerCharacter0→Boss_01의 DefaultExecutionOrder1→CharacterRendering3이다. Begin은 충전>=0.4를 요구해 시각0의 위치부터 기록하며 양수 Tick은 HistoryTime 증가→AppendSample→ReadDelayedPosition 순서다. 재사용 원형 배열의 요청 시각 전후 표본을 선형 보간하고 필요한 과거 표본 하나를 남긴다. 실제 첫 빔 표시부터 Firing 시간을 확보한다.
 - **유한 지면 종점/표시**: UpdateFiringBeams는 groundTarget=AimPosition+x(눈0:-BeamWidth/2,눈1:+BeamWidth/2)를 구한다. 길이는 min(지면 목표까지 거리,MaxLength)이며 가까운 목표를 벽까지 연장하지 않는다. ImpactRadius의 CircleCast 결과 중 Map.IsWall만 접촉 길이로 제한해 착탄 원이 벽 앞에 머물게 하며 원점을 포함한 출처 벽만 제외한다. 같은 impactPositions를 여섯 LR의 끝·ImpactWarnings의 중심/직경2×반경·ImpactCores에 먼저 적용한다. 기본 착탄 원은 고정 scale0.7/내부1이며 이전 손 충전처럼 중앙 채움 애니메이션을 추가하지 않는다.
 - **현재 피해/취소**: QueryImpact의 OverlapCircle2회만 같은 착탄점/반경으로 Hitbox.ReceiveHit를 호출한다. 공중 빔 중간/외광에는 피해가 없고 두 점/다중 Hitbox/재진입은 공통 attackId·성공 Player HashSet으로 패턴 전체 성공1회다. 게임 정지에는 이력/조준/단계를 고정한다. Recovery/Cancel/그로기/비활성화는 공중 빔과 두 지면 원/흰 중심을 함께 숨기며 runVersion이 이전 콜백 뒤 추가 Query를 막는다. 이미 떠난 Normal/Gold·기존 Slash Ignore는 유지한다.
 
 #### B04. BossPattern — 패턴별 C# 실행 객체
 
-**현재 F-B03·04 구현, 실행 검증 완료**: abstract C# 실행 객체의 Begin/Tick/Cancel은 공통 수명·쿨타임·실제 사용 횟수를 관리하고 파생 OnBegin/OnTick/OnCancel이 자기 조준·전조·발사를 담당한다. Begin은 OnBegin보다 먼저 Boss.HandlePatternStarted에 실제 시작을 기록한다. 정상 Complete와 Cancel은 Boss.HandlePatternCompleted에서 현재 실행 참조만 비운 뒤 외부 OnCompleted 또는 파생 OnCancel을 호출한다. 따라서 콜백에서 새 패턴을 시작해도 이전 완료가 새 참조·이력을 지우지 않는다. 취소는 OnCompleted를 발행하지 않으며 ResetHistory는 실행·사용 시각·횟수를 함께 비운다.
+**현재 F-B03·04 구현, 실행 검증 완료**: abstract C# 실행 객체의 Begin/Tick/Cancel은 공통 수명·쿨타임을 관리하고 파생 OnBegin/OnTick/OnCancel이 자기 조준·전조·발사를 담당한다. Begin은 OnBegin보다 먼저 Boss.HandlePatternStarted에 실제 시작을 기록한다. 정상 Complete와 Cancel은 Boss.HandlePatternCompleted에서 현재 실행 참조만 비우며 취소는 파생 OnCancel을 이어 호출한다. ResetHistory는 실행·사용 시각을 비운다. 런타임 구독자가 없던 OnCompleted와 시험 패턴용 UseCount는 제거했다.
 
 - **역할**: 패턴별 실행 조건(쿨타임·HP·위치·다른 패턴 실행 횟수), 추첨 가중치, 상황별 우선 실행 조건, 실행·완료·중단을 정의한다. 일반은 가중 추첨, 특정 상황에서는 특정 패턴이 먼저 실행될 수 있다(Q27).
 - **생명 주기**: Boss 초기화 때 C# 패턴 객체를 등록하고 선택 시 시작한다. 완료 후 Idle, 사망·그로기·재도전 때 Cancel. Cancel은 아직 실행 중인 동작·추가 발사를 중단하며 이미 발사된 투사체와 장판을 일괄 제거하지 않는다.
-- **보유 공개 API**: `CanRun` — 실행 조건; `GetWeight` — 현재 추첨 가중치; `GetPriority` — 상황별 우선 실행 값; `Begin`, `Tick`, `Cancel`; `OnCompleted` — 종료 알림.
-- **보유 공개 변수**: PatternId·Weight·Priority·Cooldown·LastUsedTime·UseCount·IsRunning·Elapsed·Owner·OnCompleted. 실제 경비 로봇의 우선 조건은 별도 콘텐츠이며 공통 Priority 기본값은0이다. Dummy의2페이즈 최초 금색탄만 시험 예시로 우선값10을 사용하고 직전 제외를 먼저 적용한다.
+- **보유 공개 API**: `CanRun` — 실행 조건; `GetWeight` — 현재 추첨 가중치; `GetPriority` — 상황별 우선 실행 값; `Begin`, `Tick`, `Cancel` — 실행·진행·취소.
+- **보유 공개 변수**: PatternId·Weight·Priority·Cooldown·LastUsedTime·IsRunning·Elapsed·Owner. 공통 Priority 기본값은0이며 직전 제외를 먼저 적용한다. Dummy의 횟수·2페이즈 우선값 예시는 제거된 시험 구현 이력이다.
 - **연관 class**: BossPatternSelector가 목록·선택을 보유하고 BossCharacter가 선택 결과를 실행한다. Projectile/BossStructure/CollisionBox와 CharacterRendering·위험 예고를 사용한다.
 
 #### B05. Projectile — 구체 투사체의 기반 클래스
 
-**비행 탄환 벽 충돌·수명0 확장(2026-11-16, 구현·연결·검증 완료)**: MapManager.Initialize가 맵 안의 비활성 문을 포함한 non-trigger Collider를 HashSet으로 한 번 준비하고 IsWall(Collider2D)로 판별한다. Projectile.Initialize가 같은 맵 Instance를 발사 경계에서 한 번 캐시한다. 이동 CircleCast의 가장 가까운 벽보다 앞의 Player만 타격하며 같은 거리면 벽을 우선한다. Owner/Boss는 맵 벽 집합에 포함하지 않는다. Gold 반사도 현재 고정 비행 경로의 ReflectionTarget 실제 Hitbox보다 앞/같은 거리의 벽에서 종료한다. 라인 각도·반사 방향 사양은 별도 동시 반사 작업 기록을 따른다. 비행 Lifetime0은 시간 만료 없이 유지하고 양수는 기존 게임 시간 만료를 유지한다. Area/Laser의0수명 거부는 그대로다. 현재03/05 Normal만0으로 설정하고 Gold6초는 유지한다. 실제 API/흐름은 F-B06 Case⑦, 벽/Fan11·손16·공통17의 최종44검사/원본 반영·확인 한계는2.2.10을 따른다.
+**비행 탄환 벽 충돌·수명0 확장(2026-11-16, 구현·연결·검증 완료)**: MapManager.Initialize가 맵 안의 비활성 문을 포함한 non-trigger Collider를 HashSet으로 한 번 준비하고 IsWall(Collider2D)로 판별한다. Projectile.Initialize가 같은 맵 Instance를 발사 경계에서 한 번 캐시한다. 이동 CircleCast의 가장 가까운 벽보다 앞의 Player만 타격하며 같은 거리면 벽을 우선한다. Owner/Boss는 맵 벽 집합에 포함하지 않는다. Gold 반사도 현재 고정 비행 경로의 ReflectionTarget 실제 Hitbox보다 앞/같은 거리의 벽에서 종료한다. 라인 각도·반사 방향 사양은 별도 동시 반사 작업 기록을 따른다. 비행 Lifetime0은 시간 만료 없이 유지하고 양수는 기존 게임 시간 만료를 유지한다. 시험 Area/Laser의0수명 거부는 당시 검증 이력이며 해당 타입은 현재 제출 코드에서 제거했다. 현재03/05 Normal만0으로 설정하고 Gold6초는 유지한다. 실제 API/흐름은 F-B06 Case⑦, 벽/Fan11·손16·공통17의 최종44검사/원본 반영·확인 한계는2.2.10을 따른다.
 
-**현재 F-B06 구현, 실행 검증 완료**: Projectile이 공통 발사·scaled 수명·반사·종료를 관리하고 NormalProjectile은 일반 비행/Slash 제거, GoldProjectile은 일반 비행/Line 반사·Owner Boss 충돌 피해·Fever·게이지를 사용한다. AreaProjectile은 전조 뒤 원형 고정 범위, 이를 상속한 LaserProjectile은 방향을 가진 사각 범위로 판정한다. 레이저·장판은 Slash Ignore이고 발사 하나당 피해가 성공한 Player는 한 번만 타격한다. Hitbox·CollisionBox는 기반 Projectile을 조회하므로 모든 파생형이 같은 Slash/정리 경로에 참여한다. 기존 F-P07 확인과 신규 F-B06 확인을 구분한다.
+**현재 F-B06 구현, 실행 검증 완료**: Projectile이 공통 발사·scaled 수명·반사·종료를 관리하고 NormalProjectile은 일반 비행/Slash 제거, GoldProjectile은 일반 비행/Line 반사·Owner Boss 충돌 피해·Fever·게이지를 사용한다. 이전 시험 전용 AreaProjectile/LaserProjectile은 현재 게임 자산·타입 참조가 없어 제출 정리에서 제거했다. 경비의 실제 손 원형 피해·지연 착탄 레이저는 GuardHandAttack·GuardEyeLaser가 담당한다. Hitbox·CollisionBox는 기반 Projectile을 조회하므로 모든 파생형이 같은 Slash/정리 경로에 참여한다. 기존 F-P07 확인과 신규 F-B06 확인을 구분한다.
 
-- **역할**: 공통 수명·피해·Slash 반응을 유지하면서 구체 위험물의 TickFlight와 PrepareShape만 상속으로 변경한다. 금색 반사는 입사 Direction을 Line 접선의 수직 법선에 반사해 직진하며 Owner는 실제 충돌 피해를 받을 Boss로만 보관한다. 레이저/장판 타입은 F-B06에 연결하며 대규모 탄환 모듈·네트워크·풀을 추가하지 않는다.
+- **역할**: 공통 수명·피해·Slash 반응을 유지하면서 구체 위험물의 TickFlight와 PrepareShape만 상속으로 변경한다. 금색 반사는 입사 Direction을 Line 접선의 수직 법선에 반사해 직진하며 Owner는 실제 충돌 피해를 받을 Boss로만 보관한다. 실제 경비 손·레이저 실행체는 별도로 유지하며 대규모 탄환 모듈·네트워크·풀을 추가하지 않는다.
 - **생명 주기**: Awake에서 자기 Collider·질의 버퍼를 한 번 준비하고 Initialize로 발사 수치·수명·공격 번호를 설정한다. 일반 이동/반사 이동·수명은 scaled이다. 적중·Slash 제거·만료는 Despawn으로 Collider/활성 상태를 먼저 닫고 제거한다. 그로기 진입이 이미 발사된 탄을 자동 정리하지 않는다.
-- **보유 공개 API**: 가상 Initialize(owner,direction,speed,lifetime,damage), OnSlashed(player,boss,slash,lineDirection), Reflect(boss,player,lineDirection), Despawn. 파생 준비는 protected Awake/PrepareShape/TickFlight, Area의 기하 확장은 ValidateShape/ConfigureShape를 사용한다. lifetime은 전조를 포함한 총수명이다.
+- **보유 공개 API**: 가상 Initialize(owner,direction,speed,lifetime,damage), OnSlashed(player,boss,slash,lineDirection), Reflect(boss,player,lineDirection), Despawn. 파생 준비는 protected Awake/PrepareShape/TickFlight를 사용한다. 시험 Area의 기하 확장 API는 현재 제출 코드에서 제거했다.
 - **보유 공개 변수**: Owner·Damage·Direction·Speed·Lifetime·SlashResponse·GroggyGain·GrantsFever·ReflectionTarget·ReflectionSpeed·CollisionRadius·CollisionMask·IsReflected·IsActive·RemainingLifetime. ReflectionTarget은 고정 반사 경로에서 실제 Hitbox 충돌을 허용할 Boss이며 추적 목표가 아니다. 수치와 속도는 Inspector 초기 튜닝이다.
-- **파생 공개 설정**: AreaProjectile은 Radius·TelegraphDuration·TelegraphColor·ActiveColor·IsArmed, LaserProjectile은 Length·Width를 추가한다. 위험물 총수명보다 전조가 짧아야 하며 표준 시험 프리팹은 scale1에서 Collider와 Sprite 크기를 맞춘다. 최종 아트 적용 시 같은 기하·피벗·색 구분을 확인한다.
-- **연관 class**: Hitbox가 탄환을 한 번 캐시하고 CollisionBox.QuerySlash가 요청 angle에서(cos,sin) Line 접선을 한 번 계산해 탄별 한 번 OnSlashed에 전달한다. 성공한 반응은 Player.AddGroggy와 Buffs.ApplyFever로 전달한다. DummyBoss 패턴이4종 프리팹을 세션 부모 아래 생성하며 Stage.ClearBossHazards가 전투 종료 때 파생형을 포함해 Owner 기준으로 제거한다. 그로기에서는 이 정리를 호출하지 않는다.
+- **이전 시험 설정**: AreaProjectile의 Radius/TelegraphDuration과 LaserProjectile의 Length/Width는 제거된 시험 프리팹의 기록이다. 현재 경비 손·레이저 설정은 B03.2·B03.3을 따른다.
+- **연관 class**: Hitbox가 탄환을 한 번 캐시하고 CollisionBox.QuerySlash가 요청 angle에서(cos,sin) Line 접선을 한 번 계산해 탄별 한 번 OnSlashed에 전달한다. 성공한 반응은 Player.AddGroggy와 Buffs.ApplyFever로 전달한다. 실제 Boss_01 패턴이 탄환을 세션 부모 아래 생성하며 Stage.ClearBossHazards가 전투 종료 때 Owner 기준으로 제거한다. 그로기에서는 이 정리를 호출하지 않는다.
 
-#### B05.1 CircleWarningVfx — F-B06 원형 선 경고 표시
+#### B05.1 CircleWarningVfx — 이전 시험 표시, 현재 제출 코드에서 제거
 
 **현재 R02 구현·연결·검증 완료(2026-11-16)**: 사용자 요청대로 원형 내부를 반투명 빨강으로 채우고 경계선을 더 진하게 표시한다. 내부가 빈 선만으로 표현한 R01의 AI 해석을 대체했다. 같은 Radius로 내부와 경계를 맞추고 기존 Configure/SetColor 호출·판정·전조/활성 경계를 유지한다. FillRenderer는 공유 CircleFill.asset의96삼각형 원판을 사용하며 Mesh·Material을 런타임에 생성하지 않는다. MaterialPropertyBlock의 `_Color`로 내부를 경계 alpha의0.45배로 표시한다. ExecuteAlways·OnEnable은 저장되지 않는 개별 색을 직렬화된 선 색에서 복원한다. 탄환 확대·같은 배율 비교와 이번11묶음 결과는2.2.6을 따른다.
 
@@ -318,7 +320,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 #### B05.2 AreaWarningVfx·WarningShape — F-B06 순수 예고4종
 
-**R04 구현·연결·검증 완료(2026-11-16)**: WarningShape의 Circle·Rectangle·Sector·OpenStrip을 반투명 빨강 내부/진한 경계로 표시한다. 실사용 순수 VFX는 `Assets/Prefabs/Enemy/Warnings/{Circle,Rectangle,Sector,Straight}Warning.prefab`이며 Collider/Projectile이 없다. 기존 CircleWarningVfx/AreaProjectile의 원형 피해 경로는 그대로 유지한다. 새 모양의 실제 보스 공격·판정 연결은 미구현이다.
+**R04 구현·연결·검증 완료(2026-11-16)**: WarningShape의 Circle·Rectangle·Sector·OpenStrip을 반투명 빨강 내부/진한 경계로 표시한다. 실사용 순수 VFX는 `Assets/Prefabs/Enemy/Warnings/{Circle,Rectangle,Sector,Straight}Warning.prefab`이며 Collider/Projectile이 없다. CircleWarningVfx/AreaProjectile의 이전 시험 경로는 제출 정리에서 제거했으며 실제 손·착탄의 경고/피해는 B03.2·B03.3에 연결돼 있다.
 
 - **API·설정**: `Configure(WarningShape shape, Color color, float sectorAngle=90)`·`SetColor(Color color)`. 공개 설정은 Shape·SectorAngle·WarningColor·OutlineWidth·FillOpacityMultiplier·FillRenderer·SecondaryOutline·CircleMesh·RectangleMesh다.
 - **기하**: 원 지름1·사각1×1의 공유 Mesh와 root scale(1,1,1)을 기본으로 XY변형/회전을 사용한다. Sector는 위쪽 중심·반경0.5·기본90도,0.1~360도이며 자기 Mesh를 한 번 생성해 각도 변경에 재사용한다.360도는 공유 원판/원 테두리로 바꿔 방사 경계를 없앤다. OpenStrip은 X길이/Y폭의 사각 채움과 평행한 위·아래 선2개만 사용하며 loop=false·cap0으로 짧은 양끝을 닫지 않는다.
@@ -378,7 +380,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **역할**: Character가 계산한 일반 이동과 조준을 몸체 Sprite·모션·FX로 표시한다. 충돌·실제 위치를 결정하거나 실제 XY 변위를 수집하지 않는다. 벽에 막혀도 일반 이동 변위가 있으면 걷기를 표시하며 SP0·입력 잠금으로 일반 변위가0이면 Idle을 선택한다. 대시는 별도 자세가 일반 이동을 덮는다.
 - **생명 주기**: 같은 Player의 Character 참조와 Sprite/원본색·잔상 배열을 Awake(3)에 한 번 준비한다. Character.Update(0) 뒤 Update(3)에서 표시하며 Start는 이미 시작한 Spawn을 덮지 않는다. OnEnable은 보호 사건·현재 위상을 연결하고 OnDisable은 구독·원본색·잔상·생명주기와 이동 표시를 정리한다. Player의 논리 보호는 유지한다.
 - **보유 공개 API**: `SetFacing(Vector2)` — 방향; `SetMovement(Vector2 movement, Vector2 aim)` — 일반 이동 유무와 조준 내적으로 뒷걸음 상태 선택; `BeginDash` — 고정 대시 자세; `SetDrawHighlight` — 강조/원본 sorting 복구. 생명주기 API는 F-P09를 따른다.
-- **보유 공개 변수**: `BodySprite`, `FacingMarker`, `AnimationSet`, `CurrentState`, `WeaponSprite`, `FacingIndex`, `FrameIndex`, `IsMoving`, `IsBackpedaling`, `HitFlashColor`, `HitFlashInterval`, `IsHitFlashing` — 모션·방향·표시 상태. 속도 배율로 고정 FPS를 바꾸지 않으며 Player의 행동/보호 타이머를 복제하지 않는다.
+- **보유 공개 변수**: `BodySprite`, `AnimationSet`, `CurrentState`, `WeaponSprite`, `FacingIndex`, `FrameIndex`, `IsMoving`, `IsBackpedaling`, `HitFlashColor`, `HitFlashInterval`, `IsHitFlashing` — 모션·방향·표시 상태. 속도 배율로 고정 FPS를 바꾸지 않으며 Player의 행동/보호 타이머를 복제하지 않는다.
 - **연관 class**: Character가 일반 이동 변위·조준을 직접 전달한다. PlayerSpriteAnimationSet은 방향별 Idle·Move·Dash와 Death·Spawn의 Sprite·FPS·유지시간·반전을 보관한다. Body·범용 FSM 참조는 추가하지 않는다.
 
 **F-P07 발도 표시 후속 코드(2026-11-16, 연결·격리19/23묶음 확인)**: 기존14상태와 별도 `SlashAnimationSet`의 `SlashDraw`·`SlashHold`·`SlashSheathe`를 구분한다. `HasSlashAnimation`으로 세 구간의 Sprite를 소비 전 확인하고 `BeginSlashAnimation`→`SetSlashDrawProgress`→`HoldSlashAnimation`→`SetSlashSheatheProgress`→`EndSlashAnimation`으로 Skill의 외부 진행률만 표시한다. 전용 표시 중에는 일반 걷기/정지가 발도 자세를 덮지 않으며 몸체에 그려진 검과 겹치지 않도록 별도 WeaponSprite를 보관·숨김·복구한다. 납도의 마지막 닫힌 프레임은 진행률1에만 표시해 “탁” 사건과 맞춘다. `SlashBladeGlintPosition`은 현재 BodySprite Transform으로 R02 대기 프레임의 노출 칼날 중앙을 월드 좌표로 변환한다. 사망·생성·비활성화와 명시적 종료는 자기 전용 표시만 정리한다. 원본/프레임·피벗 근거와 실제 연결 확인은2.1.7을 따른다.
@@ -444,10 +446,10 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 #### U07. CutsceneController — 보완 정의(Q3·Q4)
 
-**현재 F-B02·05 구현, 실행 검증 완료**: Stage와 같은 앱 객체에 존재하고 Awake에서 자기 GameManager만 확보한다. Prepare는 새 MainWorld의 서비스 Awake/Start 뒤 입력·HUD·카메라를 한 번 연결한다. Play는 먼저 Player/Boss의 IsCutScene으로 기존 Draw/Slash를 종료시킨 뒤 복원된 입력·HUD·카메라 대상을 보관/전환하고 GameManager.SetBossCutscenePaused로 자기 정지를 요청한다. unscaled 임시 대기 뒤 Complete는 복원→완료 사건, Cancel은 실행 번호 변경→복원→중단 사건으로 끝나며 WasCompleted로 정상 완료를 구분한다. 따라서 Slash 처치도 숨겨진 HUD/잠긴 입력을 사망 연출의 복원 원본으로 잘못 보관하지 않는다.
+**현재 F-B02·05 구현, 실행 검증 완료**: Stage와 같은 앱 객체에 존재하고 Awake에서 자기 GameManager만 확보한다. Prepare는 새 MainWorld의 서비스 Awake/Start 뒤 입력·HUD·카메라를 한 번 연결한다. Play는 먼저 Player/Boss의 IsCutScene으로 기존 Draw/Slash를 종료시킨 뒤 복원된 입력·HUD·카메라 대상을 보관/전환하고 GameManager.SetBossCutscenePaused로 자기 정지를 요청한다. unscaled 대기 뒤 Complete는 복원→WasCompleted=true, Cancel은 실행 번호 변경→복원→WasCompleted=false로 끝난다. 따라서 Slash 처치도 숨겨진 HUD/잠긴 입력을 사망 연출의 복원 원본으로 잘못 보관하지 않는다.
 
 - **역할·범위**: 현재 Boss 첫 조우·재조우·사망의 연출 수명과 복구. Player 생성/사망과 Draw/Slash는 기존 전용 소유자가 유지하며 범용 FSM·엔딩·최종 animation/음향을 이 작업에서 구현했다고 보지 않는다. 게임 시간0에서도 UI·카메라·연출 대기는 unscaled로 진행한다.
-- **보유 공개 API**: Prepare·Play(PlayerCharacter,BossCharacter,CutsceneKind,float)·Complete·Cancel, OnStarted·OnFinished·OnCancelled. Play의 완료 결과는 WasCompleted로 확인하고 저장 완료 결과와 혼동하지 않는다.
+- **보유 공개 API**: Prepare·Play(PlayerCharacter,BossCharacter,CutsceneKind,float)·Complete·Cancel. Play의 완료 결과는 WasCompleted로 확인하고 저장 완료 결과와 혼동하지 않는다.
 - **보유 공개 변수**: IsPlaying·CurrentKind·WasCompleted. 현재 CutsceneKind 실제 enum은 BossEncounter·BossReencounter·BossDeath이며 다른 예정 연출을 미리 열거하지 않는다.
 - **생명 주기·연관 class**: 앱 수명 Stage/GameManager, 씬 수명 Input/UI/Camera, 세션 수명 Player/Boss를 구분한다. Prepare에서 씬 참조를 갱신하고 중단/비활성화/세션 이탈에서 소유한 표시·정지만 복원한다. 최종 연출은 이 완료/중단 경계에 연결한다.
 
@@ -457,7 +459,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 
 - **역할**: 공격 A/B·유효 피해 적중음·실제 걷기 발소리와 적중 Sprite만 표시한다. 피해 허용·공격 시작·이동/충돌 판정은 요청한 쪽에 남긴다. 별도 플레이어 피격음은 이번 범위가 아니다.
 - **생명 주기**: Player의 자기 컴포넌트다. Awake에서 serialized Source·6음원·7frame·Material을 검증하고 적중 FX8개를 준비해 재사용한다. 동시 표시가 넘칠 때만 늘린다. Update(20)는 scaled 절대 경과로 Sprite를 선택하고 OnDisable은 자기 Source.Stop·FX 숨김·걷기 거리 초기화를 처리한다. 자기 FeedbackAudio 자식은 기존 SlashPresentationFx Source와 분리한다.
-- **보유 공개 API**: `PlayAttackSound(int)` — 0은 A, 그 외 B; `PlayImpact(point,angle)` — 성공 좌표/방향으로 FX와 적중음; `AddWalkingMovement(actualMovement)` — 실제 일반 이동거리 기반 발소리. `OnSoundPlayed(cue,clip)`은 실제 PlayOneShot 호출의 관측 사건이며 청취 품질 검증과 구분한다.
+- **보유 공개 API**: `PlayAttackSound(int)` — 0은 A, 그 외 B; `PlayImpact(point,angle)` — 성공 좌표/방향으로 FX와 적중음; `AddWalkingMovement(actualMovement)` — 실제 일반 이동거리 기반 발소리. 검사용 OnSoundPlayed 사건·PlayerSoundCue와 관측 인자는 제거하고 실제 AudioSource 재생은 유지한다.
 - **보유 공개 변수**: `Source`, `Attack1Clip`·`Attack2Clip`·`HitClip`, `FootstepClips[3]`, `HitFrames[7]`, `HitMaterial`; `Volume=0.8`·`FootstepVolume=4`·`StepDistance=1.2`는 프로젝트 초기 튜닝이다. 발소리는 Road01→02→03 순환·한 호출에 최대 한 번이며 변위0에는 누적을 비운다.
 - **연관 class·시간**: AttackController가 검기 시작과 유효 적중 callback을 요청하고 PlayerCharacter는 Body.Move 뒤 일반 걷기와 F-S05 전용 컷씬 보행의 ActualMovement를 전달한다. 새3타 A는22/60·B는24/60모션초에 AS를 적용해 겹쳐 재생한다. 적중 FX는 원본5×57px·PPU16·중앙 pivot7장·20Hz·명목0.35게임초로 AS와 독립이다. 수신 Collider.ClosestPoint(raw Cast point)로 보정한 접점에 반지름0.2 오차, 공격각 θ 기준 `θ−90+90×sign±10°`·x반사를 적용하고 월드 좌표·흰 Unlit·order30을 유지한다. Source는2D·ignoreListenerPause=true이므로 scaled 정지는 이미 재생 중인 음원을 자동 정지하지 않는다.
 - **음원 원본·한계**: A는 원작 기본대검의 attackSwish07, B는 구별용으로 선택한 attackSwish06, 적중은 CrashSlice의 Material별11개 중 hitSlash01, 발소리는 footstepRoad의3개 sample이다. 원작1·2타는07을 공유하며 B가 원작2타 전용음인 것은 아니다. 원작 Material routing/이벤트 gain·pitch·3D와 타일 호출부까지 이식한 것으로 기록하지 않는다. [추출 원본·매핑](../art/archive/audio/player-feedback-r01/README.md)·[적중 분석](archive/03_Analysis/Sephiria_Melee_Hit_Feedback_20261116.md)을 따른다.
@@ -479,7 +481,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **역할**: 게임 부팅·슬롯 세션 시작/종료·씬 전환·월드 생성 준비·전역 게임 시간을 조정한다. MainWorld 씬 로드 완료 뒤 StageManager.Generate를 요청하고 준비·최초 입장 또는 기존 기상 완료 시 `PlayerInputController.Instance.BlockInput`을 해제하며 세션 종료 시 차단한다. UI_Title의 타입·참조·준비 완료를 알지 않는다. 재도전 실행은 PlayerSpawner/Stage가 맡고 완료·엔딩은 후속 구현으로, 마지막 제출 Boss 사망 후 컷씬·스탭롤·Title로 진행할 책임은 유지한다. Boss와 Player의 OnDie를 중간에서 중계하는 공통 객체 역할은 맡지 않는다.
 - **생명 주기**: 앱 시스템 초기화부터 종료까지 하나 유지한다. `Awake`에서 SaveManager 초기화와 최신 슬롯 로드를 요청한다. 슬롯 시작 요청을 수락하면 플레이 시간 계측·내부 `LoadWorld` 코루틴을 시작한다. Title 복귀 때 계측과 세션 객체를 정리하고 슬롯 재로드를 요청하지만 SaveManager.Current는 지우지 않는다.
 - **보유 공개 API**: 현재 `StartGame(slot, newGame)`·`ReturnToTitle`·`SetGameplayPaused`·`SetDrawPaused`·`SetSlashPaused`·`SetDeathPaused`·`SetBossCutscenePaused`·`QuitGame`. 각 정지는 자기 소유만 바꾸고 최종 시간은 한 창구에서 합친다. StartGame은 선택 슬롯으로 current를 설정하고 MainWorld 전환을 시작한다. 체크포인트 재도전은 Spawner 사건 흐름으로 연결하고 `CompleteGame`은 후속이며 QuitGame은 저장·복구 완료를 기다린다(Q29).
-- **보유 공개 변수**: 현재 `Instance`, `Stage`, `Loading`, `SaveDirectory`, `CurrentPlayer`, `CurrentBoss`, `IsLoading`, `IsSessionActive`, `IsGameplayPaused`, `IsDrawPaused`, `IsSlashPaused`, `IsDeathPaused`, `IsBossCutscenePaused`, `LastError`, `SessionPlayTime`, `SubmittedBossId`. 시간 누적은 슬롯 진입~Title이며 Draw/컷씬/로딩도 포함한다. `IsInCombat`·`IsSessionCompleted`는 후속 사양이고 UI_Title 필드는 없다.
+- **보유 공개 변수**: 현재 `Instance`, `Stage`, `Loading`, `CurrentPlayer`, `CurrentBoss`, `IsLoading`, `IsSessionActive`, `IsGameplayPaused`, `IsDrawPaused`, `IsSlashPaused`, `IsDeathPaused`, `IsBossCutscenePaused`, `LastError`, `SessionPlayTime`, `SubmittedBossId`. 시간 누적은 슬롯 진입~Title이며 Draw/컷씬/로딩도 포함한다. `IsInCombat`·`IsSessionCompleted`는 후속 사양이고 UI_Title 필드는 없다.
 - **연관 class**: 현재 SaveManager·StageManager·UI_Loading·PlayerInputController·CutsceneController·UIController·최초 입장의 TutorialController와 연결하며 전체 튜토리얼 안내는 후속. UI_Title이 전역 GameManager의 공개 API를 호출하는 단방향 관계다.
 
 #### S02. StageManager — 명칭 확정(원문 StageGeneratorManager)
@@ -562,7 +564,7 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **역할**: 고정 효과 예약·다음 프레임 적용·개별 갱신/해제·scaled 수명·기본 수치 기준 합성과 Draw 배율. 범용 효과 DB·스택·DOT 콘텐츠를 추가하지 않는다.
 - **생명 주기**: Awake에서 자기 Character/Boss와 OnDie·OnRevive를 한 번 연결하고 OnDestroy에서 해제한다. 사망/부활은 자기 구독으로 RemoveAll하며 Draw/Slash/Death/일반 pause 동안 scaled 수명은 정지한다.
 - **보유 공개 API**: Apply(BuffType)·ApplyFever — 다음 프레임 예약; Remove(BuffType)·Has(BuffType) — 개별 제거/조회; Clear·RemoveAll — 모든 효과/예약 정리; ClearDebuffs — Slow/Groggy/해로운 예약만 지우고 Fever 보존.
-- **보유 공개 변수**: IsFever·FeverRemaining·FeverDuration, AttackMultiplier·AttackSpeedMultiplier·MoveSpeedMultiplier·HealPerAcquisition·FeverDrawCooldownMultiplier·DrawCooldownMultiplier, IsSlow·SlowRemaining·SlowDuration·SlowSpeedMultiplier, GroggyRemaining. Fever8초·1.5/1.25/1.25·회복5·Draw0.5와 Slow2초·SP0.5는 초기 튜닝이다.
+- **보유 공개 변수**: IsFever·FeverRemaining·FeverDuration, AttackMultiplier·AttackSpeedMultiplier·MoveSpeedMultiplier·HealPerAcquisition·FeverDrawCooldownMultiplier·DrawCooldownMultiplier, IsSlow·SlowRemaining·SlowDuration·SlowSpeedMultiplier. 그로기 잔여 시간은 BossCharacter.GroggyRemaining에서 조회한다. Fever8초·1.5/1.25/1.25·회복5·Draw0.5와 Slow2초·SP0.5는 초기 튜닝이다.
 - **연관 class**: Character.ApplyBuff/RemoveBuff 전달, 금색 Projectile 보상, Skill.RefreshDrawCooldown의 기본 길이 기준 상한 조정, Boss.EnterGroggy/ExitGroggy·단일 수명 원본. 전투 종료의 구독자는 Player 디버프만 제거하며 Fever를 유지한다.
 
 #### S08. Hitbox — 판정 책임 보완(Q3·Q4)
@@ -571,20 +573,20 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **역할**: Collider2D에 연결된 피격 대상·부위를 Character/Projectile/BossStructure 수신자와 연결한다. 공간 질의는 CollisionBox, 피해 허용은 각 수신자 책임이다.
 - **생명 주기**: 대상 프리팹과 함께 준비, 판정 활성 구간에 조회 가능, 비활성/사망/제거에 맞춰 판정 해제. 몸체 이동 차단 Collider와 피격 역할은 구분한다.
 - **보유 공개 API**: `ReceiveHit`, `SetEnabled`.
-- **보유 공개 변수**: `Owner`, `Projectile`, `Structure`, `TargetKind`, `Bounds`, `IsEnabled`, `PartId` — 대상·분류·범위·부위 식별.
+- **보유 공개 변수**: `Owner`, `Projectile`, `Structure`, `TargetKind`, `IsEnabled`, `PartId` — 대상·분류·활성·부위 식별.
 - **연관 class**: Character/Projectile/BossStructure가 보유; CollisionBox가 조회; DamageInstance 전달.
 
 #### S09. CollisionBox — 판정 책임 보완(Q3·Q4)
 
 - **F-U07 성공 피드백(23묶음 실행 확인)**: `Query(center,size,angle,Action<Vector2,float> onHit=null)`은 collider.ClosestPoint(Results[i].point)·Damage·요청 angle을 ReceiveHit 전에 보존한다. zero-distance 사각 Cast의 raw point가 수신 shape 밖에 놓인 실제 관측을 보정하며 Results의 raw 값은 바꾸지 않는다. ClosestPoint는 물리 접촉 여유를 포함할 수 있으며 이번 관측의0.01 여유를 수학적 bounds 밖 오류로 오판하지 않는다. Character/독립 구조물의 ReceiveHit가 true면 해당 수신자에 한 번 callback을 호출하며 피해 거부·중복에는 생략한다. 피해 사건이 판정을 취소해도 이미 성공한 callback 값은 유지하고 기존 queryVersion/활성 검사로 후속 처리를 중단한다. QuerySlash 계약은 변경하지 않는다.
 
-- **현재 F-P03 구현**: 재사용하는 일반 C# 객체다. Begin이 DamageInstance·ContactFilter2D와 수신자 집합을 준비하고 Query가 배열 결과를 받는 zero-distance Physics2D.BoxCast로 실제 Hitbox Collider를 조회한다. 초기16개 결과 배열이 가득 차면 확장 후 다시 조회해 포화 누락을 막고 같은 Character의 여러 Collider/반복 조회에도 한 타당 피해는1회만 적용한다. 피해 콜백이 공격을 취소하면 IsActive가 false인 즉시 같은 질의의 나머지 처리를 멈추고, 취소가 비운 HitTargets에 방금 수신자를 다시 추가하지 않는다. 공격 종료·취소는 End로 닫으며 Gizmo는 실제 Cast와 같은 기하를 사용한다. 일반 공격의 벽 LOS 차폐 규칙을 확정한 뜻은 아니다.
+- **현재 F-P03 구현**: 재사용하는 일반 C# 객체다. Begin이 DamageInstance·ContactFilter2D와 수신자 집합을 준비하고 Query가 배열 결과를 받는 zero-distance Physics2D.BoxCast로 실제 Hitbox Collider를 조회한다. 초기16개 결과 배열이 가득 차면 확장 후 다시 조회해 포화 누락을 막고 같은 Character의 여러 Collider/반복 조회에도 한 타당 피해는1회만 적용한다. 피해 콜백이 공격을 취소하면 IsActive가 false인 즉시 같은 질의의 나머지 처리를 멈추고, 취소가 비운 HitTargets에 방금 수신자를 다시 추가하지 않는다. 공격 종료·취소는 End로 닫는다. 일반 공격의 벽 LOS 차폐 규칙을 확정한 뜻은 아니다.
 - **F-P07 확장 확인**: QuerySlash는 같은 Line 사각을 한 번 수집한 뒤 탄환·독립 구조물·Character 피해를 구분한다. 피해는 수신자 기준 한 번, Boss 부위는 고유 PartId를 같은 AttackId로 모두 보고하고 질의 완료 뒤 CompleteSlash를 통지한다. 취소·재진입은 queryVersion으로 구분해 이전 질의의 후속 처리/완료 통지를 멈춘다. 구현/검증은2.1.7을 따른다.
 - **배열 재사용 방식**: 현재 ContactFilter2D·RaycastHit2D[] 결과 배열을 전달하는 BoxCast는 Unity6.3의 NonAlloc 조회 방식이다([6.3 오버로드](https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/physics2d/boxcast)). 기존 BoxCastNonAlloc 문서도 BoxCast 사용을 권고한다([2022.3 안내](https://docs.unity3d.com/2022.3/Documentation/ScriptReference/Physics2D.BoxCastNonAlloc.html)). 배열을 매 조회마다 새로 만들지 않지만 초기 컬렉션 생성과 결과 포화에 따른 확장에는 할당이 발생한다.
-- **역할**: 일반 공격·Slash·적 공격의 사각 영역을 NonAlloc Cast로 조회하고 같은 공격의 같은 피해 수신자 중복을 막는다. 실제 Collider를 대상에 사용하며 박스 위치·회전·크기와 동일한 Editor Gizmo를 그린다(Q11).
+- **역할**: 일반 공격·Slash·적 공격의 사각 영역을 NonAlloc Cast로 조회하고 같은 공격의 같은 피해 수신자 중복을 막는다. 실제 Collider를 대상으로 사용한다. Editor Gizmo는 제출 정리에서 제거했다.
 - **생명 주기**: 공격 시작에 조건·적중 기록 초기화, 일반 공격은 지정 판정 구간, Slash는1프레임 조회. 완료/중단 때 종료한다. 재사용 배열이 가득 차 누락되는 경우를 구현 검증 대상으로 둔다.
-- **보유 공개 API**: `Begin`, `Query`, `QuerySlash`, `End`, `ClearHits`, `DrawGizmos` — 공격 준비·사각 Cast·종료·중복 기록·Editor 가시화. Unity6.3에서는 배열 결과를 받는 Physics2D.BoxCast 오버로드를 사용해 NonAlloc 요구를 충족하는 방향(3.4).
-- **보유 공개 변수**: `Damage`, `Area`, `Angle`, `HitTargets`, `Results`, `IsActive` — 피해·박스 기하·대상 기록·재사용 결과 버퍼·실행 상태.
+- **보유 공개 API**: `Begin`, `Query`, `QuerySlash`, `End`, `ClearHits` — 공격 준비·사각 Cast·종료·중복 기록. Unity6.3에서는 배열 결과를 받는 Physics2D.BoxCast 오버로드를 사용해 NonAlloc 요구를 충족하는 방향(3.4).
+- **보유 공개 변수**: `Damage`, `HitTargets`, `Results`, `IsActive` — 피해·대상 기록·재사용 결과 버퍼·실행 상태. 관측용 Area/Angle 사본은 제거했다.
 - **연관 class**: AttackController·LineSlasher·BossPattern이 일반 C# 질의 helper로 사용한다. Hitbox의 수신자를 기준으로 중복을 막고 Boss 부위 기믹은 AttackId/PartId별 별도 보고한다. 별도 공간 해시 프레임워크는 도입하지 않는다.
 
 #### S10. DamageInstance — 피해 전달 struct
@@ -608,13 +610,9 @@ Q2에서 drawCancelCoolTime으로 확정했다. HP/AD/AS/SP는 유지한다. 그
 - **실제 보행·인계**: Player.Update(0)의 SP×game deltaTime·남은 거리 clamp→기존 Body.Move/Rendering·ActualMovement 발소리를 사용한다. 정중앙 기준은 일반 카메라가 추적하는 Player.root의 viewport(0.5,0.5)이며 Sprite의 시각 중심/pivot offset과 구분한다. StopDistance1e−5와 Body의 최소 제곱 변위1e−12로 마지막 미세 이동도 기존 충돌 경로를 거친다. 게임 시간0에는 정지하며 기본 제한시간은 거리/SP의2배+3게임초다.
 - **카메라/권한 복구**: RestoreControl은 현재 Camera.Target이 자기 EntranceStopPoint일 때만 Follow(previousCameraTarget)으로 복구한다. 정상 이전 대상은 실제 Player이며 GameCamera API·일반0.1283 추적/zoom은 바꾸지 않는다. 세대 번호·Input.Player/세션 동일성으로 늦은 저장/인계를 막고, 정상 도착 뒤 GameManager가 HUD와 입력을 연다. 별도 입장 사건/범용 카메라 모드는 추가하지 않는다.
 
-#### S12. DebugController — 원문, Managers Component
+#### S12. DebugController — 이전 계획, 현재 제출 제외
 
-- **역할**: Editor에서만 ~ 입력·GUI로 Character 수치를 제어한다. 제출 소스에는 포함하며 디버그 코드 제작 효율 향상에 AI를 사용했음을 보고한다(Q23).
-- **생명 주기**: Editor 실행에서 Managers와 준비·대상 연결, 종료 때 해제한다. 플레이어 빌드에는 Editor 제어가 개입하지 않도록 UNITY_EDITOR 등 컴파일 경계를 적용한다. 실제 구현·빌드 확인은 아직 미실행.
-- **보유 공개 API**: `Toggle`, `SetTarget`, `SetValue` — 디버그가 허용한 수치만 변경.
-- **보유 공개 변수**: `IsVisible`, `Target`.
-- **연관 class**: PlayerInputController 키 입력, Character 수치. 프리팹/패키지를 새로 추가하는 도구가 아니라 원문 내부 기능이다.
+2026-11-16 사용자가 실제 게임 구동과 무관한 코드·디버깅 제거를 요청했다. 이 후속 요청이 Q23의 제출 소스 포함 계획을 대체한다. 별도 DebugController 구현은 없으며 Editor 검사·제작 도구와 런타임 관측 코드를 제거했다. 과거 계획·선택의 출처는 보존하며 최종 확인은3.7을 따른다.
 
 #### S13. 데이터 enum과 보류한 상태 표현
 
@@ -904,7 +902,7 @@ sequenceDiagram
 
 **검/검기 최신 정렬 확인:** Idle·이동·Wait의 검은 몸체20 뒤19,실제 공격은 기존19/21 전환,검기는21임을 확인했다. `project/Logs/AttackSnapshot`의 `sword-on-laboratory-floor.png`에서 수정된 뒤 검은2829픽셀,같은 구도의 `sword-old-order-on-same-floor.png`에서 이전 절대−1은0픽셀이었다. 이번 비교는 실제 바닥 위 완전 가림을 재현했다. `attack-on-laboratory-floor.png`의 검기는69610픽셀이다. 캡처 구역은 outside0/corridor-floor1이고 전체 맵 정적 순서0~10과 구분한다. 지표는 `PlayerAttackSnapshotDash-metrics.json`이다.
 
-**최신 실행 범위·한계:** `project/Logs/PlayerAttackSnapshot.log`의 공격18묶음도 success=true·error 빈값·배치0이다. `PlayerAttackSnapshot-verification.json`은 관련23파일의 원본/격리 일치·최종 baseline 변경0과 공격45자산 일치를 기록하며 baseline은 `PlayerAttackSnapshot-source.json`이다. AreaWarningVfx·CircleWarningVfx·SkillController·SlashPresentationFx·DrawEvaporationVfx·DrawVfx·GameCamera7개 동시 런타임 변경은 미동기화 상태여서 전체 최신 원본 검증으로 확대하지 않는다. C# 컴파일 오류는0이며 기존 UnityEditor.Search.IndexationOnStartup의 ArgumentOutOfRangeException은 관찰된 미해결 검색 초기화 예외다. 기능 검사 성공·배치0과 구분한다. 원본 Editor 수동 플레이·전체 StartupFlow·제출 빌드·성능 측정은 이번 범위가 아니다.
+**최신 실행 범위·한계:** `project/Logs/PlayerAttackSnapshot.log`의 공격18묶음도 success=true·error 빈값·배치0이다. `PlayerAttackSnapshot-verification.json`은 관련23파일의 원본/격리 일치·최종 baseline 변경0과 공격45자산 일치를 기록하며 baseline은 `PlayerAttackSnapshot-source.json`이다. AreaWarningVfx·CircleWarningVfx·SkillController·SlashPresentationFx·DrawEvaporationVfx·DrawVfx·GameCamera7개 동시 런타임 변경은 미동기화 상태여서 전체 최신 원본 검증으로 확대하지 않는다. 기능 검사 성공·배치0과 구분한다. 원본 Editor 수동 플레이·전체 StartupFlow·제출 빌드·성능 측정은 이번 범위가 아니다.
 
 **앞선 캡처 이력:** `project/Logs/DashIntegration`의 이전 절대+1 비교는 검4955→2847픽셀로 몸체에 겹친 손잡이/하단의 부분 가림이었다. 당시 자료를 바닥 전체 가림 재현으로 바꾸어 설명하지 않는다. 위 최신 AttackSnapshot의 절대−1 비교가 별도의 완전 가림 근거다. 이전 대시28/29/19와공격15묶음은 각 당시 확인 이력이다.
 
@@ -1109,7 +1107,7 @@ A는 현재 Character.AS다. 원작은 (100+AttackSpeed)/100×(1+attackSpeedAmpl
 
 **피벗·앞뒤·검기 계약:** 원작 기본 어깨(.15625,.4375)에 위/아래±.0625를 적용한다. 북쪽 조준은 어깨(.15625,.5)·SwingPoint +Y1이므로 Player 기준 검기피벗(.15625,1.5)다. 우리+X 조준 부모는 어깨(sign×.15625,위?.5:.375),조준 회전·localScale(1,sign)을 사용하고 클립 위치(x,y)를(y,-x)로 바꿔 원작 행렬을 보존한다. 원본70×66·피벗(35,33)·16PPU와 검/검기의 고정 정렬을 유지한다.1타는11/30초부터 검 앞,2타는0.3초부터 검 뒤이며 새3타는 연결한 원본 구간의 정렬을 따른다. 검기는 생성 당시 방향·반사·Player 상대 위치를 보존하고 위치만 추종한다. 서로 수명이 겹치는 검기는 독립 재사용 슬롯을 사용한다.
 
-**판정·피해 계약:** 각 AttackHit는 DamageInstance·고정 방향·적중 목록·잔여시간을 독립 보관한다. 높은 AS에서 다음 타가 먼저 시작돼도0.15게임초 수명을 유지한다. 사각 Cast의 기하와 Gizmo는 같고 결과 포화 시 확장/재질의한다. 같은 타에서 실제 피해를 받은 Character는 여러 Collider·다음 조회에도1회만 맞으며 거부된 대상은 다음 조회에서 다시 판정할 수 있다. 새3타는 첫 검기에 판정/전진을 한 번만 생성하고 두 색/되베기에서 피해를 추가하지 않는다. 자기 공격·비활성 Hitbox·유효하지 않은 피해는 제외하며 최종 허용은 수신자가 판단한다. 비전투는 피해 면제 조건이 아니고 벽 이동 충돌과 공격의 공간 질의는 별개다.
+**판정·피해 계약:** 각 AttackHit는 DamageInstance·고정 방향·적중 목록·잔여시간을 독립 보관한다. 높은 AS에서 다음 타가 먼저 시작돼도0.15게임초 수명을 유지한다. 사각 Cast는 결과 포화 시 확장/재질의한다. 기존 관측용 Gizmo는 제출 정리에서 제거했다. 같은 타에서 실제 피해를 받은 Character는 여러 Collider·다음 조회에도1회만 맞으며 거부된 대상은 다음 조회에서 다시 판정할 수 있다. 새3타는 첫 검기에 판정/전진을 한 번만 생성하고 두 색/되베기에서 피해를 추가하지 않는다. 자기 공격·비활성 Hitbox·유효하지 않은 피해는 제외하며 최종 허용은 수신자가 판단한다. 비전투는 피해 면제 조건이 아니고 벽 이동 충돌과 공격의 공간 질의는 별개다.
 
 **중단·보존 계약:** 초기 무시 구간의 짧은 클릭은 저장하지 않지만 허용된 예약은 해제 뒤에도 한 번 남는다. 긴 프레임이 콤보창을 넘어도 허용 예약 소비를 우선한다. OnDie·컷씬 false→true·외부 차단·대상 해제·비활성화·재배치는 모든 판정/검기/전진/예약을 취소한다. 실제 사망 사건과 저장 HP 복원·IsDead 직접 대입은 구분한다. 질의 중 취소는 CollisionBox의 질의 세대를 무효화해 후속 피해·기록 추가를 막고 취소한 Idle 자세를 보존한다. 시간 정지는 취소 없이 남은 게임 시간을 보존한다. Input의 홀드 캐시와 Character 내부 의도는 별개이며 공격 무기는 OnDie에 중복 구독하지 않는다.
 
@@ -1118,14 +1116,6 @@ A는 현재 Character.AS다. 원작은 (100+AttackSpeed)/100×(1+attackSpeedAmpl
 **직전 기준선(2026-11-16):** 대시/정렬 수정 뒤 Unity6000.3.21f1 격리 실행의 `project/Logs/PlayerAttackAfterDashIntegration.log`에서 컴파일 종료·`ALL PASSED (15 checks)`·배치 종료0을 확인했고 `project/Logs/PlayerAttackAfterDashIntegration-result.json`은 success=true·error 빈값이다. 실제 Input System의 초기 클릭 무시·허용 후 누름/해제 예약·홀드1→2→3→1,4방향544개 검 모션 표본과54개3타 FX/가림,AS·콤보 경계·0.6 전진·AS2의 이전 판정 수명·3타 단일 피해·비활성→재활성의 Idle/speed1·재공격·Title 정리를 재확인했다. 워밍 후3타 F23/25/26/30/33 캡처는 앞선 공격 이식 확인 자료다. 현재 관련23파일과45자산의 원본/격리 일치·동시 변경5파일 제외·미해결 Editor 검색 초기화 예외는2.1.2의 실행 범위·한계를 따른다. 이전 전체35/아트16묶음과 별개이며 원본 Editor 수동 플레이·제출 빌드·성능 측정 완료를 뜻하지 않는다.
 
 **적용·기록 상태:** 최초 공격 반영의45산출물 일치·실제 변경22개·GUID 보존과 당시14개 C# 사본 일치는 `project/Logs/PlayerAttackIntegration-publish.json`의 이력이다. 직전 입력 snapshot/무입력 감소·비공격 검 뒤 정렬의 이력은 `PlayerAttackSnapshot-verification.json`의 관련23파일·45자산 일치다. 이번 입력 유무별 기본거리0.5 통일은 `PlayerAttackUnified-verification.json`의 새18+8묶음·관련23파일/45자산 일치로 확인했다. 동시 작업8개 런타임 제외 범위를 유지하며 전체 최신 원본 검증으로 확대하지 않는다. Notion Class P03/P05와 기존 `F-P02 SequenceDiagram`4Case·`F-P03 SequenceDiagram`5Case에 실제 감속·공격 전진 대체·몸체 기준 정렬/Idle 조준을 저장했다. 이번0.5 통일도 Notion Class P03의 해당 문장·P05와 기존 F-P03의5Case/검증 기록에 반영했고 입력별 거리 분기는 제거·방향 분기는 보존했다. 기존 기능/Case와 다른 Slash·Draw 내용은 보존했고 연결 도구는 경고 없이 성공을 반환했다. 미리보기 설정·화면 확인·마우스/브라우저 조작은 수행하지 않았다.
-
-**기존 검사 전제 정정:** PlayerAttackChecks의 수동0.25 이동 배율 측정에서만 별도 전진을 끄고 종료/예외에 원값을 복구한다. 같은 파일과 ArtIntegrationChecks의 취소 검사는 Motion 원점 대신 실제 Idle 상태·Animator speed1을 확인한다. 두 Editor 파일만 추가 동기화한 `project/Logs/PlayerAttackIntegrationLegacyChecksCompile.log`의 Tundra build success·배치 종료0을 확인했다. 런타임 변경은 없고 위15묶음 결과를 유지하며, 수정한 구형 검사·전체 StartupFlow를 새로 실행한 것으로 기록하지 않는다.
-
-**이전 구현 검증 이력(2026-11-15 18:30:34 KST)**: 초기 구현의17:47:36 KST35묶음을 기준선으로 두고 후속 책임 정리 뒤 원본 Unity6000.3.21f1 런타임/Editor 컴파일 종료 코드0·Tundra 빌드·어셈블리 재로드와35묶음 Play Mode 성공·오류 빈값을 다시 확인했다. 기존29묶음과 좌클릭·콤보·AD/AS·느린 이동·방향/판정·중복/배열 포화·피해 허용의 공격6묶음을 유지하고 마지막 수명 검사에 실제 치명 피해의 OnDie1회·컷씬 false→true1회·다음 Update 전 취소를 포함했다. 실제 피해 콜백에서 컷씬을 시작한2대상 중1명만 피해를 받고 적중 기록0·쿨타임0·대기 무기 자세가 보존되는지 확인했다. 이때 Character 내부 홀드 의도 정리와 입력 서비스의 홀드 캐시 보존을 구분한다. 실제 결과는 `project/Logs/StartupFlowChecks-result.json`, 검사 코드는 `project/Assets/Editor/PlayerAttackChecks.cs`, 격리 저장 폴더는 `project/Temp/StartupFlowChecks/f64016af49414481848486350804150b`다. 종료 후 Title 편집 씬 복원은 Editor.log의 Assets/Scenes/Title.unity 로드 완료로 확인했으며 직접 화면 확인은 CUA 중지로 미실행이다. 최종 검기 FX/무기 Sprite·음향·실제 아트와의 판정 프레임·제출 빌드·성능 측정은 별도 미확인 범위다.
-
-**이전 Notion 기록 이력**: 정리 페이지2.1 Player 표 아래 독립 `F-P03 SequenceDiagram`의 기존5개 Case와 초기 Class7개 기록을 보존하고, 이번 시작 허용·진입 사건 중단에 맞춰 Class P01·P03·P05·S09와 Case③⑤·18:30:34의35묶음 결과를 갱신했다. 연결 도구가 경고 없이 저장 성공을 반환했고 현재 로컬 Mermaid19개는 기존 설치된 Mermaid11 파서로 구문 검사를 통과했다. 미리보기 모드·화면 확인·UI 조작은 체크에서 제외하고 기존 F-S01 사용자①과 다른 기능의 Case 번호를 보존했다.
-
-**Mermaid 구문 복구(2026-11-15)**: ③~⑤의 참여자 식별자 `Box`가 Mermaid 예약어 `box`로 해석되어 `Expecting '+', '-', 'ACTOR', got 'box'` 파싱 오류를 일으켰다. 표시명 CollisionBox는 유지하고 내부 식별자·참조만 `HitQuery`로 바꿨다. 원문은①② 통과·③~⑤ 실패, 수정본은 Mermaid11.12.0 실제 파서에서5개 모두 통과했다. Case 번호·설명·분기·호출·주석은 보존했고 동일 변경의 Notion 저장이 경고 없이 성공했다. 검사 원문·스크립트·결과는 `project/Temp/MermaidRepair`에 격리했으며 게임 코드·패키지는 변경하지 않았다. Notion 화면 표시 검사는 수행하지 않았다.
 
 **① 좌클릭 누름·해제 → 일회 눌림·홀드 전달과 공격 허용·방향 확정**
 
@@ -1420,8 +1410,7 @@ sequenceDiagram
 - Draw에는 위치 보간/관성을 추가하지 않는다. 진입·Draw 갱신·종료 시 추적 속도를0으로 정리한다. 일반 smoothTime0.1283(정지 목표90% 접근 약0.25초)·DrawZoom6.5의 초당8 unscaled 줌·현재 화면 크기를 포함한 세로 맵 제한·확정/취소/중단의 원래 대상/줌 복구는 유지한다. 기존 프리팹에서 사라진 두 설정도 제거했고 GUID·다른 Slash 연출은 보존했다.
 - 원작은 `CameraController.GetCoreCurrentBasePosition/GetCoreOffset/LateUpdate`, `PlayerController.SmoothedCameraCenter`의 실제 마우스/패드 분기를 확인했다. 원작 총/탄환을 추적 대상으로 추가하거나 패드 RoomLock·협동·픽셀 양자화·별도 화면 흔들림 체계를 이식하지 않는다. 실제 원작 실행 캡처·프리팹 직렬화값은 미확인이다.
 - **실제 검증(2026-11-16 09:03:10 KST):** 같은 Unity6000.3.21f1의 전용 `project/Temp/DrawCameraVerification`에서 런타임·Editor 컴파일 종료/assembly reload와 Play **28묶음 성공·배치 종료0·success=true/error 빈값**을 확인했다. 신규 카메라5묶음은 일반 SmoothDamp 분리·중앙1world/1⁄64 cutoff·화면비·축별 상한·같은 갱신의 즉시 반전·고정 화면 커서6/12/29회 재투영 수렴·맵 경계·대상/줌 복구를 검사했다. 실제 Shift/timeScale0·30도Line 편집/확정/취소·정지 소유/강제 중단·Line 수명/Slash 판정·Title 정리도 통과했다. 30/60/144의0.2초분 호출 횟수는 계산 모델이며 실제 FPS/입력지연 계측이 아니다.
-- **재현·대조:** `project/Logs/DrawCameraVerification-result.json`·`DrawCameraVerification-elevated.log`가 실제 결과다. `DrawCameraVerification-publish.json`의54대상 중 카메라/프리팹·검사/관련 meta는 최신 원본과 일치했다. 불일치2개는 검사 중 다른 Slash 작업이 바꾼 `SkillController`의 `vfx.PlaySlash` 제거와 `SlashPresentationFx`의 `_CutProgress`/주석 변경이다. 이 두 파일까지 최신 전체 실행을 확인했다고 보고하지 않는다. 원본으로 격리 자산을 덮어쓰지 않았고 기존 GUID를 보존했다.
-- **실행 한계·관찰:** 첫 샌드박스 시도는 컴파일 전에 Unity 라이선스 연결이 실패했고 해당 전용 프로세스만 정리한 뒤 권한 확장 재시도로 위 결과를 얻었다. 최종 로그의 UnityEditor.Search.SearchDatabase 초기화 `ArgumentOutOfRangeException`1건과 기존 BakeMesh obsolete 경고는28검사 성공·정상 종료와 구분한다. 원본 Editor 직접 Play·최신 동시 변경 전체 회귀·사용자 체감 승인·제출 빌드는 미실행이다.
+- **재현·대조:** `project/Logs/DrawCameraVerification-result.json`·`DrawCameraVerification-elevated.log`가 실제 결과다. `DrawCameraVerification-publish.json`의54대상 중 카메라/프리팹·검사/관련 meta는 최신 원본과 일치했다. 불일치2개는 검사 중 다른 Slash 작업이 바꾼 `SkillController`의 `vfx.PlaySlash` 제거와 `SlashPresentationFx`의 `_CutProgress`/주석 변경이다. 이 두 파일까지 최신 전체 실행을 확인했다고 보고하지 않는다. 원본 Editor 직접 Play·최신 동시 변경 전체 회귀·사용자 체감 승인·제출 빌드는 미실행이다.
 - **문서·Notion:** 원인/선택 이유는 기존 Draw 선택13·위 분석에 기록했다. 로컬 기존 F-P04①/⑤와 F-U04①을 실제 호출 순서에 맞췄으며 [정리 페이지](https://app.notion.com/p/41857a6d6d24809a8d15f1a5aa34d48a)의 기존 U06·같은 Case/최종 결과를 표적 저장했다. 저장 오류/경고 없이 기존 번호·사용자 내용·Slash/Death 설명을 보존했으며 별도 토글/Case를 중복 생성하지 않았다.
 
 **① 일반 Shift → 공통 시작 허용·스킬 진입과 전용 맵 전환**
@@ -1981,19 +1970,19 @@ sequenceDiagram
 
 **직진·충돌/수명:** ReflectionTarget은 Owner 우선의 살아 있는 Boss 중 실제 피격 Hitbox를 허용할 참조일 뿐이다. UpdateReflection은 기존 ReflectionSpeed의 고정 방향 swept CircleCast에서 가장 가까운 유효 Boss Hitbox가 nearestWall보다 앞일 때만 ReceiveHit를 한 번 전달하고 Despawn한다. 벽이 앞/동거리면 벽에서 종료하며 Player에는 피해를 주지 않는다. Boss를 빗나가면 같은 방향으로 직진한다. scaled 정지·Lifetime0의 시간 만료 없음/양수의 반사 직후 최소 잔여1초·그로기/Fever의 탄별1회 보상을 유지한다.
 
-**반사 최신 확인·한계(2026-11-16 12:47:51 KST):** 같은 Unity6000.3.21f1 최신 source 사본에서 C#/shader 오류0·[Draw/Slash32검사](../project/Logs/SlashReflectionVerification-result.json)와 [실제 GoldPrefab/halo17검사](../project/Logs/SlashReflectionGoldAssetVerification-result.json)가 모두 ALL PASSED·error 빈값·각 배치 종료0이다. 실제 수평/수직·30°/210°와 탄 중심의 선 전후에서 같은 반사, 입사down→30°의(-sqrt(3)/2,0.5), 반사 순간 위치 불변·이후 고정 직진·정지/수명·고속 실제 Boss CCD/near miss·Player 무해·벽 전후/동거리 우선·OwnerHitbox 피해/보상1회를 확인했다. [source](../project/Logs/SlashReflectionVerification-source.json)·[scope](../project/Logs/SlashReflectionVerification-scope.json)는 C#97 snapshot·변경9파일(runtime3+Editor6)/현재 런타임48 일치와 동시 런타임6파일(PlayerCharacter/PlayerSpawner/GameManager/MapManager/SaveManager/StageManager) 차이를 구분한다. 최신 원본 전체 실행으로 확대하지 않는다. 필수 lineDirection의6Editor 호출부를 갱신해 컴파일했고 나머지 Guard/BossCombat/WallFan 전체 suite는 이번에 미실행이다. 기존 PlayerArtSetup.Apply→GuardBossSetup.Run→SlashPresentationSetup.Run→PlayerDrawSetup.RunChecks·BossHazardArtChecks.RunBatch는 검증사본 준비/실행이며 production 자산 복사는0개다. [32검사 로그](../project/Logs/SlashReflectionVerification.log)·[17검사 로그](../project/Logs/SlashReflectionGoldAssetVerification.log)를 보존한다. 원본 Editor 직접 Play/최종 import·제출 빌드는 미확인이다. 새 미술 결과가 아닌 반사 규칙 변경이며 동시 벽 제거/fan·수명주기·Draw.io 작업을 보존한다. 같은 Notion Class·F-P07 Case③/F-B06 Case①·최신 결과/현재 Q12 비고를 저장했고 도구 응답이 경고 없이 성공했다.
+**반사 최신 확인·한계(2026-11-16 12:47:51 KST):** 같은 Unity6000.3.21f1 최신 source 사본에서 C#/shader 오류0·Draw/Slash32검사와 실제 GoldPrefab/halo17검사가 모두 ALL PASSED·error 빈값·각 배치 종료0이다. 실제 수평/수직·30°/210°와 탄 중심의 선 전후에서 같은 반사, 입사down→30°의(-sqrt(3)/2,0.5), 반사 순간 위치 불변·이후 고정 직진·정지/수명·고속 실제 Boss CCD/near miss·Player 무해·벽 전후/동거리 우선·OwnerHitbox 피해/보상1회를 확인했다. source·scope는 C#97 snapshot·변경9파일(runtime3+Editor6)/현재 런타임48 일치와 동시 런타임6파일(PlayerCharacter/PlayerSpawner/GameManager/MapManager/SaveManager/StageManager) 차이를 구분한다. 최신 원본 전체 실행으로 확대하지 않는다. 필수 lineDirection의6Editor 호출부를 갱신해 컴파일했고 나머지 Guard/BossCombat/WallFan 전체 suite는 이번에 미실행이다. 기존 PlayerArtSetup.Apply→GuardBossSetup.Run→SlashPresentationSetup.Run→PlayerDrawSetup.RunChecks·BossHazardArtChecks.RunBatch는 검증사본 준비/실행이며 production 자산 복사는0개다. 32검사 로그·17검사 로그를 보존한다. 원본 Editor 직접 Play/최종 import·제출 빌드는 미확인이다. 새 미술 결과가 아닌 반사 규칙 변경이며 동시 벽 제거/fan·수명주기·Draw.io 작업을 보존한다. 같은 Notion Class·F-P07 Case③/F-B06 Case①·최신 결과/현재 Q12 비고를 저장했고 도구 응답이 경고 없이 성공했다.
 
 
 **2026-11-16 선 오라 전체 판정 폭 후속 — 구현·연결·29검사 완료:** 사용자는 좁은 Slash 판정이 선FX의 연한 오라까지 포함하도록 넓은 직사각형으로 검사하라고 요청했다. 시전 시작에 유효 Line을 Consume한 뒤 DrawVfx.GetLineEffectWidth(line)=line.Width×Mathf.Max(1,lineVisual.WidthMultiplier)를 한 번 읽어 LineSlasher.Execute(line,hitWidth,damage,mask)에 넘긴다. 현재 원본 Line.Width0.25·표시 배율3에서 HitWidth0.75이며 중심/방향·길이는 원본 그대로다. ApplyHits는 QuerySlash(center,(ActiveLine.Length,HitWidth),angle)를 한 번 요청한다. ActiveLine.Width와 시전선/공간참의 표시 입력은0.25 그대로여서 표시가 이중으로 커지지 않는다. 시전 중 style이3→4로 바뀌어도 현재 HitWidth0.75는 고정하고 다음 Slash만1.0을 사용한다. Complete/Cancel은 HitWidth0·후속 재판정 없음으로 정리한다. 표시 자산/Player 설정은 변경하지 않았다. [선택4](archive/01_Choice/Player_Slash_Presentation_20261116.md#선택-사안-4--선-오라-전체를-포함하는-slash-직사각-판정)를 따른다.
 
-**오라 판정 최신 확인·한계(2026-11-16 11:52:01 KST):** 같은 Unity6000.3.21f1의 최신 source 사본에서 C#/shader 오류0·Draw/Slash/기존 Draw카메라29묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다.30°의 rawLine폭0.25·실제 BakeMesh 렌더폭0.75=HitWidth0.75, 양옆±0.31의 multiCollider 수신자1회 적중과±0.5/끝+0.15 제외·style3→4의 현재0.75/다음1.0·원본/표시 중복 확대 없음·완료HitWidth0/ApplyHits 재호출0을 통과했다. 기존45° 오라/벽 무시·구조물/탄 반사/Fever·취소/사망/Title도 통과했다. 검증 C#95개 snapshot·현재 런타임54개 전부와 변경7파일 일치, 동시 Editor GuardHandChecks/PlayerArtSetup/PlayerAttackIntegrationChecks3개 차이를 구분하며 최신 전체 Editor/아트 검증으로 확대하지 않는다. 자산 복사는0개다. [로그](../project/Logs/SlashAuraWidthVerification.log)·[29개 결과](../project/Logs/SlashAuraWidthVerification-result.json)·[source](../project/Logs/SlashAuraWidthVerification-source.json)·[scope](../project/Logs/SlashAuraWidthVerification-scope.json)를 따른다. 사본에서 PlayerArtSetup.Apply→GuardBossSetup.Run→SlashPresentationSetup.Run→PlayerDrawSetup.RunChecks로 준비했고 최초 Boss_01 손 참조 누락은 사본 재준비로 해결했다. 기존 반사 검사의 넓은 실제 몸통이 테스트 범위에 겹치던 배치는 Collider 왼쪽 돌출량 기준 End+0.25 밖으로 검사만 보정했으며 runtime Boss는 변경하지 않았다. 원본 Editor 직접 Play/최종 import·제출 빌드는 미확인이다. 이번 결과는 새 미술 결과가 아닌 판정 변경이며 기존 검격 VFX의 사용자 미술/박자 확인은 별도로 남긴다. Class·기존 Case①②를 갱신하고 번호/다른 Case와 독립 작업은 보존했다. 같은 Notion Class·기존 Case①②/최종 비고를 저장했고 도구 응답이 경고 없이 성공했다.
+**오라 판정 최신 확인·한계(2026-11-16 11:52:01 KST):** 같은 Unity6000.3.21f1의 최신 source 사본에서 C#/shader 오류0·Draw/Slash/기존 Draw카메라29묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다.30°의 rawLine폭0.25·실제 BakeMesh 렌더폭0.75=HitWidth0.75, 양옆±0.31의 multiCollider 수신자1회 적중과±0.5/끝+0.15 제외·style3→4의 현재0.75/다음1.0·원본/표시 중복 확대 없음·완료HitWidth0/ApplyHits 재호출0을 통과했다. 기존45° 오라/벽 무시·구조물/탄 반사/Fever·취소/사망/Title도 통과했다. 검증 C#95개 snapshot·현재 런타임54개 전부와 변경7파일 일치, 동시 Editor GuardHandChecks/PlayerArtSetup/PlayerAttackIntegrationChecks3개 차이를 구분하며 최신 전체 Editor/아트 검증으로 확대하지 않는다. 자산 복사는0개다. 로그·29개 결과·source·scope를 따른다. 사본에서 PlayerArtSetup.Apply→GuardBossSetup.Run→SlashPresentationSetup.Run→PlayerDrawSetup.RunChecks로 준비했고 최초 Boss_01 손 참조 누락은 사본 재준비로 해결했다. 기존 반사 검사의 넓은 실제 몸통이 테스트 범위에 겹치던 배치는 Collider 왼쪽 돌출량 기준 End+0.25 밖으로 검사만 보정했으며 runtime Boss는 변경하지 않았다. 원본 Editor 직접 Play/최종 import·제출 빌드는 미확인이다. 이번 결과는 새 미술 결과가 아닌 판정 변경이며 기존 검격 VFX의 사용자 미술/박자 확인은 별도로 남긴다. Class·기존 Case①②를 갱신하고 번호/다른 Case와 독립 작업은 보존했다. 같은 Notion Class·기존 Case①②/최종 비고를 저장했고 도구 응답이 경고 없이 성공했다.
 
 
 **2026-11-16 선 유지·노란 검격 VFX 후속 — 구현·연결·검증 완료**: 사용자는 Slash 연출 동안 시전 전 맵에 있던 Line이 계속 보여야 하며, 실제 공간참 순간 그 선이 사라지는 자리의 노란 선/절단 경계로 피해 경로를 명확히 알려야 한다고 요청했다. CurrentLine은 기존대로 시전 시작에 한 번 소비하고, 소비 snapshot만 발도·빠른/느린 줌·납도·지연 전 구간의 동일 맵 위치에 표시한다. impact에서는 유지선을 제거하고 같은 Line 경로의 노란 피해 강조와 공간참을 함께 실행한다. 판정·시간/조작 해제 시점·영역·피해1회·취소/사망/Title 정리는 유지한다. 아래19/23묶음은 이 후속 적용 전 기준선이며 이번 변경의 실제 성공으로 사용하지 않는다. [선택3](archive/01_Choice/Player_Slash_Presentation_20261116.md#선택-사안-3--시전-중-line-유지와-공간참-순간-노란-피해-경로)을 따른다.
 
 **선 유지·노란 검격 VFX의 현재 코드 — 연결·격리 검증 완료**: `ConsumeLine→Slasher.Execute→DrawVfx.ShowSlashLine`으로 논리 소비와 시전 표시를 구분한다. 유지 중 외부 SetLine은 저장 원본만 갱신하고 표시 변경은 시전 종료 경계까지 보류한다. 완료/취소의 `FinishSlash`는 Slasher.Complete 뒤 ClearSlash와 ShowLine(player.CurrentLine)으로 snapshot 표시를 끝내며, 성공 impact만 `SlashPresentationFx.PlaySpaceSlash`를 요청한다. 초기 solid gold core·어두운 외곽 막대의21검사 성공은 기술 이력·**사용자 시각 반려**로 분리한다. 사용자는 노란 요소도 VFX여야 하며 틈을 벌리거나 채우는 것이 아니라 단절된 공간에 걸쳐 있어야 한다고 정정했다. 현재 연결한 제작안은 어긋난 월드의 원래 Line 경로에 걸친 황금 검격 잔광·가는 cream-white 열핵·반투명 gold halo·끝 taper와 `_CutProgress`의 unscaled 가늘어짐/잔물결/sparse 이동 빛 조각이다. 열핵은 원본 Line.Width30%·최대6px인 제작값이며 검은 틈/어두운 외곽·불투명 금색 띠는 제거했다. 기존 흰색 SlashFlash도 정상 흐름에서는 재생하지 않으며 레거시 API/자산만 보존한다. 빛/조각이 실제 판정 범위를 늘리지 않는다. Setup은 이전 기본 cyan만 노란색으로 이관하고 사용자 지정 색은 보존한다. 구체 빛/형태·시간은 조정 가능한 제작값이며 새 GIF의 사용자 최종 미술 승인은 미확인이다.
 
-**선 유지·검격 잔광의 최신 검증(2026-11-16, 재촬영22검사09:09:13 / 소스 대조09:10:49 KST)**: 같은 Unity6000.3.21f1 격리본에서 [SlashLineEnergyVerification22묶음](../project/Logs/SlashLineEnergyVerification-result.json)과 [Draw 회귀28묶음](../project/Logs/SlashLineEnergyDrawRegression-result.json)이 모두 ALL PASSED·success=true·error 빈값·각 배치 종료0이다.28묶음에는 동시 Draw 신규 검사가 포함되며 그 작업의 미술 승인이나 전체 완료를 대신하지 않는다. [일치 manifest](../project/Logs/SlashLineEnergyVerification-source.json)는 원본 런타임48개 전부·이번 소유6 C#과 Player/SpaceMaterial/Shader3자산의 SHA-256 일치를 확인했다. 전체 C#83개 중 차이2개는 무관한 동시 Editor `BossHazardArtChecks`·`BossHazardArtSetup`이므로 최신 전체 Editor 소스까지 실행했다고 확대하지 않는다. 원본에는 소유 C#·Player CutColor 한 필드·공간참 재질/shader만 반영하고 다른 공격/대시/입자/위험물 데이터를 보존했다.
+**선 유지·검격 잔광의 최신 검증(2026-11-16, 재촬영22검사09:09:13 / 소스 대조09:10:49 KST)**: 같은 Unity6000.3.21f1 격리본에서 SlashLineEnergyVerification22묶음과 Draw 회귀28묶음이 모두 ALL PASSED·success=true·error 빈값·각 배치 종료0이다.28묶음에는 동시 Draw 신규 검사가 포함되며 그 작업의 미술 승인이나 전체 완료를 대신하지 않는다. 일치 manifest는 원본 런타임48개 전부·이번 소유6 C#과 Player/SpaceMaterial/Shader3자산의 SHA-256 일치를 확인했다. 전체 C#83개 중 차이2개는 무관한 동시 Editor `BossHazardArtChecks`·`BossHazardArtSetup`이므로 최신 전체 Editor 소스까지 실행했다고 확대하지 않는다. 원본에는 소유 C#·Player CutColor 한 필드·공간참 재질/shader만 반영하고 다른 공격/대시/입자/위험물 데이터를 보존했다.
 
 실제 다섯 시전 구간에서 CurrentLine 소비와 별개로 원래 맵 위치/방향/길이의 선 유지, impact 전 표시 전환 없음·그 순간 한 번 판정/노란 VFX 전환·다섯 단계 취소·재진입/기억 Line 저장·Title 정리를 확인했다. [실제 관측](../project/Logs/SlashLineEnergy/render-observation.json)의1093×515 화면에서 양쪽 이동은 `(-17.5,-5.5)`/`(17.5,5.5)`px·OverlayUnchanged=true·YellowDamagePath=true, 서로 다른 실제 시점의 VFX 변화는 최신846px이다. 밝은 흰 바닥에 검은 틈이 없고 원래 Line에 걸친 golden halo가 보이는 것을 확인했다. [시전 유지](../project/Logs/SlashLineEnergy/01-held-draw.png)·[첫 검격](../project/Logs/SlashLineEnergy/03-space-cut.png)·[후속 잔광](../project/Logs/SlashLineEnergy/03b-space-energy.png)과 검사 표본을 숨긴 원래 맵에서 **기본0.28초의 약13실프레임과 원상 대기/실제 간격**으로 만든 [검토 GIF](../project/Logs/SlashLineEnergy/space-cut-vfx.gif)(842×414·341,952bytes)를 저장했다. 정적 PNG는 흰 바닥/색 표본을 포함한 측정용이며 이 clean GIF와 구분한다. 촬영 구간의 검사 표본 표시만 바꾼22재검사가09:09:13 KST에 다시 성공·배치0이며, runtime/shader가 같으므로 촬영 변경 전28회귀 결과도 유효하다. 원본 Editor 직접 Play·새 GIF의 사용자 최종 미술 승인·제출 빌드는 미확인이다. 다음 단계는 이 GIF와 Tune Slash에서 VFX의 빛/박자 피드백을 받는 것이며, 반려된 솔리드 캡처/21검사를 새 VFX 완료 근거로 사용하지 않는다. 이번 선 유지 후속의 P06/P07 Class·F-P06 Case⑥·F-P07 Case①②⑤와 최종22/28·clean GIF/미확인 범위도 기존 Notion 위치에 경고 없이 저장했다.
 
@@ -2029,7 +2018,7 @@ sequenceDiagram
 
 **이번 연출의 원작 참고·차이**: Sephiria TargetTracker의 이전 초점/줌 보관·실제시간 보간과 [카메라 요청](<reference/sephiria/code/ingame code/Assembly-CSharp/CutSceneSetCameraNode.cs>)·[줌 요청](<reference/sephiria/code/ingame code/Assembly-CSharp/CutSceneSetCameraZoomNode.cs>) 호출부, Animator2D_Basic/MultipleSpriteRenderer/AnimationSet·PlayerAvatar의 상태 데이터/표시 분리를 확인했다. RadialDistortion.Play·ReverseRadialDistortion.StopReverse와 실제 ArmadilloGolemCore/GravitateArea 호출·SpriteFx 생성/반환·SoundManager 오디오 수명은 외부 사건·viewport 사영·자기 해제 원리만 채택한다. 원작 방사 왜곡을 같은 Line 공간참으로 설명하지 않으며 원작 코스튬·범용 컷씬 노드/FSM·풀·FMOD 설치와 음원 복제는 생략한다. 화면 패스는 현재 설치된 URP의 공식 FullScreenPassRendererFeature 코드를 실제 읽어 상속 재사용했다. 정확한 대응 경로는 [REFERENCE_CODE_MAP](REFERENCE_CODE_MAP.md)의 U01·U06·F-P07 지원행에 둔다.
 
-**후속 연출 검증 결과(2026-11-16 07:59:37 KST 기준)**: 현재 Unity6000.3.21f1 격리본에서 **Slash 전용19묶음과 기존 Draw/Line/Slash 회귀23묶음 모두 ALL PASSED·success=true·error 빈값·각 배치 종료0**을 확인했다. 결과는 [19묶음](../project/Logs/SlashPresentationIsolatedVerification-result.json)·[23묶음](../project/Logs/SlashPresentationDrawRegression-result.json), 실행 로그는 `project/Logs/SlashPresentationIsolatedVerification.log`·`SlashPresentationDrawRegression.log`다. [일치 manifest](../project/Logs/SlashPresentationVerification-source.json)의 현재본/검증본 C#75개·연결11자산 SHA-256 불일치는 모두0이다. 동시 작업의 최신 Draw alpha/분해 코드4파일과 만료 표현0.65초를 보존·합친 최종 소스로 두 검사를 다시 통과했다. 이는 해당 Draw 제작 결과 전체를 대신 완료 처리하는 근거가 아니다.
+**후속 연출 검증 결과(2026-11-16 07:59:37 KST 기준)**: 현재 Unity6000.3.21f1 격리본에서 **Slash 전용19묶음과 기존 Draw/Line/Slash 회귀23묶음 모두 ALL PASSED·success=true·error 빈값·각 배치 종료0**을 확인했다. 결과는 19묶음·23묶음, 실행 로그는 `project/Logs/SlashPresentationIsolatedVerification.log`·`SlashPresentationDrawRegression.log`다. 일치 manifest의 현재본/검증본 C#75개·연결11자산 SHA-256 불일치는 모두0이다. 동시 작업의 최신 Draw alpha/분해 코드4파일과 만료 표현0.65초를 보존·합친 최종 소스로 두 검사를 다시 통과했다. 이는 해당 Draw 제작 결과 전체를 대신 완료 처리하는 근거가 아니다.
 
 실제 R02 연결·빠른/느린 줌과 부분 발도 유지·칼날 중앙 빛·납도 닫힘/재생음·줌 복귀 중 정지/피해 대기·지연 공간참의 피해1회/음원/전투/HUD 복구를 확인했다.5개 단계별 취소·필수 표시 비활성 거부/중단·초고속 재생의 경계 통과·잘못된 배속의 소비 전 거부·Title 정리도 통과했다. 조정창의 실제 원본 연결, 지정 표현값 저장과 배속/전투 데이터 보존, 기억한 Line 재생·자기 실행 중단을 Play에서 확인했다. 카메라의 Play 프리팹 연결이 풀린 경우 실제 SceneAsset을 임시 preview scene으로 읽어 persistent 원본만 확보하고 즉시 닫으며, 현재 Play 씬을 교체하지 않는다. `Connect Slash Presentation` 재적용도 이미 직렬화된 두 줌 조정값을 덮어쓰지 않는다.
 
@@ -2746,7 +2735,7 @@ sequenceDiagram
 
 **시작·진행·취소**: Crystal은 Map.Initialize 뒤 저장 이력과 위치를 적용하고 PIC Instance를 한 번 캐시한다. Player의 여러 Collider 접촉은 HashSet으로 보관하며 마지막 이탈만 후보를 해제한다. 활성화 전에는 실제 Collider 겹침을 다시 확인한다. Player.ApplyInteraction은 공통 생존/준비·컷씬·다른 행동·외부 차단을 검사하고 자기 activeInteraction과 완료 구독을 보관한다. 진행 중 IsInteracting은 이동/다른 행동을 잠그고 기존 전면 무적과 OR로 합친다. Crystal은 중복/이미 활성·자기 범위/데이터·수치만 검사하고 ActivationDuration0.2초 unscaled 임시 대기를 시작하며 최소 한 프레임 뒤 완료한다. 사망·외부 Block·컷씬·ResetMotion/비활성·범위 이탈은 CancelActivation으로 중단하며 회복/저장/문 열림 없이 OnActivationFinished만 알린다.
 
-**완료·소유권**: 성공은 IsActivated를 먼저 확정하고 Player.Heal(maxHP)·Groggy=0→Current의 ActivatedCheckpoints/CheckpointId/PlayerHP 설정→Save 요청 순서다. 이후 IsActivating=false·자기 Trigger 비활성/제거·후보 정리를 확정한 뒤 OnActivated를 발행한다. Map 구독자는 SpawnPoint 캐시를 새 체크포인트로 갱신하고 EntryDoor를 열며 자기 일회 구독을 해제한다. 마지막 OnActivationFinished를 받은 Player는 자기 진행 보호·잠금/구독을 정리한다. UI는 PIC.OnInteractionChanged를 구독하고 현재 Player.CanMove 등의 표시 조건으로 자기 F 안내를 갱신한다. Player.OnInteractionStateChanged는 진입/종료를 발행하는 최종 모션 연결 경계이며 현재 별도 진행 표시 구독자는 없다. 저장 성공 여부·디스크 완료는 게임 흐름에서 기다리거나 판단하지 않는다.
+**완료·소유권**: 성공은 IsActivated를 먼저 확정하고 Player.Heal(maxHP)·Groggy=0→Current의 ActivatedCheckpoints/CheckpointId/PlayerHP 설정→Save 요청 순서다. 이후 IsActivating=false·자기 Trigger 비활성/제거·후보 정리를 확정한 뒤 OnActivated를 발행한다. Map 구독자는 SpawnPoint 캐시를 새 체크포인트로 갱신하고 EntryDoor를 열며 자기 일회 구독을 해제한다. 마지막 OnActivationFinished를 받은 Player는 자기 진행 보호·잠금/구독을 정리한다. UI는 PIC.OnInteractionChanged를 구독하고 현재 Player.CanMove 등의 표시 조건으로 자기 F 안내를 갱신한다. 런타임 구독자가 없던 Player.OnInteractionStateChanged는 제출 정리에서 제거했다. 수정 완료/취소와 입력 후보 사건은 실제 게임 흐름에 유지한다. 저장 성공 여부·디스크 완료는 게임 흐름에서 기다리거나 판단하지 않는다.
 
 **재로드·재도전**: 새 게임 ActivatedCheckpoints는 start를 포함한다. 기존 파일에 이 key가 없으면 Map 초기화에서 기존 CheckpointId를 포함한 목록으로 메모리 이관하고 그것만으로 디스크 저장을 요청하지 않는다. 저장된 활성 수정은 Trigger를 제거하며 관련 입구를 연다. playerSpawn은 매번 저장 key/맵 배열을 검색하지 않고 최초/수정 활성화 때 갱신한 SpawnPoint를 사용한다. 재도전은 RestoreCheckpointDoors로 활성 수정의 입구만 다시 열고 나머지를 닫는다. 미확정 다음 Boss 비동기 선로딩이나 범용 상호작용 선택기를 추가하지 않는다.
 
@@ -2839,7 +2828,6 @@ sequenceDiagram
     Player->>Crystal: activateCheckPoint(player)
     Crystal->>Crystal: IsActivating=true / unscaled 대기
     Crystal-->>Player: 시작 true
-    Player->>Player: OnInteractionStateChanged(true) 발행
     Note over Player: IsInteracting / 전면 보호 / 다른 행동 잠금
     Note over Crystal: 최소 한 프레임 + ActivationDuration 완료
     Crystal->>Crystal: Player·실제 범위 재확인 / IsActivated=true
@@ -2859,7 +2847,6 @@ sequenceDiagram
     Door->>Animator: Play(opening)
     Crystal-->>Player: OnActivationFinished(this)
     Player->>Player: activeInteraction / 자기 구독 정리
-    Player->>Player: OnInteractionStateChanged(false) 발행
     Note over Door,Animator: 문이 열리는 동안 Player 통과 불가
     Animator-->>Door: LateUpdate에서 open 상태·전이 없음 확인
     Door->>Door: IsOpen=true / Blocker.enabled=false
@@ -2881,7 +2868,6 @@ sequenceDiagram
     Crystal->>Crystal: 대기 중단 / IsActivating=false
     Crystal-->>Player: OnActivationFinished(this)
     Player->>Player: 자기 진행 상태·구독 정리
-    Player->>Player: OnInteractionStateChanged(false) 발행
     Note over Crystal: HP·이력·Save·입구 변경 없음
     External->>Crystal: 이미 활성 / 중복 / 범위 밖 요청
     Crystal-->>External: false
@@ -2956,13 +2942,13 @@ sequenceDiagram
 
 **중간 문제와 수정 구분**: attempt1은 전체 소스 컴파일6.461초 성공 후 동시 작업 중인 Boss 필수 참조 불일치로 월드 준비가 실패해 오라 검사를 실행하지 못했다. 격리본에만 GuardBossSetup.Run으로 QA 연결을 준비했다. attempt2의 실제 Particle Velocity 축 mode 불일치는 Setup의 Z를 TwoConstants(0,0)로 맞춰 수정했다. Render 순간에만 카메라 zoom을 줄여 발부근이 화면 밖에 놓인 QA 촬영 조건도 warmup/LateUpdate 뒤 촬영·복구로 보완했으며 GameCamera/Shader 코드 오류와 구분한다. 이후 visual1의11기능 성공·금색92픽셀은 몸에 가려 시각 요구를 충족하지 못해 보존한 이력이다. 현재 표의 폭·높이·밀도·알파로 재조정한 최종11검사/775픽셀 결과와 섞지 않는다.
 
-**원본 반영·확인 범위**: `FeverAura-verification.json`·`FeverAura-publication.json`에서 현재 런타임54개 전체·오라 관련 C#7개·산출물9개가 검증본과 일치했다. 원본 Player는 후보 `8C9A6EBB…6E01363F`와 같고 기존 GUID·다른 공격/오디오/Buff 설정을 보존해 출판했다. C#96개 중 동시 변경된 Editor PlayerSlashChecks1개는 이번 재컴파일 범위 밖이며,1516파일 snapshot 차이3개는 이 Editor와 QA/동시 변경 GuardRobot·Map이다. QA의 두 월드 프리팹은 원본에 출판하지 않았다. `FeverAura-world-fixture.json`·`FeverAura-gif-verification.json`에 준비/촬영 근거가 있다. 기존 Editor Search 초기화 ArgumentOutOfRangeException은 관찰됐으나 위 게임/컴파일 성공과 구분하며 원본 프로젝트 직접 Play·제출 빌드는 미실행이다.
+**원본 반영·확인 범위**: `FeverAura-verification.json`·`FeverAura-publication.json`에서 현재 런타임54개 전체·오라 관련 C#7개·산출물9개가 검증본과 일치했다. 원본 Player는 후보 `8C9A6EBB…6E01363F`와 같고 기존 GUID·다른 공격/오디오/Buff 설정을 보존해 출판했다. C#96개 중 동시 변경된 Editor PlayerSlashChecks1개는 이번 재컴파일 범위 밖이며,1516파일 snapshot 차이3개는 이 Editor와 QA/동시 변경 GuardRobot·Map이다. QA의 두 월드 프리팹은 원본에 출판하지 않았다. `FeverAura-world-fixture.json`·`FeverAura-gif-verification.json`에 준비/촬영 근거가 있다.
 
 **효과 계약**: Apply/ApplyFever는 즉시 수치를 바꾸지 않고 다음 프레임에 예약을 적용한다. Has는 적용 상태를 조회하며 미처리 예약과 구분한다. 같은 처리 프레임의 Remove는 앞서 예약된 적용과 제거 뒤 새 요청보다 우선한다. Fever 재획득은 기간 갱신과 획득 수만큼 Heal·Draw 대기 조정을 수행하되 배율/대기를 반복 중첩·반감하지 않는다. Slow는 현재 통합 범위에서 SP만 감속하며 재적용은 기간만 갱신한다. 이전 태엽 역장 구상의 AS 감소는 해당 후속 콘텐츠와 구분하고 이번 공용 Slow에 임의로 확장하지 않는다.
 
 **합성·시간·정리**: SP는 basicSP×Fever 배율×Slow 배율의 한 번 계산이며 AD/AS는 기본값×Fever 배율이다. 한 효과의 제거/만료가 다른 효과를 지우거나 현재값에 다시 배율을 곱하지 않는다. Draw/Slash/Death/일반 pause에는 효과의 게임 시간이 정지한다. Clear/RemoveAll은 효과와 예약 전체, ClearDebuffs는 Slow/Groggy와 그 예약만 지워 Fever를 보존한다. OnDie·OnRevive 구독자가 자기 효과를 정리하고 Character.Revive가 효과 내부를 직접 조작하지 않는다. 현재 기본 Slow2초·SP배율0.5, 기존 Fever8초/1.5·1.25·1.25/회복5는 초기 튜닝값이다.
 
-**그로기 원본·범위**: GroggyRemaining·Has(Groggy)는 BossCharacter의 상태/타이머를 조회하며 CharacterBuff에 두 번째 시간을 두지 않는다. 일반 Apply(Groggy)는 다음 프레임 EnterGroggy, Player의 게이지100 도달은 즉시 EnterGroggy·게이지0 소모다. 재진입은 기간 갱신이며 OnGroggy는 최초 진입 때 한 번이다. F-B04의 EnterGroggy는 CurrentPattern 참조를 비우고 해당 패턴을 즉시 Cancel하며 만료의 ExitGroggy 뒤 Idle 선택을 재개한다. CharacterBuff가 패턴 목록을 알거나 OnGroggy 구독으로 한 프레임 늦게 취소하지 않는다. 이미 발사된 탄/장판은 유지한다.
+**그로기 원본·범위**: Has(Groggy)는 BossCharacter의 상태를 조회하며 잔여 시간은 BossCharacter.GroggyRemaining이 유일한 원본이다. CharacterBuff의 검사 전용 위임 조회는 제거했다. 일반 Apply(Groggy)는 다음 프레임 EnterGroggy, Player의 게이지100 도달은 즉시 EnterGroggy·게이지0 소모다. 재진입은 기간만 갱신하며 관측용 OnGroggy 사건은 제거했다. F-B04의 EnterGroggy는 CurrentPattern 참조를 비우고 해당 패턴을 즉시 Cancel하며 만료의 ExitGroggy 뒤 Idle 선택을 재개한다. CharacterBuff가 패턴 목록을 알거나 사건 중계로 취소를 지연하지 않는다. 이미 발사된 탄/장판은 유지한다.
 
 **실제 읽은 레퍼런스**: Sephiria [CharacterBuff.cs](<reference/sephiria/code/ingame code/Assembly-CSharp/CharacterBuff.cs>) Initialize/Update·Destroy·ApplyStatus/RemoveStatus·AddStack의 기간/적용/원복, [CharacterBuff_StatusInstance.cs](<reference/sephiria/code/ingame code/Assembly-CSharp/CharacterBuff_StatusInstance.cs>) ApplyStatusInner/RemoveStatusInner와 [CharacterDebuff_StatusInstance.cs](<reference/sephiria/code/ingame code/Assembly-CSharp/CharacterDebuff_StatusInstance.cs>) InitializeInner·ApplyStatusInner59/RemoveStatusInner70의 독립 수치 적용/해제, [CharacterDebuff.cs](<reference/sephiria/code/ingame code/Assembly-CSharp/CharacterDebuff.cs>)의 해로운 효과 분리를 부분 참고했다. 원작 스택·증폭·네트워크/StatusDatabase를 복제하지 않고 세 고정 효과에 필요한 예약/합성만 사용한다. 우리 Remove 우선·획득별 Heal·게이지100 규칙은 원작과 동일 구현이라는 뜻이 아니다.
 
@@ -3092,11 +3078,9 @@ sequenceDiagram
     end
     Boss->>Boss: 자기 기간 설정 또는 갱신
     Boss->>Pattern: CurrentPattern 참조를 먼저 비우고 Cancel
-    opt 최초 그로기 진입
-        Boss-->>Caller: OnGroggy()
-    end
-    Caller->>Effects: Has(Groggy) / GroggyRemaining 조회
-    Effects->>Boss: IsGroggy / GroggyRemaining 조회
+    Caller->>Effects: Has(Groggy) 조회
+    Effects->>Boss: IsGroggy 조회
+    Caller->>Boss: GroggyRemaining 조회
     Note over Boss,Effects: 타이머 중복 없음 / 이미 발사된 탄 정리 없음
 ```
 
@@ -3176,9 +3160,9 @@ sequenceDiagram
 
 **실행 근거와 확인 범위**: Unity6000.3.21f1 격리 복사본의3차 검사에서 기존73+BossCombat15+BossLifecycle8의 **96묶음 전체 성공**을 확인했다(2026-11-16 02:28:48 KST, success=true·error 빈값·컴파일 종료0·배치 종료0·ALL PASSED96). 결과는 `project/Logs/BossCombatChecks-result.json`, 실행 로그는 `project/Logs/BossCombatChecks-Editor.log`, 원본/검사 복사본의 C#61개와 연결 산출물17개 해시 일치는 `project/Logs/BossCombatChecks-artifact-validation.json`에 기록했다. 마지막 실행 뒤 Radius 설명 주석만 정정한 파일은 실행 토큰 불변을 확인해 복사본을 맞췄으며 기능 코드는 바뀌지 않았다. 실제 검사에는12,000회 고정 seed 가중 추첨(1:3 범위),1,000회 실제 시작의 직전 중복 없음,4종 각3발, 즉시 완료/취소 콜백 재진입, 실제 Slash·게이지100·반사/Fever·부위·몸체, 첫/재조우·사망·재도전·저장·문을 포함한다.
 
-**수정·검증 한계**: Slash 처치에서 숨겨진 HUD/차단 상태를 먼저 보관하던 문제는 IsCutScene으로 기존 능력 표시를 복구한 뒤 보관하도록 수정했다. 단독 조우 취소가 Trigger/전투 구독을 남기던 문제도 재무장·정리로 수정하고 회귀를 통과했다. 검사 자체의 부위0+1+2 합계 오탐과 Editor 하네스의 WaitForFixedUpdate 대기 오탐은 각각 기대값/대기 방식으로 정정했다. 격리 Unity 시작 로그에는 `UnityEditor.Search.SearchDatabase`의 `ArgumentOutOfRangeException`이 관찰됐으나 이후 컴파일·모든 기능 검사·배치 종료는 성공했다. 이 Editor 검색 인덱스 메시지를 없었다고 처리하거나 런타임 기능 실패로 분류하지 않는다. 제출 빌드·실제 경비 로봇5패턴·최종 아트/음향은 이번 검사 범위가 아니다.
+**수정·검증 한계**: Slash 처치에서 숨겨진 HUD/차단 상태를 먼저 보관하던 문제는 IsCutScene으로 기존 능력 표시를 복구한 뒤 보관하도록 수정했다. 단독 조우 취소가 Trigger/전투 구독을 남기던 문제도 재무장·정리로 수정하고 회귀를 통과했다. 이 Editor 검색 인덱스 메시지를 없었다고 처리하거나 런타임 기능 실패로 분류하지 않는다. 제출 빌드·실제 경비 로봇5패턴·최종 아트/음향은 이번 검사 범위가 아니다.
 
-**수동 확인과 기록**: `Assets/Scenes/BossTestArena.unity`의 GameSystems가 `Assets/Prefabs/BossTests/DummyBoss.prefab`을 사용한다. 임시 저장은 `Temp/BossArenaSaves`로 분리하며 문서 폴더의 실제 슬롯을 사용하지 않는다. 부위1·2와4종 프리팹, Collider/Hitbox·임시 색/기하를 저장했다. 단계별 코드는 `Assets/Editor/BossCombatSetup.cs`, 실행 검사는 BossCombatChecks·BossLifecycleChecks에서 확인한다. 기능별 독립6토글·16Case와 변경된 기존5Case를 포함해 로컬 Mermaid76개 파싱을 통과했다. Notion Class13개·Boss 기능별6토글/신규16Case·기존 F-P09②③④/F-P11④⑤와 실행 결과를 저장했고 연결 도구가 경고 없이 성공을 반환했다. 미리보기 모드 설정·화면 확인은 수행 대상이 아니다.
+**이전 시험 구현의 수동 확인 기록(시험 씬·프리팹·Editor 검사 코드는 현재 제출 정리에서 제거)**: `Assets/Scenes/BossTestArena.unity`의 GameSystems가 `Assets/Prefabs/BossTests/DummyBoss.prefab`을 사용한다. 임시 저장은 `Temp/BossArenaSaves`로 분리하며 문서 폴더의 실제 슬롯을 사용하지 않는다. 부위1·2와4종 프리팹, Collider/Hitbox·임시 색/기하를 저장했다. 단계별 코드는 `Assets/Editor/BossCombatSetup.cs`, 실행 검사는 BossCombatChecks·BossLifecycleChecks에서 확인한다. 기능별 독립6토글·16Case와 변경된 기존5Case를 포함해 로컬 Mermaid76개 파싱을 통과했다. Notion Class13개·Boss 기능별6토글/신규16Case·기존 F-P09②③④/F-P11④⑤와 실행 결과를 저장했고 연결 도구가 경고 없이 성공을 반환했다. 미리보기 모드 설정·화면 확인은 수행 대상이 아니다.
 
 ### 2.2.1 F-B01 저장 상태별 생성·같은 Boss 재도전
 
@@ -3241,6 +3225,8 @@ sequenceDiagram
     Spawn->>Spawn: 같은 위치·Collider·부위 HP·표시 복원
     Stage->>Map: RestoreCheckpointDoors
 ```
+
+
 </details>
 
 ### 2.2.2 F-B02 첫 조우·재조우·전투 진입
@@ -3335,21 +3321,22 @@ sequenceDiagram
         Boss-->>Hit: false
     end
 ```
+
+
 </details>
 
 ### 2.2.3 F-B03 조건·무작위·우선 패턴과 상속
 
-**코드·연결**: BossPatternSelector.SetPatterns는 등록 때만 목록·후보·가중치 버퍼를 만든다. Idle 요청은 CanRun·직전 제외·유한한 양수 Weight를 통과한 후보에서 최고 양수 Priority를 고르고 동점끼리 가중 추첨한다. 음수 Priority는0, 후보 없음은 null이다. 실제 Begin 성공만 LastPatternId와 LastUsedTime·UseCount에 남기며 취소해도 실제 사용 이력은 유지한다. 재도전 ResetHistory가 이력을 초기화한다. 런타임 반복 조회·정렬·목록 할당으로 초기화 순서를 우회하지 않는다.
+**코드·연결**: BossPatternSelector.SetPatterns는 등록 때만 목록·후보·가중치 버퍼를 만든다. Idle 요청은 CanRun·직전 제외·유한한 양수 Weight를 통과한 후보에서 최고 양수 Priority를 고르고 동점끼리 가중 추첨한다. 음수 Priority는0, 후보 없음은 null이다. 실제 Begin 성공만 LastPatternId와 LastUsedTime에 남기며 취소해도 실제 사용 시각은 유지한다. 시험용 UseCount는 제출 정리에서 제거했다. 재도전 ResetHistory가 이력을 초기화한다. 런타임 반복 조회·정렬·목록 할당으로 초기화 순서를 우회하지 않는다.
 
 | 상속·역할 | 공통 책임 | 구체 구현 창구 |
 | --- | --- | --- |
-| Character → BossCharacter → DummyBoss | 피해·사망 → 전투·현재 패턴·그로기 → 시험 설정/부위 조건 | InitializePatterns, HandleSlashHit |
-| BossPattern → DummyProjectilePattern | 조건·쿨타임·사용 횟수·완료/취소 → 예고·3회 발사·회복 | CanRun, GetWeight, GetPriority, OnBegin, OnTick, OnCancel |
+| Character → BossCharacter → Boss_01 | 피해·사망 → 전투·현재 패턴·그로기 → 실제 경비5패턴 | InitializePatterns, HandleSlashHit |
+| BossPattern → Boss_01의5패턴 | 조건·쿨타임·완료/취소 → 총구·손·레이저별 실행 | CanRun, OnBegin, OnTick, OnCancel |
 | Projectile → NormalProjectile → GoldProjectile | 수명·비행·종료 → Slash 제거 → Line 반사/실제 OwnerHitbox 충돌·각성 | 공통 Initialize·필수 접선 OnSlashed 재사용 |
-| Projectile → AreaProjectile → LaserProjectile | 수명·종료 → 전조·원형 일회 피해 → 방향 사각 범위 | PrepareShape, ValidateShape, ConfigureShape |
 | BossStructure : MonoBehaviour | 독립 HP·부위 보고, Character 상속 없음 | Boss의 HandleSlashHit가 동시 성공 판단 |
 
-**패턴을 추가하는 순서**: 해당 BossCharacter 파생 클래스의 InitializePatterns에서 BossPattern 파생 객체를 한 번 등록한다. CanRun은 base 조건에 고유 조건을 추가하고 OnBegin에서 자기 실행 상태/조준을 준비한다. OnTick은 게임 시간으로 전조·발사를 진행하고 정상 종료 때 Complete를 호출한다. OnCancel은 아직 진행 중인 동작·예고만 닫고 이미 생성한 위험물을 지우지 않는다. 탄환 프리팹은 세션 부모 아래 생성 후 공통 Initialize로 Owner·방향·속도·총수명·피해를 지정한다. Boss.BeginEncounter에서 준비된 Target을 사용하며 Awake에서 Player/다른 씬 서비스를 먼저 조회하지 않는다. 새 조건·투사체·취소는 더미와 같은 실행 검사에 추가한다.
+**패턴을 추가하는 순서**: 해당 BossCharacter 파생 클래스의 InitializePatterns에서 BossPattern 파생 객체를 한 번 등록한다. CanRun은 base 조건에 고유 조건을 추가하고 OnBegin에서 자기 실행 상태/조준을 준비한다. OnTick은 게임 시간으로 전조·발사를 진행하고 정상 종료 때 Complete를 호출한다. OnCancel은 아직 진행 중인 동작·예고만 닫고 이미 생성한 위험물을 지우지 않는다. 탄환 프리팹은 세션 부모 아래 생성 후 공통 Initialize로 Owner·방향·속도·총수명·피해를 지정한다. Boss.BeginEncounter에서 준비된 Target을 사용하며 Awake에서 Player/다른 씬 서비스를 먼저 조회하지 않는다. 새 조건·투사체·취소는 해당 실제 Boss의 호출·데이터 연결에서 확인한다. 이전 더미와 Editor 실행 검사 코드는 제출 정리에서 제거했다.
 
 **확인 상태**: 등록 검증·비율 추첨·직전 제외·쿨타임·HP/거리/횟수·우선값·빈 후보·정상 완료/취소를 96묶음 실행 검사에서 확인했다. Dummy의4개 임시 패턴은 일반/금색/레이저/장판 연결을 확인하는 예시이며 F-B07 콘텐츠를 대체하지 않는다.
 
@@ -3378,16 +3365,16 @@ sequenceDiagram
         Selector-->>Boss: 선택 패턴
         Boss->>Boss: ApplyPattern
         Boss->>Pattern: Begin(this)
-        Pattern->>Pattern: 실제 사용 시각·횟수 기록
+        Pattern->>Pattern: 실제 사용 시각 기록
         Pattern->>Boss: HandlePatternStarted
         Boss->>Selector: HandlePatternStarted
         Pattern->>Pattern: OnBegin
     end
 ```
 
-**② 임시 패턴 실행 → 전조·각 탄환 발사·완료**
+**② 이전 임시 패턴 실행 이력 — 현재 제출 코드에서 제거**
 
-한 번 등록한 패턴 객체가 게임 시간으로 발사를 진행한다. 완료 시 공통 Boss의 현재 실행부터 닫은 뒤 외부 완료 알림을 보낸다.
+아래는 삭제된 DummyBoss의 시험 흐름을 보존한 이력이다. 현재 경비의 실제 호출은 F-B07-01~05를 따른다. 현행 BossPattern.Complete는 Boss의 현재 실행 참조만 정리하고 외부 OnCompleted는 발행하지 않는다.
 
 ```mermaid
 sequenceDiagram
@@ -3409,9 +3396,9 @@ sequenceDiagram
     Pattern->>Pattern: 외부 OnCompleted 알림
 ```
 
-**③ HP·거리·다른 패턴 횟수 변경 → 다음 추첨에 반영**
+**③ 이전 HP·거리·횟수 조건 시험 이력 — 현재 제출 코드에서 제거**
 
-변하지 않는 대상 참조는 재사용하고 HP·거리·사용 횟수는 현재 값을 읽는다. 조건은 Dummy 예시다.
+삭제된 DummyBoss·UseCount의 이전 조건 예시를 보존한 이력이다. 현재 경비의 조건·패턴 선택은 B03.1과 F-B07-01~05를 따른다.
 
 ```mermaid
 sequenceDiagram
@@ -3428,11 +3415,13 @@ sequenceDiagram
     Note over Pattern: 2페이즈 최초 금색 패턴 우선값10
     Selector-->>Boss: 직전 제외 후 가장 높은 우선 후보 추첨
 ```
+
+
 </details>
 
 ### 2.2.4 F-B04 그로기·진행 패턴 취소·회복
 
-**코드·연결**: Player.AddGroggy가100을 채우면 즉시0을 소비하고 Boss.EnterGroggy를 요청한다. Boss는 CurrentPattern 참조를 먼저 비우고 해당 패턴을 Cancel한 뒤 그로기 단일 타이머를 유지한다. 재진입은 시간만 갱신하고 OnGroggy는 최초 진입에 한 번이다. 기존 탄환·레이저·장판은 같은 게임 시간으로 계속 진행하며 현재 패턴의 미래 발사만 멈춘다. ExitGroggy 뒤 다음 Idle 프레임이 선택을 재개한다.
+**코드·연결**: Player.AddGroggy가100을 채우면 즉시0을 소비하고 Boss.EnterGroggy를 요청한다. Boss는 CurrentPattern 참조를 먼저 비우고 해당 패턴을 Cancel한 뒤 그로기 단일 타이머를 유지한다. 재진입은 시간만 갱신한다. 런타임 구독자가 없던 OnGroggy는 제거했다. 기존 탄환·레이저·장판은 같은 게임 시간으로 계속 진행하며 현재 패턴의 미래 발사만 멈춘다. ExitGroggy 뒤 다음 Idle 프레임이 선택을 재개한다.
 
 **확인 상태**: 실제 Slash→게이지100→현재 패턴 취소, 후속 발사 없음, 기존 위험물 유지·피해/수명, 기간 갱신·정지·회복을 96묶음 실행 검사에서 확인했다. 그로기 Sprite·낙하 모션은 별도 아트 항목이다.
 
@@ -3458,7 +3447,6 @@ sequenceDiagram
         Player->>Boss: EnterGroggy
         Boss->>Boss: IsGroggy·GroggyRemaining 설정
         Boss->>Pattern: CurrentPattern 먼저 비우기·Cancel
-        Boss-->>Boss: 최초 진입 OnGroggy
     else 100 미만
         Player->>Player: 누적 게이지 유지
     end
@@ -3476,7 +3464,7 @@ sequenceDiagram
     participant Unity
     participant Selector as BossPatternSelector
     External->>Boss: 그로기 중 EnterGroggy
-    Boss->>Boss: 기간 갱신·중복 OnGroggy 없음
+    Boss->>Boss: 기간 갱신
     Unity->>Boss: Update(deltaTime)
     alt 게임 시간0
         Boss->>Boss: 타이머·행동 보존
@@ -3488,6 +3476,8 @@ sequenceDiagram
         Boss->>Selector: GetNextPattern
     end
 ```
+
+
 </details>
 
 ### 2.2.5 F-B05 처치·저장·사체·통로 복구
@@ -3566,6 +3556,8 @@ sequenceDiagram
     Spawn->>Save: DefeatedBosses 확인
     Spawn->>Boss: HP0·ShowDefeated·Trigger 닫기
 ```
+
+
 </details>
 
 ### 2.2.6 F-B06 탄환·범위 위험물·부위·몸체 충돌
@@ -3580,29 +3572,9 @@ sequenceDiagram
 
 **확인 상태**:4종 실제 발사·상속, 일반 제거·금색 반사/Fever/게이지·유효 목표·중복 방지, 레이저/장판 전조·피해·정지·만료·Slash 무반응, 동시 부위·몸체 차단/무피해와 전투 종료 정리를 96묶음 실행 검사에서 확인했다. 색과 기하를 보여 주는 임시 프리팹이며 최종 Sprite·FX·음향 적용은 아니다.
 
-**현재 R06 Gold 동일 크기 색 변형(2026-11-16, 제작·연결·검증 완료)**: 덧댄 외곽 ring이 어색하다는 사용자 반려에 따라 Normal R05를 보존하고 빨강 RGB(255,38,48)만 금색(255,208,52)으로 치환했다. 흰 중심·크기/형태/alpha는 같으며 두 native는32px/3레이어(Halo·DangerRim·BrightCore), 몸체18px 셀/실제16px/flat8·흰 중심12px/flat6·halo32px다. Normal PNG/합성은 R05와 바이트/픽셀 동일하고 Gold body의 흰색/alpha는 보존했으며 Gold halo는 R05를 유지해 Normal halo와 alpha가 같다. 공개 GoldRing·Setup GoldRingPath/import/생성 코드와4프리팹의 InteractionRing 자식·프로젝트 gold-ring.png/meta2개를 제거했고 R05 archive를 보존했다. 현재 Normal/Gold는 정확히 body+halo Sprite2개·동일 bounds다. 같은 Unity6000.3.21f1 GuardVfxVerification에서09:48:48 KST에 컴파일 종료·assembly reload·C# error0·기존17묶음 Play 전부 성공·배치0을 확인했다. 검사 수를 늘리지 않고 기존 표식 검사를2Sprite/InteractionRing 없음·동일 body/halo bounds로 교체했으며 Gold 반사/각성·pulse/정지·복원·예고 회귀는 그대로 통과했다.1024×768 흰/실험실6배와 어두운 바탕16배 확대에서 동일 크기/형태·빨강→금색 body/halo·같은 흰 중심을 확인했다. 현재 전체85 C#/런타임50 및 소유15대상(C#3·PNG4/meta4·프리팹4) 해시가 검증 사본과 같고 자산/meta8개를 표적 반영해 기존 GUID를 보존했다. 순수 예고16·기존 원형 Area6대상은 이전과 바이트 동일하다. 시작 Editor SearchDatabase 인덱스 예외는 관찰됐으나 컴파일/17검사는 통과했다. 원본 Editor 직접 Play/최종 import·빌드는 미실행이다. 근거는 `project/Logs/BossHazardArtR06Verification.log`·`-result.json`·`-source.json`과 `art/archive/fx/boss-hazards-r06/`의 `vfx-validation.json`·`unity-validation.json`·`integration-validation.json`·`preview-white.png`·`preview-laboratory.png`·`preview-dark-closeup.png`다. 기존 Case①/⑥의 호출 흐름은 유지하며 R06에 새 Case를 추가하지 않는다. 구체 색/크기는 제작값이며 새 경비 패턴 금색탄 배치 결정과 구분한다.
+**현재 R06 Gold 동일 크기 색 변형(2026-11-16, 제작·연결·검증 완료)**: 덧댄 외곽 ring이 어색하다는 사용자 반려에 따라 Normal R05를 보존하고 빨강 RGB(255,38,48)만 금색(255,208,52)으로 치환했다. 흰 중심·크기/형태/alpha는 같으며 두 native는32px/3레이어(Halo·DangerRim·BrightCore), 몸체18px 셀/실제16px/flat8·흰 중심12px/flat6·halo32px다. Normal PNG/합성은 R05와 바이트/픽셀 동일하고 Gold body의 흰색/alpha는 보존했으며 Gold halo는 R05를 유지해 Normal halo와 alpha가 같다. 공개 GoldRing·Setup GoldRingPath/import/생성 코드와4프리팹의 InteractionRing 자식·프로젝트 gold-ring.png/meta2개를 제거했고 R05 archive를 보존했다. 현재 Normal/Gold는 정확히 body+halo Sprite2개·동일 bounds다. 같은 Unity6000.3.21f1 GuardVfxVerification에서09:48:48 KST에 컴파일 종료·assembly reload·C# error0·기존17묶음 Play 전부 성공·배치0을 확인했다. 검사 수를 늘리지 않고 기존 표식 검사를2Sprite/InteractionRing 없음·동일 body/halo bounds로 교체했으며 Gold 반사/각성·pulse/정지·복원·예고 회귀는 그대로 통과했다.1024×768 흰/실험실6배와 어두운 바탕16배 확대에서 동일 크기/형태·빨강→금색 body/halo·같은 흰 중심을 확인했다. 현재 전체85 C#/런타임50 및 소유15대상(C#3·PNG4/meta4·프리팹4) 해시가 검증 사본과 같고 자산/meta8개를 표적 반영해 기존 GUID를 보존했다. 순수 예고16·기존 원형 Area6대상은 이전과 바이트 동일하다. 원본 Editor 직접 Play/최종 import·빌드는 미실행이다. 근거는 `project/Logs/BossHazardArtR06Verification.log`·`-result.json`·`-source.json`과 `art/archive/fx/boss-hazards-r06/`의 `vfx-validation.json`·`unity-validation.json`·`integration-validation.json`·`preview-white.png`·`preview-laboratory.png`·`preview-dark-closeup.png`다. 기존 Case①/⑥의 호출 흐름은 유지하며 R06에 새 Case를 추가하지 않는다. 구체 색/크기는 제작값이며 새 경비 패턴 금색탄 배치 결정과 구분한다.
 
-**R05 이력 위험/상호작용 탄환 VFX(2026-11-16, 제작·연결·검증 완료)**: 큰 흰 중심/빨강 경계/빨강 halo의 Normal과 같은 흰/빨강 위험 몸체 바깥2px GoldRing·금색 halo의 Gold를 연결했다. 물리 몸체16px/flat8·CircleCollider/CircleCast0.39·몸체 alpha는 R04와 같고 흰 중심은12px/flat6·120흰 픽셀이다. Normal native32px/3레이어(Halo·DangerRim·BrightCore), Gold는 InteractionRing을 추가한4레이어다. 몸체 출력은18px 셀/불투명16px, 금색 표식은32px 캔버스의 물리 몸체 바깥에만 놓인 외곽20px이며 Halo2종은32px/soft alpha18단계다. Halo는 Bilinear, body/ring은 Point·모두16PPU다. 원본 재열기·분리 PNG7종/native 일치·프로젝트5 PNG 일치를 확인했다. B05.3 ProjectileVfx가0.7~1/1Hz 초기값으로 Halo alpha만 게임 시간에 맞춰 움직인다. 이동·피해·Slash/Gold 반사/Fever와 원형 Area6/순수 예고16대상은 이전 버전과 바이트 동일하다. 신규 경비 패턴의 금색탄 배치 결정이 아니다. [R05 원본·비교·검증](../art/archive/fx/boss-hazards-r05/README.md).
-
-**R05 확인 결과·한계**: 같은 Unity6000.3.21f1 GuardVfxVerification에서09:37:48 KST에 컴파일 종료·assembly reload·C# error0·17묶음 Play 전부 성공·배치0을 확인했다. 기존15묶음에 scaled pulse/정지 phase·alpha 동결→재개/renderer·Material 캐시 동일/몸체 불변, Despawn·disable 원색·phase 복원의2묶음을 추가했다. 기존 Gold Owner 반사/중복 거부/Fever 회복·게이지1회·피해와 예고/원형 Area 회귀도 통과했다.1024×768 흰/현재 전투방 바닥18의6배와 어두운 바탕16배 확대에서 위험 빨강+외곽 금색의 이중 표식을 확인했다. 기존 원본 Halo GUID3개와 검증 사본 자동 생성 GUID의 차이를 발견해 기존 원본 GUID를 보존하는 방향으로 차이를 정정하고 검증 사본 재import·최종17검사를 수행했다. 효과 meta5·탄 프리팹4의9자산을 표적 반영했고 이번 소유18대상(C#/meta·Editor2·PNG5/meta5·프리팹4) 해시가 같다. 전체85 C#/런타임50 중 동시 Editor PlayerArtSetup·런타임 AttackController2개가 달라 현재 전체 런타임 검증으로 확대하지 않는다. 시작 Editor SearchDatabase 인덱스 예외는 관찰됐으나 컴파일/17검사는 통과했다. 원본 Editor 직접 Play/최종 import·빌드는 미실행이다. 근거는 `project/Logs/BossHazardArtR05Verification.log`·`-result.json`·`-source.json`과 R05의 `vfx-validation.json`·`unity-validation.json`·`integration-validation.json`·`preview-white.png`·`preview-laboratory.png`·`preview-dark-closeup.png`다. 기존 Case① 상호작용 흐름은 유지하고 별도 표시 수명만 Case⑥에 기록한다.
-
-**R04 탄환·현재4종 순수 예고(2026-11-16, 제작·연결·검증 완료)**: Normal/Gold는18×18px 셀·실제 도트16×16px·3레이어·216불투명 픽셀이며 상하좌우 바깥 경계 중앙8px가 연속 평면이다. 원본 재열기/PNG·양방향 대칭·Gold 색만 변형/alpha 동일을 확인했다. CircleCollider/CircleCast 반경0.39는 초기 튜닝이다. 순수 예고4종은 B05.2의 AreaWarningVfx/WarningShape와 `Assets/Prefabs/Enemy/Warnings/{Circle,Rectangle,Sector,Straight}Warning.prefab`으로 준비했다. rootScale1의 원/사각을XY변형하며 부채꼴 각도0.1~360·자기 Mesh 재사용, 직선의 긴 열린 양쪽 선2개와 반투명 내부/진한 경계를 사용한다. Collider/Projectile 없는 표시 프리팹이며 실제 보스의4모양 공격/판정 연결은 아직 미구현이다. 기존 원형 Area/CircleWarningVfx·Mesh/meta·실사용 Warning/시험 Area6대상은 R02/R03과 바이트 동일하고 기존 Normal/Gold GUID를 보존했다. [R04 원본·비교·검증](../art/archive/fx/boss-hazards-r04/README.md).
-
-**R04 확인 결과·한계**: 같은 Unity6000.3.21f1 독립 GuardVfxVerification에서09:12:19 KST에 컴파일 종료·assembly reload·C# error0·15묶음 Play 성공·배치0을 확인했다. 기존13묶음에4순수 프리팹 계약/Scale기하·Sector90/120/360/자기 Mesh 재사용·OpenStrip 열린2선·MPB색/공유 Material의2묶음을 추가했다.1024×768 실제 카메라에서 Player/Normal/Gold 같은16PPU·6배·공통 기준선과 원/타원/정사각/직사각/120도 부채꼴/열린 직선6모양의 흰 바탕/실험실 화면을 확인했다. 현재 전체84 C#/런타임49 및 이번 소유26대상 코드/meta/PNG/공유 Mesh2개·4순수 프리팹·기존 탄환 프리팹 등이 검증 사본과 같으며 신규 자산20개를 원본에 표적 반영했다. 시작 Editor SearchDatabase 인덱스 예외는 관찰됐으나 컴파일/15검사는 통과했다. 원본 Editor 직접 Play/import·제출 빌드는 미실행이다. 근거는 `project/Logs/BossHazardArtR04Verification.log`·`-result.json`·`-source.json`과 R04의 `bullet-validation.json`·`unity-validation.json`·`integration-validation.json`·`preview-white.png`·`preview-laboratory.png`다. 기존 Case①~④는 보존하고 순수 표시의 실제 흐름은 Case⑤에 기록한다.
-
-**R03 탄환 추가 확대·황금탄(2026-11-16, 제작·연결·검증 완료)**: 사용자 요청대로 각 방향1px를 더 넓히고 같은 형태/alpha의 금색 변형1종을 연결했다. `art/archive/fx/boss-hazards-r03/`에 Normal/Gold 각각14×14px 셀·불투명12×12px·5레이어 native와 PNG를 저장했다. R02 대비 각 방향1px 확대·기존 빨강/흰 중심 보존·두 탄 형태/alpha 동일을 확인했고 Gold는 윤곽 RGB(168,108,21)·몸체(255,196,61)·중심(255,250,224)의3색만 바꿨다. 팔레트와 CircleCollider/CircleCast 반경0.29는 제작 초기값이다.16PPU의 기존 Normal PNG 경로/GUID를 보존하고 새 gold-bullet.png·실사용 GoldBullet.prefab 및 기존 BossTests/Gold 표시를 연결했다. Runtime API·코드는 변경하지 않았고 Setup의 GoldPath/GoldSpritePath를 추가했다. R02의 Area/CircleWarningVfx·Mesh/meta·실사용 Warning/시험 Area6대상은 바이트 동일하다. 경비 패턴의 금색탄 배치 결정과 구분한다. [R03 원본·비교·검증](../art/archive/fx/boss-hazards-r03/README.md).
-
-**R03 확인 결과·한계**: 같은 Unity6000.3.21f1 GuardVfxVerification에서08:56:38 KST에 컴파일 종료·assembly reload·C# error0·13묶음 Play 전부 성공·배치0을 확인했다. 기존11묶음과 Gold 실제 Owner 반사/중복 Slash 거부/Fever 획득 때1회 회복·게이지1회, Owner 도달 때9피해1회·제거의2묶음을 확인했다.1024×768 실제 카메라의 흰 바탕/현재 전투방 바닥018에서 Player/Normal/Gold를 같은16PPU·원본1px→화면6px·공통 발바닥 기준선으로 비교했다. 런타임48 C#은 검증 사본과 모두 같고 이번 소유 Editor2개·Normal/Gold PNG/meta·실사용 Normal/Gold와 기존 시험 Normal/Gold 등11대상 해시가 일치했다. 생성/갱신 자산/meta7개를 표적 반영했고 기존 시험 Gold/Normal meta/GUID를 보존했다. 전체83 C# 중 동시 Editor DrawCameraChecks·PlayerDrawChecks2개는 달라 현재 전체 Editor 검증으로 확대하지 않는다. 시작 Editor SearchDatabase 예외는 관찰됐으나 컴파일/13검사는 통과했다. 원본 Editor 직접 Play/import·제출 빌드는 미실행이다. 근거는 `project/Logs/BossHazardArtR03Verification.log`·`-result.json`·`-source.json`과 R03의 `bullet-validation.json`·`unity-validation.json`·`integration-validation.json`·`preview-white.png`·`preview-laboratory.png`다. F-B06 Case①의 기존 금색탄 호출 흐름은 같아 유지하며 중복 Case를 추가하지 않는다.
-
-**R02 탄환 확대·현재 장판 내부 채움(2026-11-16, 구현·연결·검증 완료)**: 사용자 요청대로 탄환 주위를 상하좌우 각2px 넓히고 원형 내부를 반투명 빨강으로 채웠다. `art/archive/fx/boss-hazards-r02/`의 탄환 native는12×12px·불투명10×10px·4레이어이며 기존 빨강/흰 중심을 보존하고 빨간 몸체를 확장·어두운 윤곽을2px 바깥으로 옮겼다. 원본 재열기·PNG/프로젝트 출력 일치·이진 alpha·대칭·각 방향2px 확대를 확인했다. 기존 Unity PNG 경로·GUID와 Configure/SetColor를 유지해 실사용/시험 프리팹4개에 연결했다. 원형 공유 Mesh와 새 meta7개를 표적 반영했고 기존 R01을 보존했다. 탄환 CircleCast 반경0.24와 B05.1의 fill/경계색·선폭은 당시 제작 초기 조정값이다. [R02 제작·비교·검증 원본](../art/archive/fx/boss-hazards-r02/README.md).
-
-**R02 확인 결과·한계**: 같은 Unity6000.3.21f1의 독립 GuardVfxVerification에서08:46:26 KST에 컴파일 종료·assembly reload·11묶음 Play 전부 성공·C# error0·배치0을 확인했다. 기존 전조/피해1회/정지·수명/재진입·Slash/그로기 유지/Box Laser/Title 흐름과 fill MPB 활성색·기하·실제 중심 빨강/더 진한 경계를 확인했다.1024×768 캡처에서 현재 Player Sprite와 탄환을16PPU·원본1px→화면6px의 같은 배율·공통 발바닥 기준선으로 비교했고 불투명 탄 높이10px는 Player 높이20px의 약절반이다. 반투명 내부 너머 바닥이 보이는 결과도 실제 픽셀·시각 검사로 확인했다. 이번 소유 C#5개와 PNG/meta·Mesh/meta·4프리팹 등13대상 해시가 검증 사본과 같다. 전체81 C#/런타임48개 중 동시 작업의 Editor `PlayerArtSetup` 및 런타임 `AttackController`·`PlayerCharacter`·`DrawEvaporationVfx`4개가 달라 현재 전체 런타임 검증으로 확대하지 않는다. 시작 로그의 Editor SearchDatabase `ArgumentOutOfRangeException`은 관찰됐으나 이후 컴파일·11검사는 통과했다. 원본 Editor 직접 Play/import·제출 빌드는 미실행이다. 근거는 `project/Logs/BossHazardArtR02Verification.log`·`-result.json`·`-source.json`과 R02 아트의 `unity-validation.json`·`integration-validation.json`·`bullet-validation.json`·`preview-white.png`·`preview-laboratory.png`다. 첨부 레이저·경비5패턴 완료는 포함하지 않는다.
-
-**R01 픽셀 탄환·원형 선 경고 이력(2026-11-16, 당시 구현·연결·검증 완료)**: 사용자의 픽셀 탄환·반투명 빨강 원형 요청에 최초 적용한 결과다. 일반탄 편집 원본/출력은 `art/archive/fx/boss-hazards-r01/normal-bullet.aseprite`·`.png`이며8×8px·3레이어, 실제 불투명 영역6×6px의 짙은 빨강 윤곽/빨강 몸체/흰 중심은 당시 제작 초기안이다.16PPU·Point·압축/mipmap 없음·이진 alpha로 `Assets/Art/Enemy/Projectiles/normal-bullet.png`를 연결했다. 실사용 `Assets/Prefabs/Enemy/NormalBullet.prefab`·`WarningArea.prefab`과 기존 BossTests/Normal·Area에 적용했고 기존 시험 프리팹의 meta/GUID는 보존했다. 내부 채움을 없앴던 AI 해석은 R02 요청으로 대체한다. `BossCombatSetup.Run` 끝에 `BossHazardArtSetup.Run` 호출을 연결했으며 당시 검증에서 BossCombatSetup 전체 Run은 실행하지 않았다. `Tools/Chrono/Prepare Boss Hazard Art`·`Check Boss Hazard Art`로 준비/격리 검사를 수행한다. [선택 기록](archive/01_Choice/Boss_Hazard_Visuals_20261116.md)·[R01 제작/검증 원본](../art/archive/fx/boss-hazards-r01/README.md).
-
-**R01 확인 결과**: 같은 Unity6000.3.21f1의 독립 `project/Temp/GuardVfxVerification`에서08:29:46 KST에 당시 변경의 C# 컴파일 종료·assembly reload·11묶음 Play 검사 성공·error 빈값·배치 종료0을 확인했다. 실사용2개/기존 Dummy2개의 참조·기하, Box Laser Sprite 회귀, 전조 무피해, 정지 때 양쪽 수명/탄 이동 정지, 활성1회 피해·색 전환, 재진입 중복 없음/Area Slash Ignore, 그로기 기존 위험물 유지, 만료, 탄 실제 피해/Slash 제거·게이지1회, 실제 카메라 표시, Title 복귀 정리를 확인했다.1024×768 카메라의 흰 바탕과 현재 전투방 바닥018에서 원본1px→화면6px·반경1/2·빈 내부·반투명 빨강·동일 선폭을 확인했다. `project/Logs/BossHazardArtVerification.log`·`-result.json`·`-source.json`과 R01 아트 폴더의 `unity-validation.json`·`integration-validation.json`·`preview-white.png`·`preview-laboratory.png`가 당시 근거다.
-
-**반영 범위·한계**: 런타임48 C#은 검증 사본과 모두 같고, 이번 소유 C#5개와 PNG/meta·실사용2/기존2 프리팹 등11대상 해시 일치 및 생성 자산/meta12개의 원본 표적 반영을 확인했다. 전체81 C# 중 동시 작업의 Editor `ArtIntegrationChecks.cs`·`PlayerAttackChecks.cs`2개는 달라 현재 전체 Editor 검증으로 확대하지 않는다. 최초 Color float 완전일치 오탐은 LineRenderer의 Color32 정밀도에 맞춰 검사만 수정했고 실제 활성 RGBA(1,0.1216,0.1608,0.8)를 확인했다. 첫 sandbox 실행의 라이선스 IPC 거부는 사용자 세션 권한 실행으로 해소했다. 최종 로그 시작의 `UnityEditor.Search.SearchDatabase` `ArgumentOutOfRangeException`은 관찰됐으나 이후 컴파일·11검사는 통과했다. 이 Editor 검색 인덱스 메시지를 런타임 기능 오류나 미발생으로 기록하지 않는다. 원본 Editor 직접 Play/import·제출 빌드는 미실행이다. 첨부 레이저는 부드러운 반투명 빔으로 관찰했으나 선택·엔진 구현은 미확정·이번 미구현이며 경비 로봇의 실제5패턴 완료와도 구분한다.
+**반영 범위·한계**: 런타임48 C#은 검증 사본과 모두 같고, 이번 소유 C#5개와 PNG/meta·실사용2/기존2 프리팹 등11대상 해시 일치 및 생성 자산/meta12개의 원본 표적 반영을 확인했다. 전체81 C# 중 동시 작업의 Editor `ArtIntegrationChecks.cs`·`PlayerAttackChecks.cs`2개는 달라 현재 전체 Editor 검증으로 확대하지 않는다. 최초 Color float 완전일치 오탐은 LineRenderer의 Color32 정밀도에 맞춰 검사만 수정했고 실제 활성 RGBA(1,0.1216,0.1608,0.8)를 확인했다. 이 Editor 검색 인덱스 메시지를 런타임 기능 오류나 미발생으로 기록하지 않는다. 원본 Editor 직접 Play/import·제출 빌드는 미실행이다. 첨부 레이저는 부드러운 반투명 빔으로 관찰했으나 선택·엔진 구현은 미확정·이번 미구현이며 경비 로봇의 실제5패턴 완료와도 구분한다.
 
 <details><summary>F-B06 SequenceDiagram</summary>
 
@@ -3643,9 +3615,9 @@ sequenceDiagram
     end
 ```
 
-**② 레이저·장판 생성 → 전조·일회 범위 피해·만료**
+**② 이전 시험 레이저·장판 생성 이력 — 현재 제출 코드에서 제거**
 
-이미 발사된 위험물은 패턴과 독립된 수명을 가지며 그로기에서도 유지된다. 원형 표시가 연결된 Area는 같은 반경·전조/활성색을 CircleWarningVfx에 전달하며 R02의 원판 내부 채움·경계선을 함께 표시한다. 표시가 없는 Area와 Laser는 기존 Sprite 경로를 사용한다. R02 fill 연결·기존 판정/수명은2026-11-16 08:46:26 KST의 격리11묶음으로 확인했다.
+아래는 삭제된 AreaProjectile/LaserProjectile/CircleWarningVfx 시험 구현의 이전 흐름이다. 실제 경비 손·지면 착탄 피해는 F-B07-02~04를 따른다. 당시 이미 발사된 위험물은 패턴과 독립된 수명을 가지며 그로기에서도 유지됐다. 원형 표시가 연결된 Area는 같은 반경·전조/활성색을 CircleWarningVfx에 전달하며 R02의 원판 내부 채움·경계선을 함께 표시한다. 표시가 없는 Area와 Laser는 기존 Sprite 경로를 사용한다. R02 fill 연결·기존 판정/수명은2026-11-16 08:46:26 KST의 격리11묶음으로 확인했다.
 
 ```mermaid
 sequenceDiagram
@@ -3695,9 +3667,9 @@ sequenceDiagram
     Note over Hazard: 게임 시간0은 정지 / Slash는 Ignore / 그로기는 제거하지 않음
 ```
 
-**③ 같은 Slash의 부위1·2 → Boss 자체 기믹 성공**
+**③ 이전 시험 보스의 부위1·2 기믹 이력 — DummyBoss는 현재 제출 코드에서 제거**
 
-구조물은 고유 부위만 보고하고 동시 성공을 Player 대신 DummyBoss가 판단한다.
+아래는 삭제된 DummyBoss의 기믹 예시 이력이다. BossStructure·고유 부위 보고의 공통 계약은 유지하지만 현재 경비5패턴의 사용 경로와 구분한다.
 
 ```mermaid
 sequenceDiagram
@@ -3779,6 +3751,8 @@ sequenceDiagram
     Warning->>Warning: 자기 Sector Mesh만 제거·공유 에셋 유지
     Note over Warning,Fill: Collider/Projectile 없음 / 공격 판정·수명 타이머 없음
 ```
+
+
 **⑥ 실제 탄환 생성 → Halo pulse·정지 유지·비활성화 복원**
 
 기존 발사 프리팹에 연결된 ProjectileVfx가 자기 Halo만 표시한다. 일반/Gold 상호작용 Case①과 피해·몸체는 변경하지 않는다. R06은 별도 금색 ring을 제거했으며 생성·정지·복원 흐름은 같다.
@@ -3810,6 +3784,8 @@ sequenceDiagram
     Vfx->>Vfx: phase0·opacity1 복원
     Note over Projectile,Halo: 몸체·피해·반사/Fever 변경 없음
 ```
+
+
 **⑦ 맵 벽 준비·발사 참조 확보 → 가까운 벽/대상 순서와0수명**
 
 맵 준비는 Actor/탄 생성보다 먼저 끝낸다. Map/Owner의 생성 수명에서 참조를 확보하고 비행 중 매 프레임 Instance/Find로 다시 찾지 않는다. 아래 흐름의 벽/Fan11·손16·공통17/총44검사와 소유14대상 일치를 확인했다. 현재 반사 방향/라인 각도는 별도 동시 작업 기록을 따르며 최종 자료·동시 Tutorial4파일 제외는2.2.10을 따른다.
@@ -3857,6 +3833,8 @@ sequenceDiagram
     Note over Bullet,Target: Gold6초·Slash 보상 유지 / 반사 방향 규칙은 별도 반사 작업 기록 참조
     Note over Bullet: Area와 Laser0수명 거부
 ```
+
+
 </details>
 
 ### 2.2.7 F-B07-01 경비 복부 금색탄 단발 — 구현·연결·검증 완료
@@ -3869,7 +3847,7 @@ sequenceDiagram
 
 **실행·원본 반영 결과(2026-11-16)**: 같은 Unity6000.3.21f1 독립 검증 사본에서 경비10묶음/배치0(10:17:03 KST), 공통 탄환/예고17묶음/배치0(10:18:38 KST)·C# error0을 확인했다. 실제 F→수정/조우 컷씬→거리 밖 대기→접근·정지→중앙 원점/Owner/고정 방향 Gold1발→반사/Fever/Owner 피해, 회복/쿨 이후 직전 제외 Idle, 발사 전 그로기 취소/기존 탄 유지, 실제 Player 사망·자동 복구/재발사, Boss 사망·양문 개방/위험물 정리/사체 보존·Title을 확인했다. 최종89 C#/런타임51·이번 소유27대상 해시가 원본/검증 사본과 같다(10:20:26 KST). Map은 spawnY17→23.5 한 곳, GameSystems는 파생 Boss 컴포넌트 참조 한 곳만 바뀌었고 기존 GUID를 보존했다.
 
-**화면·한계**: [현재 원본·실제 Player 화면/배치/GIF/검증](../art/archive/boss/guard-pattern-r01/README.md)의 `player-view-first-shot.png`는 기본 Player 추적 화면이다. `placement-and-first-shot.png`·12프레임 `first-gold-shot.gif`는 같은 GameCamera에 검사 전용 초점을 잠시 연결해 전체 보스·문·Player를 함께 본 화면이며 게임 카메라 설정 변경이나 기본 추적 화면과 같다고 보지 않는다. `unity-validation.json`·`hazard-validation.json`·`source-validation.json`·`preview-validation.json`, `project/Logs/GuardBossFirstPatternVerification.log`·`GuardBulletSortingVerification.log`가 근거다. 최초 동시 Title snapshot 컴파일 불일치는 최신 코드 동기화로, 가상 Keyboard 미pair 검사 오류는 명시 pair/focus로 바로잡은 뒤 재검사했다. 시작 SearchDatabase 예외는 관찰됐으나 최종 컴파일/기능 검사는 통과했다. 원본 Editor 수동 Play·제출 빌드는 미실행이다.
+**화면·한계**: 현재 원본·실제 Player 화면/배치/GIF/검증의 `player-view-first-shot.png`는 기본 Player 추적 화면이다. `placement-and-first-shot.png`·12프레임 `first-gold-shot.gif`는 같은 GameCamera에 검사 전용 초점을 잠시 연결해 전체 보스·문·Player를 함께 본 화면이며 게임 카메라 설정 변경이나 기본 추적 화면과 같다고 보지 않는다. `unity-validation.json`·`hazard-validation.json`·`source-validation.json`·`preview-validation.json`, `project/Logs/GuardBossFirstPatternVerification.log`·`GuardBulletSortingVerification.log`가 근거다. 최초 동시 Title snapshot 컴파일 불일치는 최신 코드 동기화로, 가상 Keyboard 미pair 검사 오류는 명시 pair/focus로 바로잡은 뒤 재검사했다. 원본 Editor 수동 Play·제출 빌드는 미실행이다.
 
 **R01 단독 패턴 검증 이력·현재 확장**: 위 결과는 F-B07-01만1개 등록해 직전 제외로1회 발사 뒤Idle을 확인한 R01 이력이다. 별도 UseCount 제한은 없다. 현재 Gold/02/03/04/05의5후보를 조건·가중·직전 제외로 선택한다. 이전4패턴/벽 검증은2.2.10 이력이며04/5패턴 통합의 현재 결과는2.2.11을 따른다. 튜토리얼 UI/Dialog·다른 방향·전체 경비 콘텐츠 완료는 포함하지 않는다.
 
@@ -3974,6 +3952,8 @@ sequenceDiagram
         Note over Boss: 손 실제 흐름은2.2.8~9를 따름
     end
 ```
+
+
 </details>
 
 ### 2.2.8 F-B07-02 손 투영과 이동 경고·내부 충전·full고정 — R02 수정·연결·검증 완료
@@ -4008,7 +3988,7 @@ sequenceDiagram
         Hand->>Player: 현재 지면 위치 조회
         Hand->>Hand: 손 지면 MoveTowards·시각 높이 상승
         Hand->>Warning: MoveWarning(손의 GroundPosition)
-        Hand->>Hand: ChargeElapsed / CurrentDuration
+        Hand->>Hand: ChargeElapsed / currentDuration
         Hand->>Warning: 내부 scale=fullFillScale×FillProgress
         opt 타이머 full
             Hand->>Hand: Holding·PhaseElapsed0·지면 고정·return
@@ -4018,7 +3998,7 @@ sequenceDiagram
     Hand->>Hand: Falling·실제 시작 높이에서0까지
     Hand->>Warning: 착지 때 비활성화
     Hand->>Hand: Impact / impacted=true·callback 없음
-    Hand->>Physics: OverlapCircle(GroundPosition,CurrentRadius)
+    Hand->>Physics: OverlapCircle(GroundPosition,currentRadius)
     Hand->>Hit: 같은 Player 성공피해1회 ReceiveHit
     Hand->>Hand: Recovery·Returning·Cancel/홈 복원
     Pattern->>Boss: !Hand.IsRunning → Complete
@@ -4052,6 +4032,8 @@ sequenceDiagram
         Hand->>Hand: 손/대상/상태 복원
     end
 ```
+
+
 </details>
 
 **현재 값/범위**: ChargeDuration2.2초는 기존 최소추적1.2+별도 채움1초를 대체한 AI 초기값이다. 반경1.35/피해10·Height2.5/Rise0.35/속도10·낙하0.12/회복·복귀0.35는 초기값이며 full 뒤0.2게임초는 사용자 확정이다. 원화는 R05/guard-hand-r01 분리 native를 그대로 사용한다. 전체 몸통 피격·02수정·03의 현재 자료는 `art/archive/boss/guard-patterns-r02/`에 모으는 중이다. 예비 검사 뒤 전체 Editor 복원으로 최종16통합/Gold10회귀를 통과했다. 아래 현재 통합 확인과 R01 이력의 버전/범위를 구분한다.
@@ -4064,7 +4046,7 @@ sequenceDiagram
 
 **R01 오해 버전의 당시 확인 결과(2026-11-16)**: 같은 Unity6000.3.21f1 독립 검증 사본에서 손12묶음/배치0(11:01:10 KST), 기존 Gold 단독10회귀/배치0(10:55:35 KST)·C# error0을 확인했다. 두 패턴 등록·8seed의 좌/우 선택/반대 손 홈 유지, 공중 추적/지면 고정, 빈 원→중앙 채움·정지/재개, 실제 full표시 뒤0.2초, 내부 다중 Hitbox1피해/범위 밖0/늦은 진입0, 지연 Fill Tick에서 Holding0→0.19초 유지→추가0.02초 뒤 Falling을 확인했다. 그로기 미래 착지 취소/기존 Gold 유지, 재도전의 같은 손·경고 Mesh 재사용, 실제 Gold→손→Gold 교대·반사/Fever/Owner 피해와 Boss 사망/문 개방·사체 복원도 통과했다.
 
-**원본 반영·한계**: 최종93 C#/런타임53·이번 소유22대상이 원본/검증 사본과 같고(11:03:58 KST), 프리팹 내부67참조 중 끊긴 참조0을 확인했다. Guard 프리팹/새PNG3개·meta를 반영했고 검증/최초 반영 시 Map/GameSystems는 작업 전과 같았다.11:08 이후 동시 작업의 UI_Title.cs·다른 방 군용 Preview Map 자식 추가는 보존했으며 이번 손 검증에 포함하지 않는다. 경비 spawn23.5와 이번 소유 대상은 유지된다. R05 원화6레이어를 그대로 보존한 native의 재열기·분리PNG3개/재합성 RGBA가 원본과 완전히 같다. 최초33자리 meta GUID는32hex로 수정해 타입 인식 문제를 해결했다. 예비 범위 밖/늦은 진입 검사에 남아 있던 무적은 실제 해제 조건으로 교정하고 런타임 추가 변경 없이 최종12검사를 다시 통과했다. SearchDatabase 시작 예외는 관찰됐으나 최종 컴파일/Play는 통과했다. 원본 Editor 수동 Play·제출 빌드는 미실행이다.
+**원본 반영·한계**: 최종93 C#/런타임53·이번 소유22대상이 원본/검증 사본과 같고(11:03:58 KST), 프리팹 내부67참조 중 끊긴 참조0을 확인했다. Guard 프리팹/새PNG3개·meta를 반영했고 검증/최초 반영 시 Map/GameSystems는 작업 전과 같았다.11:08 이후 동시 작업의 UI_Title.cs·다른 방 군용 Preview Map 자식 추가는 보존했으며 이번 손 검증에 포함하지 않는다. 경비 spawn23.5와 이번 소유 대상은 유지된다. R05 원화6레이어를 그대로 보존한 native의 재열기·분리PNG3개/재합성 RGBA가 원본과 완전히 같다. 최초33자리 meta GUID는32hex로 수정해 타입 인식 문제를 해결했다. 예비 범위 밖/늦은 진입 검사에 남아 있던 무적은 실제 해제 조건으로 교정하고 런타임 추가 변경 없이 최종12검사를 다시 통과했다. 원본 Editor 수동 Play·제출 빌드는 미실행이다.
 
 **실제 화면·기록**: [분리 원본·실제7시점/Player 추적 GIF·검증](../art/archive/boss/guard-hand-r01/README.md)의 `hand-attack.gif`는 기본 Player 추적 GameCamera로20fps 게임 시간에 찍은69 raw프레임 중40장을960×720px로 선택한 결과다. 검사 중 Player 위치를 바꾼 구간의 카메라 스냅을 포함하며 Sprite 합성/보간이 아니다. 실제 캡처에서 full→하강0.20게임초, 하강→착지0.15초를 관찰했다. 후자는 설정0.12초와 촬영 간격0.05초를 구분한 관찰값이며 낙하 설정을0.15초로 바꾸지 않았다. `tracking.png`·`empty-warning.png`·`half-fill.png`·`filled-hold.png`·`falling.png`·`impact.png`·`returned.png`, `art-validation.json`·`unity-validation.json`·`gold-regression-validation.json`·`source-validation.json`·`preview-validation.json`과 `project/Logs/GuardHandVerification.log`·`GuardHandGoldRegression.log`가 근거다.
 
@@ -4150,6 +4132,8 @@ sequenceDiagram
     Note over Hand: 착지 callback/피해 이벤트의 버전 변경은 이전 Tick 후속 처리 중단
     Note over Boss,Normal: 사망/세션 정리의 Owner 위험물 제거는 Stage 책임
 ```
+
+
 </details>
 
 **중앙·초기값**: 원형 반경3.5/충전1.2초/착지15피해·손 표시 x±1.1·Normal 좌우 각6발/총12발·y간격1/속도4.5/수명0(이번 벽 확장)/피해10은 초기값이다. 중앙은(14.5,17), 모든 탄 원점 x=14.5·y=14.5/15.5/16.5/17.5/18.5/19.5다. Stage가 조우 Collider를 비활성화하므로 빈 bounds.center 대신 변환/offset을 사용하며 BossSpawner 참조는 InitializePatterns에서 한 번 캐시한다. 원작 ShockwaveSmash는3회 한 손/원형6발이라 우리 동시 양손/세로줄과 동일 구현이 아니다. 현재 Gold/02/03/04/05의5후보를 조건/가중/직전 제외로 선택한다. 이전4패턴/벽 검증은2.2.10 이력이며04/5패턴 통합의 현재 결과는2.2.11을 따르고 튜토리얼/전체 경비 완료는 포함하지 않는다. 03 큰 원/두 손/6줄 좌우12발을 검사 전용 중앙 초점으로 확인했으며 프로덕션 카메라 변경이 아니다. 전체 Editor 통합16/Gold10 최종 결과·사본 차이·화면 범위는2.2.8의 현재 통합 확인을 따른다.
@@ -4215,6 +4199,8 @@ sequenceDiagram
     end
     Note over Boss,Bullet: 사망/세션 종료의 Owner 탄 정리는 기존 Stage 책임
 ```
+
+
 </details>
 
 **사용자 확정/초기값**: 총구 순서1→5×2·10묶음·0.3게임초는 확정이다. 준비0.4/마지막 회복0.5초·묶음당5탄/전체60도·방향 아래/각도15간격·속도6/피해10은 AI 초기값이다. 실행 조건의 중앙 총구↔Player4.5거리는 기존 화면 가독성 튜닝을 재사용한다. FanBulletLifetime0·03 CentralBulletLifetime0은 맵 끝까지 가기 전 시간 만료하지 않게 하는 이번 벽 요청의 구현 선택이며 Gold6초/Area·Laser의 양수 수명 계약은 보존한다. 예고/원화/반사·각성 범위를 새로 확장하지 않는다. 최종44검사와 실제 Player 추적 화면/원본 반영 범위는 아래를 따르며04·튜토리얼/전체 경비 완료는 포함하지 않는다.
@@ -4318,6 +4304,8 @@ sequenceDiagram
     end
     Note over Boss,Bullet: 사망/세션 종료의 기존 Owner 탄 정리는 Stage 책임
 ```
+
+
 </details>
 
 **초기값/변형 경계**: 충전1.2/발사3/회복0.5초·BeamWidth0.5(표시 폭/두 점 x간격)·ImpactRadius0.35/피해10·최대40은 초기값이다. 착탄 원의 외곽/내부와 흰 중심이 실제 피해 위치를 보여 주며 빔 중간 피해는 없다. 기존 Projectile/Area/Laser는 바꾸지 않고 독립 GuardEyeLaser를 정정한다. 원작의 전체 Box 레이저와 같지 않은 사용자 요청의 변형이다.
@@ -4326,7 +4314,7 @@ sequenceDiagram
 
 **R02 최종 실행·반영(2026-11-16)**: 같은 Unity6000.3.21f1의 GuardLaserImpactVerification 전용12와 GuardLaserImpactHandRegression의 손/몸통/중앙16이 모두 성공·각 배치0·C#/Shader 오류0으로 끝났다. 실제 빔 끝의 밝은 두 지면 원/흰 중심·착탄 피해1회와 공중 중간 무피해를 확인했다. 중간 무피해 검사는 실제 Player Hitbox가 빔 선분을 지나되 착탄 원에서3world 이상 떨어진 배치다. 실제84개/가변 delta의0.4초 과거 조준 최대 오차는0.0이며 벽 앞 종점/벽 뒤 보호·정지/그로기·재시작·5패턴·사망/Title 흐름을 확인했다. 전용12 뒤 주석3줄만 비교/동기화하고 Hand16에서 같은 행동 본문을 재컴파일했다. 이전 R01의39검사는 아래 이력으로 보존하며 이번28검사의 근거로 대체하지 않는다.
 
-**R02 원본·영상·한계**: [지면 착탄 원·실제 영상/검증](../art/archive/boss/guard-laser-impact-r02/README.md)의 unity/hand-regression/source/preview-validation.json을 따른다.13:42:14 대조에서 원본/사본 C#102/102·런타임56/56의 차이0,이번8대상 해시 일치·Guard GUID 보존/내부166참조 broken0·Map/GameSystems/Player3프리팹 일치를 확인했다. 출판은 Guard 프리팹만 표적으로 반영했으며 기존 원 Mesh/whiteCircle을 재사용해 새 게임 아트 자산은 만들지 않았다. guard-eye-laser-impact.gif는 실제 Player 추적 카메라84프레임/960×720/3,500ms(게임 관측3.458333초)/6,345,440bytes이며 합성·색 변경·보간 없이 GIF로 인코딩했다. charging-player-camera.png는 실제 추적 화면이고 firing-full-boss-inspection.png만 검사 전용 임시 초점이다. airborne-middle-no-damage-player-camera.png는 Player 급재배치 뒤 카메라 추적 전이라 상단 일부가 잘렸으며 실제 Hitbox/HP 무피해 검사는 통과했다. 시작 Editor SearchDatabase ArgumentOutOfRangeException은 관찰했으나 기능/컴파일 실패와 구분한다. 초기 반경/표시·최종 미술 조정·튜토리얼 전체·원본 수동 Play·제출 빌드는 확정/완료로 확대하지 않는다.
+**R02 원본·영상·한계**: [지면 착탄 원·실제 영상/검증](../art/archive/boss/guard-laser-impact-r02/README.md)의 unity/hand-regression/source/preview-validation.json을 따른다.13:42:14 대조에서 원본/사본 C#102/102·런타임56/56의 차이0,이번8대상 해시 일치·Guard GUID 보존/내부166참조 broken0·Map/GameSystems/Player3프리팹 일치를 확인했다. 출판은 Guard 프리팹만 표적으로 반영했으며 기존 원 Mesh/whiteCircle을 재사용해 새 게임 아트 자산은 만들지 않았다. guard-eye-laser-impact.gif는 실제 Player 추적 카메라84프레임/960×720/3,500ms(게임 관측3.458333초)/6,345,440bytes이며 합성·색 변경·보간 없이 GIF로 인코딩했다. charging-player-camera.png는 실제 추적 화면이고 firing-full-boss-inspection.png만 검사 전용 임시 초점이다. airborne-middle-no-damage-player-camera.png는 Player 급재배치 뒤 카메라 추적 전이라 상단 일부가 잘렸으며 실제 Hitbox/HP 무피해 검사는 통과했다. 초기 반경/표시·최종 미술 조정·튜토리얼 전체·원본 수동 Play·제출 빌드는 확정/완료로 확대하지 않는다.
 
 #### R01 구현·39검사 실행 이력
 
@@ -4334,7 +4322,7 @@ sequenceDiagram
 
 **연결 수정·원본 범위**: 첫 검사에서 Attribute1을 MonoImporter 표시값과 혼동한 하네스 assert는 Attribute1/Importer0으로 바로잡았으며 게임 실행 순서 결함이 아니었다. 최신 Tutorial의 고정 입장 카메라를 통합할 때는 Stage.Generate가 Camera.Target==Player만 요구해 실제 초기화가 막혔다. Bind→Tutorial.Prepare 뒤 HasPendingEntrance ? Map.EntranceStopPoint : Player.transform을 검증하도록 조건1줄을 수정했고 실제 새 저장 통합12를 다시 통과했다. F-S01③/F-S05①②의 연결/초점 복원 흐름도 맞췄다.13:22:58 대조에서 원본/사본 C#102개 중 런타임56개와 이번16대상이 모두 같고 Guard GUID·내부142참조 broken0·Map/GameSystems/Player3프리팹 일치를 확인했다. 동시 Editor MapEntranceSetup/TutorialEntryChecks2개 차이는 보존/이번 검증 제외다.
 
-**자료·시각/한계**: [눈 레이저 원본 설정·실제 영상/검증](../art/archive/boss/guard-laser-r01/README.md)의 unity/source/preview-validation.json·hand/fan-regression-validation.json을 따른다. guard-eye-laser.gif는 실제 Player 추적 카메라의84프레임/960×720/3,500ms(게임 관측3.458333초)/6,590,770bytes이며 합성·색 변경·프레임 보간 없이 GIF 인코딩만 했다. charging-player-camera.png·wall-clipped-player-camera.png는 실제 추적 화면이고 firing-full-boss-inspection.png만 검사 전용 임시 초점이다. 분홍 본체0.5/흰 중심0.15/soft Glow1의 초기 표시를 확인했다. Glow8×64 PNG/공유 재질은 GuardBossSetup.PrepareLaserGlow로 재현하는 코드 기반 출력이며 기존 원화/R05·R06 탄환/Projectile·Area·Laser 코드는 보존했다. 시작 Editor SearchDatabase EnumerateAll의 ArgumentOutOfRangeException은 관찰했으나 기능/컴파일 오류와 구분한다. 튜토리얼 전체·최종 미술 조정·원본 Editor 수동 Play·제출 빌드는 미완/미실행이다.
+**자료·시각/한계**: 눈 레이저 원본 설정·실제 영상/검증의 unity/source/preview-validation.json·hand/fan-regression-validation.json을 따른다. guard-eye-laser.gif는 실제 Player 추적 카메라의84프레임/960×720/3,500ms(게임 관측3.458333초)/6,590,770bytes이며 합성·색 변경·프레임 보간 없이 GIF 인코딩만 했다. charging-player-camera.png·wall-clipped-player-camera.png는 실제 추적 화면이고 firing-full-boss-inspection.png만 검사 전용 임시 초점이다. 분홍 본체0.5/흰 중심0.15/soft Glow1의 초기 표시를 확인했다. Glow8×64 PNG/공유 재질은 GuardBossSetup.PrepareLaserGlow로 재현하는 코드 기반 출력이며 기존 원화/R05·R06 탄환/Projectile·Area·Laser 코드는 보존했다. 튜토리얼 전체·최종 미술 조정·원본 Editor 수동 Play·제출 빌드는 미완/미실행이다.
 
 ### 2.3 UI / anim
 
@@ -4358,7 +4346,7 @@ sequenceDiagram
 
 **접점 수정·적용 범위**: 최초 raw point(80.127304,80.817978)는 작은 수신자 밖에 놓여 ClosestPoint(80.045235,80.951477)로 먼저 보정했다. 접촉 여유0.01을 포함한 허용0.011로 재확인했으며 최초 런타임 결함과 과도하게 작은 검사 오차는 attempt1/2 기록으로 구분한다. `PlayerFeedbackIntegration-verification.json`·`PlayerFeedbackIntegration-publication.json`에서 관련59파일·C#19개·산출물32개가 검증본과 같고 기존 GUID를 보존했다. Player 프리팹은 Feedback 컴포넌트/FeedbackAudio 자식만 추가해 기존 Slash/설정값을 유지한다. 동시 작업 런타임9개와 경비 배치가 바뀐 Map은 동기화/전체 원본 검증 범위에서 제외했다. 카메라 코드는 직전 CameraFollowQuarter 확인본과 같다.
 
-**확인 한계**: `project/Logs/PlayerFeedbackIntegration/hit-feedback-visible.png`는 흰 배경의 실제 Sprite 렌더이며 타일 겹침 검사가 아니다. 수동 스피커 청취·원본 프로젝트 직접 Play·제출 빌드는 미실행이다. 기존 Editor Search 초기화 ArgumentOutOfRangeException은 관찰됐으며 위 assembly/게임 검사 성공과 구분한다.
+**확인 한계**: `project/Logs/PlayerFeedbackIntegration/hit-feedback-visible.png`는 흰 배경의 실제 Sprite 렌더이며 타일 겹침 검사가 아니다. 수동 스피커 청취·원본 프로젝트 직접 Play·제출 빌드는 미실행이다.
 
 **① 공격 모션 시점 → A/B 및3타의 겹친 두 소리**
 
@@ -4380,7 +4368,6 @@ sequenceDiagram
         Attack->>Attack: SpawnEffect(현재 타, age)
         Attack->>Feedback: PlayAttackSound(1타0 / 2타1)
         Feedback->>Audio: PlayOneShot(A 또는 B, Volume)
-        Feedback-->>Feedback: OnSoundPlayed(cue, clip)
     else 새3타
         opt 22/60모션초 F23 최초 통과
             Attack->>Attack: SpawnEffect(3타, age)
@@ -4824,6 +4811,8 @@ sequenceDiagram
     UI->>Canvas: Player·Boss HUD 숨김
     UI->>Cursor: SetCursor(null) / 기본 커서 복구
 ```
+
+
 </details>
 
 <details>
@@ -4859,6 +4848,8 @@ sequenceDiagram
     Note over Camera: 일반·컷씬 Follow는 속도0부터 같은 감쇠 / 정지 목표90% 접근 약0.25초
     Note over Camera: Spawn snap=true와 Draw 위치는 즉시 / 다음 LateUpdate도 현재 화면 높이 안으로 제한
 ```
+
+
 </details>
 
 ### 2.4 시스템 / 기타
@@ -4871,7 +4862,7 @@ sequenceDiagram
 | F-S04 | 전체 정지/입력 차단·상태 우선순위 | S01·U07·P02·S07 | 죽음/로딩/Draw/Slash 전환 시 상태 잔류 없음 | 정의된 컷씬 타이밍 |
 | F-S05 일부 | 새 게임의 최초 입장 걷기·조작 인계 | S11·P03·P04·S01~03·S05 | 문 비가시·화면 밖/맵 안 시작·독립 중앙 marker/기존 체크포인트 보존, R03 최종7검사·원본 반영 확인 | 안내 UI·전체 튜토리얼 단계/대화는 후속 미구현 |
 | F-S06 | 경비 처치·임시 데모 엔딩·Title·새 게임 | TempDemoEnding·S01·S02·U02·S05 | 처치 저장→2초 암전→중앙 안내3초→Title·중단 복구·완료슬롯 새게임확인 | 정식 스탭롤은 임시 안내로 대체 |
-| F-S07 | Debug GUI·수치 변경 | S12 | Editor에서만 제어·소스제출·AI사용기록 | 최종 디자인 의존 없음 |
+| F-S07 | 이전 Debug GUI 계획·현재 제출 제외 | S12 | 2026-11-16 후속 요청으로 비실행·디버깅 코드 제거 | 해당 없음 |
 
 케이스 구현 시 각 행을 `기능 ID | 사양 상태 | 코드·씬·프리팹 연결 | 구현 상태 | 실제 확인 결과 | 남은 아트 | 비아트 차단 사항`으로 갱신한다. 임시 시각물로 확인한 결과를 최종 아트 검증으로 기록하지 않는다.
 
@@ -4883,7 +4874,7 @@ sequenceDiagram
 
 **레퍼런스**: Sephiria CutScenePlayer.PlayCutScene/CutSceneCoroutine의 일회 재생·입력 차단·순차 완료, ScreenFader.Update의 unscaled 암전, UIManager.Awake/OnDestroy의 화면 사건 연결을 읽었다. Dungreed GameManager.Leave/_Leave의 암전 뒤 기존 복귀 흐름 호출을 확인했다. 별도 범용 컷씬/노드·서버·진행 시스템은 도입하지 않는다.
 
-**확인 상태**: 같은 Unity6000.3.21f1 격리 검증 프로젝트에서 최신 Assets/Packages/ProjectSettings를 동기화한 뒤 C# 컴파일·Play Mode4묶음 success=true/error 빈값·배치 종료0을 확인했다. 실제 경비 치명 피해/OnDie·저장 선행·기존 연출 취소/잠금·timeScale0 부분 암전·중복 피해 거부·중도 Title/2.1초 지연 누출 없음·새 세션 재연결·기본2초/3초 타이밍·완전 암전 뒤 문구 상태·공격/Draw/Dash 거부·자동 Title/시간 복구·완료 슬롯 재로드/새게임 확인을 검증했다. 결과: `project/Logs/TempDemoEnding-result.json`, 로그: `project/Logs/TempDemoEndingCheck.log`. 원본 Editor가 열린 상태라 독립 프로젝트에서 실행했으며 원본 수동 Play·화면 캡처/시각 확인·제출 빌드는 미실행이다. 기존 Editor SearchDatabase의 ArgumentOutOfRangeException1건과 기존 ParticleSystemRenderer.BakeMesh obsolete 경고1건은 게임 검사/컴파일 통과와 구분한다.
+**확인 상태**: 같은 Unity6000.3.21f1 격리 검증 프로젝트에서 최신 Assets/Packages/ProjectSettings를 동기화한 뒤 C# 컴파일·Play Mode4묶음 success=true/error 빈값·배치 종료0을 확인했다. 실제 경비 치명 피해/OnDie·저장 선행·기존 연출 취소/잠금·timeScale0 부분 암전·중복 피해 거부·중도 Title/2.1초 지연 누출 없음·새 세션 재연결·기본2초/3초 타이밍·완전 암전 뒤 문구 상태·공격/Draw/Dash 거부·자동 Title/시간 복구·완료 슬롯 재로드/새게임 확인을 검증했다. 결과: `project/Logs/TempDemoEnding-result.json`, 로그: `project/Logs/TempDemoEndingCheck.log`. 원본 Editor가 열린 상태라 독립 프로젝트에서 실행했으며 원본 수동 Play·화면 캡처/시각 확인·제출 빌드는 미실행이다.
 
 **저장·대조**: 원본/검증본 TempDemoEnding·StageManager·GameSystems.prefab SHA256 일치. Notion2.4의 F-S06 독립2Case와 F-B05 기존① 분기/후속 설명 저장 요청 성공·오류 없음 확인
 
@@ -5316,7 +5307,7 @@ sequenceDiagram
 
 **R03 원본 반영·동일성 범위**:13:47:32 KST 대조에서 C#102개/런타임56개·관련12C#+meta24개가 검증본과 같았다.1532대상 중 준비 자산 차이는 Map/WorldCamera2개뿐이었으며 루트가 baseline을 확인한 뒤 두 프리팹만 기존 GUID로 출판했다. Map `DC2F75B7…A88B4AD2`·Camera `561726DF…5F9F2AF`와 각 meta는13:49:12의 postPublicationComparison에서4파일 모두 일치했다. 이는 출판 후 파일 비교이며 새 Unity 실행은 아니다. GameSystems/Player는 이미 동일해 복사하지 않았고 Player `8C9A6EBB…6E01363F`를 유지했다. Tutorial/Player/Body 런타임 로직은 바꾸지 않고 MapEntranceSetup의 기하·Editor 검사만 수정했다. `TutorialEntryR03-{outputs,publication}.json`에 출판/기준을 기록했다.
 
-**R03 영상·한계**: [현재 입장 GIF](../art/archive/map/player-entrance-r03/player-entrance.gif)는 기본 zoom에서 첫 빈 화면→문이 보이지 않는 보행→중앙 인계를 기록한36원본PNG→35GIF·총2.46초다. 동일한 첫 빈 프레임1개는 시간을 유지해 병합했고 마지막800ms hold·양자화 왕복 일치를 확인했다. `TutorialEntryR03-gif-verification.json`을 따른다. OnGUI HUD·경계/벽/중단 fixture는 영상에 포함하지 않았다. 격리 Temp 저장만 사용해 사용자 문서 저장은 유지했다. 기존 SearchDatabase 시작 ArgumentOutOfRangeException1건은 게임 검사/컴파일 성공과 구분하며 원본 직접 Play·제출 빌드는 미실행이다. R01/R02 결과와 GIF는 과거 이력으로 보존한다.
+**R03 영상·한계**: [현재 입장 GIF](../art/archive/map/player-entrance-r03/player-entrance.gif)는 기본 zoom에서 첫 빈 화면→문이 보이지 않는 보행→중앙 인계를 기록한36원본PNG→35GIF·총2.46초다. 동일한 첫 빈 프레임1개는 시간을 유지해 병합했고 마지막800ms hold·양자화 왕복 일치를 확인했다. `TutorialEntryR03-gif-verification.json`을 따른다. OnGUI HUD·경계/벽/중단 fixture는 영상에 포함하지 않았다. 격리 Temp 저장만 사용해 사용자 문서 저장은 유지했다. R01/R02 결과와 GIF는 과거 이력으로 보존한다.
 
 **이전 R02 길이·배치 기준**: 물리 맵 하한−6과 남6행216cell·기존5경계는 유지하고 출발점만(14.5,−5.6)으로 낮춘다. 정지점은 기존 start(14.5,1.4)여서 실제 보행은7world다. 입구문 통과 차단 Collider 중심 y4.5까지는10.1/기존3.1≈3.26배이며 Door root y3·Sprite bounds 중심 y5와 구분한다. R01의−4.6/6world·9.1/2.94배는 이전 이력이며 이번 완전 비가시 시작 요구를 위해 수정했다. MapEntranceSetup은 확장 행6과 출발 거리7을 분리하고 WorldArtSetup의 향후 helper 경로도 같은 배치를 사용한다. 체크포인트·원래11레이어·문4개/다른 방 배치는 보존한다.
 
@@ -5330,7 +5321,7 @@ sequenceDiagram
 
 **이전 R02 최종 정밀도·출판 범위**: 최초 R02의7검사는 기존0.01 허용 오차 안에서 끝났으나0.0097523world 일찍 인계되는 값을 관측했다. 이를 최종 중앙 증거로 사용하지 않고 StopDistance=1e−5·Body.MinimumMoveSqr=1e−12로 마지막 미세 변위까지 같은 Cast 경로에 통과시킨 뒤 재검사했다.13:28:17 KST 대조의 C#102개/런타임56개·관련12C#+meta24개는 모두 검증본과 같았다.1532대상 중 준비 자산 차이는 Map의 spawn marker1개뿐이며 루트가 baseline 확인 후 y−4.6→−5.6 한 줄만 GUID를 보존해 출판했다.13:29:56의 postPublicationComparison은 Map+meta2개 모두 동일하며 별도 Unity 재실행은 아니다. GameSystems/WorldCamera/Player는 이미 검증본과 같아 복사하지 않았고 Player `8C9A6EBB…6E01363F`도 유지했다. `TutorialEntryR02-publication.json`과 verification을 따른다.
 
-**이전 R02 영상·한계**: [실제 입장 GIF](../art/archive/map/player-entrance-r02/player-entrance.gif)는 기본 zoom의 첫 빈 화면→화면 진입→중앙 인계를 담은39원본PNG→38GIF·총2.42초다. 연속 동일 빈 프레임1개는 시간을 보존해 병합했고 끝800ms hold와 양자화 왕복 일치를 확인했다. `TutorialEntryR02-{outputs,gif-verification}.json`에 근거를 저장했다. OnGUI HUD·경계/벽/중단 fixture는 영상에서 제외했다. 격리 Temp 저장만 사용했고 사용자 문서 저장은 건드리지 않았다. SearchDatabase 시작 ArgumentOutOfRangeException1건은 관찰됐으나 실제 게임 검사/컴파일 성공과 구분하며 원본 직접 Play·제출 빌드는 미실행이다. R01 및 최초 R02의 넓은 허용 오차 결과/영상은 이전 이력이다.
+**이전 R02 영상·한계**: 실제 입장 GIF는 기본 zoom의 첫 빈 화면→화면 진입→중앙 인계를 담은39원본PNG→38GIF·총2.42초다. 연속 동일 빈 프레임1개는 시간을 보존해 병합했고 끝800ms hold와 양자화 왕복 일치를 확인했다. `TutorialEntryR02-{outputs,gif-verification}.json`에 근거를 저장했다. OnGUI HUD·경계/벽/중단 fixture는 영상에서 제외했다. 격리 Temp 저장만 사용했고 사용자 문서 저장은 건드리지 않았다. R01 및 최초 R02의 넓은 허용 오차 결과/영상은 이전 이력이다.
 
 **이전 R01 실행·동작 확인(2026-11-16)**: 같은 Unity6000.3.21f1 격리 Editor에서7검사가 success=true·error 빈값·배치 종료0으로 통과했다. 컴파일2.766172초·C#/Shader 오류0이며 `project/Logs/TutorialEntry-result.json`·`TutorialEntryFinal.log`·`TutorialEntry-metrics.json`을 근거로 한다. 새 게임의 숨은 초기 배치/입력 잠금,차단 입력 누출 방지·pause,실제 보행/정지/인계,완료의 디스크 재로드,완료/키 없는 기존 저장의 체크포인트 생략,벽 충돌/재개,두 중단·재시도와 이전 코루틴의 늦은 인계 차단을 확인했다.
 
@@ -5338,7 +5329,7 @@ sequenceDiagram
 
 **R01 원본 반영·확인 범위**: `TutorialEntry-verification.json`에서 원본 C#100개·현재 런타임55개와 관련 C#11개+meta 총22파일이 검증본과 일치했다. 최초1524파일 snapshot 차이는 준비한 Map/GameSystems/WorldCamera3프리팹뿐이었으며 루트의 원본 baseline 확인 뒤 이3개만 GUID를 보존해 출판했다. `TutorialEntry-publication.json`과 verification.postPublicationComparison에서3프리팹+meta6개가 완전히 같다. 기존 Player 프리팹 `8C9A6EBB…6E01363F`는 바꾸지 않았다. 이전 오라 검사용 Guard/Map fixture는 최신 원본으로 교체했고 재생성하지 않았다. WorldArtSetup도 실행하지 않고 향후 helper 연결만 보완했다.
 
-**R01 촬영·한계**: `art/archive/map/player-entrance-r01/player-entrance.gif`는 실제 기본 zoom 월드 카메라의27프레임·2.29초이며 마지막800ms 정지 표시를 포함한다. 실제 관측 구간은 약1.488초이고 GIF의 양자화 프레임 왕복 검사를 통과했다. 시작·인계 스틸을 시각 확인했으며 캡처에는 OnGUI HUD와 벽/중단 fixture를 넣지 않았다. `TutorialEntry-outputs.json`에 준비 산출물을 기록했다. 검사는 격리 Temp 저장만 사용했고 사용자 문서 저장은 건드리지 않았다. 기존 SearchDatabase 시작 ArgumentOutOfRangeException1건은 관찰됐으나 위 게임/컴파일 성공과 구분하며 원본 프로젝트 직접 Play·제출 빌드는 미실행이다.
+**R01 촬영·한계**: `art/archive/map/player-entrance-r01/player-entrance.gif`는 실제 기본 zoom 월드 카메라의27프레임·2.29초이며 마지막800ms 정지 표시를 포함한다. 실제 관측 구간은 약1.488초이고 GIF의 양자화 프레임 왕복 검사를 통과했다. 시작·인계 스틸을 시각 확인했으며 캡처에는 OnGUI HUD와 벽/중단 fixture를 넣지 않았다. `TutorialEntry-outputs.json`에 준비 산출물을 기록했다. 검사는 격리 Temp 저장만 사용했고 사용자 문서 저장은 건드리지 않았다.
 
 <details>
 <summary>F-S05 SequenceDiagram</summary>
@@ -5651,13 +5642,13 @@ L1의 입력 방법·카메라 보스 보정·회피 보정·커서·캐릭터 �
 | 넓은 방(wide) | 16,32,288,128px | 1728×768px | 6.4배 |
 
 - **R01 비교 조건:** 기존 왼뒤 Idle 첫 프레임 (`art/player/png/frames/idle/idle-left-back-01.png`, 최종 정리로 삭제됨)의20×20px 셀·보이는12×20px를 그대로 사용함. 화면상 보이는 몸체는72×120px로9안 모두 동일하고 발은 바닥 하단에서16원본px 위에 있음. 방 전체를 고정 화면으로 보는 이전 시안이며 추적 카메라·HUD·Boss를 합친 플레이 화면은 아님. 넓은 방은 북벽 상단이 원본 y0에 닿음.
-- **반복 원본과 배치:** [타일 Aseprite](../art/environment/laboratory/aseprite/laboratory-tiles.aseprite), [128×128 타일 시트](../art/environment/laboratory/native/laboratory-atlas-128.png), `art/environment/laboratory/tiles/`의32×32px PNG16개. 바닥·벽·문을 분리하고 바닥은32×32 타일을 반복함. 북벽32px·측벽8px·남벽8px, 문 모듈32×32px는 이번 비교용 배치값임. 벽의 환기구·모니터는 같은 모듈의 변형이며 실내 장애물은 두지 않음.
-- **R01의9개 화면·편집 원본:** `art/environment/laboratory/native/laboratory-{compact|medium|wide}-{entry|combat|cleared}-320.png`, `preview/laboratory-{size}-{state}-1920.png`, `aseprite/laboratory-{size}-{state}.aseprite`. 각 Aseprite는 외부·바닥·벽·위문·아래문·Player의6레이어이고 `backgrounds/`에는 Player를 제외한 배경9개가 있음. [중간 방 전투1080p](../art/environment/laboratory/preview/laboratory-medium-combat-1920.png), [입장1080p](../art/environment/laboratory/preview/laboratory-medium-entry-1920.png), [처치 후1080p](../art/environment/laboratory/preview/laboratory-medium-cleared-1920.png). 문은 입장 때 아래 열림/위 잠김, 전투 때 양쪽 닫힘, 처치 후 위 열림으로 표현함. 전투 중·처치 후의 아래문 폐쇄는 R02에도 유지한 시안 표시이며 새 게임 규칙 확정으로 확대하지 않음.
+- **반복 원본과 배치:** 타일 Aseprite, 128×128 타일 시트, `art/environment/laboratory/tiles/`의32×32px PNG16개. 바닥·벽·문을 분리하고 바닥은32×32 타일을 반복함. 북벽32px·측벽8px·남벽8px, 문 모듈32×32px는 이번 비교용 배치값임. 벽의 환기구·모니터는 같은 모듈의 변형이며 실내 장애물은 두지 않음.
+- **R01의9개 화면·편집 원본:** `art/environment/laboratory/native/laboratory-{compact|medium|wide}-{entry|combat|cleared}-320.png`, `preview/laboratory-{size}-{state}-1920.png`, `aseprite/laboratory-{size}-{state}.aseprite`. 각 Aseprite는 외부·바닥·벽·위문·아래문·Player의6레이어이고 `backgrounds/`에는 Player를 제외한 배경9개가 있음. 중간 방 전투1080p, 입장1080p, 처치 후1080p. 문은 입장 때 아래 열림/위 잠김, 전투 때 양쪽 닫힘, 처치 후 위 열림으로 표현함. 전투 중·처치 후의 아래문 폐쇄는 R02에도 유지한 시안 표시이며 새 게임 규칙 확정으로 확대하지 않음.
 - **이전 레퍼런스 조사(2026-11-15):** 당시에는 Dungreed·Sephiria만 확인하고 Gungeon 내부 코드 부재로 기록했음. 이번 정밀 분석에서는 로컬 Gungeon 코드가 실제로 존재함을 확인했으며3.3.1에 근거를 연결함. 이전 웹의 [Boss Rush](https://enterthegungeon.wiki.gg/wiki/Boss_Rush), [Forge](https://enterthegungeon.wiki.gg/wiki/Forge), [Vooks 보스방 화면](https://www.vooks.net/enter-the-gungeon-switch-review/) 참고 이력은 보존함. 아래 입장/위 퇴장을 Gungeon 전체 공통 규칙이라고 해석하지 않음. 연구소 세라믹 바닥·금속 셔터는 제작안이며 원작 해골문·엘리베이터·에셋을 복제하지 않음.
-- **제작·검증:** built-in imagegen으로 [제작 프롬프트](../art/environment/laboratory/source/generation-prompt.txt)에 따라1254×1254 [생성 원본](../art/environment/laboratory/source/laboratory-generated-atlas.png)을 만들고 Aseprite에서128×128로 최근접 추출·반복 경계 정리·레이어 배치함. [배치 스크립트](../art/environment/laboratory/build-laboratory.lua), [좌표](../art/environment/laboratory/layout.json), [검사 결과](../art/environment/laboratory/validation.json). Aseprite 재열기/PNG 일치·9개 출력 규격·정확한6×6 블록·Player 픽셀/해시 보존·바닥 반복을 통과함. 별도 RGBA 전체 픽셀 검사에서도6배 확대와 해당 문 영역만의 상태 변경을 확인했고 작은/중간/넓은 시안을 직접 시각 검토함.
+- **제작·검증:** built-in imagegen으로 제작 프롬프트에 따라1254×1254 생성 원본을 만들고 Aseprite에서128×128로 최근접 추출·반복 경계 정리·레이어 배치함. 배치 스크립트, 좌표, 검사 결과. Aseprite 재열기/PNG 일치·9개 출력 규격·정확한6×6 블록·Player 픽셀/해시 보존·바닥 반복을 통과함. 별도 RGBA 전체 픽셀 검사에서도6배 확대와 해당 문 영역만의 상태 변경을 확인했고 작은/중간/넓은 시안을 직접 시각 검토함.
 - **남은 작업:** 사용자 크기·미술 판단, Boss 크기와 탄막/이동·HUD/카메라를 함께 둔 검토, Unity의 PPU·피벗·충돌벽·출입 Trigger·Boss 사망 신호 연결. 이번 작업은 `/art`의 비교용 아트 제작이며 `/project` 수정·Unity 컴파일/플레이는 미실행임.
 
-- **Title 로고 — 사용자 직접 수정본 최종 확정(2026-11-15):** 사용자가 직접 수정한 [최종 Aseprite 원본](../art/title/logo_17_natural_cut_r06/title-logo-17-natural-cut.aseprite)을 Title 로고로 확정함. [투명 PNG](../art/title/logo_17_natural_cut_r06/title-logo-17-natural-cut.png)는 이 원본에서 다시 내보낸 동일 렌더임. **후속 수정은 이 사용자 수정 최종 Aseprite를 기준으로 하며, 옛 제작 스크립트나 이전 시안으로 재생성하지 않음.** 로고의 최종 선택은 완료됐으며 실제 배경·움직임·Unity 연결 및 게임 화면 검증은 남음([선택·정리 기록](archive/01_Choice/Title_Logo_Concept_Brief_20261115.md)).
+- **Title 로고 — 사용자 직접 수정본 최종 확정(2026-11-15):** 사용자가 직접 수정한 최종 Aseprite 원본을 Title 로고로 확정함. 투명 PNG는 이 원본에서 다시 내보낸 동일 렌더임. **후속 수정은 이 사용자 수정 최종 Aseprite를 기준으로 하며, 옛 제작 스크립트나 이전 시안으로 재생성하지 않음.** 로고의 최종 선택은 완료됐으며 실제 배경·움직임·Unity 연결 및 게임 화면 검증은 남음([선택·정리 기록](archive/01_Choice/Title_Logo_Concept_Brief_20261115.md)).
 - **최종 원본 확인·정리 결과:** 원본은 4,151bytes, 200×80px·정지1프레임·표시된10레이어이며 SHA-256은 `31b748048b047248abfe03e74108e3e56981383207d131aacd1bee6bd0fc28d4`임. 파일을 바이트 단위로 보존했고 현재 합성 렌더는 이전 R06 PNG와109px 다름. Aseprite에서 PNG를 재출력한 뒤 원본 합성과 모든 픽셀이 일치함을 확인함. 사용자 요청에 따라 `/art/title`의 이전 시안·비교표·ZIP·스크립트·검사 자료 등704개 파일과 빈 폴더를 정리하고 위 Aseprite와 PNG 두 파일만 남김. 아래 R06 자동 제작 당시의83px 절삭·검정 비율·가드 규격 등은 최신 사용자 수정본의 재검증 수치가 아니며 현재 원본에 다시 강제하지 않음.
 - **아래 Title 기록의 시점:** V1~V5와17번 R01~R06 자동 제작의 요청·수치·검사·미승인·원본 보존 상태는 각 제작 당시의 이력임. 당시 아트 자료는 최종 정리 요청으로 삭제됐으며, 현재 기준과 최종 확정 상태는 위 두 항목을 따름.
 
@@ -5716,7 +5707,7 @@ Idle·Move·Dash·Death·Spawn 미술을 사용자 확정본으로 정리했다.
 #### Player Slash 발도 R03 — 사용자 철회 이력(2026-11-16)
 
 - **사용자 수정:** 손 두 개를 각각 단색2×2px 정사각형으로 바꾸고 검을 반대쪽으로 옮겨 캐릭터 기준 왼눈, 즉 **화면 오른쪽 눈**을 가린다. 기존 방향·낮춤→발도→대기→납도와 얼굴 앞 틈·머리 위 손잡이 손 위치는 유지한다.
-- **철회된 제작 파일:** [Aseprite 원본](../art/archive/player/iaido-r03/aseprite/iaido-front.aseprite)12×33px·9프레임·10레이어와 [Unity PNG 시트](../art/archive/player/iaido-r03/unity/iaido-front.png)288×40px·32×40px 셀9칸이다. 현재 사용 대상은 아래 R02이며 이 파일은 수정 이력으로만 남긴다.
+- **철회된 제작 파일:** Aseprite 원본12×33px·9프레임·10레이어와 Unity PNG 시트288×40px·32×40px 셀9칸이다. 현재 사용 대상은 아래 R02이며 이 파일은 수정 이력으로만 남긴다.
 - **수정·제작값:** 몸체4레이어의 전 프레임 픽셀은 R02와 같고 무기4레이어만 x+4px 이동해 검7×29px 기준 원점을(11,11)로 바꿨다. 두 손은 각각4px의 단색 RGBA(225,172,145,255)이다. 윗손은 x13~14/y10~11에서 추출량만큼 올라가고 아랫손은 x16~17/y19~20에 고정된다. 검집 입구y18·최대 발도 틈y15~17은 유지한다. 전9프레임에서 화면 오른쪽 눈(x14)을 가리고 왼쪽 눈(x10)2px을 보인다.9프레임·총1530ms·5개 태그/재생 범위는 R02와 같으며 시간·좌표는 제작값이다.
 - **확인·남은 작업:** 원본/레이어·손의4px 단색 정사각형과 무기 접촉·눈 노출/가림·태그/시간·PNG/GIF 재열기 검사를 마쳤다. archive의2파일은 작업본과 SHA-256이 같고 기존21파일의 해시는 불변이다. 독립 프레임 시각 검토에서 동색2×2 손·무기 접촉·R02와 반대 눈 가림·몸 앞 수직 검·얼굴 높이 틈을 확인했으며 필수 수정은 없었다. GIF는 실시간 관찰이 아닌 재열기 픽셀/시간 검사로 확인했다. 당시 제작·검사는 완료했으나 이후 사용자가 R03을 철회하고 R02로 복귀했다. R03은 현재 사용 대상이 아니며 발도 Unity 연결은 별도다.
 
@@ -5730,7 +5721,7 @@ Idle·Move·Dash·Death·Spawn 미술을 사용자 확정본으로 정리했다.
 #### Player Slash 발도 R01 — 몸 옆 배치 반려 이력(2026-11-16)
 
 - **사용자 요청·방향:** 낮게 무릎을 굽히고 몸 앞에 세운 검을 조금 뽑기→꺼낸 채 대기→납도한다. 정면 고정1세트는 기존4방향 중 **Idle_LeftFront2번 프레임의 방향**이며 새 대칭 정면을 뜻하지 않는다. 이번 모션에 한해 손잡이·검집을 잡는 작은 손 두 덩어리를 표시하고 기존5종의 손 없는 표현은 유지한다.
-- **당시 제작 파일:** [Aseprite 원본](../art/archive/player/iaido-r01/aseprite/iaido-front.aseprite)16×32px·9프레임·10레이어와 [Unity PNG 시트](../art/archive/player/iaido-r01/unity/iaido-front.png)288×40px·32×40px 셀9칸이다. native는 셀(8,4), 기존 몸체20×20 기준은(4,8), 검7×29px 기준은(17,7)에 놓인다. 검 원본의 길이·픽셀을 줄이지 않고 셀을 확장했으므로 기존5종의20×20px 슬라이스를 그대로 적용하지 않는다. Unity 연결 시 기존20×20px 셀의 피벗 픽셀 좌표(u,v)는 새 셀에서(u+4,v+8)로 옮겨 몸체를 정렬한다. 이는 배치 관계이며 PPU나 새 절대 피벗값을 확정한 것은 아니다.
+- **당시 제작 파일:** Aseprite 원본16×32px·9프레임·10레이어와 Unity PNG 시트288×40px·32×40px 셀9칸이다. native는 셀(8,4), 기존 몸체20×20 기준은(4,8), 검7×29px 기준은(17,7)에 놓인다. 검 원본의 길이·픽셀을 줄이지 않고 셀을 확장했으므로 기존5종의20×20px 슬라이스를 그대로 적용하지 않는다. Unity 연결 시 기존20×20px 셀의 피벗 픽셀 좌표(u,v)는 새 셀에서(u+4,v+8)로 옮겨 몸체를 정렬한다. 이는 배치 관계이며 PPU나 새 절대 피벗값을 확정한 것은 아니다.
 - **편집·제작값:** 몸체4레이어, 칼날/손잡이/가드/검집4레이어, 각5px인 손2레이어로 분리했다. 몸을 낮추는 양은0/1/3/3/3/3/3/3/3px, 검을 뽑는 양은0/0/0/1/3/3/2/1/0px다. 프레임 시간은100/100/120/90/120/600/90/90/220ms(총1530ms), 태그는 Full1~9·Lower1~3·Draw4~5·Sheathe7~9를1회, Hold6을 반복하도록 구성했다. 이 수치·구간은 시안 제작값이며 최종 게임 지속시간이나 무기 분리/결합 정책의 확정이 아니다.
 - **확인·남은 작업:** 원본/10레이어·PNG·손 위치·발도/대기/납도·임시 GIF9프레임 재열기 픽셀/시간 검사를 마쳤다. archive의2파일은 작업본과 SHA-256이 같고 기존 확정16파일·검 원본1개의 해시는 불변이다. 영구 결과물은 Aseprite·PNG만 보관하며 GIF는 외부 임시 검토용이다. 독립 프레임 시각 검토에서 두 눈 노출·몸 낮춤·두 손의 역할 분리·칼 노출 증가/유지/감소를 확인했고 필수 수정은 없었다. GIF는 실시간 관찰이 아닌 재열기 픽셀/시간 검사로 확인했다. 당시 시안 제작·검사를 마쳤지만 이후 사용자가 몸 옆 검 배치를 반려했다. 현재 수정안은 위 R02를 따르며 R01 원본은 보존한다.
 
@@ -5798,13 +5789,13 @@ Idle·Move·Dash·Death·Spawn 미술을 사용자 확정본으로 정리했다.
 
 #### 분석 범위와 측정 기준
 
-- 자료: [README](../art/environment/ETG-Boss-Maps/README_KO.md), [manifest](../art/environment/ETG-Boss-Maps/manifest.json), `maps/`의17개 `map.json`,9종 대표 PNG, `metadata/sprites.json`, 실제 개별 타일/문 PNG. 대상은 Steam Build3829397·게임2.1.9의 로컬 추출 자료임.
+- 자료: README, manifest, `maps/`의17개 `map.json`,9종 대표 PNG, `metadata/sprites.json`, 실제 개별 타일/문 PNG. 대상은 Steam Build3829397·게임2.1.9의 로컬 추출 자료임.
 - **제공 PNG는4배 스크린샷이 아닌1배 원본 픽셀의 정적 재구성**임. `runtime_capture=false`. 따라서 PNG 길이를4로 나누지 않음. 게임 내 조명·봉인 애니메이션·임의 장식·카메라 추적을 실행해 확인한 자료가 아님.
 - `pixels_per_cell=16`: 논리 셀 한 칸은16×16 원본px. PNG는 사방 `padding_cells=8`, 즉128px씩을 포함함. `map.json.width×16`·`height×16`을 **방 본체 경계**로 사용하며 PNG 전체 크기나 문까지 포함한 외곽 크기와 구별함.
 - 예:38×27셀 방은608×432 원본px이고 PNG는864×688임. PNG 전체864를 분모로 삼으면 시야 비율을 잘못 계산함. 문 통로는 본체 밖으로 이어지므로 전체 아트 캔버스는 별도임.
 - FLOOR의 최대 경계·셀 수는 구덩이, 내부 WALL과 구별해 측정함. 최대 경계 사각형은 실제 이동 가능 면적이 아니며 배치 오브젝트 Collider·플레이어 반경은 제외됨. WALL0인 방도 외벽이 없는 것이 아님. 외벽은 본체 외부에서 추가됨.
 - 좌표: 원본 셀은 좌하단 원점·y위쪽, PNG는 좌상단 원점·y아래쪽. `(x,y)`셀의 PNG 좌상단은 `((x+8)×16, (height+8-y-1)×16)`임. `doors.pixel_bounds`만은 양끝 포함이므로 크기는 `max-min+1`로 계산함.
-- [측정 원본](../art/environment/etg-analysis/measurements.json)에17방의 셀·바닥 경계·셀 수·입출구 후보/선택·문 좌표·비율·입력 메타데이터 SHA-256을 저장함.
+- 측정 원본에17방의 셀·바닥 경계·셀 수·입출구 후보/선택·문 좌표·비율·입력 메타데이터 SHA-256을 저장함.
 
 #### 타일 구성과 바닥 반복
 
@@ -5857,7 +5848,7 @@ Trigger Twins의 출입구·코너에서 떨어진 직선 북벽 `x=5`를 기준
 | Gungeon 출구 합성 | 42×40 | 168×160 | 252×240 |
 
 - 입구의66×117은 문구멍의 크기가 아님. `Boss_Door_skull_north_open_001`32×53, 아래 기둥64×34, 아래 문32×33, 전실64×48, 위 기둥66×17의5개 부품이 겹친 결과임. 부품 높이의 합도 전체117과 다름.
-- [입구 분리 이미지](../art/environment/ETG-Boss-Maps/maps/floor-1/trigger-twins/BulletBrosRoom01/entrance_door.png)는 문틀·상부 장식·바닥·문턱·전실이 층으로 분리됨을 보여줌. 입구 전체를 전투 바닥 안에 배치하면 전실까지 실내를 차지하게 되므로, 본체 아래의 외부 통로와 연결해서 배치함.
+- 입구 분리 이미지는 문틀·상부 장식·바닥·문턱·전실이 층으로 분리됨을 보여줌. 입구 전체를 전투 바닥 안에 배치하면 전실까지 실내를 차지하게 되므로, 본체 아래의 외부 통로와 연결해서 배치함.
 - Castle 열린 출구는7×40 두 문짝을 x0/25에 둬 전체32px, Mines는5×40 두 문짝을 x0/27에 둠. Gungeon은 여기에42×8 전이 장식이 더해져 전체폭42px임. **프레임 전체폭·그림상 빈틈·데이터상 통로 폭·Collider 통과 폭은 서로 다름.**
 - 대부분의 원본 출입구는 `NO_RESTRICTION`; Bullet King·Treadnaught는 북쪽 `EXIT_ONLY`를 보존함. 남쪽 입구/북쪽 출구는 이 자료의 선택이며 모든 ETG 보스방의 보편 규칙이라고 하지 않음. Chrono에서는 기존 사용자 확정 방향을 적용함.
 - **Chrono 적용 제안:** 연구소 입구도 통로2셀·문턱·좌우 문틀·상부 구조·전실을 분리하고, 출구는 상대적으로 간결한 문으로 위계를 줌. 해골 장식을 그대로 옮기지 않음. 통로192화면px는 현재 Player의 보이는 몸체72px 대비 약2.67배이며, 실제 통과 판정은 발 Collider로 별도 확인해야 함.
@@ -5930,482 +5921,95 @@ Trigger Twins의 출입구·코너에서 떨어진 직선 북벽 `x=5`를 기준
 
 후속 실제 아트 제작·선택 규격·원본1배/1080p6배 검토 결과는3.3.2에 반영함. 문 열림/닫힘·충돌·통과 Trigger·보스 사망 연결·카메라 추적의 실제 Unity 동작은 별도 확인해야 하며 원작 분석·정적 아트 제작 완료와 구분함.
 
-### 3.3.2 흰 실험실 ETG-R03 — 균일 셀 선택과 실제 제작
+### 3.3.2 실험실 바닥·셀·시야의 확정 규격
 
-> 제작 이력: 아래 이전 경로는 당시 기록이며 현재 파일 위치가 아님. 최신 결과는3.3.6을 따름. 중간물 삭제 내역은 최종 패키지의 `validation/cleanup.json`에 기록함. 초기 R01/R02의 일부 파일은 이번 정리 전부터 없었음.
+사용자는 정수 픽셀과 균일 타일을 유지하기 위해 **400×288 원본px·16×16px 셀·25×18칸**을 선택했다. 405×288px의 혼합 셀안은 사용하지 않는다. 현재 편집 원본과 게임용 출력은 [실험실 최종 전달본](../art/archive/environment/laboratory/final/README.md)을 따른다.
 
-이 절은 최초 R03 제작 이력임. 선택한 바닥·셀·시야 비율은 유지하며, 현재 입구 위치·벽 두께·편집 원본은 **3.3.3 ETG-R04**를 따름.
+| 항목 | 현재 기준 |
+| --- | --- |
+| 목표 화면·원본 시야 | 1920×1080 · 320×180px |
+| 표시 배율 | 원본1px→화면6×6px |
+| 방 바닥·셀 | 400×288px · 25×18셀 · 셀16×16px |
+| 시야÷방 | 가로80% · 세로62.5% |
+| 원작 비교와 차이 | ETG 608×432px 바닥의 정확 환산폭405⅓px보다1.315789% 작고 가로시야는+1.052632%p 큼. 수학적 완전일치로 표현하지 않음 |
 
-**사용자 선택:** ETG 최빈 직사각형의 시야/방 비율을 우선 계산한 뒤, 정수 픽셀 제약의 두 선택지 중 **400×288 원본px·16×16px 균일 셀·25×18칸**을 선택함.405×288px·10/11px 혼합 셀 안은 채택하지 않음. 요청한 흰 실험실, 반복되면서 단조롭지 않은 바닥·크랙을 제작함. 크기 선택과 새 미술의 최종 검토, Unity 연결은 구분함.
+바닥 변형·크랙은 독립 레이어로 유지하고 Player를 환경 원본에 합치지 않는다. 크기와 미술 선택은 실제 Collider·Trigger·게임 연결과 구분하며 연결 결과는3.3.10을 따른다.
 
-#### 최빈 직사각형과 환산
+### 3.3.3 실험실 경계와 독립 입구
 
-직사각형은 **외곽이 직사각형인 방**으로 분류하며 내부 장애물·구덩이는 허용함.17변형에서 Bullet King·Mine Flayer2개를 제외한14개 중, 방 데이터의38×27셀은9개로 가장 많음. 내부의 실제 비벽 경계로 비교해도38×27셀이6개로 가장 많음. 이 분류를 장애물이 전혀 없는 빈 바닥만의 통계라고 해석하지 않음.
+사용자 결정은 전투 바닥을 보존하면서 입구 전체를 방 밖에 배치하고, 이동할 수 없는 경계가 명확하도록 벽을 두껍게 표현하는 것이다. 현재 환경은 **16px 벽·80px 통로**를 사용한다. 바닥·크랙·벽·입출구는 [최종 Aseprite와 배치 데이터](../art/archive/environment/laboratory/final/README.md)에서 각각 편집한다.
 
-| 항목 | ETG 기준 | Chrono 정확한 이론값 | 사용자 선택·제작값 |
-| --- | --- | --- | --- |
-| 화면 | 1920×1080 | 1920×1080 | 1920×1080 |
-| 원본1px 표시 | 4×4 화면px | 6×6 화면px | 6×6 화면px |
-| 카메라 원본 시야 | 480×270 | 320×180 | 320×180 |
-| 방 바닥 | 608×432,38×27셀 | 405⅓×288 | **400×288,25×18셀** |
-| 시야÷방 너비 | 15/19=78.947368% | 78.947368% | **80%** |
-| 시야÷방 높이 | 5/8=62.5% | 62.5% | **62.5%** |
-| 셀·기본 타일 | 16×16 원본px | 원작 셀 수까지 유지하면10⅔×10⅔ | **16×16 원본px=96×96 화면px** |
+보이는 벽 두께를 Collider 크기로 그대로 사용하지 않는다. 실제 문은 MapDoor의 Animator·Blocker, 입구/출구와 수정·Boss 사건을 연결해 개폐하며3.3.10의 게임 반영을 기준으로 한다. 최초 입장은 F-S05의 별도 출발/종료 마커와 카메라 경계를 사용하므로 저장 체크포인트를 이동시키지 않는다.
 
-정확한 바닥 폭은 `320÷(480/608)=405⅓`임. 정수 원본 픽셀과 균일16px 셀로는 그대로 그릴 수 없음. 선택한400px는 이론 폭보다 **1.315789% 작고**, 가로 시야 비율은 **+1.052632%p** 큼. 세로는 정확히 일치함. 따라서 선택 결과를 수학적으로 완전히 같은 비율이라고 표현하지 않음. 이전416px 권고보다 목표에 가까운 균일 셀 구성임. 실제 바닥은6배에서2400×1728 화면px가 되며,20×11.25셀 분량만1920×1080에 보임.
+### 3.3.4 방 사이 대리석 복도
 
-이번 선택은 **방/시야 관계에 가깝게 맞추면서 균일16px 셀을 보존**하는 결정임. 원작16px 셀의 화면64px와 달리 우리 셀은96px이며, 문·벽도 아래 제작 모듈을 사용하므로 모든 세부 요소까지 원작과 같은 화면 비율은 아님. [계산 자료](../art/environment/etg-analysis/rectangular-scale-choice.json), [사용자 선택 기록](archive/01_Choice/Laboratory_Arena_Preview_20261115.md)을 따름.
+사용자는 보스방 사이를 잇는 복도에 대리석 바닥을 적용하고 방·문과 자연스럽게 연결하도록 요청했다. 최종 복도는 **80×464px·5×29셀**, 양쪽 벽은 **16px·1셀**, 문을 포함한 외곽 폭은 **112px·7셀**이다. 병목·단계적 확장·돌출 지지부 대신 일정 폭으로 연결한다.
 
-#### 제작 구성과 실제 규격
+현재 원본은 [straight-corridor.aseprite](../art/archive/environment/laboratory/final/aseprite/straight-corridor.aseprite)와 같은 폴더의 연결 맵·환경 타일셋이다. 바닥 패턴은 정수16px 셀로 재배치하고, 확대 저장 대신 원본 크기를 유지한다. 첫 입장용 남쪽 확장은 [현재 R03 기하](../art/archive/environment/entrance-corridor-r03/README.md)의12행·432셀·7world 보행을 따른다.
 
-원본 위치는 `art/environment/laboratory/etg-r03/` (당시 경로: `../art/environment/laboratory/etg-r03/`)임. 전체 캔버스는 **432×448 원본px**, 바닥 경계는 **(16,64)부터400×288px**이며 벽·위 출구·아래 전실을 별도 포함함. 전체 캔버스 크기를 전투 바닥의 크기나 카메라 시야의 분모로 사용하지 않음.
+### 3.3.5 입구·출구의 최종 애니메이션
 
-| 묶음 | 제작 내용 | 규격·실제 적용 |
-| --- | --- | --- |
-| 기본 바닥6종 | 깨끗한 판·색차·모서리 마모·얕은 표면 흔적·작은 패널4분할·가로2분할 | 모두16×16px. 작은8px 무늬는 셀 내부의 그림이며 논리 셀은16px 유지 |
-| 크랙4종 | 짧은 굽은 금·갈라진 금·모서리 손상·사선 금 | 투명16×16 데칼,1px 중심 선.450셀 중18곳=4%, 바닥과 별도 레이어 |
-| 북벽 면4종 | 상단 기본/환기구, 하단 기본/서비스 패널 | 상·하16px씩 총32px, 상단 단면8px를 추가하여 총40px |
-| 벽 단면4종 | 북쪽 상단·좌측·우측·남쪽 | 측면/남쪽의 보이는 단면은8px, 북벽처럼 사방을32px 면으로 둘러싸지 않음 |
-| 바닥 경계8종 | 상하좌우4종·코너4종 | 실내 접촉 그림자·가장자리. 북쪽3px, 측면2px 등의 별도 접촉층 |
-| 문용 반복2종 | 문턱, 금속 문짝 패널 |16×16. 문짝 패널은 하나의32×32 폐쇄 면으로 조립하여 작은 문4개처럼 반복하지 않음 |
-| 입구 합성 | 큰 문틀·양쪽 기둥·문짝·문턱·전실 | 전체64×88px, 원점(184,344), 중앙 통로32px |
-| 출구 합성 | 간결한 문틀·문짝·문턱 | 전체48×60px, 원점(192,4), 중앙 통로32px |
+현재 문 형태는 corridor-r15의 최종 원본을 사용한다. 색상은3.3.6의 C 팔레트를 따르며 [입구](../art/archive/environment/laboratory/final/aseprite/sliding-gate.aseprite)·[출구](../art/archive/environment/laboratory/final/aseprite/exit-rising-slate.aseprite)를 각각 편집한다.
 
-위 재사용 타일은 **28개**이며 128×64 타일 아틀라스 (당시 경로: `../art/environment/laboratory/etg-r03/atlas/native-tileset-128x64.png`)의8열×4행 중28칸에 들어감. 문은 실내 위·아래 중앙 x216에 맞춤. 바닥 기준 통로 왼쪽은x184=11.5셀이고 전체 캔버스에서는x200임. 홀수25칸 방에서2칸 폭 문을 중앙 정렬하기 위한 **반셀 오프셋8px**이며, 일반 바닥 격자를 찌그러뜨리지 않음.
+| 항목 | 최종 제작 규칙 |
+| --- | --- |
+| 입구 | 112×64px·18프레임. 40×32px 좌우 두 판이 각각X±40px 이동하고 중앙80×32px가 열림. closed/open 유지·opening/closing 각640ms |
+| 입구 상태 표시 | 닫힘·이동 중 빨강, 완전히 열렸을 때 파랑. 닫힘 시작에는 먼저 빨강 전환 |
+| 출구 | 112×128px 캔버스·닫힌 문판80×48px·anchor[0,64]. 48px 상승 후2px 블록 단위 소멸 |
+| 출구 개방 순서 | 기본 검정 표시등→초록/검정100ms씩3회→초록300ms→opening. activation900ms 동안 문판 정지, trigger980ms 뒤 첫 실제 이동 |
+| 출구 클립 | closed1, activation2~8, opening9~18, open19, closing20~29. opening/closing 각800ms·전체 제작 시연4200ms |
+| 문판 미술 | 회빛 문판·작은 명암 잔기스·별도 상단14×4px 표시등. 중앙 장치·회로는 추가하지 않음 |
 
-#### 흰 실험실 표현과 반복 규칙
+Animator는 `Open`·`Close` Trigger와 closed/open 유지 상태를 사용한다. 게임은 조건 전환까지 closed/open을 유지하며 GIF의 닫힘700ms·열림1000ms 반복을 자동 개방 규칙으로 사용하지 않는다. 문 피벗은 아래 중앙이며 출구의 상승 여백을 중복 보정하지 않는다. 실제 Blocker는 MapDoor의 최종 개방 확인 뒤 해제한다.
 
-- 밝은 회백색 세라믹·옅은 청회색 이음새·차가운 금속 패널로 구성함. 순백 glare나 검은 균열로 바닥 대비를 과도하게 높이지 않음. 환기구·서비스 패널은 북벽에 붙이고 중앙에는 새 장애물을 넣지 않음.
-- 기본 변형 배치는 고정 시드20261115의 가중 선택이며, 실제450칸의 사용 횟수는 `floor00~05=189/44/53/33/78/53`임. 서로 다른 크기의 패널 무늬가16px 격자 안에서 반복되고, 옆 타일의 이음새는 공통 위치·색으로 연결됨.
-- 크랙18곳은 서로 최소 맨해튼3셀 간격을 두고 규칙적인 격자 배치를 피함. 위아래 문의 접근부에는 배치하지 않음. 크랙 타일은4종을 반복 재사용하되 바닥 레이어와 분리되어 밀도·위치를 수정할 수 있음. 이 밀도와 가중치는 **이번 미술 제작값**이며 ETG 원본의 확률을 그대로 복원했다는 뜻이 아님.
-- 문 표시3종: `entry`는 아래 열림/위 닫힘, `combat`은 양쪽 닫힘, `cleared`는 아래 닫힘/위 열림. 열린 문은 좁게 접힌 문짝과 안쪽 통로, 닫힌 문은 하나의 큰 금속 면으로 구별함. 처치 후 아래문을 계속 닫을지 등 게임 규칙은 이 정적 아트 상태만으로 새 확정하지 않음.
-
-#### 원본·미리보기와 검사
+### 3.3.6 실험실·자수정 최종 원본과 게임 연결
 
-- 편집 원본: 전투 Aseprite (당시 경로: `../art/environment/laboratory/etg-r03/aseprite/laboratory-combat.aseprite`), 입장 (당시 경로: `../art/environment/laboratory/etg-r03/aseprite/laboratory-entry.aseprite`), 처치 후 (당시 경로: `../art/environment/laboratory/etg-r03/aseprite/laboratory-cleared.aseprite`), 타일셋 (당시 경로: `../art/environment/laboratory/etg-r03/aseprite/laboratory-tileset.aseprite`). 맵은1프레임·7레이어 `outside→floor→cracks→floor-border→walls→entrance→exit`임. Player는 배경 원본에 포함하지 않고 크기 비교 PNG에만 합성함.
-- 전체 전투맵1배·Player 포함 (당시 경로: `../art/environment/laboratory/etg-r03/native/laboratory-combat-with-player-432x448.png`), Player 없는 배경 (당시 경로: `../art/environment/laboratory/etg-r03/native/laboratory-combat-432x448.png`). `native/`에는 전체3상태·Player 포함3상태·부분 시야9개가 있음.
-- 실제1080p 비교: 입구 (당시 경로: `../art/environment/laboratory/etg-r03/preview/laboratory-entry-entrance-1920x1080.png`), 중앙 (당시 경로: `../art/environment/laboratory/etg-r03/preview/laboratory-combat-center-1920x1080.png`), 출구 (당시 경로: `../art/environment/laboratory/etg-r03/preview/laboratory-cleared-exit-1920x1080.png`). `preview/`에는3문 상태×3시점의9개 화면과 타일8배 비교가 있음. 입구/중앙/출구 원점은(56,248)/(56,118)/(56,0), 각각320×180 원본px를6배 표시함.
-- 미술 재료는 내장 **imagegen**으로 생성했으며 원본1254×1254 아틀라스 (당시 경로: `../art/environment/laboratory/etg-r03/source/laboratory-imagegen-atlas.png`)와 최종 사용 프롬프트 (당시 경로: `../art/environment/laboratory/etg-r03/source/imagegen-prompt.txt`)를 보존함. 생성본을 그대로 정수 픽셀 자산이라고 주장하지 않음. 게임용으로16px 셀·고정24색 팔레트·공통 타일 경계를 정리하고 반복 조립·데칼 분리·정수6배 출력함.
-- 초기 재현용 조립 스크립트 (당시 경로: `../art/environment/laboratory/etg-r03/build-map.py`)와 Aseprite 묶기/재열기 스크립트 (당시 경로: `../art/environment/laboratory/etg-r03/build-aseprite.lua`)를 남김. Aseprite 묶기는 공식 [Sprite](https://aseprite.org/api/sprite)·[Image](https://aseprite.org/api/image) API를 사용함. **후속 사용자가 편집한 Aseprite는 편집 원본으로 유지**하며, 초기 스크립트를 다시 실행해 사용자 수정을 덮어쓰지 않음.
-- 배치/팔레트 입력 해시 (당시 경로: `../art/environment/laboratory/etg-r03/layout.json`), 검사 결과 (당시 경로: `../art/environment/laboratory/etg-r03/validation/checks.json`):450셀의 실제 타일 일치·400×288 바닥 경계·28개16px 타일·이진 알파·18크랙·기존 Player 해시 불변을 확인함.9개1080p의 **모든6×6 블록**을 원본 픽셀과 대조하여 통과함. Aseprite 실제 실행 종료코드0·오류 출력 없음, 저장 후 다시 열어21개 맵 레이어·3개 합성·타일셋 픽셀 일치를 확인함. 전체/중앙/열린 입구/열린 출구와 타일을 시각 검토함.
-- **완료와 남은 작업:** 이번 요청의 분석·사용자 규격 선택·실험실 아트 제작·정적 검사 완료. Unity Assets 가져오기·PPU·발 충돌 경계·문 Trigger·Boss 사망 연결·카메라 추적·실제 전투 플레이는 미실행임. 그림의 벽 높이·문 외곽 크기를 Collider로 그대로 쓰지 않음.
-
-### 3.3.3 흰 실험실 ETG-R04 — 입구 외부 배치와 경계 벽 보강
-
-> 제작 이력: 아래 이전 경로는 당시 기록이며 현재 파일 위치가 아님. 최신 결과는3.3.6을 따름. 중간물 삭제 내역은 최종 패키지의 `validation/cleanup.json`에 기록함. 초기 R01/R02의 일부 파일은 이번 정리 전부터 없었음.
+**현재 환경은 corridor-r15 형태·배치와 사용자 확정 palette-r02-c(C 절충안)를 사용한다.** [실험실 최종 전달본](../art/archive/environment/laboratory/final/README.md)의 Aseprite5개와 `unity/`의 PNG3개·배치/문 애니메이션 JSON3개가 편집·가져오기 기준이다. 환경43타일·11타일맵3848셀·입구18/출구29프레임을 사용한다.
 
-사용자 요청: 아래 입구가 전투 바닥 안쪽에 영향을 주지 않도록 더 아래로 옮기고, 사이에 약1타일 여유를 둠. 벽은 더 이상 이동할 수 없는 경계임이 보이도록 두께를 명확하게 표현함. 현재 R03 Aseprite의 레이어를 읽어 수정했으며 기존 바닥·크랙·문 그림·Player를 보존함. 정확한 이동량·벽 단면 치수는 이 요청에 대한 AI 제작값임.
-
-| 요소 | R04 원본px 기준 | 의도 |
-| --- | --- | --- |
-| 전투 바닥 |400×288,25×18셀, 시작(32,64), 끝(432,352) 미포함 | 크기·450셀 패턴·18크랙 유지. 시야320×180은 가로80%·세로62.5% |
-| 전체 캔버스 |464×480 | 바깥 벽과 입구 공간을 수용. 방 크기나 시야 비율의 분모가 아님 |
-| 좌우·아래 경계 벽 | 기존8→16px. 남벽 y352~367 | 밝은 윗면·어두운 측면·실내 접촉선으로 두께와 이동 한계 표현 |
-| 북벽 | 기존 정면32px 유지, 상단 단면8→16px | 기존 패널·환기구를 보존하며 단면 구분 강화 |
-| 입구 전체 그림 |(200,384),64×88. 기존 위치에서 아래40px | 바닥 안8px 침범 제거. 문틀·문짝·전실 전체를 함께 이동 |
-| 연결 통로 |(216,352),32×32. 그중 벽 밖 여유 구간은(216,368),32×16 | 벽 바깥 끝에서 문틀까지 **16px=1타일**. 바닥 끝에서 문틀까지는 벽 포함32px |
-| 출구 |(208,4),48×60. 연결부(216,64),32×1 | 캔버스 확장에 따른 가로16px 이동만 적용 |
-
-- 아래 연결부 `(216,352,32,1)`는 바닥 경계에 유지함. 문을 옮긴 만큼 연결부도 아래로 옮기지 않음. 남벽·바닥 접촉선에32px 통로를 열고 별도 `approach` 바닥으로 연결함. 문틀 시작 y384와 문짝 폐쇄 면 y400~431은 다른 영역임.
-- 편집 원본: 전투 (당시 경로: `../art/environment/laboratory/etg-r04/aseprite/laboratory-combat.aseprite`)·입장 (당시 경로: `../art/environment/laboratory/etg-r04/aseprite/laboratory-entry.aseprite`)·처치 후 (당시 경로: `../art/environment/laboratory/etg-r04/aseprite/laboratory-cleared.aseprite`)·타일셋 (당시 경로: `../art/environment/laboratory/etg-r04/aseprite/laboratory-tileset.aseprite`). 맵은1프레임·8레이어 `outside→floor→cracks→floor-border→walls→approach→entrance→exit`. Player는 배경 원본에 포함하지 않음.
-- 전체1배 비교 (당시 경로: `../art/environment/laboratory/etg-r04/native/laboratory-combat-with-player-464x480.png`),1920×1080 입구 (당시 경로: `../art/environment/laboratory/etg-r04/preview/laboratory-entry-entrance-1920x1080.png`)·중앙 (당시 경로: `../art/environment/laboratory/etg-r04/preview/laboratory-combat-center-1920x1080.png`)·출구 (당시 경로: `../art/environment/laboratory/etg-r04/preview/laboratory-cleared-exit-1920x1080.png`). 총3문 상태×3시점9화면이며 크롭 원점은 입구(72,300),중앙(72,118),출구(72,0).320×180px를 정수6배 출력함.
-- 배치 정보 (당시 경로: `../art/environment/laboratory/etg-r04/layout.json`)·검사 결과 (당시 경로: `../art/environment/laboratory/etg-r04/validation/checks.json`): 바닥·크랙·문 그림 보존, 입구의 바닥 비중첩·16px 여유·통로 연결,9화면의 모든6×6블록을 대조함. Aseprite CLI 종료0·오류 출력 없음, 재열기 후24레이어·3합성·타일셋 일치. 기존 R03 Aseprite4파일의 해시·수정시각과 Player 해시 불변을 확인함. 전체·입구·출구를 시각 검토함.
-- `source-layers/`는 이번 수정에 사용한 R03 저장 내용의 추출본이며 수정 스크립트 (당시 경로: `../art/environment/laboratory/etg-r04/revise-map.py`)·Aseprite 묶기/검사 (당시 경로: `../art/environment/laboratory/etg-r04/build-aseprite.lua`)를 보존함. 후속 사용자 편집은 현재 Aseprite가 원본이며 스크립트 재실행으로 덮어쓰지 않음.
-- **완료 범위:** 요청한 그래픽 수정·편집 원본·정적 검사 완료. Unity import·Collider·문 Trigger·전투 연결·플레이 검증은 미실행. 보이는 벽 두께를 그대로 충돌 영역이라고 간주하지 않음.
-
-### 3.3.4 대리석 연결 복도 — corridor-r01
-
-> 제작 이력: 아래 이전 경로는 당시 기록이며 현재 파일 위치가 아님. 최신 결과는3.3.6을 따름. 중간물 삭제 내역은 최종 패키지의 `validation/cleanup.json`에 기록함. 초기 R01/R02의 일부 파일은 이번 정리 전부터 없었음.
-
-이 절의 R01/R02는 이전 제작 이력임. 사용자 후속 요청으로 병목·단계적 확장·돌출 지지부를 제거했으며 현재 구조와 편집 원본은 **3.3.5**를 따름.
-
-사용자 요청: 타일로 보스방과 보스방을 잇는 복도를 만들고, 보스 입구와 자연스럽게 연결되는지 확인함. 현재 흰색·청회색 색감은 유지하며 바닥 패턴을 대리석 복도로 변경함. 아래 폭·길이·방 간격은 요청에 따른 **AI 제작값**이며 별도 게임 규칙 확정이 아님.
-
-| 요소 | 제작 규격 | 구성 |
-| --- | --- | --- |
-| 타일·표시 |16×16 원본px·1px→6×6 화면px | 기존 방과 같은 규격.1920×1080은320×180 원본 시야 |
-| 복도 본체 바닥 |96×192px·6×12셀 | 중앙4셀은 대리석, 양쪽1셀씩 테두리 띠. 본체 양끝의 넓은 대기부 포함96×224px |
-| 큰 대리석 판 |32×32px·4변형 | 각 판을16px 타일4개로 분리. 판 내부에는 줄눈 없이 결이 이어지고 판 사이에만 줄눈을 둠 |
-| 벽·문 연결 | 벽16px·문 통로32px |6셀 복도를4셀→2셀로 좁혀 문 축에 맞춤. 기존 출구의8px 기둥에는8px 어깨 마감 |
-| 두 방 배치 | 다음 방(0,0), 이전 방(0,752), 전체464×1232px | 다음 방 `entry`와 이전 방 `cleared`의 열린 문을 사용. 두400×288 전투 바닥은 유지 |
-| 문 사이 연결 | y472~755의284px | 본체192px+위40px+아래52px. 타일은 문 그림 아래 위8px·아래12px 겹쳐 여백 단절 방지 |
-
-- 복도 전용 재사용 타일 **28개**: 대리석 판 조각16개, 좌우 띠2개, 문턱1개, 벽/모서리7개, 출구 어깨 마감2개. 복도 바닥98셀·벽46셀을 조립하며 배치 정보 (당시 경로: `../art/environment/laboratory/corridor-r01/layout.json`)에 위치와 타일 이름을 기록함. 반복 판의 종류를 섞어 기존 실험실의 작은 판·크랙 패턴과 구분함.
-- 방 전체의 불투명 PNG를 복도 위에 붙이지 않음. 현재 R04 Aseprite에서 추출한 투명7레이어씩을 사용하고 배경을 먼저 합성하여 위 방 아래8px·아래 방 위4px의 이미지 여백이 통로를 가리지 않게 함. 기존 방 그림·문 크기·1타일 외부 접근부는 보존함.
-- 편집 원본: 복도128×304·3레이어 (당시 경로: `../art/environment/laboratory/corridor-r01/aseprite/marble-corridor.aseprite`), 두 방 연결464×1232·18레이어 (당시 경로: `../art/environment/laboratory/corridor-r01/aseprite/connected-rooms.aseprite`), 타일셋 (당시 경로: `../art/environment/laboratory/corridor-r01/aseprite/corridor-tileset.aseprite`). Player는 배경 원본에 포함하지 않음.
-- 전체 연결 PNG (당시 경로: `../art/environment/laboratory/corridor-r01/native/connected-rooms-464x1232.png`), 양쪽 접속부 비교 (당시 경로: `../art/environment/laboratory/corridor-r01/native/connected-junctions-464x560.png`),1080p 이전 방 출구 (당시 경로: `../art/environment/laboratory/corridor-r01/preview/previous-exit-1920x1080.png`)·복도 중앙 (당시 경로: `../art/environment/laboratory/corridor-r01/preview/corridor-1920x1080.png`)·다음 방 입구 (당시 경로: `../art/environment/laboratory/corridor-r01/preview/next-entrance-1920x1080.png`). 시야를 복도 폭에 맞춰 확대하지 않고 정확한6배를 유지함.
-- 대리석 재료는 내장 ImageGen으로 생성한 원본 (당시 경로: `../art/environment/laboratory/corridor-r01/source/marble-imagegen-atlas.png`)과 프롬프트 (당시 경로: `../art/environment/laboratory/corridor-r01/source/imagegen-prompt.txt`)를 보존함. 생성 이미지를 그대로 타일로 사용하지 않고32px 판·기존 계열6색·16px 분할로 정리함. 조립 스크립트 (당시 경로: `../art/environment/laboratory/corridor-r01/build-corridor.py`)는 이번 최초 제작 재현용이며 후속 사용자가 편집한 Aseprite를 덮어쓰지 않음.
-- **검증 완료:** 정적 검사 (당시 경로: `../art/environment/laboratory/corridor-r01/validation/checks.json`)13항목 통과. 양쪽 접속부·중앙을 시각 검토하고 통로 연속·벽/바닥 비중첩·16px 타일·기존 방/Player 보존·3화면의6×6 픽셀 블록을 확인함. Aseprite 종료0·오류 출력 없음, 재열기 후21개 레이어·두 합성·타일셋 픽셀 일치. R04 지도3개의 해시·수정시각 불변. `art-walkable-mask.png`는 정적 연결 검사용이며 Collider 자산이 아님. **Unity import·실제 이동/충돌·문 Trigger·전투 상태 전이는 미실행**임.
-
-#### R02 — 긴 복도 벽 축소·문 주변 지지벽 보강
-
-- 사용자 표시의 빨간 긴 외벽이 과도하게 두껍고 파란 문 접속부가 얇다는 피드백을 반영함. 현재 R01 Aseprite를 읽어 수정하고 기존 R01·R04는 보존함.
-- 긴 외벽은 **16→8px**로 줄임. 바닥 안쪽 경계는 유지하여 왼쪽x176~183,오른쪽x280~287에 배치함. 바닥96px·문 통로32px·대리석 결·문짝·두 방 배치는 그대로임.
-- 위 입구 바깥 양옆에 **16px 지지벽**을 더함. 기존1타일 접근부 옆의 지지대와4px 높이 꺾임 조각으로 연결함. 아래 출구의 바깥 빈자리x184~199/264~279에도16px 지지벽을 이어 방 외벽에 닿게 함. 정확한8/16px 수치는 사용자 방향에 대한 AI 제작값임.
-- 현재 두 방 연결 원본 (당시 경로: `../art/environment/laboratory/corridor-r02/aseprite/connected-rooms.aseprite`)은464×1232·19레이어, 복도 모듈 (당시 경로: `../art/environment/laboratory/corridor-r02/aseprite/marble-corridor.aseprite`)은128×400·4레이어. 모듈 원점을(168,368)로 올려 새 위쪽 지지부를 포함함. 타일셋 (당시 경로: `../art/environment/laboratory/corridor-r02/aseprite/corridor-tileset.aseprite`)은34개16px 타일·128×80. 셀 규격과 통로 크기를 바꾼 것이 아님.
-- 수정 연결 PNG (당시 경로: `../art/environment/laboratory/corridor-r02/native/connected-junctions-464x560.png`), 왼쪽R01/오른쪽R02 비교 (당시 경로: `../art/environment/laboratory/corridor-r02/preview/r01-left-r02-right.png`),1080p 입구 (당시 경로: `../art/environment/laboratory/corridor-r02/preview/next-entrance-1920x1080.png`)·중앙 (당시 경로: `../art/environment/laboratory/corridor-r02/preview/corridor-1920x1080.png`)·출구 (당시 경로: `../art/environment/laboratory/corridor-r02/preview/previous-exit-1920x1080.png`). 배치는 layout.json (당시 경로: `../art/environment/laboratory/corridor-r02/layout.json`)을 따름.
-- 검사 결과 (당시 경로: `../art/environment/laboratory/corridor-r02/validation/checks.json`): 정적16항목 통과. 원본17레이어·R01 Aseprite3개의 해시/수정시각·Player 보존,8px 외벽·16px 지지부·4px 꺾임·32px 통로 비침범·3화면의6×6 출력과 모듈 범위를 확인함. Aseprite 종료0·오류 출력 없음,23레이어·2합성·타일셋 재열기 픽셀 일치. 비교/접속부 시각 검토 완료. 그래픽 수정이며 Unity 충돌·이동 확인은 미실행임. 후속 사용자 편집은 새 Aseprite가 원본이며 초기 수정 스크립트로 덮어쓰지 않음.
-
-### 3.3.5 일정 폭 복도와 독립 문 — corridor-r03
-
-> 제작 이력: 아래 이전 경로는 당시 기록이며 현재 파일 위치가 아님. 최신 결과는3.3.6을 따름. 중간물 삭제 내역은 최종 패키지의 `validation/cleanup.json`에 기록함. 초기 R01/R02의 일부 파일은 이번 정리 전부터 없었음.
-
-아래 R03~R15는 이전 제작 기록임. 현재 미술은 이 절 끝의 R15이며 편집 원본과 Unity 전달본은 **3.3.6**을 따름. 회빛/잔기스 문판과 중앙 장식 제거는 R14,문틀 없는 상승·소멸은 R12,입구 문틀은 R09 사용자 수정,바닥 재질 경계는 R10,출입 위치는 R07,보행 격자와 벽 두께는 R05 규격을 유지함.
-
-사용자가 ETG 입구 참고 이미지 (당시 경로: `../art/environment/laboratory/corridor-r03/source/user-etg-corridor-reference.png`)를 제시하며, 먼저 일정 폭 복도를 완성한 뒤 같은 폭의 문 타일맵을 특정 위치에 놓고 환경과 구별되는 색을 사용하도록 요청함. 기존 좁은 문에 복도를 맞춰 줄이던 제작 방향을 대체함. 아래 정확한 치수·구리빛 색상은 요청에 대한 AI 제작값임.
-
-| 요소 | R03 제작 규격 | 적용 |
-| --- | --- | --- |
-| 방 바닥 |400×288px·25×18셀 | 두 방의 floor/cracks 픽셀 보존. 기존 방 위치(0,0)/(0,752) 유지 |
-| 중앙 복도 바닥 |(184,352),96×464px·6×29셀 | 문 없는 상태에서 모든 행의 폭96px. 양옆8px 벽 포함112×464px |
-| 출입구4곳 | 모두96px | 방의 벽·바닥 경계만 개방. 위/아래 외곽 복도도 같은 폭으로 연결 |
-| 독립 문 타일맵 |112×48px·7×3셀 | 문틀 양옆8px은 복도 벽과 일치, 중앙 문짝/통로96px은 복도 바닥과 일치 |
-| 문 위치 |x176, 위 방 북/남y16/384, 아래 방 북/남y768/1136 | 같은 방 로컬 위치를 재사용. 남벽 바깥 끝→문 시작16px 여유 유지 |
-| 열린 문 | 중앙(8,12),96×34px 완전 투명 | 문짝을 위쪽 포켓에 수납하고 바닥은 원래 복도가 비침. 통로 폭 축소 없음 |
-
-- 문 없는 바닥·벽을 먼저 조립한 뒤 문을 별도 레이어로 합성함. 벽 포함 복도와 문 전체 폭은 모두112px이며 문 앞뒤로 넓어지거나 좁아지지 않음. 반셀 중심 정렬은 이전과 같은 방식으로 사용하고16px 셀을 변형하지 않음.
-- 복도 기본형/문 배치 비교 (당시 경로: `../art/environment/laboratory/corridor-r03/preview/base-left-doors-right.png`): 왼쪽은 문 없는 바탕, 오른쪽은 닫힌 문. 열린 연결부 (당시 경로: `../art/environment/laboratory/corridor-r03/native/junctions-open-464x560.png`),전체 연결 (당시 경로: `../art/environment/laboratory/corridor-r03/native/connected-rooms-464x1232.png`),1080p 닫힌 입구 (당시 경로: `../art/environment/laboratory/corridor-r03/preview/next-entrance-closed-1920x1080.png`)·열린 입구 (당시 경로: `../art/environment/laboratory/corridor-r03/preview/next-entrance-open-1920x1080.png`). 전체3시점×열림/닫힘6화면을320×180→1920×1080 정수6배 출력함.
-- 편집 원본: 두 방 연결15레이어 (당시 경로: `../art/environment/laboratory/corridor-r03/aseprite/connected-rooms.aseprite`),직선 복도2레이어 (당시 경로: `../art/environment/laboratory/corridor-r03/aseprite/straight-corridor.aseprite`),열린 문 (당시 경로: `../art/environment/laboratory/corridor-r03/aseprite/security-door-open.aseprite`),닫힌 문 (당시 경로: `../art/environment/laboratory/corridor-r03/aseprite/security-door-closed.aseprite`),타일셋 (당시 경로: `../art/environment/laboratory/corridor-r03/aseprite/environment-tileset.aseprite`). 문은 각각 leaf/frame2레이어. 타일62개는 환경20개와 열린/닫힌 문21개씩이며 실제 Unity Tilemap 생성과 구분함.
-- 문은 흰색·청회색 환경과 대비되는 구리빛 주황색·짙은 프레임·작은 상태등으로 구성함. 내장 ImageGen 재료 원본 (당시 경로: `../art/environment/laboratory/corridor-r03/source/security-door-imagegen.png`)·프롬프트 (당시 경로: `../art/environment/laboratory/corridor-r03/source/imagegen-prompt.txt`)를 보존하고, 이를112×48 정수 픽셀·문짝 팔레트·8px 프레임·16px 타일로 정리함. 대리석은 현재 편집 타일을 재사용함.
-- 배치 정보 (당시 경로: `../art/environment/laboratory/corridor-r03/layout.json`)에 열린/닫힌 문 각각7×3 타일 이름 배열과 환경 배치를 저장함. 정적 검사 (당시 경로: `../art/environment/laboratory/corridor-r03/validation/checks.json`)20항목 통과: 원본 보존·일정 폭·문 레이어 범위·열린 통로·62타일·6화면의 정수6배 확인. Aseprite 종료0·오류 출력 없음,21레이어·4합성·타일셋 재열기 일치. 문 없는/열린/닫힌 연결을 시각 검토함. 후속 편집은 현재 Aseprite가 원본이며 제작 스크립트로 덮어쓰지 않음. **정적 아트 작업이며 Unity import·충돌·문 애니메이션/Trigger·실제 플레이는 미실행**임. 문 상태 그림만으로 새 전투 규칙을 확정하지 않음.
-
-#### R04 — 연보라 승강 차단문과 빨강/파랑 표시등
-
-- 사용자 요청: 이전 차단문 디자인을 활용하고 위아래로 움직여 개폐함. 빨간불은 차단, 파란불은 앞으로 통과 가능한 상태로 구분함. 실험실/복도의 색과 구별되도록 문 타일에 옅은 보라색을 섞어 자색 마력으로 작동하는 느낌을 은은하게 표현함.
-- 이전 회색 문 (당시 경로: `../art/environment/laboratory/corridor-r04/source/legacy-gray-entrance.png`)의 매입 금속판·문틀·상단 표시등을 디자인 참고로 사용함. 구리 양문의 중앙 분할·손잡이는 제거하고 가로 보강선이 이어진 한 장의 셔터로 제작함. 문 픽셀 자체를 이전과 동일하게 보존했다는 뜻은 아님. 프레임/패널의 저채도 연보라와 얇은 자색 선·작은 코어만 추가하고 환경 바탕11레이어는 그대로 유지함.
-- 규격은112×48px·양쪽8px 프레임·중앙96px 통로를 유지함. 문짝 원본96×38px을(8,8)에 놓고 위로38px 이동하며 상단에서 마스킹함. 크기를 줄이거나 좌우로 벌리지 않음. 완전 열림의 중앙96×38px은 투명하며 복도 바닥이 비침.
-- 애니메이션 정보 (당시 경로: `../art/environment/laboratory/corridor-r04/animation.json`): **18프레임·3레이어 `shutter/frame/signal`**, 태그 `closed`1, `opening`2~9, `open`10, `closing`11~18. 승강 위치0/3/8/15/23/30/35/38px, 개폐 각640ms, 닫힘 대기700ms·열림 대기1000ms의 시연 루프2980ms임. 시간은 AI 제작값이며 사용자 최종 타이밍 확정이 아님.
-- 여는 중에는 빨강, 완전히 수납된9~10프레임에서만 파랑임.11프레임은 완전히 열린 위치에서 먼저 빨강으로 바뀌고12프레임부터 내려옴. 이는 표시·애니메이션 사양이며 실제 Collider 차단 전환은 아직 연결하지 않음.
-- 편집 원본: 승강문 애니메이션 (당시 경로: `../art/environment/laboratory/corridor-r04/aseprite/lift-gate.aseprite`),두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r04/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/environment/laboratory/corridor-r04/aseprite/straight-corridor.aseprite`),타일셋 (당시 경로: `../art/environment/laboratory/corridor-r04/aseprite/environment-tileset.aseprite`). 2016×48 PNG 시트 (당시 경로: `../art/environment/laboratory/corridor-r04/native/lift-gate-sheet-2016x48.png`)는112×48셀18개. 타일122개(환경20+문102)를 재사용하며18프레임 각각의7×3 타일 이름 배열을 보존함.
-- 1080p 개폐 GIF (당시 경로: `../art/environment/laboratory/corridor-r04/preview/lift-gate-cycle-1920x1080.gif`),전체 연결 GIF (당시 경로: `../art/environment/laboratory/corridor-r04/preview/connected-gate-cycle-464x560.gif`),왼쪽 빨강/닫힘·오른쪽 파랑/열림 비교 (당시 경로: `../art/environment/laboratory/corridor-r04/preview/red-closed-left-blue-open-right.png`). 동일한 연속 프레임은 GIF에 합쳐질 수 있으며 Aseprite의18프레임·태그와 총 표시 시간은 유지함.
-- 검사 결과 (당시 경로: `../art/environment/laboratory/corridor-r04/validation/checks.json`)24항목 통과: 바탕11레이어/원본6개 보존·문짝 이동/마스킹·고정 프레임·신호 전환·완전 열림·122타일/18타일맵·PNG 시트·6배 표시 확인. 두 GIF는 동일 프레임 병합 후16프레임이며 픽셀·순서·각 지속시간·총2980ms 일치. Aseprite 종료0·오류 출력 없음,정적17레이어·애니메이션54개 레이어 캔버스·합성21개·태그/시간 재열기 일치. 시각 검토 완료. 후속 사용자가 편집한 Aseprite가 현재 원본임. **Unity import·Animator/문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R05 — 정수 타일 통로·1셀 벽·중앙 상하 분리문
-
-- 사용자 요청: 반 타일 벽의 얇은 느낌을 해소하고 이동 경로를 정수 타일 단위로 맞춤. 후속 답변으로 문 중앙에서 위/아래 절반이 서로 반대 방향으로 움직이도록 확정함. 한 장을 위로만 수납하던 R04를 대체함.
-- 격자: 방은 **400×288px·25×18셀**, 복도는 **80×464px·5×29셀**, 벽은 양쪽 **16px·1셀**, 문/복도의 외곽 폭은 **112px·7셀**임. 방 중심x232에 홀수5셀을 맞춰 통로x192~271, 왼벽x176~191·오른벽x272~287로 배치함.25셀 방·중앙 정렬·기존 외곽 폭을 함께 보존하기 위한 AI 제작값이며 기존96px 통로보다16px(16.7%) 좁아짐.
-- 복도 바닥을 x192부터16px 타일로 다시 배치하고 네 출입구의 벽/바닥 테두리를 같은80px 개구부로 맞춤. 현재 방 측벽의16px 타일을 재사용했으며 방 floor/cracks·Player는 보존함. 방의 안쪽2~3px 테두리, 복도 inlay, 문 상하 덮개는 비충돌 장식으로 정의함. 아트 이동 영역 (당시 경로: `../art/environment/laboratory/corridor-r05/validation/art-walkable-mask.png`)의 모든 경계는16px 격자에 놓이고 통로는 세로로 이어짐. 실제 Collider 데이터는 아님.
-- 문 전체112×48px·7×3타일, 양쪽 기둥16px, 위/아래 덮개8px. 중앙은 **80×16px 두 판**을(16,8)/(16,24)에 놓고 각각 위로16px/아래로16px 이동해 덮개 아래로 수납함. 열린 중앙80×32px은 투명함. 판을 축소하지 않고 평행 이동/클립하며 중앙 가로 이음선과 나뉘는 자색 코어로 분리 구조를 표현함.
-- 애니메이션 (당시 경로: `../art/environment/laboratory/corridor-r05/animation.json`):18프레임·4레이어 `upper-panel/lower-panel/frame/signal`, 기존4태그·개폐 각640ms·총2980ms 시연 유지. 각 판의 이동량0/1/3/6/10/13/15/16px.9~10프레임만 파랑, 닫힘11프레임에서 먼저 빨강으로 전환함. 저채도 연보라·작은 자색 포인트를 유지하며 정확한 시간/치수/색 값은 AI 제작값임.
-- 편집 원본: 상하 분리문 (당시 경로: `../art/environment/laboratory/corridor-r05/aseprite/lift-gate.aseprite`),두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r05/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/environment/laboratory/corridor-r05/aseprite/straight-corridor.aseprite`),110타일셋 (당시 경로: `../art/environment/laboratory/corridor-r05/aseprite/environment-tileset.aseprite`). 배치 정보 (당시 경로: `../art/environment/laboratory/corridor-r05/layout.json`)에 환경 타일 배치와18프레임의7×3 문 타일맵을 기록함. 현재 편집 원본을 다음 수정의 입력으로 사용하며 이전 스크립트 재실행으로 사용자 편집을 덮어쓰지 않음.
-- 미리보기: 1080p 개폐 GIF (당시 경로: `../art/environment/laboratory/corridor-r05/preview/lift-gate-cycle-1920x1080.gif`),전체 연결 GIF (당시 경로: `../art/environment/laboratory/corridor-r05/preview/connected-gate-cycle-464x560.gif`),닫힘/열림 비교 (당시 경로: `../art/environment/laboratory/corridor-r05/preview/red-closed-left-blue-open-right.png`).1원본px→6×6px,320×180 시야→1920×1080을 유지함.
-- 독립 검사 (당시 경로: `../art/environment/laboratory/corridor-r05/validation/checks.json`)29/29 통과: 정수 보행 격자·80px 통로/16px 벽·4포트 복원/변경 범위·방 floor/cracks·110타일/배치·상하 두 판 이동/클립·신호·정수6배·Player/원본 보존을 확인함. 두 GIF는 동일 프레임 병합 후16프레임이며 픽셀·순서·시간2980ms 일치. Aseprite 재열기 (당시 경로: `../art/environment/laboratory/corridor-r05/validation/aseprite-result.json`)는 CLI 종료0·오류 출력 없음,정적17레이어·애니메이션72레이어 캔버스·합성21개·시간/4태그 일치. 입력143개와 R04 원본4개 해시/수정시각 불변,입구/출구 시각 검토 완료. **Unity import·문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R06 — 좌우 분리문과 깊이 표현
-
-- 사용자 요청: 상하보다 좌우 분리가 자연스럽다는 판단에 따라 좌우 개폐로 변경하고, 종잇조각처럼 얇아 보이는 문 외형을 개선함. R05 환경11레이어·복도2레이어·400×288 방·80px 통로·16px 벽·112×48 문 외곽과 위치는 유지함.
-- 중앙 **40×32px 두 판**을(16,8)/(56,8)에 놓고 왼쪽−40px/오른쪽+40px 평행 이동 후x16~95 개구부에서 클립함. 판의 크기를 줄이지 않으며 완전 열림의80×32px 통로에는 문판이나 판 그림자가 남지 않음.5셀 통로의 중앙에서 나누는 문판 폭40px은 시각 자산 규격이며 보행 경계는 기존 정수16px 격자임.
-- 두께 보강: 문틀의 밝은4px 윗면과 어두운 전면,1셀 기둥 안쪽의 어두운 수납 홈,문판 중앙3px 단면·하단4px 경사면을 구분함. 광원을 위/왼쪽 기준으로 정리하고 아래40~47행의 반투명 접촉 그림자를 각 판의 남은 폭과 함께 줄임. 완전 개방 시 중앙 그림자는 사라지고 기둥 아래 그림자와 낮은 바닥 레일만 남음. 연보라/자색·빨강 차단/파랑 완전 열림을 유지함. 면 두께·명도·그림자 값은 AI 제작값이며 입체감의 최종 미술 판단은 사용자 검토 대상임.
-- 애니메이션 정보 (당시 경로: `../art/environment/laboratory/corridor-r06/animation.json`):18프레임·5레이어 `contact-shadow/left-panel/right-panel/frame/signal`,4태그와 개폐 각640ms·총2980ms 시연 유지. 이동량0/3/8/16/25/33/38/40px. 파랑은9~10프레임, 닫힘11프레임에서 먼저 빨강으로 전환함.
-- 편집 원본: 좌우 분리문 (당시 경로: `../art/environment/laboratory/corridor-r06/aseprite/sliding-gate.aseprite`),두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r06/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/environment/laboratory/corridor-r06/aseprite/straight-corridor.aseprite`),106타일셋 (당시 경로: `../art/environment/laboratory/corridor-r06/aseprite/environment-tileset.aseprite`). 배치 정보 (당시 경로: `../art/environment/laboratory/corridor-r06/layout.json`)·2016×48 시트 (당시 경로: `../art/environment/laboratory/corridor-r06/native/sliding-gate-sheet-2016x48.png`)·1080p GIF (당시 경로: `../art/environment/laboratory/corridor-r06/preview/sliding-gate-cycle-1920x1080.gif`)·전체 연결 GIF (당시 경로: `../art/environment/laboratory/corridor-r06/preview/connected-gate-cycle-464x560.gif`). 기존1px→6×6px 표시를 유지함. 후속 수정은 현재 Aseprite를 입력으로 하며 제작 스크립트로 사용자 편집을 덮어쓰지 않음.
-- 독립 검사 (당시 경로: `../art/environment/laboratory/corridor-r06/validation/checks.json`)27/27 통과: 원본·환경11레이어·복도2레이어·보행 격자·106타일/배치·좌우 이동/클립·판 그림자 축소/소멸·신호·Player·6배 표시를 확인함. GIF는 근접 색이 바뀌던 팔레트 양자화를 직접 RGB 인덱스 매핑으로 수정한 뒤 두 파일의16프레임·픽셀·순서·시간2980ms 완전 일치를 재확인함. 입구·중간 개방·완전 개방 시각 검토 완료.
-- Aseprite 재열기 (당시 경로: `../art/environment/laboratory/corridor-r06/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음,정적17레이어·애니메이션90레이어 캔버스·시간/4태그 완전 일치. 합성21개 중20개 일치. 연결 맵은 Pillow/Aseprite 알파 반올림 차이로 실제 반투명 접촉 그림자 내부1,341px에서 RGB 채널 최대1 차이이며,alpha와 그림자 밖 픽셀은 완전 일치함. 이 제한 범위만 허용해 검증했으며 모든 합성의 완전 일치로 기록하지 않음. 입력 PNG386개·JSON3개와 R05 원본4개 해시/수정시각 불변. **Unity import·문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R07 — 1타일 상단·회로 표시·입구 간격 축소
-
-- 사용자 요청: 문의 상부를1타일 높이로 보강하고 표시등을 그 높이 가운데로 옮김. 표시등 양옆에 검은 자줏빛 회로선을 연결하고, 첨부 이미지의 빨간 영역이 문 상단이 되도록 위로 당김. 이전16px 여유 공간보다 이번 배치 요청을 우선함.
-- 상단은 **8→16px·1타일(6배 화면96px)**로 확대함. 밝은 윗면/어두운 아래 모서리를 유지하고 중앙(40,7)에32×3px 빨강/파랑 표시를 배치함. 양옆의 `#38263f` 선과 `#503650` 접점은 표시등 하우징까지 연결되며 개폐 중에도 고정됨. 구체적인 회로 경로·색 값은 AI 제작값임.
-- 배치: 다음 입구의 상단y384→368,16px 보가368~383을 차지하여 방 남벽 바깥 끝368과 붙음. 벽 바깥→상단의 여유는16→0px. 네 문 편집 캔버스는x176·y0/368/752/1120의 **112×64px·7×4타일**이며 기존 캔버스 하단은 유지함. 아래8px는 투명 여백임. 본체를 로컬+8px 옮기고 캔버스 원점을−16px 옮겨 문짝/그림자의 실제 위치는−8px임. 전투 바닥과 겹치지 않음.
-- 현재 R06 Aseprite에서 문짝·접촉 그림자18프레임과 프레임 본체를 읽어 평행 이동함. 패널40×32px·±40px 좌우 개폐·신호 전환/시간·환경11레이어·복도2레이어·보행80px/벽16px은 유지함. 열린 영역은 로컬(16,16)의80×32px임.16px 정렬은 보행 경계와 캔버스에 적용하며 모든 세부 픽셀이16배수라는 뜻은 아님.
-- 편집 원본: 좌우 분리문 (당시 경로: `../art/environment/laboratory/corridor-r07/aseprite/sliding-gate.aseprite`),두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r07/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/environment/laboratory/corridor-r07/aseprite/straight-corridor.aseprite`),95타일셋 (당시 경로: `../art/environment/laboratory/corridor-r07/aseprite/environment-tileset.aseprite`). 배치 (당시 경로: `../art/environment/laboratory/corridor-r07/layout.json`)·18프레임/5레이어 애니메이션 (당시 경로: `../art/environment/laboratory/corridor-r07/animation.json`)·2016×64 시트 (당시 경로: `../art/environment/laboratory/corridor-r07/native/sliding-gate-sheet-2016x64.png`)·1080p GIF (당시 경로: `../art/environment/laboratory/corridor-r07/preview/sliding-gate-cycle-1920x1080.gif`). 기존6배 표시와2980ms 시연을 유지함. 후속 작업은 현재 Aseprite를 입력으로 하며 옛 스크립트로 사용자 편집을 덮어쓰지 않음.
-- 독립 검사 (당시 경로: `../art/environment/laboratory/corridor-r07/validation/checks.json`)28/28 통과: 상단16px·중앙 신호/회로·4개 배치/간격·전투 바닥 미침범·54개 패널/그림자 레이어의+8px 이동·프레임 몸체 이동·환경11레이어/복도2레이어 보존·95타일/7×4맵·112×64 출력/하단8px투명·80×32 개방·격자/Player/6배 표시를 확인함. 두 GIF는16프레임·픽셀·순서·시간2980ms 완전 일치. 닫힘/열림·전체 연결부 시각 검토 완료.
-- Aseprite 재열기 (당시 경로: `../art/environment/laboratory/corridor-r07/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음,정적17레이어·애니메이션90레이어 캔버스·시간/태그와20개 합성 완전 일치. 연결 맵만 반투명 접촉 그림자 내부1,345px에서 Pillow/Aseprite RGB 반올림 최대1 차이,alpha/그림자 밖 차이0을 확인하고 이 한정 범위만 허용함. 입력 PNG393개·JSON3개 및 R06 원본4개 해시/수정시각 불변. **Unity import·문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R08 — 투명 코너와 가는 회로 분기
-
-- 사용자 표시의 상단 양끝 경사면 바깥 삼각 코너를 각각6px씩 **실제 알파0**으로 처리함. 배경색으로 칠한 것이 아니므로 뒤쪽 벽/바닥이 보임. 기존 회로에서 위아래로 뻗는1px·`#503650` 분기9개를 안내선에 맞춰 추가함. 수정 범위는 프레임의 양쪽 상단y0~17이며 표시등 하우징과 문짝 영역은 유지함.
-- 현재 R07 Aseprite의 프레임만 수정하고 패널/그림자/신호18프레임·112×64 캔버스·상단16px·문 위치·환경·보행 격자·시간/태그는 그대로 유지함. 배치/코너 좌표/분기 경로 (당시 경로: `../art/environment/laboratory/corridor-r08/layout.json`)에 제작값을 기록함.
-- 편집 원본: 좌우 분리문 (당시 경로: `../art/environment/laboratory/corridor-r08/aseprite/sliding-gate.aseprite`),두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r08/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/environment/laboratory/corridor-r08/aseprite/straight-corridor.aseprite`),95타일셋 (당시 경로: `../art/environment/laboratory/corridor-r08/aseprite/environment-tileset.aseprite`). 1080p 닫힘 (당시 경로: `../art/environment/laboratory/corridor-r08/preview/next-entrance-closed-1920x1080.png`)·개폐 GIF (당시 경로: `../art/environment/laboratory/corridor-r08/preview/sliding-gate-cycle-1920x1080.gif`). 후속 수정은 현재 Aseprite를 입력으로 하며 옛 스크립트로 사용자 편집을 덮어쓰지 않음.
-- 제한 검사 (당시 경로: `../art/environment/laboratory/corridor-r08/validation/checks.json`)14/14 통과. 프레임의 변경91px이 양쪽y0~17에만 있음을 확인함.12코너의 알파0과4문/열림·닫힘에서 실제 뒤 배경 표시,9개 가는 분기,비프레임72레이어·환경/복도·배치/동작·원본 보존 및95타일·6배 표시·두 GIF 픽셀/시간2980ms를 확인함. 시각 검토 완료.
-- Aseprite 재열기 (당시 경로: `../art/environment/laboratory/corridor-r08/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음,개별107레이어·시간/태그·20합성 정확일치. 연결 맵만 기존과 같이 반투명 그림자 내부1,345px에서 RGB 최대1 반올림 차이,alpha/그림자 밖 차이0으로 한정 검증함. 입력 PNG393개·JSON3개 및 R07 원본4개 해시/수정시각 불변. **Unity import·문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R09 — 사용자 문 수정 반영과 완결 타일3열
-
-- 사용자 요청: 직접 수정한 Aseprite를 반영하고, 복도 오른쪽의 반쪽 슬랩을 없애도록3×3 전용 무늬 또는1×1 타일3개 배치를 허용함. **1×1·16×16px 완결 대리석 타일3열**을 선택해 중앙x208/224/240,폭48px에 배치함. 양쪽16px inlay와 벽·전체80px 통로는 유지함. 중앙29행·외곽4/8행의123칸 모두 완결 타일이며32px 슬랩의 절반을 배치하지 않음.
-- 무늬는 현재32×32 슬랩4종을 복원한 뒤 내부30×30px를16×16px로 최근접 재표본화함. 위/왼쪽에만1px 이음매를 두어 경계가2px로 중복되지 않음. 기본4종과 작은 크랙1종을 섞음. 색·대리석 재료를 재사용한 새 모듈이며 정확한 배치/변형은 AI 제작값임.
-- 사용자 편집 조사 (당시 경로: `../art/environment/laboratory/corridor-r09/source-hashes.json`): 최신 R08 `sliding-gate.aseprite`의 `frame`1프레임에만215px 변경,90셀 모두 비연결이며 나머지17프레임 문틀은 이전 상태였음. 저장 시 문틀만 보이고 나머지4레이어는 숨김이었음. **수정된 문틀 픽셀을 그대로18개 개폐 프레임·맵4문에 적용**하고 출력에서는5레이어 모두 표시함. 패널·그림자·표시등 픽셀과 시간/태그는 보존함. 사용자 입력 원본은 저장 상태·바이트·수정시각을 바꾸지 않음.
-- 편집 원본: 사용자 수정 반영 문 (당시 경로: `../art/environment/laboratory/corridor-r09/aseprite/sliding-gate.aseprite`),두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r09/aseprite/connected-rooms.aseprite`),온전한3열 복도 (당시 경로: `../art/environment/laboratory/corridor-r09/aseprite/straight-corridor.aseprite`),84타일셋 (당시 경로: `../art/environment/laboratory/corridor-r09/aseprite/environment-tileset.aseprite`). 배치 정보 (당시 경로: `../art/environment/laboratory/corridor-r09/layout.json`)·문/입구 GIF (당시 경로: `../art/environment/laboratory/corridor-r09/preview/sliding-gate-cycle-1920x1080.gif`)·복도 확대 (당시 경로: `../art/environment/laboratory/corridor-r09/preview/corridor-open-1920x1080.png`). 다음 수정은 이 현재 Aseprite를 입력으로 하며 옛 생성 코드로 사용자 작업을 덮어쓰지 않음.
-- 핵심 검사 (당시 경로: `../art/environment/laboratory/corridor-r09/validation/checks.json`)17/17 통과: 사용자 문틀1프레임→18전체 정확 적용·비프레임72레이어 보존/재표시·원본 보존·중앙123완결 타일(일반116/크랙7)·inlay/벽/방 보존·84타일/배치·6배 시야·두 GIF 픽셀/순서/시간2980ms를 확인함. 문/복도/전체 연결부 시각 검토 완료.
-- Aseprite 재열기 (당시 경로: `../art/environment/laboratory/corridor-r09/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음,의도한 R09 입력 PNG 대비 개별107레이어·시간/태그·20합성 정확일치. 사용자 원본의2~18프레임 문틀은215px씩 의도적으로 변경했으므로 원본90레이어 전체 불변으로 기록하지 않음. 연결 맵만 반투명 그림자 내부1,381px에서 RGB 최대1 반올림 차이,alpha/그림자 밖 차이0으로 한정 검증함. 입력 PNG382개·JSON3개와 최신 사용자 입력 Aseprite4개 해시/수정시각 불변. **Unity import·문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R10 — 문턱을 경계로 전투방 바닥 연결
-
-- 사용자 요청: 문 이후 전투 장소까지의 바닥에 전투 장소 타일을 사용해 공간 변화를 쉽게 인지하게 함. **문 바닥 문턱(local y48)**을 재질 경계로 삼고 방 쪽은 전투방 타일,복도 쪽은 기존 대리석으로 구성함. 북문 열린 창 너머는 대리석,남문 열린 창 너머는 실험실 바닥이며 양쪽 모두 같은 문턱 기준임.
-- 전환 구간은x192·폭80px의 y48~63/352~415/800~815/1104~1167,총50셀임. 각 방의 현재 `floor` 레이어에서 온전한16px 타일을 복사하고32px 반복 위상을 맞춤. 이 구간의 inlay도 전투방 타일로 대체함. 구간 밖 inlay/대리석·벽·방 floor/cracks와 모든 문90레이어·위치/보행기하는 보존함. 중앙 순수 대리석 구간은 y416~799의24행,중앙 완결3열을 유지함.
-- 배치 정보 (당시 경로: `../art/environment/laboratory/corridor-r10/layout.json`)의 `room_side_floor_regions`에4개 목적/원본 영역과 문턱 좌표를 기록함. 편집 원본: 두 방 연결 (당시 경로: `../art/environment/laboratory/corridor-r10/aseprite/connected-rooms.aseprite`),문 없는 연결 복도 (당시 경로: `../art/environment/laboratory/corridor-r10/aseprite/straight-corridor.aseprite`),사용자 수정 문 (당시 경로: `../art/environment/laboratory/corridor-r10/aseprite/sliding-gate.aseprite`),89타일셋 (당시 경로: `../art/environment/laboratory/corridor-r10/aseprite/environment-tileset.aseprite`). 입구 열린 시야 (당시 경로: `../art/environment/laboratory/corridor-r10/preview/next-entrance-open-1920x1080.png`)·반대편 출구 (당시 경로: `../art/environment/laboratory/corridor-r10/preview/previous-exit-open-1920x1080.png`)·개폐 GIF (당시 경로: `../art/environment/laboratory/corridor-r10/preview/sliding-gate-cycle-1920x1080.gif`). 후속 수정은 현재 Aseprite를 입력으로 하며 옛 생성 코드로 덮어쓰지 않음.
-- 핵심 검사 (당시 경로: `../art/environment/laboratory/corridor-r10/validation/checks.json`)15/15 통과: 네 문턱의50셀·원본 바닥 픽셀/32px 반복 위상·전환 영역 밖 바닥/벽·문90레이어·보행기하·시간/태그를 확인함. 중앙 대리석24행×3열·89타일 배치·6배 시야·두 GIF의 픽셀/순서/2980ms 일치와 양쪽 열린 문 시각 검토를 마침.
-- Aseprite 재열기 (당시 경로: `../art/environment/laboratory/corridor-r10/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음, 정적17레이어·문90레이어와20합성 정확일치. 연결 맵만 반투명 접촉 그림자 내부1,252px에서 RGB 최대1 반올림 차이이며 alpha/그림자 밖 차이는0임. 입력 PNG384개·JSON3개와 R09 Aseprite4개의 해시/수정시각 보존을 확인함. **Unity import·문 상태 전이·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R11 — 북쪽 출구 전용 승강 차단문
-
-- 사용자 요청: 출구 쪽 문이 어색하므로 **아래에서 위로 올라가 열리는 차단문**으로 변경함. `next-outer-exit`·`previous-exit`2개에 적용하고 남쪽 입구2개는 기존 좌우 분리문을 유지함. 현재 R10 Aseprite4개를 입력으로 사용하며 원본을 덮어쓰지 않음.
-- 출구는112×64px 문틀 안의80×32px 단일 셔터가 위로32px 이동하며 상단 문틀 뒤로 수납됨. 가로3단·하단4px 빔·측면 베벨과 원본 팔레트를 사용함. 문틀/상단16px·사용자 회로·표시등·문턱·위치는 보존함. 빨강은 닫힘/동작 중,파랑은 완전 열림 표시이며 실제 충돌 판정 구현은 아님. 입구와 동일한18프레임·closed/opening/open/closing4태그·전체2980ms,개폐각640ms는 AI 아트 미리보기 시간임.
-- 바닥/벽11레이어·문턱 재질 경계50셀·통로/방 치수·입구90레이어는 유지함. 두 문 종류는 layout.json (당시 경로: `../art/archive/environment/laboratory/corridor-r11/layout.json`)의 `door_locations.gate_type`과 `door_types`로 구분함. 출구 전용 프레임/좌표/타일맵은 exit-animation.json (당시 경로: `../art/archive/environment/laboratory/corridor-r11/exit-animation.json`),입구는 animation.json (당시 경로: `../art/archive/environment/laboratory/corridor-r11/animation.json`)을 따름. 아틀라스는 기존89타일에 출구35타일을 추가한124개·128×256px임.
-- 완성 편집 원본: 출구 승강문 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/aseprite/exit-lift-gate.aseprite`),입구 좌우문 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/aseprite/sliding-gate.aseprite`),두 방 연결 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/aseprite/straight-corridor.aseprite`),타일셋 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/aseprite/environment-tileset.aseprite`). 출구 개폐 GIF (당시 경로: `../art/archive/environment/laboratory/corridor-r11/preview/exit-lift-gate-cycle-1920x1080.gif`)·입구/출구 동작 비교 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/preview/entrance-slide-exit-lift-cycle-464x560.gif`). 작업 중 추출/스크립트는 `/art/environment/laboratory/corridor-r11/`에 유지하며 후속 편집은 **archive의 현재 Aseprite**에서 시작함.
-- 핵심 검사 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/validation/checks.json`)17/17 통과: 입력 원본·입구90레이어·환경11레이어/복도2레이어 보존, 출구 단일판의 정수 −Y 이동/클리핑·그림자·신호, 두 출구 영역만의 변경,124타일/36상태 타일맵 복원,6배 시야와 두 GIF의 픽셀/순서/2980ms 일치를 확인함. 출구/입구 연결과 개폐 단계 시각 검토 완료. 초기 출구 JSON의 태그 누락은4태그를 복사하도록 수정하고 최종 재검사함.
-- Aseprite 재열기 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음. 정적17레이어·입구90/출구72캔버스·시간/태그 일치,39합성 중38개 정확일치. 연결 맵만 실제 반투명 접촉 그림자 내부936px에서 RGB 최대1 반올림 차이이며 alpha/그림자 밖 차이0임. 입구/문 없는 복도 Aseprite는 R10과 바이트·수정시각 동일 복사본임. 입력 PNG512개·JSON4개와 R10 원본4개를 보존하고 완성본은 보관 해시 (당시 경로: `../art/archive/environment/laboratory/corridor-r11/archive-manifest.json`)로 복사 일치를 확인함. **Unity import·애니메이션 연결·Collider·Trigger·실제 플레이는 미실행**임.
-
-#### R12 — 문틀 없는 벽 패턴 슬레이트 상승·소멸
-
-- 사용자 요청: 출구에 같은 테두리를 재사용하지 않고 벽과 비슷한 패턴의 슬레이트가 하늘로 올라간 뒤 사라지게 함. archive R11의 최신 Aseprite5개를 입력으로 사용함. 북쪽 출구2개의 보라 문틀·기둥·회로를 제거하고 남쪽 입구2개·환경은 보존함.
-- **판과 배치:** 실제 `previous-walls`의[96,768,80,48] 재질을 기반으로80×48px 판을 구성함. 내부3,284픽셀은 원본 패턴과 같으며 가장자리2px 두께·작은 표시등 홈만 추가함. 닫힌 판은 양옆 북벽의 패널·몰딩 높이와 일치함. 애니메이션은112×128px·2레이어(`slab`,`signal`),기존 문 rect를 기준으로 anchor[0,64]만큼 위에 배치함. 닫힌 판은 local[16,80,80,48],최고 상승은[16,32,80,48]임. 기존 출입구/방/통로/벽과 바닥 재질 경계는 변경하지 않음.
-- **연출:** 판 전체가 크기 변경·개구부 클립 없이48px 상승한 뒤 최상단에서2×2 원본 픽셀 블록의 표시 비율100→75→50→25→0%로 소멸함. 판·표시등은 함께 이동/소멸하고 완전 열림에는 문틀·그림자도 남지 않음. 상승 초기 빨강,48px 도달 후 파랑,완전 소멸 시 표시등 없음,닫히는 동안 빨강임.22프레임·closed1/opening2~11/open12/closing13~22,개폐각800ms·전체3300ms는 AI 아트 미리보기 값이며 실제 통과 가능 시점의 구현을 뜻하지 않음.
-- **편집/출력:** 출구 슬레이트 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/aseprite/exit-rising-slate.aseprite`),기존 입구 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/aseprite/sliding-gate.aseprite`),두 방 연결 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/aseprite/connected-rooms.aseprite`),문 없는 복도 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/aseprite/straight-corridor.aseprite`),타일셋 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/aseprite/environment-tileset.aseprite`). 출구 개폐 GIF (당시 경로: `../art/archive/environment/laboratory/corridor-r12/preview/exit-rising-slate-cycle-1920x1080.gif`)·연결 맵 GIF (당시 경로: `../art/archive/environment/laboratory/corridor-r12/preview/connected-rising-slate-cycle-464x560.gif`). 출구 프레임 정보 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/exit-animation.json`)·배치/240타일 아틀라스 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/layout.json`). 아틀라스128×480px,출구 시트2464×128px. 후속 편집은 archive의 현재 Aseprite를 입력으로 사용함.
-- **캔버스 한계:** 최북쪽 출구는 상승 시 기존 전체맵 이미지의 y0 위로 일부가 나감. 개별112×128 애니메이션에는 전체가 보존되며 이것은 판을 문틀 안에서 잘라내는 동작이 아님. 전체맵464×1232·방 좌표는 확장하지 않았으며 중앙 출구 미리보기에서는 상승·소멸 전체가 보임.
-- 핵심 검사 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/validation/checks.json`)16/16 통과: 원본·환경11/입구90/복도2레이어 보존, 판 전체3,840픽셀의48px 이동·개구부 클립 없음, 최상단에서2px 블록 소멸·11/12/13프레임 전체투명, anchor·240타일/22개 타일맵·6배 시야를 확인함. 두 GIF는 같은 장면을 합친19프레임으로 출력되며 픽셀/순서/전체3300ms가 원본22프레임과 일치함. 벽 이음새·상승/소멸·열린 통로 시각 검토 완료.
-- Aseprite 재열기 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음. 정적17레이어·입구90/출구44캔버스와 시간/태그 정확일치,43합성 중42개 정확일치. 연결 맵만 입구의 실제 반투명 그림자 내부686px에서 RGB 최대1 반올림 차이이며 alpha/그림자 밖 차이0임. 입력 PNG699개·JSON4개 및 archive/work 원본10개 해시/수정시각 보존. 완성 원본5개와 필요한 출력은 보관 해시 (당시 경로: `../art/archive/environment/laboratory/corridor-r12/archive-manifest.json`)로 복사 일치를 확인함. **Unity import·애니메이션/Collider/Trigger·게임 상태 연결·실제 플레이는 미실행**임.
-
-#### R13 — 이전 문 팔레트와 구별되는 출구 문판
-
-- 사용자 정정: R12처럼 벽을 그대로 복제하지 않고 **이전 문의 팔레트**를 유지함. 벽과는 디자인 구조만 비슷하게 하고 문이라고 인식될 차이를 둠. 최신 archive R12 Aseprite5개를 입력으로 사용함.
-- 현재 입구에서 실제 사용한 연보라 면색(177,172,198),음영(158,157,184),밝은 모서리(200,196,218),베벨(133,131,158),자주 회로색(56,38,63)을 사용함. 벽과는 가로 패널/몰딩 구성을 공유하고 환기구 복제를 제거함. 중앙 잠금 장치·체결부·가는 자주 회로와 판 자체의 금속 모서리로 출구를 구분함. 판 자체 장식은 같이 이동/소멸하며 고정 문틀은 추가하지 않음.
-- R12의80×48 판·112×128 캔버스·anchor[0,64]·48px 상승·2px 블록 소멸·22프레임/3300ms·신호/태그와 완전 열림 투명도를 유지함. 입구·바닥·벽·재질 경계·보행 기하·Player도 보존함. 최북단 전체맵 경계 제한은 R12와 같음.
-- 편집 원본: 출구 슬레이트 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/aseprite/exit-rising-slate.aseprite`),기존 입구 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/aseprite/sliding-gate.aseprite`),연결 맵 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/aseprite/connected-rooms.aseprite`),복도 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/aseprite/straight-corridor.aseprite`),타일셋 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/aseprite/environment-tileset.aseprite`). 닫힌 출구 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/preview/previous-exit-closed-1920x1080.png`)·상승/소멸 GIF (당시 경로: `../art/archive/environment/laboratory/corridor-r13/preview/exit-rising-slate-cycle-1920x1080.gif`)·배치 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/layout.json`). 후속 편집은 archive의 현재 Aseprite에서 시작함.
-- 핵심 검사 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/validation/checks.json`)9/9 통과: 문판9색의 현재 입구 팔레트 소속,22프레임의 R12 알파/표시등/동작/시간 일치,원본·입구/환경 보존,360타일/입출구 타일맵·6배 시야·두 GIF의 픽셀/순서/3300ms 일치를 확인함. 벽과 구별되는 문판과 상승/소멸의 시각 검토 완료. 아틀라스128×720px이며 이전 타일240개에 새 문판120개를 추가함.
-- Aseprite 재열기 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음. 정적17레이어·입구90/출구44캔버스와 시간/태그 정확일치,43합성 중42개 정확일치. 연결 맵만 기존 입구의 실제 반투명 그림자 내부686px에서 RGB 최대1 차이이며 alpha/그림자 밖 차이0임. 입력 PNG794개·JSON4개와 archive/work 원본10개 해시/수정시각 보존. 완성 원본과 출력33개는 보관 해시 (당시 경로: `../art/archive/environment/laboratory/corridor-r13/archive-manifest.json`)로 복사 일치를 확인함. **Unity import·애니메이션/Collider/Trigger·게임 상태 연결·실제 플레이는 미실행**임.
-
-#### R14 — 중앙 장식 없는 회빛 문판과 잔기스
-
-- 사용자 요청: 첨부 표시의 가운데 디자인을 제거하고 색감을 더 회빛으로 바꿈. 작은 명암 차이로 잔기스를 표현함. 출구의 중앙 잠금부·표시등·양옆 회로를 모두 제거하며, 이전 출구 팔레트/표시등 보존 조건은 이번 요청이 대체함. 남쪽 입구는 보존함.
-- 현재 archive R13 Aseprite5개를 입력으로 사용함. 출구 문판 자체의 베벨·가로 몰딩·외곽 볼트 형태를 유지하고 낮은 채도의 회색 금속과 짧은 명암 흠집을 적용함. 출구는 단일 `slab` 레이어이며 `signal=none`으로 기록함. R12 이후의80×48 판·112×128 캔버스·anchor[0,64]·48px 상승·소멸·22프레임/3300ms·알파 형태와 환경/입구는 유지함.
-- 편집 원본: 출구 문판 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/aseprite/exit-rising-slate.aseprite`),기존 입구 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/aseprite/sliding-gate.aseprite`),연결 맵 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/aseprite/connected-rooms.aseprite`),복도 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/aseprite/straight-corridor.aseprite`),타일셋 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/aseprite/environment-tileset.aseprite`). 닫힌 출구 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/preview/previous-exit-closed-1920x1080.png`)·상승/소멸 GIF (당시 경로: `../art/archive/environment/laboratory/corridor-r14/preview/exit-rising-slate-cycle-1920x1080.gif`)·배치 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/layout.json`). 후속 편집은 archive의 현재 Aseprite에서 시작함.
-- 핵심 검사 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/validation/checks.json`)8/8 통과: 중앙 장치/표시등/회로 제거·단일 slab·signal none,미세 잔기스12곳/100px(판 면적2.604%,바탕과 RGB 차이8~10),R13과 같은22프레임 알파/기하/동작/시간,원본/환경/입구 보존을 확인함.494타일/타일맵·6배 시야·두 GIF의 픽셀/순서/3300ms 일치와 회빛/잔기스·개폐 단계 시각 검토 완료. 아틀라스128×992px임.
-- Aseprite 재열기 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음. 정적17·입구90·출구22캔버스와 시간/태그 정확일치,43합성 중42개 정확일치. 연결 맵만 기존 입구의 반투명 그림자 내부686px에서 RGB 최대1 차이이며 alpha/그림자 밖 차이0임. 입력 PNG906개·JSON4개와 archive/work 원본10개 해시/수정시각 보존. 완성 원본/출력33개는 보관 해시 (당시 경로: `../art/archive/environment/laboratory/corridor-r14/archive-manifest.json`)로 복사 일치를 확인함. **Unity import·애니메이션/Collider/Trigger·게임 상태 연결·실제 플레이는 미실행**임.
-
-#### R15 — 상단 표시등의 점멸·초록 점등 후 개방
-
-- 사용자 요청: 표시한 상단 중앙에 기본 검정 표시등을 두고 개방 조건 만족 시 깜빡임→초록 점등→문 열림 시작 순서로 연출함. 기존 중앙 장치·회로를 다시 넣는 요청은 아님.
-- 현재 archive R14 문판 픽셀과 회색/잔기스를 그대로 보존하고 별도 `signal` 레이어를 추가함. 표시등은112×128 캔버스의[49,85,14,4]에 배치하여6배 화면에서84×24px로 보임. 검정 홈과 초록 픽셀 광륜은 같은 영역/이진 alpha를 사용하며 판과 함께 이동·소멸함. 입구 좌우문과 환경·격자는 유지함. 아트 검증 완료이며 실제 Unity 개방 조건/상태 전이 연결은 미실행임.
-- 제작 시간값: `closed`1(미리보기700ms), `activation`2–8(초록/검정100ms씩3회, 초록300ms), `opening`9–18(10×80ms), `open`19(미리보기1000ms), `closing`20–29(10×80ms). 전체29프레임/4200ms. activation900ms 동안 판은 정지하며 기존 opening 첫80ms 정지 프레임을 거쳐 trigger980ms 뒤 첫 실제 이동이 나타남. 실제 게임의 closed/open은 조건 전환까지 유지해야 하며 GIF의 반복 시간은 자동 개방 규칙이 아님. 정확한 시간은 AI 제작값임.
-- 편집 원본: 출구 문판 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/aseprite/exit-rising-slate.aseprite`),입구 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/aseprite/sliding-gate.aseprite`),연결 맵 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/aseprite/connected-rooms.aseprite`),복도 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/aseprite/straight-corridor.aseprite`),타일셋 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/aseprite/environment-tileset.aseprite`). 닫힌 출구 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/preview/previous-exit-closed-1920x1080.png`)·개방 GIF (당시 경로: `../art/archive/environment/laboratory/corridor-r15/preview/exit-rising-slate-cycle-1920x1080.gif`)·배치 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/layout.json`). 후속 편집은 archive의 현재 Aseprite에서 시작함.
-- 핵심 검사 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/validation/checks.json`)9/9 통과: 원본10개 SHA/mtime·환경11층/복도2층/입구90층 보존, 출구29프레임의 R14 문판 완전일치와 별도 표시등의 위치·정지 점멸/점등·이동/소멸을 확인함.514타일/128×1040 아틀라스·입출구47프레임 타일맵/시트·6배 시야가 정확일치하며 두 GIF는26개 병합 프레임/4200ms로 픽셀·순서·시간이 일치함. 닫힘과 개방 단계의 시각 검토도 마침.
-- Aseprite 재열기 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/validation/aseprite-result.json`): CLI 종료0·오류 출력 없음. 정적17·입구90·출구58=165레이어 캔버스와29프레임/5태그/4200ms 정확일치.50합성 중49개 정확일치, 연결 맵만 기존 입구의 반투명 그림자 내부686px에서 RGB 최대1 차이이며 alpha/영역 밖 차이0임. 입력956PNG·4JSON 및 원본10개 보존. 완성 원본/출력33개는 보관 해시 (당시 경로: `../art/archive/environment/laboratory/corridor-r15/archive-manifest.json`)로 복사 일치를 확인함. 최북단 전체맵 y0 밖 상승은 개별 클립의 잘림과 구별함. **Unity import·개방 조건·애니메이션/Collider/Trigger·실제 플레이는 미실행**임.
-
-### 3.3.6 실험실 최종 전달 패키지·크기 조정 가능성
-
-**현재 환경은 R15 형태·배치와 사용자 확정 palette-r02-c(C 절충안) 색상을 사용함.** 최초 전달 당시(2026-11-15)의 보존·미연결/미실행 기록과 이후 실제 연결(3.3.10)을 구분하며, 현재 게임 Map을 팔레트 변경 때문에 재생성하지 않음.
-
-- 사용자 요청(2026-11-15): 최신 결과를 Unity에 바로 적용 가능한 형태로 정리하고 그동안의 중간 작업물을 모두 제거함. **현재 방·복도·문 크기와 PPU는 이후 조정 가능한 제작 기준값이며 영구 고정 사양이 아님.** 기존16px 셀/400×288 방/80px 통로를 지금 임의로 변경하지 않고 조정 가능성을 명시함.
-- 현재 편집 원본/가져오기 입력은 [최종 폴더 안내](../art/archive/environment/laboratory/final/README.md)를 따름. `aseprite/`5개, `unity/`의 실제 환경 아틀라스와 두 문 시트 PNG3개·배치/애니메이션 JSON3개, 최종 미리보기와 검증 요약을 남김. R15 연결 맵·복도·입구·출구 Aseprite4개는 바이트/수정시각 그대로 보존하고 타일셋은 실제 사용하는 환경 타일43개로 다시 묶음. 방 바닥·크랙·벽·복도를 포함한11층/3848셀과 입구18/출구29프레임을 보존함.
-- Unity 출력은 `project/Assets/Art/Environment/Laboratory/`의 Textures/Data/Tiles/Animations/Prefabs와 전용 Unlit 재질임. 메뉴 `Tools/Chrono/Import Laboratory Art`는 최종 입력으로만 재생성하며 기존 생성 에셋·Sprite 이름의 GUID를 재사용함. 입력 PNG/JSON은 Aseprite 저장만으로 자동 동기화되지 않음. 생성 프리팹의 수동 수정은 메뉴 재실행 전에 입력에 반영해야 함.
-- 입출구 `Open`/`Close` Trigger와 closed/open 유지, opening/closing, 출구 activation 점멸/점등을 Animator에 구성함. 연결 맵은 모든 문이 닫힌 상태로 시작함. 기존 연결 맵 Aseprite의 가운데 열린 문 상태는 편집 비교용으로 보존함. **기존 MainWorld/Startup Map 교체·Boss 개방 조건·Collider/Trigger·Player와 벽의 최종 그리기 순서는 후속 연결 작업**임.
-- 크기 조정:16PPU/scale1에서1셀=1unit, 현재6배1920×1080 시야의 직교 카메라 크기는5.625임. 기존 카메라 설정은 변경하지 않음. 정수 셀 재배치와 출입구/벽/재질 경계/문 앵커를 함께 수정하며, PPU 변경 시 전체 Sprite·Grid·카메라·충돌 배치를 함께 검토함. 문 피벗은 아래 중앙이며 전체 캔버스 높이H와 legacy rect[x,y,w,h]를 `(x+w/2)/PPU, (H-y-h)/PPU`로 변환함.
-- 검증: [최종 아트 대조](../art/archive/environment/laboratory/final/validation/art-review.json)6/6 통과. [Unity 결과](../art/archive/environment/laboratory/final/validation/UnityImport.json)는 같은6000.3.21f1 격리 프로젝트에서 실제 생성/저장/재로드한43타일·3848셀·11타일맵·9클립·47프레임 샘플·9전이를 확인함. 생성 에셋과GUID를 기존 프로젝트에 복사했으며 미술 입력6파일이 일치함. 기존 Editor의 병렬 코드 컴파일 오류는 이후 해결되어 현재 compiler ExitCode0·도메인 재로드 완료와 이후 C# 오류0도 확인함. 원본 게임 플레이 검증과는 구분함. [정리 내역](../art/archive/environment/laboratory/final/validation/cleanup.json)의 실험실 중간물과 임시 Unity 프로젝트를 제거하고 ETG 참고/분석·Player·Title은 보존함. 실제 게임 씬·Boss 조건·충돌 연결과 플레이는 미실행임.
-
-#### 배경 팔레트 R01 — 일반공격 검흔 대비(2026-11-16)
-
-**후속 상태:** 어두워졌다는 사용자 피드백으로 아래 R02에서 밝은 시설·검흔 보존 방향을 다시 비교했고 사용자 선택의 C를 final/Unity에 반영함. 이 절의 R01 수치와 검증은 당시 이력임.
-
-- 사용자 요청: 현재 일반공격 검흔 두 색과 배경이 확실히 구분되도록 맵 팔레트를 어둡거나 회색으로 조정함. 실제 Attack1/2/3 VFX14PNG의 가시색은 연보라 `#E5D2FF`·연하늘 `#C3EAFF`이며 기존 바닥 기본색은 `#D6DFDF`였음.
-- 제작 적용값: 바닥 기본색을 저채도 진회색 `#626668`로 낮추고 벽·복도·문도 명암을 유지한 회색 계열로 조정함. 입구 red/blue·출구 black/green 신호8색과 VFX2색은 유지함. 세부 RGB는 이번 AI 제작값이며 사용자 최종 미술 승인과 구분함. 전체 치환표와 비교 계산은 [palette.json](../art/archive/environment/laboratory/final/palette.json)을 따름.
-- 반영: 현재 Aseprite5개·최종 PNG3개·Unity Textures PNG3개를 일치시킴.43타일·11층3848셀·문47프레임·alpha·레이어/cel·태그·시간과 기존GUID·import meta·Prefab/Collider·Animation/Data·공유 재질을 보존함. 타일 간격 보정용 map Atlas4px padding/Bilinear도 유지하며 전체 맵 생성기나 공유 재질 tint는 변경하지 않음.
-- 확인: [원본 검사](../art/archive/environment/laboratory/final/validation/PaletteReview.json)6/6과 [출판 검사](../art/archive/environment/laboratory/final/validation/PalettePublish.json)17/17·필수 보호136파일 불변을 확인함. [Unity 가져오기 기록](../art/archive/environment/laboratory/final/validation/PaletteImport.json)은 실제 Editor 로그 관찰 범위를 구분함. 기본 바닥 대비는 보라/하늘 순서로1.032/1.068→4.142/4.568이며 **원본 sRGB 상대휘도 계산값으로 실제 플레이 가독성 실측은 아님**.
-- [현재6배 화면](../art/archive/environment/laboratory/final/preview/palette-vfx-1920x1080.png)·[이전/수정 비교](../art/archive/environment/laboratory/final/preview/palette-before-after.png)는 실제 맵·검흔 PNG를 합성한 정적 검토판임. 새 플레이·빌드/전체 기능 검사는 미실행. 최초 패키지 검증 이력은 보존하며 현재 편집은 final/aseprite에서 시작함. 방·복도·문 크기와 PPU의 추후 조정 가능성은 유지함.
-- 실제 import 관찰: 최종/Unity PNG3개의 바이트와 크기는 일치함. Editor.log가 기준2,241,869bytes에서 증가하지 않아 새 텍스처3개의 가져오기 완료·렌더 화면은 **미확인**임. 다음 에디터 Asset Database 갱신 후 화면을 확인해야 하며 가져오기 실패가 관측된 것은 아님. 메타·Atlas·공유재질의 내용은 동일하고4파일의mtime만 별도로 달라진 것을 기록함.
-
-#### 밝은 시설·검흔 보존 배경 검토 R02(2026-11-16)
-
-- 사용자 요청: 조명 없이 내부가 밝아야 하며 두 검흔이 구분돼야 함. 후속 답변으로 검흔은 최대한 수정하지 않는 방향을 요청함. 이에 외곽선 검토를 제외하고 원본 두 색·형태·alpha를 유지한 배경만 비교함.
-- [비교 원본·결과](../art/archive/environment/laboratory/palette-study-r02/README.md): 현재 A, 밝기 우선 B(`#C2C0B6`), 절충 C(`#B0ADA1`), 바닥 대비 보강 D(`#A3A596`). B~D는 밝은 벽·회색 문을 공통으로 두고 바닥 무늬·크랙의 위치를 보존하면서 최초 팔레트 명도 편차를0.25배로 낮춤. 벽의 밝기와 전투 바닥의 대비를 분리하는 AI 제작안이며 세부 RGB 선택·최종 적용과 구분함.
-- 실제 검흔1/2의 첫 프레임을 같은 좌표에 배치하고2타의 방향만 실제처럼 반전함. 원본320×180·개별6배1920×1080, 비교판3배. 원본픽셀·188개 제작/Unity파일 보존을 [파일 검사](../art/archive/environment/laboratory/palette-study-r02/validation/study-check.json)와 [독립 검토](../art/archive/environment/laboratory/palette-study-r02/validation/independent-review.json)에 기록함. 정적 비교이며 원본 게임·최종 에셋 변경·전체 애니메이션/플레이·빌드는 미실행임.
-- 후속 사용자 확정: “절충안으로 할게 저게 좋아보인다.”에 따라 C의 바닥`#B0ADA1`·밝은 벽·약한 바닥 무늬를 **palette-r02-c**로 선택함. 현재 final/aseprite5개와 final/Unity PNG3개에 반영했으며 검흔14PNG·기존GUID·Atlas4px padding/Bilinear·공유재질·맵 연결은 유지함.
-- 적용 확인: [PaletteR02Review](../art/archive/environment/laboratory/final/validation/PaletteR02Review.json)6/6 — AS 구조/cel/alpha/태그/시간·역할별RGB,43타일→11층3848셀·문47프레임·신호8색과 보호165파일을 대조함. 사용자 선택 C 화면과 픽셀 일치, GIF26병합프레임/4200ms의 RGB·순서·시간도 확인함. [출판](../art/archive/environment/laboratory/final/validation/PaletteR02Publish.json)·[실제 import 관찰](../art/archive/environment/laboratory/final/validation/PaletteR02Import.json)은 별도 기록함. 게임 플레이·작은 잔상의 움직이는 가독성·빌드는 이번 색상 반영에서 미실행임.
-- 출판18/18 바이트 일치·보호165파일/검흔14PNG 불변을 확인함. Editor.log 기준2,383,571bytes 이후 증가0으로 C의 실제 PNG 자동 import 완료는 미확인임. 에디터 Asset Database 갱신 후 실제 화면을 확인해야 하며 실패가 관측된 것은 아님. 별도 import 기준과 비교한 메타/재질4파일의mtime만 달라졌고 내용·GUID는 동일함.
-
-#### 자수정 최종 전달 — Unity 준비·배치 크롭·정리(2026-11-16)
-
-**현재 원본은 `/art/archive/environment/amethyst/final/`이며 R05 승인 색상과 R06 배치·부유를 유지함.** [전달 안내](../art/archive/environment/amethyst/final/README.md)·[비활성 수정](../art/archive/environment/amethyst/final/aseprite/amethyst-inactive.aseprite)·[활성 부유 수정](../art/archive/environment/amethyst/final/aseprite/amethyst-active-float.aseprite)이 편집 기준임. 사용자 직접 수정 원본은 [보존본](../art/archive/environment/amethyst/final/source/amethyst-user-edited.aseprite)으로 바이트 그대로 남김.
-
-- 배치 확인용 [비활성 Aseprite](../art/archive/environment/amethyst/final/aseprite/placement-inactive.aseprite)·[활성 Aseprite](../art/archive/environment/amethyst/final/aseprite/placement-active.aseprite)는 첨부 범위에 맞춰 원본 Map의 `[0,0,464,560]`만 남긴 각각1/8프레임·11레이어 편집본임. 아래쪽 방의 캔버스 밖 cel 데이터와 빈6레이어를 제거했으며 전체9프레임의 원본 크롭 픽셀·시간·태그 일치를 확인함. [PNG 미리보기](../art/archive/environment/amethyst/final/preview/placement-active.png)·[크롭 검사](../art/archive/environment/amethyst/final/validation/ArtPreparation.json) 제공.
-- 배치 좌표: 위쪽 방 남문(`next-entrance`) 아래 복도 왼쪽 벽 옆1타일(열12·행28,0부터), 비활성 몸체 좌상단(192,432), 바닥 앵커(200,464), 발밑 타일[192,448,16,16]. 기존464×1232 LaboratoryLayout의 자식 로컬 좌표는 `(12.5,48,0)`임. 크롭 이미지를 독립 배치할 때만 `(12.5,6,0)`을 사용하며 실제 전체 맵 좌표와 혼용하지 않음.
-- 부유/규격: 몸체16×32·공통 캔버스16×40, 비활성1프레임 정지, 활성8프레임×200ms=1.6초 반복. 비활성 대비 Y오프셋−3/−4/−4/−3/−2/−2/−3/−3px(이동 폭2px)이며 그림자는 고정. [활성 시트](../art/archive/environment/amethyst/final/unity/amethyst-active-float-sheet.png)·[프레임/앵커](../art/archive/environment/amethyst/final/unity/animation.json)·[GIF](../art/archive/environment/amethyst/final/preview/active-float.gif) 제공.
-- Unity 에셋: `project/Assets/Art/Environment/Amethyst/`에 Sprite9개·클립2개·Controller1개·[Amethyst.prefab](../project/Assets/Art/Environment/Amethyst/Prefabs/Amethyst.prefab)을 반영함.16PPU·Point·무압축·밉맵 없음·pivot(0.5,0.1), 기존 LaboratoryUnlit 공유. Animator Bool `Active`의 기본값false는 비활성, true는 활성 부유이며 양방향 즉시 전환함. 별도 런타임 스크립트를 추가하지 않음.
-- 검증: 같은 Unity6000.3.21f1 격리 프로젝트에서 실제 import·저장·8프레임 샘플·1.6초 반복·활성/비활성 왕복 전환 등 [24개 검사](../art/archive/environment/amethyst/final/validation/UnityImport.json) 성공, compiler ExitCode0·정상 종료 확인. 프로젝트에 복사한 에셋/메타19파일의 해시와 GUID도 일치함. **원본 프로젝트 Editor 재임포트·MainWorld 배치·실제 수정 활성화 사건 연결·게임 플레이 검증은 미실행**이며 후속 연결 범위임.
-- 정리: [원본 보존 검사](../art/archive/environment/amethyst/final/validation/SourcePreservation.json) 후 R01~R06의 이전 제작12폴더 내116파일과 임시 검증/정리2폴더를 제거함. [정리 결과](../art/archive/environment/amethyst/final/validation/Cleanup.json)에 남긴 것처럼 `amethyst-r06/aseprite`와 그 상위 빈 폴더는 다른 프로세스의 잠금 때문에 잔존함. 파일은0개이며 Aseprite/Explorer의 이전 위치 잠금 해제 후 빈 폴더만 제거하면 됨. UI 제어 승인은 시간 초과되어 수행하지 못함.
-
-**이전 제작 이력(R01~R06,2026-11-15)**: 아래 검증·보존·Unity 미적용 표기는 각 제작 당시의 상태임. 당시 중간 파일은 이번 정리 대상으로 제거했으므로 이전 링크는 제거함. R06에서4개 native·몸체/그림자/배경/GIF13항목과 원본 해시·시각 검토를 확인했으며 최종 전달본으로 옮긴 수정 원본/시트/메타데이터는 바이트 동일함. 이후 편집은 위 최종 경로를 사용함.
-
-**R05 색상 제작 이력(최종 전달본에서 확정 색상으로 유지)**: 사용자는 R04처럼 단순히 옅게 만드는 방식 대신 비활성은 더 어둡게, 활성은 더 진하게 구분하도록 요청했고 후속으로 비활성에도 보라색이 남아야 함을 명시함. 사용자 수정 형태는 그대로 두고 비활성은 어두운 자주·보라색, 활성은 선명한 고채도 보라/마젠타 면과 제한된 밝은 하이라이트로 변경함. 비활성 원본·활성 원본·좌 비활성/우 활성 비교·맵 비교가 당시 결과였음. 각각의 Map 편집본도 같은 폴더 `aseprite/`에 저장함.16×32px/1프레임100ms/3레이어·위치(224,80) 유지. 현재 R01 사용자 원본을 직접 읽어 양쪽 모두434개 레이어 픽셀의 RGB만 교체했고 각414개 표시 픽셀의 형태·무늬·알파와 레이어 구조를 보존함. 실제 Aseprite 종료0·색상/구조/재열기/맵10항목·사용자 원본 해시·독립 시각 검토 확인. 비활성의 보라빛과 활성의 강한 채도 차이를 맵에서도 확인했으며 최종 팔레트·프롬프트·후속 보정을 기록함. Unity 미적용이며 아래 항목은 이전 제작 이력임.
-
-**R04 제작 이력(이후 두 상태 색상은 R05로 변경)**: 사용자가 직접 수정한 `art/archive/environment/amethyst-r01/aseprite/amethyst.aseprite`를 비활성 모습으로 지정함. 실제 파일은815bytes/23:16:52 수정/SHA-256 `BAE16AB8F363BF20549AE99EBF1F892BDA33E494B2A8F615E7F84133E4EE0603`으로 이전 제작본과 다르며, 이 파일을 직접 읽었음. 기존 R01 PNG나 R02·R03 그림으로 사용자 형태를 덮어쓰지 않음. 원본 파일은 바이트 그대로 보존하고 비활성 보관본·활성 원본·활성 PNG·좌 비활성/우 활성 비교를 저장함.
-
-- R04 활성 색: 어두운 보라색 윤곽을 유지하면서 내부 면을 밝은 라벤더색, 기존 하이라이트를 흰빛 보라색으로 바꿈.8색 RGB 대응만 적용하며16×32px/1프레임100ms/3레이어, 레이어별 모든 픽셀alpha·투명픽셀·cel 위치/크기·레이어 이름/순서/opacity/blend와 사용자 표면 무늬를 유지함.434개 레이어 픽셀 RGB만 변경. 이미지 생성은 색상 참고에 사용하고 그 형상을 다시 샘플링하지 않음(색상표·프롬프트·출처). 비활성 상태 지정은 사용자 확정, 활성 세부 팔레트는 이번 제작안임.
-- 활성 Map 편집본·문 앞6배 시야는 기존 좌상단(224,80)/그림자를 유지하고 현재 사용자 형태의 활성 색을 반영함. 실제 Aseprite 종료0·재열기/구조/알파/색상/배경9항목·사용자 원본/비활성 복사본 해시·독립 시각 검토 확인. 원본 게임/Unity 연결은 미실행임.
-
-**R03 제작 이력(이후 사용자 수정 비활성 원본·R04가 당시 기준)**: 사용자는 위아래 꼭짓점이 자연스러운 top-down 구도로 보이게 하려던 것이며, R02의 단순 몸통 축소·정면 대칭 해석을 바로잡고 처음 생성한 `exec-65714f62-52f6-4136-a6c6-ee6aa03a54f7.png`를 수정 기준으로 지정함. 해당 초기 이미지를 실제 읽어 이미지 생성 편집의 유일한 입력으로 사용했고, 상단의 넓고 깊은 면·면별 사선 접속·짧게 압축된 하단 끝으로 구성함. R02를 수정 입력으로 삼지 않음. 당시 자수정 원본·Map 배치본·6배 시야를 후속 편집에 사용함.16×32px/기존8색/좌상단(224,80)/그림자 유지. 프롬프트·원본 출처, 재열기6항목, 치수·팔레트·배경6항목, R01·R02 파일 보존을 확인함. R01 대비 Map 변경244px은 자수정 영역 안이며 기존 맵 배경은 유지됨. 독립 시각 검토에서 상단 깊이·짧은 하단·양끝 표시·잘림 없음 확인. 실제3D 카메라 계산값이나 사용자 최종 미술 승인으로 기록하지 않으며 Unity는 미적용임.
-
-**R02 제작 이력(구도는 R03에서 재수정)**: 사용자 후속 요청을 중간 몸통 길이 조정으로 해석하여 위·아래 꼭짓점이 모두 보이는 양끝형으로 수정함. 자수정 원본·Map 배치본·6배 시야를 이후 편집에 사용함.16×32px/기존8색/좌상단(224,80)/그림자를 유지하고 최대폭16px 행 수를22→16으로 줄임. 위·아래 끝은 각각2px 이내로 모이고 하단 꼭짓점이 그림자 위에서 구분됨. 이미지 생성 편집 후 Aseprite에서 격자·팔레트를 정리함(프롬프트). 실제 Aseprite 종료0·재열기6항목 및 형태·보존6항목·독립 시각 검토 통과. R01 대비 Map 변경165px은 기존 자수정16×32 영역 안에 한정되고 R01 파일9개 해시는 불변임. Unity 미적용이며 아래 R01은 제작 이력으로 보존함.
-
-- 사용자 요청: Map 기준 둘레1Cell·높이2Cell의 보라색 자수정을 제작해 문 앞에 배치함. 제작 해석은 **바닥 점유 폭1Cell·높이2Cell=16×32px**이며 수학적 둘레 길이로 계산하지 않았음. 어느 문인지 지정되지 않아 위쪽 방의 북쪽 출구를 AI 배치 기준으로 선택함. 새 형태의 사용자 최종 미술 승인과 구분함.
-- 결과: 자수정 편집 원본·투명 PNG, Map 배치 원본·6배 시야. 이미지 생성 도구의 형태를 Aseprite에서16×32 격자·8색으로 정리했고 자수정은 외곽/어두운면·보라색면·하이라이트3레이어임. 프롬프트·출처·치수는 manifest.json에 기록함.
-- 배치: 현재 `laboratory/final/aseprite/connected-rooms.aseprite`를 직접 읽어 기존15레이어를 유지하고 자수정·접촉 그림자2레이어만 추가한 별도464×1232 편집본. 자수정 좌상단(224,80), 바닥 중앙(232,112), 문 아래쪽과16px 간격.16PPU 적용 시 바닥 앵커는 맵 로컬(14.5,70)이며 현재 Unity에 적용한 좌표가 아님.
-- 검증: 실제 Aseprite CLI 종료0, 6항목 검사 통과. 정확16×32 불투명 경계, 두 편집본 재열기 픽셀 일치, 추가 레이어 숨김 시 원본 합성과 정확 일치, 배치 영역 밖 변경0·변경472px 확인. 원본 맵/배치JSON SHA-256 불변과 문 겹침·잘림 없는6배 시야를 확인함.
-- 범위: **아트 제작·편집본 배치 완료**. 기존 실험실 원본과 Unity Assets·MainWorld/Startup Map은 변경하지 않음. 수정 상호작용·문 개방 기능 및 Unity 연결/플레이 검증 완료를 뜻하지 않음. 후속 수정은 위 자수정/배치 Aseprite를 기준으로 함.
-
-### 3.3.7 검 크기 비교 — sword-size-r01
-
-**Detail R02의 검·검집 미술을 기본 검으로 사용자 최종 확정했다(2026-11-15).** 폭3px·전체길이28px·어두운 대칭 검집을 유지하며 현재 결과는 아래 VFX R04의 캡처 기반 손잡이 이동/각도와 새 궤적 시안이다. 검끝 바깥으로 확장되는 흰 호 방향은 유지하되 기존 임의 자세를 측정값으로 교체했다. 기본 검 확정과 VFX/동작·실제 Unity 적용 완료를 구분하며 이전 비교는 제작 이력이다.
-
-#### VFX R04 — 대검6캡처의 이동 피벗·각도 측정과 우리 검 배치
-
-- 사용자 요청(2026-11-15): 대검이 검기를 만들기까지의6장으로 회전 기준점과 프레임별 각도 변화를 측정한다. 우리 검도 한 점 주위의 단순 회전 대신 프레임마다 위치/각도를 배치하고 검끝 궤적에 호를 그린다.
-- 결과: [6프레임 비교판](../art/archive/weapon/sword-vfx-r04/previews/measured-motion-frames.png)·[6배 검토 GIF](../art/archive/weapon/sword-vfx-r04/previews/measured-motion-6x.gif)·[원본 측정 표시](../art/archive/weapon/sword-vfx-r04/previews/reference-landmarks.png)·[측정 CSV](../art/archive/weapon/sword-vfx-r04/motion-measurements.csv)·[측정 방법/한계](../art/archive/weapon/sword-vfx-r04/README_KO.md). 프레임판은4배, GIF는6배다. 금색은손잡이·청록은검끝·주황점선은F6추정 구간이다.
-- 구조: 원작은 Sprite 내부 pivot을 바꾸지 않는다. `WeaponSimple.Initialize`의mainWeaponParent 부착, `WeaponControllerSimple.Aim`의Shoulder 조준, `Weapon_GreatSword_1.prefab`의Shoulder오프셋(2.5,7)px와 실제 연결된 `GreatSword_Attack1.anim`의Shoulder/Weapon Position/Euler 곡선을 확인했다. 원본Sprite는11×28·PNG 연속좌표pivot(5.5,22)이며 가드에서3.5px·불투명 팁중심에서20.5px 떨어진 손잡이다. `New` 클립과 구분하며 해당 클립의 시각을 캡처에 유일하게 대응한 것은 아니다.
-- 측정: F1~F5는 칼날 색 ROI 주축으로 각도를 구하고, 가드/팁·원본길이로 손잡이를 추정했다. Player 몸 아래 기준점을 수동 지정하고 화면 약4.3px를 원본1px로 환산했다. 원작 엔진의 정확한 Player pivot이나 카메라를 복구한 값은 아니다. 작업상 손잡이 오차 범위는F1/F2/F5 ±5화면px, F3/F4 ±3화면px이며 통계적 신뢰구간이 아니다.
-
-| 캡처 | 검 각도(오른쪽0°·위90°) | 직전 대비 | 우리 손잡이 X오른쪽/Y위(px) | 상태 |
-| --- | ---: | ---: | --- | --- |
-| F1 |199.6° |— |(1.6,9.4) |축 측정·가려진 grip 추정 |
-| F2 |185.7° |−13.8° |(2.5,8.9) |축 측정·가려진 grip 추정 |
-| F3 |89.4° |−96.3° |(4.3,7.4) |축 측정·가드 기준 grip |
-| F4 |10.1° |−79.3° |(4.9,5.0) |축 측정·가드 기준 grip |
-| F5 |−45.1° |−55.3° |(4.1,2.1) |축 측정·가드 기준 grip |
-| F6 |약−83° |약−38° |약(1.4,0.9) |부분 축·grip/끝점 가정 |
-
-- F6 한계: 검기 아래y263~272의 짧은 칼날 경계에서 약−83°를 구했으며 각도 불확실성은약±10°다. 가드·손잡이·끝점은 가려져 있다. 수동 손잡이 가정(157,235)을 부분 축에 투영한 위치와 원본 길이로 복원한 끝점을 **추정**으로 표시했다. 원작의 실제 회전점으로 확정하지 않는다.
-- [배치 Aseprite](../art/archive/weapon/sword-vfx-r04/aseprite/measured-sword-motion.aseprite):128×128·6프레임/6태그·환경/Player/검/FX/숨김궤적5레이어, Player 원점(64,88). 확정 검의pixel-index 손잡이(5,3)를 고정하고 측정 상대위치로 옮기며 `PNG각=-90°-검각`으로 회전한다. 몸은 기존Idle를 사용한 위치 비교이며 신체 공격모션 제작과 구분한다.
-- [3단계 FX Aseprite](../art/archive/weapon/sword-vfx-r04/aseprite/sword-vfx-3stage.aseprite):시작/끝/마무리·공통원점(64,88). 각도/손잡이 위치의 기하 보간으로 만든 끝면 궤적 바깥에최대12px 흰 띠를 그렸다. F6를 포함하는 마지막 호 경계는 추정에 의존한다. FX120/90/70ms는 기존 시안값이다. 측정판 GIF의180ms×5+600ms=1.5초는 검토용이며 캡처의 실제 프레임 간격·각속도를 복원한 값이 아니다.
-- 검증: Aseprite 배치6프레임/FX3프레임 재열기·PNG 일치, 알파0/255·시각 검사·원본5파일 해시 보존을 확인했다. 독립 검사에서6검포즈/Player 원본 픽셀·GIF6프레임1500ms/디코딩·정확6배·크롭·흰띠의궤적외측·F6검끝접촉/추정표시를 확인했다. 실제 게임의 피격 범위·공격시간·Unity 연결은 변경하지 않았다.
-- 다음: 이동하는 손잡이와 시계방향 동작·새 호 형태를 검토한다. F6정확 위치/시간 복원에는 가리지 않은 검 또는 원본 영상/실제 재생 정보가 필요하며 추정값을 확정 수치로 넘기지 않는다. 기본 검 미술은 유지한다.
-
-#### VFX R03 — 검끝 궤적에 맞닿는 안쪽 경계와 넓은 바깥 범위
-
-- 사용자 요청(2026-11-15): VFX를 원점에서 더 멀고 크게 그린다. 현재 휘두르는 검의 끝점 궤적과 흰 호의 가장 안쪽을 맞물리게 하여 검보다 먼 거리까지 피격 가능한 표현을 만든다. 이전의 작은 반경 제약은 이 요청으로 대체하며 시작·끝·마무리3단계와 기본 검은 유지한다.
-- [3단계 비교판](../art/archive/weapon/sword-vfx-r03/previews/sword-vfx-three-stages.png)·[6배 재생](../art/archive/weapon/sword-vfx-r03/previews/sword-vfx-6x.gif)·[3배 느린 재생](../art/archive/weapon/sword-vfx-r03/previews/sword-vfx-6x-slow.gif). 상단은6배 Player 합성, 하단은4배 검끝 궤적 확인이다. 청록 궤적과 금색 표시점은 확인용이며 VFX 자산에는 들어가지 않는다.
-- [VFX 원본](../art/archive/weapon/sword-vfx-r03/aseprite/sword-vfx-3stage.aseprite):128×128·Player 원점(64,88)·3프레임/3태그. PNG3장과384×128 시트를 함께 보관한다. [검 합성 원본](../art/archive/weapon/sword-vfx-r03/aseprite/sword-vfx-player-preview.aseprite)은 R02의9프레임 자세·Player·배경·검을 유지한다. 크롭을96×80으로 넓혀 확장된 효과와 오른아래 검끝이 잘리지 않게 했다.
-- 안쪽 경계: 원본 검의 마지막 불투명 행y27과 손잡이(5,3)를 기준으로, 기존6자세의 검 각도와 손잡이 이동을501점으로 보간했다. 전체길이28px를 손잡이부터의 길이로 쓰지 않고 검끝 중심24px·끝면24.5px를 구분한다. 끝면 궤적이 흰 호의 안쪽 경계이며 정방향 픽셀로 새로 채웠다. 검 렌더링의 픽셀 좌표와 FX 셀 중심 간0.5px 차이를 반영했다.
-- 바깥 경계: Player 원점에서 바깥 방향으로 최대12px를 추가한다. 시작 호는77×57px·1180픽셀·최대반경47.27px, 끝 꼬리는28×39px·326픽셀, 잔광은9×10px·10픽셀이다. 검끝 중심의 자세별 반경은약24.66~37px이다. 최대12px와 이 윤곽은 제작 조정값이며 사용자 최종 승인 수치가 아니다.
-- 시간/색: R02의120/90/70ms와 불투명 `#F7FBF5`를 유지한다. GIF는 효과280ms 뒤600ms 반복 휴지, 느린 재생은 전체3배다. 확대 비교용 청록선은 별도 합성이며 실제 FX는 회전·보간하지 않는다.
-- 검증: Aseprite3프레임/9프레임 재열기 및 PNG/시트 일치, Start1~3·End4~6의 실제 회전 검끝 픽셀과 해당 단계 FX가 빈 픽셀 간격 없이 공유변으로 접촉함을 독립 확인했다. 흰 영역은 궤적 바깥에 있고 실제 최대 추가거리는약11.99px다. 알파0/255·크롭 잘림 없음, GIF9프레임880/2640ms·디코딩/6배 픽셀 일치와 R02의배경/Player/검9프레임 보존을 확인했다. 입력5파일 해시를 보존했다. **검보다 먼 타격 범위를 보여주는 아트 시안이며 실제 충돌·피해 판정, Unity 연결을 변경하거나 검증한 것은 아니다.**
-- 다음: R03의 거리·흰 호 두께·꼬리/잔광 피드백에 따라 조정한다. 실제 연결 시 확정할 피해 범위와 보이는 외곽의 일치 여부를 확인하며 기본 검 미술은 재선택하지 않는다.
-
-#### VFX R02 — 정방향 시작·끝·마무리3단계
-
-- 사용자 요청(2026-11-15): Sephiria 우상단 공격 캡처9장의 VFX와 대검 위치 변화를 참고한다. 검의 회전으로 픽셀이 찌그러질 수 있음을 인정하되 VFX는 정방향으로 제작하고 **시작 → 끝 → 마무리**3단계로 구성한다. 기본 검은 Detail R02 확정본을 유지한다.
-- [3단계 비교판](../art/archive/weapon/sword-vfx-r02/previews/sword-vfx-three-stages.png)·[정상 속도6배 GIF](../art/archive/weapon/sword-vfx-r02/previews/sword-vfx-6x.gif)·[3배 느린 GIF](../art/archive/weapon/sword-vfx-r02/previews/sword-vfx-6x-slow.gif). 비교판은1920×1080이며 Player 합성은6배, 하단 FX 확대는10배로 표시했다.
-- [VFX 편집 원본](../art/archive/weapon/sword-vfx-r02/aseprite/sword-vfx-3stage.aseprite):64×64px·3프레임·3태그(`01-Start`, `02-End`, `03-Finish`)·Player 발 기준점(32,44)·위쪽 공격 기준이다. 흰색 `#F7FBF5`의 불투명 픽셀만 사용하고 회전·보간·발광 없이 새 윤곽을 작성했다. PNG3장과192×64 시트를 함께 출력했다.
-- 시안 형태:①큰 호(34×24px·293픽셀) → ②왼쪽으로 남는 갈고리 꼬리(11×24px·86픽셀) → ③왼아래 잔광(10×3px·6픽셀)이다. Player 원점에서 최대 픽셀중심 반경은26.73/25.93/16.87px로 검 전체길이28px 안쪽이다. 이번 형태·크기는 AI 제작값이며 이전35/45/55% 중 사용자 선택을 받았다는 뜻은 아니다.
-- 시안 시간:시작120ms·끝90ms·마무리70ms, 합계280ms. 캡처에는 시간 정보가 없어 실제 Sephiria 재생 시간을 복원했다고 주장하지 않는다. 추출1타에는 큰 호 유지와 꼬리2형태만 확인되므로 잔광은 최신 사용자 캡처를 바탕으로 추가 제작했다. 추출 합성의 오른쪽 꼬리를 그대로 사용하지 않고 캡처의 왼쪽 소멸 방향을 따른다.
-- [검·Player 합성 원본](../art/archive/weapon/sword-vfx-r02/aseprite/sword-vfx-player-preview.aseprite):128×128·4레이어·9프레임. 기존 Player Idle 첫 프레임을 유지하고 확정 검만 손잡이(5,3) 중심으로 회전시킨 시안 자세다. VFX는 각 단계 동안 Player 기준점에 고정한다.9번째 무효과600ms는 반복 확인용 휴지 구간이며 네 번째 VFX 단계가 아니다. 실제 게임 공격 곡선·상체 공격 모션의 재현과 구분한다.
-- 검증: Aseprite1.3.18.6에서3단계 원본·9프레임 합성 재열기/출력 픽셀 일치, 알파0/255·원점 고정·반경28px미만·잘림 없음과 비교판을 확인했다. 원본 검·Player·환경·추출FX는 보존했다. 게임 코드·판정·셰이더·Unity 연결은 변경하지 않았다.
-- 다음: R02의 호/꼬리/잔광 형태·반경·시간 피드백을 받아 조정한다. 승인된 기본 검을 다시 선택 대기로 돌리지 않으며 실제 게임 적용은 요청된 범위에서 별도 연결·검증한다.
-
-#### VFX R01 — 기본 검 확정·휘두르기 중간의 작은 효과3안
-
-- 사용자 확정/요청(2026-11-15): Detail R02를 기본 검으로 확정했다. 검집째 휘두르되 VFX는 검에 비해 작은 영역을 Player 기준으로 사용하고, 추출한 VFX 파일을 확대/축소하여 휘두르는 중간에 배치한 Aseprite를 우선 제작한다. 기본 검을 다시 미술 선택 대기로 돌리지 않는다.
-- [현재6배 비교 PNG](../art/archive/weapon/sword-vfx-r01/previews/mid-swing-vfx-size-comparison.png)·[편집 Aseprite](../art/archive/weapon/sword-vfx-r01/aseprite/mid-swing-fx-scale-study.aseprite): 같은 검/몸/배경/자세에 FX만 A35%·B45%·C55%로 축소했다. 실제 알파 경계는8×11/10×14/12×20px, 불투명 샘플은36/55/81px, Player 원점에서 픽셀중심 최대거리는14.58/18.56/23.55px이다. 기본 검 길이28px와 Player12×20px에 비해 작게 붙는 후보이며 이 수치·최종VFX는 AI 비교 제안이다.
-- 참고 입력은 `/art/weapon/sephiria-sword-fx/combo-01/fx-only/008.png`다. README/manifest와 실제 PNG를 확인했다.1타 시작0.133333초(60Hz frame8), 원본128×128·Player원점(64,88)·FX경계[56,45,22,36]을 사용한다. 크기 변환은 사각형 중심이 아니라 Player원점을 고정해 `p'=origin+scale*(p-origin)`으로 최근접 샘플링한다. 추출파일 RGBA를 유지했으며 원작HDR발광색 재현/색상확정은 아니다.
-- 자세: 원본manifest의 검 손잡이(69.5,76.5), 원작 위쪽 검 기준-72.4752°를 현재 아래쪽 검의 PNG 회전-107.5248°로 변환했다. 확정 `sword-detail-r02/aseprite/sword-sheathed.aseprite`를 실제 손잡이(5,3) 기준으로 회전하고 크기는 그대로 유지했다. Player는 기존 왼뒤Idle 첫 프레임이다. 작게 줄인 효과의 가시성을 위해 합성순서는 배경→Player→FX→검이며 실제 게임 정렬의 확정이 아니다.
-- 편집 원본은128×128px·배경/Player/FX/검4레이어·A/B/C3개 단일프레임 태그다.3프레임은 크기 후보이며 공격 애니메이션이 아니다.1920×1080 비교판은 모든 아트를 정확6배로 표시하고 아래에는FX만 분리해 Player원점을 금색십자로 표시했다. 원본/배경포함PNG/투명합성PNG/FX단독PNG·Lua·검사는 `/art/archive/weapon/sword-vfx-r01/`, 작업본은 `/art/weapon/sword-vfx-r01/`에 있다.
-- 검증:2개 Aseprite 재열기·3프레임 출력 일치, 배경/Player/검 고정·원점기준 축소·각FX거리28px미만과 잘림 없음을 확인했다. 확정 기본 검/Player/추출FX 원본은 보존했다. 게임 코드·판정 범위·전체공격시간/프레임·Unity 연결은 이번 정적 크기 비교의 범위가 아니다.
-- 다음: VFX R01의 A/B/C 또는 중간 크기·위치 피드백 → 같은 원점/기본 검을 기준으로 필요한 공격 프레임·연출 조정 → 요청된 게임 연결/검증. 기본 검 미술 확정은 유지한다.
-
-#### Detail R02 — 검집 밝기 완화·좌우 대칭
-
-- 사용자 요청(2026-11-15): 검집이 너무 칼처럼 보이므로 조금 어둡게 하고 좌우 대칭으로 만든다. 확정 폭3px·전체길이28px는 유지한다. 요청은 검집에 적용하며 뽑은 칼날·손잡이·가드의 픽셀은 R01 그대로 보존했다.
-- [현재 상세판](../art/archive/weapon/sword-detail-r02/previews/sword-and-scabbard-detail-board.png)·[통합 Aseprite](../art/archive/weapon/sword-detail-r02/aseprite/sword-and-scabbard.aseprite): 한쪽의 밝은 날선을 없애고 양쪽 열을 같은 청회색 `#3D5263`, 중앙을 낮은 대비의 금속색 `#8FA5B0`로 바꿨다. 중앙에만 짧은 반사광을 두고 입구와 끝마개도 좌우 같은 색으로 맞췄다. 비스듬한 끝면을 평평한3px 폭으로 정리해 검집의 대칭을 유지했다.
-- 구성은 R01과 동일한12×32px·공통 손잡이점(5,3), 검집째/뽑은 검/검집3태그·4레이어와 개별3원본이다. 검집 단독21px·전체28px, 상세20배·Player 착용6배를 유지했다. 새 검집2색을 더해13색+투명을 팔레트에 저장했다. 현재 파일은 `/art/archive/weapon/sword-detail-r02/`, 작업본은 `/art/weapon/sword-detail-r02/`이다.
-- 검증:6개 Aseprite 재열기·통합3상태/개별 출력 일치, 실제축x5에 대한 검집 RGBA 좌우 대칭·폭3/길이21, 뽑은 검 전체와 검집째의 손잡이/가드 구간 픽셀 불변을 확인했다. 불투명 픽셀의 평균 가중RGB 밝기가 R01보다 낮음을 확인했고 상세/착용판 잘림을 시각 검토했다. 원본 Player/맵·Unity·추출FX는 변경하지 않았다.
-- 다음: Detail R02의 어두운 대칭 검집에 대한 미술 피드백 → 세부 확정 → Sephiria Sword & Shield 참고 FX 크기·반경·연출. 폭3/전체길이28 확정은 유지한다.
-
-#### Detail R01 — 확정3×28px 검·칼날처럼 보이는 금속 검집
-
-- 사용자 확정/요청(2026-11-15): 너비3px·길이28px로 정하고 처음 첨부한 검3장을 참고해 Aseprite에서 검과 검집을 제작한다. 검집째 휘두르지만 칼날처럼 느껴지도록 팔레트를 설정한다. 크기 선택 이유는 미기록이며 새 디테일·색상은 AI 제작 제안으로 사용자 확정과 구분한다. 검은 곧게 유지한다.
-- [현재 상세 비교판](../art/archive/weapon/sword-detail-r01/previews/sword-and-scabbard-detail-board.png)·[통합 편집 원본](../art/archive/weapon/sword-detail-r01/aseprite/sword-and-scabbard.aseprite): 왼쪽부터 뽑은 검/검집 단독/검집에 넣은 검을20배로 보여주며, 오른쪽은 기존 Player에 착용한 위/아래 방향을 정확6배로 보여준다. 몸은 왼뒤 방향을 유지한다. 전체28px는 손잡이6px+가드1px+검집/칼날21px이며 검집 단독 길이는21px이다. 손잡이·검집·칼날 본체 폭3px, 기존 가드 돌출만5px이다.
-- 레퍼런스 반영: 첫 사진의 밝은 감개·작은 금속 장식, 두 번째의 직선 단날/짧은 가드·검집 형상, 세 번째의 청록/짙은 손잡이 대비를3px 격자에 단순화했다. 곡률은 사용자 요청에 따라 적용하지 않고 큰 술 장식도 확정 폭 밖으로 확장하지 않았다. 검집/칼날 끝만 마지막 행에서 곧은 경사로 깎았다.
-- 팔레트 제안: 검집3열을 어두운 등 `#1C2633`·강철면 `#728A99`·연속 은빛 모서리 `#DCEFF0`로 나눠 밝은 바닥에서도 몸체를 구분하고 칼날처럼 읽히게 했다. 면의 짧은 반사광은 `#A1C4CC`, 뽑은 칼날은 더 밝은 `#F6FAF0`, 감개는 `#D8DDC5`, 작은 가드/입구/끝 손잡이 장식은 낮은 채도의 금색 `#B49B63` 계열이다. 총11색+투명 팔레트를 각 검/검집 및 통합 Aseprite에 저장했다. 자체 발광·FX를 추가한 것은 아니다.
-- 편집 구성: `/art/archive/weapon/sword-detail-r01/aseprite/`의 `sword-drawn.aseprite`, `scabbard.aseprite`, `sword-sheathed.aseprite`는 모두12×32px 좌표계를 유지한다. `sword-and-scabbard.aseprite`는 Grip/Guard/Blade/Scabbard4레이어·sheathed/drawn/scabbard3개 단일프레임 태그이며 모든 파츠의 공통 손잡이점은(5,3)이다. 검집은y7~27 위치를 유지하므로 분리본을 같은 좌표에 놓으면 닫힌 상태와 일치한다. Player 맥락 원본과 상세판까지6개 Aseprite이며 대응 PNG·제작Lua·검사는 같은 보관 폴더에 있다. 작업본은 `/art/weapon/sword-detail-r01/`이다.
-- 검증:6개 Aseprite 재열기/출력 픽셀 대조, 통합3프레임과 개별 출력 일치·팔레트12슬롯 저장, 전체28/검집21px·본체3px·끝면 외 직선축·원본PlayerPNG 대응을 확인했다.20배 상세와6배 착용에서 검집/칼날 구분·잘림 없음을 시각 검토했다. 원본 Player/맵·Unity·추출FX는 변경하지 않았다.
-- 다음: Detail R01의 검/검집 팔레트·손잡이/가드·끝면 피드백 → 해당 원본 수정·세부 확정 → Sephiria Sword & Shield 참고 FX 크기·반경·연출. 폭3/전체길이28은 다시 크기 선택 대기로 돌리지 않는다.
-
-#### R07 — 정확6배·폭3px·길이26/28/30px×검 끝 아래/위
-
-- 사용자 요청(2026-11-15):6픽셀 단위에서 너비3px에 대해 길이26/28/30px를 검 방향이 아래일 때와 위일 때 각각 비교한다. 검집·손잡이 폭은 모두3px이며 전체길이에는 가드·손잡이·검집이 포함된다. 이번 비교 기준이며 최종 선택은 대기 중이다.
-- [1920×1080 비교 PNG](../art/archive/weapon/sword-size-r07/previews/sword-down-up-six-options-1920x1080.png)·[Aseprite 비교판](../art/archive/weapon/sword-size-r07/aseprite/sword-down-up-six-options-1920x1080.aseprite): **윗줄 A/B/C=검 끝 아래26/28/30px, 아랫줄 D/E/F=검 끝 위26/28/30px**이다. 몸은 기존 왼뒤 방향으로 고정했고 검만180° 회전했다. 배경/Player/검 모두 원본1px→화면6×6px이며 화면 기준 검폭18px·길이156/168/180px, Player높이120px이다.
-- 26/30px 아래 방향은 R05 원본과 픽셀이 같고28px는 같은 손잡이를 유지해 검집 길이만 사이값으로 제작했다. 위 방향은12×32px 원본의 수평/수직 반전으로 정확180° 회전했으며 색상·픽셀을 보존한다.3px 손잡이의 실제 중심은 아래(5,3)·위(6,28)로, 각 Player 발밑 기준(-5,+10)px에 동일하게 정렬했다. 이전 비교용slice(6,3)는 실제 중심의1px 오른쪽이므로 이번 회전축과 구분한다. 아래 방향의 기존 몸 대비 픽셀 위치는 그대로다.
-- 카메라중심(232,114)·시야320×180px·16PPU 제작 가정에서 대응 직교크기는5.625다. Player발밑은 각 열x136/232/328, 아래방향y104·위방향y180이다. 결과는 Aseprite 정적 배치이며 최종 Player/무기 연결이나 Unity카메라 변경은 수행하지 않았다.
-- `/art/archive/weapon/sword-size-r07/`에 검6개·9레이어 비교판 총7개 Aseprite, PNG·제작Lua·검사를 보관한다.7개 재열기/출력 대조,26/30px 기존원본 일치·28px치수, 위방향의 정확180°픽셀 대응, 화면검길이156/168/180px·원본Player 대응과6안/라벨 잘림 없음을 확인했다. 작업본은 `/art/weapon/sword-size-r07/`이다.
-- 다음: R07 길이26/28/30px 및 위/아래 방향 피드백 → 선택한 원본의 디테일/피벗 → Sephiria Sword & Shield 참고 FX 크기·반경·연출.
-
-#### R06 — 원본1px을 화면4×4px로 표시한4안
-
-- 사용자 요청(2026-11-15): 픽셀 표시 단위를6에서4로 줄인 게임 화면에서 같은4안을 다시 비교한다. 이번 출력은 정확4배이며 직전 R05의 실제 표시6.75배와 구분한다.
-- [1920×1080 비교 PNG](../art/archive/weapon/sword-size-r06/previews/sword-four-options-1920x1080.png)·[Aseprite 비교판](../art/archive/weapon/sword-size-r06/aseprite/sword-four-options-1920x1080.aseprite): A=폭3/길이26, B=폭4/길이26, C=폭3/길이30, D=폭4/길이30을 같은2×2 위치 관계로 표시했다. 검집·손잡이·가드·Player 원본은 R05와 같고 배경/Player/검을 모두 최근접4배로 표시했다. 화면 기준 Player높이80px, 검길이104/120px, 검집·손잡이폭12/16px이다.
-- 원본 시야480×270px·기존 카메라중심(232,114)·Player4개 원본 배치를 유지했다. 맵 밖 좌우8px/위21px는 기존 바깥 배경색으로 채웠으며 주석 라벨은 화면에 읽기 좋게 별도 배치했다. 환경/Player16PPU 가정에서 대응 직교크기는8.4375지만 **실제 Unity 카메라 설정은 변경하지 않은 Aseprite 정적 비교**이다.
-- `/art/archive/weapon/sword-size-r06/`에 검4개·비교판 총5개 Aseprite와 PNG·제작Lua·검사를 보관했다.5개 재열기/출력 대조, 검4종의 R05 픽셀 일치, 원본 PlayerPNG 대응·실제3/4px폭과26/30px길이·직선축, 화면의4안/라벨 잘림 없음을 확인했다. 작업본은 `/art/weapon/sword-size-r06/`이다.
-- 다음:4배 시야에서 A/B/C/D 선택 또는 조정 → 선택한 원본의 디테일/피벗 → Sephiria Sword & Shield 참고 FX 크기·반경·연출. 표시 배율의 최종 게임 반영은 별도 결정이다.
-
-#### R05 — 검집·손잡이 동일폭3/4px×길이26/30px의4안
-
-- 사용자 요청(2026-11-15): 검집과 손잡이 모두3px인 안/4px인 안, 길이26px/30px를 조합한 총4개를 한 화면에서 비교한다. 이번 비교 조건이며 최종 선택은 대기 중이다.
-- [1920×1080 비교 PNG](../art/archive/weapon/sword-size-r05/previews/sword-four-options-1920x1080.png)·[Aseprite 비교판](../art/archive/weapon/sword-size-r05/aseprite/sword-four-options-1920x1080.aseprite): **A 왼위=폭3/길이26, B 오른위=폭4/길이26, C 왼아래=폭3/길이30, D 오른아래=폭4/길이30**의2×2 배치이다.4개 모두 R04의6.75배 표시를 유지하고 화면을 줄여 붙이지 않았다.
-- Aseprite1.3.18.6에서 검4개를12×32px·검집/손잡이/금속3레이어로 작성했다. 손잡이의 테두리를 포함한 전체 폭과 상단 금속 마개를 검집과 같은3/4px·같은 수직축으로 맞췄다. 손잡이 길이·피벗은 그대로 유지하고 전체26/30px 차이는 검집 길이에 적용했다. 가드만 양쪽1px씩 돌출한5/6px이며 길이에는 손잡이·가드·검집을 모두 포함한다.
-- 현재 카메라5·환경16PPU·Player16PPU 제작 가정, 위쪽 계열 왼뒤 원본·왼허리/몸 앞 표시·직선축은 R04와 같다. Player 발밑은 원본 맵의 A(168,104)/B(296,104)/C(168,160)/D(296,160)이며 손잡이점은 각 발밑 기준(-4,+10)px이다. 실제 게임 캡처·Unity 설정 변경이 아닌 정적 아트 미리보기다.
-- 원본·PNG·제작Lua·검사는 `/art/archive/weapon/sword-size-r05/`, 작업본은 `/art/weapon/sword-size-r05/`에 있다. 검4개와7레이어 비교판 총5개 Aseprite를 재열기해 출력 픽셀과 대조했다. 가드 외 모든 불투명 행의3/4px 폭·일직선, 전체26/30px, 원본 PlayerPNG 대응·Player/맵 파일 불변과4안 잘림 없음을 확인했다.
-- 다음: R05 A/B/C/D 선택 또는 크기 조정 → 선택한 원본의 디테일/피벗 → Sephiria Sword & Shield 참고 FX 크기·반경·연출.
-
-#### R04 — 길이26px·폭4/3/2px의1920×1080 시야 비교
-
-- 사용자 요청(2026-11-15): 이번 비교는 길이26px로 고정하고 width4/3/2px를1920×1080 인게임 모습으로 배치한다. 비교 기준 지정과 최종 크기 확정을 구분하며 폭 선택은 대기 중이다.
-- [같은 배율 나란히 비교](../art/archive/weapon/sword-size-r04/previews/width-comparison-1920x1080.png)와 각각 중앙에 한 명씩 배치한 [폭4px](../art/archive/weapon/sword-size-r04/previews/width-4px-1920x1080.png)·[폭3px](../art/archive/weapon/sword-size-r04/previews/width-3px-1920x1080.png)·[폭2px](../art/archive/weapon/sword-size-r04/previews/width-2px-1920x1080.png)를 제작했다. 네 PNG 모두1920×1080이다. 개별3프레임은 배경·Player·위치가 같고 검집 폭과 해당 표기만 다르다.
-- Aseprite1.3.18.6에서 직선 검3개를12×32px·3레이어로 작성했다. 길이는 손잡이/가드/검집 포함26px이고 손잡이·가드는 동일하게 유지했다. 폭은 검집 본체의 매행4/3/2px를 뜻한다.4px안은 R03 B원본과 픽셀이 동일하다.3px안은 정수 픽셀 배치로 실루엣 중심이 짝수폭보다0.5px 왼쪽이며 비교용 손잡이점(6,3)은 동일하다.
-- 배경은 `laboratory/final/aseprite/connected-rooms.aseprite`, Player는 기존 `idle-left-back.aseprite` 첫 프레임이다. 카메라/발밑을 원본(232,114)에 두고 손잡이는 발밑 기준(-4,+10)px·수직·몸 앞 표시를 유지했다. 원본 파일은 수정하지 않았다.
-- 시야 근거: 현재 `GameCamera.DefaultZoom=5`·`WorldCamera.prefab`의5와 환경16PPU에서1080/(2×5×16)=6.75배로 계산했다. 시야284.444…×160 원본px, 검 전체175.5화면px·검집폭27/20.25/13.5화면px를 최근접 샘플링했다. 이전 아트 비교의 정수6배와 다르다. **최종 Player 시트는 아직 Unity 미연결이므로 Player의16PPU는 환경과 맞춘 제작 가정이며, 결과는 실제 게임 캡처가 아닌 Aseprite 정적 배치 미리보기다.** UI·게임 연결·카메라 설정을 변경하지 않았다.
-- 원본은 `/art/archive/weapon/sword-size-r04/aseprite/`의 검3개·개별1080p3프레임·동일배율 비교판 총5개, PNG·제작Lua·검사기록도 같은 폴더에 보관한다. 작업본은 `/art/weapon/sword-size-r04/`이다.5개 native 재열기와 PNG픽셀 대조,26px/직선폭3안·4px이전원본 일치·Player원본PNG 대응을 확인했고 네 화면의 배치/잘림을 시각 검토했다.
-- 다음: 폭4/3/2px 선택 또는 조정 → 선택한 원본의 디테일/피벗 → Sephiria Sword & Shield 참고 FX 크기·반경·연출. Unity 무기 적용과 실제 플레이 검증은 이번 작업 범위가 아니다.
-
-#### R03 — Aseprite 실제 픽셀 검과 Player 시트 비교
-
-- 사용자 요청(2026-11-15): 첨부 검3장을 참고하되 반드시 Aseprite에서 휘지 않은 검을 제작하고, 상단을 바라보는 현재 Player의 왼쪽 착용 모습을 크기별로 보여준다. 크기부터 고른 뒤 디테일과 FX를 정한다. A~F 치수는 여전히 AI 제안이며 사용자 최종 선택이 아니다.
-- [현재 비교 PNG](../art/archive/weapon/sword-size-r03/previews/sword-size-comparison.png)·[편집 원본](../art/archive/weapon/sword-size-r03/aseprite/sword-size-comparison.aseprite): A/B/C는 전체 길이22/26/30px·검집 폭4px, D/E/F는 같은 길이·폭6px이다. 길이는 손잡이·가드·검집을 포함하며 Player 높이20px 대비110/130/150%이다. 모든 캐릭터·검을 정확히6배 확대했고 상단에는 현재4방향 원본 시트를 함께 놓았다.
-- 실제 Aseprite1.3.18.6 Lua API에서 픽셀을 그려 작성했다. 검6개는12×32px·검집/손잡이/금속장식3레이어, 착용 비교6개는32×40px·원본 Player/검2레이어·왼뒤/오뒤2프레임이다. 통합 비교판은1440×1110px·9레이어이다. 개별 Aseprite와 투명PNG, 제작Lua 및 검사 결과를 같은 보관 폴더에 두고 작업본은 `/art/weapon/sword-size-r03/`에 유지한다.
-- Player는 `art/player/aseprite/idle/idle-left-back.aseprite`·`idle-right-back.aseprite`의12×20px 첫 프레임을 그대로 렌더했다. 기존20×20 PNG와(4,0) 복원 비교가 일치하며 원본 Player를 다시 그리거나 수정하지 않았다. 별도 직북 Sprite가 없어 기존 위쪽 계열인 왼뒤·오뒤를 함께 표시했다.
-- 배치: R02의 원작 대기 무기점을 픽셀 격자에 맞춰 발밑 중앙 기준(-4,+10)px로 반올림했다. 검 원본의 비교용 손잡이점(6,3)을 그 위치에 맞추고 수직으로 세웠다. 비교판에서는 검이 몸 앞에 표시되어 형태가 잘 보이도록 했으며 게임의 최종 피벗·가림 순서 확정은 아니다. 금색 가드·청록 손잡이·어두운 검집은 크기 판단용 공통 디자인이다.
-- 검증: 저장한13개 Aseprite를 다시 열어 검/통합판7개와 비교6개의12프레임을 출력 픽셀과 대조했다. 길이6개, 검집의 매행 일정한4/6px 폭·수직축, Player 원본PNG 대응과 원본3파일 SHA-256 불변을 확인했다. 통합판의6안·12자세·표기·잘림을 시각 확인했다. 상세는 `qa/aseprite-validation.json`이다.
-- 다음: R03 A~F 또는 중간 길이/폭 선택 → 해당 픽셀 원본의 디테일·피벗 확정 → `/art/weapon/sephiria-sword-fx/` 참고 FX 크기·반경·연출. 크기 시안 제작 완료와 최종 무기 확정·Unity 적용을 구분한다. 추출 FX·게임 파일은 변경하지 않았다.
-
-#### R02 — 직선 검집·두께와 길이·실제 무기점
-
-- 사용자 후속 요청(2026-11-15): 기울기 없이 곧게 비교하고 검집째 빠르게 휘두르는 공격 수단이 분명하게 보이도록 더 두껍고 크게 만든다. 플레이어 중심으로부터의 이격은 Sephiria 실제 Weapon point를 참고한다. 길이·두께 최종 선택은 아직 없음.
-- [현재 시트 PNG](../art/archive/weapon/sword-size-r02/sword-size-thickness-comparison.png): A/B/C는 전체 길이22/26/30px·검집 폭4px, D/E/F는 같은 길이·폭6px의 **표시 환산 치수**이다. Player20×20 PNG를8배 표시하며 검은 수직·같은 기준점이다. [편집 가능한 비교 HTML](../art/archive/weapon/sword-size-r02/sword-comparison.html)은 기준점 표시 및 몸 앞/뒤 가림 비교를 제공한다. 생성 검 원본·Player 참조 복사본·프롬프트·레이아웃/검사 JSON도 같은 폴더에 보관한다. 실제 게임용 픽셀 Sprite/Aseprite 완성본은 아니다.
-- 무기점 근거: `Weapon_SwordAndShield_1.prefab`의 `mainShoulderOffset=(0.15625,0.4375)`, `PlayerAvatar.prefab`의 연결된 `AnimationWrapper/Shoulder`(axis=YAxis, fat/tallScale=1), `WeaponSimple.Initialize`의 mainWeaponParent 부모 연결/local=0, `WeaponShoulder.Aim(true)`의 y+0.0625를 확인했다. 실제 `AnimationWrapper.controller` layer1 `SwrodAndShield`→`SwordAndShield_Idle`의 motion GUID `8d0375e80eb10ae479d1de3bce66e3ae`는 `SwordAndShield_Idle.anim`이며 첫 키의 `Shoulder/Weapon=(0.078,0.104)`이다. **16PPU·북쪽·대기 첫 프레임에서 원점 대비(3.748,9.664)px**이며 대기 중(4.116,9.728)px까지 미세 변동한다. `SwingPoint`의 FX 거리와 구분한다.
-- 적용 차이: 원작은 조준 x 부호로 root를 반전하므로 왼쪽 착용 비교에서는 x=-3.748을 사용하고 Player 발밑 중앙을 원점으로 대응했다. 원작의 정확한 북쪽 입력Δx=0은 오른쪽 방향이며 이번 왼쪽 모습은 그 위치를 거울 대응한 비교 조건이다. 원작 대기 회전100°는 사용자 요청에 따라 수직으로 변경했다. 검의 손잡이 내 기준점(전체 높이의13%)을 무기점에 정렬하고 잘 보이도록 기본 몸 앞 표시를 사용했으며 원작의 몸 뒤 정렬은 HTML 버튼으로 별도 확인한다. 원작 실행 화면 재현/측정이나 게임 코드 변경이 아니다.
-- 검증: 최종1320×1086 시각 검토에서6개 길이/폭·수직축·잘림 없음을 확인했다. 실제 브라우저 레이아웃의 길이176/208/240px(8배), 폭 환산4/6px, 기준점 최대 오차0.002원본px(CSS 반올림)를 확인했다. Player 참조 복사본 SHA-256 일치와 검에 가리지 않은 원본 불투명 픽셀823샘플의 RGB 불일치0을 확인했다. 상세는 [검사 요약](../art/archive/weapon/sword-size-r02/validation-summary.json)이다.
-- 다음: A~F 또는 중간 길이/두께 피드백 → 해당 크기의 실제 픽셀 검·피벗/세부 디자인 확정 → 기존 `/art/weapon/sephiria-sword-fx/` 참고 FX 크기·반경·연출. 현재 Unity·원본 Player·추출 FX는 변경하지 않았다.
-
-#### R01 — 최초 길이 느낌 비교 이력
-
-- 사용자 요청(2026-11-15): 첨부한 가늘고 완만하게 휜 검3장과 현재 Player를 비교하여 먼저 크기를 선택하고 이후 디테일, FX 크기·반경·연출을 정한다. 몸체 상단 방향·왼쪽 허리 착용을 비교 조건으로 지정했다. FX 참고 입력은 `/art/weapon/sephiria-sword-fx/`이며 이번에는 변경하지 않았다. [요청 기록](archive/01_Choice/Sword_Size_First_20261115.md).
-- 비교 기준: 현재 `art/player/png/frames/idle/idle-left-back-01.png`의 왼뒤 Idle 첫 프레임(20×20 셀, 불투명 몸체12×20px)을 참조했다. 별도 직북 Sprite가 없어 기존 왼뒤 방향을 사용했다. 검은 단순한 청록 손잡이·작은 금색 가드·어두운 검집으로 통일한 제안이며 디테일 확정이 아니다.
-- 결과: built-in `image_gen`으로 같은 몸체 크기·허리 위치의 A 짧게/B 보통/C 길게/D 더 길게/E 가장 길게 비교판을 생성했다. [비교 PNG](../art/archive/weapon/sword-size-r01/sword-size-comparison.png)와 [생성 프롬프트](../art/archive/weapon/sword-size-r01/generation-prompt.txt)를 보관하고 `/art/weapon/sword-size-r01/`에도 PNG를 두었다.
-- 확인과 한계: 최종1536×1024 PNG의5개 크기·상단 방향·왼쪽 허리 착용·끝부분 잘림 없음을 시각 확인하고 작업본/보관본 SHA-256 일치를 확인했다. 초기 생성본의 비율 표시가 실제 길이와 맞지 않아 수정본에서 숫자를 제거했다. **정성적 크기 선택용 생성 이미지이며 원본 Player 픽셀 보존·정확한 길이 비율·Unity 스케일 검증을 뜻하지 않는다.** 게임용 Sprite/Aseprite, 크기 선택, 세부 디자인, FX 제작·연결은 아직 미완이다. 선택 후 원본 Player를 보존한 실제 픽셀 길이·피벗을 정한다.
+- **팔레트:** 밝은 벽·웜그레이 바닥 `#B0ADA1`·약한 패턴을 사용한다. 바닥 무늬·크랙·대리석 위치를 보존하고 최초 명도 편차를0.25배로 낮춘다. 일반공격 검흔14PNG의 `#E5D2FF`·`#C3EAFF`, 형태·alpha·외곽선은 변경하지 않는다. 원본 sRGB 상대휘도 대비1.606/1.771은 계산값이며 움직이는 가독성 실측이 아니다.
+- **파일과 참조:** 실제 출력은 `project/Assets/Art/Environment/Laboratory/`의 Textures/Data/Tiles/Animations/Prefabs에 있다. PNG와 같은 이름·기존 `.meta`/GUID·Sprite 자르기·프리팹을 유지한다. Aseprite 저장만으로 PNG·JSON이 자동 동기화되지는 않는다. 팔레트 작업에서 Map을 재생성하거나 공유 `LaboratoryUnlit.mat`의 tint로 전체 색을 바꾸지 않는다.
+- **가져오기:** Textures는16PPU·Point·무압축·Mipmap없음이다. 맵 Atlas의4px padding/Bilinear는 타일 경계 보정 설정으로 유지한다. 환경 Tile의 ColliderType은None이며 실제 벽/문 Collider와 구분한다. 입출구 Animator는 `Open`/`Close`, 출구 activation 점멸·점등과 closing/closed를 사용한다.
+- **좌표와 변경 범위:**16PPU·scale1에서1셀=1unit, 320×180 원본 시야의 직교 카메라 크기는5.625다. 현재 방·복도·문 크기와 PPU는 추후 조정 가능한 제작 기준이다. 정수 셀 재배치 때 출입구·벽·재질 경계·문 앵커를 함께 조정하고 PPU 변경은 Grid·Sprite·카메라·충돌 배치를 함께 확인한다. legacy rect[x,y,w,h]의 배치는 `(x+w/2)/PPU, (H-y-h)/PPU`이며 문 피벗은 아래 중앙이다.
+- **실제 확인:** 원본과 최종/Unity PNG3개 일치·문47프레임·기존GUID·검흔 보존을 확인했다. 격리 Unity에서43타일·11층·9클립·47프레임·9전이를 확인했으며, 실제 Map·Boss/수정·벽/문·카메라·Player 연결은3.3.10에서 별도 확인했다. 팔레트 변경 당시 자동 import 완료와 움직이는 검흔의 최종 가독성은 미확인 범위로 유지한다.
+
+#### 자수정 체크포인트
+
+현재 편집 원본은 [자수정 final](../art/archive/environment/amethyst/final/README.md)의 비활성·활성 부유 Aseprite다. 사용자 수정 형태·R05 색상과 R06 배치·부유를 유지하며 두 상태·8프레임을 준비했다. 실제 F 상호작용·완료 회복/저장·활성색·입구 개방 연결은 F-P10·3.3.10을 따른다. 원본 픽셀·프레임 시간과 기존GUID를 유지하고 스크립트 재생성으로 사용자 편집을 덮어쓰지 않는다.
+
+### 3.3.7 고정 검의 확정 원본
+
+사용자는 **검집·손잡이 폭3px·전체길이28px**, 어둡고 좌우 대칭인 검집을 갖는 Detail R02를 기본 검으로 최종 확정했다. 현재 편집 기준은 [weapon.aseprite](../art/archive/weapon/weapon.aseprite)이며 검집째 검·뽑은 검·검집 태그를 보존한다. 크기·방향 비교안과 폐기된6캡처 배치 파일은 현재 규격의 원본으로 사용하지 않는다.
+
+검은 Player 한 점 주위의 단순 회전만으로 처리하지 않고 프레임별 위치·회전으로 움직인다. 원작 `WeaponSimple.Initialize`의 부착, `WeaponControllerSimple.Aim`의 Shoulder 조준과 실제 공격 클립의 Position/Euler 곡선을 참고했으며, 캡처에서 가려진 손잡이·끝점을 추정한 값을 원작의 정확한 피벗으로 확정하지 않는다. 원작 Sprite11×28·연속좌표pivot(5.5,22), Shoulder오프셋(2.5,7)px와 우리 고정 검의 픽셀 규격은 구분한다.
+
+일반공격의 현재 실제 모션·검끝 궤적·검기와 피해 범위는2.1.3·3.3.8·3.3.10의 연결 결과를 따른다. 검기는 검끝 궤적 바깥까지 확장해 피격 가능 범위를 알리되, 아트의 크기만으로 피해 판정을 새로 정하지 않는다. 사용자 결정과 이유는 [검 선택 기록](archive/01_Choice/Sword_Size_First_20261115.md)에 남긴다.
 
 ### 3.3.8 세피리아 대검 1·2타 공격 모션 정밀 분석
 
-- **R07 흰 배경 대조 요청(2026-11-16):** 사용자는 첨부R07의 모션/검기가 잘못됐다고 지적하며 구분하기 위해 흰 배경 출력을 요청했다. [동일54장 흰 배경](../art/archive/weapon/player-combo-preview-r07/attack-03-all-frames-white.png)은 배경을흰색/글씨를어둡게만 바꾼 별도 비교판이다. Player·검·검기 픽셀/위치와 기존R07/R09를 보존했다. 이는 배경 출력 완료이며 사용자가 지적한 시각 오류의 해결·미술 승인과 구분한다.
+- **R07 흰 배경 대조 요청(2026-11-16):** 사용자는 첨부R07의 모션/검기가 잘못됐다고 지적하며 구분하기 위해 흰 배경 출력을 요청했다. 동일54장 흰 배경은 배경을흰색/글씨를어둡게만 바꾼 별도 비교판이다. Player·검·검기 픽셀/위치와 기존R07/R09를 보존했다. 이는 배경 출력 완료이며 사용자가 지적한 시각 오류의 해결·미술 승인과 구분한다.
 
 #### Player·검 포함3콤보 프레임 — 2026-11-16
 
 - **현행 R14 /23·24번째 보라1단계 단독:** 사용자 후속 요청으로 R13의23번째(없음)를보라1단계로,24번째(두색1단계)를보라1단계만으로바꿨다. **23·24는파랑없음,25부터는기존배치유지**다. 보라V1=23~25,파랑V1=25~26이며보라26 V2선행/35동시잔광종료·36부터없음/모션1타1~24+2타16~45/겹침만좌파랑우보라가림을유지한다. [흰전체54장](../art/archive/weapon/player-combo-preview-r14/attack-03-all-frames.png) · [느린GIF](../art/archive/weapon/player-combo-preview-r14/attack-03-preview.gif) · [안내/검사](../art/archive/weapon/player-combo-preview-r14/README.md).23·24의온전한보라1895픽셀/파랑없음·검54포즈·나머지52개native/4x바이트동일·GIF54장·메타데이터54단계일치를확인했다.1·2타와원본이미지는유지했다. 이후 사용자 승인에 따라 실제 Player에 연결·검증했으며 현행 구현은2.1.3을 따른다.
 
-- **이전 R13 / 사용자 번호 오독 정정 후 새 주문:** **1타1~24 + 2타16~45 = 54장**을 보간/추가 대기 없이 직접 연결한다. 검기는 원래1타보라+반전한2타파랑의 온전한 원본을 합치며 겹친 픽셀만x35 기준왼쪽파랑/오른쪽보라가앞이다. 비겹침은그대로보존한다.24번째동시시작/보라26번째2단계선행/동시종료가확정방향이다. [흰배경전체54장](../art/archive/weapon/player-combo-preview-r13/attack-03-all-frames.png) · [느린GIF](../art/archive/weapon/player-combo-preview-r13/attack-03-preview.gif) · [배치/검사안내](../art/archive/weapon/player-combo-preview-r13/README.md). 이 새 주문이 아래R03~R12 연결/이동안을 대체한다.
+- **이전 R13 / 사용자 번호 오독 정정 후 새 주문:** **1타1~24 + 2타16~45 = 54장**을 보간/추가 대기 없이 직접 연결한다. 검기는 원래1타보라+반전한2타파랑의 온전한 원본을 합치며 겹친 픽셀만x35 기준왼쪽파랑/오른쪽보라가앞이다. 비겹침은그대로보존한다.24번째동시시작/보라26번째2단계선행/동시종료가확정방향이다. 흰배경전체54장 · 느린GIF · 배치/검사안내. 이 새 주문이 아래R03~R12 연결/이동안을 대체한다.
 - **R13 노출·검사:** 파랑은24~26 V1/27~29 V2/30~32 V3/33~35 V4,보라는24~25 V1/**26~29 V2**/30~32 V3/33~35 V4다.두색36부터없음이며 구체종료35/나머지3칸유지는제작배치다. 지정54포즈의검RGBA/피벗/각도/정렬·모든비겹침/겹침·알파합집합·54native/4x/흰표·GIF/CSV를대조했다.26번째보라비겹침201/파랑비겹침1784/우측겹침보라앞111px를모두보존했다.1·2타/원본PNG/native는유지하고export.lua·frames.json만새54칸색별단계와동기화했다. Aseprite임시출력PNG5개바이트동일/JSON일치도확인했다. 몸체는고정이며Unity코드/클립/씬은변경하지않았다. 기술일치와사용자최종미술승인은구분한다.
 - **직전 R12 중단 이력:** R07의37~49 VFX13칸을30~42로옮긴전체표/GIF와복사검사는완성됐으나사용자가프레임오독을정정하고처음부터재주문해현행으로채택하지않았다. R13의원본/배치로사용하지않으며이력만보존한다.
 
-- **이전 R11 / 당시 사용자 확정과 제작 적용안:** 사용자 시각 답변(2026-11-16)으로 **36번째는 작은 꼬리가 아니라 큰 호부터 시작하고 이후 VFX 전체 순서를 유지하며 Player·검은 변경하지 않음**을 확정했다. 이 답변이R09/R10의 시작 모양 해석을 정정한다. 실제 R07 PNG의 큰 양쪽 호부터 마지막 잔광까지 표시19칸(원본31~49)을36~54에 일대일 배치한 것은 누락 방지를 위한 이번 제작 적용안이다. 구체19칸 배치의 사용자 최종 미술·타이밍 승인은 미확정이다. [전체54장](../art/archive/weapon/player-combo-preview-r11/attack-03-all-frames.png) · [노출/검사/안내](../art/archive/weapon/player-combo-preview-r11/README.md). 이유 미기록. Unity 미적용이다.
+- **이전 R11 / 당시 사용자 확정과 제작 적용안:** 사용자 시각 답변(2026-11-16)으로 **36번째는 작은 꼬리가 아니라 큰 호부터 시작하고 이후 VFX 전체 순서를 유지하며 Player·검은 변경하지 않음**을 확정했다. 이 답변이R09/R10의 시작 모양 해석을 정정한다. 실제 R07 PNG의 큰 양쪽 호부터 마지막 잔광까지 표시19칸(원본31~49)을36~54에 일대일 배치한 것은 누락 방지를 위한 이번 제작 적용안이다. 구체19칸 배치의 사용자 최종 미술·타이밍 승인은 미확정이다. 전체54장 · 노출/검사/안내. 이유 미기록. Unity 미적용이다.
 - **R11 보존·시각 검사 결과:**36번째 큰 양쪽V1과54번째 마지막V4 잔광을 전체표에서 확인했다. 원본 표시19칸의 순서와 RGBA가 결과36~54와 일대일 일치하고54 Player·검 base 픽셀/좌표/회전/앞뒤/시간·1~35 native/4x 바이트·원본 해시를 보존했다.1·2타와 native 원본4장의 이미지 형태·크기는 변경하지 않았다. 이 확인은 새 판의 사용자 미술 승인과 구분한다.
-- **R09/R10 시작 모양 해석 오류:** R10은 실제 R07 PNG의44번째 이후를36번째부터 직접 분리·복사했고54 body/sword base·원본 재합성·11칸 대응·입력 해시를 확인했다([이전 대조판](../art/archive/weapon/player-combo-preview-r10/README.md)). R10 투명54장은R09와 픽셀동일하고 독립 재검사에서도 그 데이터의 누락·순서 오류는 찾지 못했지만36번째 작은 꼬리 시작은 사용자 의도와 달랐다. 기술적 일치 검사를 시각 의도 충족으로 취급한 해석을 큰 호 시작 답변으로 정정한다.
-- **이전 R09 / 실제 제공 자료 전체 VFX 트랙 이동·보존 확인:** 원본44번째부터 실제 자료 끝까지의 VFX 트랙 전체를8칸 앞당겨36번째부터 시작시켰다. Player·검 프레임과 원본 VFX의 형태/크기는 유지했다. 최초 첨부는 R07 전체54장표와2100×2825 RGBA 픽셀이 완전히 일치한다. [이전 전체54장](../art/archive/weapon/player-combo-preview-r09/attack-03-all-frames.png) · [이전 노출표/안내](../art/archive/weapon/player-combo-preview-r09/README.md). R08의44→38 한 칸 이동/44제거는 이 전체 트랙 이동으로 대체됐다. 모든 원본 보존·Unity 미적용이다.
-- **R09 노출·보존 검사 이력:** 원본44~54의11노출칸(표시6+빈5)을36~46에 일대일 대응시켜 모든 FX RGBA 해시가 일치했다. 양쪽 꼬리60px×3칸/잔광10px×3칸/투명5칸의 순서·간격을 유지했다([보존 검사](../art/archive/weapon/player-combo-preview-r09/vfx-preservation.json)).36~38=P3/B3 작은 꼬리,39~41=P4/B4 잔광,42~54=없음은 이전 해석의 배치다. 검54 RGBA·비VFX필드·BODY 배치·기준54재합성·VFX영역내변화를 확인했고 R08 대비12장 변경/나머지42장 native/4x 바이트동일·1·2타/원본 보존을 확인했다. 이 검사 이력을R11의 현재 노출표나 사용자 의도 충족으로 사용하지 않는다.
+- **R09/R10 시작 모양 해석 오류:** R10은 실제 R07 PNG의44번째 이후를36번째부터 직접 분리·복사했고54 body/sword base·원본 재합성·11칸 대응·입력 해시를 확인했다(이전 대조판). R10 투명54장은R09와 픽셀동일하고 독립 재검사에서도 그 데이터의 누락·순서 오류는 찾지 못했지만36번째 작은 꼬리 시작은 사용자 의도와 달랐다. 기술적 일치 검사를 시각 의도 충족으로 취급한 해석을 큰 호 시작 답변으로 정정한다.
+- **이전 R09 / 실제 제공 자료 전체 VFX 트랙 이동·보존 확인:** 원본44번째부터 실제 자료 끝까지의 VFX 트랙 전체를8칸 앞당겨36번째부터 시작시켰다. Player·검 프레임과 원본 VFX의 형태/크기는 유지했다. 최초 첨부는 R07 전체54장표와2100×2825 RGBA 픽셀이 완전히 일치한다. 이전 전체54장 · 이전 노출표/안내. R08의44→38 한 칸 이동/44제거는 이 전체 트랙 이동으로 대체됐다. 모든 원본 보존·Unity 미적용이다.
+- **R09 노출·보존 검사 이력:** 원본44~54의11노출칸(표시6+빈5)을36~46에 일대일 대응시켜 모든 FX RGBA 해시가 일치했다. 양쪽 꼬리60px×3칸/잔광10px×3칸/투명5칸의 순서·간격을 유지했다(보존 검사).36~38=P3/B3 작은 꼬리,39~41=P4/B4 잔광,42~54=없음은 이전 해석의 배치다. 검54 RGBA·비VFX필드·BODY 배치·기준54재합성·VFX영역내변화를 확인했고 R08 대비12장 변경/나머지42장 native/4x 바이트동일·1·2타/원본 보존을 확인했다. 이 검사 이력을R11의 현재 노출표나 사용자 의도 충족으로 사용하지 않는다.
 - **이전 R11 출력 메타데이터 동기화 이력:** 당시 작업실export.lua와png-attack3/frames.json이 R11의 실제54노출칸과 일치하며 Aseprite 배치 종료0·오류 출력0·출력PNG5개 바이트동일·출력JSON 일치를 확인했다. native 원본4장과 이미지 형태/크기는 변경하지 않았다. R09 배치와 당시 출력 검사 결과는 이전 이력이다.
 - **자료 확인 한계:** 추가 첨부의 라벨과 저장 원본은54까지여서 사용자가 언급한55·56 및 총17개는 자료 불일치로 미확인이고 이번 검사가 그 수량·구간까지 검증한 것은 아니며, 필요 시 추가 원본에 같은8칸 이동을 적용한다.
 
 - 모션은 **1타F1~31 + 2타F23~45 = 54장**을 보간·추가 대기 없이 연결한다.1·2타의37/45표본과출력,3타검포즈54개는유지한다. 마지막표본은원래종료경계그림이다.
-- 번호는 사용자 답변으로 **첨부한3타표의첫그림=1,왼쪽→오른쪽→다음행**으로확정했다. [이전R07](../art/archive/weapon/player-combo-preview-r07/README.md) · [40~49비교](../art/archive/weapon/player-combo-preview-r07/attack-03-ordinal40-49.png) · [3타전체54장](../art/archive/weapon/player-combo-preview-r07/attack-03-all-frames.png).
+- 번호는 사용자 답변으로 **첨부한3타표의첫그림=1,왼쪽→오른쪽→다음행**으로확정했다. 이전R07 · 40~49비교 · 3타전체54장.
 - **R07 제작 이력 / R09·R10의 이동 원본:** 당시 첨부3장에따라40번째큰파랑+오른쪽보라남은호,41~43양쪽긴검기,44~46작은꼬리,47~49마지막잔광,50부터검기없음으로반영했다. R06의40번째작은보라잔광선택을대체했고 당시1~39와50~54를보존했다. 이 배치 전체가 현재 노출표인 것은 아니다.
 - R07의 앞 구간은31~33두큰호/34~36양쪽남은호/37~38첫큰보라만/39두큰호였다. R11은1~35의 기존 그림을 유지하고36번째부터 원본31~49의19 VFX 노출 칸을 순서대로 배치한다. 현재 제작 적용안의 노출표는 R11의manifest.json/vfx-timing.csv를 기준으로 하며4장source native는 원본 단계 보관용으로 구분한다.
 - 검기합성은온전한1타보라원본+좌우반전2타하늘원본을같은피벗에겹친다. 중앙x35기준겹침왼쪽하늘/오른쪽보라가앞이고비겹침은전부보존한다. R07 당시40번째는보라312px중겹친111px가큰파랑을덮었다. 원본을반으로잘라붙이거나새기울임·거리·크기변형을하지않는다.
-- 현행Player뒷방향첫20×20셀고정자세/검집포함weapon_00의7×29셀/검기70×66·피벗(35,33)·Player상대(+2.5,+24)px·16PPU를유지한다. R07 당시R06대비40~49의10장만변경했고나머지44장·검54포즈·1/2타168출력·원본보존과첨부형태대조를확인했다. R09의 실제 보존 검증은 위 결과를 따른다. [첨부근거](../art/archive/weapon/player-combo-preview-r07/references/)는R07에보관했다.
+- 현행Player뒷방향첫20×20셀고정자세/검집포함weapon_00의7×29셀/검기70×66·피벗(35,33)·Player상대(+2.5,+24)px·16PPU를유지한다. R07 당시R06대비40~49의10장만변경했고나머지44장·검54포즈·1/2타168출력·원본보존과첨부형태대조를확인했다. R09의 실제 보존 검증은 위 결과를 따른다. 첨부근거는R07에보관했다.
 - 큰피해1회방침은유지한다. 몸체공격아트·실제Unity코드/클립/씬적용·실행검증은이번작업에서하지않았다. 이전R01~R06은제작·정정이력이며사용자최종미술승인으로기록하지않는다.
 
 #### 3타 원래1·2타 검기 합성 — 2026-11-16
@@ -6437,7 +6041,7 @@ Trigger Twins의 출입구·코너에서 떨어진 직선 북벽 `x=5`를 기준
 
 #### Player 포함 프레임 — 2026-11-16
 
-- 사용자 요청: 이전 우리 검/원작 모션 프레임에 우리 Player Sprite도 함께 넣는다. [현재 결과 안내](../art/archive/weapon/sephiria-motion-our-player-r02/README.md), [1타30fps](../art/archive/weapon/sephiria-motion-our-player-r02/attack-01-all-30fps.png), [2타30fps](../art/archive/weapon/sephiria-motion-our-player-r02/attack-02-all-30fps.png).
+- 사용자 요청: 이전 우리 검/원작 모션 프레임에 우리 Player Sprite도 함께 넣는다. 현재 결과 안내, 1타30fps, 2타30fps.
 - 현재 뒷방향 Idle 첫20×20셀을16PPU·발밑 중앙 피벗으로 놓고 몸체 자세를 고정했다. 검 p(t)/φ(t)와 FX 거리/시간/픽셀은 이전124표본과 같다. 원작 이벤트의 검 앞뒤 전환(1타F11,2타F9)을 적용했다. 외부 FX와 Player SortingGroup의 실제 전체 정렬은 실행 미관측이며, 합성에서는 FX를 몸 앞/전경 검 뒤에 표시하는 검토용 순서를 사용한다.
 - 30fps19/23·60fps37/45표본의4비교판·248투명PNG를 저장했다. 현재 Player native/final/Unity 픽셀·피벗과 이전 모션 데이터 일치·입력 해시·잘림을 확인했다. 몸체 공격 자세 제작·게임 코드/씬 적용·원작 렌더 캡처와 구분한다.
 - 좌표식 설명: 원작 C#에 보고서의 식이 그대로 존재하는 것이 아니라, 원작 Transform 계층의 거리·조준 회전과 에셋 키의 Animator 보간 결과를 분석자가 수식으로 표현한 것이다. 수치와 키는 원본에서 읽었으며 상세는 원작 분석3.2에 명시했다.
@@ -6445,7 +6049,7 @@ Trigger Twins의 출입구·코너에서 떨어진 직선 북벽 `x=5`를 기준
 #### 우리 검 교체 프레임 재구성 — 2026-11-16
 
 - 사용자 요청: 원작의 VFX 간격·피벗으로부터 거리·움직임을 같게 유지하고 검만 현재 우리 Sprite로 바꿔1·2타 전체 프레임을 다시 출력한다. 현재 게임이 쓰는 `weapon.aseprite` 첫 태그/Unity `weapon_00`의7×29px 검집째 이미지를 사용한다. 기존 오래된 Detail R02 작업본으로 되돌리지 않는다.
-- [결과 안내](../art/archive/weapon/sephiria-motion-our-sword-r01/README.md), [1타30fps 전체](../art/archive/weapon/sephiria-motion-our-sword-r01/attack-01-all-30fps.png), [2타30fps 전체](../art/archive/weapon/sephiria-motion-our-sword-r01/attack-02-all-30fps.png).30fps19/23표본과60fps 보간37/45표본의4비교판·개별 투명PNG248개(native/6x)·재현스크립트/manifest를 보관했다.
+- 결과 안내, 1타30fps 전체, 2타30fps 전체.30fps19/23표본과60fps 보간37/45표본의4비교판·개별 투명PNG248개(native/6x)·재현스크립트/manifest를 보관했다.
 - 적용: 검 색·크기·픽셀을 유지하고 아래향을 위향으로180° 정렬해 같은 손잡이 피벗에 놓았다. 원작 p(t)/φ(t)·16PPU·Shoulder(2.5,8)px·검기(2.5,24)px·FX4장의 원본 크기와 피벗/반전·F11/F7발생·20Hz명목 간격을 유지한다. 검 길이 차이로 생기는 칼끝과 검기 사이 간격은 자동 보정하지 않는다.
 - 확인: native 레이어 합성/Unity 첫 셀 전픽셀 일치,8입력 해시 보존·124위치/각도/시간 표본 대조·검기 별도 합성 일치·248PNG 규격/잘림·4비교판과 독립 검토 완료. 정적 Player 상대 재구성이며 원작 렌더 캡처·우리 게임의 공격 코드/씬 연결·최종 모션 승인은 별도다. 명목 시간과 실제 Update 차이는 아래 원작 분석을 따른다.
 
@@ -6516,7 +6120,7 @@ Idle 후속 조정은 F-P01 기존 Case①·②의 프레임 간격 문구를 �
 
 **수명·중단:** CharacterRendering은 Awake의 자기 참조·표시 배열 준비 후 상태 데이터만 경계에서 조회한다. Start는 이미 시작한 Spawn을 덮지 않는다. AttackController는 Awake에서 직렬화된 Animator·클립 길이를 확인하고 반복 GetComponent/클립 목록 탐색을 하지 않는다. 현행은 콤보 대기에 Wait2/Wait3를 샘플하고 콤보 만료·취소·비활성화에서 Idle을 즉시 평가한다. WeaponMotion 위치/회전을0으로 덮지 않아 원작 대기 곡선을 보존한다. 이번 아트 검사에서 실제 세 공격의 재생과 취소 복귀를 확인했으며 전체 AS·판정·재진입 회귀를 모두 재실행했다는 뜻은 아니다.
 
-**실행 근거·범위:** 최종 동일 스냅샷의 대표 로그는 `project/Logs/PlayerAnimationFinalCheck.log`다. Unity6000.3.21f1 격리본의 Tundra build success·Editor 컴파일 ExitCode0·`ALL PASSED (16 checks)`와 배치 종료0을 확인했다. 새 Case는 실제 검1·2·3타의 Transform 곡선 재생과 취소 후 Idle 복귀다. 기존 아트 Case는 Title/3슬롯, 수정·문·Boss방, Idle,4방향 Dash/잔상, Death/Spawn·같은 Player 부활, 카메라 복구·Title 복귀 등을 포함한다. 앞선 `PlayerAnimationArtCheck3.log`의16묶음 성공도 보존하되 최종 근거는 FinalCheck로 통일한다. 원본 Editor의 Play와 제출 빌드는 이번 결과에 포함하지 않는다.
+**확인 결과·범위:** Unity6000.3.21f1의 격리 아트16묶음에서 실제 검1·2·3타의 Transform 곡선 재생·취소 후 Idle 복귀와 Title/3슬롯·수정·문·Boss방·4방향 Dash/잔상·사망/부활·카메라/Title 복귀를 확인했다. 해당 기능 확인과 최종 실행 파일의 연속 플레이 검증은 구분한다.
 
 **전체 회귀 한계:** `StartupFlowChecks.Run`도 시도했지만 현재 완성 맵과 과거 고정좌표 가정이 맞지 않아 이동 속도·Boss 충돌·Body 요청 검사에서 순차 실패했고 공격 검사 구간까지 도달하지 못했다(`project/Logs/PlayerAnimationFlowCheck.log`~`PlayerAnimationFlowCheck7.log`). 예를 들어 Boss 충돌 검사는 Player(0,0)와 실제 Boss(14.5,17)를 비교했다. 검사 수정 시도는 원본에서 되돌렸으며, 이 전체 검사가 통과한 것으로 기록하지 않는다. 최종 성공 근거는 위 아트16묶음이다. 전체 이동/타격 회귀가 필요하면 현재 맵에 맞는 배치 전제를 먼저 정리해야 하며 실패한 검사를 삭제·완료 처리한 것은 아니다.
 
@@ -6524,305 +6128,67 @@ Idle 후속 조정은 F-P01 기존 Case①·②의 프레임 간격 문구를 �
 
 **선택 경위:** 시간 부족과 구현 리스크를 줄이기 위해 Sephiria의 Player 애니메이션 재생 구조로 이관하기로 한 사용자 선택·이유는 [선택 기록8](archive/01_Choice/Player_Attack_Sephiria_20261115.md#선택-사안-8--player-애니메이션-재생-구조-이관)을 따른다. 원작의 모든 아트·공격 이벤트·속도를 그대로 복제하는 결정과는 구분한다.
 
-### 3.3.12 보스 6종 탑다운 정면 시안 — front-r01
+### 3.3.12 보스 아트와 실제 콘텐츠 범위
 
-**현재 기준(2026-11-16 후속 피드백):** 현재2D 제작본은 경비 R05·뱀 R04·군용8방향 R04·연구자 R02 기본형/흩날림·슈트 R01이다. 사용자는 군용3D R05 모델을 긍정 승인했으나 픽셀 R03의 몸 명암이 너무3D처럼 보인다고 피드백했다. R04는 형상·구도를 유지한 명암 시험안으로 제작·파일 검증을 마쳤으며, 후속 “그래 그러면 일단 map의 두번째 영역에 저걸 배치해줘” 요청으로 이 자산의 배치 사용이 허용됐다. Map 두 번째 영역의 정적 배치·Unity 확인을 완료했으며 공격 구현 승인으로 확대하지 않는다. 이전 원통 해석과 기술 검사 이력은 미술 승인과 구분한다. 군용8방향 R01은 지나치게 입체적이고 사각 도형처럼 보인다는 사용자 피드백으로 반려됐으며 R02에서 등 수정을 제거하고 몸체를 두껍게 다시 그렸다. 뱀의 첨부는27×27px 크기만 참조하며, 윤곽·면을 복제했던 R03은 AI 해석 오류로 사용자가 거절한 이력이다. 꽃은 원래3D 모델을 import하려던 대상이라는 사용자 정정에 따라2D 제작에서 제외했다. 기존 꽃 PNG/native는 R01 이력으로만 보존하며3D 모델 도입·연결은 아직 수행하지 않았다. 아래 표의 이전 버전은 당시 제작·검사 이력이다.
+현재 전투 콘텐츠는 **경비 로봇1명·5패턴**이다. 사용자 스케치와 레퍼런스의 형태를 우리 탑다운 픽셀 표현으로 변형했으며, 후보 그림의 존재를 게임에 등록된 보스로 세지 않는다. 각 보스의 크기·표현을 Collider·실제 공격 범위와 구분한다.
 
-**사용자 요청(2026-11-16):** 보스를 8방향으로 만들어 Player를 향한 바라보기·공격을 자연스럽게 한다. 이번 작업은 직접 그린 6종의 PDF 스케치와 [Notion 적 컨셉](https://app.notion.com/p/40257a6d6d248023a8a7f063107b6b92)의 지정 레퍼런스를 검색해 각각의 탑다운 정면 픽셀 이미지를 Aseprite로 제작하는 범위다. 대부분 Player보다 크거나 약간 크게 하고 디테일은 간략하게 한다. [선택 기록](archive/01_Choice/Boss_Front_Concept_Brief_20261116.md) 참조.
-
-**R01 제작 결과:** 화면 아래(S)를 보는 정지 시안 6종을 Aseprite native로 제작했다. 머리·어깨·장갑 윗면과 꽃/뱀의 등면을 드러내며 공통 보라 수정을 사용한다. 아래 치수·팔레트는 당시 제작안이며 사용자 최종 미술 확정·콜라이더 크기가 아니다. 원본과 투명 PNG, 같은4배의 현재 Player(20px 셀) 비교판은 [R01 아트 안내](../art/archive/boss/front-r01/README.md)와 [R01 비교 그림](../art/archive/boss/front-r01/contact-sheet.png)에 보존한다.
-
-| 대상 | 캔버스 / 실제 불투명 경계 | 보존한 스케치·구조 | 제작 색상 / 레이어 |
-| --- | --- | --- | --- |
-| 경비 로봇 | 104×88 / 95×78px | 상체·작은 머리·경광등·어깨 수정/고리·복부 구멍·분리 양손·하단 고정축 | 황동·짙은 금속·보라 / 7개 |
-| 거대 군용 로봇 | 72×88 / 69×82px | 큰 등 수정·얼굴3슬릿·큰 장갑·두 다리, 본체 발사기 없음 | 노란 장갑·회색 관절·보라 / 8개 |
-| 전기 뱀 | 104×128 / 92×120px | 같은 직경8마디·원형 치아 입·보라 배선, 휜 몸체의 머리가 남향 | 밝은 회백 장갑·보라·청록 전류 / 10개 |
-| 기계 꽃봉오리 | 96×96 / 84×85px | 닫힌 봉오리·정확히4대각 케이블·굽은 관/남향 노즐·금속 받침 | 적자색·녹색·짙은 금속 / 7개 |
-| 슈트 맨 | 30×30 / 28×28px | PDF의 무안면 아이언맨형 마스크·록맨 크기/큰 장갑·부츠 | 붉은 슈트·금색 얼굴·보라 가슴 / 5개 |
-| 연구자 | 25×25 / 23×23px | 헝클어진 검은 머리·검은 뿔테·흰 연구복·보라 손 | 흰 가운·짙은 바지·보라 / 5개 |
-
-**참고 판단:** 경비의 황동 기계 인상, 군용의 MapleStory Block Golem 노란 블록 장갑, 뱀의 Binah 밝은 분절 장갑/Ammoconda 마디, 꽃의 Vinethesis 적자색/4촉수, 슈트의 Mega Man 압축 비례를 참고했다. 슈트 색·무안면과 뱀의 동일 마디는 PDF를 우선했다. 연구자는 Notion 외형 레퍼런스가 공란이어서 PDF를 기준으로 했다. 직접 확인 범위와 웹 출처는 아트 안내의 참고 출처에 기록했다. 원작 픽셀을 복사하지 않았다.
-
-**확인 결과:** Aseprite에서 6원본을 재열어 프레임1·규격·42개 레이어의 표시/비어 있지 않음을 확인했다. native 렌더와 PNG는 모두 픽셀 차이0, 중간 알파0, 캔버스 가장자리 접촉0이며 각11~35색이다. [검증 기록](../art/archive/boss/front-r01/validation.json), 개별6배 확대와4배 Player 비교판으로 외형·방향·크기·잘림을 확인했다. `Front_S` 1프레임의100ms는 파일 형식상의 값으로 애니메이션 속도 결정이 아니다.
-
-#### R02 — 경비·군용·뱀 수정과 연구자 기본형/흩날림
-
-**R02 당시 변경과 실제 제작:** [수정4종·Player 동일3배 비교](../art/archive/boss/revisions-r02/comparison.png)에 당시 모습을 모았다. 연구자 R02는 현재도 유지하며 경비·군용·뱀은 아래 후속 버전으로 갱신했다. 픽셀 크기는 여백을 포함한 캔버스와 실제 불투명 경계를 구분한다. 요청된 색·형태·크기 방향을 반영했으며 새 픽셀 배치와 미리보기 시간은 최종 미술 선택과 구분한다.
-
-| 대상·R02 원본 | 규격·레이어 | 반영한 수정 |
+| 대상 | 현재 결과·원본 | 사용·확인 범위 |
 | --- | --- | --- |
-| [경비 R02](../art/archive/boss/guard-r02/aseprite/01-guard-robot-front.aseprite) | 192×120px / 전체178×87px / 7레이어·18색·1장 | 검정·흰색 경찰 장갑, 빨간 사이렌, 고리 없이 박힌 어깨 수정, 분명한5총구, 고정축 없는 평평한 밑면. 몸통61×44→92×66px·상체61×58→92×87px로 약1.5배. 각34×40px 주먹의 높이는 Player20px의2배이며 바깥 손등 면에 수정이 일부 노출됨 |
-| [군용 R02](../art/archive/boss/military-r02/aseprite/02-military-robot-front.aseprite) | 112×136px / 전체104×123px / 10레이어·18색·1장 | 올리브 국방색·짙은 관절, 윗면/정면/어두운 측면이 구분되는 직육면체 머리. 기존69×82px 대비 가로1.507배·세로1.5배. 등 수정의 좌우 꼭짓점 설계 간격은28→32px로, 단순1.5배값42px보다 약24% 작게 조정한 상대 크기이며 절대 픽셀 감소는 아님 |
-| [뱀 R02](../art/archive/boss/worm-r02/aseprite/03-electric-worm-front.aseprite) | 112×176px / 전체93×167px / 9레이어·22색·1장 | 동일8마디를31×24→31×34px로 세워 부피를 보강. 수정 보유3마디는 검정·보라 침식, 나머지5마디는 밝은 장갑과1px 실 모양 보라 마력선. 외부 잔가지 전기 장식 전부 제거 |
-| 연구자 R02 [기본형](../art/archive/boss/researcher-r02/aseprite/researcher-base.aseprite) · [흩날림](../art/archive/boss/researcher-r02/aseprite/researcher-flutter.aseprite) | 30×30px / 전체21×28px / 8레이어·15색 / 기본1장·흩날림6장 | 일반 남성·흰 연구복 기본형을 먼저 제작하고 피부색3×3 정사각 손을 사용. 몸/얼굴/손 등6레이어는 고정하며 머리끝·가운자락2레이어만1~2px 움직임 |
+| 경비 로봇 | [정면 R05](../art/archive/boss/guard-r05/README.md), [한 손](../art/archive/boss/guard-hand-r01/README.md), [손/중앙 양손](../art/archive/boss/guard-patterns-r02/README.md) | R05 몸체·분리 양손을 실제 경비 프리팹에 연결. 실제5패턴의 입력·피해·취소/복구는2.2.7~2.2.11 |
+| 경비 레이저·부채꼴 | [현재 지면 착탄 표시](../art/archive/boss/guard-laser-impact-r02/README.md), [총구 순회](../art/archive/boss/guard-wall-fan-r01/README.md) | 유한 지면 종점의 두 원만 피해, 공중 빔은 표시. 총구1~5 두 바퀴·0.3게임초·총50탄 |
+| 군용3D | [R05 OBJ·MTL](../art/archive/boss/military-3d-r05/README.md) | 사용자 긍정 승인된 형상. 등 박스1.76/몸통2.20·3×3 원형 발사구, 95부품·13,510정점·26,676삼각형·21재질. 게임3D 전환·리깅·공격 구현을 뜻하지 않음 |
+| 군용8방향 | [R04 Aseprite·PNG](../art/archive/boss/military-8dir-r04/README.md) |144×144px·8정지방향 S/SE/E/NE/N/NW/W/SW·7레이어·8태그·23색. 넓은 기본색과 한 단계 그림자로 바꾸고 후속 Map 배치 요청으로 사용 허용 |
+| 군용 정적 배치 | [두 번째 방 실제 배치](../art/archive/boss/military-map-placement-r01/README.md) | Map의 위쪽 두 번째 방 중앙(14.5,64),16PPU·scale1·S정면·정렬20·Unity피벗(72,24). 같은 Unity의 import·컴파일·Play 배치 확인 |
+| 나머지 보스 | 원문 컨셉과 결정 기록만 유지 | 뱀 마디27×27px·연구자·슈트 등은 시안/후속 범위. 꽃은 사용자가 원래3D 모델 import 대상으로 정정했으며 실제 도입·연결 미실행 |
 
-**R02 확인 결과:** 경비·군용은 [공동 검사](../art/archive/boss/robots-r02/validation.json), 뱀은 [개별 검사](../art/archive/boss/worm-r02/validation.json), 연구자는 [프레임 검사](../art/archive/boss/researcher-r02/validation.json)를 따른다. 원본 재열기·PNG 픽셀 차이0·중간 알파0·가장자리 잘림 없음을 확인했고 이전 R01은 보존했다. 경비5총구·양손40px, 연구자 기본형=흩날림첫장·고정6레이어 불변·6프레임 PNG/180×30시트 일치·원배율/8배 GIF 재열기와 확대 시각 검토를 확인했다. 연구자180ms×6=1.08초 루프는 제작 미리보기 제안이며 최종 게임 재생 시간이 아니다.
+군용의 자동8방향 추적·이동/공격 모션·AI·미사일·Collider·조우/처치 등록은 미구현이다. 현재 Stage의 경비1개 처리와 실제 런타임·시퀀스는 군용의 정적 배치로 바뀌지 않는다. 원작 픽셀 복사나 미술 후보의 일괄 승인을 주장하지 않으며 결정 이유는 [보스 제작 기록](archive/01_Choice/Boss_Front_Concept_Brief_20261116.md)에 둔다.
 
-#### R03 — 군용 대칭·혼합색, 첨부27px 뱀 마디, 경비 사이렌/총구 수정
+### 3.3.13 Draw 선·만료 알갱이의 현재 표현
 
-[R03 당시3종 비교](../art/archive/boss/revisions-r03/comparison.png)는 Player와 동일3배, 뱀의 첨부 원본/색상 변형 단위는8배로 표시한다. 군용 R03 정면은8방향 R01에 그대로 사용했던 이력이며 R02에서는 정면도 재작업한다. 경비는 후속 버전으로 갱신했다. 뱀 R03의 첨부 윤곽·면 복제는 AI가 크기 참조 요청을 잘못 해석한 결과로 사용자가 거절했으며, 아래 파일 검사 통과를 디자인 승인으로 보지 않는다.
+현재 선 이미지는 [R04](../art/archive/fx/draw-line-image-r04/README.md), 만료 알갱이는 [R09](../art/archive/fx/draw-line-grains-r09/README.md)다. 흰 중심·청록/파랑 오라와 양끝 둥근 광륜을 사용한다. 이미지1536×1024 RGBA의 같은 PNG·GUID/재질을 재사용하고 Stretch·numCapVertices0·표시 배율3·판정폭0.25·기본길이6·다음 Draw 길이 연동·점 미표시를 유지한다. 끝 페이드의 UV 폭은 Line 길이에 비례하므로 고정 월드 반경으로 마감한 것이 아니다.
 
-| 대상·R03 원본 | 규격·레이어 | 반영한 수정 |
-| --- | --- | --- |
-| [경비 R03](../art/archive/boss/guard-r03/aseprite/01-guard-robot-front.aseprite) | 192×120px / 전체178×78px / 6레이어·13색·1장 | 머리의 빨간 사이렌과 받침을 제거했다. 총구 뒤 장착부는 고정하고5개 앞 입구의 중심을 y88→86으로 올리며 관 길이를2px 줄였다. 몸통·머리·어깨 수정·양손의 다른5레이어는 픽셀 차이0 |
-| [군용 R03](../art/archive/boss/military-r03/aseprite/02-military-robot-front.aseprite) | 112×136px / 전체102×122px / 10레이어·31색·1장 | 중앙 x55.5 기준 형상·색·알파를 정확히 좌우 대칭으로 맞췄다. 국방색 중심에 모래색 장갑 삽입부, 청회색 금속 부품, 짝을 이룬 어두운 적색 표식을 섞었다. 직육면체 머리와 몸체 대비 작은 등 수정은 유지 |
-| [뱀 R03 — 거절된 제작안](../art/archive/boss/worm-r03/aseprite/03-electric-worm-front.aseprite) | 104×152px / 전체89×144px / 9레이어·19색·1장 | 크기만 참조하라는 의도와 달리 첨부의27×27px 윤곽·면을 복제했다. 밝은 일반5개와 검보라 수정3개(머리 포함)의8마디로 만들었으나 사용자 정정에 따라 현행에서 제외했다 |
+#### 생성·재사용과 표시 API
 
-**R03 확인 결과:** [경비 검사](../art/archive/boss/guard-r03/validation.json), [군용 검사](../art/archive/boss/military-r03/validation.json), [뱀 검사](../art/archive/boss/worm-r03/validation.json)에서 native 재열기/PNG 차이0·중간 알파0·경계 잘림 없음을 확인했다. 군용은 최종 합성과 각 레이어의 좌우 반전 픽셀 차이가0이다. 뱀의 일반/수정/머리27×27px 출력은 각각577개 불투명 픽셀로 [첨부 기준 원본](../art/archive/boss/worm-r03/segment-reference-27x27.png)의 알파와 차이0이며,8개 마디 셀 모두27×27px다. 기존 R02 원본은 보존했다. 경비의 총구2px 상승은 전체 총구층 이동이 아니라 앞 입구·관 길이 변경이다.
+`DrawVfx.Prepare`가 씬 루트의 `DrawEvaporationVfx`를 한 번 준비하고 `Prepare(EvaporationMaterial)`로 재사용한다. `PlayLineExpiration(Line)`은 원본 `ShowPath`와 `Evaporation.Play(line,expiryTotal)`, `TickVisuals(dt)`는 `ExpiryProgress`·원본 `SetOpacity(1-SmoothStep(progress/0.25))`·`Evaporation.Tick(dt)`를 연결한다. `ApplyLineVisibility`는 `SetVisible(visible&&IsExpiryPlaying)`, `ClearLineEffects`는 `Clear`, `OnDestroy`는 입자 루트 제거를 맡는다. F-P06 기존6Case의 Play/Tick/SetVisible/Clear/Emit/Simulate/Pause 흐름과 정지·복구 경계를 유지한다.
 
-#### R04 — 뱀은 크기만 참조해 재제작·경비 손가락 수 수정
+#### 현재 수치·팔레트
 
-[R04 당시 비교](../art/archive/boss/revisions-r04/comparison.png)에 경비 R04·뱀 R04와 손·마디 확대를 모았다. 뱀 R04는 유지하며 경비는 아래 R05로 갱신했다. 뱀은 첨부의27×27px 크기만 기준으로 삼아 둥근 장갑 마디를 새로 그렸고, 경비는 각 손의 접힌 손가락3개와 안쪽 엄지1개를 구분했다. 구체적인 픽셀 배치의 최종 미술 선택·게임 연결과 구분한다.
+- 전체 증발1.3초·길이1당12입자(길이6→72/12→144,최대768), 수명은 전체의65~95%다. X속도±0.5~1.3·Y속도0.9~1.8·world위쪽 힘0.35를 사용한다. 원본 선은 초기25%에 alpha로 입자에 넘기며 입자 크기는 수명 중 줄이지 않고 alpha로만 사라진다.
+- 실제 ParticleSystem 직경0.045~0.085world·원형, 화면 외곽1px·AA여유0.5px다. `SetActiveVertexStreams(Position,Color,UV,UV2,Center)`와 TEXCOORD1 중심을 사용해 quad를1.5px 패딩하며 렌더 외경의2px 증가가 PS 중심/직경 데이터의 변경을 뜻하지 않는다.
+- 입자 재질 `_LinePaletteTex`는 실제 `DrawImageFX.mat.mainTexture`와 같은 R04 Texture다. 셰이더는 긴 선의 모양/alpha를 복사하지 않고 radial 원형의 RGB만 참조한다. core/halo/outline UV는(0.5,0.5)/(0.5,0.578125)/(0.5,0.70703125), bilinear RGB는0~255기준(253.5,253.25,253)/(81,234,249.75)/(37.25,166.75,252.75)다. alpha는 원형 coverage·수명으로 독립 계산한다.
+- 기본 경고0.35·왕복주기0.5→0.08과 scaled clock/정지·숨김·교체/사망 정리를 유지한다. 캡처용 Line수명2.4/경고0.9/왕복0.4→0.08은 관찰 조건이며 게임 기본값으로 확정하지 않는다.
 
-**R04 당시 전체 크기 비교:** [보스5종·Player 검토판](../art/archive/boss/lineup-r04/lineup.png)은 디자인 변경 없이 동일3배 최근접·공통 하단 기준선으로 한 줄에 배치한1920×720px 그림이며, [편집 원본](../art/archive/boss/lineup-r04/lineup.aseprite)과 PNG 차이0·6원본 해시 불변·잘림 없음을 확인했다([검사 기록](../art/archive/boss/lineup-r04/manifest.json)).
+#### 확인 결과와 한계
 
-| 대상·R04 원본 | 규격·레이어 | 반영한 수정 |
-| --- | --- | --- |
-| [경비 R04](../art/archive/boss/guard-r04/aseprite/01-guard-robot-front.aseprite) | 192×120px / 전체178×78px / 6레이어·13색·1장 | 양손34×40px 크기와 외곽을 유지하며 각각3개의 접힌 흰 손가락 판과 별도 안쪽 엄지1개로 수정했다. 사이렌 제거·총구 앞2px 상승을 포함한 다른4레이어는 R03 그대로 유지 |
-| [뱀 R04](../art/archive/boss/worm-r04/aseprite/03-electric-worm-front.aseprite) | 104×152px / 전체89×144px / 9레이어·18색·1장 | 각27×27px의 볼록한 장갑 마디에 등판 이음선과 말린 하단 테두리를 새로 그렸다. 밝은 일반5개·검보라 수정3개(머리 포함)의8마디, 실 모양 마력선과 외부 잔가지 없는 구분은 유지. 첨부의 윤곽·면은 복제하지 않음 |
+같은 Unity6000.3.21f1의 격리 Draw/편집/수명/Slash/Title23묶음, C#/Shader오류0·종료0과 원형·외곽·같은Texture참조·정지/정리를 확인했다. 표본72입자의 직경0.046440~0.084193·가로/세로차이0·크기변화0·alpha감소와 마지막입자0을 확인했다. 실제30° GameView의 R09 GIF는62프레임·3.89초이며 관찰 게임3.478759초와 반복 전0.5초 여백을 구분한다.
 
-**R04 확인 결과:** [경비 검사](../art/archive/boss/guard-r04/validation.json), [뱀 검사](../art/archive/boss/worm-r04/validation.json)에서 native/PNG 픽셀 차이0·중간 알파0·경계 잘림 없음을 확인했다. 경비 양손은 각각355픽셀의 색을 바꾸고 알파 차이0이며 다른4레이어의 픽셀 차이0, 이전 R03 파일 해시 불변을 확인했다. 확대 검토에서 각 손의3손가락·1엄지를 구분했다. 뱀의8개 마디 셀은 모두27×27px이며 일반/수정/머리 출력은 각각604개 불투명 픽셀이다. 첨부 면 구성을 복제했던 R03과 다른 독립 장갑 형태를 확대 검토했다.
+Line 길이·판정과 Slash의 실제 표시/HitWidth는2.1.6·2.1.7을 따른다. 이 확인을 최신 전체 게임 회귀·모든 환경의 최종 미술 승인으로 확대하지 않는다. 기존 입력·상태·수명·복구 시퀀스와 사용자 확정 규칙을 보존했다.
 
-#### R05 — 경비 주먹의 윗면·측면과 명암 보강
+### 3.3.14 Title 화면·칼날 십자와 지속 푸른광
 
-**F-B07-01 게임 연결 완료(2026-11-16)**: 아래 R05 정면 PNG를 바이트 그대로 사용해 경비 배치·총구5개·Gold 단발을 연결/확인했다. 실제 흐름/검사는2.2.7과 [실제 Player/전체 배치·GIF·검증](../art/archive/boss/guard-pattern-r01/README.md)을 따른다. 나머지4패턴·다른 방향/손 모션은 별도다.
+현재 Title은 회빛 검정 바탕·사용자 확정 로고·시작/설정/종료3메뉴다. 로고 원본은 [사용자 편집본](../art/archive/title/logo_17_natural_cut_r06/), 최종 외곽/광과 실제 영상은 [Title R02](../art/archive/title/title-screen-r02/README.md)를 따른다. 설정은 미구현으로 비활성이다.
 
-**F-B07-02 손 연결 완료(2026-11-16)**: 같은 R05 원화의 body/양손을 수정 없이3PNG로 분리하고 실제 추적·충전 경고·낙하/착지 피해를 연결/확인했다. 현재2패턴과 [분리 원본/실제 Player 추적 GIF·검증](../art/archive/boss/guard-hand-r01/README.md),2.2.8을 따르며 남은03~05·튜토리얼/새 타격 원화와 구분한다.
+- **원본:**200×80·1프레임100ms·기존10레이어를 보존하고 `11 White grip and saya outline 1px` 레이어로 손잡이/검집 바깥4방향96흰 픽셀만 추가했다. 변경영역(124,15)~(137,69), 기존 불투명240px 기준이며 원본 십자/글자/가드·은날을 유지한다. 현재 native 합성·아트PNG·UnityPNG 일치를 확인했다.
+- **표시:** `UI_Title.OnGUI`는 `BackgroundColor`→TitleLogo→`DrawFissureGlow(elapsed,alpha)`→`DrawLogoGlint`→메뉴/슬롯 순으로 그린다. 로고Rect(360,141,1200,480), 기준1920×1080 균등배율·PF48 메뉴를 사용한다. 새 `GUIStyle`의8상태 `background=null`로 글자 메뉴를 만들며 Player에 없는 고해상도 배경 API를 사용하지 않는다.
+- **십자:** 별도256×256 RGBA의 흰/청록4방향 십자·soft halo를 사용한다. 원본 칼날 중심(130.5,31.5)→기준화면(1143,330), 기본320×320, Intro0.25초 뒤0.6초 대기·1.25초 표시/3.2초 반복, 진행70%까지0.15→1.15배 SmoothStep·-18°시작+90°회전·sin(pi×진행률)alpha를 사용한다. 강도·박자는 초기 튜닝값이다.
+- **푸른광:** 별도200×80의3위상을 `TitleFissureGlowFrames`로 직렬화한다. 선 중심(3.5,48.5)→(196.5,22.5)·수직거리±3px 안쪽·양끝7px 투명을 사용하며 실제 최대alpha거리2.891native px다. `FissureGlowCycle=2.4초`, phase=Repeat(elapsed/cycle)×3으로 인접2장을 교차하고 밝기=.8+.12sin(pi×t)+.06sin(3pi×t)를 적용한다. Point·Mipmap없음·무압축이다.
+- **수명:** Start→`InitializeAsync`가 GameManager를1회 확보하고 공통 슬롯 로드/Intro를 병렬 대기한다. GUI.skin이 유효한 최초 OnGUI에서 스타일을1회 캐시하고 Texture2D/Font를 재사용한다. 경과는 실제시간으로 계산해 timeScale0에도 진행하고 매 표시 뒤 matrix/color/enabled를 복원한다.
+- **확인:** 같은 Unity6000.3.21f1의 최종 TitleVisualOnly7묶음·컴파일/종료0, 원본/십자/3위상 참조·상자없는8상태·timeScale0 변화·슬롯/확인취소·Current보존과 실제60캡처 GIF6.99초를 확인했다. 전체 게임 진입·최종 미술 판단을 이 시각 검사로 대신하지 않는다.
 
-사용자가 첨부한 주먹 그림을 참고해 [경비 R05 원본](../art/archive/boss/guard-r05/aseprite/01-guard-robot-front.aseprite)의 손을 밝은 사다리꼴 윗면·회색 정면·짙은 바깥 손등 면으로 나눴다([손 확대](../art/archive/boss/guard-r05/hand-detail.png)). 윗면 깊이는9px이며 안쪽 엄지는 굽은 형태로 다듬었다. 각34×40px 손의 크기·외곽,3손가락+1엄지와 바깥 손등 수정은 유지한다. 캔버스192×120px·불투명 경계178×78px·6레이어·13색·1프레임이며 구체적인 면·명암 배치는 제작안이다.
+Sephiria `UI_TitleLobby.Start/Update/QuitGame`·슬롯 패널과 Dungreed의 자기참조·화면비 책임을 현재 싱글 플레이에 맞게 채택했다. 로고·별도 십자·푸른광은 사용자 고유 아트/연출이며 F-U01 기존 Case번호와 실제 호출 흐름을 유지한다.
 
-**R05 확인 결과:** [검사 기록](../art/archive/boss/guard-r05/validation.json)에서 양손 각각574픽셀 변경·알파 차이0, 다른4레이어 픽셀 차이0, R04 원본 해시 불변을 확인했다. native/PNG 차이0·중간 알파0·가장자리 잘림 없음과 확대 검토에서 윗면/정면/바깥 측면·3손가락/1엄지 구분을 확인했다.
+### 3.3.15 SaveSlot·공용 픽셀 프레임
 
-**R05 당시 전체 크기 비교:** [보스5종·Player 동일3배 검토판](../art/archive/boss/lineup-r05/lineup.png)과 [편집 원본](../art/archive/boss/lineup-r05/lineup.aseprite)은 경비만 R05로 교체한1920×720px·7레이어이며, 공통 하단 기준선·최근접 확대와 다른4보스/Player를 유지하고 native/PNG 차이0·6원본 해시 불변·잘림 없음을 확인했다([검사 기록](../art/archive/boss/lineup-r05/manifest.json)). 군용은 이후8방향 R02에서 정면도 재작업한다.
+현재 화면은 상단 `saveslot`·가로3카드·완료 슬롯 새게임 확인이며, 최종 입력/정보는 R03을 사용한다. [프레임 원본](../art/archive/ui/window-frame-r01/README.md)과 [R03 화면](../art/archive/ui/window-frame-r01/info-r03/README.md)을 따른다. 프레임은256×64px·RGBA32·4레이어·1프레임·투명포함11색, 바깥투명/안쪽불투명 `#070A12`이며 정보글자를 이미지에 굽지 않는다.
 
-#### 군용 8방향 R01 — 기술 검사 이력·사용자 미술 반려
+- **9-slice/가져오기:** 네 방향12px 경계·center(12,12,232,40), 보라92px는 고정 모서리 안에 두고 중간변/안쪽은 균일하게 늘린다. Sprite Single/FullRect·16PPU·Point/Clamp·무압축/Mipmap없음이다. `Assets/Art/UI/Windows/window-frame.png`를 `Title.unity`의 `UI_Title.SlotFrame`에 연결하며 GUID`662a92fe29ad429ba68a2bf6889f3c19`와 기존 Title/Font 참조를 유지한다.
+- **좌표:**1920×1080 균등 화면맞춤 안에서640×360 논리좌표를3배 적용한다. 제목Rect(80,34,480,36), 카드Rect(80+168×slot,104,144,206)·하단310, 완료확인Rect(160,120,320,132)다. 뒤로 버튼을 제거했고12px모서리·글자·클릭Rect는 같은 행렬로 확대한다.720p/1080p/1440p의 정수2/3/4배 예시는 배치 확인 기준이다.
+- **표시:** 첫 OnGUI에서 `_slotStyle`·제목/글자스타일을1회 준비해 씬 수명 동안 재사용하고 `DrawSaveSlots()`로 분기한다. `_menuStyle.fontStyle=Bold`를 상속해 Title3메뉴·saveslot제목·슬롯정보·확인글자를 두껍게 표시한다. 슬롯번호/진행도/플레이시간/사망 사이에는 각각 빈 줄을 둔다.
+- **입력 수명:** `UI_Title`은 Awake에서 `<Keyboard>/escape` InputAction을1회 생성하고 OnEnable/OnDisable에서 performed를 연결/해제, OnDestroy에서 Dispose한다. ShowSlots·완료확인에서 Enable, 준비초기화·게임진입수락·닫기에서 Disable한다. `HandleBack→CloseSlots`는 IsReady·GameManager·로딩아님·슬롯/확인창열림을 확인한 뒤 두UI를 닫고 UI.SelectedSlot만-1로 되돌린다. SaveManager.Slots/Current/선택인덱스·파일은 변경하지 않는다.
+- **시작·확인:** `SelectSlot→RequestStart→StartGame(slot,false/true)`와 기존 F-S01의 준비/로딩/중복입력 차단을 사용한다. 완료확인은 카드입력을 막고 어두운 배경 위에 표시한다. 확인취소는 슬롯목록을 유지하고, 메뉴에서 직접 API로 연 확인만 취소했을 때에는 Esc액션도 끈다.
+- **검증:** 동일 Unity6000.3.21f1의 최종 focused5묶음·컴파일/종료0, 실제 Keyboard 상태사건의 슬롯Esc→Title·메뉴무효·완료확인Esc·저장보존·입력차단과 실제1080p 정보4그룹/Bold렌더를 확인했다. 프레임의 네모서리·색/alpha·늘이기 확인을 설정창 기능·최종 전체 월드회귀 완료로 확대하지 않는다.
 
-사용자는 너무 입체적이고 사각 도형처럼 보인다는 이유로 R01을 반려했다. 아래 파일 검사 결과는 당시 기술 이력이며 미술 승인이나 현행 디자인으로 보지 않는다.
-
-사용자는 좌우 대칭인 군용 로봇을8방향으로 만들되 기존 정면 외4방향을 새로 그리도록 요청했다. [편집 원본](../art/archive/boss/military-8dir-r01/aseprite/02-military-robot-8dir.aseprite)은 S·SE·E·NE·N·NW·W·SW 순서의 정지8프레임·방향별1프레임 태그와14레이어(기존 정면10부위·신규4방향)로 구성했다. S는 R03을 유지하고 SE·E·NE·N을 새로 그렸으며 NW·W·SW는 NE·E·SE의 좌우 반전이다.
-
-공통 캔버스는 회전한 발끝 여백을 위해112×144px로 만들고 정면은 원래112×136px 영역을 좌상단(0,0)에 그대로 두며 하단8행만 투명하게 추가했다. 기존31색 팔레트 안에서 방향별14~31색을 사용하고, 새 방향은 등 뒤에 멘 수정을 위쪽 검은 끈과 아래 U형 받침대로 고정한 구조를 드러냈다. [동일3배 방향 비교](../art/archive/boss/military-8dir-r01/preview-compass-3x.png)와 [896×144px 시트](../art/archive/boss/military-8dir-r01/military-8dir-sheet.png), `png/S.png`부터 방향별8개 PNG를 저장했다. 신규 방향의 구체적인 픽셀 배치는 제작안이며 프레임별100ms는 파일 형식상의 값으로 이동 애니메이션 시간이 아니다.
-
-**군용8방향 확인 결과:** [독립 검사](../art/archive/boss/military-8dir-r01/validation-independent.json)에서8프레임 native/PNG·정면 원본 영역·반전3쌍과 N의 좌우 대칭 픽셀 차이가 모두0이며, 원본 팔레트 밖 색0·중간 알파0·가장자리 잘림 없음을 확인했다. R03 native/PNG 해시를 보존했고 방향·겹침·등 수정의 고정끈/받침대·발끝을 확대 검토했다. [구성 기록](../art/archive/boss/military-8dir-r01/manifest.json)에 방향 순서·반전 대응·정면 투명 여백을 남겼으며 다른 보스 자산은 변경하지 않았다.
-
-#### 군용 8방향 R02 — 두꺼운 몸체·손그림식 픽셀 재제작·파일 검사 완료
-
-사용자는 등 수정을 삭제하고 몸체를 더 두껍게 하며 명암·디테일이 뭉개지더라도 그림처럼 표현하도록 요청했다. [편집 원본](../art/archive/boss/military-8dir-r02/aseprite/02-military-robot-8dir.aseprite)은112×144px·7부위 레이어·S/SE/E/NE/N/NW/W/SW 순서의 정지8프레임이며 S 정면을 포함해 모든 방향을 다시 그렸다. 등 수정·검은 끈·받침대를 제거하고 국방색과 혼합 재질, 얼굴3슬릿·주먹 보라 수정·좌우 반전 구조는 유지했다. 주먹 수정은 S·SE·SW에서 보이며3D 투영 대신 직접 그린 둥근 픽셀 덩어리와 묶인 명암으로 표현했다.
-
-**몸체 측정:** [몸통 레이어 검사](../art/archive/boss/military-8dir-r02/torso-metrics.json)에서 정면 몸통의 불투명 경계는 R03의66×61px에서78×64px로 늘어 가로+12px(약18.2%)이며, 측면 E 몸통은69×62px다. 이는 팔·머리·발을 제외한 몸통 레이어 값이고 정면/측면은 서로 다른 시점이다. 등 수정 제거 후 정면 전체 불투명 경계는102×102px다. [동일3배 방향 비교](../art/archive/boss/military-8dir-r02/preview-compass-3x.png)·[896×144px 시트](../art/archive/boss/military-8dir-r02/military-8dir-sheet.png)와 방향별 PNG8개를 저장했다. 구체적인 픽셀 배치는 제작안이며 프레임별100ms는 파일 형식상의 값이다.
-
-**R02 확인 결과:** [독립 검사](../art/archive/boss/military-8dir-r02/validation-independent.json)에서8프레임 native/PNG·반전3쌍·S/N 좌우 대칭 픽셀 차이0, 기존31색 팔레트 밖 색0·중간 알파0·가장자리 잘림 없음을 확인했다. 방향별13~30색이며 R03·8방향 R01 원본 파일 해시를 보존했다. 정면 픽셀 동일은 이번 검사 조건이 아니며 실제로 재작업했다. 등 수정/끈/받침대 제거·몸체 두께·SE/SW 시선 방향을 확대 검토했다([구성 기록](../art/archive/boss/military-8dir-r02/manifest.json)).
-
-**R02 당시 전체 크기 비교:** [보스5종·Player 동일3배 검토판](../art/archive/boss/lineup-r06/lineup.png)과 [편집 원본](../art/archive/boss/lineup-r06/lineup.aseprite)은 군용 정면만8방향 R02로 교체한1920×720px·7레이어이며 다른4보스/Player·공통 하단·최근접3배를 유지하고 native/PNG 차이0·6원본 해시 불변·시각 검토를 확인했다([검사 기록](../art/archive/boss/lineup-r06/manifest.json)).
-
-#### 군용 3D R01 — 정면 기반 OBJ·MTL 제작·검증 이력
-
-사용자는 픽셀 시도의 오류를 지적하고 현재 군용 정면을 기준으로 실제3D OBJ 파일을 먼저 만들도록 요청했다.8방향 R02의 S를 기준으로 두꺼운 몸체·국방색/혼합 재질·얼굴3슬릿·양 주먹 보라 수정을 유지하고 등 수정·끈·받침대가 없는 [OBJ 메시](../art/archive/boss/military-3d-r01/military-robot.obj)와 [색상용 MTL](../art/archive/boss/military-3d-r01/military-robot.mtl)을 제작했다. 두 파일과 검토 자료를 함께 담은 [ZIP 패키지](../art/archive/boss/military-3d-r01/military-robot-obj-package.zip)를 제공한다.
-
-**모델·검증:**60부품·7,602정점·14,964삼각형·18재질, 임의 모델 단위의 가로3.21×높이3.17×깊이1.889이며 Y-up·전방+Z·바닥Y=0이다([모델 정보](../art/archive/boss/military-3d-r01/model-info.json)). [독립 파서 검사](../art/archive/boss/military-3d-r01/validation.json)에서 정점/인덱스/노멀/재질 유효성, 각60부품의 닫힌 메시와 좌우 정점 대칭 차이0을 확인했다. 최종 OBJ를 다시 읽어 만든 정면·사선·옆·뒤4개 렌더를 시각 검토했다([정면·사선](../art/archive/boss/military-3d-r01/preview-final.png), [옆·뒤](../art/archive/boss/military-3d-r01/side-back-preview.png)).710,120바이트 ZIP의9개 내용은 원본과 바이트가 일치하며 ZIP CRC·OBJ의 MTL 참조·최종 검증 해시 일치를 확인했다.
-
-**확인 한계:** 측면·후면 깊이는 정면에서 추정한 제작안이다. 부품별 닫힘 검사는 부품끼리의 교차·자기교차를 검사한 것이 아니다. [보조 뷰어](../art/archive/boss/military-3d-r01/viewer.html)는 제공하지만 Chrome/Edge headless 실행 환경 실패로 실제 브라우저 화면은 미검증이다. Blender/Unity 실제 import·리깅·UV·애니메이션은 미실행이며 이번 모델 파일 제작을 게임 전체3D 전환 결정으로 보지 않는다.
-
-#### 군용 3D R02 — 사각 몸체·등/손 발사기 제작·검증 이력
-
-사용자 정정에 따라 사각 몸체·등 다연장 로켓 런처·손처럼 달린 미사일 발사기와 바깥 손등 수정을 제작했다. 등8관(4×2)·양손 각1관은 AI 제작 배치이며 발사구 수·깊이·세부 구조의 사용자 확정치가 아니다. 로켓 공격 의도를 드러내는 외형으로 실제 공격 구현과 구분한다. [OBJ](../art/archive/boss/military-3d-r02/military-robot.obj)·[MTL](../art/archive/boss/military-3d-r02/military-robot.mtl)·[ZIP 패키지](../art/archive/boss/military-3d-r02/military-robot-obj-package.zip), [정면·사선](../art/archive/boss/military-3d-r02/preview-final.png)·[옆·뒤](../art/archive/boss/military-3d-r02/side-back-preview.png), [사용 안내](../art/archive/boss/military-3d-r02/README.md)를 저장했다.
-
-**모델·검증:**92부품·13,348정점·26,328삼각형·18재질, 임의 단위 약4.158×4.411×3.066(가로/높이/깊이),Y-up·전방+Z·바닥Y=0이다([모델 정보](../art/archive/boss/military-3d-r02/model-info.json)). [독립 검사](../art/archive/boss/military-3d-r02/validation.json)에서 모든 부품의 닫힘/양의 체적과 좌우 정점 대칭 차이0, 경계·비정상 면 연결/방향·퇴화·인덱스/노멀·미해결 재질 오류0을 확인했다. 최종 OBJ를 재입력한4뷰를 검토했고731,854바이트 ZIP의8개 내용/CRC/원본 바이트/해시/MTL 참조와 R01의 OBJ·MTL·validation·HTML 해시 보존을 확인했다. 부품 간 교차·자기교차는 미검사이며 Blender/Unity import·리깅·UV·애니메이션·실제 공격은 미실행이다. R02 보조 뷰어는 제작하지 않았다.
-
-#### 군용 3D R03 — 기술 검사 이력·등 원통 해석 오류
-
-등의 통을 원통형으로 만든 것은 AI 해석 오류다. 사용자는 사각 박스의3×3 런처라고 정정했으며 아래 제작·검사 이력을 원통 형태의 미술 승인으로 보지 않는다.
-
-사용자 요청의 등 통형3×3=9구·등 너비 맞춤과 작은 양손 각2구·팔축 정렬을 반영했다. 등 세로 통의 위쪽 개구와 대기 자세의 손 아래쪽 개구, 통의 세부 치수는 제작 해석이다. [OBJ](../art/archive/boss/military-3d-r03/military-robot.obj)·[MTL](../art/archive/boss/military-3d-r03/military-robot.mtl)·[ZIP 패키지](../art/archive/boss/military-3d-r03/military-robot-obj-package.zip), [정면·사선](../art/archive/boss/military-3d-r03/preview-final.png)·[옆·뒤](../art/archive/boss/military-3d-r03/side-back-preview.png)·[발사기 상세](../art/archive/boss/military-3d-r03/launcher-details.png)와 [사용 안내](../art/archive/boss/military-3d-r03/README.md)를 저장했다.
-
-**모델·검증:**82부품·11,538정점·22,756삼각형·18재질, 임의 단위3.9678×3.42×3.337(가로/높이/깊이)이다([모델 정보](../art/archive/boss/military-3d-r03/model-info.json)). [배치 검사](../art/archive/boss/military-3d-r03/layout-validation.json)에서 벨트 포함 등 통 폭2.20=몸통 폭2.20, 손 외장 폭0.82→0.70(약15% 축소)·깊이1.10→0.66, 양손2관 중심과 팔 피스톤 축 일치 및13관/2피스톤의Y축 단면을 확인했다. [메시 검사](../art/archive/boss/military-3d-r03/validation.json)는 부품별 닫힘/양의 체적·좌우 대칭과 메시 오류0으로 통과했다. 실제 OBJ6뷰를 검토하고 R02 산출물14개 보존,811,755바이트 ZIP10개 내용/CRC/원본 바이트/해시/MTL 참조를 확인했다. 부품 교차·자기교차는 미검사이며 Unity import·리깅·UV·애니메이션·실제 공격은 미실행이다.
-
-#### 군용 3D R04 — 등3×3 사각 박스 수정·파일 검증 완료
-
-사용자 정정에 따라 등 하우징만 평면 벽과3×3 구멍이 있는 상판의 직육면체 박스로 교체했다. 폭2.20=몸통 폭,9관과 양손 각2관·팔축 및 나머지 형상은 유지했다. 등 위쪽/손 아래쪽 개구는 기존 제작 해석이다. [OBJ](../art/archive/boss/military-3d-r04/military-robot.obj)·[MTL](../art/archive/boss/military-3d-r04/military-robot.mtl)·[ZIP](../art/archive/boss/military-3d-r04/military-robot-obj-package.zip), [정면·사선](../art/archive/boss/military-3d-r04/preview-final.png)·[옆·뒤](../art/archive/boss/military-3d-r04/side-back-preview.png)·[발사기 상세](../art/archive/boss/military-3d-r04/launcher-details.png)와 [사용 안내](../art/archive/boss/military-3d-r04/README.md)를 저장했다.
-
-**모델·검증:**95부품·13,510정점·26,676삼각형·18재질, 임의 단위3.9678×3.42×3.382(가로/높이/깊이)이다([모델 정보](../art/archive/boss/military-3d-r04/model-info.json)). [메시](../art/archive/boss/military-3d-r04/validation.json)·[배치](../art/archive/boss/military-3d-r04/layout-validation.json)·[보존 검사](../art/archive/boss/military-3d-r04/preservation-validation.json)에서 부품별 닫힘/양의 체적·좌우 대칭과 메시 오류0, 등 폭2.20·9관/상판 구멍 중심 일치, 등 부품 외67부품의 정점/UV/노멀/면 연결·순서/재질 동일과 R03 전체 파일 해시 보존을 확인했다. 최종 OBJ6뷰를 검토하고862,472바이트 ZIP11개 내용/CRC/원본 바이트/해시/MTL 참조를 확인했다. 부품 교차·자기교차는 미검사이며 Unity import·리깅·UV·애니메이션·실제 공격은 미실행이다.
-
-#### 군용 3D R05 — 등 런처 폭·색상 구분 수정 완료
-
-후속 사용자 답변 “좋아”로 R05 모델 디자인을 승인하고, 이 모델의8방향 픽셀 제작을 요청했다. 새 픽셀 이미지의 승인이나 Unity 연결 완료를 뜻하지 않는다.
-
-몸통과 구분하라는 사용자 요청에 따라 등 사각 박스 폭을2.20→1.76(몸통의80%)로 줄이고 기본색을 짙은 국방색 `#354333`으로 바꿨다. 몸통 폭2.20·기본색 `#74834E`는 유지했다.20% 축소율·구체 색은 제작값이다.3×3 원형 발사관은 지름0.35를 유지하며 가로 중심 간격만0.66→0.528로 좁혔다. [OBJ·MTL ZIP](../art/archive/boss/military-3d-r05/military-robot-obj-package.zip)·[정면·사선](../art/archive/boss/military-3d-r05/preview-final.png)·[측후면](../art/archive/boss/military-3d-r05/side-back-preview.png)·[사용 안내](../art/archive/boss/military-3d-r05/README.md)를 저장했다.
-
-**검증:**95부품·13,510정점·26,676삼각형·21재질이다. [메시](../art/archive/boss/military-3d-r05/validation.json)·[배치/재질](../art/archive/boss/military-3d-r05/layout-validation.json)·[보존](../art/archive/boss/military-3d-r05/preservation-validation.json) 검사를 통과했다. 비등67개 부품·기존18재질과 R04 파일을 보존했고, 등 전용 짙은 재질3개만 추가했다. 실제 OBJ를 재입력한4방향·발사구 상세를 확인하고 ZIP11개 내용/CRC/원본 바이트/해시/MTL 참조를 대조했다. Unity import·리깅·UV·애니메이션·실제 공격과 부품/자기 교차 전수 검사는 미실행이다.
-
-#### 군용 8방향 R03 — 승인된3D R05 기반 형상·구도와 검증 이력
-
-후속 사용자는 몸 명암이 너무3D처럼 보인다며 더2D처럼 표현하길 원했다. R03 형상·구도·파일 검증은 보존하고 명암 표현은 아래 R04에서 시험 수정했다.
-
-사용자가 승인한 R05 OBJ를 직접 렌더해144×144px·7부위 레이어·S/SE/E/NE/N/NW/W/SW 순서의 정지8프레임과 방향 태그를 만들었다. [Aseprite 원본](../art/archive/boss/military-8dir-r03/aseprite/02-military-robot-8dir.aseprite)·[전체 패키지](../art/archive/boss/military-8dir-r03/military-8dir-pixel-package.zip)·[동일3배 비교](../art/archive/boss/military-8dir-r03/preview-final-3x.png)·[방향 배치 비교](../art/archive/boss/military-8dir-r03/preview-compass-3x.png)·[1152×144px 시트](../art/archive/boss/military-8dir-r03/military-8dir-sheet.png)·[검토용 회전 GIF](../art/archive/boss/military-8dir-r03/directions-turntable.gif)와 방향별 PNG8개를 저장했다. GIF는 방향 확인용이며 이동·공격 모션이 아니다.
-
-**구도·검증:**8방향 모두 정사영 고도30°·모델 단위당27px·좌상단 원점의 접지 피벗(72,120)·방향별 배율1을 고정하고 비균등 변형 없이 각각 렌더했다. 선언29색 중 실제24색·이진 알파이며 안티앨리어싱/디더링은 적용하지 않았다. [재열기 검사](../art/archive/boss/military-8dir-r03/validation-independent.json)에서 native/PNG 차이0·8프레임/태그·여백을 확인했고 [카메라·팔레트 검사](../art/archive/boss/military-8dir-r03/camera-palette-validation.json)에서 공통 구도·투영 범위(래스터/1px 외곽선 반영 최대편차1.377px)·최소 여백6px·기존35파일 해시 보존을 확인했다. 대각선 비율·방향·원본 외형을 검토했으며 좌우 RGB 완전 반전 일치를 검사 조건으로 삼지 않았다.248,304바이트 ZIP18개 내용/CRC/원본 바이트 일치를 확인했다. 원본 모델은 변경하지 않았고 [구성 기록](../art/archive/boss/military-8dir-r03/manifest.json)·[사용 안내](../art/archive/boss/military-8dir-r03/README.md)에 결과를 남겼다.
-
-#### 군용 8방향 R04 — 명암 단순화 시험안 제작·파일 검증 완료
-
-사용자 요청은 몸의 명암을 더2D처럼 보이게 하는 것이다. 넓은 기본색과 한 단계 그림자는 AI의2톤 시험 해석으로 시작했으며 후속 Map 배치 요청으로 R04 자산 사용이 허용됐다. R03의 셀 색만 바꿔144×144px·7레이어·8정지프레임/태그·배율/피벗과 방향 구도를 유지했다. 몸체 상면/베벨의 올리브색을 기본색 `#74834E`로 합치고 하단 약2px와 머리 접촉부에 `#50613D` 그림자를 두었으며, 등 박스 윗모서리도 기본 짙은색으로 통합했다. 손·금속·모래색·적색·수정은 유지했다. [Aseprite 원본](../art/archive/boss/military-8dir-r04/aseprite/02-military-robot-8dir.aseprite)·[R03/R04 동일3배 비교](../art/archive/boss/military-8dir-r04/comparison-r03-r04-3x.png)·[R04 전체](../art/archive/boss/military-8dir-r04/preview-final-3x.png)와 [사용 안내](../art/archive/boss/military-8dir-r04/README.md)를 저장했다.
-
-**검증:** [독립 검사](../art/archive/boss/military-8dir-r04/validation-independent.json)에서 native 재출력/PNG RGBA 차이0·R03 대비8장 알파 차이0·중간 알파0,144×144px·8프레임·7레이어·8태그·실사용23색을 확인했다. [원본 보존 검사](../art/archive/boss/military-8dir-r04/source-preservation-validation.json)에서 기존38파일 해시 불변을 확인했으며 넓은 상면의 광감 감소·대각 구도/부품 구분을 시각 검토했다. ZIP19개 내용/CRC/원본 바이트 일치를 확인했다. 사용자 미술 피드백과 이동/공격 모션·Unity 연결은 별도다.
-
-#### 군용 R04 — Map 두 번째 영역 정적 배치·Unity 확인 완료
-
-[배치 결과 안내](../art/archive/boss/military-map-placement-r01/README.md)에 원본 반영과 검증 범위를 모았다.
-
-사용자가 사용을 허용한 R04의 게임용 PNG8장([정면 S](../project/Assets/Art/Enemy/Military/S.png))과 [MilitaryRobot.prefab](../project/Assets/Prefabs/Startup/MilitaryRobot.prefab)을 추가하고 [Map.prefab](../project/Assets/Prefabs/Startup/Map.prefab)의 자식 하나로 연결했다. 위쪽 두 번째 방(x2..27/y55..73) 중앙(14.5,64)·16PPU·scale1·S 정면·정렬순서20은 제작 배치값이며 Unity 피벗은(72,24)다. 신규19자산을 반영하고 Map의 추가 자식/블록을 제외한 기존 내용은 보존했다. 현재 Stage의 경비 보스1개 처리와 런타임 코드·시퀀스는 유지하며 Boss 등록·AI·미사일·Collider·자동8방향 추적은 추가하지 않았다. 새 Notion 시퀀스도 만들지 않았다.
-
-**확인:** 동일 Unity6000.3.21f1 검증 사본에서 import/컴파일·정적 배치와 Title→슬롯0→MainWorld/Map 생성→Player(9.5,66)·GameCamera 줌5.625의 실제 Play 렌더를 확인했다. 정적/Play 실행 모두 종료0·최종 C# 오류0이다([정적](../art/archive/boss/military-map-placement-r01/static-result.json), [Play](../art/archive/boss/military-map-placement-r01/play-result.json), [전체 배치](../art/archive/boss/military-map-placement-r01/overview-editor.png), [실제 Play](../art/archive/boss/military-map-placement-r01/placement-play.png)). [독립 검토](../art/archive/boss/military-map-placement-r01/independent-review.json)에서 PNG8장 원본 일치·Point/무압축/PPU/피벗·배치·추가 자식 제거 시 기존 Map 바이트 복원·R04 원본20개 보존을 확인했다. [검증본 대조](../art/archive/boss/military-map-placement-r01/verification.json)에서 군용19자산·Map82객체 블록·관련 프리팹/씬/공유재질7개는 일치했지만 런타임53파일 중 동시 변경된 `UI_Title.cs`1개가 달라 최신 전체 코드 검증으로 보지 않는다.
-
-**환경·한계:** 초기 격리 라이선스 실행 실패는 권한 실행으로, 경비 코드/메타·참조의 사본 불일치는 최신 의존 파일 동기화로 해소했다. 최종 Editor.Search 내부 예외1개를 관찰했으나 런타임 배치 검사는 성공했으며 원본 경비 기능 오류로 분류하지 않는다. 원본 Editor 직접 Play·제출 빌드는 미실행이다.
-
-**남은 작업:** 배치에 대한 후속 사용자 피드백, 군용의 AI·이동/공격 모션·전투 기능·자동 방향 전환과 다른 보스의 방향/모션·게임 연결, 꽃3D 모델 import는 별도다. 이번 완료 범위는 R04 정적 시각 자산의 Map 배치와 해당 Unity 확인이다.
-
-### 3.3.13 Draw 이미지 FX 적용 — draw-line-image-r01
-
-**현행 R09: 원형 알갱이 색은 같은 LineVFX R04 texture의 white/cyan/blue RGB를 참조한다. R08 원형·외곽1px와 PS직경·이동/수명을 유지하고 동일 버전 격리23검사·실제 참조/색·영상을 확인했다.** R08 외곽/native stream·R07 원형/직경의 기술 이력을 보존한다. R06의 길쭉한 빛 조각 해석과 R05 제자리 noise/UV 분해는 후속 반려이며 당시23검사/영상은 기술 이력으로 보존한다. R04 양끝 마감·R03 발광 스타일 긍정·R02 검은 고정 외곽/단색 띠 반려·R01 최초 선택 이력은 아래를 따른다.
-
-**R01 사양 확정 / 코드·자산 반영과 격리 Unity22묶음 확인 완료(2026-11-16).** 사용자는 [30° 비교판](../art/archive/fx/draw-line-comparison-r01/draw-line-30deg-comparison.png)에서 image FX 방식을 선택하고 점이 시각적으로 남지 않도록 요청했다. 이전 pixel FX 요구·임시 두 점 표시는 이 후속 선택으로 대체한다. 논리 두 클릭·고정 길이/폭·R/F/Shift·기존 Line 보존·수명/소비·Slash 판정 기하는 유지한다. [선택 사안5](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-5)를 따른다.
-
-- **원본·게임 자산:** [Render-Profile.ps1](../art/archive/fx/draw-line-image-r01/Render-Profile.ps1)·[draw-line-profile.png](../art/archive/fx/draw-line-image-r01/draw-line-profile.png)를 보관하고 게임의 `Assets/Art/FX/Draw/draw-line-profile.png`·`DrawImageFX.mat`로 연결했다.96×64 RGBA의 흰 중심·청록 경계·부드러운 알파이며 bilinear·clamp·mipmap 없음·무압축을 사용한다. 중심색#E9FAFF·경계색#91DBEC의 연속 알파, Preview 알파0.75와 기존 LineWidth0.25는 선택한 스타일에 맞춘 현행 적용값이며 별도 수치 확정과 구분한다.
-- **연결·표시:** PlayerDrawSetup.Run은 DrawPreview·DrawLine·DrawExpired의 기존 GUID·단위 기하·DrawLineVfx 폭 보정을 유지하고 이미지 재질을 적용한다. Preview는 흰 tint/알파0.75, Confirmed는 흰 tint, Expired는 기존 주황 tint다. SlashFlash·암전 재질은 유지한다. DrawVfx.Prepare는 LinePrefab만 필수이며 Awake에서 Preview/Confirmed/Expiry/Slash4개를 한 번 생성한다. PointPrefab·PointObjects·ShowPoint·점 생성/해제는 제거하고 ShowEditing은 PreviewLine만 표시한다. 논리 좌표·확정/수명·게임 정지·후반 점멸·별도 만료 꼬리는 기존 책임을 유지한다.
-- **레퍼런스:** F-P04의 Sephiria 스킬 시작/취소·카메라/표현 분리, F-P06의 상태/표현 수명 분리 근거를 유지한다. 이번에는 우리 표시 슬롯만 바꾸며 원작에 동일한 두 점/이미지 FX가 있다고 가정하지 않는다. 실제 읽은 대응·채택/생략은 REFERENCE_CODE_MAP을 따른다.
-- **Sequence Diagram:** F-P04②·F-P05①②의 ShowEditing→ShowPath와 점 미생성을 반영하고 F-P05④도 편집 선 숨김으로 정정했다. F-P06의 기존6Case는 수명/만료/소비 호출이 같아 보존한다. Notion의 기존 기능별 토글·Case 번호를 보존하고 Class 설명·F-P04②·F-P05①②④·자산/현행 표시 설명8개 대상을 저장했으며 연결 도구가 경고 없이 성공했다.
-- **확인 결과:** 같은 Unity6000.3.21f1의 격리 ProgressionVerification에서 현재 코드 컴파일·Assembly-CSharp/Editor 재로드와 Draw/점 편집/수명/Slash/Title 정리22묶음 ALL PASSED를 확인했다(success=true·error 빈값·배치 종료0). 현재 원본/검증본C#69개 SHA256이 일치하며 검증한 새 재질·텍스처 meta·3선/Player 프리팹을 본 Assets에 복사한9자산 해시도 일치한다. profile PNG는 archive/본Assets/검증본3곳 SHA256이 같다. 실제 Play의30° 흰 중심·청록 잔광·점 미표시를 화면으로 확인했으며 Temp 캡처는 Unity 종료 때 삭제되어 지속 결과물로 링크하지 않는다. [검증 로그](../project/Logs/DrawImageFxVerification.log)·[22개 결과](../project/Logs/DrawImageFxVerification-result.json)·[소스 해시](../project/Logs/DrawImageFxVerification-source.json)를 따른다. 첫 준비의 무관한 PlayerProgressionSetup 호출은 제거 후 재실행으로 해결됐으며 미완 오류로 남기지 않는다.
-- **확인 한계:** 최초 원본 batch 요청은 exit1·원인 미확정이며 원본 Editor에서 이번 변경의 직접 Play는 미실행, 재임포트 완료는 미확인이다. 성공 근거는 동일 버전/동일 C#·복사 자산의 격리 실행이다. 기존 전체 Startup의 구형 맵 고정좌표 이동 검사는 이번 Draw 한정 검사에 포함하지 않았다. 제출 빌드·성능 측정·Slash 최종 발도/검격 아트는 별도다.
-
-#### R02 표시 두께·길이 연동·확정선 대비 보완 — draw-line-image-r02
-
-**R02 기술 구현·23검사 이력 / 미술 표현 사용자 반려(2026-11-16).** 표시 두께·길이 연동·밝은 바닥 가독성 요청을 AI가 검은 고정 외곽/단색 띠로 잘못 해석했다. 사용자가 원한 것은 처음 선택한 IMAGE FX의 발광과 부드러운 번짐을 살린 더 두꺼운 효과이며 검은 외곽은 반려했다. 아래 검사 성공은 기술 동작 확인일 뿐 미술 승인이 아니다. 점 미표시와 기존 입력·논리 판정폭·수명/소비 규칙은 유지한다. [선택 사안6](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-6)을 따른다.
-
-- **R02 제작 자산·반려 이력:** [R02 원본](../art/archive/fx/draw-line-image-r02/Render-Profile.ps1)·[PNG](../art/archive/fx/draw-line-image-r02/draw-line-profile.png)는96×64 RGBA다. 불투명 청록 중심#11CEE9·어두운 테두리#073044·약한 soft alpha 잔광과 X방향 끝 페이드 제거를 적용했으나 단색 띠/검은 고정 외곽이 의도와 달라 반려됐다. 기존 게임 PNG 경로/GUID는 보존했고 R03이 내용을 교체한다.
-- **표시 폭과 판정 폭:** DrawLineVfx.WidthMultiplier 기본값1f를 추가하고 ApplyWidth는 abs(lossyScale.y)×Max(0,WidthMultiplier)를 적용한다. PlayerDrawSetup은 미리보기/확정/만료 프리팹에2f, Slash에는1f를 유지한다. 표시 메시의 기본 폭은0.25×2=0.5지만 Line.Width/Slash 판정폭0.25는 바꾸지 않는다. 확정·미리보기·만료의 기존 알파/tint·수명 점멸·축소 정책은 유지한다.
-- **길이 원본:** SkillController.LineLength를 Drawer.Begin에서 이번 편집 크기로 고정한다. PreviewLine→확정 Line→Player 원본→Slasher/QuerySlash가 같은 Length를 사용하며 표시 Transform의 X길이도 이 값을 따른다. 값 변경은 다음 Draw부터 적용하고 이미 확정한 선을 소급 수정하는 정책은 추가하지 않는다.6→12는 길이 연동 검사의 값이며 기본값12 변경으로 기록하지 않는다.
-- **Sequence Diagram:** F-P04①의 Begin snapshot·②의 표시 폭 분리, F-P05①②의 설정 길이/실제 끝점과 DrawLineVfx.OnEnable/LateUpdate→ApplyWidth, F-P06①의 같은 Line.Length·확정 뒤 대비 표시를 갱신했다. 기존 Case 번호·점 미표시를 유지했고 Notion의 Class·관련 Case·자산/현행 설명10개 대상과 최종23검사 결과를 저장했다. 연결 도구가 경고 없이 성공했다.
-- **확인 결과:** 같은 Unity6000.3.21f1의 격리 ProgressionVerification에서 현재 최종C#69개 컴파일·어셈블리 재로드와 관련23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다.6→12의 미리보기/확정 끝점·실제 메시 길이·표시 폭 고정과 Slash ActiveLine.Length12/Width0.25 유지를 통과했다. 원본/검증본C#69개 SHA256·본 Assets에 복사한3개 프리팹의 GUID/해시가 일치한다. R02 profile PNG는 archive/본Assets/검증본3곳 SHA256이49F4BCD0D2DF2C75E5EE5A118119B240468722B6B63F13EA7BA6427CF8390560으로 같다. [최종 로그](../project/Logs/DrawImageFxContrastVerification.log)·[23개 결과](../project/Logs/DrawImageFxContrastVerification-result.json)·[소스 해시](../project/Logs/DrawImageFxContrastVerification-source.json)를 따른다.
-- **실제 표시:** 정상 밝은 타일 바닥에서 길이12 선 전체·선명한 청록 중심/어두운 테두리·점 미표시를 확인했다. [확정 길이12 캡처](../art/archive/fx/draw-line-image-r02/confirmed-length12.png)와 [미리보기 길이6 캡처](../art/archive/fx/draw-line-image-r02/preview-length6.png)를 영구 보관했다. 캡처의12는 이번 길이 연동 확인값이며 기본 LineLength6을12로 변경한 사양이 아니다.
-- **확인 한계:** 원본 Editor의 이번 직접 Play·import 완료는 미확인이며 확인 근거는 같은 버전·동일 C#·복사 자산의 격리 실행이다. 제출 빌드는 미실행이다. 이전 R01의22검사와 이번 R02의최종23검사를 구분하며 반복 중간 실행은 별도 완료 이력으로 추가하지 않는다.
-
-#### R03 발광 광원·부드러운 번짐 복원 — draw-line-image-r03
-
-**사용자 의도 정정 / 구현·연결·격리 Unity23검사 완료, 후속 사용자 발광 스타일 긍정 확인·양끝 마감 R04 수정(2026-11-16).** 처음 비교판 오른쪽B에서 선택한 IMAGE FX의 광원·부드러운 빛 번짐을 유지하며 더 두껍게 표현한다. R02의 검은 고정 외곽·단색 띠 해석은 반려이며 기술23검사 성공과 분리한다. 후속 사용자는 R03을 좋다고 확인했으며 빨대처럼 잘린 양끝이 오라로 감싸이도록 요청했다. 중앙 스타일은 유지하고 양끝 마감은 아래 R04를 따른다. [선택 사안7](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-7)을 따른다.
-
-- **원본·도구:** 내장 image_gen에 비교판 오른쪽B를 스타일 참조로 주어 [1536×1024 RGBA 발광 리본](../art/archive/fx/draw-line-image-r03/draw-line-profile.png)을 제작했다. 정확한 생성/보정 프롬프트·참조·투명 배경 설정은 [prompts.json](../art/archive/fx/draw-line-image-r03/prompts.json)에 보존한다. 흰 발광 중심→cyan/aqua→포화된 blue 코로나→부드러운 알파 외광으로 이어지고 검은 불투명 외곽·단색 스트로크는 제거했다.
-- **표시 적용:** FX 텍스처 자체의 광원 몸체와 halo를 넓히고 같은 게임 PNG 경로/GUID로 교체했다. Setup은 Preview/Confirmed/Expired의 WidthMultiplier3f를 연결하며 Slash1f·판정폭0.25를 유지한다. R01표시는1배·R02는2배·R03은3배이며 배율만 키운 검은 띠로 복원하지 않는다. 실제 폭/색/잔광 수치는 이번 적용값이다.
-- **유지·Sequence Diagram:** LineLength snapshot·실제 표시/확정/Slash 길이 연결·점 미표시·기존 입력/수명은 유지한다. 새 런타임 API나 호출 순서는 없으므로 기존 F-P04/F-P05/F-P06의 Case 번호·흐름을 보존하고 표시 배율/외형 Note만 현행으로 정정했다. 흐름 일치를 확인하고 중복 Case를 추가하지 않았다. Notion의 Class·기존 Case 외형/배율 Note·현행/반려 설명9개 대상을 갱신하고 최종 실행 결과를 저장했으며 연결 도구가 경고 없이 성공했다.
-- **확인 결과:** 같은 Unity6000.3.21f1의 격리 ProgressionVerification에서 현재 C#69개 컴파일·어셈블리 재로드와23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다. 길이6→12의 실제 미리보기/확정 메시·Slash 길이 연동·판정폭0.25·점 미표시가 통과했다. 본 Assets의3선 프리팹 WidthMultiplier3과 GUID/해시·원본/검증본C#69개 SHA256이 일치한다. R03 PNG는 archive/본Assets/검증본3곳 SHA256이1D72A3B7903E3FEFBE3F17AC5E63B5A993257AC2B9DE0B2ECB58D7344A78770A로 같다. [실행 로그](../project/Logs/DrawImageFxGlowVerification.log)·[23개 결과](../project/Logs/DrawImageFxGlowVerification-result.json)·[소스 해시](../project/Logs/DrawImageFxGlowVerification-source.json)를 따른다.
-- **실제 표시·기술 범위:** 정상 밝은 바닥에서 흰 발광 중심·넓은 cyan/blue 코로나·부드러운 외광과 검은 고정 외곽 부재를 확인했다. [길이12 확정 캡처](../art/archive/fx/draw-line-image-r03/confirmed-length12.png)·[길이6 미리보기 캡처](../art/archive/fx/draw-line-image-r03/preview-length6.png)를 영구 보관한다.1536×1024 image_gen PNG와 기존 알파 재질을 그대로 사용하며 postprocess/Bloom 설정이나 새 렌더러를 추가하지 않았다. 이 시각 확인 자체는 기술/적용 검토이며 이후 사용자가 R03 발광 스타일을 긍정했다. 양끝 마감은 R04 후속 요청으로 구분한다.
-- **확인 한계:** 원본 Editor의 이번 직접 Play/import 완료는 미확인이고 제출 빌드는 미실행이다. 실행 성공은 같은 버전·동일 C#·복사 자산의 격리 결과다. R02의 기술23검사 이력과 미술 반려를 보존하고 기술23검사 자체와 후속 사용자 스타일 긍정·양끝 추가 요청을 구분한다.
-
-#### R04 양끝 둥근 광원·광륜 마감 — draw-line-image-r04
-
-**사용자 R03 스타일 긍정 / R04 양끝 구현·연결·격리 Unity23검사·실제6화면 검토 완료(2026-11-16).** 사용자는 R03 발광 스타일이 좋다고 확인했지만 빨대처럼 잘린 시작/끝을 중앙처럼 오라가 감싸도록 요청했다. 중앙 발광·두께·색은 유지하고 양끝 흰 광원을 짧게 둥글게 닫은 뒤 그 바깥 cyan/blue halo가 이어지며 투명 경계로 감싸도록 수정한다. [선택 사안8](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-8)을 따른다.
-
-- **원본·도구:** 내장 image_gen으로 R03을 수정한 [1536×1024 RGBA PNG](../art/archive/fx/draw-line-image-r04/draw-line-profile.png)와 정확한 [prompts.json](../art/archive/fx/draw-line-image-r04/prompts.json)을 보관한다. 중앙의 흰 광원→cyan/blue 광륜은 유지하고 양끝만 둥근 중심/부드러운 바깥 halo로 감쌌다. 파일 검사에서 외곽 열의 최대 알파는 x0=2/255·x1535=3/255로 거의 투명하고 x96/1440 부근에는 흰 중심이 남는다.
-- **같은 연결·기하:** 게임 PNG의 기존 경로/GUID·Stretch·numCapVertices0·WidthMultiplier3을 유지한다. 새 런타임 API/렌더러/고정 월드 반경 캡 시스템을 추가하지 않는다. LineLength snapshot·Line.Width/판정폭0.25·Slash 길이 연동·점 미표시·수명은 같다.
-- **끝점의 의미:** 데이터와 메시의 끝점은 기존 Line.Length 그대로다. 텍스처 UV 안의 끝 페이드 때문에 가시 흰 core만 조금 안쪽에서 부드럽게 닫히고 바깥 halo가 남는다. 이 마감 구간은 전체 길이에 비례하며 고정 월드 반경 캡이라고 설명하지 않는다.
-- **Sequence Diagram:** 기존 F-P04/F-P05/F-P06의 Case 번호·API 호출을 보존하고 흐름 일치를 확인했다. F-P05의 메시 길이/halo와 F-P06의 양끝 외형 Note만 정정한다. 중복 Case를 추가하지 않았다. Notion의 현행 설명·R03 스타일 긍정·자산과 기존 Case 외형 Note5개 대상을 저장했고 최종23검사/6화면 결과도 갱신했다. 연결 도구가 경고 없이 성공했다.
-- **확인 결과:** 같은 Unity6000.3.21f1의 격리 ProgressionVerification에서 현재 코드 컴파일·어셈블리 재로드와23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다. 길이6/12의 실제 기하·Slash·판정폭0.25·표시3배·점 미표시를 유지한다. 현재 원본/검증본C#69개·3선 프리팹/GUID가 같고 본 Assets PNG를 반영했다. R04 PNG는 archive/본Assets/검증본3곳 SHA256이798FC9A404D216339A0F4C80439E17A0C5A2E8DDCD2E44AC25A3913CB98373D8으로 같다. [실행 로그](../project/Logs/DrawImageFxCapsVerification.log)·[23개 결과](../project/Logs/DrawImageFxCapsVerification-result.json)·[소스 해시](../project/Logs/DrawImageFxCapsVerification-source.json)를 따른다.
-- **실제6화면 확인:** [길이6 미리보기](../art/archive/fx/draw-line-image-r04/preview-length6.png)·[길이12 확정](../art/archive/fx/draw-line-image-r04/confirmed-length12.png), [6 시작 확대](../art/archive/fx/draw-line-image-r04/length6-start.png)·[6 끝 확대](../art/archive/fx/draw-line-image-r04/length6-end.png)·[12 시작 확대](../art/archive/fx/draw-line-image-r04/length12-start.png)·[12 끝 확대](../art/archive/fx/draw-line-image-r04/length12-end.png)를 읽어 흰 단면 잘림 제거·흰 중심 이후 cyan/blue 오라 감싸임·중앙 발광 유지를 확인했다. UV Stretch 마감이므로 길이12에서6보다 길게 부드럽게 닫히며 고정 반경 캡으로 설명하지 않는다.
-- **확인 한계:** R03 스타일은 사용자에게 긍정 확인을 받았고 R04는 기술/시각 검토를 마쳤으나 새 결과의 사용자 미술 피드백은 별도다. 원본 Editor의 직접 Play/import 완료는 미확인이고 제출 빌드는 미실행이다. 이전 R03의23검사와 이번 R04의23검사를 구분한다.
-
-#### R05 연속 알파 경고·원본 FX 분해
-
-**R05 기술 구현·23검사 이력 / 제자리 noise·UV 분해 방식 후속 반려(2026-11-16).** alpha 왕복은 유지한다. 사용자는 제자리에서 물방울처럼 줄어드는 효과가 아니라 실제 파티클 조각이 선에서 떨어져 사방/위로 퍼져 올라가다 사라져야 한다고 정정했다. 아래 shader 동작/GIF/검사 성공은 실제 파티클 이동의 미술 승인으로 보지 않는다. bool 활성 토글·주황 tint·폭0 축소를 대체하며 R04 원본 이미지/양끝·LineLength·판정폭0.25·표시3배·점 미표시와 Skill의 논리 수명/시간 책임은 유지한다. [선택 사안9](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-9)를 따른다.
-
-- **alpha 경고:** DrawVfx.LineOpacity를 추가하고 UpdateLineLifetime이 같은 scaled 경과시간으로 LifePhase를 진행한다. cos 파동의0은 투명,1은 원본 PNG alpha다. LineObject는 활성 상태를 유지하며 캐시한 DrawLineVfx.SetOpacity에만 값을 전달한다. 경고 구간의 마지막12%(progress0.88→1)는 alpha를 원본으로 복귀시켜 분해 시작 때의 갑작스러운 flash를 줄인다.
-- **같은 FX 분해:** PlayLineExpiration이 같은 R04 texture/white tint·원래 기하로 시작하고 TickVisuals는 ExpiryProgress0→1을 SetDissolve로 보낸다. 분해0은 원래 모습,1은 완전 투명이며 중간은 world grid noise·UV 미세 흩어짐으로 빛 조각을 만든다. 폭을 줄이거나 별도 주황 선으로 바꾸지 않는다.
-- **shader·캐시:** [DrawImageFx.shader](../project/Assets/Shaders/DrawImageFx.shader)의 Chrono/DrawImageFx와 기존 DrawImageFX.mat를 연결한다. DrawLineVfx는 Awake에서 LineRenderer/MaterialPropertyBlock을 한 번 확보해 _Opacity/_DissolveProgress를 SetPropertyBlock으로 전달한다. DrawVfx는 Prepare 때 확정/만료의 표현 참조를 한 번 확보하고4개 객체를 재사용한다. shader에 _Time이 없어 pause·Draw·Skill 비활성화의 같은 clock/복구 정책을 유지한다. 새 확정·제거·사망은 이전 phase/분해를 reset한다.
-- **실제 기본값과 검사 입력:** LineLifetime8초·WarningFraction0.35·Slow0.5/Fast0.08초를 유지하고 ExpiryDuration은 코드/Player 프리팹0.65초로 적용한다. 실제 캡처 검사는 수명2.4초·경고 비율0.9·주기0.4/0.08초·분해0.65초를 사용했으며 이를 게임 기본값으로 기록하지 않는다.
-- **레퍼런스·Sequence Diagram:** BulletBlinkBeforeDestroy의 잔여 비율 기반 예고 간격, FlameGroundFadeFx의 재생 초기화·종료 책임만 채택한다. bool 토글/RPC/풀을 복제하지 않으며 연속 alpha·shader 분해는 자체 구현이다. F-P06①~⑥의 기존 Case 번호를 보존하고 실제 SetOpacity/SetDissolve·shader 데이터·pause/reset 흐름을 갱신했다. Notion의 기존6Case·관련 Draw 설명/현행11개 대상과 최종 실행/시각 결과를 저장했고 연결 도구가 경고 없이 성공했다. F-P07/SlashPresentation의 별도 작업은 변경하지 않는다.
-- **최종 실행·반영:** 같은 Unity6000.3.21f1의 새 격리 FxV에서 컴파일·어셈블리 재로드·23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다. 현재 원본 런타임46개 전부와 이번 변경 소유6개 파일은 검증사본과 일치한다. 검증사본의75개 C# 중 동시 Slash 작업의 Editor2개(SlashPresentationSetup·SlashPresentationTuning)만 검증 뒤 변경됐으므로 현재75개 전체 일치/전체 최종 검증으로 확대하지 않는다. 새 재질 DrawImageFX.mat·white DrawExpired.prefab의2개 production 자산을 GUID 보존 복사하고 Player는 ExpiryDuration0.65만 표적 반영했다. 그 외 Slash/Player 설정은 복사하지 않았다. [로그](../project/Logs/DrawExpiryVerification.log)·[23개 결과](../project/Logs/DrawExpiryVerification-result.json)·[검증 소스 해시](../project/Logs/DrawExpiryVerification-source.json)·[범위 대조](../project/Logs/DrawExpiryVerification-scope.json)를 따른다.
-- **실제 alpha·분해:**54개 원본 캡처(관측 약2.83초)에서 alpha 왕복·최소 투명/최대 원본과 동일 R04 cyan 빛 조각 분해(progress 약0.27/0.51/0.75)·최종 빈 화면을 확인했다. [미리보기 GIF](../art/archive/fx/draw-line-expiry-r05/draw-expiry-preview.gif)는3.23초이며 마지막 빈 화면0.5초는 루프 구분용 여백으로 실제 게임에 추가된 지연이 아니다. [frames.csv](../art/archive/fx/draw-line-expiry-r05/frames.csv)·[preview-info.json](../art/archive/fx/draw-line-expiry-r05/preview-info.json)·[재출력 원본](../art/archive/fx/draw-line-expiry-r05/Encode-Preview.py)과 [shader 보관본](../art/archive/fx/draw-line-expiry-r05/DrawImageFx.shader)을 보존한다. [원본 alpha](../art/archive/fx/draw-line-expiry-r05/alpha-full.png)·[투명 경고](../art/archive/fx/draw-line-expiry-r05/alpha-clear.png)·[분해](../art/archive/fx/draw-line-expiry-r05/decomposing.png)·[종료](../art/archive/fx/draw-line-expiry-r05/expired.png)도 저장했다.
-- **준비 경계·확인 한계:** 첫 사본은 새 Slash 준비 참조가 없어 Draw에 진입하지 못했으며 사본에만 둔 bootstrap에서 기존 SlashPresentationSetup.Run→PlayerDrawSetup.RunChecks를 실행해 해결했다. 본 Slash 설정/진행을 완료하거나 변경한 것으로 기록하지 않는다. 원본 Editor 직접 Play/import 완료는 미확인, 제출 빌드는 미실행이며 사용자 새 소멸 연출의 미술 피드백은 기술/시각 검토와 별도다.
-
-#### R06 실제 파티클 조각의 확산·증발
-
-**R06 기술 구현·격리23검사/실제 이동 이력 / 입자 모양·크기는 R07 후속 정정(2026-11-16).** alpha 왕복은 유지하되 R05의 제자리 noise/UV 분해는 반려됐다. 물방울처럼 줄어드는 효과가 아니라 실제 조각이 선에서 떨어져 사방/위로 퍼져 올라가며 사라져야 한다. [선택 사안10](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-10)을 따른다.
-
-- **표현 구조/API:** DrawVfx.Prepare가 씬 루트에 DrawEvaporationVfx를 한 번 만들고 Prepare(EvaporationMaterial)로 준비·재사용한다. PlayLineExpiration(Line)은 원본 선의 ShowPath와 Evaporation.Play(line,expiryTotal), TickVisuals(dt)는 ExpiryProgress·원본 SetOpacity(1-SmoothStep(progress/0.25))·Evaporation.Tick(dt)를 연결한다. ApplyLineVisibility는 SetVisible(visible&&IsExpiryPlaying), ClearLineEffects는 Clear, OnDestroy는 입자 루트 제거를 맡는다.
-- **입자·유지 범위:** 별도 DrawEvaporation.mat가 같은 R04 texture를 사용한다. 실제 ParticleSystem 조각은 world 위/양옆으로 이동하며 수명 중 크기를 줄이지 않고 alpha로 사라진다. 원본 선은 초기25%에 alpha로 입자에 넘긴다. 기본 ExpiryDuration1.3초와 scaled clock·정지/숨김·교체/사망 정리를 연결하며 길이/판정폭0.25·표시3배·점 미표시는 유지한다.
-- **R05와 구분:** DrawLineVfx는 Opacity-only로 정리하고 SetDissolve/noise/UV로 제자리를 지우는 방식을 대체한다. R05의23검사·3.23초 GIF/소스는 기술 이력으로 보존하며 실제 입자 이동의 승인으로 기록하지 않는다.
-- **레퍼런스·Sequence Diagram:** 기존 원작의 시간 비율·재생 초기화/종료 책임만 참고한다. 동일한 Line 증발 구현은 확인하지 않았고 실제 입자/이동은 자체 구현이다. F-P06의 기존6Case를 보존하고 실제 Play/Tick/SetVisible/Clear·정지/복구 경계를 반영한다. 다른 Slash·공격 연출/완료 기록은 변경하지 않았다. Notion의 기존6Case·Draw 설명·현행/반려 기록10개 대상과 최종 ParticleSystem Emit/Simulate/Pause·검사/영상 결과를 저장했으며 연결 도구가 경고 없이 성공했다.
-- **적용 수치:** 전체1.3초·길이1당12조각(6→72·12→144, 최대768), 조각 수명은 전체의65~95%다. X속도는양옆±0.5~1.3·Y속도0.9~1.8·world 위쪽 힘0.35, 수명 중 크기 변화 모듈을 끄고 alpha로만 소멸한다. 기본 경고0.35·주기0.5→0.08은 유지하며 실제 캡처 입력 수명2.4/경고0.9/주기0.4→0.08과 구분한다.
-- **최종 실행·반영 범위:** 같은 Unity6000.3.21f1 격리본에서 컴파일·어셈블리 재로드·Draw/편집/수명/Slash/Title23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다. 검증사본 C#78개를 기록했고 원본의 런타임45개·이번 Draw 소유11파일이 사본과 일치한다. 동시에 변경된 AttackController·PlayerCharacter·PlayerAttackIntegrationChecks3개는 차이가 있으므로 현재 원본 전체/최신 공격까지 검증했다고 주장하지 않는다. 원본에는 재질 DrawImageFX/DrawEvaporation2개와 Player의 EvaporationMaterial 참조/ExpiryDuration1.3 필드만 해당 범위로 반영했고 사본 Player 전체·공격/Slash 자산은 복사하지 않았다. [실행 로그](../project/Logs/DrawEvaporationVerification.log)·[23개 결과](../project/Logs/DrawEvaporationVerification-result.json)·[검증 소스](../project/Logs/DrawEvaporationVerification-source.json)·[범위 대조](../project/Logs/DrawEvaporationVerification-scope.json)를 따른다.
-- **실제 영상·수치:** [64원본 캡처→63프레임 미리보기 GIF](../art/archive/fx/draw-line-evaporation-r06/draw-evaporation-preview.gif)는3.94초다. 동일한 빈 화면1장이 합쳐졌고 관측 게임 시간은3.465988초이며 마지막0.5초는 반복 전 여백으로 실제 게임 추가 지연이 아니다. 표본72입자를 seed로 추적해 최대 크기 오차0·X변위−1.45824~+1.5259·최대 상승2.32098world·72개 전부 alpha 감소·최종0개를 확인했다. [frames.csv](../art/archive/fx/draw-line-evaporation-r06/frames.csv)·[particles.csv](../art/archive/fx/draw-line-evaporation-r06/particles.csv)·[preview-info](../art/archive/fx/draw-line-evaporation-r06/preview-info.json)·[추적/캡처 검사](../art/archive/fx/draw-line-evaporation-r06/capture-validation.json), [원본 alpha](../art/archive/fx/draw-line-evaporation-r06/alpha-full.png)·[분리 시작](../art/archive/fx/draw-line-evaporation-r06/lift-off.png)·[상승](../art/archive/fx/draw-line-evaporation-r06/floating.png)·[종료](../art/archive/fx/draw-line-evaporation-r06/expired.png)와 [아트/재출력 안내](../art/archive/fx/draw-line-evaporation-r06/README.md)를 보존한다. R04 PNG는 그대로다.
-- **검사 준비·수정:** 사본에서만 기존 PlayerArtSetup.Apply→SlashPresentationSetup.Run→PlayerDrawSetup.RunChecks로 필수 참조를 준비했다. shader GUID 오기와 ParticleSystem 정지 전 seed 설정 경고는 수정 후 경고0을 확인했다. 기존 Fever4개 stat 검사의 float 정확 비교를 Mathf.Approximately로 수정했으며 runtime 효과·F-P07 호출 흐름은 바꾸지 않았다. 이후 최종23묶음이 통과했다.
-- **확인 한계:** 원본 Editor 직접 Play·최종 import와 제출 빌드는 미확인이다. 기술/시각 검토를 완료했지만 새 R06 연출의 사용자 미술 승인은 아직 미정이며 원본 최신 공격3파일까지 전체 실행한 것으로 확대하지 않는다.
-
-#### R07 더 작은 원형 알갱이
-
-**사용자 후속 정정 / 입자 모양·크기 반영·격리 Unity23검사/실제 영상 확인 완료(2026-11-16).** 사용자는 빛 조각이 아니라 더 작은 원형 알갱이가 날아가기를 요청했다. R06의 실제 ParticleSystem 이동·정지·수명/alpha 구조는 유지하고 모양/크기만 바꾼다. R06의23검사/추적은 기술 이력으로 보존하고 입자 shape 해석의 승인이 아니라고 구분한다. [선택 사안11](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-11)을 따른다.
-
-- **모양·직경:** 입자 shader가 UV에서 procedural 원형 radial 색/alpha를 계산해 흰 중심·cyan·부드러운 경계를 표시한다. 길쭉한 R04 선 이미지를 입자에 재사용하는 방식을 제거한다. ParticleSystem은 동일 가로세로 직경0.045~0.085world를 사용하며 R06의가로0.12~0.43/세로0.16~0.30보다 작게 한다. 원래 Draw 선의 R04 PNG/양끝·두께는 유지한다.
-- **유지·Sequence Diagram:** 입자 수/속도/위쪽 힘·소멸1.3초·alpha 왕복·원본 초기25% alpha 전환·scaled clock/정지·재사용/교체/사망·길이/판정폭0.25·점 미표시는 같다. 기존 F-P06의6Case·Play/Tick/SetVisible/Clear/Emit/Simulate/Pause API는 보존하고 흐름 일치를 확인했다. 기존6Case를 보존하고 외형 Note만 원형/직경으로 갱신했으며 중복 Case는 추가하지 않았다.
-- **최종 검사·범위:** 같은 Unity6000.3.21f1 격리본에서 컴파일·Draw/편집/수명/Slash/Title23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다. 검증사본 C#81개와 현재 원본 런타임48개·Draw소유11파일 일치를 기록한다. BossHazardArtChecks·BossHazardArtSetup·PlayerAttackIntegrationChecks의 Editor3개는 동시 변경되어 최신 전체 Editor 실행으로 확대하지 않는다. 원본에는 확인한 DrawEvaporation.mat1개만 복사했고 Player 전체/다른 작업 자산은 복사하지 않았다. [로그](../project/Logs/DrawGrainsVerification.log)·[23개 결과](../project/Logs/DrawGrainsVerification-result.json)·[검증 소스](../project/Logs/DrawGrainsVerification-source.json)·[범위 대조](../project/Logs/DrawGrainsVerification-scope.json)를 따른다.
-- **실제 원형·작은 직경/영상:**72입자의 실제 직경0.046440~0.084193world·XY 차이0·수명 중 크기 변화0, X변위−1.34504~+1.4192·최대 상승2.17859world·72개 모두 alpha 감소·최종0개를 확인했다. 적용 범위0.045~0.085와 표본 관측 범위를 구분한다. [48원본 PNG→46프레임 실제 GIF](../art/archive/fx/draw-line-grains-r07/draw-grains-preview.gif)는4.000초이며 관측 게임 시간은3.526698초다. 마지막0.5초는 반복 전 빈 화면 여백이며 게임 추가 지연이 아니다. [frames.csv](../art/archive/fx/draw-line-grains-r07/frames.csv)·[particles.csv](../art/archive/fx/draw-line-grains-r07/particles.csv)·[preview-info](../art/archive/fx/draw-line-grains-r07/preview-info.json)·[추적/캡처 검사](../art/archive/fx/draw-line-grains-r07/capture-validation.json)와 [PNG4장/셰이더/인코더 안내](../art/archive/fx/draw-line-grains-r07/README.md)를 보존한다. 선R04 PNG 해시는 그대로다.
-- **Notion·확인 한계:** 기존6Case의 Play/Tick/Clear 흐름은 같아 도식을 복제하지 않았고 원형/직경 Note·현행 설명과 최종 검사/범위를 저장했다. 연결 도구가 경고 없이 성공했다. 원본 Editor 직접 Play/최종 import·제출 빌드는 미확인이고 새 R07 결과 사용자 미술 승인은 미정이다. 독립 작업 문서는 보존했다.
-
-#### R08 원형 알갱이 외곽1px
-
-**사용자 가독성 후속 / 구현·연결·격리 Unity23검사/native stream·실제 화면 확인 완료(2026-11-16).** 사용자는 R07 원형을 유지하면서 바닥에서 흐릿한 알갱이 주변에1px를 더 둘러 달라고 요청했다. 작은 원형·PS 월드 직경0.045~0.085·이동/수명/alpha는 유지하고 입자에만 진한 청록 외곽을 추가한다. 선R04 PNG/양끝·기하·점 미표시는 그대로다. [선택 사안12](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-12)를 따른다.
-
-- **화면 픽셀·같은 흐름:** Prepare에서 SetActiveVertexStreams(Position,Color,UV,UV2,Center)를 한 번 연결한다. shader는 TEXCOORD1 입자 월드 중심과 clip 코너 차이의 sign으로 외측 방향을 구해 quad를1.5px 패딩하고 fragment에서 원래 반경을 복원한다.50% coverage 경계 기준 외곽1px·AA여유0.5px이며 렌더 외경은 총2px 커지지만 PS의 월드 직경/크기 수명 데이터는 바꾸지 않는다. 기존6Case·Play/Tick/SetVisible/Clear/Emit/Simulate/Pause 흐름은 같아 도식을 복제하지 않고 외형 Note/현행 일치를 갱신했다.
-- **검증·범위:** 같은 Unity6000.3.21f1 격리본 C#/shader 컴파일 오류0·23묶음 ALL PASSED(success=true·error 빈값·배치 종료0), native BakeMesh의 TEXCOORD1 센터 데이터/첫 quad 정점 평균 대조를 통과했다. 실제 floating.png에서 원형 외곽·밝은 바닥 가독성을 확인했다.72입자 표본 직경0.046440~0.084193world·XY차이0·크기 변화0·72개 alpha 감소·최종0개다. 검증사본 C#81개, 현재 Draw소유11/런타임45 일치와 동시8파일 차이(런타임 CircleWarningVfx·AttackController·PlayerCharacter3개/Editor5개)를 구분한다. [로그](../project/Logs/DrawGrainOutlineVerification.log)·[23개 결과](../project/Logs/DrawGrainOutlineVerification-result.json)·[검증 소스](../project/Logs/DrawGrainOutlineVerification-source.json)·[범위](../project/Logs/DrawGrainOutlineVerification-scope.json)를 따른다.
-- **실제 영상·반영:** [66원본 PNG→64프레임 GIF](../art/archive/fx/draw-line-grains-r08/draw-grains-preview.gif)는3.86초, 관측 게임3.486174초이며 마지막0.5초는 반복 전 여백이다. [입자/시간·검사/PNG4장/셰이더/인코더 안내](../art/archive/fx/draw-line-grains-r08/README.md)와 [preview-info](../art/archive/fx/draw-line-grains-r08/preview-info.json)·[capture-validation](../art/archive/fx/draw-line-grains-r08/capture-validation.json)를 보존한다. 초기 shader 예약어 충돌·UV 화면 방향 가정에 따른 축소를 수정한 뒤 최종 화면/검사가 통과했다. 원본에는 소유 코드3개를 직접 수정했고 사본 production 자산 복사는0개이며 Player/재질 GUID·R04 PNG는 보존했다. Notion은 기존6Case를 유지해 외형/최종 비고만 저장했고 경고 없이 성공했다. 원본 Editor 직접 Play/최종 import·제출 빌드와 최신 전체 원본 실행·새 사용자 미술 승인은 미확인이다.
-
-
-#### R09 LineVFX 팔레트 연동
-
-**사용자 후속 요청 / 색 연동·격리 Unity23검사·실제 영상 확인 완료(2026-11-16).** 알갱이 색도 LineVFX 팔레트를 그대로 따른다. 원형 모양·화면 외곽1px/AA0.5px·PS 직경/이동·수명과 선R04 자체는 유지한다. [선택 사안14](archive/01_Choice/Player_Draw_Responsibilities_20261115.md#선택-사안-14)을 따른다.
-
-- **색 연결·같은 흐름:** PlayerDrawSetup.PrepareEvaporationMaterial(imageMaterial)이 DrawEvaporation.mat의 _LinePaletteTex에 실제 DrawImageFX.mainTexture와 같은 asset을 연결한다. shader는 원형 radial shape를 유지하고 texture의 RGB만 샘플하며 수명 alpha/coverage는 독립으로 계산한다. 길쭉한 선 texture의 모양/alpha를 입자에 복제하지 않는다. core/halo/outline UV는(0.5,0.5)/(0.5,0.578125)/(0.5,0.70703125), 원본 bilinear RGB(0~255)는[253.5,253.25,253]/[81,234,249.75]/[37.25,166.75,252.75]다. [palette-samples](../art/archive/fx/draw-line-grains-r09/palette-samples.json)에 남긴다. 외부 입력/Play/Tick/SetVisible/Clear/Emit/Simulate/Pause의 기존6Case/API 흐름은 같아 Setup 팔레트 연결 Note만 추가하고 도식을 복제하지 않았다.
-- **검증·범위:** 같은 Unity6000.3.21f1의 기존 R08 검증사본에 이번 변경4파일을 반영해 C#/shader 오류0·Draw/편집/수명/Slash/Title23묶음 ALL PASSED(success=true·error 빈값·배치 종료0)를 확인했다. 실제 particleMat._LinePaletteTex==liveLineMat.mainTexture 검사와 floating.png의 white/cyan/blue·원형1px 외곽 검토를 통과했다. 검증사본 C#81개, 현재 팔레트 변경4파일(Setup/LifetimeChecks/Shader/Mat)·런타임41 일치와 동시16파일 차이를 구분하며 최신 원본 전체 실행으로 확대하지 않는다. [로그](../project/Logs/DrawGrainPaletteVerification.log)·[23개 결과](../project/Logs/DrawGrainPaletteVerification-result.json)·[소스](../project/Logs/DrawGrainPaletteVerification-source.json)·[범위](../project/Logs/DrawGrainPaletteVerification-scope.json)를 따른다.
-- **실제 영상·반영/한계:** [64원본 PNG→62프레임 GIF](../art/archive/fx/draw-line-grains-r09/draw-grains-preview.gif)는3.89초, 관측 게임3.478759초이며 마지막0.5초는 반복 전 여백이다.72입자 직경0.046440~0.084193world·XY차이0·크기 변화0·72개 alpha 감소·마지막0개를 확인했다. [원본/재출력 안내](../art/archive/fx/draw-line-grains-r09/README.md)·[preview-info](../art/archive/fx/draw-line-grains-r09/preview-info.json)·[capture-validation](../art/archive/fx/draw-line-grains-r09/capture-validation.json)과 PNG4장/CSV2개/shader/encoder를 보존한다. 원본에는 검사한 DrawEvaporation.mat1개만 표적 복사했고 Player 전체/다른 작업 자산은 복사하지 않았다. 선R04 PNG 해시는 그대로다. Notion 기존6Case/API를 유지해 팔레트 연결 Note/현재 비고를 저장했고 도구 응답이 경고 없이 성공했다. 원본 Editor 직접 통합 Play/최종 import·제출 빌드와 새 사용자 미술 승인은 미확인이다.
-
-### 3.3.14 Title 화면과 칼날 십자 빛 — 2026-11-16
-
-**R02 후속 — 원본 검 외곽·틈새 지속 푸른광(구현·연결·격리 렌더 검증 완료).** 사용자는 검 외곽이 어두워 Slash의 l 위치를 알기 어렵다고 설명하고 원본 Aseprite의 손잡이/검집에 흰색1px 테두리를 요청했다. 틈새 선 중심에 약3px 내외의 푸른 빛을 계속 살아 움직이게 하는 요청도 반영했다([선택14](archive/01_Choice/Title_Logo_Concept_Brief_20261115.md)).
-
-- **원본 아트:** 수정 전 Aseprite/PNG를 [R02](../art/archive/title/title-screen-r02/README.md)에 보존하고 현재 master에 독립 `11 White grip and saya outline 1px` 레이어를 추가했다. 손잡이/검집의240불투명 픽셀에서 바깥4방향1px인96흰 픽셀만 추가했으며 실제 변경96px·영역(124,15)~(137,69)이다. 기존10레이어 RGBA/메타·200×80/1프레임100ms·검정 채움/가드/은날/글자/&/원본 십자를 보존했다. 현재 native 합성=art PNG=Unity PNG를 확인했고 기존로고/씬/스크립트 GUID를 유지했다. [파일 검증](../art/archive/title/title-screen-r02/asset-validation.json)은 allChecksPassed=true다. R01의 원본 바이트 보존은 당시 이력이며 이번 명시적 원본 수정 요청을 제한하지 않는다.
-- **틈새 VFX:** `title-fissure-glow-0.png`/`-1.png`/`-2.png`는 원본과 별도200×80 RGBA/Point·mipmap 없음·무압축이다. 원본 검흔 픽셀중심(3.5,48.5)→(196.5,22.5)을 따라 수직거리±3px 안쪽에서만 표시하고 양끝7px는 투명하게 마감한다. 실제 alpha 최대거리는2.891native px다. 원본 로고6배 배치에서 한쪽 약18화면px이며 글자 전체를 발광시키지 않는다. 전체 선의 약한 광을 유지하고 검집 중심에서 양쪽으로 번지는 밝은 구간을3위상에 넣었다. native 편집과 VFX 생성/검사 원본은 R02 README를 따른다.
-- **실제 연결·첫 튜닝:** `UI_Title.TitleFissureGlowFrames`에3장을 직렬화하고 `OnGUI`의 기존 로고 Draw 직후 `DrawFissureGlow(elapsed,alpha)`→기존십자 순으로 그린다. FissureGlowCycle2.4초, phase=Repeat(elapsed/cycle)×3에서 인접2장 교차, 밝기=.8+.12sin(pi×t)+.06sin(3pi×t)다. 실제시간 기준·같은Rect(360,141,1200,480)·캐시 참조 재사용·color복원을 유지하고 가로SaveSlot 분기는 보존했다. `UIArtSetup.Apply`도3장을 다시 연결한다. 구체 강도/박자는 첫 구현값이며 사용자 최종 미술 승인과 구분한다. F-U01 기존①에 호출을 추가하고 기존②·③을 보존한 새④를 로컬/Notion에 저장했다.
-- **실행 검증(2026-11-16 10:57 KST):** 같은 Unity6000.3.21f1 격리 일반 Editor에서 C#93개/런타임53개의 컴파일 완료·C# 오류0·종료0, 명시적인 TitleVisualOnly **7묶음 전체 성공**을 확인했다. 원본/별도십자/3위상 참조·Point/mipmap/3슬롯, 메뉴8상태/실제상자없음, VFX없는 원본청록/흰외곽 보존, timeScale0의 푸른 광 지속·변화/alpha마스크 밖 픽셀 보존·기존십자, 실제60캡처·가로슬롯 프레임·완료확인취소/Current보존을 확인했다. `project/Logs/TitleFissureR02-result.json`·`TitleFissureR02-Visual-Unity.log`·`TitleFissureR02-verification.json`에 결과/실제로그/소유18파일 일치와 검사 시점 전체런타임 차이0을 보관했다. 신규3meta만 검사한 Unity import값을GUID동일 확인 후 반영했고 기존meta는 유지했다.
-- **실제 영상·한계:** [재생 GIF](../art/archive/title/title-screen-r02/title-fissure-preview.gif)는1080p 실제60프레임을960×540로 줄인6.99초다. [푸른광만 있는 화면](../art/archive/title/title-screen-r02/fissure-a.png)·[십자도 있는 화면](../art/archive/title/title-screen-r02/peak.png)을 확인했고 두 푸른광 위상의 변화범위는 화면(378,261)~(1542,447)이며 메뉴 픽셀은 동일했다. 최초 snapshot은 동시 보스 작업의 GuardHandAttack 클래스 생성 전을 가져와 컴파일이 중단됐으나 현재 클래스까지 복사한 최종 실행은 통과했다. 이전 보스 코드 대체는 사용하지 않았고 최종 소스/검사본 런타임이 모두 같다. 경비prefab 연결은 다른 작업의 진행 중 범위이므로 이번 실행은 `-chronoTitleVisualOnly`로 **게임 진입·Title복귀를 미실행**했다. 기본 전체8검사 경로는 유지한다. 원본 Editor 직접Play·제출 빌드·사용자 최종 미술 판단은 별도다. 기존 Editor Search 시작 예외·BakeMesh obsolete 경고·종료 JobTempAlloc 경고는 관찰했으며 Title 검사 실패와 구분한다.
-
-**아래 R01은 당시 구현·검증 이력이다.** 현재 변경의 원본은 R02 후속이며 R01의 검사/영상·원본 보존 결과를 새 결과로 재사용하지 않는다.
-
-**사용자 확정 / 구현·연결·격리 실행 검증 완료.** 회빛 검정 바탕 위 확정 로고와 그 아래 시작·설정·종료3메뉴를 두고 박스와 테두리 없이 글자만 표시한다. 사용자 후속 정정에 따라 **원본 로고와 기존 하이라이트는 그대로 표시하며**, 별도 십자 VFX를 Slash의 l 칼날 위에 겹쳐 확대·회전·소멸시킨다. 초기 레이어 분리 적용안은 폐기했다. 요청·이유는 [선택13](archive/01_Choice/Title_Logo_Concept_Brief_20261115.md#선택-사안-13--title-화면칼날-반짝임2026-11-16)을 따른다.
-
-- **원본/자산:** 기존200×80 TitleLogo PNG·사용자 Aseprite의 바이트를 보존한다. [별도 VFX 원본](../art/archive/title/title-screen-r01/generate-vfx.py)은 로고 픽셀을 읽지 않고256×256 흰/청록4방향 십자와 soft halo를 생성한다. 출력은 같은 폴더의 `title-blade-glint-vfx.png`, 실사용은 `project/Assets/Art/UI/Title/title-blade-glint-vfx.png`다. 기존 로고/씬/스크립트 GUID를 유지한다.
-- **표시 연결:** `UI_Title.OnGUI`가 화면 전체 BackgroundColor→기존 원본 로고 Rect(360,141,1200,480)→`DrawLogoGlint`→기존 메뉴/슬롯 순으로 표시한다. PF48·메뉴 좌표·1920×1080 균등배율을 유지하고8개 GUIStyle 상태의 배경과 고해상도 배경을 모두 비운다. 카메라도 같은 SolidColor다. 설정 패널은 기존 미구현이라 비활성이고 시작/슬롯·완료확인·종료 API는 유지한다.
-- **첫 구현 튜닝:** 배경 #151518, 원본 칼날 중심(130.5,31.5)→기준 화면(1143,330), VFX 기본320×320. Intro0.25초 뒤0.6초 대기,1.25초 표시/3.2초 반복,0.15→1.15배를 진행70%까지 SmoothStep 확대, -18도 시작+90도 회전, sin(pi×진행률) alpha다. 사용자 확정 수치가 아닌 AI 첫 적용값이며 미술/박자 피드백으로 조정한다.
-- **생성·수명:** 씬 직렬화 Texture2D/Font를 재사용하고 스타일은 유효한 첫 OnGUI에서만 준비한다. 기존 Start→InitializeAsync가 GameManager를1회 확보하고 슬롯/Intro를 병렬 대기하며 기준 실제시각을 초기화한다. OnGUI 호출 횟수로 시간을 누적하지 않아 timeScale0에도 진행하며 매 표시 뒤 matrix/color를 즉시 복원해 메뉴 클릭 영역에 남기지 않는다. 재준비/Title 복귀 때 기준시각을 다시 설정한다.
-- **레퍼런스·흐름:** Sephiria `UI_TitleLobby.Start/Update/QuitGame`, `UI_SaveProfilePanel.OnOpened/SelectProfile`, Dungreed `TitleUIManager.Awake/Start/LimitHozitontalRectSize`·`UI_TitleBasicControl`과 관련 호출부를 읽었다. 자기 UI 준비·실시간 fade·화면비/메뉴연결 원리만 채택하고 Steam/네트워크/대형 패널 체계는 생략한다. 십자 확대/회전/소멸은 대응 코드에 없는 사용자 고유 VFX다. F-U01 신규2Case와 F-S01①을 로컬/Notion에 동일 흐름으로 저장했다(오류·경고 없음).
-- **최종 실행 검증(2026-11-16 10:24 KST):** 같은 Unity6000.3.21f1 격리 일반 Editor에서 런타임/Editor 컴파일 완료·C# 오류0·Play5묶음 전체 성공·종료0을 확인했다. 최초 배치 모드는 OnGUI가 실행되지 않아 화면 검사가 대기초과했고, 일반 렌더링 모드로 전환했다. 첫 캡처에서 GUI.skin.button 기반 스타일이 회색 상자를 남기는 문제를 발견해 상속 없는 새 GUIStyle로 수정했으며 최종 화면6빈영역이 모두 #151518임을 확인했다. 원본200×80/별도256×256 참조·Point/mipmap 없음·3슬롯/선택전Current없음, 메뉴8상태, VFX없는 구간의 원본청록≥20픽셀 일치, timeScale0의 확대/회전·반복·소멸, 실제 슬롯0→MainWorld→Title복귀/Current보존을 확인했다.
-- **영상·범위:** [실제 재생 GIF](../art/archive/title/title-screen-r01/title-preview.gif)는1920×1080 실제60캡처를960×540로 줄인7.3초 미리보기다. [발광 화면](../art/archive/title/title-screen-r01/title-peak.png)·[VFX가 없는 원본 화면](../art/archive/title/title-screen-r01/title-idle.png)에서 배경·로고·글자3메뉴를 확인했다. 게임정지중 두 화면의 변화는 칼날 주변에 있고 메뉴 픽셀은 동일하다. `project/Logs/TitlePresentation-result.json`, `TitlePresentation-Final-Unity.log`, `TitlePresentation-verification.json`이 결과/로그/소유14파일 일치·원본ASE/PNG 보존 근거다. 테스트 스냅샷89 C#/런타임51개를 사용했고 마지막 대조에서 동시4런타임(AttackController·PlayerCharacter·PlayerFeedback·CollisionBox)이 달라 최신 전체 프로젝트 검증으로 확대해 보고하지 않는다. 원본 Editor 직접 Play·사용자 최종 미술/박자 승인·설정 패널 구현·제출 빌드는 별도다. 시작 전 UnityEditor.Search.SearchDatabase 예외와 정상 종료 뒤 JobTempAlloc 경고도 로그에 관찰됐으며 Title 검사 실패와 구분한다. 원인 조사·엔진 수정으로 확대하지 않았다. Notion F-U01의 최종 결과도 기존 토글에 저장했으며 오류·경고가 없었다.
-
-### 3.3.15 SaveSlot·설정창 공용 픽셀 프레임 — 2026-11-16
-
-**정보/입력 R03 — Esc 메뉴 복귀·빈 줄·굵은 글자(구현·격리 실행 검증 완료).** 현재 Title 담당 `UI_Title`이 슬롯 화면에서만 `<Keyboard>/escape` InputAction을 활성화한다. Awake에1회 생성하고 OnEnable/OnDisable에서 performed를 연결/해제하며 OnDestroy에서 Dispose한다. ShowSlots 또는 완료 확인이 표시될 때 Enable, 준비 초기화·게임 진입 수락·닫기 때 Disable한다. `HandleBack→CloseSlots`는 IsReady·GameManager·로딩 아님·슬롯/확인창 열림을 확인한 뒤 두 UI를 함께 닫아 Title 메뉴로 복귀하고 UI SelectedSlot만-1로 초기화한다. SaveManager.Slots/Current/선택 인덱스나 파일은 변경하지 않는다. 일반 슬롯의 확인 취소는 슬롯 목록을 유지하며, 메뉴에서 직접 완료 선택 API로 열었던 확인만 취소하면 액션도 끈다. 카드 가운데 정렬과144×206·하단310/뒤로버튼 제거·프레임/Title VFX를 유지하고 슬롯 번호·진행도·플레이 시간·사망 사이에 각각 빈 줄을 넣었다. `_menuStyle.fontStyle=Bold`를 상속해 Title3버튼·슬롯 정보·saveslot제목·확인창을 함께 두껍게 표시한다. 선택·이유는 [선택4](archive/01_Choice/SaveSlot_Frame_20261116.md)를 따른다.
-
-- **R03 실제 검증(2026-11-16 11:36:06 KST):** 같은 Unity6000.3.21f1 격리 일반 Editor의 C#93개/런타임53개 컴파일 완료·C# 오류0·종료0과 focused5묶음 success=true를 확인했다. 실제 Input System의 검사 Keyboard 상태 이벤트로 슬롯 Esc→Title·메뉴에서 무효, 슬롯/직접 API의 완료 확인 Esc와 직접 취소·UI선택 초기화/완료 데이터·nonnull Current/저장선택 보존, 준비·월드 로딩 중 차단/새 누름 처리, Title 비활성/재활성화의 구독·기존 held키 무시를 확인했다. 파일 Save는 호출하지 않고 메모리 표본을 finally에서 원복했다. 프레임/폰트/씬 meta와 소유12파일은 검사본과 같으며 소스·로그·결과는 `project/Logs/SaveSlotInfoR03-verification.json`·`SaveSlotInfoR03-Final-Unity.log`·`SaveSlotInfoR03-result.json`이다.
-- **R03 실제 화면:** [굵은 정보·빈 줄](../art/archive/ui/window-frame-r01/info-r03/slots-bold.png)·[굵은 Title 메뉴](../art/archive/ui/window-frame-r01/info-r03/menu-bold.png)·[완료 확인창](../art/archive/ui/window-frame-r01/info-r03/slots-confirmation-bold.png)·[Esc 메뉴 복귀](../art/archive/ui/window-frame-r01/info-r03/esc-returned-title.png)를 실제1920×1080으로 캡처했다. 동일 글자/크기의 Normal→Bold 밝은 픽셀(maxRGB>120) 수가 메뉴2379→4541·중간카드2545→4709로 증가해 합성 Bold의 실제 표시를 확인했다. 중간 카드의 글자 y범위518~543/578~603/639~664/700~725의4그룹과 빈 간격·잘림 없음·가운데 정렬을 확인했다. 이는 해당 캡처의 글자 면적 비교이며 일반적인 두께 배율/성능 수치가 아니다. [비교·검증 자료](../art/archive/ui/window-frame-r01/info-r03/verification.json)를 따른다.
-- **R03 범위·흐름:** 초기 snapshot은 동시 GuardHandChecks의 helper가 작성되기 전에 복사돼 컴파일이 중단됐으나 완성된 현재 Editor 검사 파일만 재복사한 최종 실행은 통과했다. 마지막 대조의 동시6런타임(CharacterBuff·FeverAuraFx·Line·LineSlasher·SkillController·DrawVfx) 차이는 이번 검사 범위 밖이며 최신 전체 프로젝트 회귀로 보고하지 않는다. 원본 Editor 직접Play·월드 진입/Title복귀·제출 빌드는 미실행이다. 기존 Editor Search 시작 예외·BakeMesh obsolete·종료 JobTempAlloc 경고를 관찰했고 Title 입력 검사 실패와 구분한다. 기존 F-U01①/③을 최소 갱신하고 새⑤를 로컬/Notion에 저장했으며 미리보기 UI 조작은 하지 않았다.
-
-**현재 후속 요청 / 가로3슬롯 구현·Unity 연결·격리 확인 완료.** 세로 배치용으로 제작한 단일 프레임을 유지하면서 가로 배열도 만들고 Unity에 반영하도록 요청받았다. 실제 화면은 상단`saveslot`·가로3카드이며 같은 이미지를 완료 기록 확인창에도 사용한다. 색과 이후 설정창 재사용 목적은 유지한다. [선택 기록](archive/01_Choice/SaveSlot_Frame_20261116.md), [원본·실제 Unity 화면·사용 안내](../art/archive/ui/window-frame-r01/README.md)를 따른다.
-
-- **실제 연결:** `Assets/Art/UI/Windows/window-frame.png`·meta의 새 GUID`662a92fe29ad429ba68a2bf6889f3c19`를`Title.unity`의`UI_Title.SlotFrame`에 연결했다. Sprite Single/Full Rect·16PPU·Border12·Point/Clamp·무압축/Mipmap없음을 사용하며 기존 Title/폰트 GUID를 유지했다. `UIArtSetup.Apply`로 재연결할 때도 프레임/경계를 적용한다. TextureImporter.spriteMeshType의 실제 CS1061은 프로젝트 기존 방식인 TextureImporterSettings.Read/Set으로 정정했다.
-- **현재 표시·수명(R02):** 첫 OnGUI에서`_slotStyle`·제목/글자 스타일을1회 준비하고 씬 수명 동안 재사용한다. 준비 완료·슬롯/완료 확인 화면은`DrawSaveSlots()`로 분기한다. 기존1920×1080 균등 화면맞춤 위에640×360 논리좌표를3배 적용하고 제목Rect(80,34,480,36)·카드Rect(80+168×slot,104,144,206)를 사용한다. 사용자 후속 요청으로 뒤로 버튼을 제거하고 높이144→206, 하단248→310으로 늘려 기존 버튼 하단까지 채웠다.12px 모서리와 글자를 함께 확대하며 클릭 Rect도 같은 행렬을 따른다. 완료 기록은 카드 입력을 막고 어두운 배경 위 동일 프레임의 확인창Rect(160,120,320,132)을 표시한다. `SelectSlot→RequestStart→StartGame(slot,false/true)`와 저장·준비/로딩/중복 입력 차단은 기존 F-S01을 유지한다. 대체 뒤로 키·서비스·반복 객체 탐색은 추가하지 않았다.
-- **하단 확장 R02 확인:** 뒤로 버튼을 제거하고 카드 높이206·하단310을 적용했다. 같은 Unity6000.3.21f1 격리 일반 Editor에서11:12:31 KST 실제 슬롯/import/완료 확인2검사·컴파일 오류0,11:12:33 종료0을 확인했다. 실제1080p의3카드 하단/파랑 변과 옛 뒤로 글자 영역의 패널 채움·확인/취소의 SaveData/Current 보존을 검사했다.112대상 예상 밖 차이0·53/53 런타임 일치이며 검사 드라이버만 격리된2검사다. 프레임 원본/PNG·meta·GUID는 바꾸지 않았고720p/1440p/wide/tall은 Rect 투영이다. 월드 재진입·원본 직접 Play·제출 빌드는 이번 배치 수정에서 미실행이다. [현재 화면·검사](../art/archive/ui/window-frame-r01/layout-r02/verification.json), 로컬 로그는`project/Logs/SaveSlotTallR02/`를 따른다. Notion 기존 F-U01③의 뒤로 분기 제거·새 높이/최종 결과 저장을 확인했고 다른 Case를 보존했다.
-- **초기 가로 배치 실행 이력:** 같은 Unity6000.3.21f1의 격리 일반 Editor에서 R01 Title+슬롯7검사·컴파일/종료0을10:50:15 KST에 확인했다. 실제1080p3카드의 파랑 변/보라 모서리·제목, 완료 확인과 취소 후 저장/Current 보존, 슬롯0의 실제 월드 진입/Title복귀를 확인하고 캡처를 저장했다. 동시 Title 틈새광 R02를 포함한 최신 소스는11:00:07 KST에 컴파일 오류0·슬롯/import/완료 확인2검사·종료0을 확인했다. 현재53/53 런타임 C#이 검증 사본과 같으며112대상에서 예상 밖 차이0, 검사 드라이버만 격리 사본의2검사로 다르다. 다른 Boss 프리팹 손 연결이 진행 중이라 최신2검사에서 월드 진입은 제외했으며 최신 월드 실행 오류를 관찰한 것은 아니다.720p/1440p·wide/tall은 실제 카드 Rect의 좌표 투영 검사이며 각 해상도의 별도 Unity 촬영과 구분한다. 첫 sandbox 실행의 라이선스 IPC와 중간 Boss 타입 부재는 분리 보관했고 최종 현재 컴파일은 성공했다. 시작 SearchDatabase 예외와 종료 JobTempAlloc 경고가 관찰됐으며 슬롯 검사는 통과했다. 원본 직접 수동 Play·제출 빌드·설정 기능 구현은 미실행이다. 원본 근거는`project/Logs/SaveSlotHorizontal/`, 보존본은 아트 폴더`unity-integration-validation.json`·`unity-current-result.json`·`unity-current-process.json`·`unity-result-r01.json`이다.
-- **레퍼런스·기록:** Sephiria`UI_SaveProfilePanel.OnOpened/SelectProfile`·`UI_SaveProfileButton.InitializeProfile/SelectProfile`·TitleLobby 호출부와 Dungreed Title의 생성/화면비를 읽었다. 상태별 문구와 기존 시작 API에 위임하는 책임만 채택하고 TreeShop·Steam·NetworkHost는 제외했다. 픽셀9-slice/가로 배치는 사용자 요청의 고유 UI다. F-U01 기존①/신규③·F-S01②와 Notion U03·③ 최종 결과 저장을 확인했다. 동시 R02의①/U03/④와 기존 Case를 보존했고 미리보기 설정·UI 조작은 수행하지 않았다.
-
-**R01 이미지 제작 당시 이력 — 아래 미연결 설명은 최초 요청 범위다.** 최종 사용자 미술 승인은 별도이며 픽셀 편집 원본은 그대로 보존한다.
-
-- **제작안·출력:** `art/archive/ui/window-frame-r01/window-frame.aseprite`·`window-frame.png`,256×64px·RGBA32bit·4레이어·1프레임·투명 포함11색. 외곽 밖은 투명, 안쪽은 불투명 #070A12이며 제목·저장 정보는 이미지에 굽지 않았다. 내장 이미지 생성 시안을 Aseprite1.3.18.6의1px격자·단색 팔레트·레이어로 재제작했다. 크기·색상 세부값과12px 경계는 AI 제작값이며 새 사용자 최종 미술 승인을 뜻하지 않는다.
-- **해상도·재사용:** 네 방향12px 고정의9-slice(center12,12,232,40)를 native에 저장했다. 중간 변·안쪽은 균일하고 보라92px는 고정 모서리 안에 배치했다. 동일640×360 논리 구도의720p/1080p/1440p 정수2/3/4배 슬롯3개 예시와, 같은 PNG를320×224로 늘린 설정창 예시를 제공한다. 이는 사용 예시이며 기존 UI 기준 해상도·슬롯 수/폰트·설정 기능을 새로 변경한 것은 아니다. 실제 다른 화면비는 앵커·여백과9-slice로 연결할 때 확인한다.
-- **검증:** native 저장 후 재열기·PNG 출력,4레이어/1프레임·slice·11색·alpha0/255·단색 중앙과160×48/256×64/416×64/320×224의 네 모서리 보존을 확인했다. 독립 PNG/ASE 파서의 실제 색/알파·보라 위치·균일 변·2/3/4배 최근접 확대 검사와 단일 슬롯/세로3칸/큰 창의 시각 검토를 마쳤다. 근거는 아트 폴더의`validation.json`·`independent-validation.json`이다.
-- **R01 당시 미연결:** 최초 이미지 제작에서는`/project`의 자산/meta·코드·씬·프리팹과 Notion을 수정하지 않았다. IMGUI의Texture2D·GUIStyle.border 연결은 위 후속 요청에서 수행했다. 설정창 기능 자체·최종 미술 승인·제출 빌드는 여전히 별도다.
+이 프레임의 설정창320×224 예시는 이미지 재사용 예다. 실제 설정 기능은 미구현이다. 사용자 결정과 이유는 [SaveSlot 선택](archive/01_Choice/SaveSlot_Frame_20261116.md)에 둔다.
 
 ### 3.4 Plugin·asset·Unity 버전
 
@@ -6903,3 +6269,22 @@ Sephiria [PlayerSpawner.cs](<reference/sephiria/code/ingame code/Assembly-CSharp
 3. 2장 각 케이스마다 실제 코드와 함께 class.API/변수 기반 상세 흐름을 작성한다. 동시는 +, 순서는 →, 분기는 if : 하위 목록. 호출·데이터 연결과 아트 없이 가능한 동작 확인을 함께 남긴다.
 4. 연출이 정의된 항목에 Sprite·FX·animation·음원을 적용하고 실제 자산에 의존하는 크기·피벗·타이밍 조정을 마친다. 검증은 구현 중부터 반복한다.
 5. 공통 기능이 동작해 비교 가능한 기준선이 생기면 3.1.1의 Profiler 비교를 수행한다. 기능 동등성·실측 결과·채택 이유를 남겨 콘텐츠·연출 추가에 집중할 기반과 결과 보고의 근거를 함께 보강한다.
+
+### 3.7 제출 전 비실행·디버깅 코드 정리
+
+사용자 요청으로 실제 게임 구동과 무관한 Editor47개(검사28·제작/설정18·조정창1), 시험 런타임4개(DummyBoss·AreaProjectile·LaserProjectile·CircleWarningVfx), 시험프리팹6개·BossTestArena·미사용URP씬 템플릿을 제거했다. 현재 자체 코드는 **런타임53개·Editor0개**다.
+
+런타임16파일의 검사전용 조회·관측사건·카운터·기즈모, 비활성FacingMarker와 시험저장경로를 정리했다. 실제 입력·피해·UI·데모엔딩·저장/초기화 오류처리·게임구독사건은 유지했다. 경비가 쓰는 원형 눈충전PNG는 기존meta/GUID를 유지해 `Assets/Art/Enemy/Warnings/GuardEyeCharge.png`로 옮겼다.
+
+동일 Unity6000.3.21f1에서 컴파일 C#오류0·assembly실패0·종료0, 삭제GUID 잔여참조0·로컬fileID누락0과 아래6개 격리 스모크를 확인했다.
+
+1. 유지프리팹24개·빌드씬2개 Missing Script0
+2. Title·공용저장슬롯 준비
+3. 새게임의 Map/Boss/Player·입력/HUD/카메라 생성·연결
+4. 실제 입력캐시를 통한 Player 이동
+5. 실제 Player 일반공격 시작·완료
+6. Title복귀와 월드/세션해제
+
+격리 검사는 사용자 저장파일을 사용하지 않았고 SaveData.CommonPath의 사본저장경로만 분리했다. 이후 UI_Title의 Player비호환 고해상도배경 호출2개를 제거하고 **2026-11-16 14:46 KST Windows64/Mono Player빌드 성공**을 확인했다. 실제 출력은 `D:/00_Works/02_GameDev/Unity/temp/2026_Capstone_Project_Chrono/program/Project_Chrono.exe`다. 전체 실행파일 연속시연·다른PC배포·모든패턴 최종회귀는 별도 미확인이다.
+
+현재 정리결과와 남은한계는 [개발 결과 종합](results/Development_Results.md), 사용자 선택이유는 [제출 소스 정리 결정](archive/01_Choice/Submission_Unity_Cleanup_20261116.md)을 따른다. 사용자 후속 삭제요청으로 이전 복구사본·시험본·원시로그는 최종보관 대상에서 제외한다.

@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>조건·직전 제외·우선순위와 가중 추첨으로 다음 보스 패턴 선택</summary>
 public class BossPatternSelector
 {
-    public IReadOnlyList<BossPattern> Patterns { get; private set; } = Array.Empty<BossPattern>(); // 보스 초기화 때 등록한 패턴 목록의 읽기 창구
     public string LastPatternId { get; private set; } // 직전 실제 시작 패턴을 연속 선택에서 제외할 이름
 
     private BossPattern[] patterns = Array.Empty<BossPattern>(); // 등록 시 한 번 복사하고 전투 동안 재사용할 패턴 원본
@@ -25,10 +23,9 @@ public class BossPatternSelector
                     throw new ArgumentException("Pattern IDs must be unique.", nameof(values));
         }
 
-        // 목록 교체는 초기화·시험 설정 경계에서만 수행하고 반복 선택에서는 버퍼 재사용
+        // 목록은 초기화 경계에서만 교체하고 반복 선택에서는 버퍼 재사용
         ResetHistory();
         patterns = (BossPattern[])values.Clone();
-        Patterns = Array.AsReadOnly(patterns);
         candidates = new BossPattern[patterns.Length];
         weights = new double[patterns.Length];
         ResetHistory();
@@ -86,7 +83,7 @@ public class BossPatternSelector
         return pattern != null && Array.IndexOf(patterns, pattern) >= 0;
     }
 
-    /// <summary>재전투에서 직전 제외·쿨타임·실행 횟수 함께 초기화</summary>
+    /// <summary>재전투에서 직전 제외와 쿨타임 이력 초기화</summary>
     public void ResetHistory()
     {
         LastPatternId = null;

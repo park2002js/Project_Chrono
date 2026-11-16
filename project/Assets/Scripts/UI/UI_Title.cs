@@ -63,7 +63,6 @@ public class UI_Title : MonoBehaviour
                 _menuStyle.onNormal, _menuStyle.onHover, _menuStyle.onActive, _menuStyle.onFocused })
             {
                 state.background = null;
-                state.scaledBackgrounds = Array.Empty<Texture2D>();
             }
             _menuStyle.normal.textColor = Color.white;
             _menuStyle.hover.textColor = new Color(0.48f, 0.96f, 1f);
@@ -78,7 +77,6 @@ public class UI_Title : MonoBehaviour
                 _slotStyle.onNormal, _slotStyle.onHover, _slotStyle.onActive, _slotStyle.onFocused })
             {
                 state.background = SlotFrame;
-                state.scaledBackgrounds = Array.Empty<Texture2D>();
             }
             _slotStyle.normal.textColor = new Color32(161, 171, 195, 255);
             _slotStyle.active.textColor = new Color32(176, 148, 206, 255);

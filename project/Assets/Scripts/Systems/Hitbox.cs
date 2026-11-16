@@ -19,9 +19,8 @@ public class Hitbox : MonoBehaviour
     public Projectile Projectile { get; private set; } // Slash 반응을 맡길 자기 탄환 컴포넌트
     public BossStructure Structure { get; private set; } // 캐릭터 상속 없이 독립 피해를 받을 구조물 컴포넌트
     public bool IsEnabled { get; private set; } = true; // 몸체 충돌을 유지하면서 피격 판정만 열고 닫는 상태
-    public Bounds Bounds => shape != null ? shape.bounds : new Bounds(transform.position, Vector3.zero); // 현재 피격 Collider의 월드 범위
 
-    private Collider2D shape; // 피격 영역의 활성 상태와 실제 범위를 조회할 자기 Collider
+    private Collider2D shape; // 피격 영역의 실제 활성 상태를 조회할 자기 Collider
 
     /// <summary>자기 Collider와 같은 프리팹의 피해 수신자를 한 번 확보</summary>
     private void Awake()

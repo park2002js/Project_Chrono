@@ -28,7 +28,6 @@ public class CharacterBuff : MonoBehaviour
     public float SlowRemaining { get; private set; } // 감속 종료까지 남은 게임 시간
     public float SlowDuration = 2f; // 새 감속과 재적용에 사용할 지속시간
     [Range(0f, 1f)] public float SlowSpeedMultiplier = 0.5f; // 각성과 합성해 기본 이동속도에 곱할 감속 배율
-    public float GroggyRemaining => boss != null ? boss.GroggyRemaining : 0f; // 중복 타이머 없이 Boss가 관리하는 그로기 잔여 조회
 
     private Character target; // Awake에서 확보한 자기 프리팹의 효과 수신자
     private SkillController skill; // 각성 획득 시 현재 Draw 대기 조정을 요청할 자기 능력 컴포넌트

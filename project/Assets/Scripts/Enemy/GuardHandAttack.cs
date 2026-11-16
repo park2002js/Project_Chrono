@@ -40,9 +40,6 @@ public class GuardHandAttack : MonoBehaviour
     public float ChargeElapsed { get; private set; } // 이번 공격에서 실제 진행한 충전 게임 시간
     public Vector2 GroundPosition { get; private set; } // 손의 시각적 높이와 별개인 실제 지면 목표 위치
     public float PhaseElapsed { get; private set; } // 현재 단계에서 경과한 게임 시간
-    public float CurrentRadius => currentRadius; // 이번 실행 시작에서 고정한 경고 및 착지 반경
-    public float CurrentDamage => currentDamage; // 이번 실행 시작에서 고정한 착지 피해
-    public float CurrentDuration => currentDuration; // 이번 실행 시작에서 고정한 충전 시간
 
     private const float FilledHoldDuration = 0.2f; // 경고가 가득 찬 뒤 사용자 확정으로 유지할 게임 시간
     private readonly Vector3[] homeLocalPositions = new Vector3[2]; // 같은 손 두 개의 복귀 기준 로컬 좌표

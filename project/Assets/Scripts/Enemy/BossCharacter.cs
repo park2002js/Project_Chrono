@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,10 +13,6 @@ public class BossCharacter : Character
     public Vector3 BasePosition; // Map의 배치 지점에서 설정한 Boss의 기본 월드 위치
     public float GroggyDuration = 3f; // 그로기 진입 후 행동이 제한될 게임 시간
     public float GroggyRemaining { get; private set; } // 그로기 종료까지 남은 게임 시간
-    public IReadOnlyCollection<int> SlashParts => slashParts; // 이번 Slash에서 보고된 서로 다른 부위
-    public int LastCompletedSlashAttackId { get; private set; } // 부위 집계 완료를 알린 마지막 공격 번호
-    public event Action<int> OnSlashCompleted; // 모든 부위 보고 뒤 Boss 고유 성공 조건을 판단할 알림
-    public event Action OnGroggy; // 현재 Boss 행동을 즉시 중단할 그로기 진입 알림
     public CharacterBuff Buffs { get; private set; } // 전투 복원에서 효과·예약을 정리할 자기 효과 컴포넌트
     public BossPatternSelector PatternSelector { get; private set; } // 초기화 때 등록한 조건·가중치 목록으로 다음 패턴을 선택할 도구
     public BossPattern CurrentPattern { get; private set; } // 현재 Tick 또는 취소를 전달할 실행 패턴
@@ -47,7 +42,7 @@ public class BossCharacter : Character
     /// <summary>게임 시간으로 그로기와 실행 패턴을 진행하고 Idle에서 다음 후보 요청</summary>
     private void Update()
     {
-        // 그로기는 전투 개시 전 시험 요청도 같은 단일 타이머로 처리
+        // 그로기 기간은 전투 개시와 무관하게 같은 단일 타이머로 처리
         if (!IsInitialized || IsDead || Time.timeScale <= 0f || Time.deltaTime <= 0f) return;
         if (IsGroggy)
         {
@@ -162,26 +157,21 @@ public class BossCharacter : Character
     {
         if (!collectingSlash || currentSlashAttackId != attackId || completedSlash) return;
         completedSlash = true;
-        LastCompletedSlashAttackId = attackId;
         HandleSlashHit(attackId);
-        OnSlashCompleted?.Invoke(attackId);
     }
 
     /// <summary>모든 부위가 모인 시점에 구체 보스의 동시 Slash 성공 조건 판단</summary>
     public virtual void HandleSlashHit(int attackId) { }
 
-    /// <summary>게이지나 고유 기믹에서 그로기를 요청하고 현재 행동 중단 통지</summary>
+    /// <summary>게이지나 고유 기믹에서 그로기를 요청하고 현재 행동 중단</summary>
     public void EnterGroggy()
     {
         if (!isActiveAndEnabled || !IsInitialized || IsDead || float.IsNaN(GroggyDuration) || float.IsInfinity(GroggyDuration) || GroggyDuration <= 0f)
             return;
-        // 재진입은 시간만 갱신하고 최초 진입에서만 현재 행동 중단과 사건 통지
-        bool entering = !IsGroggy;
+        // 재진입에서도 기간을 갱신하고 현재 행동 중단
         IsGroggy = true;
         GroggyRemaining = GroggyDuration;
         CancelPattern();
-        if (entering)
-            OnGroggy?.Invoke();
     }
 
     /// <summary>기간 종료·효과 제거에서 그로기 원본과 잔여 함께 정리</summary>
@@ -204,7 +194,6 @@ public class BossCharacter : Character
         IsInvulnerable = false;
         slashParts.Clear();
         currentSlashAttackId = 0;
-        LastCompletedSlashAttackId = 0;
         collectingSlash = completedSlash = false;
 
         // 체력과 배치는 Spawner가 맡고 공통 행동 수치만 기본값으로 복귀

@@ -1,9 +1,0 @@
-{
-    "success": true,
-    "checks": [
-        "Current production runtime imports the12px point frame and displays three non-overlapping horizontal cards with actual blue/violet pixels",
-        "Completed horizontal card opens confirmation and cancellation preserves data and session ownership"
-    ],
-    "error": "",
-    "saveDirectory": "D:\\00_Works\\02_GameDev\\Unity\\Project_Chrono\\art\\verification\\title-presentation-r01\\Temp\\StartupFlowChecks\\884e39de22e7477691c9c0ec462894de"
-}

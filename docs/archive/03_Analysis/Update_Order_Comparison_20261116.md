@@ -8,7 +8,7 @@
 
 - `C/` = `project/Assets/Scripts/`, `R/` = `docs/reference/sephiria/code/ingame code/Assembly-CSharp/`, `M/` = `docs/reference/sephiria/assets/ExportedProject/Assets/Scripts/Assembly-CSharp/`.
 - 현재 런타임 C# **44파일**, 직접 Update/FixedUpdate/LateUpdate를 선언한 **17클래스·18메서드**를 조사했다. 상속으로 실행되는 DummyBoss·탄환 파생형은 별도로 연결한다. OnGUI는5개, Trigger 콜백은3개다. Assets의 C#은 Scripts 또는 Editor 아래에 있으며, Editor 제작/검사 도구를 빌드의 매 프레임 갱신으로 분류하지 않는다.
-- 원작 **74개 코드 파일**과 관련 `.meta`·프리팹/씬을 조사했다. 확인한 파일·직접 콜백·실행 순서·SHA-256은 [원본 목록](Update_Order_Inventory_20261116.json)에 보관했다. 목록의 직접 콜백이 비어 있어도 상속/수동 호출로 동작할 수 있다.
+- 원작 **74개 코드 파일**과 관련 `.meta`·프리팹/씬을 조사했다. 확인한 파일·직접 콜백·실행 순서·SHA-256은 원본 목록에 보관했다. 목록의 직접 콜백이 비어 있어도 상속/수동 호출로 동작할 수 있다.
 - 우리 순서는 `[DefaultExecutionOrder]`에서 확인했다. 현재 런타임44파일의 `.meta`에는 executionOrder override가 없다. 원작 순서는 `M/<클래스>.cs.meta:9`에서 확인했다. **같은0 또는 같은 숫자끼리의 상대 순서를 임의로 정하지 않는다.**
 - 숫자는 현재 설정이지 수정 제안이 아니다. 미구현 기능에는 실제 숫자가 없으므로 `미정`으로 기록한다. `BossPattern.Priority` 같은 게임 데이터는 Unity 실행 순서가 아니다.
 - `U/F/L`은 각각 Update/FixedUpdate/LateUpdate다. `수동`은 호출자의 현재 실행 문맥에서 즉시 실행된다는 뜻이며 독립적인 Unity 우선순위가 없다.
@@ -342,7 +342,7 @@ Body는 별도 Update/FixedUpdate를 갖지 않는다. 같은0의 Character와 B
 - 기존 검사도 문 충돌/수정 F/조우·처치/다음 방,4방향 대시·잔상, 사망/같은 Player 부활, 무기1·2·3타/취소, Title 복귀를 포함해 통과했다.
 - 검증 후 원본과 격리본의 **C#69파일·Player 프리팹 바이트 일치**를 확인했다. 새 컴파일·검사는 이 스냅샷 기준이며 과거 성공을 재사용한 것이 아니다.
 
-근거: [결과 JSON](../../../project/Logs/MovementUpdateVerification-result.json), [실행 로그](../../../project/Logs/MovementUpdateVerification.log), [검증 소스 해시](../../../project/Logs/MovementUpdateVerification-source.json). 로그의 ALL PASSED는19개이며 배치 종료 로그의 마지막 기록은2026-11-16 05:23:12 KST다. 실제 FPS/CPU/GPU/GC 측정이나 원본 Editor에서 사용자의 체감 검토는 이번 자동 검사와 구분한다.
+근거: 결과 JSON, 실행 로그, 검증 소스 해시. 로그의 ALL PASSED는19개이며 배치 종료 로그의 마지막 기록은2026-11-16 05:23:12 KST다. 실제 FPS/CPU/GPU/GC 측정이나 원본 Editor에서 사용자의 체감 검토는 이번 자동 검사와 구분한다.
 
 ### 12.2 문서·Notion 반영
 

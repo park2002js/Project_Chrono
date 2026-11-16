@@ -16,9 +16,6 @@ public class CutsceneController : MonoBehaviour
     public bool IsPlaying { get; private set; } // 연출이 준비한 표시와 차단의 소유 여부
     public CutsceneKind CurrentKind { get; private set; } // 현재 Boss 연출의 구분
     public bool WasCompleted { get; private set; } // 마지막 연출이 중단 없이 완료됐는지 확인
-    public event Action OnStarted; // 연출 표시가 시작된 시점 알림
-    public event Action OnFinished; // 정상 완료 뒤 표시가 복구된 시점 알림
-    public event Action OnCancelled; // 외부 중단 뒤 표시가 복구된 시점 알림
 
     private GameManager manager; // 앱 수명 동안 유지할 시간 관리자
     private PlayerInputController input; // 세션 준비 때 한 번 확보할 입력
@@ -80,7 +77,6 @@ public class CutsceneController : MonoBehaviour
         ui.SetBossHudVisible(false);
         gameCamera.Follow(boss.transform);
         manager.SetBossCutscenePaused(true);
-        OnStarted?.Invoke();
 
         // 최종 애니메이션 연결 전에도 시작·완료·중단 경계를 실제 시간으로 유지
         float remaining = duration;
@@ -92,13 +88,12 @@ public class CutsceneController : MonoBehaviour
         if (IsPlaying && ticket == version) Complete();
     }
 
-    /// <summary>정상 연출의 표시를 먼저 복구한 뒤 완료 통지</summary>
+    /// <summary>정상 연출의 완료 상태를 보관하고 표시 복구</summary>
     public void Complete()
     {
         if (!IsPlaying) return;
         WasCompleted = true;
         Restore();
-        OnFinished?.Invoke();
     }
 
     /// <summary>세션 이탈·비활성화에서 자기 연출만 중단하고 표시 복구</summary>
@@ -108,7 +103,6 @@ public class CutsceneController : MonoBehaviour
         if (!IsPlaying) return;
         WasCompleted = false;
         Restore();
-        OnCancelled?.Invoke();
     }
 
     /// <summary>자기 요청이 바꾼 대상·입력·표시·정지 상태를 한 번 복원</summary>

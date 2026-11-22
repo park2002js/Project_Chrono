@@ -1,6 +1,6 @@
 using UnityEngine;
 
-/// <summary>커서 기준 4방향 이동과 생명주기·외부 시간에 맞춘 발도 모션 표시</summary>
+/// <summary>커서 기준 여섯 방향의 기본·공격 모션과 생명주기·발도 표시</summary>
 [DefaultExecutionOrder(3)]
 public class CharacterRendering : MonoBehaviour
 {
@@ -13,8 +13,9 @@ public class CharacterRendering : MonoBehaviour
     public bool HasSlashAnimation => HasCompleteSlashAnimation(); // Line 소비 전에 준비·대기·납도 프레임 연결을 확인할 상태
     public Vector3 SlashBladeGlintPosition => BodySprite != null ? BodySprite.transform.TransformPoint(new Vector3(-0.21875f, 0.71875f, 0f)) : transform.position; // R02 대기 프레임의 노출 칼날 중앙 월드 위치
     public bool IsLifecycleAnimation { get; private set; } // 일반 이동 모션 대신 생성·사망 모션을 표시하는 상태
+    public bool IsAttackAnimation { get; private set; } // 무기의 공격 경과시간으로 몸체 모션을 표시하는 상태
     public float LifecycleElapsed { get; private set; } // 실제 시간으로 진행한 현재 생명주기 모션 경과
-    public int FacingIndex = 1; // 왼앞0·오앞1·왼뒤2·오뒤3 중 현재 표시할 방향
+    public int FacingIndex = 7; // 북쪽·위 사선·아래 사선·남쪽 순서에 좌0·우1을 더한 방향
     public int FrameIndex; // 현재 Sprite 배열에서 표시한 프레임 번호
     public bool IsMoving; // Character가 전달한 일반 이동 의도에 따른 모션 재생 여부
     public bool IsBackpedaling; // 이동·커서 방향이 반대일 때의 이동 프레임 역재생 여부
@@ -27,7 +28,7 @@ public class CharacterRendering : MonoBehaviour
     private float stateElapsed; // 현재 기본 모션 안에서 정방향·역방향으로 흐르는 게임 시간
     private float stateDuration; // 상태 진입 때 계산해 재사용할 전체 프레임 유지 시간
     private bool hasState; // 첫 요청 전의 기본 enum 값과 실제 상태 진입을 구분
-    private int warnedStates; // 설정 누락 경고를 상태별로 한 번만 표시할 비트 목록
+    private ulong warnedStates; // 37개 표시 상태의 설정 누락 경고를 한 번만 표시할 비트 목록
     private bool warnedMissingSet; // 모션 원본 누락 경고의 반복 출력 방지
     private PlayerCharacter player; // 대시·피격 보호와 조준 상태를 읽을 자기 Player
     private SpriteRenderer[] drawSprites; // Awake에서 확보할 Player의 몸체·무기 표시 목록
@@ -93,6 +94,9 @@ public class CharacterRendering : MonoBehaviour
         // 발도 모션은 Skill의 단계 샘플이 갱신하며 일반 이동 모션으로 덮어쓰지 않음
         if (IsSlashAnimation) return;
 
+        // 일반 공격은 AttackController가 검과 같은 경과시간으로 샘플링
+        if (IsAttackAnimation) return;
+
         // 조준이 바뀌어도 대시가 끝날 때까지 이동 시작 방향의 정지 자세 유지
         if (dashPose && player != null && player.IsDashing)
         {
@@ -132,6 +136,7 @@ public class CharacterRendering : MonoBehaviour
         // 논리 보호는 Player에 남기고 이 표현의 구독·원본색만 정리
         if (player != null) player.OnHitProtectionChanged -= HandleHitProtectionChanged; // 비활성 표현의 상태 알림 해제
         RestoreHitColors();
+        IsAttackAnimation = false;
         EndSlashAnimation();
         EndLifecycleAnimation();
         ClearAfterimages();
@@ -175,18 +180,14 @@ public class CharacterRendering : MonoBehaviour
         IsDrawHighlighted = highlighted;
     }
 
-    /// <summary>커서 위치로 사분면을 선택하고 축 위에서는 이전 방향 유지</summary>
+    /// <summary>커서의 북쪽 기준 각도로 여섯 방향의 기본 모션 선택</summary>
     public void SetFacing(Vector2 direction)
     {
-        // 생명주기·발도·진행 중인 대시는 자기 전용 방향 유지
-        if (IsLifecycleAnimation || IsSlashAnimation || (dashPose && player != null && player.IsDashing)) return;
+        // 전용 연출과 진행 중인 공격·대시는 자기 방향 유지
+        if (IsLifecycleAnimation || IsSlashAnimation || IsAttackAnimation || (dashPose && player != null && player.IsDashing)) return;
+        SetFacingIndex(direction);
 
-        // 커서 방향을 좌우·앞뒤로 나눠 표시 방향 결정
-        bool right = Mathf.Abs(direction.x) < 0.0001f ? FacingIndex % 2 == 1 : direction.x > 0f;
-        bool back = Mathf.Abs(direction.y) < 0.0001f ? FacingIndex >= 2 : direction.y > 0f;
-        FacingIndex = (back ? 2 : 0) + (right ? 1 : 0);
-
-        // 사분면이 달라지면 새 상태의 첫 프레임을 요청 즉시 표시
+        // 방향이 달라지면 새 상태의 첫 프레임을 요청 즉시 표시
         ChangeState(GetLocomotionState());
     }
 
@@ -198,7 +199,48 @@ public class CharacterRendering : MonoBehaviour
         IsBackpedaling = IsMoving && Vector2.Dot(movement, aim) < 0f;
 
         // 전용 연출이 아니라면 정지·이동 전환의 첫 프레임을 즉시 표시
-        if (!IsLifecycleAnimation && !IsSlashAnimation && !dashPose) ChangeState(GetLocomotionState());
+        if (!IsLifecycleAnimation && !IsSlashAnimation && !IsAttackAnimation && !dashPose) ChangeState(GetLocomotionState());
+    }
+
+    /// <summary>무기가 전달한 AS 비적용 게임 경과시간으로 몸체 공격 프레임 표시</summary>
+    public void SampleAttackAnimation(Vector2 direction, float elapsed)
+    {
+        // 생명주기·발도 중에는 이전 공격 요청이 전용 표시를 덮어쓰지 않음
+        if (IsLifecycleAnimation || IsSlashAnimation || float.IsNaN(elapsed) || float.IsInfinity(elapsed)) return;
+        IsAttackAnimation = true;
+        SetFacingIndex(direction);
+        ChangeState((PlayerSpriteAnimationState)((int)PlayerSpriteAnimationState.AttackLeftBack + FacingIndex));
+
+        // 매 타의0초 요청도 같은 경로로 첫 프레임에 복귀하고 끝에서는 마지막 자세 유지
+        stateElapsed = Mathf.Max(0f, elapsed);
+        if (currentStateData != null) ApplyFrame(currentStateData.GetFrameIndex(stateElapsed));
+    }
+
+    /// <summary>공격 완료·취소에서 몸체를 현재 방향의 정지·이동 모션으로 복구</summary>
+    public void EndAttackAnimation()
+    {
+        // 생성·사망·발도가 소유한 상태는 공격 종료로 변경하지 않음
+        if (!IsAttackAnimation) return;
+        IsAttackAnimation = false;
+        if (!IsLifecycleAnimation && !IsSlashAnimation && !dashPose) ChangeState(GetLocomotionState(), true);
+    }
+
+    /// <summary>원본 재import 경계에서 현재 모션의 교체된 프레임과 길이를 다시 확보</summary>
+    public void RefreshAnimationFrames()
+    {
+        // 현재 경과시간은 유지하고 새 모션 데이터와 길이만 재확보
+        if (!hasState) return;
+        PlayerSpriteAnimationSet set = CurrentState >= PlayerSpriteAnimationState.SlashDraw && CurrentState <= PlayerSpriteAnimationState.SlashSheathe
+            ? SlashAnimationSet : AnimationSet;
+        currentStateData = set != null ? set.GetState(CurrentState) : null;
+        stateDuration = currentStateData != null ? currentStateData.GetTotalDuration() : 0f;
+        stateElapsed = stateDuration > 0f ? currentStateData.Loop && !IsAttackAnimation
+            ? Mathf.Repeat(stateElapsed, stateDuration) : Mathf.Clamp(stateElapsed, 0f, stateDuration) : 0f;
+
+        // 새 길이의 같은 시점을 표시하며 생성·사망은 기존 외부 기간에 비례
+        WarnInvalidState();
+        if (IsLifecycleAnimation) ApplyLifecycleFrame();
+        else if (currentStateData != null) ApplyFrame(currentStateData.GetFrameIndex(stateElapsed));
     }
 
     /// <summary>대시 이동 요청 전에 방향별 자세를 고정하고 첫 잔상 표시</summary>
@@ -207,11 +249,18 @@ public class CharacterRendering : MonoBehaviour
         // 생명주기·발도가 소유한 표시는 대시 요청으로 덮어쓰지 않고 유지
         if (IsLifecycleAnimation || IsSlashAnimation) return;
 
-        // 대시 시작 방향의 상태로 전환하고 현재 자세를 첫 잔상에 복사
-        dashPose = false;
-        SetFacing(direction);
+        // 조준 대신 실제 대시 방향의 독립 자세를 고정하고 첫 잔상에 복사
+        SetFacingIndex(direction);
         dashPose = true;
-        ChangeState((PlayerSpriteAnimationState)((int)PlayerSpriteAnimationState.DashLeftFront + FacingIndex), true);
+        PlayerSpriteAnimationState first;
+        switch (FacingIndex / 2)
+        {
+            case 0: first = PlayerSpriteAnimationState.DashLeftBack; break;
+            case 1: first = PlayerSpriteAnimationState.DashLeftUpper; break;
+            case 2: first = PlayerSpriteAnimationState.DashLeftLower; break;
+            default: first = PlayerSpriteAnimationState.DashLeftFront; break;
+        }
+        ChangeState((PlayerSpriteAnimationState)((int)first + FacingIndex % 2), true);
         afterimageTimer = AfterimageInterval;
         LeaveAfterimage();
     }
@@ -223,6 +272,7 @@ public class CharacterRendering : MonoBehaviour
         EndSlashAnimation();
 
         // 기존 검 표시를 보관하고 Spawner의 실제 시간에 맞춰 전용 상태 진입
+        IsAttackAnimation = false;
         if (!IsLifecycleAnimation && WeaponSprite != null) weaponWasVisible = WeaponSprite.enabled;
         IsLifecycleAnimation = true;
         LifecycleElapsed = 0f;
@@ -252,6 +302,7 @@ public class CharacterRendering : MonoBehaviour
         if (IsLifecycleAnimation || !HasSlashAnimation) return false;
 
         // 기존 방향·무기 표시를 보관하고 준비 모션의 첫 자세 표시
+        IsAttackAnimation = false;
         if (!IsSlashAnimation && WeaponSprite != null) slashWeaponWasVisible = WeaponSprite.enabled;
         IsSlashAnimation = true;
         dashPose = false;
@@ -330,13 +381,31 @@ public class CharacterRendering : MonoBehaviour
         return true;
     }
 
-    /// <summary>현재 사분면과 전달된 이동 여부에 맞는 기본 모션 상태 선택</summary>
+    /// <summary>북쪽0도에서30·90·150도 경계로 원본 종류와 좌우 방향 선택</summary>
+    private void SetFacingIndex(Vector2 direction)
+    {
+        // 중심이나 잘못된 좌표는 마지막 유효 방향 유지
+        if (float.IsNaN(direction.x) || float.IsInfinity(direction.x) || float.IsNaN(direction.y) || float.IsInfinity(direction.y)
+            || direction.sqrMagnitude <= 0.000001f) return;
+        float angle = Vector2.Angle(Vector2.up, direction);
+        int band = angle < 30f ? 0 : angle < 90f ? 1 : angle < 150f ? 2 : 3;
+        FacingIndex = band * 2 + (band == 0 || band == 3 || direction.x >= 0f ? 1 : 0);
+    }
+
+    /// <summary>현재 각도 구간과 이동 여부에 맞는 기본 모션 상태 선택</summary>
     private PlayerSpriteAnimationState GetLocomotionState()
     {
-        // enum의 방향 순서는 기존 FacingIndex와 같은 왼앞·오앞·왼뒤·오뒤
-        FacingIndex = Mathf.Clamp(FacingIndex, 0, 3);
-        int first = IsMoving ? (int)PlayerSpriteAnimationState.MoveLeftFront : (int)PlayerSpriteAnimationState.IdleLeftFront;
-        return (PlayerSpriteAnimationState)(first + FacingIndex);
+        // 기존 enum 값과 저장된 생명주기·발도 상태를 유지하며 새 사선 상태만 분기
+        FacingIndex = Mathf.Clamp(FacingIndex, 0, 7);
+        PlayerSpriteAnimationState first;
+        switch (FacingIndex / 2)
+        {
+            case 0: first = IsMoving ? PlayerSpriteAnimationState.MoveLeftBack : PlayerSpriteAnimationState.IdleLeftBack; break;
+            case 1: first = IsMoving ? PlayerSpriteAnimationState.MoveLeftUpper : PlayerSpriteAnimationState.IdleLeftUpper; break;
+            case 2: first = IsMoving ? PlayerSpriteAnimationState.MoveLeftLower : PlayerSpriteAnimationState.IdleLeftLower; break;
+            default: first = IsMoving ? PlayerSpriteAnimationState.MoveLeftFront : PlayerSpriteAnimationState.IdleLeftFront; break;
+        }
+        return (PlayerSpriteAnimationState)((int)first + FacingIndex % 2);
     }
 
     /// <summary>상태 진입에서만 데이터를 조회하고 첫 프레임부터 표시</summary>
@@ -350,7 +419,8 @@ public class CharacterRendering : MonoBehaviour
         FrameIndex = 0;
 
         // 상태 데이터와 전체 길이는 진입 경계에서 한 번 확보
-        PlayerSpriteAnimationSet set = (int)state >= (int)PlayerSpriteAnimationState.SlashDraw ? SlashAnimationSet : AnimationSet;
+        PlayerSpriteAnimationSet set = state >= PlayerSpriteAnimationState.SlashDraw && state <= PlayerSpriteAnimationState.SlashSheathe
+            ? SlashAnimationSet : AnimationSet;
         currentStateData = set != null ? set.GetState(state) : null;
         stateDuration = currentStateData != null ? currentStateData.GetTotalDuration() : 0f;
         WarnInvalidState();
@@ -363,9 +433,10 @@ public class CharacterRendering : MonoBehaviour
         // 데이터 누락이나 정지 시간에는 현재 자세 유지
         if (currentStateData == null || stateDuration <= 0f || deltaTime <= 0f) return;
 
-        // 이동속도 배율과 무관한 고정 FPS를 사용하고 뒷걸음만 역재생
+        // 원작 MOVE의4FPS에 현재 이동속도를 곱하고 뒷걸음만 역재생
         float direction = IsMoving && IsBackpedaling ? -1f : 1f;
-        stateElapsed += deltaTime * direction;
+        float speed = IsMoving && player != null ? Mathf.Max(0f, player.SP) : 1f;
+        stateElapsed += deltaTime * direction * speed;
         stateElapsed = currentStateData.Loop
             ? Mathf.Repeat(stateElapsed, stateDuration) : Mathf.Clamp(stateElapsed, 0f, stateDuration);
         ApplyFrame(currentStateData.GetFrameIndex(stateElapsed));
@@ -398,7 +469,8 @@ public class CharacterRendering : MonoBehaviour
     private void WarnInvalidState()
     {
         // 모션 원본 자체의 누락은 상태 수와 무관하게 한 번 안내
-        PlayerSpriteAnimationSet set = (int)CurrentState >= (int)PlayerSpriteAnimationState.SlashDraw ? SlashAnimationSet : AnimationSet;
+        PlayerSpriteAnimationSet set = CurrentState >= PlayerSpriteAnimationState.SlashDraw && CurrentState <= PlayerSpriteAnimationState.SlashSheathe
+            ? SlashAnimationSet : AnimationSet;
         if (set == null)
         {
             if (!warnedMissingSet) Debug.LogWarning("Player AnimationSet이 없어 기존 몸체 Sprite 유지", this);
@@ -407,7 +479,7 @@ public class CharacterRendering : MonoBehaviour
         }
 
         // 상태별 누락 프레임이나 시간 설정을 진입 시 검사하고 중복 경고 방지
-        int stateBit = 1 << (int)CurrentState;
+        ulong stateBit = 1UL << (int)CurrentState;
         if ((warnedStates & stateBit) != 0) return;
         bool missingFrames = currentStateData == null || currentStateData.Frames == null || currentStateData.Frames.Length == 0;
         bool invalidTime = false;

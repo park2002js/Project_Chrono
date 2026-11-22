@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>원작 대검의 공격 곡선·입력 버퍼·콤보 대기와 확정3타 검기·단일 타격 관리</summary>
+/// <summary>기본 공격 클립의 검·FX 표시와 입력 버퍼·콤보·독립 타격 판정 관리</summary>
 [DefaultExecutionOrder(10)]
 public class AttackController : MonoBehaviour
 {
@@ -10,11 +10,8 @@ public class AttackController : MonoBehaviour
     public Transform WeaponMotion; // 원작 위치·회전 곡선이 움직일 검 피벗
     public Animator WeaponAnimator; // 공격과 콤보 대기 곡선을 평가할 Animator
     public SpriteRenderer WeaponRenderer; // 몸체 앞뒤로 정렬할 검 이미지
-    public SpriteRenderer AttackVfxRenderer; // 검기 표시 풀의 첫 렌더러와 재사용 설정 원본
-    public Sprite[] Attack1Vfx; // 반전 전 보라 검기의 네 단계
-    public Sprite[] Attack2Vfx; // 반전 전 하늘 검기의 네 단계
-    public Sprite[] Attack3Vfx; // 보라단독·두큰호·단계차·양쪽2/3/4단계의 여섯 합성 이미지
-    public Vector2 AimDirection = Vector2.down; // 대기 중 마지막 유효 조준 방향
+    public SpriteRenderer AttackVfxRenderer; // 공격 클립이 Sprite·표시·위치·회전을 제어할 검기
+    public Vector2 AimDirection = Vector2.up; // 북쪽 저작 자세를 기준으로 한 마지막 유효 조준 방향
     public float AttackDuration = 0.6f; // 원작1타 길이와 세 공격 시간 배율의 기준
     public float HitWindowStart = 11f / 30f; // 원작1타의 판정·전진 생성 시점 기준
     public float HitWindowEnd = 11f / 30f + 0.15f; // 생성 후 AS와 별도로 유지할 판정 수명의 기준
@@ -37,16 +34,19 @@ public class AttackController : MonoBehaviour
     public float CurrentAttackDuration => attackClipLengths[Mathf.Clamp(ComboIndex, 0, 2)] * DurationScale; // 현재 타의 실제 기본 길이
     public float AttackInputOpenTime => (ComboIndex == 2 ? ThirdInputBufferTime : InputIgnoreDuration) * DurationScale; // 현재 공격의 새 클릭 허용 경계
     public bool IsAttackInputAllowed => !IsAttacking || attackElapsed + 0.000001f >= AttackInputOpenTime; // 초기 무시 구간이 끝났는지 조회
-    public Vector2 AttackDirection { get; private set; } = Vector2.down; // 공격 시작 때 고정한 조준 방향
+    public Vector2 AttackDirection { get; private set; } = Vector2.up; // 공격 시작 때 고정한 조준 방향
     public CollisionBox HitBox { get; private set; } = new CollisionBox(); // 가장 최근 생성된 공격 판정과 적중 대상 조회
 
     private Character owner; // 한 번 확보할 공격력·공격속도 원본
     private PlayerCharacter player; // 공격 시작의 이동 의도와 기본 이동 배율 조회 대상
+    private CharacterRendering rendering; // Player 수명 동안 검과 같은 시간으로 샘플링할 몸체 표시
     private DamageInstance damage; // 이번 공격에서 한 번 확정한 피해와 식별자
     private float attackElapsed; // 현재 공격의 AS 적용 경과시간
+    private float attackBodyElapsed; // 몸체 공격 시작 이후 AS를 적용하지 않은 게임 경과시간
+    private float previousBodySampleTime; // 몸체 시작 경계를 나눌 직전 검 클립의 경과시간
     private bool openedHitWindow; // 두 번 휘두르는3타도 판정을 한 번만 생성할 표시
-    private bool spawnedEffect; // 같은 공격의 검기를 반복 생성하지 않을 표시
-    private bool playedSecondSwingSound; // 두 번 휘두르는3타의 두 번째 소리 중복 방지
+    private bool playedSwingSound; // 현재 타의 첫 공격음을 한 번만 재생할 표시
+    private bool playedSecondSwingSound; // 두 번 휘두르는3타의 두 번째 공격음 중복 방지
     private PlayerFeedback feedback; // 자기 수명 동안 재사용할 공격 소리·적중 섬광 담당
     private Action<Vector2, float> hitFeedback; // 매 질의에서 만들지 않고 재사용할 성공 타격 콜백
     private float dashElapsed; // 별도 강제 전진의 게임 경과시간
@@ -55,21 +55,22 @@ public class AttackController : MonoBehaviour
     private float currentAttackDashSpeed; // 타격 시 확정해 다음 타의 준비 중에도 유지할 전진 초기 속도
     private bool attackDashActive; // 일반 이동과 별개로 적용할 전진 진행 여부
     private bool weaponAnimationReady; // Animator·렌더러·검기 참조의 최초 확인 결과
-    private int bodySortingOrder; // 같은 Player 몸체를 기준으로 검·검기의 앞뒤를 정할 고정 순서
+    private Vector3 weaponPivotPosition; // 프리팹에서 조절한 북쪽 조준 어깨 기준 위치
+    private Vector3 weaponPivotScale; // 프리팹에서 조절한 어깨 크기와 좌우 반사 기준
     private readonly float[] attackClipLengths = new float[3]; // 최초 한 번 확보할 각 공격의 원본 길이
-    private readonly List<AttackEffect> effects = new List<AttackEffect>(3); // 동시 재생 검기를 필요 수량까지 재사용할 풀
     private readonly List<AttackHit> hits = new List<AttackHit>(3); // 배속 중 겹친 판정의 수명·방향·대상을 독립 유지할 풀
     private static readonly int[] AttackStateHashes = { Animator.StringToHash("Base Layer.Attack1"), Animator.StringToHash("Base Layer.Attack2"), Animator.StringToHash("Base Layer.Attack3") }; // 공격 상태 이름의 반복 변환 방지
     private static readonly int[] WaitStateHashes = { Animator.StringToHash("Base Layer.Wait2"), Animator.StringToHash("Base Layer.Wait3") }; // 콤보 대기 곡선 상태
     private static readonly int IdleStateHash = Animator.StringToHash("Base Layer.Idle"); // 원작 대기 호흡 곡선 상태
     private float DurationScale => AttackDuration / 0.6f; // 원작 클립 시간에 공통 적용할 기존 조정값
 
-    /// <summary>생성 시 고정 참조·클립·재사용 검기 표시 준비</summary>
+    /// <summary>생성 시 고정 참조·기본 공격 클립·독립 판정 준비</summary>
     private void Awake()
     {
         // 자기 캐릭터와 직렬화 연결만 확인하며 외부 Instance를 조회하지 않음
         owner = GetComponent<Character>();
         player = owner as PlayerCharacter;
+        rendering = GetComponent<CharacterRendering>();
         feedback = GetComponent<PlayerFeedback>();
         if (feedback != null) hitFeedback = feedback.PlayImpact;
         if (owner == null) { enabled = false; Debug.LogError(name + ": AttackController requires Character.", this); return; }
@@ -79,11 +80,7 @@ public class AttackController : MonoBehaviour
         hits.Add(new AttackHit());
         hits.Add(new AttackHit());
 
-        // 원작 검기는 위치만 Player를 따르고 생성 방향은 고정하므로 조준 부모에서 분리
-        AttackVfxRenderer.transform.SetParent(transform, false);
-        effects.Add(new AttackEffect { Renderer = AttackVfxRenderer });
-        CreateEffect();
-        CreateEffect();
+        // 프리팹의 계층과 위치를 유지해 편집한 클립과 실행 결과를 같은 기준으로 평가
         ResetWeaponAnimation();
     }
 
@@ -93,14 +90,13 @@ public class AttackController : MonoBehaviour
         if (weaponAnimationReady) ResetWeaponAnimation();
     }
 
-    /// <summary>공격 곡선·실제 판정·AS 독립 검기와 콤보 유효시간 진행</summary>
+    /// <summary>검·FX의 단일 공격 시간축과 독립 판정·콤보 유효시간 진행</summary>
     private void Update()
     {
         // 정지 중에는 표시·공격·콤보의 게임 시간을 모두 보존
         float dt = Time.deltaTime;
         if (!weaponAnimationReady || Time.timeScale <= 0f || dt <= 0f) return;
         if (!IsFinite(owner.AS) || owner.AS <= 0f) { CancelAttack(); return; }
-        AdvanceEffects(dt);
 
         // 이미 생성한 판정은 공격 클립 배속과 별개로0.15초 동안만 진행
         AdvanceHits(dt);
@@ -131,15 +127,14 @@ public class AttackController : MonoBehaviour
             HitBox.Query(center, HitboxSize, angle, hitFeedback);
             if (!IsAttacking || damage.AttackId != attackId) return;
         }
-        float effectStart = (ComboIndex == 0 ? 11f / 30f : ComboIndex == 1 ? 7f / 30f : 22f / 60f) * DurationScale;
-        if (!spawnedEffect && attackElapsed >= effectStart)
-        {
-            spawnedEffect = true;
-            SpawnEffect(ComboIndex, (attackElapsed - effectStart) / (ComboIndex == 2 ? DurationScale : owner.AS));
-        }
-        if (!IsAttacking || damage.AttackId != attackId) return;
 
-        // 새3타의 두 번째 검기가 시작되는 시점에 B 소리를 이어 재생
+        // 공격음만 기존 시각을 유지하며 FX의 Sprite·표시 시각·수명은 공격 클립에서 제어
+        float soundStart = (ComboIndex == 0 ? 11f / 30f : ComboIndex == 1 ? 7f / 30f : 22f / 60f) * DurationScale;
+        if (!playedSwingSound && attackElapsed >= soundStart)
+        {
+            playedSwingSound = true;
+            if (feedback != null) feedback.PlayAttackSound(ComboIndex == 1 ? 1 : 0);
+        }
         if (ComboIndex == 2 && !playedSecondSwingSound && attackElapsed >= 24f / 60f * DurationScale)
         {
             playedSecondSwingSound = true;
@@ -176,28 +171,26 @@ public class AttackController : MonoBehaviour
         if (!IsFinite(amount) || amount <= 0f) { ResetCombo(); return false; }
         damage = new DamageInstance(owner, amount, DamageType.Normal, DamageInstance.NextAttackId());
 
-        // 이전 타의 판정·검기는 AS 독립 수명이 끝날 때까지 유지하고 새 행동만 준비
+        // 이전 타의 판정은 독립 수명을 유지하고 검·FX는 새 공격 클립에서 함께 시작
         attackElapsed = 0f;
-        openedHitWindow = spawnedEffect = false;
-        playedSecondSwingSound = false;
+        attackBodyElapsed = previousBodySampleTime = 0f;
+        openedHitWindow = false;
+        playedSwingSound = playedSecondSwingSound = false;
         IsAttacking = true;
         SampleAttack(0f);
         return true;
     }
 
-    /// <summary>대기 중 조준에 원작 어깨 위치와 좌우 반사 행렬 적용</summary>
+    /// <summary>프리팹의 북쪽 조준 자세에 현재 방향과 좌우 반사 적용</summary>
     public void UpdateAim(Vector2 direction)
     {
-        if (IsAttacking || !IsFinite(direction) || direction.sqrMagnitude <= 0.000001f) return;
+        if (!weaponAnimationReady || IsAttacking || !IsFinite(direction) || direction.sqrMagnitude <= 0.000001f) return;
         AimDirection = direction.normalized;
         float sign = AimDirection.x < 0f ? -1f : 1f;
-        WeaponPivot.localPosition = new Vector3(sign * 0.15625f, AimDirection.y > 0f ? 0.5f : 0.375f, 0f);
-        WeaponPivot.localScale = new Vector3(1f, sign, 1f);
-        WeaponPivot.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(AimDirection.y, AimDirection.x) * Mathf.Rad2Deg);
-
-        // 공격 밖의 대기·이동 중 검은 얼굴을 가리지 않도록 몸체 뒤에 표시
-        if (WeaponRenderer != null)
-            WeaponRenderer.sortingOrder = bodySortingOrder - 1;
+        WeaponPivot.localPosition = new Vector3(sign * weaponPivotPosition.x,
+            weaponPivotPosition.y - (AimDirection.y > 0f ? 0f : 0.125f), weaponPivotPosition.z);
+        WeaponPivot.localScale = new Vector3(sign * weaponPivotScale.x, weaponPivotScale.y, weaponPivotScale.z);
+        WeaponPivot.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(AimDirection.y, AimDirection.x) * Mathf.Rad2Deg - 90f);
     }
 
     /// <summary>생성된 공격 판정을 AS와 별개인 원작 수명으로 한 번 준비</summary>
@@ -249,12 +242,14 @@ public class AttackController : MonoBehaviour
         foreach (AttackHit hit in hits) hit.Box.ClearHits();
         HitBox.ClearHits();
         IsAttacking = false;
+        if (rendering != null) rendering.EndAttackAnimation();
         attackElapsed = 0f;
-        openedHitWindow = spawnedEffect = false;
+        openedHitWindow = false;
+        playedSwingSound = playedSecondSwingSound = false;
         attackDashActive = false;
         AttackCooldownRemaining = 0f;
-        foreach (AttackEffect effect in effects) { effect.Active = false; if (effect.Renderer != null) effect.Renderer.enabled = false; }
         ResetCombo();
+        if (AttackVfxRenderer != null) AttackVfxRenderer.enabled = false;
         if (WeaponPivot != null) UpdateAim(AimDirection);
     }
 
@@ -264,23 +259,15 @@ public class AttackController : MonoBehaviour
         // Inspector 연결 오류를 부분 표시로 숨기지 않고 최초 준비에서 확인
         if (WeaponPivot == null || WeaponMotion == null || WeaponAnimator == null || WeaponRenderer == null || AttackVfxRenderer == null
             || WeaponMotion.parent != WeaponPivot || WeaponAnimator.transform != WeaponPivot || WeaponAnimator.runtimeAnimatorController == null
-            || Attack1Vfx == null || Attack1Vfx.Length != 4 || Attack2Vfx == null || Attack2Vfx.Length != 4 || Attack3Vfx == null || Attack3Vfx.Length != 6)
-        { Debug.LogError(name + ": Connect weapon animation and all attack VFX arrays.", this); return; }
-        // 원작 SortingGroup의 내부 순서를 우리 몸체의 전역 순서 기준으로 변환
-        CharacterRendering appearance = GetComponent<CharacterRendering>();
-        if (appearance == null || appearance.BodySprite == null)
-        { Debug.LogError(name + ": Connect the Player body sorting reference.", this); return; }
-        bodySortingOrder = appearance.BodySprite.sortingOrder;
-        WeaponRenderer.sortingLayerID = appearance.BodySprite.sortingLayerID;
-        AttackVfxRenderer.sortingLayerID = appearance.BodySprite.sortingLayerID;
-        AttackVfxRenderer.sortingOrder = bodySortingOrder + 1;
+            || !AttackVfxRenderer.transform.IsChildOf(WeaponPivot))
+        { Debug.LogError(name + ": Connect the weapon Animator and its weapon/FX children.", this); return; }
+        weaponPivotPosition = WeaponPivot.localPosition;
+        weaponPivotScale = WeaponPivot.localScale;
 
-        // Player 수명 동안 고정된 클립 길이·대기 상태·검기 이미지를 한 번 확보
+        // Player 수명 동안 고정된 클립 길이와 대기 상태만 확보하고 표시값은 클립에 맡김
         foreach (AnimationClip clip in WeaponAnimator.runtimeAnimatorController.animationClips)
             for (int i = 0; i < 3; i++) if (clip.name == "Attack" + (i + 1)) attackClipLengths[i] = clip.length;
         for (int i = 0; i < 3; i++) if (attackClipLengths[i] <= 0f) { Debug.LogError(name + ": Missing attack clip.", this); return; }
-        foreach (Sprite[] frames in new[] { Attack1Vfx, Attack2Vfx, Attack3Vfx })
-            foreach (Sprite frame in frames) if (frame == null) { Debug.LogError(name + ": Missing attack VFX sprite.", this); return; }
         for (int i = 0; i < WaitStateHashes.Length; i++)
             if (!WeaponAnimator.HasState(0, WaitStateHashes[i])) { Debug.LogError(name + ": Missing combo wait state.", this); return; }
         WeaponAnimator.cullingMode = AnimatorCullingMode.AlwaysAnimate;
@@ -288,29 +275,35 @@ public class AttackController : MonoBehaviour
         weaponAnimationReady = true;
     }
 
+    /// <summary>검·FX 클립과 원작 시작 시점 이후의 몸체 공격을 각 시간 기준으로 평가</summary>
     private void SampleAttack(float time)
     {
+        // 검과 FX는 기존 AS 적용 경과시간으로 같은 클립을 평가
         WeaponAnimator.speed = 0f;
         WeaponAnimator.Play(AttackStateHashes[ComboIndex], 0, time / CurrentAttackDuration);
         WeaponAnimator.Update(0f);
-        int order = ComboIndex == 0 ? (time / DurationScale >= 11f / 30f ? 1 : -1)
-            : ComboIndex == 1 ? (time / DurationScale >= 0.3f ? -1 : 1)
-            : (time / DurationScale < 22f / 60f || time / DurationScale >= 27f / 60f ? -1 : 1);
-        WeaponRenderer.sortingOrder = bodySortingOrder + order;
+
+        // 시작 경계를 통과한 프레임 분량만 게임 시간으로 환산해 몸체의20FPS 유지
+        float bodyStart = (ComboIndex == 0 ? 7f / 30f : ComboIndex == 1 ? 6f / 30f : 0f) * DurationScale;
+        float bodyDelta = Mathf.Max(0f, time - Mathf.Max(previousBodySampleTime, bodyStart));
+        attackBodyElapsed += bodyDelta / owner.AS;
+        previousBodySampleTime = time;
+        if (time >= bodyStart && rendering != null) rendering.SampleAttackAnimation(AttackDirection, attackBodyElapsed);
     }
 
+    /// <summary>검 위치와 FX 숨김을 포함한 콤보 대기 클립 평가</summary>
     private void SampleWait()
     {
         if (ComboIndex < 0 || ComboIndex > 1) return;
         WeaponAnimator.speed = 0f;
         WeaponAnimator.Play(WaitStateHashes[ComboIndex], 0, 1f - ComboRemaining / Mathf.Max(0.0001f, ComboDuration));
         WeaponAnimator.Update(0f);
-        WeaponRenderer.sortingOrder = bodySortingOrder - 1;
     }
 
     private void FinishAttack(float overshoot)
     {
         IsAttacking = false;
+        if (rendering != null) rendering.EndAttackAnimation();
         AttackCooldownRemaining = Mathf.Max(0f, AttackCooldown - overshoot);
         if (ComboIndex < 2)
         {
@@ -328,14 +321,13 @@ public class AttackController : MonoBehaviour
         }
     }
 
-    /// <summary>원작 Idle 곡선으로 복귀하고 검을 몸체 뒤에 표시</summary>
+    /// <summary>기본 Idle 클립의 검 자세와 FX 숨김 상태로 복귀</summary>
     private void ResetWeaponAnimation()
     {
         if (!weaponAnimationReady || WeaponAnimator == null || !WeaponAnimator.isActiveAndEnabled) return;
         WeaponAnimator.speed = 1f;
         WeaponAnimator.Play(IdleStateHash, 0, 0f);
         WeaponAnimator.Update(0f);
-        if (WeaponRenderer != null) WeaponRenderer.sortingOrder = bodySortingOrder - 1;
     }
 
     private float GetHitStart()
@@ -354,49 +346,6 @@ public class AttackController : MonoBehaviour
         attackDashActive = AttackDashDuration > 0f && currentAttackDashSpeed > 0f;
     }
 
-    private AttackEffect CreateEffect()
-    {
-        var go = new GameObject("AttackVfx" + effects.Count);
-        go.transform.SetParent(transform, false);
-        SpriteRenderer renderer = go.AddComponent<SpriteRenderer>();
-        renderer.sharedMaterial = AttackVfxRenderer.sharedMaterial;
-        renderer.sortingLayerID = AttackVfxRenderer.sortingLayerID;
-        renderer.sortingOrder = bodySortingOrder + 1;
-        renderer.enabled = false;
-        var effect = new AttackEffect { Renderer = renderer };
-        effects.Add(effect);
-        return effect;
-    }
-
-    private void SpawnEffect(int attack, float age)
-    {
-        // 겹친 고정 수명 검기는 다른 슬롯을 사용하고 이후 동일 객체 재사용
-        AttackEffect effect = effects.Find(value => !value.Active) ?? CreateEffect();
-        effect.Attack = attack;
-        effect.Age = age;
-        effect.Active = true;
-        Transform visual = effect.Renderer.transform;
-        visual.localPosition = transform.InverseTransformPoint(WeaponPivot.TransformPoint(Vector3.right));
-        visual.localRotation = Quaternion.Euler(0f, 0f, WeaponPivot.eulerAngles.z - 90f);
-        visual.localScale = new Vector3(AttackDirection.x < 0f ? -1f : 1f, 1f, 1f);
-        effect.Renderer.flipX = attack == 1;
-        effect.Renderer.flipY = false;
-        effect.Renderer.sortingOrder = bodySortingOrder + 1;
-        DisplayEffect(effect);
-        if (feedback != null) feedback.PlayAttackSound(attack == 1 ? 1 : 0);
-    }
-
-    private void AdvanceEffects(float dt)
-    {
-        // 원작1·2타는AS독립0.2초,새3타는확정모션프레임을따라진행
-        foreach (AttackEffect effect in effects)
-        {
-            if (!effect.Active) continue;
-            effect.Age += effect.Attack == 2 ? dt * owner.AS / DurationScale : dt;
-            DisplayEffect(effect);
-        }
-    }
-
     /// <summary>새 타가 시작돼도 이전 판정의 고정 수명과 공격 방향 유지</summary>
     private void AdvanceHits(float dt)
     {
@@ -410,20 +359,6 @@ public class AttackController : MonoBehaviour
             hit.Remaining -= dt;
             if (hit.Remaining <= 0f) hit.Box.End();
         }
-    }
-
-    private void DisplayEffect(AttackEffect effect)
-    {
-        float age = effect.Age;
-        int index = effect.Attack < 2 ? Mathf.FloorToInt((age + 0.000001f) * 20f)
-            : age < 2f / 60f - 0.000001f ? 0 : age < 3f / 60f - 0.000001f ? 1
-            : age < 4f / 60f - 0.000001f ? 2 : age < 7f / 60f - 0.000001f ? 3
-            : age < 10f / 60f - 0.000001f ? 4 : age < 13f / 60f - 0.000001f ? 5 : 6;
-        Sprite[] frames = effect.Attack == 0 ? Attack1Vfx : effect.Attack == 1 ? Attack2Vfx : Attack3Vfx;
-        effect.Active = index >= 0 && index < frames.Length;
-        effect.Renderer.enabled = effect.Active;
-        effect.Renderer.color = Color.white;
-        if (effect.Active) effect.Renderer.sprite = frames[index];
     }
 
     private void GetHitArea(out Vector2 center, out float angle)
@@ -455,15 +390,6 @@ public class AttackController : MonoBehaviour
 
     private static bool IsFinite(Vector2 value) { return IsFinite(value.x) && IsFinite(value.y); }
     private static bool IsFinite(float value) { return !float.IsNaN(value) && !float.IsInfinity(value); }
-
-    /// <summary>생성 방향을 유지하며 Player 위치만 추종하는 재사용 검기 한 개</summary>
-    private class AttackEffect
-    {
-        public SpriteRenderer Renderer; // 이 슬롯이 재사용할 검기 표시
-        public int Attack; // 참조할1·2·3타 Sprite 배열
-        public float Age; // 원작 검기는 게임 시간·3타는 모션 시간으로 진행할 표시 경과
-        public bool Active; // 현재 표시 중인 슬롯 여부
-    }
 
     /// <summary>각 타의 고정 판정 수명·방향·중복 수신자를 독립 보관</summary>
     private class AttackHit

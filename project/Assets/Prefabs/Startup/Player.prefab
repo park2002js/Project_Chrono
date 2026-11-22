@@ -13,7 +13,7 @@ GameObject:
   m_Layer: 0
   m_Name: WeaponPivot
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,12 +26,12 @@ Transform:
   m_GameObject: {fileID: 191704193992093587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15625, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0.15625, y: 0.375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 9140468540743363440}
   - {fileID: 1303539997853589072}
+  - {fileID: 9140468540743363440}
   m_Father: {fileID: 4923396737506696722}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &5203662568282889197
@@ -81,7 +81,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961199883847212413}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0.70710677, w: -0.7071069}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 19
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 642059887, guid: c7a8523b07c21964591bcc03b9f30a43, type: 3}
+  m_Sprite: {fileID: -3982264379177631435, guid: f3e40fae4dc620c40b75ad72dc22e044, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -228,9 +228,9 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 20
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -101736285, guid: c59d5e3f901a29d488ddba17f38e0bc0, type: 3}
+  m_Sprite: {fileID: -7261728796643038128, guid: cf87495a7857c8142b6fec36d610520f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.16, y: 0.16}
@@ -250,7 +250,7 @@ GameObject:
   m_Layer: 0
   m_Name: WeaponMotion
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -262,14 +262,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842147628530461351}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.82264054, w: -0.56856185}
+  m_LocalPosition: {x: 0.051, y: 0.145, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5074431753399002872}
   m_Father: {fileID: 3078735571610919335}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 249.3}
 --- !u!1 &3070255671664667467
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +283,7 @@ GameObject:
   m_Layer: 0
   m_Name: AttackVfx
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -295,8 +295,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3070255671664667467}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -349,7 +349,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 22
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: bb4f6efc0bd84bc429e305f279468919, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -376,7 +376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3194013951157806608
 Transform:
   m_ObjectHideFlags: 0
@@ -421,7 +421,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -489,7 +489,7 @@ MonoBehaviour:
   Groggy: 0
   HitProtectionDuration: 0.75
   MoveDirection: {x: 0, y: 0}
-  AimDirection: {x: 0, y: -1}
+  AimDirection: {x: 0, y: 1}
   AimWorldPosition: {x: 0, y: 0}
   DashSpeed: 24
   DashDeceleration: 87
@@ -608,7 +608,7 @@ MonoBehaviour:
   AnimationSet: {fileID: 11400000, guid: ec86266f294586344ae213552d208bab, type: 2}
   SlashAnimationSet: {fileID: 11400000, guid: 46d96274dccdd7b449013288c1301962, type: 2}
   WeaponSprite: {fileID: 7625594467753804406}
-  FacingIndex: 1
+  FacingIndex: 3
   FrameIndex: 0
   IsMoving: 0
   IsBackpedaling: 0
@@ -631,24 +631,7 @@ MonoBehaviour:
   WeaponAnimator: {fileID: 5203662568282889197}
   WeaponRenderer: {fileID: 7625594467753804406}
   AttackVfxRenderer: {fileID: 5554457710492136961}
-  Attack1Vfx:
-  - {fileID: 21300000, guid: bb4f6efc0bd84bc429e305f279468919, type: 3}
-  - {fileID: 21300000, guid: 2dd2d80432f87de49a2cdc1bc8f6045e, type: 3}
-  - {fileID: 21300000, guid: f81333462a421f242b77cf466233ed27, type: 3}
-  - {fileID: 21300000, guid: d9058e3f5c4898c42929a243ec8ec5e4, type: 3}
-  Attack2Vfx:
-  - {fileID: 21300000, guid: 14c60e711c1409949ad75a9afc36ba5a, type: 3}
-  - {fileID: 21300000, guid: a4dbefcbf7b6d63469bfb5237c72d649, type: 3}
-  - {fileID: 21300000, guid: c8883c8f1ae5bcc469788c6ced0b32dd, type: 3}
-  - {fileID: 21300000, guid: 36c121eda6b95a9449e645c2c08a60c7, type: 3}
-  Attack3Vfx:
-  - {fileID: 21300000, guid: 36613e38aa56a5e4297f87e05b7c4e9f, type: 3}
-  - {fileID: 21300000, guid: 41757e61404e47c49a1a00bbfb969507, type: 3}
-  - {fileID: 21300000, guid: d00ba68dd48e1b44c876933fcf29d847, type: 3}
-  - {fileID: 21300000, guid: 88c77ce0235aa4b44878cf312ed38d22, type: 3}
-  - {fileID: 21300000, guid: 15e9d1cefa649744ca74be84b929644a, type: 3}
-  - {fileID: 21300000, guid: f5e10ecf8819ea54eab06cadced5e581, type: 3}
-  AimDirection: {x: 0, y: -1}
+  AimDirection: {x: 0, y: 1}
   AttackDuration: 0.6
   HitWindowStart: 0.36666667
   HitWindowEnd: 0.51666665
@@ -1384,7 +1367,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:
@@ -5862,7 +5845,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7145076049863769212
 Transform:
   m_ObjectHideFlags: 0
@@ -6367,7 +6350,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startSizeZ:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 1
       minScalar: 1
       maxCurve:

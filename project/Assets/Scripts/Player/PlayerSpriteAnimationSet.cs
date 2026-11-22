@@ -12,15 +12,35 @@ public enum PlayerSpriteAnimationState
     MoveRightFront, // 오른쪽 앞을 바라보는 이동 모션
     MoveLeftBack, // 왼쪽 뒤를 바라보는 이동 모션
     MoveRightBack, // 오른쪽 뒤를 바라보는 이동 모션
-    DashLeftFront, // 왼쪽 앞 방향의 대시 자세
-    DashRightFront, // 오른쪽 앞 방향의 대시 자세
-    DashLeftBack, // 왼쪽 뒤 방향의 대시 자세
-    DashRightBack, // 오른쪽 뒤 방향의 대시 자세
+    DashLeftFront, // 남쪽 공통 공격 첫 프레임을 사용하는 왼쪽 대시 상태
+    DashRightFront, // 남쪽 공통 공격 첫 프레임을 사용하는 오른쪽 대시 상태
+    DashLeftBack, // 북쪽 공통 공격 첫 프레임을 사용하는 왼쪽 대시 상태
+    DashRightBack, // 북쪽 공통 공격 첫 프레임을 사용하는 오른쪽 대시 상태
     Death, // 사망 후 마지막 자세를 유지할 모션
     Spawn, // 체크포인트에서 일어서는 모션
     SlashDraw, // 몸을 낮추며 검을 일부 꺼내는 Slash 준비 모션
     SlashHold, // 일부 꺼낸 검을 유지하는 Slash 대기 자세
-    SlashSheathe // 칼날이 완전히 닫힐 때까지의 Slash 납도 모션
+    SlashSheathe, // 칼날이 완전히 닫힐 때까지의 Slash 납도 모션
+    IdleLeftUpper, // 왼쪽 위 사선을 바라보는 정지 모션
+    IdleRightUpper, // 오른쪽 위 사선을 바라보는 정지 모션
+    IdleLeftLower, // 왼쪽 아래 사선을 바라보는 정지 모션
+    IdleRightLower, // 오른쪽 아래 사선을 바라보는 정지 모션
+    MoveLeftUpper, // 왼쪽 위 사선을 바라보는 이동 모션
+    MoveRightUpper, // 오른쪽 위 사선을 바라보는 이동 모션
+    MoveLeftLower, // 왼쪽 아래 사선을 바라보는 이동 모션
+    MoveRightLower, // 오른쪽 아래 사선을 바라보는 이동 모션
+    AttackLeftBack, // 북쪽 공통 원본을 사용하는 왼쪽 공격 상태
+    AttackRightBack, // 북쪽 공통 원본을 사용하는 오른쪽 공격 상태
+    AttackLeftUpper, // 왼쪽 위 사선을 바라보는 공격 모션
+    AttackRightUpper, // 오른쪽 위 사선을 바라보는 공격 모션
+    AttackLeftLower, // 왼쪽 아래 사선을 바라보는 공격 모션
+    AttackRightLower, // 오른쪽 아래 사선을 바라보는 공격 모션
+    AttackLeftFront, // 남쪽 공통 원본을 사용하는 왼쪽 공격 상태
+    AttackRightFront, // 남쪽 공통 원본을 사용하는 오른쪽 공격 상태
+    DashLeftUpper, // 왼쪽 위 사선의 독립 대시 자세
+    DashRightUpper, // 오른쪽 위 사선의 독립 대시 자세
+    DashLeftLower, // 왼쪽 아래 사선의 독립 대시 자세
+    DashRightLower // 오른쪽 아래 사선의 독립 대시 자세
 }
 
 /// <summary>Sephiria AnimationSet처럼 상태별 Sprite·재생 시간·반전을 보관할 Player 전용 데이터</summary>

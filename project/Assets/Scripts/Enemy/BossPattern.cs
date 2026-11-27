@@ -8,6 +8,7 @@ public abstract class BossPattern
     public float Weight = 1f; // 같은 우선순위 후보 사이의 상대 추첨 가중치
     public int Priority; // 특정 상황에서 일반 추첨보다 먼저 선택할 양수 우선값
     public float Cooldown; // 실제 시작 시점부터 다음 실행까지 필요한 게임 시간
+    public bool IgnoreCooldown; // 모든 패턴을 한 번씩 도는 추첨 동안 쿨타임을 보지 않도록 추첨기가 켜 두는 값
     public float LastUsedTime { get; private set; } = float.NegativeInfinity; // 실제 실행이 시작된 마지막 게임 시간
     public bool IsRunning { get; private set; } // 완료 또는 취소 전까지 Tick을 받을 실행 상태
     public float Elapsed { get; private set; } // 이번 패턴이 실제로 진행한 게임 시간
@@ -24,7 +25,7 @@ public abstract class BossPattern
     public virtual bool CanRun(BossCharacter owner)
     {
         return owner != null && !IsRunning && !float.IsNaN(Cooldown) && !float.IsInfinity(Cooldown)
-            && Cooldown >= 0f && Time.time - LastUsedTime >= Cooldown;
+            && Cooldown >= 0f && (IgnoreCooldown || Time.time - LastUsedTime >= Cooldown);
     }
 
     /// <summary>현재 상황에서 같은 우선순위 후보에 적용할 가중치 조회</summary>

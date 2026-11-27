@@ -55,6 +55,7 @@ public class Boss_01 : BossCharacter
     private readonly AreaWarningVfx[] muzzleWarnings = new AreaWarningVfx[2]; // 두 총구가 패턴 2의 직선 경로에 쓸 예고
     private BossSpawner bossSpawner; // 조우 영역에서 전투 구역 크기를 읽을 자기 생성 담당
     private int idleStopFrame = -1; // 다음 패턴을 위해 새 내려찍기를 시작하지 않기로 한 프레임
+    private bool IsHandInPattern => HandAttack.IsRunning && HandAttack.Mode != GuardHandMode.IdleSlam; // 손이 패턴 동작 중인지 여부이며 Idle 내려찍기는 끝난 뒤 다음 패턴으로 넘겨주므로 제외
 
     protected override void OnDestroy()
     {
@@ -313,7 +314,7 @@ public class Boss_01 : BossCharacter
         {
             Cooldown = boss.CentralCooldown;
             return owner == boss && base.CanRun(owner) && boss.Target != null && !boss.Target.IsDead
-                && !boss.HandAttack.IsRunning && boss.RingBulletCount > 0 && boss.RingOuterSpeed > 0f && boss.RingInnerSpeed > 0f
+                && !boss.IsHandInPattern && boss.RingBulletCount > 0 && boss.RingOuterSpeed > 0f && boss.RingInnerSpeed > 0f
                 && boss.IsOnScreen((Vector2)boss.transform.position + boss.CentralLandingOffset);
         }
 
@@ -494,7 +495,7 @@ public class Boss_01 : BossCharacter
         {
             Cooldown = boss.EdgeCooldown;
             return owner == boss && base.CanRun(owner) && boss.Target != null && !boss.Target.IsDead
-                && !boss.HandAttack.IsRunning && !boss.HandAttack.IsWaveActive && boss.TryGetArena(out _);
+                && !boss.IsHandInPattern && !boss.HandAttack.IsWaveActive && boss.TryGetArena(out _);
         }
 
         /// <summary>무작위로 고른 손을 같은 쪽 가장자리의 무작위 높이로 보내고 폭발을 허용할 구역과 닿을 거리 고정</summary>

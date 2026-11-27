@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: groggy-orb
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 3631bb5ca9dc32c45aceb58b999ad5c5, type: 3}
+  - {fileID: 21300000, guid: 4407846b077d0c145b86e237ef9a0e81, type: 3}
+  - {fileID: 21300000, guid: 9078eb6662bc13a4ebaea8134e2fd693, type: 3}
+  - {fileID: 21300000, guid: 94cb3af2e5773e740a4464c4d269d236, type: 3}
+  - {fileID: 21300000, guid: 6162bb4d94154a34fbb935f1be6dca5d, type: 3}
+  - {fileID: 21300000, guid: 8e5c344f95b7c8d479ed88d4c37d11b6, type: 3}
+  - {fileID: 21300000, guid: 75a3afbf530311d4fbf6d5957a6c8d53, type: 3}
+  - {fileID: 21300000, guid: 742f0e5b6ef832f4caae65129fd1a2b2, type: 3}
+  - {fileID: 21300000, guid: 355ed8501181dbc4a8d8d9a0bd966c44, type: 3}
+  - {fileID: 21300000, guid: 826887f60b2cb7a4e8c0bde377a5e01e, type: 3}
+  - {fileID: 21300000, guid: ef8bb71992139554896aceee33c7c8bd, type: 3}
+  - {fileID: 21300000, guid: 78f1e76179e2b8a44bc02a406aece512, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 1
+  LoopStart: 0

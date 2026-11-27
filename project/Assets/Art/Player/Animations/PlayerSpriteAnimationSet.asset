@@ -147,38 +147,38 @@ MonoBehaviour:
     FlipX: 0
   - State: 12
     Frames:
-    - {fileID: -874547956, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
-    - {fileID: 1717460728, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
-    - {fileID: 31037803, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
-    - {fileID: 8941300, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
-    - {fileID: 1613383217, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
-    - {fileID: 624030021, guid: ad4efe37629c8b54cb340a1a94a5a8fb, type: 3}
-    FramesPerSecond: 50
+    - {fileID: -4582046487294592845, guid: 3d9c8d45cc85451ca01200dfef633316, type: 3}
+    - {fileID: -9218983008533606798, guid: 3d9c8d45cc85451ca01200dfef633316, type: 3}
+    - {fileID: 112887395070180416, guid: 3d9c8d45cc85451ca01200dfef633316, type: 3}
+    - {fileID: 6180014054359476672, guid: 3d9c8d45cc85451ca01200dfef633316, type: 3}
+    - {fileID: -5223943062003381682, guid: 3d9c8d45cc85451ca01200dfef633316, type: 3}
+    - {fileID: 2059424439323722235, guid: 3d9c8d45cc85451ca01200dfef633316, type: 3}
+    FramesPerSecond: 10
     FrameDurations:
-    - 0.22
-    - 0.22
-    - 0.22
-    - 0.07
-    - 0.07
-    - 0.62
+    - 0.2
+    - 0.3
+    - 0.25
+    - 0.1
+    - 0.1
+    - 0.1
     Loop: 0
     FlipX: 0
   - State: 13
     Frames:
-    - {fileID: -829239145, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
-    - {fileID: 1729564388, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
-    - {fileID: 2012748433, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
-    - {fileID: -1869647655, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
-    - {fileID: -343250335, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
-    - {fileID: -2001770798, guid: 99b8792a3b575614b82002453d2bd6c5, type: 3}
-    FramesPerSecond: 50
+    - {fileID: 4933896062024879265, guid: 40bfbdfab2fa404da2a65f660b3e7d3b, type: 3}
+    - {fileID: 4236885186314410087, guid: 40bfbdfab2fa404da2a65f660b3e7d3b, type: 3}
+    - {fileID: 3602403377138002486, guid: 40bfbdfab2fa404da2a65f660b3e7d3b, type: 3}
+    - {fileID: -7946753848190466757, guid: 40bfbdfab2fa404da2a65f660b3e7d3b, type: 3}
+    - {fileID: 6079671490644605667, guid: 40bfbdfab2fa404da2a65f660b3e7d3b, type: 3}
+    - {fileID: 33977405699931678, guid: 40bfbdfab2fa404da2a65f660b3e7d3b, type: 3}
+    FramesPerSecond: 10
     FrameDurations:
-    - 0.22
-    - 0.18
-    - 0.14
-    - 0.14
-    - 0.14
-    - 0.6
+    - 0.2
+    - 0.3
+    - 0.25
+    - 0.2
+    - 0.2
+    - 0.2
     Loop: 0
     FlipX: 0
   - State: 17

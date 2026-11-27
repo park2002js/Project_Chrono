@@ -1,0 +1,6236 @@
+{
+ "ppu": 16,
+ "textures": [
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-001.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-002.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-003.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-004.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-005.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-006.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-007.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-008.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-009.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-010.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-011.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-012.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-013.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-014.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-015.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-016.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-017.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-018.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-019.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-020.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-021.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-022.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-023.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-024.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-025.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-026.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-027.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-028.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-029.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-030.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-031.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-032.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-033.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-034.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-035.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-036.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-037.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-038.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-039.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-040.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-041.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-042.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-043.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-044.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-045.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-046.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-047.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-048.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-049.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-050.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-051.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-052.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-053.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-054.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-055.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-056.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-057.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-058.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-059.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-060.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-061.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-062.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-063.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-064.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-065.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-066.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-067.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-068.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-069.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-070.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-071.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-072.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-073.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-074.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-075.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-076.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-077.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-078.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-079.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-080.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-081.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-082.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-083.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-084.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-085.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-086.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-087.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-088.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-089.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-090.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-091.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-092.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-093.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-094.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-095.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-096.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-097.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-098.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-099.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-100.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-101.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-102.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-103.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-104.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-105.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-106.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-107.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Body/body-108.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-00.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-01.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-02.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-03.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-04.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-05.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-06.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-07.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-08.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-09.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-10.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-body-11.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-00.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-01.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-02.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-03.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-04.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-05.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-06.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-07.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-08.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-09.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-10.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-bright-11.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.526316
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-explosion-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-open-00.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-open-01.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-open-02.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-open-03.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-open-04.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-open-05.png",
+   "pivotX": 0.52381,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-release-00.png",
+   "pivotX": 0.518519,
+   "pivotY": 0.481481
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-release-01.png",
+   "pivotX": 0.518519,
+   "pivotY": 0.481481
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-release-02.png",
+   "pivotX": 0.518519,
+   "pivotY": 0.481481
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-fire-release-03.png",
+   "pivotX": 0.518519,
+   "pivotY": 0.481481
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-a-00.png",
+   "pivotX": 0.533333,
+   "pivotY": 0.466667
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-a-01.png",
+   "pivotX": 0.533333,
+   "pivotY": 0.466667
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-a-02.png",
+   "pivotX": 0.533333,
+   "pivotY": 0.466667
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-a-03.png",
+   "pivotX": 0.533333,
+   "pivotY": 0.466667
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-b-00.png",
+   "pivotX": 0.538462,
+   "pivotY": 0.461538
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-b-01.png",
+   "pivotX": 0.538462,
+   "pivotY": 0.461538
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-b-02.png",
+   "pivotX": 0.538462,
+   "pivotY": 0.461538
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Bullet/homing-trail-b-03.png",
+   "pivotX": 0.538462,
+   "pivotY": 0.461538
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-35.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-36.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-37.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-35.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-36.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-37.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-38.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-35.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-36.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-37.png",
+   "pivotX": 0.5,
+   "pivotY": 0.290909
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-35.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-36.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-37.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-38.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-35.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-36.png",
+   "pivotX": 0.5,
+   "pivotY": 0.275862
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-35.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-36.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-37.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-38.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.058824
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.058824
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.058824
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.058824
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.058824
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.058824
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-00.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-01.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-02.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-03.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-04.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-05.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-06.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-07.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-08.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-09.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-10.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-11.png",
+   "pivotX": 0.55,
+   "pivotY": 0.48
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.019231
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-back-00.png",
+   "pivotX": 0.5,
+   "pivotY": -0.117647
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-back-01.png",
+   "pivotX": 0.5,
+   "pivotY": -0.117647
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-back-02.png",
+   "pivotX": 0.5,
+   "pivotY": -0.117647
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-front-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-front-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-front-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.2
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.363636
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.363636
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.363636
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.363636
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.363636
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.363636
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar-shadow.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Objects/pillar/pillar.png",
+   "pivotX": 0.5,
+   "pivotY": 0.04
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-hold-00.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-hold-01.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-hold-02.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-hold-03.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-00.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-01.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-02.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-03.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-04.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-05.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-06.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-07.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-08.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-09.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-open-10.png",
+   "pivotX": 0.514286,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-release-00.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-release-01.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-release-02.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-release-03.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-release-04.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Portal/oval-release-05.png",
+   "pivotX": 0.514706,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/appear-ready8-00.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/appear-ready8-01.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/appear-ready8-02.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-landing3-00.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-landing3-01.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-landing3-02.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-ready6-00.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-ready6-01.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-ready6-02.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-ready8-00.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-ready8-01.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vanish/vanish-ready8-02.png",
+   "pivotX": 0.375,
+   "pivotY": 0.135417
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-00.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-01.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-02.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-03.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-04.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-05.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-00.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-01.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-02.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-03.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-04.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-05.png",
+   "pivotX": 0.470588,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-00.png",
+   "pivotX": 0.482759,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-01.png",
+   "pivotX": 0.482759,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-02.png",
+   "pivotX": 0.482759,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-03.png",
+   "pivotX": 0.482759,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-00.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-01.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-02.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-03.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-04.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-05.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-06.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-07.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-10.png",
+   "pivotX": 0.489796,
+   "pivotY": 0.510204
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-00.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-01.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-02.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-03.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-05.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-06.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-07.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-08.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-09.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-11.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-12.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-13.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-14.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-15.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-17.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-18.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-19.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-20.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-21.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-23.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-24.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-25.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-26.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-27.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-29.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-30.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-31.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-32.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-33.png",
+   "pivotX": 0.571429,
+   "pivotY": 0.473684
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-00.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-01.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-02.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-03.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-04.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-05.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-06.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-07.png",
+   "pivotX": 0.48,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-00.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-01.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-02.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-03.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-05.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-06.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-00.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-01.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-02.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-03.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-04.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-05.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-00.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-01.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-02.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-03.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-04.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-05.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.508197
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-30.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-31.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-32.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-33.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-34.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-00.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-01.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-02.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-03.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-05.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-06.png",
+   "pivotX": 0.44898,
+   "pivotY": 0.161972
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-00.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-01.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-02.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-03.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-04.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-05.png",
+   "pivotX": 0.464286,
+   "pivotY": 0.54902
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-00.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-01.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-02.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-03.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-04.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-05.png",
+   "pivotX": 0.490566,
+   "pivotY": 0.517241
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.512195
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.513514
+  },
+  {
+   "path": "Art/Environment/AncientGate/gate-light-spill.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/AncientGate/gate-light.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/backdrop.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-00.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-01.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-02.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-03.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-04.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-05.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-06.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-07.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-08.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/bridge-09.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-00.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-01.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-02.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-03.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-04.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-05.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-06.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-07.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-08.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/exit-bridge-09.png",
+   "pivotX": 0.5,
+   "pivotY": 1.0
+  },
+  {
+   "path": "Art/Environment/Wasteland/Textures/stone-platform.png",
+   "pivotX": 0.498162,
+   "pivotY": 0.483259
+  }
+ ],
+ "clips": [
+  {
+   "name": "body-idle",
+   "path": "Art/Enemy/LastBoss/Clips/body-idle.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-052.png",
+    "Art/Enemy/LastBoss/Body/body-053.png",
+    "Art/Enemy/LastBoss/Body/body-054.png",
+    "Art/Enemy/LastBoss/Body/body-055.png",
+    "Art/Enemy/LastBoss/Body/body-056.png",
+    "Art/Enemy/LastBoss/Body/body-057.png",
+    "Art/Enemy/LastBoss/Body/body-058.png",
+    "Art/Enemy/LastBoss/Body/body-059.png",
+    "Art/Enemy/LastBoss/Body/body-060.png",
+    "Art/Enemy/LastBoss/Body/body-061.png",
+    "Art/Enemy/LastBoss/Body/body-062.png",
+    "Art/Enemy/LastBoss/Body/body-063.png"
+   ],
+   "durations": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.1
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "body-wave-begin",
+   "path": "Art/Enemy/LastBoss/Clips/body-wave-begin.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-002.png",
+    "Art/Enemy/LastBoss/Body/body-003.png",
+    "Art/Enemy/LastBoss/Body/body-004.png",
+    "Art/Enemy/LastBoss/Body/body-005.png",
+    "Art/Enemy/LastBoss/Body/body-006.png",
+    "Art/Enemy/LastBoss/Body/body-007.png",
+    "Art/Enemy/LastBoss/Body/body-008.png",
+    "Art/Enemy/LastBoss/Body/body-009.png",
+    "Art/Enemy/LastBoss/Body/body-010.png",
+    "Art/Enemy/LastBoss/Body/body-011.png",
+    "Art/Enemy/LastBoss/Body/body-012.png",
+    "Art/Enemy/LastBoss/Body/body-013.png",
+    "Art/Enemy/LastBoss/Body/body-014.png",
+    "Art/Enemy/LastBoss/Body/body-015.png",
+    "Art/Enemy/LastBoss/Body/body-016.png",
+    "Art/Enemy/LastBoss/Body/body-017.png",
+    "Art/Enemy/LastBoss/Body/body-018.png",
+    "Art/Enemy/LastBoss/Body/body-019.png",
+    "Art/Enemy/LastBoss/Body/body-020.png",
+    "Art/Enemy/LastBoss/Body/body-021.png",
+    "Art/Enemy/LastBoss/Body/body-022.png",
+    "Art/Enemy/LastBoss/Body/body-023.png",
+    "Art/Enemy/LastBoss/Body/body-024.png",
+    "Art/Enemy/LastBoss/Body/body-025.png",
+    "Art/Enemy/LastBoss/Body/body-026.png",
+    "Art/Enemy/LastBoss/Body/body-027.png",
+    "Art/Enemy/LastBoss/Body/body-028.png",
+    "Art/Enemy/LastBoss/Body/body-029.png",
+    "Art/Enemy/LastBoss/Body/body-030.png",
+    "Art/Enemy/LastBoss/Body/body-031.png",
+    "Art/Enemy/LastBoss/Body/body-032.png",
+    "Art/Enemy/LastBoss/Body/body-033.png",
+    "Art/Enemy/LastBoss/Body/body-034.png",
+    "Art/Enemy/LastBoss/Body/body-035.png",
+    "Art/Enemy/LastBoss/Body/body-036.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "body-attack-ready",
+   "path": "Art/Enemy/LastBoss/Clips/body-attack-ready.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-037.png",
+    "Art/Enemy/LastBoss/Body/body-038.png",
+    "Art/Enemy/LastBoss/Body/body-039.png",
+    "Art/Enemy/LastBoss/Body/body-040.png",
+    "Art/Enemy/LastBoss/Body/body-041.png",
+    "Art/Enemy/LastBoss/Body/body-042.png",
+    "Art/Enemy/LastBoss/Body/body-043.png",
+    "Art/Enemy/LastBoss/Body/body-044.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "body-attack-ready-loop",
+   "path": "Art/Enemy/LastBoss/Clips/body-attack-ready-loop.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-039.png",
+    "Art/Enemy/LastBoss/Body/body-040.png",
+    "Art/Enemy/LastBoss/Body/body-041.png",
+    "Art/Enemy/LastBoss/Body/body-042.png",
+    "Art/Enemy/LastBoss/Body/body-043.png",
+    "Art/Enemy/LastBoss/Body/body-044.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "body-attack-doing",
+   "path": "Art/Enemy/LastBoss/Clips/body-attack-doing.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-045.png",
+    "Art/Enemy/LastBoss/Body/body-046.png",
+    "Art/Enemy/LastBoss/Body/body-047.png",
+    "Art/Enemy/LastBoss/Body/body-048.png",
+    "Art/Enemy/LastBoss/Body/body-049.png",
+    "Art/Enemy/LastBoss/Body/body-050.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "body-attack-end",
+   "path": "Art/Enemy/LastBoss/Clips/body-attack-end.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-051.png"
+   ],
+   "durations": [
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "body-wave-fall",
+   "path": "Art/Enemy/LastBoss/Clips/body-wave-fall.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-064.png"
+   ],
+   "durations": [
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "body-landing-in",
+   "path": "Art/Enemy/LastBoss/Clips/body-landing-in.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-065.png",
+    "Art/Enemy/LastBoss/Body/body-066.png",
+    "Art/Enemy/LastBoss/Body/body-067.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "body-landing-out",
+   "path": "Art/Enemy/LastBoss/Clips/body-landing-out.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-068.png",
+    "Art/Enemy/LastBoss/Body/body-069.png",
+    "Art/Enemy/LastBoss/Body/body-070.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "body-groggy",
+   "path": "Art/Enemy/LastBoss/Clips/body-groggy.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-076.png",
+    "Art/Enemy/LastBoss/Body/body-077.png"
+   ],
+   "durations": [
+    0.1,
+    0.1
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "body-die",
+   "path": "Art/Enemy/LastBoss/Clips/body-die.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Body/body-071.png",
+    "Art/Enemy/LastBoss/Body/body-072.png",
+    "Art/Enemy/LastBoss/Body/body-073.png",
+    "Art/Enemy/LastBoss/Body/body-074.png",
+    "Art/Enemy/LastBoss/Body/body-075.png",
+    "Art/Enemy/LastBoss/Body/body-080.png",
+    "Art/Enemy/LastBoss/Body/body-081.png",
+    "Art/Enemy/LastBoss/Body/body-082.png",
+    "Art/Enemy/LastBoss/Body/body-083.png",
+    "Art/Enemy/LastBoss/Body/body-084.png",
+    "Art/Enemy/LastBoss/Body/body-085.png",
+    "Art/Enemy/LastBoss/Body/body-086.png",
+    "Art/Enemy/LastBoss/Body/body-087.png",
+    "Art/Enemy/LastBoss/Body/body-088.png",
+    "Art/Enemy/LastBoss/Body/body-089.png",
+    "Art/Enemy/LastBoss/Body/body-090.png",
+    "Art/Enemy/LastBoss/Body/body-091.png",
+    "Art/Enemy/LastBoss/Body/body-092.png",
+    "Art/Enemy/LastBoss/Body/body-093.png",
+    "Art/Enemy/LastBoss/Body/body-094.png",
+    "Art/Enemy/LastBoss/Body/body-095.png",
+    "Art/Enemy/LastBoss/Body/body-096.png",
+    "Art/Enemy/LastBoss/Body/body-097.png",
+    "Art/Enemy/LastBoss/Body/body-098.png",
+    "Art/Enemy/LastBoss/Body/body-099.png",
+    "Art/Enemy/LastBoss/Body/body-100.png",
+    "Art/Enemy/LastBoss/Body/body-101.png",
+    "Art/Enemy/LastBoss/Body/body-102.png",
+    "Art/Enemy/LastBoss/Body/body-103.png",
+    "Art/Enemy/LastBoss/Body/body-104.png",
+    "Art/Enemy/LastBoss/Body/body-105.png",
+    "Art/Enemy/LastBoss/Body/body-106.png",
+    "Art/Enemy/LastBoss/Body/body-107.png",
+    "Art/Enemy/LastBoss/Body/body-108.png"
+   ],
+   "durations": [
+    0.1,
+    0.1,
+    0.1,
+    0.1,
+    0.6,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125,
+    0.125
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "vanish-ready6",
+   "path": "Art/Enemy/LastBoss/Clips/vanish-ready6.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vanish/vanish-ready6-00.png",
+    "Art/Enemy/LastBoss/Vanish/vanish-ready6-01.png",
+    "Art/Enemy/LastBoss/Vanish/vanish-ready6-02.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "appear-ready8",
+   "path": "Art/Enemy/LastBoss/Clips/appear-ready8.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vanish/appear-ready8-00.png",
+    "Art/Enemy/LastBoss/Vanish/appear-ready8-01.png",
+    "Art/Enemy/LastBoss/Vanish/appear-ready8-02.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "vanish-ready8",
+   "path": "Art/Enemy/LastBoss/Clips/vanish-ready8.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vanish/vanish-ready8-00.png",
+    "Art/Enemy/LastBoss/Vanish/vanish-ready8-01.png",
+    "Art/Enemy/LastBoss/Vanish/vanish-ready8-02.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "vanish-landing3",
+   "path": "Art/Enemy/LastBoss/Clips/vanish-landing3.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vanish/vanish-landing3-00.png",
+    "Art/Enemy/LastBoss/Vanish/vanish-landing3-01.png",
+    "Art/Enemy/LastBoss/Vanish/vanish-landing3-02.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p1-ignition-cast",
+   "path": "Art/Enemy/LastBoss/Clips/p1-ignition-cast.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-00.png",
+    "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-01.png",
+    "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-02.png",
+    "Art/Enemy/LastBoss/Vfx/p1-ignition/p1-ignition-cast-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p1-arrival-front",
+   "path": "Art/Enemy/LastBoss/Clips/p1-arrival-front.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-00.png",
+    "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-01.png",
+    "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-02.png",
+    "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-03.png",
+    "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-04.png",
+    "Art/Enemy/LastBoss/Vfx/p1-arrival/p1-arrival-front-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "rift-open-rift",
+   "path": "Art/Enemy/LastBoss/Clips/rift-open-rift.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-00.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-01.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-02.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-03.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-04.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-05.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-06.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-07.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-08.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-09.png",
+    "Art/Enemy/LastBoss/Vfx/rift-open/rift-open-rift-10.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "rift-hold-rift",
+   "path": "Art/Enemy/LastBoss/Clips/rift-hold-rift.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-00.png",
+    "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-01.png",
+    "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-02.png",
+    "Art/Enemy/LastBoss/Vfx/rift-hold/rift-hold-rift-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "rift-release-rift",
+   "path": "Art/Enemy/LastBoss/Clips/rift-release-rift.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-00.png",
+    "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-01.png",
+    "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-02.png",
+    "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-03.png",
+    "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-04.png",
+    "Art/Enemy/LastBoss/Vfx/rift-release/rift-release-rift-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p2-cast-back",
+   "path": "Art/Enemy/LastBoss/Clips/p2-cast-back.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-00.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-01.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-02.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-03.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-04.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-05.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-06.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-back-07.png",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "p2-cast-cast",
+   "path": "Art/Enemy/LastBoss/Clips/p2-cast-cast.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-00.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-01.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-02.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-03.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-04.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-05.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-06.png",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-07.png",
+    "",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p2-cast/p2-cast-cast-10.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "p5-eruption-back",
+   "path": "Art/Enemy/LastBoss/Clips/p5-eruption-back.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-00.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-01.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-02.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-03.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-04.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-05.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-06.png",
+    "Art/Enemy/LastBoss/Vfx/p5-eruption/p5-eruption-back-07.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p3-lightning-back",
+   "path": "Art/Enemy/LastBoss/Clips/p3-lightning-back.asset",
+   "frames": [
+    "",
+    "",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-03.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-04.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-05.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-06.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-07.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-08.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-09.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-10.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-11.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-12.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-13.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-14.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-15.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-16.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-17.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-18.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-19.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-20.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-21.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-22.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-23.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-24.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-25.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-26.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-27.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-28.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-29.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-30.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-31.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-32.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-33.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-back-34.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "p3-lightning-cast",
+   "path": "Art/Enemy/LastBoss/Clips/p3-lightning-cast.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-00.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-01.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-02.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-03.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-05.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-06.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-07.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-08.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-09.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-11.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-12.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-13.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-14.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-15.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-17.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-18.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-19.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-20.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-21.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-23.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-24.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-25.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-26.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-27.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-29.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-30.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-31.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-32.png",
+    "Art/Enemy/LastBoss/Vfx/p3-lightning/p3-lightning-cast-33.png",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "p3-detonation-back",
+   "path": "Art/Enemy/LastBoss/Clips/p3-detonation-back.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-00.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-01.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-02.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-03.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-back-04.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p3-detonation-front",
+   "path": "Art/Enemy/LastBoss/Clips/p3-detonation-front.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-00.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-01.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-02.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-03.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-04.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-05.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-06.png",
+    "Art/Enemy/LastBoss/Vfx/p3-detonation/p3-detonation-front-07.png",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p5-impact-ground",
+   "path": "Art/Enemy/LastBoss/Clips/p5-impact-ground.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-00.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-01.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-02.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-03.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-04.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-ground-05.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p5-impact-stamp",
+   "path": "Art/Enemy/LastBoss/Clips/p5-impact-stamp.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-00.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-01.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-02.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-03.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-04.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-stamp-05.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p5-impact-burst",
+   "path": "Art/Enemy/LastBoss/Clips/p5-impact-burst.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-00.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-01.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-02.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-03.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-05.png",
+    "Art/Enemy/LastBoss/Vfx/p5-impact/p5-impact-burst-06.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p6-sky-back",
+   "path": "Art/Enemy/LastBoss/Clips/p6-sky-back.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-00.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-01.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-02.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-03.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-04.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-05.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-06.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-07.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-08.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-09.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-10.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-11.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-12.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-13.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-14.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-15.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-16.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-17.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-18.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-19.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-20.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-21.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-22.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-23.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-24.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-25.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-26.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-27.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-28.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-29.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-30.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-31.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-32.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-33.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-back-34.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "p6-sky-cast",
+   "path": "Art/Enemy/LastBoss/Clips/p6-sky-cast.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-00.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-01.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-02.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-03.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-04.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-05.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-06.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-07.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-08.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-09.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-10.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-11.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-12.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-13.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-14.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-15.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-16.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-17.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-18.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-19.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-20.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-21.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-22.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-23.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-24.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-25.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-26.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-27.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-28.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-29.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-30.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-31.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-32.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-33.png",
+    "Art/Enemy/LastBoss/Vfx/p6-sky/p6-sky-cast-34.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "p7-impact-ground",
+   "path": "Art/Enemy/LastBoss/Clips/p7-impact-ground.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-00.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-01.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-02.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-03.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-04.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-ground-05.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p7-impact-stamp",
+   "path": "Art/Enemy/LastBoss/Clips/p7-impact-stamp.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-00.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-01.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-02.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-03.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-04.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-stamp-05.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "p7-impact-burst",
+   "path": "Art/Enemy/LastBoss/Clips/p7-impact-burst.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-00.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-01.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-02.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-03.png",
+    "",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-05.png",
+    "Art/Enemy/LastBoss/Vfx/p7-impact/p7-impact-burst-06.png",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "counter-gold-front",
+   "path": "Art/Enemy/LastBoss/Clips/counter-gold-front.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-00.png",
+    "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-01.png",
+    "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-02.png",
+    "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-03.png",
+    "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-04.png",
+    "Art/Enemy/LastBoss/Vfx/counter-gold/counter-gold-front-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "oval-open",
+   "path": "Art/Enemy/LastBoss/Clips/oval-open.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Portal/oval-open-00.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-01.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-02.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-03.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-04.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-05.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-06.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-07.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-08.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-09.png",
+    "Art/Enemy/LastBoss/Portal/oval-open-10.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "oval-hold",
+   "path": "Art/Enemy/LastBoss/Clips/oval-hold.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Portal/oval-hold-00.png",
+    "Art/Enemy/LastBoss/Portal/oval-hold-01.png",
+    "Art/Enemy/LastBoss/Portal/oval-hold-02.png",
+    "Art/Enemy/LastBoss/Portal/oval-hold-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "oval-release",
+   "path": "Art/Enemy/LastBoss/Clips/oval-release.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Portal/oval-release-00.png",
+    "Art/Enemy/LastBoss/Portal/oval-release-01.png",
+    "Art/Enemy/LastBoss/Portal/oval-release-02.png",
+    "Art/Enemy/LastBoss/Portal/oval-release-03.png",
+    "Art/Enemy/LastBoss/Portal/oval-release-04.png",
+    "Art/Enemy/LastBoss/Portal/oval-release-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "amethyst-1-ground",
+   "path": "Art/Enemy/LastBoss/Clips/amethyst-1-ground.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-00.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-01.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-02.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-03.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-04.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-05.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-06.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-07.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-08.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-09.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-10.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-11.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-12.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-13.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-14.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-15.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-16.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-17.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-18.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-19.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-20.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-21.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-22.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-23.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-24.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-25.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-26.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-27.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-28.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-29.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-30.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-31.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-32.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-33.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-34.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-35.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-36.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-37.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-ground-38.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "amethyst-1-body",
+   "path": "Art/Enemy/LastBoss/Clips/amethyst-1-body.asset",
+   "frames": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-12.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-13.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-14.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-15.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-16.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-17.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-18.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-19.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-20.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-21.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-22.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-23.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-24.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-25.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-26.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-27.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-28.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-29.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-30.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-31.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-32.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-33.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-34.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-35.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-36.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-1-body-37.png",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "amethyst-2-ground",
+   "path": "Art/Enemy/LastBoss/Clips/amethyst-2-ground.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-00.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-01.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-02.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-03.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-04.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-05.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-06.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-07.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-08.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-09.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-10.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-11.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-12.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-13.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-14.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-15.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-16.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-17.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-18.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-19.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-20.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-21.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-22.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-23.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-24.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-25.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-26.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-27.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-28.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-29.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-30.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-31.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-32.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-33.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-34.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-35.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-36.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-37.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-ground-38.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "amethyst-2-body",
+   "path": "Art/Enemy/LastBoss/Clips/amethyst-2-body.asset",
+   "frames": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-12.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-13.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-14.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-15.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-16.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-17.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-18.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-19.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-20.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-21.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-22.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-23.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-24.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-25.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-26.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-27.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-28.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-29.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-30.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-31.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-32.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-33.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-34.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-35.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-36.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-2-body-37.png",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "amethyst-3-ground",
+   "path": "Art/Enemy/LastBoss/Clips/amethyst-3-ground.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-00.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-01.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-02.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-03.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-04.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-05.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-06.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-07.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-08.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-09.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-10.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-11.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-12.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-13.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-14.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-15.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-16.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-17.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-18.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-19.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-20.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-21.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-22.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-23.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-24.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-25.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-26.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-27.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-28.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-29.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-30.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-31.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-32.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-33.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-34.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-35.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-36.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-37.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-ground-38.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "amethyst-3-body",
+   "path": "Art/Enemy/LastBoss/Clips/amethyst-3-body.asset",
+   "frames": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-12.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-13.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-14.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-15.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-16.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-17.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-18.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-19.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-20.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-21.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-22.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-23.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-24.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-25.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-26.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-27.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-28.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-29.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-30.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-31.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-32.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-33.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-34.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-35.png",
+    "Art/Enemy/LastBoss/Objects/amethyst/amethyst-3-body-36.png",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "pillar-drop-body",
+   "path": "Art/Enemy/LastBoss/Clips/pillar-drop-body.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-00.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-01.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-02.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-03.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-04.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-05.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-body-06.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "pillar-drop-shadow",
+   "path": "Art/Enemy/LastBoss/Clips/pillar-drop-shadow.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-00.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-01.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-02.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-03.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-04.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-05.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-drop-shadow-06.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "pillar-land-ground",
+   "path": "Art/Enemy/LastBoss/Clips/pillar-land-ground.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-00.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-01.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-02.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-03.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-04.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-ground-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "pillar-land-back",
+   "path": "Art/Enemy/LastBoss/Clips/pillar-land-back.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-back-00.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-back-01.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-back-02.png",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "pillar-land-front",
+   "path": "Art/Enemy/LastBoss/Clips/pillar-land-front.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-front-00.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-front-01.png",
+    "Art/Enemy/LastBoss/Objects/pillar/pillar-land-front-02.png",
+    "",
+    "",
+    ""
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "crystal-rise",
+   "path": "Art/Enemy/LastBoss/Clips/crystal-rise.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-00.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-01.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-02.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-03.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-04.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-rise-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "crystal-idle",
+   "path": "Art/Enemy/LastBoss/Clips/crystal-idle.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-00.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-01.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-02.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-03.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-04.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-idle-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "crystal-shadow-rise",
+   "path": "Art/Enemy/LastBoss/Clips/crystal-shadow-rise.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-00.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-01.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-02.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-03.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-04.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shadow-rise-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "crystal-shatter",
+   "path": "Art/Enemy/LastBoss/Clips/crystal-shatter.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-00.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-01.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-02.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-03.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-04.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-05.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-06.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-07.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-08.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-09.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-10.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-shatter-11.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "crystal-explosion",
+   "path": "Art/Enemy/LastBoss/Clips/crystal-explosion.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-00.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-01.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-02.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-03.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-04.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-05.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-06.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-07.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-08.png",
+    "Art/Enemy/LastBoss/Objects/crystal/crystal-explosion-09.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-body",
+   "path": "Art/Enemy/LastBoss/Clips/homing-body.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-body-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-03.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-04.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-05.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-06.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-07.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-08.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-09.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-10.png",
+    "Art/Enemy/LastBoss/Bullet/homing-body-11.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-bright",
+   "path": "Art/Enemy/LastBoss/Clips/homing-bright.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-bright-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-03.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-04.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-05.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-06.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-07.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-08.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-09.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-10.png",
+    "Art/Enemy/LastBoss/Bullet/homing-bright-11.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-trail-a",
+   "path": "Art/Enemy/LastBoss/Clips/homing-trail-a.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-trail-a-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-trail-a-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-trail-a-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-trail-a-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-trail-b",
+   "path": "Art/Enemy/LastBoss/Clips/homing-trail-b.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-trail-b-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-trail-b-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-trail-b-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-trail-b-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-fire-open",
+   "path": "Art/Enemy/LastBoss/Clips/homing-fire-open.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-fire-open-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-open-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-open-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-open-03.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-open-04.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-open-05.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.1,
+    0.1,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-fire-release",
+   "path": "Art/Enemy/LastBoss/Clips/homing-fire-release.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-fire-release-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-release-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-release-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-fire-release-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "name": "homing-explosion",
+   "path": "Art/Enemy/LastBoss/Clips/homing-explosion.asset",
+   "frames": [
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-00.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-01.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-02.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-03.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-04.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-05.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-06.png",
+    "Art/Enemy/LastBoss/Bullet/homing-explosion-07.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  }
+ ],
+ "mapTexture": "Art/Environment/Wasteland/Textures/stone-platform.png",
+ "backdropTexture": "Art/Environment/Wasteland/Textures/backdrop.png",
+ "walls": [
+  {
+   "name": "PlatformLeft",
+   "kind": "box",
+   "x": -19.5,
+   "y": 2.0,
+   "w": 15.0,
+   "h": 14.0,
+   "points": []
+  },
+  {
+   "name": "PlatformRight",
+   "kind": "box",
+   "x": 19.5,
+   "y": 2.0,
+   "w": 15.0,
+   "h": 14.0,
+   "points": []
+  },
+  {
+   "name": "PlatformTopLeft",
+   "kind": "box",
+   "x": -14.75,
+   "y": 18.71875,
+   "w": 24.5,
+   "h": 20.4375,
+   "points": []
+  },
+  {
+   "name": "PlatformTopRight",
+   "kind": "box",
+   "x": 14.75,
+   "y": 18.71875,
+   "w": 24.5,
+   "h": 20.4375,
+   "points": []
+  },
+  {
+   "name": "LightGateBack",
+   "kind": "box",
+   "x": 0.0,
+   "y": 23.09375,
+   "w": 7.0,
+   "h": 11.6875,
+   "points": []
+  },
+  {
+   "name": "LightGatePostLeft",
+   "kind": "box",
+   "x": -2.0,
+   "y": 16.875,
+   "w": 1.0,
+   "h": 0.75,
+   "points": []
+  },
+  {
+   "name": "LightGatePostRight",
+   "kind": "box",
+   "x": 2.0,
+   "y": 16.875,
+   "w": 1.0,
+   "h": 0.75,
+   "points": []
+  },
+  {
+   "name": "PlatformTopLeftCorner",
+   "kind": "polygon",
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0,
+   "points": [
+    -12.0,
+    8.5,
+    -9.95,
+    8.5,
+    -12.0,
+    6.45
+   ]
+  },
+  {
+   "name": "PlatformTopRightCorner",
+   "kind": "polygon",
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0,
+   "points": [
+    12.0,
+    8.5,
+    12.0,
+    6.45,
+    9.95,
+    8.5
+   ]
+  },
+  {
+   "name": "PlatformBottomLeftCorner",
+   "kind": "polygon",
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0,
+   "points": [
+    -12.0,
+    -4.5625,
+    -12.0,
+    -2.5625,
+    -10.0,
+    -4.5625
+   ]
+  },
+  {
+   "name": "PlatformBottomRightCorner",
+   "kind": "polygon",
+   "x": 0,
+   "y": 0,
+   "w": 0,
+   "h": 0,
+   "points": [
+    12.0,
+    -4.5625,
+    10.0,
+    -4.5625,
+    12.0,
+    -2.5625
+   ]
+  },
+  {
+   "name": "VoidLeft",
+   "kind": "box",
+   "x": -14.75,
+   "y": -17.28125,
+   "w": 24.5,
+   "h": 25.4375,
+   "points": []
+  },
+  {
+   "name": "VoidRight",
+   "kind": "box",
+   "x": 14.75,
+   "y": -17.28125,
+   "w": 24.5,
+   "h": 25.4375,
+   "points": []
+  },
+  {
+   "name": "CorridorBottom",
+   "kind": "box",
+   "x": 0.0,
+   "y": -27.0,
+   "w": 7.0,
+   "h": 6.0,
+   "points": []
+  }
+ ],
+ "cameraVerticalLimits": [
+  -27.0625,
+  28.9375
+ ],
+ "entranceSpawn": [
+  0.0,
+  -19.5
+ ],
+ "entranceStop": [
+  0.0,
+  -16.5
+ ],
+ "checkpoint": [
+  0.0,
+  -16.0
+ ],
+ "respawn": [
+  0.0,
+  -12.0
+ ],
+ "crystal": [
+  1.5,
+  -10.9
+ ],
+ "bossSpawn": [
+  0.0,
+  3.5
+ ],
+ "encounter": [
+  0.0,
+  2.25,
+  23.0,
+  11.5
+ ],
+ "bridge": {
+  "position": [
+   0.0625,
+   -4.25
+  ],
+  "blocker": [
+   0.0,
+   -7.28125,
+   5.4,
+   5.4375
+  ],
+  "frameSeconds": 0.05,
+  "frames": [
+   "Art/Environment/Wasteland/Textures/bridge-00.png",
+   "Art/Environment/Wasteland/Textures/bridge-01.png",
+   "Art/Environment/Wasteland/Textures/bridge-02.png",
+   "Art/Environment/Wasteland/Textures/bridge-03.png",
+   "Art/Environment/Wasteland/Textures/bridge-04.png",
+   "Art/Environment/Wasteland/Textures/bridge-05.png",
+   "Art/Environment/Wasteland/Textures/bridge-06.png",
+   "Art/Environment/Wasteland/Textures/bridge-07.png",
+   "Art/Environment/Wasteland/Textures/bridge-08.png",
+   "Art/Environment/Wasteland/Textures/bridge-09.png"
+  ]
+ },
+ "exitBridge": {
+  "position": [
+   0.0625,
+   14.875
+  ],
+  "blocker": [
+   0.0,
+   11.625,
+   5.4,
+   6.25
+  ],
+  "frameSeconds": 0.05,
+  "frames": [
+   "Art/Environment/Wasteland/Textures/exit-bridge-00.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-01.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-02.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-03.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-04.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-05.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-06.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-07.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-08.png",
+   "Art/Environment/Wasteland/Textures/exit-bridge-09.png"
+  ]
+ },
+ "lightGate": {
+  "texture": "Art/Environment/AncientGate/gate-light.png",
+  "spillTexture": "Art/Environment/AncientGate/gate-light-spill.png",
+  "position": [
+   0.0,
+   16.5
+  ],
+  "trigger": [
+   0.0,
+   0.75,
+   3.0,
+   0.3
+  ]
+ },
+ "battleMusic": "Audio/Enemy/last-boss-bgm.mp3",
+ "audio": [
+  {
+   "name": "vanish",
+   "path": "Audio/Enemy/last-boss-vanish.wav"
+  },
+  {
+   "name": "appear",
+   "path": "Audio/Enemy/last-boss-appear.wav"
+  },
+  {
+   "name": "rift-open",
+   "path": "Audio/Enemy/last-boss-rift-open.mp3"
+  },
+  {
+   "name": "rift-close",
+   "path": "Audio/Enemy/last-boss-rift-close.mp3"
+  },
+  {
+   "name": "counter",
+   "path": "Audio/Enemy/last-boss-counter.wav"
+  },
+  {
+   "name": "fall",
+   "path": "Audio/Enemy/last-boss-fall.wav"
+  },
+  {
+   "name": "land",
+   "path": "Audio/Enemy/last-boss-land.mp3"
+  },
+  {
+   "name": "crystal-burst",
+   "path": "Audio/Enemy/last-boss-crystal-burst.mp3"
+  },
+  {
+   "name": "amethyst-cast",
+   "path": "Audio/Enemy/last-boss-amethyst-cast.wav"
+  },
+  {
+   "name": "amethyst-rise",
+   "path": "Audio/Enemy/last-boss-amethyst-rise.wav"
+  },
+  {
+   "name": "homing-explosion",
+   "path": "Audio/Enemy/last-boss-homing-explosion.mp3"
+  },
+  {
+   "name": "hit",
+   "path": "Audio/Enemy/enemy-hit.wav"
+  },
+  {
+   "name": "groggy",
+   "path": "Audio/Enemy/enemy-groggy.mp3"
+  }
+ ]
+}

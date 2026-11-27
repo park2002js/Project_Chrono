@@ -107,7 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameCamera
   Camera: {fileID: 0}
   Target: {fileID: 0}
-  FollowDuration: 0.1283
+  FollowFraction: 0.15
+  FocusFraction: 0.06666667
   DefaultZoom: 5.625
   VerticalLimits: {x: -12, y: 77}
   SlashFastZoom: 3.2

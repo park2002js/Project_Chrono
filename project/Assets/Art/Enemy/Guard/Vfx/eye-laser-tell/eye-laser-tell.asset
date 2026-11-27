@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: eye-laser-tell
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: c0dec84f324476c468c55d58476d5318, type: 3}
+  - {fileID: 21300000, guid: f356de7f8d37a9f44b4261b5ac4f92e9, type: 3}
+  - {fileID: 21300000, guid: c835be84bf87ba74ab6a26c04bcb9b95, type: 3}
+  - {fileID: 21300000, guid: 8869cf0f7cc01974aa90028a2992fbd1, type: 3}
+  - {fileID: 21300000, guid: 1fe42d460d1e7b24297416d8b2e50439, type: 3}
+  - {fileID: 21300000, guid: c11c05e71bb01c94dbb1594bd33d97fc, type: 3}
+  Durations:
+  - 0.28
+  - 0.24
+  - 0.215
+  - 0.175
+  - 0.15
+  - 0.14
+  Loop: 0
+  LoopStart: 0

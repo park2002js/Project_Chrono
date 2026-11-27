@@ -39,7 +39,7 @@ public class PlayerCharacter : Character
     public float DashCooldown = 0.65f; // 대시 시작부터 다음 사용까지의 독립 재사용 시간(초)
     public Vector2 DashDirection; // 대시 시작 순간 정규화해 고정한 이동 방향
     public float DashRemaining; // 대시 이동량을 계산할 남은 게임 시간
-    public float DodgeRemaining; // Hitbox 피해 회피가 유지될 남은 게임 시간
+    public float DodgeRemaining => (float)Math.Max(0d, dodgeEndsAt - Time.timeAsDouble - 0.0000001d); // 입력 시점부터 Hitbox 회피가 유지되는 게임 시간
     public float InputBlockRemaining; // 대시 자체 입력 잠금이 유지될 남은 게임 시간
     public float DashCooldownRemaining; // 다음 대시까지 남은 게임 시간
     public bool CanMove => IsInitialized && !IsDead && !IsCutScene && !IsSpawning && !IsInteracting && Time.timeScale > 0f; // 현재 일반 이동·바라보기의 처리 가능 여부
@@ -51,6 +51,8 @@ public class PlayerCharacter : Character
     private CharacterRendering rendering; // 조준 방향과 계산한 이동 의도를 모션으로 표시할 컴포넌트
     private AttackController attack; // 허용된 공격의 애니메이션·판정·피해 적용 담당
     private bool attackHeld; // 입력 계층에서 전달한 공격 버튼 유지 의도
+    private double dodgeEndsAt; // 대시 중 공격으로 전환해도 처음 정한 회피 종료 시각
+    private float DashMovementDuration => Mathf.Ceil(DashDuration * 60f) / 60f; // 마지막 대시 이동까지 포함한 60Hz 기준 시간
     private Vector2? cutsceneMoveTarget; // 일반 입력과 분리해 컷씬 권한으로만 이동할 목표 위치
     private bool hitProtectionActive; // 보호 진입을 알린 뒤 종료 알림이 필요한 상태
     private double hitProtectionEndsAt; // 정지 중 흐르지 않는 게임 시각으로 정한 보호 만료 기한
@@ -127,7 +129,7 @@ public class PlayerCharacter : Character
         attack.UpdateAim(AimDirection);
 
         // 홀드와 허용 구간의 클릭 예약은 현재 타가 끝난 뒤 최신 조준으로 한 번 시작
-        if (!IsAttacking && (attackHeld || attack.HasBufferedAttack))
+        if (!IsAttacking && !IsDashing && !IsInputBlocked && (attackHeld || attack.HasBufferedAttack))
             ApplyAttack();
 
         // 한 Update 안에서 대시·입력 잠금 종료 전후의 시간만큼 각각 이동량 계산
@@ -150,8 +152,7 @@ public class PlayerCharacter : Character
                 && moveDisplacement.sqrMagnitude > 0.0000001f ? body.ActualMovement : Vector2.zero);
 
         // 같은 Update에서 캐릭터가 소유한 행동 시간 진행
-        DashRemaining = Mathf.Max(0f, DashRemaining - deltaTime);
-        DodgeRemaining = Mathf.Max(0f, DodgeRemaining - deltaTime);
+        DashRemaining = DashRemaining - deltaTime > 0.000001f ? DashRemaining - deltaTime : 0f;
         InputBlockRemaining = Mathf.Max(0f, InputBlockRemaining - deltaTime);
         DashCooldownRemaining = Mathf.Max(0f, DashCooldownRemaining - deltaTime);
     }
@@ -227,13 +228,19 @@ public class PlayerCharacter : Character
     /// <summary>공통 행동 상태를 확인하고 최신 조준 좌표로 무기에 공격 요청</summary>
     public bool ApplyAttack()
     {
-        // 대시·입력 잠금과 비활성 상태에서는 공격 전환 금지
-        if (!isActiveAndEnabled || !CanMove || IsDrawing || IsSlashing || IsDashing || IsInputBlocked ||
+        // 대시 자체의 이동 잠금 중에는 새 클릭으로 공격에 전환 가능
+        if (!isActiveAndEnabled || !CanMove || IsDrawing || IsSlashing || (IsInputBlocked && !IsDashing) ||
             body == null || !body.isActiveAndEnabled || attack == null || !attack.isActiveAndEnabled)
             return false;
 
-        // 방향의 고정·콤보·시간·피해는 단일 무기가 관리
-        return attack.ApplyAttack(AimWorldPosition);
+        // 무기가 입력을 수락한 경우에만 대시 이동을 끊고 잔여 회피·쿨타임은 보존
+        if (!attack.ApplyAttack(AimWorldPosition)) return false;
+        if (IsDashing)
+        {
+            DashRemaining = InputBlockRemaining = 0f;
+            DashDirection = Vector2.zero;
+        }
+        return true;
     }
 
     /// <summary>강제 중단 시 공격 유지 의도와 무기의 진행·콤보 정리</summary>
@@ -262,11 +269,12 @@ public class PlayerCharacter : Character
 
         // 일반 이동과 대시 변위는 다음 Update 한 곳에서 함께 계산
         DashDirection = direction.normalized;
-        DashRemaining = DashDuration;
-        DodgeRemaining = DodgeDuration;
+        DashRemaining = DashMovementDuration;
+        dodgeEndsAt = Time.timeAsDouble + DodgeDuration;
         InputBlockRemaining = InputBlockDuration;
         DashCooldownRemaining = DashCooldown;
         rendering.BeginDash(DashDirection);
+        if (Feedback != null) Feedback.PlayDash();
         return true;
     }
 
@@ -275,7 +283,7 @@ public class PlayerCharacter : Character
     {
         // 행동 제한의 취소는 이미 시작한 쿨타임을 유지
         DashRemaining = 0f;
-        DodgeRemaining = 0f;
+        dodgeEndsAt = 0d;
         InputBlockRemaining = 0f;
         DashDirection = Vector2.zero;
         if (body != null)
@@ -351,7 +359,7 @@ public class PlayerCharacter : Character
         Groggy = Mathf.Min(MaxGroggy, Groggy + amount);
         if (Groggy < MaxGroggy || boss == null || boss.IsDead) return;
         Groggy = 0f;
-        boss.EnterGroggy();
+        boss.RequestGroggy();
     }
 
     /// <summary>공통 행동 허용을 확인하고 후보 수정에 상호작용 전달</summary>
@@ -451,22 +459,13 @@ public class PlayerCharacter : Character
         if (Feedback != null) Feedback.AddWalkingMovement(body.ActualMovement);
     }
 
-    /// <summary>원작 감속 곡선을 구간 적분해 프레임 간격과 무관한 대시 변위 계산</summary>
+    /// <summary>60Hz 각 틱의 감속 후 속력을 실제 프레임이 차지하는 시간만큼 합산</summary>
     private Vector2 GetDashDisplacement(float dashTime)
     {
-        // 대시 종료 경계를 넘는 시간과 속도가0이 된 뒤의 역방향 이동 제외
+        // 한 프레임이 둘 이상의 대시 틱에 걸쳐도 각 틱의 이동 거리를 한 번만 사용
         if (dashTime <= 0f) return Vector2.zero;
-        float from = Mathf.Max(0f, DashDuration - DashRemaining);
-        float to = from + dashTime;
-        if (DashDeceleration > 0f)
-        {
-            float stoppedAt = DashSpeed / DashDeceleration;
-            from = Mathf.Min(from, stoppedAt);
-            to = Mathf.Min(to, stoppedAt);
-        }
-
-        // v(t)=초기속도-감속*t의 면적만 적용하고 일반 이동속도 배율은 사용하지 않음
-        float distance = Mathf.Max(0f, (DashSpeed - DashDeceleration * (from + to) * 0.5f) * (to - from));
+        float from = Mathf.Max(0f, DashMovementDuration - DashRemaining);
+        float distance = PlayerBodyController.GetDeceleratingDistance(from, from + dashTime, DashSpeed - DashDeceleration / 60f, DashDeceleration);
         return DashDirection * distance;
     }
 

@@ -1,0 +1,14 @@
+{
+ "cell": 16,
+ "rows": {
+  "wall-left": 10,
+  "floor": 25,
+  "wall-right": 7
+ },
+ "wall_top": [
+  0,
+  48,
+  104,
+  40
+ ]
+}

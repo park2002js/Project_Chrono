@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: homing-explosion
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 1b38dea60787c1c48b6c09441b8be4dc, type: 3}
+  - {fileID: 21300000, guid: b6d6b737a128771448ddcd3d557112eb, type: 3}
+  - {fileID: 21300000, guid: 5fac95d6714cd104680adda551ee7f82, type: 3}
+  - {fileID: 21300000, guid: c6c394689f0e1eb438bc3c525c40b247, type: 3}
+  - {fileID: 21300000, guid: 3fe3227e1436e584397dbb8674172d60, type: 3}
+  - {fileID: 21300000, guid: 0e482f5810ad0ce4685a0a049a5ef5e6, type: 3}
+  - {fileID: 21300000, guid: 2c6341115f94c2744ae02edbbbcb5d80, type: 3}
+  - {fileID: 21300000, guid: 746798ef451d9744b8c27d24efe2bfc9, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

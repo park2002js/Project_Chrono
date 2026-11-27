@@ -9,8 +9,8 @@ public class Character : MonoBehaviour
     public float maxHP = 100f; // 체력 초기화의 상한과 HUD의 최대 체력 표시값
     public bool IsDead; // 현재 캐릭터의 사망 여부
     public bool IsInitialized; // Spawner의 체력·생존 상태 초기화 완료 여부
-    public float basicSP = 4f; // 최초 이동속도와 이동 모션의 기본 재생 배율 기준값
-    public float SP = 4f; // 현재 이동에 적용할 초당 월드 거리
+    public float basicSP = 4.4f; // 최초 이동속도와 이동 모션의 기본 재생 배율 기준값
+    public float SP = 4.4f; // 현재 이동에 적용할 초당 월드 거리
     public float basicAD = 10f; // 기본 공격력의 초기 튜닝값
     public float AD = 10f; // 일반 공격 피해를 계산할 현재 공격력
     public float basicAS = 1f; // 각성 해제·부활에서 되돌릴 기본 공격속도

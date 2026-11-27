@@ -1,0 +1,154 @@
+{
+ "ppu": 16,
+ "mapTexture": "Art/Environment/LabDescent/lab-descent.png",
+ "mapPivot": [
+  0.5,
+  0.46464646464646464
+ ],
+ "darkGateTexture": "Art/Environment/AncientGate/gate-dark.png",
+ "darkGate": [
+  14.5,
+  43.8125
+ ],
+ "darkGateTrigger": [
+  0.0,
+  0.75,
+  3.0,
+  0.3
+ ],
+ "remove": [
+  "LaboratoryLayout",
+  "MilitaryRobot",
+  "WorldCollision"
+ ],
+ "walls": [
+  {
+   "name": "Left",
+   "x": -10.25,
+   "y": -4.0625,
+   "w": 1.0,
+   "h": 10.125
+  },
+  {
+   "name": "Right",
+   "x": 10.25,
+   "y": -4.0625,
+   "w": 1.0,
+   "h": 10.125
+  },
+  {
+   "name": "TopLeft",
+   "x": -6.25,
+   "y": 0.5,
+   "w": 9.0,
+   "h": 1.0
+  },
+  {
+   "name": "TopRight",
+   "x": 6.25,
+   "y": 0.5,
+   "w": 9.0,
+   "h": 1.0
+  },
+  {
+   "name": "BottomLeft",
+   "x": -6.25,
+   "y": -8.625,
+   "w": 9.0,
+   "h": 1.0
+  },
+  {
+   "name": "BottomRight",
+   "x": 6.25,
+   "y": -8.625,
+   "w": 9.0,
+   "h": 1.0
+  },
+  {
+   "name": "ExitCorridorLeft",
+   "x": -2.25,
+   "y": 10.28125,
+   "w": 1.0,
+   "h": 18.5625
+  },
+  {
+   "name": "ExitCorridorRight",
+   "x": 2.25,
+   "y": 10.28125,
+   "w": 1.0,
+   "h": 18.5625
+  },
+  {
+   "name": "DarkGateBack",
+   "x": 0.0,
+   "y": 19.0625,
+   "w": 5.5,
+   "h": 1.0
+  },
+  {
+   "name": "EntryCorridorLeft",
+   "x": -2.25,
+   "y": -16.0625,
+   "w": 1.0,
+   "h": 13.875
+  },
+  {
+   "name": "EntryCorridorRight",
+   "x": 2.25,
+   "y": -16.0625,
+   "w": 1.0,
+   "h": 13.875
+  },
+  {
+   "name": "EntryCorridorBottom",
+   "x": 0.0,
+   "y": -21.5,
+   "w": 5.5,
+   "h": 3.0
+  }
+ ],
+ "interiorArea": [
+  -11.0,
+  -8.5,
+  22.0,
+  10.3125
+ ],
+ "entryArea": [
+  -2.25,
+  -23.0,
+  4.5,
+  14.5
+ ],
+ "exitArea": [
+  -11.0,
+  1.8125,
+  22.0,
+  24.6875
+ ],
+ "entryLineOffset": -9.8125,
+ "exitLineOffset": 0.0,
+ "cameraVerticalLimits": [
+  3.0,
+  52.5
+ ],
+ "entranceSpawn": [
+  14.5,
+  6.75
+ ],
+ "entranceStop": [
+  14.5,
+  10.5
+ ],
+ "checkpoint": [
+  14.5,
+  10.5
+ ],
+ "respawn": [
+  14.5,
+  12.375
+ ],
+ "crystal": [
+  15.5,
+  13.1875
+ ]
+}

@@ -32,6 +32,9 @@ public class MapManager : MonoBehaviour
     public BossSpawn[] BossPositions = Array.Empty<BossSpawn>(); // Boss 식별자로 기본 위치와 조우 영역을 찾기 위한 목록
     public Transform EntranceSpawnPoint; // 새 게임의 최초 입장 걷기를 시작할 복도 아래 위치
     public Transform EntranceStopPoint; // 최초 입장 걷기를 멈추고 조작 권한을 인계할 위치
+    public StageExit Exit; // 이 맵을 떠나는 문의 진입 감지이며 없으면 떠날 수 없는 맵
+    public bool WakesOnFirstEntry; // 처음 들어올 때 걸어 들어오는 대신 시작 위치에서 깨어나는 맵인지 표시
+    public Vector2 CameraVerticalLimits; // 이 맵에서 카메라가 움직일 세로 범위이며 위 값이 아래 값보다 클 때만 적용
     public bool IsInitialized; // 배치 정보와 저장 체크포인트 검증이 완료됐는지 표시
     private CrystalCheckPoint[] crystals = Array.Empty<CrystalCheckPoint>(); // 이번 Map에서 초기화·구독할 수정 목록
     private PlayerSpawner playerSpawner; // Player 생성 뒤 한 번 연결해 활성 체크포인트 캐시를 갱신할 대상

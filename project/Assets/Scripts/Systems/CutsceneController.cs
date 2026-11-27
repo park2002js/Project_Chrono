@@ -75,7 +75,7 @@ public class CutsceneController : MonoBehaviour
         input.BlockInput = true;
         ui.SetPlayerHudVisible(false);
         ui.SetBossHudVisible(false);
-        gameCamera.Follow(boss.transform);
+        gameCamera.Follow(boss.transform, temporary: true);
         manager.SetBossCutscenePaused(true);
 
         // 최종 애니메이션 연결 전에도 시작·완료·중단 경계를 실제 시간으로 유지

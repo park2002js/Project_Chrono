@@ -10,9 +10,7 @@ public class PlayerSpawner : MonoBehaviour
     public bool IsReady { get; private set; } // 씬 서비스와 생명주기 구독의 준비 완료 여부
     public bool IsSpawning { get; private set; } // 같은 Player가 생성·기상 표현을 마치기 전인 상태
     public bool IsRespawning { get; private set; } // 사망에서 자동 부활 복구까지 진행 중인 상태
-    public float DeathAnimationDuration = 1.42f; // 느린 전반·빠른 전복·엎드림을 문구 전에 재생할 실제 시간
     public float DeathDuration = 0.8f; // 엎드림 뒤 사망 문구를 유지할 실제 시간
-    public float SpawnDuration = 1.42f; // 최초 생성·부활의 여섯 기상 자세를 표시할 실제 시간
 
     private MapManager map; // Player보다 먼저 생성·검증된 세션 맵의 배치 조회 대상
     private Rigidbody2D body; // 체크포인트 이동 때 Transform과 위치를 맞출 물리 몸체
@@ -146,6 +144,18 @@ public class PlayerSpawner : MonoBehaviour
         SpawnPoint = map.GetCheckpoint(checkpointId);
     }
 
+    /// <summary>같은 Player를 새로 만든 맵의 체크포인트에 다시 연결하고 그 위치로 배치</summary>
+    public void MoveToMap(MapManager next, string checkpointId)
+    {
+        if (next == null || !next.IsInitialized)
+            throw new InvalidOperationException("Player can only move to an initialized Map.");
+
+        // 이전 맵의 배치 참조를 버리고 새 맵의 저장 체크포인트를 한 번 조회
+        map = next;
+        UpdateCheckpoint(checkpointId);
+        playerSpawn();
+    }
+
     /// <summary>로딩 화면이 닫힌 뒤 최초 생성 표현·입력 게이트 진행</summary>
     public IEnumerator PlayInitialSpawn()
     {
@@ -155,9 +165,39 @@ public class PlayerSpawner : MonoBehaviour
         IsSpawning = true;
         if (Player.IsDead) Player.Revive();
         if (version != lifecycleVersion || !presentationActive) yield break;
-        rendering.BeginLifecycleAnimation(false, SpawnDuration);
-        double end = Time.unscaledTimeAsDouble + Mathf.Max(0.01f, SpawnDuration);
+        double end = Time.unscaledTimeAsDouble + rendering.BeginLifecycleAnimation(false);
         while (version == lifecycleVersion && Time.unscaledTimeAsDouble < end) yield return null;
+        if (version == lifecycleVersion) EndPresentation();
+    }
+
+    /// <summary>새 게임의 첫 화면에서 누운 자세를 잠시 보인 뒤 일어나고 화면이 평소 시야로 천천히 돌아올 때까지 진행</summary>
+    public IEnumerator PlayWakeUp(float holdSeconds, float returnSeconds)
+    {
+        if (!IsReady) throw new InvalidOperationException("Player lifecycle must be ready before waking up.");
+        int version = ++lifecycleVersion;
+        BeginPresentation(false);
+        gameCamera.SnapDeathZoom();
+        IsSpawning = true;
+        if (Player.IsDead) Player.Revive();
+        if (version != lifecycleVersion || !presentationActive) yield break;
+
+        // 누운 첫 장을 유지한 뒤 원본 시간대로 일어나는 모션 재생
+        double end = Time.unscaledTimeAsDouble + rendering.BeginLifecycleAnimation(false, holdSeconds);
+        while (version == lifecycleVersion && Time.unscaledTimeAsDouble < end) yield return null;
+        if (version != lifecycleVersion) yield break;
+
+        // 평소 자세와 밝은 월드로 돌아온 뒤 가까운 시야에서 평소 시야로 천천히 복귀
+        rendering.EndLifecycleAnimation();
+        lifeView.Hide();
+        double start = Time.unscaledTimeAsDouble;
+        float duration = Mathf.Max(0.01f, returnSeconds);
+        while (version == lifecycleVersion)
+        {
+            float progress = Mathf.Clamp01((float)((Time.unscaledTimeAsDouble - start) / duration));
+            gameCamera.SetDeathZoomReturn(Mathf.SmoothStep(0f, 1f, progress));
+            if (progress >= 1f) break;
+            yield return null;
+        }
         if (version == lifecycleVersion) EndPresentation();
     }
 
@@ -203,13 +243,11 @@ public class PlayerSpawner : MonoBehaviour
     private IEnumerator Respawn(int version)
     {
         BeginPresentation(true);
-        rendering.BeginLifecycleAnimation(true, DeathAnimationDuration);
-        double end = Time.unscaledTimeAsDouble + Mathf.Max(0.01f, DeathAnimationDuration);
+        double end = Time.unscaledTimeAsDouble + rendering.BeginLifecycleAnimation(true);
         while (version == lifecycleVersion && Time.unscaledTimeAsDouble < end) yield return null;
         if (version != lifecycleVersion) yield break;
 
-        // 마지막 엎드림 자세가 유지된 뒤 사망 안내를 열고 부활 시점 대기
-        lifeView.MessageVisible = true;
+        // 마지막 엎드림 자세를 유지하며 부활 시점 대기
         end = Time.unscaledTimeAsDouble + Mathf.Max(0.01f, DeathDuration);
         while (version == lifecycleVersion && Time.unscaledTimeAsDouble < end) yield return null;
         if (version != lifecycleVersion) yield break;
@@ -220,9 +258,7 @@ public class PlayerSpawner : MonoBehaviour
         Player.Revive();
         if (version != lifecycleVersion || !presentationActive) yield break;
         lifeView.Show(false);
-        lifeView.MessageVisible = false;
-        rendering.BeginLifecycleAnimation(false, SpawnDuration);
-        end = Time.unscaledTimeAsDouble + Mathf.Max(0.01f, SpawnDuration);
+        end = Time.unscaledTimeAsDouble + rendering.BeginLifecycleAnimation(false);
         while (version == lifecycleVersion && Time.unscaledTimeAsDouble < end) yield return null;
         if (version == lifecycleVersion)
         {
@@ -243,7 +279,6 @@ public class PlayerSpawner : MonoBehaviour
         manager.SetDeathPaused(true);
         gameCamera.SetDeathMode(true, Player.transform);
         lifeView.Show(dead);
-        lifeView.MessageVisible = false;
     }
 
     /// <summary>자기 정지·표시만 해제하고 기존 Player 연결과 외부 차단 보존</summary>

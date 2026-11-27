@@ -22,15 +22,14 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _CrackTex:
+        m_Texture: {fileID: 2800000, guid: b7aa627f801f4559afd9ba7b960db764, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _CutGlow: 2.5
-    - _CutHalfWidthPixels: 12
-    - _CutProgress: 0
-    - _Displacement: 18
-    - _Flash: 1
+    m_Floats: []
     m_Colors:
-    - _CutColor: {r: 1, g: 0.83137256, b: 0.23137255, a: 1}
+    - _CutColor: {r: 0.2509804, g: 0.8509804, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

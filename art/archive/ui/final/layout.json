@@ -11,41 +11,41 @@
       "name": "boss-hp",
       "nativeSize": [
         125,
-        12
+        11
       ],
       "screenRect": [
         585,
-        36,
+        978,
         750,
-        72
+        66
       ],
       "topLeftRatio": [
         0.3046875,
-        0.03333333333333333
+        0.9055555555555556
       ],
       "anchorMin": [
         0.5,
-        1
+        0
       ],
       "anchorMax": [
         0.5,
-        1
+        0
       ],
       "pivot": [
         0.5,
-        1
+        0
       ],
       "anchoredPosition": [
         0,
-        -36
+        36
       ],
       "nativeAnchorOffset": [
         0,
-        -6
+        6
       ],
       "sizeDelta": [
         750,
-        72
+        66
       ],
       "reconstructedRectMatches": true
     },
@@ -57,33 +57,33 @@
       ],
       "screenRect": [
         18,
-        900,
+        18,
         540,
         66
       ],
       "topLeftRatio": [
         0.009375,
-        0.8333333333333334
+        0.016666666666666666
       ],
       "anchorMin": [
         0,
-        0
+        1
       ],
       "anchorMax": [
         0,
-        0
+        1
       ],
       "pivot": [
         0,
-        0
+        1
       ],
       "anchoredPosition": [
         18,
-        114
+        -18
       ],
       "nativeAnchorOffset": [
         3,
-        19
+        -3
       ],
       "sizeDelta": [
         540,
@@ -99,33 +99,33 @@
       ],
       "screenRect": [
         18,
-        972,
+        90,
         294,
         42
       ],
       "topLeftRatio": [
         0.009375,
-        0.9
+        0.08333333333333333
       ],
       "anchorMin": [
         0,
-        0
+        1
       ],
       "anchorMax": [
         0,
-        0
+        1
       ],
       "pivot": [
         0,
-        0
+        1
       ],
       "anchoredPosition": [
         18,
-        66
+        -90
       ],
       "nativeAnchorOffset": [
         3,
-        11
+        -15
       ],
       "sizeDelta": [
         294,

@@ -1,19 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>자기 플레이어의 공격·적중·걷기 소리와 월드 고정 피격 섬광 표시</summary>
+/// <summary>자기 플레이어의 공격·적중·걷기·대시·Draw 점 소리와 월드 고정 피격 섬광 표시</summary>
 [DefaultExecutionOrder(20)]
 public class PlayerFeedback : MonoBehaviour
 {
     public AudioSource Source; // Slash 소리와 분리해 효과음을 겹쳐 재생할 자기 오디오 소스
-    public AudioClip Attack1Clip; // 콤보1과 콤보3 첫 휘두르기의 원작 스윙07
-    public AudioClip Attack2Clip; // 콤보2와 콤보3 두 번째 휘두르기의 별도 스윙06
+    public AudioClip[] AttackStartClips = new AudioClip[3]; // 1·2·3타 시작 순간의 소리이며 1·2타는 스윙, 3타는 납도 준비이고 비우면 생략
+    public AudioClip[] AttackStrikeClips = new AudioClip[3]; // 1·2·3타 판정 개시 순간의 소리이며 비우면 생략
     public AudioClip HitClip; // 피해가 실제 적용된 대상의 적중음
-    public AudioClip[] FootstepClips; // 같은 타일 재질의 발소리 세 변형
+    public AudioClip[] FootstepClips; // 같은 타일 재질의 발소리이며 여러 개면 차례로 순환
+    public AudioClip DashClip; // 대시 시작 순간의 소리
+    public AudioClip DrawPointClip; // Draw 편집에서 점 하나를 찍은 순간의 소리
     public Sprite[] HitFrames; // 원작 SwordSlashFx의0~6 프레임
     public Material HitMaterial; // 밝기 속성 없이 원본 색을 표시할 공용 Unlit 재질
     public float Volume = 0.8f; // 자기 효과음의 공통 재생 음량
-    public float FootstepVolume = 4f; // 원본의 작은 발소리를 보정할 추가 재생 배율
+    public float AttackVolume = 2f; // 작게 녹음된 공격 소리를 적중음 크기에 맞출 추가 재생 배율
+    public float FootstepVolume = 3f; // 원본의 작은 발소리를 보정할 추가 재생 배율
+    public float DashVolume = 4f; // 작게 녹음된 대시 소리를 보정할 추가 재생 배율
+    public float DrawPointVolume = 1f; // Draw 점 소리의 추가 재생 배율
     public float StepDistance = 1.2f; // 정상 걷기의 다음 발소리까지 실제 이동할 거리
 
     private readonly List<HitVisual> visuals = new List<HitVisual>(8); // 동시 적중 수만큼 준비해 재사용할 섬광 표시
@@ -21,7 +26,7 @@ public class PlayerFeedback : MonoBehaviour
     private int footstepIndex; // 같은 소리 연속 재생 없이 순환할 발소리 위치
     private bool ready; // 최초 에셋 연결 검사를 통과했는지 표시
     private const float HitFps = 20f; // 원작 피격 이미지의 초당 표시 수
-    private const float HitPositionRadius = 0.2f; // 실제 Cast 접점 주변의 무작위 위치 반경
+    private const float HitPositionRadius = 0.2f; // 피격 접점 주변의 무작위 위치 반경
     private const float HitAngleError = 10f; // 수직 섬광 방향에 더할 좌우 최대 각도 오차
     private const int HitSortingOrder = 30; // 맵과 몸체 위에 표시할 피격 섬광 순서
 
@@ -29,8 +34,9 @@ public class PlayerFeedback : MonoBehaviour
     private void Awake()
     {
         // 다른 객체를 찾지 않고 프리팹의 자기 소리·이미지 연결 확인
-        ready = Source != null && Attack1Clip != null && Attack2Clip != null && HitClip != null
-            && FootstepClips != null && FootstepClips.Length == 3 && HitFrames != null && HitFrames.Length == 7 && HitMaterial != null;
+        ready = Source != null && AttackStartClips != null && AttackStartClips.Length == 3 && AttackStrikeClips != null && AttackStrikeClips.Length == 3
+            && HitClip != null && DashClip != null && DrawPointClip != null
+            && FootstepClips != null && FootstepClips.Length > 0 && HitFrames != null && HitFrames.Length == 7 && HitMaterial != null;
         if (ready)
         {
             foreach (AudioClip clip in FootstepClips) ready &= clip != null;
@@ -71,13 +77,31 @@ public class PlayerFeedback : MonoBehaviour
         walkingDistance = 0f;
     }
 
-    /// <summary>AttackController가 실제 휘두르기 시점에 지정한 소리 재생</summary>
-    public void PlayAttackSound(int attack)
+    /// <summary>AttackController가 새 타를 시작한 순간 그 타의 시작 소리 재생</summary>
+    public void PlayAttackStart(int attack)
     {
-        Play(attack == 0 ? Attack1Clip : Attack2Clip, 1f);
+        if (attack >= 0 && attack < 3) Play(AttackStartClips[attack], Mathf.Max(0f, AttackVolume));
     }
 
-    /// <summary>성공한 Cast 접점에 공격 수직 방향의 섬광과 적중음 한 번 생성</summary>
+    /// <summary>AttackController가 판정을 연 순간 그 타의 휘두르기 소리 재생</summary>
+    public void PlayAttackStrike(int attack)
+    {
+        if (attack >= 0 && attack < 3) Play(AttackStrikeClips[attack], Mathf.Max(0f, AttackVolume));
+    }
+
+    /// <summary>허용된 대시가 시작된 순간 대시 소리 재생</summary>
+    public void PlayDash()
+    {
+        Play(DashClip, Mathf.Max(0f, DashVolume));
+    }
+
+    /// <summary>Draw 편집에서 점 하나가 실제로 놓인 순간 소리 재생</summary>
+    public void PlayDrawPoint()
+    {
+        Play(DrawPointClip, Mathf.Max(0f, DrawPointVolume));
+    }
+
+    /// <summary>유효 피해의 접점에 공격 방향을 반영한 섬광과 적중음 한 번 생성</summary>
     public void PlayImpact(Vector2 hitPoint, float attackAngle)
     {
         if (!ready || !isActiveAndEnabled) return;
@@ -122,7 +146,7 @@ public class PlayerFeedback : MonoBehaviour
     private void Play(AudioClip clip, float extraVolume)
     {
         if (!ready || !isActiveAndEnabled || Source == null || !Source.isActiveAndEnabled || clip == null) return;
-        Source.PlayOneShot(clip, Mathf.Clamp01(Volume) * extraVolume);
+        Source.PlayOneShot(clip, Mathf.Clamp01(Volume) * extraVolume * GameSettings.SfxVolume);
     }
 
     /// <summary>플레이어 수명 안에서 돌려쓸 월드 고정 섬광 표시 한 개 준비</summary>

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: p1-arrival-front
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 0d25c6d245cb1d14fb0f351053f3637d, type: 3}
+  - {fileID: 21300000, guid: 1e903430c85bf3748816ca4f6073dae4, type: 3}
+  - {fileID: 21300000, guid: adb7c5088183d8b489ac51cb6eb2ae88, type: 3}
+  - {fileID: 21300000, guid: fcada3daf5939fc4693609e271883477, type: 3}
+  - {fileID: 21300000, guid: def996fe0e9beb147b8b6dc99fbc3f7a, type: 3}
+  - {fileID: 21300000, guid: 4e5dc1978406fd34a800d7f844e07967, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

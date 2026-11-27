@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: special-red
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 1ecaa57cd2eed6e4885c98350ba03547, type: 3}
+  - {fileID: 21300000, guid: 4ec2197ebd7c610489256c6d244502f0, type: 3}
+  - {fileID: 21300000, guid: 2c3a9d01d358c6c4db24ef00728b8b39, type: 3}
+  - {fileID: 21300000, guid: 0cd124c56b9ecc3439d19ab0f40ec67e, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 1
+  LoopStart: 0

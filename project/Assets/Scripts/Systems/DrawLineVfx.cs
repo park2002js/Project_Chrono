@@ -8,6 +8,11 @@ public class DrawLineVfx : MonoBehaviour
     public float Opacity { get; private set; } = 1f; // 경고에서 원래 이미지 알파에 곱할 현재 투명도
 
     private static readonly int OpacityId = Shader.PropertyToID("_Opacity"); // 공용 재질 변경 없이 전달할 알파 프로퍼티 식별자
+    private static readonly int OriginId = Shader.PropertyToID("_LineOrigin"); // 원본 격자 선의 월드 시작점 프로퍼티 식별자
+    private static readonly int DirectionId = Shader.PropertyToID("_LineDirection"); // 원본 격자 선의 월드 방향 프로퍼티 식별자
+    private static readonly int LengthId = Shader.PropertyToID("_LineLength"); // 원본 격자 선의 월드 길이 프로퍼티 식별자
+    private static readonly int WidthId = Shader.PropertyToID("_LineWidth"); // 판정 폭과 같은 표시 폭 프로퍼티 식별자
+    private static readonly int TimeId = Shader.PropertyToID("_UnscaledTime"); // 정지 중에도 흐를 빛 조각의 실제 시간 프로퍼티 식별자
     private LineRenderer line; // Awake에서 한 번 확보해 재사용할 선 렌더러
     private MaterialPropertyBlock properties; // 같은 렌더러에서 계속 재사용할 개별 표현 프로퍼티
 
@@ -26,10 +31,11 @@ public class DrawLineVfx : MonoBehaviour
         ApplyVisualProperties();
     }
 
-    /// <summary>게임 정지 중에도 바뀐 경로 폭을 실제 렌더링에 반영</summary>
+    /// <summary>게임 정지 중에도 바뀐 경로 폭·위치와 실제 시간을 렌더링에 반영</summary>
     private void LateUpdate()
     {
         ApplyWidth();
+        ApplyVisualProperties();
     }
 
     /// <summary>개체별 알파만 갱신해 원본 텍스처와 다른 선의 표현 보존</summary>
@@ -46,11 +52,19 @@ public class DrawLineVfx : MonoBehaviour
             line.widthMultiplier = Mathf.Abs(transform.lossyScale.y) * Mathf.Max(0f, WidthMultiplier);
     }
 
-    /// <summary>Awake에서 준비한 블록으로 해당 렌더러의 표현 값만 전달</summary>
+    /// <summary>Awake에서 준비한 블록으로 해당 렌더러의 알파·선 기하·실제 시간만 전달</summary>
     private void ApplyVisualProperties()
     {
         if (line == null || properties == null) return;
         properties.SetFloat(OpacityId, Opacity);
+
+        // 단위 길이 메시의 Transform에서 원본 격자 선을 계산할 월드 시작점·방향·길이
+        Vector3 right = transform.right;
+        properties.SetVector(OriginId, transform.position);
+        properties.SetVector(DirectionId, new Vector4(right.x, right.y, 0f, 0f));
+        properties.SetFloat(LengthId, Mathf.Abs(transform.lossyScale.x));
+        properties.SetFloat(WidthId, line.widthMultiplier);
+        properties.SetFloat(TimeId, Time.unscaledTime);
         line.SetPropertyBlock(properties);
     }
 }

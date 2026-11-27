@@ -13,7 +13,8 @@ public enum ProjectileSlashResponse
 public class Projectile : MonoBehaviour
 {
     public BossCharacter Owner; // 최초 발사자이자 반사 뒤 피해를 받을 Boss
-    public float Damage = 10f; // 탄환이 Player 또는 반사 목표에 전달할 피해
+    public float Damage = 10f; // 탄환이 Player에 전달할 피해
+    public float ReflectDamage = 100f; // 반사된 뒤 소유 Boss의 피격 영역에 닿았을 때 전달할 피해
     public Vector2 Direction = Vector2.right; // 비행 중 현재 운동 방향이며 반사 순간 계산한 방향으로 교체
     public float Speed = 4f; // 일반 탄환의 초당 월드 이동 거리
     public float Lifetime = 8f; // 생성 이후 유지할 게임 시간이며 0은 시간 만료 없이 유지
@@ -24,6 +25,10 @@ public class Projectile : MonoBehaviour
     public float ReflectionSpeed = 20f; // 계산한 반사 방향으로 직진할 초당 월드 이동 거리
     public float CollisionRadius = 0.08f; // 빠른 이동 사이의 Player 판정을 조회할 반경
     public LayerMask CollisionMask = ~0; // 이동 경로의 Player 피격 영역과 맵 벽을 조회할 레이어
+    public Transform Visual; // 스미어가 있는 탄환에서 진행 방향으로 돌릴 표시 자식
+    public bool FaceDirection; // 표시 자식의 +X를 현재 운동 방향에 맞출지 설정
+    public BoxCollider2D SlashTrail; // 고속탄이 한 프레임에 지나간 구간을 Slash에만 노출할 후방 판정
+    public float TrailWidth = 1.125f; // 후방 판정의 폭이며 탄 몸체 지름과 같게 설정
     public bool IsReflected { get; private set; } // Player 피해와 중복 Slash 보상을 차단할 반사 상태
     public bool IsActive { get; private set; } = true; // 수명·피해·보상 처리의 일회 종료 기준
     public float RemainingLifetime { get; private set; } // 시간 만료까지 남은 게임 시간이며 무기한 발사는 0 유지
@@ -52,7 +57,7 @@ public class Projectile : MonoBehaviour
         // 종료·정지와 유효하지 않은 이동 설정 제외
         float elapsed = Time.deltaTime;
         if (!IsActive || Time.timeScale <= 0f || elapsed <= 0f) return;
-        if (!Nonnegative(Speed) || !Nonnegative(Damage) || !Nonnegative(Lifetime) || !Nonnegative(RemainingLifetime) || !Finite(Direction))
+        if (!Nonnegative(Speed) || !Nonnegative(Damage) || !Nonnegative(ReflectDamage) || !Nonnegative(Lifetime) || !Nonnegative(RemainingLifetime) || !Finite(Direction))
         {
             Despawn();
             return;
@@ -101,6 +106,8 @@ public class Projectile : MonoBehaviour
         IsActive = true;
         shape.enabled = true;
         attackId = DamageInstance.NextAttackId();
+        ApplyFacing();
+        UpdateTrail(0f);
     }
 
     /// <summary>Slash 적중에서 제거 또는 금색 반사와 일회 보상 처리</summary>
@@ -143,6 +150,8 @@ public class Projectile : MonoBehaviour
         ReflectionTarget = boss;
         reflector = player;
         if (Lifetime > 0f) RemainingLifetime = Mathf.Max(RemainingLifetime, 1f);
+        ApplyFacing();
+        UpdateTrail(0f);
         return true;
     }
 
@@ -150,11 +159,15 @@ public class Projectile : MonoBehaviour
     public void Despawn()
     {
         if (!IsActive) return;
+        OnDespawning();
         IsActive = false;
         if (shape != null) shape.enabled = false;
         gameObject.SetActive(false);
         Destroy(gameObject);
     }
+
+    /// <summary>제거가 확정된 순간 구체 탄환이 자기 위치에 마지막 표시를 남길 창구</summary>
+    protected virtual void OnDespawning() { }
 
     /// <summary>프리팹의 Collider를 우선 사용하고 기본 탄 생성에만 원형 판정 보완</summary>
     protected virtual Collider2D PrepareShape()
@@ -189,7 +202,11 @@ public class Projectile : MonoBehaviour
             transform.position += (Vector3)(direction * wallDistance);
             Despawn();
         }
-        else transform.position += (Vector3)(direction * distance);
+        else
+        {
+            transform.position += (Vector3)(direction * distance);
+            UpdateTrail(distance);
+        }
     }
 
     /// <summary>고정한 반사 방향의 이동 경로에서 벽과 실제 Boss 피격 중 가장 가까운 접촉 처리</summary>
@@ -223,7 +240,7 @@ public class Projectile : MonoBehaviour
         if (target != null)
         {
             transform.position += (Vector3)(direction * targetDistance);
-            target.ReceiveHit(new DamageInstance(reflector, Damage, DamageType.Slash, attackId));
+            target.ReceiveHit(new DamageInstance(reflector, ReflectDamage, DamageType.Slash, attackId));
             Despawn();
             return;
         }
@@ -236,6 +253,27 @@ public class Projectile : MonoBehaviour
             return;
         }
         transform.position += (Vector3)(direction * step);
+        UpdateTrail(step);
+    }
+
+    /// <summary>스미어가 진행 반대쪽으로 놓이도록 표시 자식을 현재 운동 방향으로 회전</summary>
+    private void ApplyFacing()
+    {
+        if (!FaceDirection || Visual == null || Direction.sqrMagnitude <= 0f) return;
+        Visual.rotation = Quaternion.FromToRotation(Vector3.right, Direction.normalized);
+    }
+
+    /// <summary>방금 이동한 거리만큼 뒤로 늘어난 Slash 전용 판정을 갱신</summary>
+    private void UpdateTrail(float movedDistance)
+    {
+        // 표시 자식의 로컬 -X가 진행 반대 방향이므로 그쪽으로만 길이를 늘림
+        if (SlashTrail == null) return;
+        float length = Mathf.Max(0f, movedDistance);
+        SlashTrail.size = new Vector2(length + TrailWidth, TrailWidth);
+        SlashTrail.offset = new Vector2(-length * 0.5f, 0f);
+
+        // 물리 갱신을 기다리지 않고 같은 프레임의 Slash 질의가 새 위치를 보도록 반영
+        Physics2D.SyncTransforms();
     }
 
     /// <summary>같은 버퍼로 빠른 이동 사이의 Player와 맵 벽을 모두 수집</summary>

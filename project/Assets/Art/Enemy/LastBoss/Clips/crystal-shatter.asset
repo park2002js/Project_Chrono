@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: crystal-shatter
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 83281c3e42e1a6c4d808fec5abd68549, type: 3}
+  - {fileID: 21300000, guid: 45bfa675817dbf94f99b8a2c593388fa, type: 3}
+  - {fileID: 21300000, guid: 00809360ec48179409a4ed303a44dc8a, type: 3}
+  - {fileID: 21300000, guid: 2bb395dca6e17fb46bab4741af0f4112, type: 3}
+  - {fileID: 21300000, guid: 94a46413b13efaa4a88d9dd48e6c56a4, type: 3}
+  - {fileID: 21300000, guid: 3f8bde5b24584a34f841ed214c9041a1, type: 3}
+  - {fileID: 21300000, guid: 15e79e36962c62b49a2c23b917a24daa, type: 3}
+  - {fileID: 21300000, guid: a1ee4db9ff774f041a411dc459b78b6c, type: 3}
+  - {fileID: 21300000, guid: 53626b2afeaccf64c801879dd08b5ebf, type: 3}
+  - {fileID: 21300000, guid: 11f16a8fbf18b9943b19c9fa297e47f3, type: 3}
+  - {fileID: 21300000, guid: 12bab9bc96914824a98b65b1ec084f9f, type: 3}
+  - {fileID: 21300000, guid: 163a9addae4a80b4d9004da5d473998d, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

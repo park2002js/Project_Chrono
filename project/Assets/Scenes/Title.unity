@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2074398358}
   - component: {fileID: 2074398357}
+  - component: {fileID: 2074398359}
   m_Layer: 0
   m_Name: UI_Title
   m_TagString: Untagged
@@ -310,12 +311,28 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 8bf87d36c3444a8bbcdcbc7088cf4817, type: 3}
   - {fileID: 2800000, guid: d2c80a343f924e96acd59d09df7cc5c2, type: 3}
   SlotFrame: {fileID: 2800000, guid: 662a92fe29ad429ba68a2bf6889f3c19, type: 3}
+  Settings: {fileID: 2074398359}
   BackgroundColor: {r: 0.08235294, g: 0.08235294, b: 0.09411765, a: 1}
   GlintPivot: {x: 130.5, y: 31.5}
   GlintDuration: 1.25
   GlintInterval: 3.2
   GlintRotation: 90
   FissureGlowCycle: 2.4
+--- !u!114 &2074398359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074398356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e50f212cd21495c8bd5735a020845ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Settings
+  SettingsFont: {fileID: 12800000, guid: 238ce7a1de31bda47966a72e28f73945, type: 3}
+  Frame: {fileID: 2800000, guid: 662a92fe29ad429ba68a2bf6889f3c19, type: 3}
+  WheelStep: 0.05
 --- !u!4 &2074398358
 Transform:
   m_ObjectHideFlags: 0

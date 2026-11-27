@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: rift-release-rift
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 979088350e4f0c840bf2f576072b56fd, type: 3}
+  - {fileID: 21300000, guid: 52c3f60bce3dea14183600e8cb56793f, type: 3}
+  - {fileID: 21300000, guid: b28452d839cc33c4bac12c518bd0d00a, type: 3}
+  - {fileID: 21300000, guid: cc52d9e3f4e617446ab2ca6ffbcec73d, type: 3}
+  - {fileID: 21300000, guid: d485504866a4f4f46a8a9c8a59a03558, type: 3}
+  - {fileID: 21300000, guid: f76cdc53a6049254695724f5b75fc650, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

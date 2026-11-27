@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: groggy-star
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 07345ed76cf1c674d86008d970a4c986, type: 3}
+  - {fileID: 21300000, guid: 77de4b452d7a8af42a6e681e5e9c6663, type: 3}
+  - {fileID: 21300000, guid: 2485e4b6b1286c04cb3c98424d95dedf, type: 3}
+  - {fileID: 21300000, guid: e323e877bee1b3341901376c17e78322, type: 3}
+  - {fileID: 21300000, guid: 98ae12ef9029c0640b6d01d74c22678f, type: 3}
+  - {fileID: 21300000, guid: 1001f4fd27096bb4b9fc147ccf78497c, type: 3}
+  - {fileID: 21300000, guid: bb8a8c4269f00ff4781b65627ee682b9, type: 3}
+  - {fileID: 21300000, guid: 2f8005a8d071081459766b20a018caf7, type: 3}
+  - {fileID: 21300000, guid: 2f92877b2515988429ad48e72e6aead0, type: 3}
+  - {fileID: 21300000, guid: c0db1de9e9f65b24cbcb6682d3ccb958, type: 3}
+  - {fileID: 21300000, guid: 4c44305d1a8162e48b432f044a5d4e58, type: 3}
+  - {fileID: 21300000, guid: ba7f80a2e70023e4da45b2d7d53dc957, type: 3}
+  - {fileID: 21300000, guid: 1a6a5f4e21f7f0c4ab3a87fea92f5a4e, type: 3}
+  - {fileID: 21300000, guid: a61ac6e068d9bbb438f5ddaca7d0019d, type: 3}
+  - {fileID: 21300000, guid: 98aa18e62e7d45649a5868aa1dedd91f, type: 3}
+  - {fileID: 21300000, guid: fb97a593a638a714cbb5142b11b98979, type: 3}
+  Durations:
+  - 0.056
+  - 0.057
+  - 0.056
+  - 0.056
+  - 0.056
+  - 0.057
+  - 0.056
+  - 0.056
+  - 0.056
+  - 0.057
+  - 0.056
+  - 0.056
+  - 0.056
+  - 0.057
+  - 0.056
+  - 0.056
+  Loop: 1
+  LoopStart: 0

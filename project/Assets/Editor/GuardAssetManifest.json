@@ -1,0 +1,2435 @@
+{
+ "ppu": 16,
+ "textures": [
+  {
+   "path": "Art/Enemy/Guard/Parts/crystal.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/eye-left.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/eye-right.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/fist-combined.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/fist-left.png",
+   "pivotX": 0.16796875,
+   "pivotY": 0.0196078431372549,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/fist-right.png",
+   "pivotX": 0.82421875,
+   "pivotY": 0.0196078431372549,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/head.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/muzzle-left.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/muzzle-right.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Parts/torso.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-00.png",
+   "pivotX": 0.5000000181943786,
+   "pivotY": 0.5000000067670903,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-01.png",
+   "pivotX": 0.4999999999623077,
+   "pivotY": 0.5000000329733245,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-02.png",
+   "pivotX": 0.5000000323201627,
+   "pivotY": 0.499999999906613,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-03.png",
+   "pivotX": 0.5000000126494993,
+   "pivotY": 0.49999999162894254,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-04.png",
+   "pivotX": 0.5000000118693787,
+   "pivotY": 0.5000000187952064,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-05.png",
+   "pivotX": 0.4999999744889042,
+   "pivotY": 0.5000000329733245,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-06.png",
+   "pivotX": 0.5000000290183432,
+   "pivotY": 0.5000000115829839,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-07.png",
+   "pivotX": 0.5000000109453656,
+   "pivotY": 0.50000000447062,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-both/fist-smear-both-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0392156862745098,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-both/fist-smear-both-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0392156862745098,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-left/fist-smear-left-00.png",
+   "pivotX": 0.23275862068965517,
+   "pivotY": 0.0392156862745098,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-left/fist-smear-left-01.png",
+   "pivotX": 0.23275862068965517,
+   "pivotY": 0.0392156862745098,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-right/fist-smear-right-00.png",
+   "pivotX": 0.7672413793103449,
+   "pivotY": 0.0392156862745098,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-right/fist-smear-right-01.png",
+   "pivotX": 0.7672413793103449,
+   "pivotY": 0.0392156862745098,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-00.png",
+   "pivotX": 0.49999998851896554,
+   "pivotY": 0.14685310846635272,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-01.png",
+   "pivotX": 0.500000014367816,
+   "pivotY": 0.14685309587569723,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.1468531072645021,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-03.png",
+   "pivotX": 0.5000000243797412,
+   "pivotY": 0.14685310823858388,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-04.png",
+   "pivotX": 0.5000000370784252,
+   "pivotY": 0.14685310501923496,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-05.png",
+   "pivotX": 0.5000000113239917,
+   "pivotY": 0.14685310851373914,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-06.png",
+   "pivotX": 0.49999998387654626,
+   "pivotY": 0.1468531061048951,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-07.png",
+   "pivotX": 0.5000000097806896,
+   "pivotY": 0.14685310860369089,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-16.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-17.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-18.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-19.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-20.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-21.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-22.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-23.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-24.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-25.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-26.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-27.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-28.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-29.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.0,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-00.png",
+   "pivotX": 0.48469392894683855,
+   "pivotY": 0.14084510961100352,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-01.png",
+   "pivotX": 0.48469390000000007,
+   "pivotY": 0.14084511272102113,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-02.png",
+   "pivotX": 0.48469392890795104,
+   "pivotY": 0.14084511239609154,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-03.png",
+   "pivotX": 0.48469392632628566,
+   "pivotY": 0.140845108350871,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-04.png",
+   "pivotX": 0.48469390000000007,
+   "pivotY": 0.1408451,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-05.png",
+   "pivotX": 0.4846939379499591,
+   "pivotY": 0.1408451139392014,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-06.png",
+   "pivotX": 0.4846939377275663,
+   "pivotY": 0.14084511478104014,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.3333333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-01.png",
+   "pivotX": 0.5000000052631579,
+   "pivotY": 0.499999995112636,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-02.png",
+   "pivotX": 0.4999999978110579,
+   "pivotY": 0.4999999851965333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-03.png",
+   "pivotX": 0.49999997532814733,
+   "pivotY": 0.4999999851965333,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-04.png",
+   "pivotX": 0.49999997138567365,
+   "pivotY": 0.5000000096318719,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-05.png",
+   "pivotX": 0.4999999989762645,
+   "pivotY": 0.4999999965810872,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-06.png",
+   "pivotX": 0.5000000003517868,
+   "pivotY": 0.49999999257282157,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-00.png",
+   "pivotX": 0.4999999810031205,
+   "pivotY": 0.49999999285278957,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-01.png",
+   "pivotX": 0.49999999196575723,
+   "pivotY": 0.4999999948435811,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-02.png",
+   "pivotX": 0.5000000231366339,
+   "pivotY": 0.5000000043304479,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-03.png",
+   "pivotX": 0.4999999910714285,
+   "pivotY": 0.49999998067894746,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-04.png",
+   "pivotX": 0.4999999910714285,
+   "pivotY": 0.5000000172839394,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-05.png",
+   "pivotX": 0.4999999910714285,
+   "pivotY": 0.5000000456175263,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-06.png",
+   "pivotX": 0.49999999357782504,
+   "pivotY": 0.5000000172839394,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-gold-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-gold-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-gold-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-gold-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-red-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-red-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-red-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-red-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-gold-00.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-gold-01.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-gold-02.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-gold-03.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-red-00.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-red-01.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-red-02.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-red-03.png",
+   "pivotX": 0.7142857142857143,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/Enemy/Warnings/warning-open-line.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 2,
+   "borderRight": 0,
+   "borderTop": 2
+  },
+  {
+   "path": "Art/Enemy/Warnings/warning-rect-9slice.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 1,
+   "borderBottom": 1,
+   "borderRight": 1,
+   "borderTop": 1
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-00.png",
+   "pivotX": 0.6453488358512798,
+   "pivotY": 0.4687500014598728,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-01.png",
+   "pivotX": 0.6453487935680988,
+   "pivotY": 0.46875000755602186,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-02.png",
+   "pivotX": 0.6453487925351744,
+   "pivotY": 0.4687499979598712,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-03.png",
+   "pivotX": 0.645348774500058,
+   "pivotY": 0.46875,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-04.png",
+   "pivotX": 0.6453487771151175,
+   "pivotY": 0.46875000129764616,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-05.png",
+   "pivotX": 0.6453487467669767,
+   "pivotY": 0.46874998610247004,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-06.png",
+   "pivotX": 0.6453488195224303,
+   "pivotY": 0.4687499892048176,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-07.png",
+   "pivotX": 0.6453487798745581,
+   "pivotY": 0.46874996841354,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-08.png",
+   "pivotX": 0.645348797604279,
+   "pivotY": 0.46875001885358747,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-09.png",
+   "pivotX": 0.6453487864273896,
+   "pivotY": 0.4687500135518601,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact-10.png",
+   "pivotX": 0.6453488,
+   "pivotY": 0.46875,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-00.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-01.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-02.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-03.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-04.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-05.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-06.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-07.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-08.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-09.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-10.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-11.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-12.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-13.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-14.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star-15.png",
+   "pivotX": 0.5,
+   "pivotY": 0.5,
+   "borderLeft": 0,
+   "borderBottom": 0,
+   "borderRight": 0,
+   "borderTop": 0
+  }
+ ],
+ "clips": [
+  {
+   "path": "Art/Enemy/Guard/Vfx/crystal-active/crystal-active.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-00.png",
+    "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-01.png",
+    "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-02.png",
+    "Art/Enemy/Guard/Vfx/crystal-active/crystal-active-03.png"
+   ],
+   "durations": [
+    0.26,
+    0.17,
+    0.125,
+    0.18
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-00.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-01.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-02.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-fire/eye-laser-fire-03.png"
+   ],
+   "durations": [
+    0.075,
+    0.075,
+    0.075,
+    0.075
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-00.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-01.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-02.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-03.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-04.png",
+    "Art/Enemy/Guard/Vfx/eye-laser-tell/eye-laser-tell-05.png"
+   ],
+   "durations": [
+    0.28,
+    0.24,
+    0.215,
+    0.175,
+    0.15,
+    0.14
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back.asset",
+   "frames": [
+    "",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-00.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-01.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-02.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-03.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-04.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-05.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-00.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-01.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-02.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-03.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-04.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-05.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-00.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-01.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-02.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-03.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-04.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-05.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-00.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-01.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-02.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-03.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-04.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-05.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-back/fist-charge-back-07.png"
+   ],
+   "durations": [
+    0.15,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 1
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-00.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-01.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-02.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-03.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-04.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-05.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-06.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-07.png",
+    "Art/Enemy/Guard/Vfx/fist-charge-front/fist-charge-front-08.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 6
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-both/fist-smear-both.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/fist-smear-both/fist-smear-both-00.png",
+    "Art/Enemy/Guard/Vfx/fist-smear-both/fist-smear-both-01.png"
+   ],
+   "durations": [
+    0.03,
+    0.03
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-left/fist-smear-left.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/fist-smear-left/fist-smear-left-00.png",
+    "Art/Enemy/Guard/Vfx/fist-smear-left/fist-smear-left-01.png"
+   ],
+   "durations": [
+    0.03,
+    0.03
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/fist-smear-right/fist-smear-right.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/fist-smear-right/fist-smear-right-00.png",
+    "Art/Enemy/Guard/Vfx/fist-smear-right/fist-smear-right-01.png"
+   ],
+   "durations": [
+    0.03,
+    0.03
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/ground-hit/ground-hit.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-00.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-01.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-02.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-03.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-04.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-05.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-06.png",
+    "Art/Enemy/Guard/Vfx/ground-hit/ground-hit-07.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-00.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-01.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-02.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-03.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-04.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-05.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-06.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-07.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-08.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-09.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-10.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-11.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-12.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-13.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-14.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-15.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-16.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-17.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-18.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-19.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-20.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-21.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-22.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-23.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-24.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-25.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-26.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-27.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-28.png",
+    "Art/Enemy/Guard/Vfx/muzzle-charge/muzzle-charge-29.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-00.png",
+    "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-01.png",
+    "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-02.png",
+    "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-03.png",
+    "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-04.png",
+    "Art/Enemy/Guard/Vfx/muzzle-left/muzzle-left-05.png"
+   ],
+   "durations": [
+    0.03,
+    0.04,
+    0.045,
+    0.05,
+    0.055,
+    0.06
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-00.png",
+    "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-01.png",
+    "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-02.png",
+    "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-03.png",
+    "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-04.png",
+    "Art/Enemy/Guard/Vfx/muzzle-right/muzzle-right-05.png"
+   ],
+   "durations": [
+    0.03,
+    0.04,
+    0.045,
+    0.05,
+    0.055,
+    0.06
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-burst/slam-burst.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-00.png",
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-01.png",
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-02.png",
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-03.png",
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-04.png",
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-05.png",
+    "Art/Enemy/Guard/Vfx/slam-burst/slam-burst-06.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-crack/slam-crack.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-00.png",
+    "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-01.png",
+    "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-02.png",
+    "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-03.png",
+    "Art/Enemy/Guard/Vfx/slam-crack/slam-crack-04.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.1,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/slam-dust/slam-dust.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-00.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-01.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-02.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-03.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-04.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-05.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-06.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-07.png",
+    "Art/Enemy/Guard/Vfx/slam-dust/slam-dust-08.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-00.png",
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-01.png",
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-02.png",
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-03.png",
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-04.png",
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-05.png",
+    "Art/Enemy/Guard/Vfx/stomp-ring/stomp-ring-06.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph.asset",
+   "frames": [
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-00.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-01.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-02.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-03.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-04.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-05.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-06.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-05.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-06.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-05.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-06.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-05.png",
+    "Art/Enemy/Guard/Vfx/wave-telegraph/wave-telegraph-06.png"
+   ],
+   "durations": [
+    0.04286,
+    0.04286,
+    0.04286,
+    0.04286,
+    0.04286,
+    0.04286,
+    0.04286,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-gold.asset",
+   "frames": [
+    "Art/Enemy/Projectiles/normal-gold-00.png",
+    "Art/Enemy/Projectiles/normal-gold-01.png",
+    "Art/Enemy/Projectiles/normal-gold-02.png",
+    "Art/Enemy/Projectiles/normal-gold-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/normal-red.asset",
+   "frames": [
+    "Art/Enemy/Projectiles/normal-red-00.png",
+    "Art/Enemy/Projectiles/normal-red-01.png",
+    "Art/Enemy/Projectiles/normal-red-02.png",
+    "Art/Enemy/Projectiles/normal-red-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-gold.asset",
+   "frames": [
+    "Art/Enemy/Projectiles/special-gold-00.png",
+    "Art/Enemy/Projectiles/special-gold-01.png",
+    "Art/Enemy/Projectiles/special-gold-02.png",
+    "Art/Enemy/Projectiles/special-gold-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/Enemy/Projectiles/special-red.asset",
+   "frames": [
+    "Art/Enemy/Projectiles/special-red-00.png",
+    "Art/Enemy/Projectiles/special-red-01.png",
+    "Art/Enemy/Projectiles/special-red-02.png",
+    "Art/Enemy/Projectiles/special-red-03.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-contact/groggy-contact.asset",
+   "frames": [
+    "Art/FX/Groggy/groggy-contact/groggy-contact-00.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-01.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-02.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-03.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-04.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-05.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-06.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-07.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-08.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-09.png",
+    "Art/FX/Groggy/groggy-contact/groggy-contact-10.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": false,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-orb.asset",
+   "frames": [
+    "Art/FX/Groggy/groggy-orb-00.png",
+    "Art/FX/Groggy/groggy-orb-01.png",
+    "Art/FX/Groggy/groggy-orb-02.png",
+    "Art/FX/Groggy/groggy-orb-03.png",
+    "Art/FX/Groggy/groggy-orb-04.png",
+    "Art/FX/Groggy/groggy-orb-05.png",
+    "Art/FX/Groggy/groggy-orb-06.png",
+    "Art/FX/Groggy/groggy-orb-07.png",
+    "Art/FX/Groggy/groggy-orb-08.png",
+    "Art/FX/Groggy/groggy-orb-09.png",
+    "Art/FX/Groggy/groggy-orb-10.png",
+    "Art/FX/Groggy/groggy-orb-11.png"
+   ],
+   "durations": [
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05,
+    0.05
+   ],
+   "loop": true,
+   "loopStart": 0
+  },
+  {
+   "path": "Art/FX/Groggy/groggy-star.asset",
+   "frames": [
+    "Art/FX/Groggy/groggy-star-00.png",
+    "Art/FX/Groggy/groggy-star-01.png",
+    "Art/FX/Groggy/groggy-star-02.png",
+    "Art/FX/Groggy/groggy-star-03.png",
+    "Art/FX/Groggy/groggy-star-04.png",
+    "Art/FX/Groggy/groggy-star-05.png",
+    "Art/FX/Groggy/groggy-star-06.png",
+    "Art/FX/Groggy/groggy-star-07.png",
+    "Art/FX/Groggy/groggy-star-08.png",
+    "Art/FX/Groggy/groggy-star-09.png",
+    "Art/FX/Groggy/groggy-star-10.png",
+    "Art/FX/Groggy/groggy-star-11.png",
+    "Art/FX/Groggy/groggy-star-12.png",
+    "Art/FX/Groggy/groggy-star-13.png",
+    "Art/FX/Groggy/groggy-star-14.png",
+    "Art/FX/Groggy/groggy-star-15.png"
+   ],
+   "durations": [
+    0.056,
+    0.057,
+    0.056,
+    0.056,
+    0.056,
+    0.057,
+    0.056,
+    0.056,
+    0.056,
+    0.057,
+    0.056,
+    0.056,
+    0.056,
+    0.057,
+    0.056,
+    0.056
+   ],
+   "loop": true,
+   "loopStart": 0
+  }
+ ],
+ "audio": [
+  {
+   "name": "guard-bgm.ogg",
+   "path": "Audio/Enemy/guard-bgm.ogg",
+   "streaming": true
+  },
+  {
+   "name": "guard-fist-charge.mp3",
+   "path": "Audio/Enemy/guard-fist-charge.mp3",
+   "streaming": false
+  },
+  {
+   "name": "guard-fist-slam-charged.mp3",
+   "path": "Audio/Enemy/guard-fist-slam-charged.mp3",
+   "streaming": false
+  },
+  {
+   "name": "guard-fist-slam.ogg",
+   "path": "Audio/Enemy/guard-fist-slam.ogg",
+   "streaming": false
+  },
+  {
+   "name": "guard-laser-charge.ogg",
+   "path": "Audio/Enemy/guard-laser-charge.ogg",
+   "streaming": false
+  },
+  {
+   "name": "guard-laser-fire.ogg",
+   "path": "Audio/Enemy/guard-laser-fire.ogg",
+   "streaming": false
+  },
+  {
+   "name": "guard-muzzle-charge.mp3",
+   "path": "Audio/Enemy/guard-muzzle-charge.mp3",
+   "streaming": false
+  },
+  {
+   "name": "guard-muzzle-fire.mp3",
+   "path": "Audio/Enemy/guard-muzzle-fire.mp3",
+   "streaming": false
+  },
+  {
+   "name": "guard-wave-blast.mp3",
+   "path": "Audio/Enemy/guard-wave-blast.mp3",
+   "streaming": false
+  }
+ ]
+}

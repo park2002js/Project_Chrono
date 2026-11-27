@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: p6-sky-cast
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 253f749197e97f54c885f32dbc68efcd, type: 3}
+  - {fileID: 21300000, guid: 473c88d0e64f6a64c9c5780c9463915a, type: 3}
+  - {fileID: 21300000, guid: 7a22e34d5c5f3cf42a33e3918fc977d6, type: 3}
+  - {fileID: 21300000, guid: 8a8e6a263d7dc90458b7af84bb2010e7, type: 3}
+  - {fileID: 21300000, guid: 426c57523bc499449951530e20246d2b, type: 3}
+  - {fileID: 21300000, guid: 92cbbca3b74b54748a167277eb765b4c, type: 3}
+  - {fileID: 21300000, guid: 00972941eca039843947147f8c2963ee, type: 3}
+  - {fileID: 21300000, guid: 0bd37427f9edea441aa56b3952285f5f, type: 3}
+  - {fileID: 21300000, guid: 240a31e4160d8b44883ffeea475f49ea, type: 3}
+  - {fileID: 21300000, guid: 9dd31f903d970254aa93ce517c690685, type: 3}
+  - {fileID: 21300000, guid: 5b428192e793cd3488fc55d203172527, type: 3}
+  - {fileID: 21300000, guid: a51711851b98cb240b176480414a7b2d, type: 3}
+  - {fileID: 21300000, guid: 5a39c049c89715d4581c1ee07ee26cdb, type: 3}
+  - {fileID: 21300000, guid: 207ff6cdd3a8ea5458e1e371b332486b, type: 3}
+  - {fileID: 21300000, guid: 15db70b99b3b51e45b909ae2be8bc81b, type: 3}
+  - {fileID: 21300000, guid: 963c637de2fb27a4da8a108e258faa95, type: 3}
+  - {fileID: 21300000, guid: 36cf93c78d3b7ed449d388b92859c543, type: 3}
+  - {fileID: 21300000, guid: e671028f58b37664aaa7c73995036544, type: 3}
+  - {fileID: 21300000, guid: 7dfde99ecfa3f03448526b1c3f04d3ff, type: 3}
+  - {fileID: 21300000, guid: ee7c087b785907743b6351d9a0f0cea7, type: 3}
+  - {fileID: 21300000, guid: 5cc31af4f7c60eb4097867b607799b84, type: 3}
+  - {fileID: 21300000, guid: 0ebbb710a1df7d647a9a47501b0ab774, type: 3}
+  - {fileID: 21300000, guid: d0102e84bc4a31f4b9ee44d89b200d29, type: 3}
+  - {fileID: 21300000, guid: 49e40358355170d4281d166d9d9566d8, type: 3}
+  - {fileID: 21300000, guid: 0b9030ce66c4bda4f8cee7a3244b306a, type: 3}
+  - {fileID: 21300000, guid: 62f424223e752984f875c32247dce62d, type: 3}
+  - {fileID: 21300000, guid: 589846602687bc7459772931591988df, type: 3}
+  - {fileID: 21300000, guid: be9f3b9d300c1a74593d042ce60b35c9, type: 3}
+  - {fileID: 21300000, guid: eab73bc23b803b24ea3a32b3112879dc, type: 3}
+  - {fileID: 21300000, guid: 070aac631bc932a40a10ee8a22d9b0aa, type: 3}
+  - {fileID: 21300000, guid: 536fd1f92f18e9c4f94b88e1fb4278db, type: 3}
+  - {fileID: 21300000, guid: 82527659603ff57419e36c57c3700de1, type: 3}
+  - {fileID: 21300000, guid: bf2e437c78edb6b4b85fa1c494c19028, type: 3}
+  - {fileID: 21300000, guid: 21b784e7b7a204347b50cb3779400537, type: 3}
+  - {fileID: 21300000, guid: 1a98a636b8d6e1146ac525366b64e1f8, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 1
+  LoopStart: 0

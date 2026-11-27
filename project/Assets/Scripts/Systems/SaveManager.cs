@@ -98,7 +98,7 @@ public static class SaveManager
     }
 
     /// <summary>빈 슬롯 또는 새 게임 확인을 받은 슬롯을 초기화하고 최초 저장을 요청</summary>
-    public static SaveData NewSaveFile(int index)
+    public static SaveData NewSaveFile(int index, int stageIndex = 0)
     {
         // 진행 중 저장과 새 슬롯 생성의 충돌 방지
         EnsureInitialized();
@@ -118,6 +118,8 @@ public static class SaveManager
         current.Set("LastSavedAt", string.Empty);
         current.Set("EncounteredBosses", new List<string>());
         current.Set("EntranceCompleted", false);
+        current.Set("StageIndex", stageIndex);
+        current.Set("DemoCompleted", false);
 
         // 최초 저장을 요청하고 MainWorld에서 사용할 선택 데이터 반환
         Save();
@@ -148,6 +150,37 @@ public static class SaveManager
         {
             Debug.LogError($"[SaveManager] 저장 요청 실패: {exception.Message}");
         }
+    }
+
+    /// <summary>Title에서 확인받은 슬롯의 로컬 sav·bak·임시 파일을 지우고 슬롯을 비운 성공 여부 반환</summary>
+    public static async UniTask<bool> DeleteSlotAsync(int index)
+    {
+        // 대기 중인 저장이 삭제한 파일을 다시 만들지 않도록 완료 대기
+        EnsureInitialized();
+        EnsureSlotIndex(index);
+        await FlushAsync(); // 요청된 저장·백업이 모두 끝날 때까지 삭제 보류
+
+        // sav가 먼저 사라진 뒤 bak로 되살아나지 않도록 백업부터 삭제
+        var data = new SaveData(saveDirectory, index);
+        try
+        {
+            foreach (string path in new[] { data.BackupPath + ".tmp", data.FilePath + ".tmp", data.BackupPath, data.FilePath })
+                File.Delete(path);
+        }
+        catch (Exception exception) when (exception is IOException || exception is UnauthorizedAccessException)
+        {
+            Debug.LogError($"[SaveManager] {data.FileName} 삭제 실패: {exception.Message}");
+            return false;
+        }
+
+        // 파일 삭제에 성공한 슬롯만 목록과 선택 데이터에서 제거
+        Slots[index] = null;
+        if (SelectSlot == index)
+        {
+            current = null;
+            SelectSlot = -1;
+        }
+        return true;
     }
 
     /// <summary>Title 재로드·슬롯 초기화·앱 종료에서 진행 중인 기록과 복구 완료까지 대기</summary>

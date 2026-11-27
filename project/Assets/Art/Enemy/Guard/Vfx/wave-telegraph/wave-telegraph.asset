@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: wave-telegraph
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 8e511d948b02f8b43a25037b7a252d87, type: 3}
+  - {fileID: 21300000, guid: 6b7b57427a1d4cb4aa94c7f5520d9fcd, type: 3}
+  - {fileID: 21300000, guid: 36908d26cfcb40645bd5e18196633c09, type: 3}
+  - {fileID: 21300000, guid: 8e1ea3342aaf93c4ba9ef0375077db4f, type: 3}
+  - {fileID: 21300000, guid: 6e844f588e4fd4a408f873fd49f26fa4, type: 3}
+  - {fileID: 21300000, guid: 8465021f95171824db7aba00b0cfafe9, type: 3}
+  - {fileID: 21300000, guid: ca4dd97f97dad114f8e20a4eef50c949, type: 3}
+  - {fileID: 21300000, guid: 8465021f95171824db7aba00b0cfafe9, type: 3}
+  - {fileID: 21300000, guid: ca4dd97f97dad114f8e20a4eef50c949, type: 3}
+  - {fileID: 21300000, guid: 8465021f95171824db7aba00b0cfafe9, type: 3}
+  - {fileID: 21300000, guid: ca4dd97f97dad114f8e20a4eef50c949, type: 3}
+  - {fileID: 21300000, guid: 8465021f95171824db7aba00b0cfafe9, type: 3}
+  - {fileID: 21300000, guid: ca4dd97f97dad114f8e20a4eef50c949, type: 3}
+  Durations:
+  - 0.04286
+  - 0.04286
+  - 0.04286
+  - 0.04286
+  - 0.04286
+  - 0.04286
+  - 0.04286
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

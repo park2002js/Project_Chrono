@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: a57a89a1cc3320c4ab4451dad3e4284d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 992865406328658104
+    second: slam-burst-05_0
+  - first:
+      213: 881484624599790193
+    second: slam-burst-05_1
+  - first:
+      213: -5113059931061183068
+    second: slam-burst-05_2
+  - first:
+      213: 1178889833810765796
+    second: slam-burst-05_3
+  - first:
+      213: 8962170490372545604
+    second: slam-burst-05_4
+  - first:
+      213: 6695314561077435787
+    second: slam-burst-05_5
+  - first:
+      213: -8724897687830044829
+    second: slam-burst-05_6
+  - first:
+      213: 5110837136947830188
+    second: slam-burst-05_7
+  - first:
+      213: -3045161420242161969
+    second: slam-burst-05_8
+  - first:
+      213: -3652049073721671
+    second: slam-burst-05_9
+  - first:
+      213: -6763829177417725222
+    second: slam-burst-05_10
+  - first:
+      213: 2877363584902285177
+    second: slam-burst-05_11
+  - first:
+      213: 6602864876865644755
+    second: slam-burst-05_12
+  - first:
+      213: -5802027315409107792
+    second: slam-burst-05_13
+  - first:
+      213: -8428064648489402435
+    second: slam-burst-05_14
+  - first:
+      213: 6951481024734923713
+    second: slam-burst-05_15
+  - first:
+      213: 3598302052074567262
+    second: slam-burst-05_16
+  - first:
+      213: -3482529885258583442
+    second: slam-burst-05_17
+  - first:
+      213: 6429059374634919111
+    second: slam-burst-05_18
+  - first:
+      213: 1153285178449293939
+    second: slam-burst-05_19
+  - first:
+      213: -3908424274849126882
+    second: slam-burst-05_20
+  - first:
+      213: 5590899002838624971
+    second: slam-burst-05_21
+  - first:
+      213: 3990878945765680081
+    second: slam-burst-05_22
+  - first:
+      213: 7937003627063197228
+    second: slam-burst-05_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.48469394, y: 0.14084512}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: slam-burst-05_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 120
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b85efd93dd57cd00800000000000000
+      internalID: 992865406328658104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 131
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1723d348899ab3c00800000000000000
+      internalID: 881484624599790193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 137
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ad90d53513ca09b0800000000000000
+      internalID: -5113059931061183068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 129
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e72c9dce024c5010800000000000000
+      internalID: 1178889833810765796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_4
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 127
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44cd42fc396006c70800000000000000
+      internalID: 8962170490372545604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_5
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 126
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8d5588be198aec50800000000000000
+      internalID: 6695314561077435787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 108
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36f534787cfeae680800000000000000
+      internalID: -8724897687830044829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 120
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cad56a43c475de640800000000000000
+      internalID: 5110837136947830188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_8
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 110
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fceedbe72d96db5d0800000000000000
+      internalID: -3045161420242161969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_9
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 102
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9be22401b7603fff0800000000000000
+      internalID: -3652049073721671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_10
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 82
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ada089e033d0222a0800000000000000
+      internalID: -6763829177417725222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 82
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 977cebf7fe27ee720800000000000000
+      internalID: 2877363584902285177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_12
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 101
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d8ea7d3f9612ab50800000000000000
+      internalID: 6602864876865644755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_13
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 75
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b44de7a5ee0b7fa0800000000000000
+      internalID: -5802027315409107792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_14
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 62
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbff2c22bdf790b80800000000000000
+      internalID: -8428064648489402435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 74
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cb8136592f987060800000000000000
+      internalID: 6951481024734923713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_16
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 53
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e56b678d6acbfe130800000000000000
+      internalID: 3598302052074567262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_17
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 68
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e62fa7545819bafc0800000000000000
+      internalID: -3482529885258583442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 59
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c46209407b983950800000000000000
+      internalID: 6429059374634919111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 69
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 372713a62ca410010800000000000000
+      internalID: 1153285178449293939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_20
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 31
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16aa1a64dc72c9c0800000000000000
+      internalID: -3908424274849126882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_21
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 43
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca284f650dd69d40800000000000000
+      internalID: 5590899002838624971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_22
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 33
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d3e2ffa143726730800000000000000
+      internalID: 3990878945765680081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slam-burst-05_23
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 39
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2eb61c2fb6e52e60800000000000000
+      internalID: 7937003627063197228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      slam-burst-05_0: 992865406328658104
+      slam-burst-05_1: 881484624599790193
+      slam-burst-05_10: -6763829177417725222
+      slam-burst-05_11: 2877363584902285177
+      slam-burst-05_12: 6602864876865644755
+      slam-burst-05_13: -5802027315409107792
+      slam-burst-05_14: -8428064648489402435
+      slam-burst-05_15: 6951481024734923713
+      slam-burst-05_16: 3598302052074567262
+      slam-burst-05_17: -3482529885258583442
+      slam-burst-05_18: 6429059374634919111
+      slam-burst-05_19: 1153285178449293939
+      slam-burst-05_2: -5113059931061183068
+      slam-burst-05_20: -3908424274849126882
+      slam-burst-05_21: 5590899002838624971
+      slam-burst-05_22: 3990878945765680081
+      slam-burst-05_23: 7937003627063197228
+      slam-burst-05_3: 1178889833810765796
+      slam-burst-05_4: 8962170490372545604
+      slam-burst-05_5: 6695314561077435787
+      slam-burst-05_6: -8724897687830044829
+      slam-burst-05_7: 5110837136947830188
+      slam-burst-05_8: -3045161420242161969
+      slam-burst-05_9: -3652049073721671
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -4,19 +4,21 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-/// <summary>Title 준비와 3슬롯 표시, 완료 슬롯의 새 게임 확인</summary>
+/// <summary>Title 준비와 3슬롯 표시, 완료 슬롯의 새 게임 확인, 슬롯 삭제</summary>
 public class UI_Title : MonoBehaviour
 {
     public int SelectedSlot = -1; // 사용자가 선택한 슬롯 번호, -1은 선택 전 상태
     public bool IsReady; // 슬롯과 Title 준비를 마쳐 선택 입력을 받을 수 있는 상태
     public bool IsRestartConfirmationOpen; // 완료 슬롯의 새 게임 확인창 표시 여부
-    public string ErrorMessage; // Title 준비나 월드 진입 실패를 알릴 문구
+    public bool IsDeleteConfirmationOpen; // 저장 슬롯 삭제 확인창 표시 여부
+    public string ErrorMessage; // Title 준비·월드 진입·슬롯 삭제 실패를 알릴 문구
     public float IntroDuration = 0.25f; // Title 페이드인과 초기 준비 대기 시간(초)
     public Texture2D TitleLogo; // 사용자 확정 원본을 그대로 표시할 Title 로고
     public Font TitleFont; // 세 메뉴 버튼과 슬롯 안내에 사용할 PF스타더스트
     public Texture2D TitleLogoGlint; // 원본 로고의 칼날 하이라이트 위에 겹칠 별도 십자 발광 VFX
     public Texture2D[] TitleFissureGlowFrames; // 로고 틈새 선 안팎의 푸른 광 흐름을 이어 표시할 고정 이미지
     public Texture2D SlotFrame; // 가로 저장 카드와 완료 기록 확인창에 재사용할 픽셀 프레임
+    public UI_Settings Settings; // 설정 버튼으로 열 음량·해상도 설정 창
     public Color BackgroundColor = new Color32(21, 21, 24, 255); // 화면 전체를 채울 회빛 검정 바탕
     public Vector2 GlintPivot = new Vector2(130.5f, 31.5f); // 200×80 원본에서 칼날 빛의 회전 중심
     [Min(0.01f)] public float GlintDuration = 1.25f; // 십자 빛 한 번의 확대·회전·소멸 시간
@@ -28,6 +30,7 @@ public class UI_Title : MonoBehaviour
     private InputAction _backAction; // 슬롯 화면이 열린 동안에만 Esc 뒤로 입력을 받을 씬 수명 액션
     private bool _showSlots; // 시작 버튼 대신 슬롯 목록을 표시할지 구분
     private bool _isPreparing; // Title 준비의 중복 실행 방지
+    private bool _isDeleting; // 파일 삭제가 끝날 때까지 슬롯 입력 차단
     private double _introStartedAt; // 게임 시간 정지와 무관하게 페이드인 경과 시간을 계산할 기준
     private GUIStyle _titleStyle; // 첫 OnGUI에서 생성해 반복 표시할 Title 글자 스타일
     private GUIStyle _errorStyle; // 첫 OnGUI에서 생성해 반복 표시할 줄바꿈 오류 안내 스타일
@@ -36,6 +39,7 @@ public class UI_Title : MonoBehaviour
     private GUIStyle _slotStyle; // 12px 모서리를 보존하며 가로 저장 카드에 늘려 쓸 프레임 스타일
     private GUIStyle _slotTextStyle; // 640×360 슬롯 화면에서 사용할 안내와 글자 버튼 스타일
     private GUIStyle _slotHeadingStyle; // 슬롯 화면 상단의 saveslot 제목 스타일
+    private GUIStyle _slotDeleteStyle; // 카드 아래 작은 삭제 버튼 스타일
 
     /// <summary>자기 Title 화면에서만 사용할 Esc 입력 액션을 한 번 준비</summary>
     private void Awake()
@@ -80,6 +84,7 @@ public class UI_Title : MonoBehaviour
             }
             _slotStyle.normal.textColor = new Color32(161, 171, 195, 255);
             _slotStyle.active.textColor = new Color32(176, 148, 206, 255);
+            _slotDeleteStyle = new GUIStyle(_slotStyle) { padding = new RectOffset() };
         }
 
         // 기준 1920×1080을 비율 유지로 표시하고 원래 GUI 상태를 보관
@@ -93,8 +98,9 @@ public class UI_Title : MonoBehaviour
         float elapsed = (float)(Time.realtimeSinceStartupAsDouble - _introStartedAt);
         float alpha = IntroDuration <= 0f ? 1f : Mathf.Clamp01(elapsed / IntroDuration);
         GUI.color = new Color(1f, 1f, 1f, alpha);
-        GUI.enabled = _game != null && !_game.IsLoading;
-        if (IsReady && (_showSlots || IsRestartConfirmationOpen))
+        bool menuEnabled = _game != null && !_game.IsLoading && (Settings == null || !Settings.IsOpen); // 설정 창이 열린 동안 Title 입력 차단
+        GUI.enabled = menuEnabled;
+        if (IsReady && (_showSlots || IsRestartConfirmationOpen || IsDeleteConfirmationOpen))
             DrawSaveSlots();
         else
         {
@@ -113,9 +119,9 @@ public class UI_Title : MonoBehaviour
             if (IsReady)
             {
                 if (GUI.Button(new Rect(672f, 670.8f, 576f, 67.2f), "시작", _menuStyle)) ShowSlots();
-                GUI.enabled = false;
-                GUI.Button(new Rect(672f, 742.8f, 576f, 67.2f), "설정", _menuStyle);
-                GUI.enabled = _game != null && !_game.IsLoading;
+                GUI.enabled = menuEnabled && Settings != null;
+                if (GUI.Button(new Rect(672f, 742.8f, 576f, 67.2f), "설정", _menuStyle)) OpenSettings();
+                GUI.enabled = menuEnabled;
                 if (GUI.Button(new Rect(672f, 814.8f, 576f, 67.2f), "종료", _menuStyle)) QuitGame();
             }
             else
@@ -138,7 +144,7 @@ public class UI_Title : MonoBehaviour
     private void OnEnable()
     {
         _backAction.performed += HandleBack; // 활성 Title의 슬롯 뒤로 입력 연결
-        if (_showSlots || IsRestartConfirmationOpen)
+        if (_showSlots || IsRestartConfirmationOpen || IsDeleteConfirmationOpen)
             _backAction.Enable();
     }
 
@@ -164,6 +170,7 @@ public class UI_Title : MonoBehaviour
         ErrorMessage = null;
         SelectedSlot = -1;
         IsRestartConfirmationOpen = false;
+        IsDeleteConfirmationOpen = false;
         _showSlots = false;
         _backAction.Disable();
         _introStartedAt = Time.realtimeSinceStartupAsDouble;
@@ -214,16 +221,24 @@ public class UI_Title : MonoBehaviour
         }
     }
 
+    /// <summary>Title 메뉴에서만 음량·해상도 설정 창 열기</summary>
+    public void OpenSettings()
+    {
+        if (IsReady && Settings != null && _game != null && !_game.IsLoading && !_showSlots && !IsRestartConfirmationOpen && !IsDeleteConfirmationOpen)
+            Settings.Open();
+    }
+
     /// <summary>슬롯 화면과 완료 확인을 함께 닫고 저장값 변경 없이 Title 메뉴로 복귀</summary>
     public void CloseSlots()
     {
         // 준비나 월드 진입 중에는 뒤로 입력을 처리하지 않음
-        if (!IsReady || _game == null || _game.IsLoading || (!_showSlots && !IsRestartConfirmationOpen))
+        if (!IsReady || _game == null || _game.IsLoading || (!_showSlots && !IsRestartConfirmationOpen && !IsDeleteConfirmationOpen))
             return;
 
         // UI 선택 상태만 비우고 다음 슬롯 열기 전까지 Esc 액션 비활성화
         _showSlots = false;
         IsRestartConfirmationOpen = false;
+        IsDeleteConfirmationOpen = false;
         SelectedSlot = -1;
         _backAction.Disable();
     }
@@ -232,7 +247,7 @@ public class UI_Title : MonoBehaviour
     public void SelectSlot(int slot)
     {
         // 준비 전 입력·중복 선택·범위 밖 슬롯 차단
-        if (!IsReady || _game == null || _game.IsLoading || IsRestartConfirmationOpen || slot < 0 || slot >= SaveManager.Slots.Length)
+        if (!IsReady || _game == null || _game.IsLoading || _isDeleting || IsRestartConfirmationOpen || IsDeleteConfirmationOpen || slot < 0 || slot >= SaveManager.Slots.Length)
             return;
 
         // 완료 슬롯 덮어쓰기는 확인을 받고 나머지 슬롯은 바로 시작
@@ -261,6 +276,35 @@ public class UI_Title : MonoBehaviour
             RequestStart(true);
     }
 
+    /// <summary>저장 데이터가 있는 슬롯의 삭제 확인창 열기</summary>
+    public void RequestDelete(int slot)
+    {
+        // 준비 전 입력·다른 확인창·범위 밖 슬롯 차단
+        if (!IsReady || _game == null || _game.IsLoading || _isDeleting || IsRestartConfirmationOpen || IsDeleteConfirmationOpen
+            || slot < 0 || slot >= SaveManager.Slots.Length || SaveManager.Slots[slot] == null)
+            return;
+
+        // 삭제 대상을 보관하고 사용자 응답 대기
+        SelectedSlot = slot;
+        IsDeleteConfirmationOpen = true;
+        _backAction.Enable();
+    }
+
+    /// <summary>사용자가 승인한 슬롯만 로컬 파일까지 삭제</summary>
+    public void ConfirmDelete(bool confirmed)
+    {
+        // 유효한 확인창에서 들어온 응답만 수락
+        if (!IsDeleteConfirmationOpen || !IsReady || _game == null || _game.IsLoading)
+            return;
+
+        // 확인창을 닫고 승인한 경우에만 삭제 요청
+        IsDeleteConfirmationOpen = false;
+        if (!_showSlots)
+            _backAction.Disable();
+        if (confirmed)
+            DeleteSlotAsync(SelectedSlot).Forget(); // GUI 흐름을 막지 않고 저장 대기 후 파일 삭제
+    }
+
     /// <summary>기존 저장 작업의 완료를 기다리는 GameManager 종료 경로 호출</summary>
     public void QuitGame()
     {
@@ -279,6 +323,23 @@ public class UI_Title : MonoBehaviour
             ErrorMessage = _game.LastError;
     }
 
+    /// <summary>삭제하는 동안 슬롯 입력을 막고 실패 이유 표시</summary>
+    private async UniTask DeleteSlotAsync(int slot)
+    {
+        // 중복 입력을 막고 이전 오류 안내 제거
+        _isDeleting = true;
+        ErrorMessage = null;
+        try
+        {
+            if (!await SaveManager.DeleteSlotAsync(slot) && this != null)
+                ErrorMessage = $"슬롯 {slot + 1}의 세이브를 삭제하지 못했습니다";
+        }
+        finally
+        {
+            _isDeleting = false;
+        }
+    }
+
     /// <summary>실패한 슬롯 로드와 Title 표시 준비 재시도</summary>
     private void Retry()
     {
@@ -286,10 +347,10 @@ public class UI_Title : MonoBehaviour
         InitializeAsync().Forget(); // 새 로드 결과와 Title 연출 준비를 함께 대기
     }
 
-    /// <summary>제출 Boss 처치 기록으로 슬롯 완료 여부 확인</summary>
+    /// <summary>데모의 끝까지 본 기록으로 슬롯 완료 여부 확인</summary>
     private bool IsCompleted(SaveData data)
     {
-        return data != null && data.Get<List<string>>("DefeatedBosses").Contains(GameManager.SubmittedBossId);
+        return GameManager.IsSlotCompleted(data);
     }
 
     /// <summary>Input System의 Esc 누름을 현재 슬롯 화면의 닫기 요청으로 전달</summary>
@@ -298,7 +359,7 @@ public class UI_Title : MonoBehaviour
         CloseSlots();
     }
 
-    /// <summary>상단 제목과 가로3카드를 동일 픽셀 배율로 표시하고 완료 기록 교체를 확인</summary>
+    /// <summary>상단 제목과 가로3카드·삭제 버튼을 동일 픽셀 배율로 표시하고 완료 기록 교체와 삭제를 확인</summary>
     private void DrawSaveSlots()
     {
         // 기존 1920×1080 비율 안에서 640×360의 원본 픽셀과 12px 모서리를 함께 확대
@@ -306,27 +367,37 @@ public class UI_Title : MonoBehaviour
         bool enabled = GUI.enabled;
         GUI.matrix = matrix * Matrix4x4.Scale(Vector3.one * 3f);
         GUI.Label(new Rect(80f, 34f, 480f, 36f), "saveslot", _slotHeadingStyle);
-        GUI.enabled = enabled && !IsRestartConfirmationOpen;
+        GUI.enabled = enabled && !_isDeleting && !IsRestartConfirmationOpen && !IsDeleteConfirmationOpen;
         for (int slot = 0; slot < SaveManager.Slots.Length; slot++)
         {
             SaveData data = SaveManager.Slots[slot];
             string label = data == null ? $"슬롯 {slot + 1}\n\n새 게임" :
                 $"슬롯 {slot + 1}\n\n진행도 {(IsCompleted(data) ? 100 : 0)}%\n\n플레이 {data.Get<double>("PlayTime") / 60d:F0}분\n\n사망 {data.Get<int>("DeathCount")}회";
-            if (GUI.Button(GetSlotRect(slot), label, _slotStyle)) SelectSlot(slot);
+            Rect card = GetSlotRect(slot);
+            if (GUI.Button(card, label, _slotStyle)) SelectSlot(slot);
+            if (data != null && GUI.Button(new Rect(card.x + 40f, card.yMax + 2f, 64f, 26f), "삭제", _slotDeleteStyle)) RequestDelete(slot);
         }
 
-        // 확인창이 열려 있는 동안 카드 입력을 막고 같은 프레임으로 새 게임·취소 표시
+        // 확인창이 열려 있는 동안 카드 입력을 막고 같은 프레임으로 실행·취소 표시
         GUI.enabled = enabled;
-        if (IsRestartConfirmationOpen)
+        if (IsRestartConfirmationOpen || IsDeleteConfirmationOpen)
         {
             Color color = GUI.color;
             GUI.color = new Color(0f, 0f, 0f, color.a * 0.8f);
             GUI.DrawTexture(new Rect(0f, 0f, 640f, 360f), Texture2D.whiteTexture);
             GUI.color = color;
             GUI.Box(new Rect(160f, 120f, 320f, 132f), GUIContent.none, _slotStyle);
-            GUI.Label(new Rect(176f, 132f, 288f, 54f), $"슬롯 {SelectedSlot + 1}의 완료 기록을\n새 게임으로 교체할까요?", _slotTextStyle);
-            if (GUI.Button(new Rect(180f, 202f, 128f, 28f), "새 게임", _slotTextStyle)) ConfirmRestart(true);
-            if (GUI.Button(new Rect(332f, 202f, 128f, 28f), "취소", _slotTextStyle)) ConfirmRestart(false);
+            bool deleting = IsDeleteConfirmationOpen; // 같은 확인창에서 삭제와 새 게임 교체 구분
+            string question = deleting ? $"슬롯 {SelectedSlot + 1}의 세이브를 삭제할까요?\n삭제한 파일은 되돌릴 수 없습니다"
+                : $"슬롯 {SelectedSlot + 1}의 완료 기록을\n새 게임으로 교체할까요?";
+            GUI.Label(new Rect(176f, 132f, 288f, 54f), question, _slotTextStyle);
+            bool accepted = GUI.Button(new Rect(180f, 202f, 128f, 28f), deleting ? "삭제" : "새 게임", _slotTextStyle);
+            bool canceled = GUI.Button(new Rect(332f, 202f, 128f, 28f), "취소", _slotTextStyle);
+            if (accepted || canceled)
+            {
+                if (deleting) ConfirmDelete(accepted);
+                else ConfirmRestart(accepted);
+            }
         }
 
         // 다음 화면과 오류 안내가 사용할 기준 좌표·입력 상태 복원

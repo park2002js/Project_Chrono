@@ -59,6 +59,21 @@ public class PlayerBodyController : MonoBehaviour
         }
     }
 
+    /// <summary>60Hz 각 틱에서 확정한 속력을 두 시점 사이의 실제 이동 거리로 환산</summary>
+    public static float GetDeceleratingDistance(float from, float to, float firstTickSpeed, float deceleration)
+    {
+        // 긴 렌더 프레임은 여러 틱을 합산하고 짧은 렌더 프레임은 해당 틱의 일부만 적용
+        float fromTick = from * 60f;
+        float toTick = to * 60f;
+        float distance = 0f;
+        for (int tick = Mathf.FloorToInt(fromTick); tick < toTick; tick++)
+        {
+            float seconds = (Mathf.Min(tick + 1f, toTick) - Mathf.Max(tick, fromTick)) / 60f;
+            distance += Mathf.Max(0f, firstTickSpeed - deceleration * tick / 60f) * seconds;
+        }
+        return distance;
+    }
+
     /// <summary>충돌 지점까지 이동하고 남은 변위를 충돌면에 투영</summary>
     private void ApplyMovement(Vector2 displacement)
     {

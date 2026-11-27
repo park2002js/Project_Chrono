@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Slash World Space Cut
   m_EditorClassIdentifier: Assembly-CSharp::SlashSpaceRendererFeature
   m_Active: 1
-  injectionPoint: 600
+  injectionPoint: 550
   fetchColorBuffer: 1
   requirements: 0
-  passMaterial: {fileID: 2100000, guid: 666966bb68ce6f1479670da0a55981c0, type: 2}
+  passMaterial: {fileID: 0}
   passIndex: 0
   bindDepthStencilAttachment: 0
   m_Version: 1
@@ -46,7 +46,8 @@ MonoBehaviour:
     probeVolumeBlendStatesCS: {fileID: 0}
   m_RendererFeatures:
   - {fileID: -3301796118101032215}
-  m_RendererFeatureMap: 
+  - {fileID: 4748214015026315454}
+  m_RendererFeatureMap: e902d39beca92dd2bec02c537d0be541
   m_UseNativeRenderPass: 0
   m_LayerMask:
     serializedVersion: 2
@@ -77,3 +78,29 @@ MonoBehaviour:
   m_PostProcessData: {fileID: 11400000, guid: 41439944d30ece34e96484bdb6645b55, type: 2}
   m_DefaultMaterialType: 0
   m_DefaultCustomMaterial: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+--- !u!114 &4748214015026315454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65a94c5c2d76ff341a149753ffd20dfd, type: 3}
+  m_Name: ImpactDistortion
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactDistortionRendererFeature
+  m_Active: 1
+  injectionPoint: 550
+  fetchColorBuffer: 1
+  requirements: 0
+  passMaterial: {fileID: 0}
+  passIndex: 0
+  bindDepthStencilAttachment: 0
+  m_Version: 1
+  SourceMaterial: {fileID: 2100000, guid: 7d0f6422ec73a4e4f8d9f62a3090160c, type: 2}
+  RingStartPixels: -50
+  RingEndPixels: 70
+  RingWidthPixels: 40
+  StrengthPixels: 10
+  PixelsPerUnit: 16

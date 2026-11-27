@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: muzzle-charge
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 4dd857692dff92b49a9c311712073315, type: 3}
+  - {fileID: 21300000, guid: d90988fce26dfeb4e857da28a0991013, type: 3}
+  - {fileID: 21300000, guid: d7273464875022545a902df352bfdef0, type: 3}
+  - {fileID: 21300000, guid: 5012e1fa87c92f343bf80579c22e05b6, type: 3}
+  - {fileID: 21300000, guid: 628e6c8fee6f6b24a9c4cf90f06ac7d7, type: 3}
+  - {fileID: 21300000, guid: 499d1a64d5a4244449faf6b57a8d2084, type: 3}
+  - {fileID: 21300000, guid: 63de3ac135ceeb84890c15b76d7067ba, type: 3}
+  - {fileID: 21300000, guid: 13bfdeb5d25a85547b9cdee091ada08c, type: 3}
+  - {fileID: 21300000, guid: e5219071d3d30cd4aa83500999e1a169, type: 3}
+  - {fileID: 21300000, guid: b48ecc455ad1cff40ad57e47df803248, type: 3}
+  - {fileID: 21300000, guid: f11195bd53883be449b3533c61f0da42, type: 3}
+  - {fileID: 21300000, guid: 29928e198c7d574418b72b879e9dc62f, type: 3}
+  - {fileID: 21300000, guid: 921631738316d044b9351484c3b4d4ac, type: 3}
+  - {fileID: 21300000, guid: 709ac22a5f6789945a0004883f124bb3, type: 3}
+  - {fileID: 21300000, guid: ccc81f8212a42104eb6eb5af9a97bcca, type: 3}
+  - {fileID: 21300000, guid: e9de97ee4fae17c4bb5d9563c9537fd7, type: 3}
+  - {fileID: 21300000, guid: daed11993b06f9f43b5817e22b61338d, type: 3}
+  - {fileID: 21300000, guid: 8e1392727fc3e094abaf29d07d8e369f, type: 3}
+  - {fileID: 21300000, guid: 12f63b61f4d6ce2458f7dfdb0ebcccbc, type: 3}
+  - {fileID: 21300000, guid: 17aad02cae31e724682e3814f1fd9e2e, type: 3}
+  - {fileID: 21300000, guid: fe593b81ef565f84e818c99fe6773c1e, type: 3}
+  - {fileID: 21300000, guid: 41538383a9bbbda4e81cea07526dabc6, type: 3}
+  - {fileID: 21300000, guid: 8a0753fa7b1dc0145804feaca1cf1d8c, type: 3}
+  - {fileID: 21300000, guid: 5a10715c2ab920340b355a933c743c3b, type: 3}
+  - {fileID: 21300000, guid: 16d3bdc067398f3499065537e25e3bc8, type: 3}
+  - {fileID: 21300000, guid: bc6457e65ddae4d4690f1a2b6784a7f0, type: 3}
+  - {fileID: 21300000, guid: a9fe9fa7a4a86134f91b5781ed4b1a90, type: 3}
+  - {fileID: 21300000, guid: c27556716466bdd449bc1b7e4f2ce76f, type: 3}
+  - {fileID: 21300000, guid: dff62d219ffba30439d6b9e1abe3b855, type: 3}
+  - {fileID: 21300000, guid: 152238426a5c693459f77ca522e52cf1, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

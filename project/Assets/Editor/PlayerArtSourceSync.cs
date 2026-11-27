@@ -13,8 +13,8 @@ public static class PlayerArtSourceSync
     public const string PlayerRoot = "Assets/Art/Player/Source/"; // 게임에 사용하는 Player 원본의 Unity 복사본
     public const string WeaponRoot = "Assets/Art/Weapons/Source/"; // 검과 칼집 원본의 Unity 복사본
     private const string AnimationSetPath = "Assets/Art/Player/Animations/PlayerSpriteAnimationSet.asset"; // 기존 GUID를 유지할 몸체 애니메이션 데이터
-    private const string PlayerPrefabPath = "Assets/Prefabs/Startup/Player.prefab"; // 새 몸체와 임시 검을 표시할 기본 Player
-    private static readonly Source[] sources = CreateSources(); // Player 열여섯 자세와 검 네 원본의 자동 반영
+    private const string PlayerPrefabPath = "Assets/Prefabs/Startup/Player.prefab"; // 몸체와 카타나를 표시할 기본 Player
+    private static readonly Source[] sources = CreateSources(); // 플레이어 자세와 카타나 원본의 자동 반영
     private static double nextPoll; // Editor에서 파일 확인을 반복할 다음 시각
     private static bool synchronizing; // 재임포트 콜백의 중복 동기화 방지
     private static bool bindingsPending = true; // Sprite 재임포트 후 게임 참조 갱신 요청
@@ -137,13 +137,14 @@ public static class PlayerArtSourceSync
             "player0_Idle_bw", "player0_Idle_fw", "player0_Idle_low", "player0_idle_upper",
             "player0_move_bw", "player0_move_fw", "player0_move_low", "player0_move_upper",
             "player0_attack_bw", "player0_attack_fw", "player0_attack_low", "player0_attack_upper",
-            "player0_dash_bw", "player0_dash_fw", "player0_dash_low", "player0_dash_upper"
+            "player0_dash_bw", "player0_dash_fw", "player0_dash_low", "player0_dash_upper",
+            "player0_death", "player0_wakeup", "player0_baldo_OpenEyes", "player0_baldo_CloseEyes"
         };
         var result = new List<Source>();
         foreach (string file in playerFiles)
             result.Add(new Source { Original = "art/archive/player/" + file + ".aseprite", Asset = PlayerRoot + file + ".aseprite" });
-        for (int i = 0; i < 4; i++)
-            result.Add(new Source { Original = "art/archive/weapon/sword_" + i + ".aseprite", Asset = WeaponRoot + "sword_" + i + ".aseprite" });
+        foreach (string file in new[] { "sword_0", "sword_1", "sword_2", "sword_3", "sword_with_hand" })
+            result.Add(new Source { Original = "art/archive/weapon/" + file + ".aseprite", Asset = WeaponRoot + file + ".aseprite" });
         return result.ToArray();
     }
 
@@ -172,11 +173,12 @@ public static class PlayerArtSourceSync
         importer.importMode = FileImportModes.AnimatedSprite;
         importer.layerImportMode = LayerImportModes.MergeFrame;
         importer.includeHiddenLayers = false;
-        importer.spritePixelsPerUnit = 16f;
+        importer.spritePixelsPerUnit = ArtSpriteImportDefaults.PixelsPerUnit;
         importer.spriteMeshType = SpriteMeshType.FullRect;
         importer.pivotSpace = PivotSpaces.Canvas;
         importer.pivotAlignment = SpriteAlignment.Custom;
         importer.customPivotPosition = source.Asset.StartsWith(PlayerRoot, StringComparison.Ordinal) ? new Vector2(0.5f, 0f) : new Vector2(0.5f, 0.25f);
+        if (source.Asset == WeaponRoot + "sword_with_hand.aseprite") importer.customPivotPosition = new Vector2(7.5f / 14f, 19.5f / 52f);
         importer.filterMode = FilterMode.Point;
         importer.mipmapEnabled = false;
         importer.generatePhysicsShape = false;
@@ -212,6 +214,8 @@ public static class PlayerArtSourceSync
     /// <summary>기존 모션 데이터의 GUID와 생명주기·Slash 상태를 보존하며 새 그림 연결</summary>
     private static void RebuildBindings()
     {
+        RebuildSlashBindings();
+
         // enum의 기존 번호는 유지하고 네 원본과 반사로 여섯 시각 방향 구성
         var set = AssetDatabase.LoadAssetAtPath<PlayerSpriteAnimationSet>(AnimationSetPath);
         if (set == null) throw new IOException("PlayerSpriteAnimationSet 없음");
@@ -239,6 +243,8 @@ public static class PlayerArtSourceSync
                 if (dashState.FlipX != flip) { dashState.FlipX = flip; changed = true; }
             }
         }
+        changed |= BindLifecycle(states, PlayerSpriteAnimationState.Death, "player0_death");
+        changed |= BindLifecycle(states, PlayerSpriteAnimationState.Spawn, "player0_wakeup");
         if (changed)
         {
             set.States = states.OrderBy(value => (int)value.State).ToArray();
@@ -251,18 +257,67 @@ public static class PlayerArtSourceSync
         // 프리팹 전체 구조와 사용자 애니메이션 키를 그대로 두고 초기 Sprite만 교체
         Sprite body = ReadFrames(PlayerRoot + "player0_Idle_bw.aseprite")[0];
         Sprite sword = ReadFrames(WeaponRoot + "sword_0.aseprite")[0];
+        Sprite scabbard = ReadFrames(WeaponRoot + "sword_1.aseprite")[0];
+        Sprite sheathed = ReadFrames(WeaponRoot + "sword_2.aseprite")[0];
+        Sprite sheatheFlash = ReadFrames(WeaponRoot + "sword_3.aseprite")[0];
         GameObject prefab = PrefabUtility.LoadPrefabContents(PlayerPrefabPath);
         try
         {
             CharacterRendering rendering = prefab.GetComponent<CharacterRendering>();
-            bool prefabChanged = rendering.BodySprite.sprite != body || rendering.WeaponSprite.sprite != sword;
+            bool prefabChanged = rendering.BodySprite.sprite != body || rendering.WeaponSprite.sprite != sword || rendering.ScabbardSprite.sprite != scabbard
+                || rendering.SheathedSprite != sheathed || rendering.SheatheFlashSprite != sheatheFlash;
             if (!prefabChanged) return;
             rendering.BodySprite.sprite = body;
             rendering.BodySprite.flipX = false;
             rendering.WeaponSprite.sprite = sword;
+            rendering.ScabbardSprite.sprite = scabbard;
+            rendering.SheathedSprite = sheathed;
+            rendering.SheatheFlashSprite = sheatheFlash;
             PrefabUtility.SaveAsPrefabAsset(prefab, PlayerPrefabPath);
         }
         finally { PrefabUtility.UnloadPrefabContents(prefab); }
+    }
+
+    /// <summary>생성·사망 그림과 각 프레임의 Aseprite 밀리초를 함께 갱신</summary>
+    private static bool BindLifecycle(List<PlayerSpriteAnimationSet.StateData> states, PlayerSpriteAnimationState state, string name)
+    {
+        // 그림을 수정하지 않고 프레임 시간만 바꾼 저장도 반영
+        string path = PlayerRoot + name + ".aseprite";
+        bool changed = SetState(states, (int)state, ReadFrames(path), 10f, false, false);
+        using AsepriteFile file = AsepriteReader.ReadFile(path);
+        var durations = new float[file.noOfFrames];
+        for (int i = 0; i < durations.Length; i++) durations[i] = file.frameData[i].frameDuration / 1000f;
+        var data = states.First(value => value.State == state);
+        if (data.FrameDurations != null && data.FrameDurations.SequenceEqual(durations)) return changed;
+        data.FrameDurations = durations;
+        return true;
+    }
+
+    /// <summary>발도 몸체 두 모션과 검집 손이 포함된 무기 모션을 전용 데이터에 연결</summary>
+    private static void RebuildSlashBindings()
+    {
+        // 눈과 손은 서로 다른 속도로 샘플링하므로 각각 원본의 전체 프레임을 유지
+        var set = AssetDatabase.LoadAssetAtPath<PlayerSpriteAnimationSet>("Assets/Art/Player/Slash/SlashSpriteAnimationSet.asset");
+        if (set == null) throw new IOException("SlashSpriteAnimationSet 없음");
+        string[] paths = { PlayerRoot + "player0_baldo_OpenEyes.aseprite", PlayerRoot + "player0_baldo_CloseEyes.aseprite",
+            WeaponRoot + "sword_with_hand.aseprite" };
+        bool changed = false;
+        for (int i = 0; i < paths.Length; i++)
+        {
+            var state = set.GetState(PlayerSpriteAnimationState.SlashDraw + i);
+            if (state == null) throw new IOException("SlashSpriteAnimationSet 상태 누락: " + paths[i]);
+            Sprite[] frames = ReadFrames(paths[i]);
+            if (state.Frames != null && state.Frames.SequenceEqual(frames)) continue;
+            state.Frames = frames;
+            changed = true;
+        }
+
+        // 재임포트 경계에서만 저장하고 실행 중 표시도 현재 자세에서 갱신
+        if (!changed) return;
+        EditorUtility.SetDirty(set);
+        AssetDatabase.SaveAssetIfDirty(set);
+        foreach (CharacterRendering rendering in UnityEngine.Object.FindObjectsByType<CharacterRendering>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            if (rendering.IsSlashAnimation) rendering.RefreshAnimationFrames();
     }
 
     /// <summary>첫 연결에서만 기준 속도를 설정하고 재저장에서는 사용자 재생 설정 보존</summary>

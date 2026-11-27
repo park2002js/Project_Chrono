@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: slam-burst
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: 44a70207d3015514db310007bf97deda, type: 3}
+  - {fileID: 21300000, guid: 31f9d50d236a93e459d8d12598e13ed8, type: 3}
+  - {fileID: 21300000, guid: 68356dfecab609d49ba207269dfbaf60, type: 3}
+  - {fileID: 21300000, guid: 894c8bb3f88b4fb45ac4d57a5a4523d2, type: 3}
+  - {fileID: 21300000, guid: 78d5759799ad15141ba1d1780231e065, type: 3}
+  - {fileID: 21300000, guid: a57a89a1cc3320c4ab4451dad3e4284d, type: 3}
+  - {fileID: 21300000, guid: 73a1cd9a75774824194f30b42efe1705, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

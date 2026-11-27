@@ -12,17 +12,22 @@ public class BossCharacter : Character
     public bool IsGroggy; // Boss의 그로기 여부
     public Vector3 BasePosition; // Map의 배치 지점에서 설정한 Boss의 기본 월드 위치
     public float GroggyDuration = 3f; // 그로기 진입 후 행동이 제한될 게임 시간
+    public float PatternGap; // 한 패턴이 끝난 뒤 다음 패턴을 고르기 전까지 Idle로 둘 최소 게임 시간
+    public AudioClip BattleMusic; // 이 Boss와 전투하는 동안 반복 재생할 배경음이며 비우면 재생하지 않음
     public float GroggyRemaining { get; private set; } // 그로기 종료까지 남은 게임 시간
     public CharacterBuff Buffs { get; private set; } // 전투 복원에서 효과·예약을 정리할 자기 효과 컴포넌트
     public BossPatternSelector PatternSelector { get; private set; } // 초기화 때 등록한 조건·가중치 목록으로 다음 패턴을 선택할 도구
     public BossPattern CurrentPattern { get; private set; } // 현재 Tick 또는 취소를 전달할 실행 패턴
     public PlayerCharacter Target { get; private set; } // 전투 시작 경계에서 한 번 연결한 같은 세션의 Player
     public bool PatternsInitialized { get; private set; } // Awake의 구체 패턴 등록이 예외 없이 끝났는지 Spawner가 확인할 상태
+    public BossGroggyFx GroggyFx { get; private set; } // 기절효과의 비행과 도착 연출을 맡는 선택 컴포넌트
 
     private readonly HashSet<int> slashParts = new HashSet<int>(); // 같은 Slash의 중복 부위 보고를 합칠 집합
     private int currentSlashAttackId; // 현재 부위를 수집하는 공격 번호
     private bool collectingSlash; // 최초 공격 번호와 아직 보고가 없는 상태 구분
     private bool completedSlash; // 같은 공격의 집계 완료 중복 통지 차단
+    private float idleElapsed; // 마지막 패턴이 끝난 뒤 Idle로 보낸 게임 시간
+    private BossPattern pendingPattern; // Idle 행동이 끝나기를 기다리는 다음 패턴
 
     /// <summary>공통 캐릭터와 전투 복원에 필요한 자기 컴포넌트 준비</summary>
     protected override void Awake()
@@ -30,6 +35,7 @@ public class BossCharacter : Character
         // 자기 수명 동안 재사용할 효과·선택 도구와 즉시 중단 사건 준비
         base.Awake();
         Buffs = GetComponent<CharacterBuff>();
+        GroggyFx = GetComponent<BossGroggyFx>();
         PatternSelector = new BossPatternSelector();
         OnDie += EndEncounter; // 사망 순간 현재 패턴과 전투 대상 정리
         OnCutScene += CancelPattern; // 컷씬 진입 순간 아직 진행 중인 발사·동작 취소
@@ -55,6 +61,7 @@ public class BossCharacter : Character
         if (!IsInCombat || IsCutScene || Target == null || Target.IsDead || !Target.isActiveAndEnabled)
         {
             CancelPattern();
+            CancelIdleAction();
             return;
         }
         if (CurrentPattern != null)
@@ -64,9 +71,23 @@ public class BossCharacter : Character
             return;
         }
 
-        // 후보가 없는 동안 Idle을 유지하고 다음 프레임에 현재 조건으로 다시 조회
-        BossPattern next = PatternSelector.GetNextPattern(this);
-        if (next != null) ApplyPattern(next);
+        // 최소 Idle 시간이 지난 뒤 후보를 하나 정하고 조건이 바뀌면 다시 선택
+        idleElapsed += Time.deltaTime;
+        if (pendingPattern == null && idleElapsed >= PatternGap) pendingPattern = PatternSelector.GetNextPattern(this);
+        if (pendingPattern != null && !pendingPattern.CanRun(this)) pendingPattern = null;
+        if (pendingPattern != null)
+        {
+            // 진행 중인 Idle 행동은 끝까지 마치게 하고 끝난 프레임에 다음 패턴 시작
+            if (IsIdleActionRunning) RequestIdleStop();
+            else
+            {
+                BossPattern next = pendingPattern;
+                pendingPattern = null;
+                ApplyPattern(next);
+                return;
+            }
+        }
+        TickIdle(Time.deltaTime);
     }
 
     private void OnDisable()
@@ -74,7 +95,7 @@ public class BossCharacter : Character
         EndEncounter();
     }
 
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         OnDie -= EndEncounter; // 제거된 보스의 자기 전투 종료 연결 해제
         OnCutScene -= CancelPattern; // 제거된 보스의 자기 행동 취소 연결 해제
@@ -98,6 +119,8 @@ public class BossCharacter : Character
         IsInCombat = false;
         Target = null;
         CancelPattern();
+        CancelIdleAction();
+        if (GroggyFx != null) GroggyFx.Cancel();
         ExitGroggy();
     }
 
@@ -131,9 +154,11 @@ public class BossCharacter : Character
     /// <summary>현재 패턴의 후속 발사를 즉시 중단하고 다음 실행과 구분</summary>
     public void CancelPattern()
     {
+        pendingPattern = null;
         if (CurrentPattern == null) return;
         BossPattern pattern = CurrentPattern;
         CurrentPattern = null;
+        idleElapsed = 0f;
         pattern.Cancel();
     }
 
@@ -163,7 +188,14 @@ public class BossCharacter : Character
     /// <summary>모든 부위가 모인 시점에 구체 보스의 동시 Slash 성공 조건 판단</summary>
     public virtual void HandleSlashHit(int attackId) { }
 
-    /// <summary>게이지나 고유 기믹에서 그로기를 요청하고 현재 행동 중단</summary>
+    /// <summary>게이지가 찬 순간 기절효과의 비행을 시작하고 효과가 없는 보스는 즉시 그로기 진입</summary>
+    public void RequestGroggy()
+    {
+        if (GroggyFx != null && GroggyFx.Begin()) return;
+        EnterGroggy();
+    }
+
+    /// <summary>기절효과 도착이나 고유 기믹에서 그로기에 진입하고 현재 행동을 중단하며 Player에게 각성 부여</summary>
     public void EnterGroggy()
     {
         if (!isActiveAndEnabled || !IsInitialized || IsDead || float.IsNaN(GroggyDuration) || float.IsInfinity(GroggyDuration) || GroggyDuration <= 0f)
@@ -172,6 +204,10 @@ public class BossCharacter : Character
         IsGroggy = true;
         GroggyRemaining = GroggyDuration;
         CancelPattern();
+        CancelIdleAction();
+
+        // 기절을 일으킨 전투 상대에게 황금탄 반사와 같은 각성 획득 한 번 전달
+        if (Target != null && Target.Buffs != null) Target.Buffs.ApplyFever();
     }
 
     /// <summary>기간 종료·효과 제거에서 그로기 원본과 잔여 함께 정리</summary>
@@ -205,6 +241,18 @@ public class BossCharacter : Character
     /// <summary>구체 보스가 자기 프리팹의 설정으로 패턴을 한 번 등록할 창구</summary>
     protected virtual void InitializePatterns() { }
 
+    /// <summary>선택된 패턴이 없는 동안 구체 보스가 반복할 Idle 행동을 게임 시간으로 진행</summary>
+    protected virtual void TickIdle(float gameDelta) { }
+
+    /// <summary>다음 패턴으로 넘어가기 전에 마쳐야 할 Idle 행동이 남았는지 조회</summary>
+    protected virtual bool IsIdleActionRunning => false;
+
+    /// <summary>진행 중인 Idle 행동은 마치되 새 행동은 시작하지 않도록 요청</summary>
+    protected virtual void RequestIdleStop() { }
+
+    /// <summary>전투 종료·그로기·컷씬에서 Idle 행동을 즉시 정리</summary>
+    protected virtual void CancelIdleAction() { }
+
     /// <summary>실제 시작을 외부 콜백보다 먼저 기록해 즉시 완료에서도 직전 이력 유지</summary>
     internal void HandlePatternStarted(BossPattern pattern)
     {
@@ -216,5 +264,6 @@ public class BossCharacter : Character
     {
         if (CurrentPattern != pattern) return;
         CurrentPattern = null;
+        idleElapsed = 0f;
     }
 }

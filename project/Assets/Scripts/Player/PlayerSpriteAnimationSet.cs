@@ -18,9 +18,9 @@ public enum PlayerSpriteAnimationState
     DashRightBack, // 북쪽 공통 공격 첫 프레임을 사용하는 오른쪽 대시 상태
     Death, // 사망 후 마지막 자세를 유지할 모션
     Spawn, // 체크포인트에서 일어서는 모션
-    SlashDraw, // 몸을 낮추며 검을 일부 꺼내는 Slash 준비 모션
-    SlashHold, // 일부 꺼낸 검을 유지하는 Slash 대기 자세
-    SlashSheathe, // 칼날이 완전히 닫힐 때까지의 Slash 납도 모션
+    SlashDraw, // 빠른 확대 동안 눈을 뜬 발도 몸체
+    SlashHold, // 느린 확대부터 눈을 감고 반복하는 발도 몸체
+    SlashSheathe, // 검집을 쥔 손을 기준으로 칼을 닫는 별도 무기 모션
     IdleLeftUpper, // 왼쪽 위 사선을 바라보는 정지 모션
     IdleRightUpper, // 오른쪽 위 사선을 바라보는 정지 모션
     IdleLeftLower, // 왼쪽 아래 사선을 바라보는 정지 모션

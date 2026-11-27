@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: crystal-explosion
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: b39db46c5e1d95a48ac641dd4bae2e66, type: 3}
+  - {fileID: 21300000, guid: c8a1aca06aa28204da139fb40b7eebb5, type: 3}
+  - {fileID: 21300000, guid: 29e61404116e66f448e1cbd13d0711d5, type: 3}
+  - {fileID: 21300000, guid: e05d5e178353e2b41abef0c4e71a6602, type: 3}
+  - {fileID: 21300000, guid: 1ba832b03e3b48a489ee0de9f6a6fe38, type: 3}
+  - {fileID: 21300000, guid: 972f7f8e145ca454583454e71db04766, type: 3}
+  - {fileID: 21300000, guid: 38ec09ac83e38ac4e96bf4bd290a000d, type: 3}
+  - {fileID: 21300000, guid: 6916fe7b8c02a7f48b52e0313188927c, type: 3}
+  - {fileID: 21300000, guid: bd6f6a244b9d78c46b5df78ee81c1ae6, type: 3}
+  - {fileID: 21300000, guid: 299649f858bedfd4e82257bd6a472819, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 0
+  LoopStart: 0

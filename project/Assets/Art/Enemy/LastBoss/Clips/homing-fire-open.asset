@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: homing-fire-open
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: e33e8cb42770b4c48981c7f38375fd8a, type: 3}
+  - {fileID: 21300000, guid: 9e54ba9bd2b92ac44a9dacbdec9cafc6, type: 3}
+  - {fileID: 21300000, guid: d5e5ef05d28f3e24aa10aa6be3f9acf4, type: 3}
+  - {fileID: 21300000, guid: aaf1d25c166d79843bc6aa6572eef323, type: 3}
+  - {fileID: 21300000, guid: 86a2ce058d778a04eb7eb880123df7cd, type: 3}
+  - {fileID: 21300000, guid: 44f7eaf4937a0034aa60e865580f7569, type: 3}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.1
+  - 0.1
+  - 0.05
+  Loop: 0
+  LoopStart: 0

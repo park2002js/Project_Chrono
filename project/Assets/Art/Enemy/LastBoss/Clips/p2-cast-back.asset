@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27c0d4ec2c05c684ca8b4706740b8867, type: 3}
+  m_Name: p2-cast-back
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteClip
+  Frames:
+  - {fileID: 21300000, guid: cf34e60a99fecfd46913f9ec1f729784, type: 3}
+  - {fileID: 21300000, guid: 1b13b78abef5389429c4e844a6dd11a3, type: 3}
+  - {fileID: 21300000, guid: 031f6ffaf67aed842905289e96d56e38, type: 3}
+  - {fileID: 21300000, guid: 72ca64032c36bd243a98ee2dd3214c7e, type: 3}
+  - {fileID: 21300000, guid: 68601e447ebf1a64f90aaa82e63ac9f4, type: 3}
+  - {fileID: 21300000, guid: bd79c9525d3cb264da986fe8bc9b385e, type: 3}
+  - {fileID: 21300000, guid: 7273a99ca02c64e47a591076f7453a2a, type: 3}
+  - {fileID: 21300000, guid: 36cb7f6c42772094990eced6563035f5, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Durations:
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  Loop: 1
+  LoopStart: 0

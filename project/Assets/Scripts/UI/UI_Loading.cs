@@ -15,8 +15,12 @@ public class UI_Loading : MonoBehaviour
         if (!IsVisible)
             return;
 
-        // 화면을 덮고 준비 중 또는 실패 문구 표시
+        // 뒤에서 바뀌는 씬과 맵이 비치지 않게 검은 면으로 화면을 완전히 덮고 준비 중 또는 실패 문구 표시
         GUI.depth = -100;
+        Color color = GUI.color;
+        GUI.color = Color.black;
+        GUI.DrawTexture(new Rect(0f, 0f, Screen.width, Screen.height), Texture2D.whiteTexture);
+        GUI.color = color;
         GUI.Box(new Rect(0f, 0f, Screen.width, Screen.height), GUIContent.none);
         string message = string.IsNullOrEmpty(FailureMessage)
             ? loadingMessages[(int)(Time.realtimeSinceStartup * 2f) % loadingMessages.Length] : FailureMessage;

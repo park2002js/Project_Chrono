@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(StageManager), typeof(UI_Loading))]
 public class GameManager : MonoBehaviour
 {
-    public const string SubmittedBossId = "guard_robot"; // 현재 제출 범위의 완료 슬롯을 판정할 Boss 식별자
     public static GameManager Instance; // 외부에서 GameManager 기능에 접근하는 단일 인스턴스
     public StageManager Stage; // MainWorld 생성·초기화·해제를 요청할 관리자
     public UI_Loading Loading; // 씬 전환·종료 대기 상태를 표시할 로딩 UI
@@ -20,6 +19,7 @@ public class GameManager : MonoBehaviour
     public bool IsDeathPaused { get; private set; } // 사망·부활 연출이 소유한 정지이며 기존 정지와 독립적으로 유지
     public bool IsBossCutscenePaused { get; private set; } // Boss 조우·사망 연출이 소유한 독립 게임 시간 정지
     public string LastError; // 세션 시작 또는 씬·월드 초기화 실패 이유를 외부에 제공
+    public float StageLoadingSeconds = 1f; // 문에 들어간 뒤 다음 맵이 먼저 준비돼도 로딩 화면을 유지할 최소 실제 시간
     public PlayerCharacter CurrentPlayer => Stage != null ? Stage.Player : null; // 현재 세션에서 생성한 Player를 외부에 제공
     public BossCharacter CurrentBoss => Stage != null && Stage.Bosses.Length > 0 ? Stage.Bosses[0] : null; // 현재 세션의 첫 Boss를 외부에 제공
     public double SessionPlayTime => _savedPlayTime + (IsSessionActive ? Time.realtimeSinceStartupAsDouble - _sessionStartedAt : 0d); // 저장된 시간에 시간 정지와 무관한 현재 세션 경과 초를 합산
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private bool _allowQuit; // 저장 대기가 끝나 운영체제 종료 요청을 허용하는 상태
     private double _savedPlayTime; // 이전 저장 또는 세션 종료까지 누적된 플레이 시간
     private double _sessionStartedAt; // 현재 세션의 실제 경과 시간을 계산할 시작 시각
+    private bool _enterFailed; // 마지막 월드 진입이 같은 세션 안에서 실패해 Title 복구가 필요한지 표시
 
     /// <summary>단일 전역 시스템을 설정하고 UI와 독립적으로 저장 데이터 로드를 시작</summary>
     private void Awake()
@@ -70,6 +71,12 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
+    /// <summary>데모의 끝까지 본 슬롯인지 저장값으로 확인하며 기록이 없는 예전 저장은 진행 중으로 봄</summary>
+    public static bool IsSlotCompleted(SaveData data)
+    {
+        return data != null && data.Values.ContainsKey("DemoCompleted") && data.Get<bool>("DemoCompleted");
+    }
+
     /// <summary>외부의 슬롯 선택 요청으로 Current를 설정하고 씬 전환 수락 여부를 반환</summary>
     public bool StartGame(int slot, bool newGame = false)
     {
@@ -81,14 +88,14 @@ public class GameManager : MonoBehaviour
 
         // 완료 슬롯은 새 게임 확인을 거친 요청만 수락
         SaveData existing = SaveManager.Slots[slot];
-        if (!newGame && existing != null && existing.Get<System.Collections.Generic.List<string>>("DefeatedBosses").Contains(SubmittedBossId))
+        if (!newGame && IsSlotCompleted(existing))
             return false;
 
         // 선택 데이터를 지정하거나 새 게임의 기본 저장값 생성
         try
         {
             if (newGame || existing == null)
-                SaveManager.NewSaveFile(slot);
+                SaveManager.NewSaveFile(slot, Stage.StageIndex);
             else
                 SaveManager.SetCurrent(slot);
         }
@@ -107,6 +114,24 @@ public class GameManager : MonoBehaviour
         SetGameplayPaused(true);
         Loading.Show();
         StartCoroutine(LoadWorld()); // MainWorld 로드·생성·실패 복구를 프레임에 걸쳐 진행
+        return true;
+    }
+
+    /// <summary>맵 끝의 문에 들어온 Player를 유지한 채 로딩 화면 뒤에서 다음 묶음으로 전환을 시작하고 수락 여부 반환</summary>
+    public bool AdvanceStage()
+    {
+        // 중복 전환·세션 밖 요청·다음 묶음이 없는 요청 거부
+        if (IsLoading || !IsSessionActive || _isQuitting || !Stage.IsReady || !Stage.HasNextStage)
+            return false;
+
+        // 조작과 게임 시간을 멈추고 로딩 화면 아래에서 맵 교체 시작
+        IsLoading = true;
+        LastError = null;
+        PlayerInputController.Instance.BlockInput = true;
+        UIController.Instance.SetPlayerHudVisible(false);
+        SetGameplayPaused(true);
+        Loading.Show();
+        StartCoroutine(LoadNextStage()); // 맵 교체·입장·실패 복구를 프레임에 걸쳐 진행
         return true;
     }
 
@@ -185,40 +210,77 @@ public class GameManager : MonoBehaviour
             yield return Stage.Generate(SaveManager.Current); // 저장 데이터로 Map·Boss·Player를 생성하고 연결할 때까지 대기
             if (_isQuitting)
                 yield break;
-            if (Stage.IsReady)
-            {
-                PlayerCharacter initialPlayer = Stage.Player;
-                bool entrance = Stage.Tutorial.HasPendingEntrance;
-                Loading.Hide();
-                if (entrance)
-                {
-                    // 월드는 준비됐으므로 게임 시간만 먼저 열고 컷씬 권한으로 실제 보행
-                    IsLoading = false;
-                    SetGameplayPaused(false);
-                    yield return Stage.Tutorial.PlayEntrance(); // 새 게임의 실제 입장·정지·완료 기록까지 대기
-                }
-                else
-                    yield return initialPlayer.Spawner.PlayInitialSpawn(); // 기존 저장은 체크포인트 기상 입력 게이트까지 대기
-
-                // 중단된 이전 세션이 Title이나 새 Player의 입력을 뒤늦게 열지 않도록 차단
-                if (_isQuitting || !IsSessionActive || !Stage.IsReady || Stage.Player != initialPlayer) yield break;
-                if (entrance && !Stage.Tutorial.WasCompleted)
-                    Stage.LastError = Stage.Tutorial.LastError ?? "Player entrance was cancelled.";
-                else
-                {
-                    IsLoading = false;
-                    SetGameplayPaused(false); // 게임 시간 정지 해제
-                    UIController.Instance.SetPlayerHudVisible(true);
-                    PlayerInputController.Instance.BlockInput = false; // 입장 또는 기상이 끝난 실제 Player로 조작 인계
-                    yield break;
-                }
-            }
-            LastError = Stage.LastError;
+            yield return EnterWorld(); // 로딩을 닫고 입장 또는 기상 뒤 조작 인계까지 대기
+            if (!_enterFailed)
+                yield break;
         }
 
         // 월드 준비 실패 시 세션을 끝내고 Title로 복구
         EndSession();
         yield return LoadTitle(LastError ?? "MainWorld initialization failed."); // 실패 안내와 세션 정리를 거쳐 Title로 복귀할 때까지 대기
+    }
+
+    /// <summary>Player는 유지하고 Map·Boss만 다음 묶음으로 바꾼 뒤 그 맵의 입구에서 게임 시간을 다시 시작</summary>
+    private IEnumerator LoadNextStage()
+    {
+        // 로딩 화면이 한순간만 스치지 않도록 표시 시각을 잰 채 맵 교체
+        double shownAt = Time.realtimeSinceStartupAsDouble;
+        yield return Stage.Advance(SaveManager.Current); // Map·Boss를 다음 묶음으로 바꾸고 Player를 다시 연결할 때까지 대기
+        while (!_isQuitting && Time.realtimeSinceStartupAsDouble - shownAt < StageLoadingSeconds)
+            yield return null; // 다음 맵이 먼저 준비돼도 로딩 화면의 최소 표시 시간까지 대기
+        if (_isQuitting)
+            yield break;
+        yield return EnterWorld(); // 로딩을 닫고 새 맵의 입장 뒤 조작 인계까지 대기
+        if (!_enterFailed)
+            yield break;
+
+        // 맵 교체 실패 시 세션을 끝내고 Title로 복구
+        EndSession();
+        yield return LoadTitle(LastError ?? "Stage initialization failed."); // 실패 안내와 세션 정리를 거쳐 Title로 복귀할 때까지 대기
+    }
+
+    /// <summary>준비된 월드에서 로딩을 닫고 입장 또는 기상이 끝나면 조작을 넘기며 같은 세션 안의 실패만 표시</summary>
+    private IEnumerator EnterWorld()
+    {
+        // 월드 생성이 실패했으면 호출자가 Title로 복구하도록 이유만 전달
+        _enterFailed = true;
+        if (!Stage.IsReady)
+        {
+            LastError = Stage.LastError;
+            yield break;
+        }
+
+        // 미완 입장은 게임 시간을 먼저 열고 입장 담당에게, 그 외는 체크포인트 기상에 맡김
+        PlayerCharacter initialPlayer = Stage.Player;
+        bool entrance = Stage.Tutorial.HasPendingEntrance;
+        Loading.Hide();
+        if (entrance)
+        {
+            IsLoading = false;
+            SetGameplayPaused(false);
+            yield return Stage.Tutorial.PlayEntrance(); // 깨어나거나 걸어 들어오는 입장과 완료 기록까지 대기
+        }
+        else
+            yield return initialPlayer.Spawner.PlayInitialSpawn(); // 기존 저장은 체크포인트 기상 입력 게이트까지 대기
+
+        // 중단된 이전 세션이 Title이나 새 Player의 입력을 뒤늦게 열지 않도록 차단
+        if (_isQuitting || !IsSessionActive || !Stage.IsReady || Stage.Player != initialPlayer)
+        {
+            _enterFailed = false;
+            yield break;
+        }
+        if (entrance && !Stage.Tutorial.WasCompleted)
+        {
+            LastError = Stage.LastError = Stage.Tutorial.LastError ?? "Player entrance was cancelled.";
+            yield break;
+        }
+
+        // 입장 또는 기상이 끝난 실제 Player로 조작 인계
+        IsLoading = false;
+        SetGameplayPaused(false); // 게임 시간 정지 해제
+        UIController.Instance.SetPlayerHudVisible(true);
+        PlayerInputController.Instance.BlockInput = false;
+        _enterFailed = false;
     }
 
     /// <summary>세션을 정리하고 슬롯 데이터 재로드와 Title 씬 전환을 시작</summary>

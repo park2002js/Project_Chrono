@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8001915017557146330}
   - component: {fileID: 3768140048029390240}
   - component: {fileID: 7623100000000000001}
+  - component: {fileID: 6040693595468122223}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -52,15 +53,23 @@ MonoBehaviour:
   MapPrefab: {fileID: 1935068198656786963, guid: 100a347fdf0394947bb31dc183036941, type: 3}
   PlayerPrefab: {fileID: 2999542222289297194, guid: ca956526153ca0e44938eb6480e22a88, type: 3}
   BossPrefab: {fileID: 791264694040982933, guid: bfd61892ae26fe642bc1a474851de5e1, type: 3}
+  Stages:
+  - Name: Guard Robot + Laboratory
+    MapPrefab: {fileID: 1935068198656786963, guid: 100a347fdf0394947bb31dc183036941, type: 3}
+    BossPrefab: {fileID: 791264694040982933, guid: bfd61892ae26fe642bc1a474851de5e1, type: 3}
+  - Name: Last Boss + Stone Platform
+    MapPrefab: {fileID: 8982427691473692317, guid: 1f439e122c5887f418791dbb37a69c07, type: 3}
+    BossPrefab: {fileID: 4724330119095872801, guid: 1ca0de44c9ab738469b6515b5d741b90, type: 3}
+  StageIndex: 0
   Map: {fileID: 0}
   Player: {fileID: 0}
   Bosses: []
   SessionRoot: {fileID: 0}
   IsReady: 0
   LastError: 
-  FirstEncounterDuration: 0.6
-  ReencounterDuration: 0.2
-  BossDeathDuration: 0.5
+  FirstEncounterDuration: 1.8
+  ReencounterDuration: 1
+  BossDeathDuration: 1.2
 --- !u!114 &1750979741748351633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +102,7 @@ MonoBehaviour:
   IsSessionActive: 0
   IsGameplayPaused: 0
   LastError: 
+  StageLoadingSeconds: 1
 --- !u!114 &8001915017557146330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98824d6aab564586ab2d3dfd4d191b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialController
-
+  WakeHoldSeconds: 1.2
+  WakeReturnSeconds: 1.6
 --- !u!114 &7623100000000000001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,3 +143,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TempDemoEnding
   FadeDuration: 2
   MessageDuration: 3
+  FadeColor: {r: 1, g: 1, b: 1, a: 1}
+  MessageColor: {r: 0.106, g: 0.094, b: 0.149, a: 1}
+--- !u!114 &6040693595468122223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389081283493612659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50dbce7598c5ef441874542f26224b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BattleMusic
+  Volume: 0.5
+  FadeInDuration: 0.5
+  FadeOutDuration: 1.5
+  DrawPitchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  DrawRestoreSpeed: 1.5

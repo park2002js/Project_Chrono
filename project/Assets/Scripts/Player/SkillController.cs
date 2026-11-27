@@ -13,18 +13,18 @@ public class SkillController : MonoBehaviour
     public bool IsSlashing => Slasher != null && Slasher.IsRunning; // 마지막 한 번의 판정을 기다리는 Slash 실행 상태
     public LineSlasher Slasher { get; private set; } // 이번 Slash 기하·판정·중복 기록을 재사용할 도구
     [Header("Slash 연출 · 실제 시간 기준")]
-    [Min(0f), InspectorName("빠른 줌인 / 발도 시간")] public float SlashFastZoomDuration = 0.18f; // 빠른 확대와 부분 발도가 함께 끝나는 초기 시간
-    [Min(0f), InspectorName("느린 줌인 / 발도 유지 시간")] public float SlashHoldDuration = 0.7f; // 칼을 일부 꺼낸 채 유지하다 칼날 섬광을 시작할 시간
-    [Min(0f), InspectorName("칼날 섬광 시간")] public float SlashGlintDuration = 0.12f; // 부분 발도 자세에서 칼날 중앙의 빛을 보여줄 시간
-    [Min(0f), InspectorName("납도 시간")] public float SlashSheatheDuration = 0.16f; // 섬광 뒤 칼이 완전히 닫히기까지의 시간
-    [Min(0f), InspectorName("탁 → 공간참 대기")] public float SlashImpactDelay = 0.5f; // 납도 소리부터 실제 공간참 판정까지의 대기
-    [Min(0f), InspectorName("탁 → 줌 복귀 시간")] public float SlashZoomOutDuration = 0.18f; // 납도 순간부터 원래 배율로 복귀할 시간이며 공간참 대기 안에서 제한
+    [Min(0f), InspectorName("칼·칼집 정렬 스윙 시간")] public float SlashSwingDuration = 0.2f; // 칼과 칼집이 따로 돌다가 칼끝이 입구에 일직선으로 닿기까지의 시간
+    [Min(0f), InspectorName("닿은 뒤 빠른 납도 / 뜬 눈 시간")] public float SlashFastZoomDuration = 0.18f; // 칼끝이 닿은 뒤 눈을 뜬 채 칼날 일부를 빠르게 넣는 시간이며 첫 줌은 스윙부터 여기까지 진행
+    [Range(0f, 0.99f), InspectorName("첫 줌 목표의 납도 비율")] public float SlashFastSheatheFraction = 0.7f; // 느린 납도로 바뀔 때까지 검집에 들어갈 칼날의 비율
+    [Min(0f), InspectorName("느린 줌인 / 감은 눈 시간")] public float SlashHoldDuration = 0.7f; // 감은 눈으로 느린 납도를 보여주는 기본 시간
+    [Min(0f), InspectorName("닫힘 직전 섬광 시간")] public float SlashGlintDuration = 0.12f; // 마지막 닫힘 직전부터 검집 입구를 밝힐 시간
+    [Min(0f), InspectorName("마지막 납도 시간")] public float SlashSheatheDuration = 0.16f; // 느린 확대에서 섬광 직전까지의 추가 납도 시간
+    [Min(0f), InspectorName("탁 → 공간참 대기")] public float SlashImpactDelay = 0.06f; // 납도 소리부터 최종 줌을 유지하다 원래 화면으로 끊어 공간참을 터뜨릴 대기
     [Min(0.01f), InspectorName("전체 재생 속도")] public float SlashPlaybackSpeed = 1f; // 모든 연출 구간을 같은 비율로 재생할 배속
     public AnimationCurve SlashFastZoomCurve = new AnimationCurve(new Keyframe(0f, 0f, 0f, 3f), new Keyframe(1f, 1f, 0f, 0f)); // 빠르게 접근한 뒤 느린 확대에 연결할 첫 확대 곡선
     public AnimationCurve SlashSlowZoomCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f); // 발도 유지부터 납도 직전까지의 느린 확대 곡선
-    public AnimationCurve SlashZoomOutCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f); // 납도 뒤 원래 화면 배율로 돌아갈 확대 복귀 곡선
     public float SlashDuration => SlashTimelineDuration / SlashPlaybackSpeed; // 모든 구간의 배속을 반영한 전체 실제 연출 길이
-    public float SlashTimelineDuration => SlashFastZoomDuration + SlashHoldDuration + SlashGlintDuration + SlashSheatheDuration + SlashImpactDelay; // 배속 적용 전 입력부터 공간참까지의 전체 길이
+    public float SlashTimelineDuration => SlashSwingDuration + SlashFastZoomDuration + SlashHoldDuration + SlashGlintDuration + SlashSheatheDuration + SlashImpactDelay; // 배속 적용 전 입력부터 공간참까지의 전체 길이
     public float SlashElapsed { get; private set; } // 이번 실행의 배속을 적용해 진행한 연출 시간
     public float SlashDamageMultiplier = 3f; // 현재 공격력에 적용할 Slash 피해의 초기 튜닝 배율
     public LayerMask SlashTargetMask = ~0; // Slash 사각에 포함할 피격 Collider의 레이어
@@ -54,17 +54,18 @@ public class SkillController : MonoBehaviour
     private float drawCooldownBase; // 각성 재적용에서 남은 시간을 반복 반감하지 않을 이번 Draw 대기의 정상 길이
     private double lastSlashSampleTime; // 입력이 시작한 같은 프레임의 이전 시간을 Slash에서 차감하지 않을 실제 시각
     private float slashSpeed; // 시작 시 고정해 현재 연출 도중 Inspector 변경과 구분할 배속
+    private float slashSwingEnd; // 칼끝이 검집 입구에 닿아 발도 프레임으로 바뀌는 이번 실행의 시각
     private float slashFastEnd; // 빠른 확대와 부분 발도가 완료되는 이번 실행의 시각
     private float slashGlintAt; // 느린 확대 중 칼날 섬광을 시작할 이번 실행의 시각
-    private float slashSheatheAt; // 칼날 섬광 뒤 납도를 시작할 이번 실행의 시각
-    private float slashCloseAt; // 납도가 끝나 소리와 줌 복귀를 시작할 이번 실행의 시각
+    private float slashFastSheathe; // 빠른 확대가 끝나는 이번 실행의 납도 진행률
+    private float slashCloseAt; // 납도가 끝나 탁 소리 최고점이 오는 이번 실행의 시각
+    private float slashSheathSoundAt; // 납도음 최고점이 닫힘 시각에 오도록 클립 재생을 시작할 이번 실행의 시각
     private float slashHitAt; // 지연 공간참의 판정과 전투 재개가 일어날 이번 실행의 시각
-    private float slashZoomOutTime; // 공간참 전에 원래 배율로 복귀할 이번 실행의 유효 시간
     private float slashStartZoom; // 이번 실행이 끝나거나 취소될 때 되돌릴 진입 배율
     private float slashFastZoom; // 빠른 확대 종료 때 도착할 이번 실행의 직교 배율
     private float slashFinalZoom; // 느린 확대 종료 때 도착할 이번 실행의 직교 배율
     private bool slashGlintPlayed; // 프레임이 구간 경계를 넘어도 섬광을 한 번만 요청할 기록
-    private bool slashClosePlayed; // 납도음과 마지막 닫힌 자세를 한 번만 요청할 기록
+    private bool slashSheathSoundPlayed; // 프레임이 시작 시각을 건너뛰어도 납도음을 한 번만 요청할 기록
 
     /// <summary>다른 객체의 생성 순서와 무관한 자기 컴포넌트·편집 데이터 준비</summary>
     private void Awake()
@@ -167,6 +168,7 @@ public class SkillController : MonoBehaviour
         if (!IsDrawing) return false;
         bool placed = Drawer.PlacePoint(position);
         vfx.ShowEditing(Drawer);
+        if (placed && player.Feedback != null) player.Feedback.PlayDrawPoint();
         return placed;
     }
 
@@ -263,16 +265,17 @@ public class SkillController : MonoBehaviour
         vfx.ShowSlashLine(line);
         slashFx.Cancel();
         slashSpeed = SlashPlaybackSpeed;
-        slashFastEnd = SlashFastZoomDuration;
-        slashGlintAt = slashFastEnd + SlashHoldDuration;
-        slashSheatheAt = slashGlintAt + SlashGlintDuration;
-        slashCloseAt = slashSheatheAt + SlashSheatheDuration;
+        slashSwingEnd = SlashSwingDuration;
+        slashFastEnd = slashSwingEnd + SlashFastZoomDuration;
+        slashFastSheathe = Mathf.Clamp(SlashFastSheatheFraction, 0f, 0.99f);
+        slashGlintAt = slashFastEnd + SlashHoldDuration + SlashSheatheDuration;
+        slashCloseAt = slashGlintAt + SlashGlintDuration;
         slashHitAt = slashCloseAt + SlashImpactDelay;
-        slashZoomOutTime = Mathf.Min(SlashZoomOutDuration, SlashImpactDelay);
+        slashSheathSoundAt = Mathf.Max(0f, slashCloseAt - slashFx.SheathSoundLead * slashSpeed);
         SlashElapsed = 0f;
         SlashRemaining = slashHitAt / slashSpeed;
         slashGlintPlayed = false;
-        slashClosePlayed = false;
+        slashSheathSoundPlayed = false;
         lastSlashSampleTime = Time.unscaledTimeAsDouble;
         input.SetSlashMode(true);
         gameManager.SetSlashPaused(true);
@@ -387,51 +390,53 @@ public class SkillController : MonoBehaviour
         DrawCooldownRemaining = adjusted;
     }
 
-    /// <summary>같은 실제 시간축으로 확대·발도·섬광·납도·지연을 샘플하며 건너뛴 경계도 한 번 처리</summary>
+    /// <summary>같은 실제 시간축으로 스윙·확대·발도·섬광·납도·지연을 샘플하며 건너뛴 경계도 한 번 처리</summary>
     private void UpdateSlashPresentation()
     {
-        // 빠른 확대가 끝날 때 부분 발도가 이미 완료되어 유지 자세에 도착
+        // 칼날이 미끄러져 들어가는 납도음을 앞당겨 시작해 탁 소리 최고점을 칼이 닫히는 경계에 맞춤
+        if (!slashSheathSoundPlayed && SlashElapsed >= slashSheathSoundAt)
+        {
+            slashSheathSoundPlayed = true;
+            slashFx.PlaySheathSound();
+        }
+
+        // 첫 줌 목표까지 눈을 뜬 채 진행
         if (SlashElapsed < slashFastEnd)
         {
-            float progress = Progress(SlashElapsed, 0f, slashFastEnd);
-            rendering.SetSlashDrawProgress(progress);
-            gameCamera.SetSlashZoom(Mathf.Lerp(slashStartZoom, slashFastZoom, Curve(SlashFastZoomCurve, progress)));
+            gameCamera.SetSlashZoom(Mathf.Lerp(slashStartZoom, slashFastZoom, Curve(SlashFastZoomCurve, Progress(SlashElapsed, 0f, slashFastEnd))));
+
+            // 칼과 칼집이 각자 돌다가 칼끝이 입구에 일직선으로 닿음
+            if (SlashElapsed < slashSwingEnd)
+            {
+                rendering.SampleSlashSwing(SlashElapsed, Progress(SlashElapsed, 0f, slashSwingEnd));
+                return;
+            }
+
+            // 닿은 순간 손이 그려진 발도 검으로 바꿔 칼날 일부를 빠르게 넣음
+            rendering.SampleSlashPose(false, SlashElapsed, Progress(SlashElapsed, slashSwingEnd, slashFastEnd) * slashFastSheathe);
             return;
         }
 
-        // 느린 확대 동안 꺼낸 칼을 고정하고 섬광 뒤 마지막 납도 구간만 재생
-        if (SlashElapsed < slashSheatheAt)
-        {
-            rendering.HoldSlashAnimation();
-        }
-        else
-        {
-            rendering.SetSlashSheatheProgress(Progress(SlashElapsed, slashSheatheAt, slashCloseAt));
-        }
+        // 첫 줌 목표에서 눈을 감고 남은 칼날을 천천히 넣으며 닫힌 뒤에도 눈 모션은 계속 반복
+        float slowProgress = Progress(SlashElapsed, slashFastEnd, slashCloseAt);
+        rendering.SampleSlashPose(true, SlashElapsed - slashFastEnd, Mathf.Lerp(slashFastSheathe, 1f, slowProgress));
         if (!slashGlintPlayed && SlashElapsed >= slashGlintAt)
         {
             slashGlintPlayed = true;
-            slashFx.PlayBladeGlint(rendering.SlashBladeGlintPosition, (slashSheatheAt - slashGlintAt) / slashSpeed);
+            // 마지막 자세에 닿는 순간에도 빛이 남도록 섬광 길이의 절반을 여운으로 사용
+            float glintDuration = (slashCloseAt - slashGlintAt) * 1.5f / slashSpeed;
+            if (glintDuration > 0f) slashFx.PlayBladeGlint(rendering.SlashBladeGlintPosition, glintDuration);
         }
 
-        // 칼이 닫힌 정확한 경계에서 소리를 내고 전투는 공간참 시점까지 계속 정지
-        if (!slashClosePlayed && SlashElapsed >= slashCloseAt)
-        {
-            slashClosePlayed = true;
-            rendering.SetSlashSheatheProgress(1f);
-            slashFx.PlaySheathSound();
-        }
-        if (SlashElapsed < slashCloseAt)
-            gameCamera.SetSlashZoom(Mathf.Lerp(slashFastZoom, slashFinalZoom, Curve(SlashSlowZoomCurve, Progress(SlashElapsed, slashFastEnd, slashCloseAt))));
-        else
-            gameCamera.SetSlashZoom(Mathf.Lerp(slashFinalZoom, slashStartZoom, Curve(SlashZoomOutCurve, Progress(SlashElapsed, slashCloseAt, slashCloseAt + slashZoomOutTime))));
+        // 닫힌 뒤에는 최종 줌을 유지하고 공간참 순간 SetSlashMode(false)로 원래 화면에 끊어 복귀
+        gameCamera.SetSlashZoom(Mathf.Lerp(slashFastZoom, slashFinalZoom, Curve(SlashSlowZoomCurve, Progress(SlashElapsed, slashFastEnd, slashCloseAt))));
     }
 
     /// <summary>잘못된 조정값으로 경로를 잃거나 무한 정지하지 않도록 시작 전에 시간·배율 확인</summary>
     private bool ValidSlashPresentation()
     {
-        return ValidTime(SlashFastZoomDuration) && ValidTime(SlashHoldDuration) && ValidTime(SlashGlintDuration)
-            && ValidTime(SlashSheatheDuration) && ValidTime(SlashImpactDelay) && ValidTime(SlashZoomOutDuration)
+        return ValidTime(SlashSwingDuration) && ValidTime(SlashFastZoomDuration) && ValidTime(SlashFastSheatheFraction) && ValidTime(SlashHoldDuration) && ValidTime(SlashGlintDuration)
+            && ValidTime(SlashSheatheDuration) && ValidTime(SlashImpactDelay)
             && ValidTime(SlashPlaybackSpeed) && SlashPlaybackSpeed > 0f && ValidTime(SlashDuration) && SlashDuration > 0f
             && ValidTime(gameCamera.SlashFastZoom) && gameCamera.SlashFastZoom > 0f && ValidTime(gameCamera.SlashZoom) && gameCamera.SlashZoom > 0f;
     }

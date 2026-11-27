@@ -7,8 +7,9 @@ public class GameCamera : MonoBehaviour
     public static GameCamera Instance; // 외부에서 게임 카메라와 추적 대상을 설정할 단일 창구
     public Camera Camera; // 화면 투영과 줌에 사용하는 이 객체의 Unity 카메라
     public Transform Target; // 외부에서 지정한 Player 또는 연출 대상의 Transform
-    public float FollowDuration = 0.1283f; // 정지 목표에90% 접근하는 시간을 약0.25초로 맞춘 SmoothDamp 기준값
-    public float DefaultZoom = 5f; // 직교 카메라 초기 화면의 세로 절반 크기를 월드 단위로 설정
+    [Range(0f, 1f)] public float FollowFraction = 0.15f; // 60fps에서 Player까지 남은 거리 중 한 프레임에 이동할 비율
+    [Range(0f, 1f)] public float FocusFraction = 1f / 15f; // 60fps에서 임시 초점까지 남은 거리 중 한 프레임에 이동할 비율
+    public float DefaultZoom = 5.625f; // 16:9 일반 전투 시야 20×11.25유닛의 반높이
     public Vector2 VerticalLimits = new Vector2(-10000f, 10000f); // 완성 맵 위아래의 빈 바깥 공간을 노출하지 않을 카메라 범위
     public bool IsDrawMode { get; private set; } // Player 기준 마우스 조준 오프셋을 적용하는 Draw 표시 상태
     public bool IsSlashMode { get; private set; } // Player 중심에서 검격 줌을 적용하는 표시 상태
@@ -19,10 +20,11 @@ public class GameCamera : MonoBehaviour
     public float DeathZoom = 3f; // 생성·사망 표현에서 사용할 직교 줌의 초기 튜닝값
     public float DrawZoom = 6.5f; // Draw 진입 후 사용할 직교 줌의 초기 튜닝값
 
-    private Vector3 velocity; // SmoothDamp가 다음 프레임에 이어 사용할 추적 속도
+    private bool temporaryFocus; // 보스 등 임시 대상에 적용하는 추적 속도 선택
     private Vector2 drawAim; // Draw 전용 입력에서 전달한 최신 월드 커서 위치
     private Transform previousTarget; // Draw 종료 때 되돌릴 진입 전 추적 대상
     private float previousZoom; // Draw 종료 때 되돌릴 진입 전 직교 줌
+    private float deathReturn; // 생성·사망의 가까운 시야에서 진입 전 시야로 돌아온 정도(0 가까운 시야, 1 진입 전 시야)
 
     /// <summary>다른 객체를 조회하지 않고 단일 인스턴스와 자신의 카메라를 준비</summary>
     private void Awake()
@@ -56,16 +58,18 @@ public class GameCamera : MonoBehaviour
         position.y = ClampY(position.y);
         position.z = transform.position.z;
         if (IsDrawMode)
-        {
             transform.position = position;
-            velocity = Vector3.zero;
-        }
         else
-            transform.position = Vector3.SmoothDamp(transform.position, position, ref velocity, Mathf.Max(0.01f, FollowDuration), Mathf.Infinity, Time.unscaledDeltaTime);
+        {
+            float fraction = temporaryFocus ? FocusFraction : FollowFraction;
+            float blend = 1f - Mathf.Pow(1f - Mathf.Clamp01(fraction), 60f * Time.unscaledDeltaTime);
+            transform.position = Vector3.Lerp(transform.position, position, blend);
+        }
 
         // Draw·생성·사망의 화면 크기는 게임 정지와 무관한 실제 시간으로 전환
         if (IsDeathMode)
-            Camera.orthographicSize = Mathf.MoveTowards(Camera.orthographicSize, Mathf.Max(0.1f, DeathZoom), Time.unscaledDeltaTime * 8f);
+            Camera.orthographicSize = deathReturn > 0f ? Mathf.Lerp(Mathf.Max(0.1f, DeathZoom), previousZoom, deathReturn)
+                : Mathf.MoveTowards(Camera.orthographicSize, Mathf.Max(0.1f, DeathZoom), Time.unscaledDeltaTime * 8f);
         else if (IsDrawMode)
             Camera.orthographicSize = Mathf.MoveTowards(Camera.orthographicSize, Mathf.Max(0.1f, DrawZoom), Time.unscaledDeltaTime * 8f);
 
@@ -82,12 +86,21 @@ public class GameCamera : MonoBehaviour
     }
 
     /// <summary>PlayerSpawner 또는 연출 코드가 초점을 맞출 대상을 지정하거나 해제</summary>
-    public void Follow(Transform target, bool snap = false)
+    public void Follow(Transform target, bool snap = false, bool temporary = false)
     {
+        // 일반 추적으로 돌아올 때는 Player의 추적 비율을 바로 복구
         Target = target;
-        velocity = Vector3.zero;
+        temporaryFocus = temporary;
         if (snap && target != null)
             transform.position = new Vector3(target.position.x, ClampY(target.position.y), transform.position.z);
+    }
+
+    /// <summary>월드의 한 지점이 현재 화면 가장자리에서 여백만큼 안쪽에 들어와 있는지 조회</summary>
+    public bool IsVisible(Vector2 point, float margin = 0f)
+    {
+        float halfHeight = Camera.orthographicSize - margin, halfWidth = Camera.orthographicSize * Camera.aspect - margin;
+        Vector2 center = transform.position;
+        return Mathf.Abs(point.x - center.x) <= halfWidth && Mathf.Abs(point.y - center.y) <= halfHeight;
     }
 
     /// <summary>현재 줌의 화면 높이를 포함해 맵 위아래 경계 안으로 추적 중심 제한</summary>
@@ -107,13 +120,12 @@ public class GameCamera : MonoBehaviour
             return;
         }
 
-        // 유효한 좌표만 수락하고 최초 진입에서 복귀 대상·줌과 추적 속도 준비
+        // 유효한 좌표만 수락하고 최초 진입에서 복귀 대상과 줌 보관
         if (float.IsNaN(aim.x) || float.IsInfinity(aim.x) || float.IsNaN(aim.y) || float.IsInfinity(aim.y)) return;
         if (!IsDrawMode)
         {
             previousTarget = Target;
             previousZoom = Camera.orthographicSize;
-            velocity = Vector3.zero;
             IsDrawMode = true;
         }
         drawAim = aim;
@@ -127,7 +139,6 @@ public class GameCamera : MonoBehaviour
         Target = previousTarget;
         Camera.orthographicSize = previousZoom;
         previousTarget = null;
-        velocity = Vector3.zero;
     }
 
     /// <summary>Slash의 Player 중심 줌을 시작하고 종료 때 원래 대상·줌 복구</summary>
@@ -140,14 +151,12 @@ public class GameCamera : MonoBehaviour
             previousTarget = Target;
             previousZoom = Camera.orthographicSize;
             if (player != null) Target = player;
-            velocity = Vector3.zero;
         }
         else
         {
             Target = previousTarget;
             Camera.orthographicSize = previousZoom;
             previousTarget = null;
-            velocity = Vector3.zero;
         }
         IsSlashMode = slashing;
     }
@@ -169,6 +178,7 @@ public class GameCamera : MonoBehaviour
     public void SetDeathMode(bool enabled, Transform focus = null)
     {
         if (IsDeathMode == enabled) return;
+        deathReturn = 0f;
         if (enabled)
         {
             previousTarget = Target;
@@ -181,8 +191,22 @@ public class GameCamera : MonoBehaviour
             Camera.orthographicSize = previousZoom;
             previousTarget = null;
         }
-        velocity = Vector3.zero;
         IsDeathMode = enabled;
+    }
+
+    /// <summary>생성 표현의 가까운 시야를 확대 과정 없이 첫 화면부터 적용</summary>
+    public void SnapDeathZoom()
+    {
+        if (!IsDeathMode) return;
+        Camera.orthographicSize = Mathf.Max(0.1f, DeathZoom);
+        if (Target != null) transform.position = new Vector3(Target.position.x, ClampY(Target.position.y), transform.position.z);
+    }
+
+    /// <summary>생성 표현을 끝내기 전에 가까운 시야에서 진입 전 시야로 돌아온 정도를 반영</summary>
+    public void SetDeathZoomReturn(float blend)
+    {
+        if (!IsDeathMode || float.IsNaN(blend) || float.IsInfinity(blend)) return;
+        deathReturn = Mathf.Clamp01(blend);
     }
 
     /// <summary>Gungeon의 마우스 전용 화면비 보정·근거리 무반응·거리 가중치·축별 상한 계산</summary>

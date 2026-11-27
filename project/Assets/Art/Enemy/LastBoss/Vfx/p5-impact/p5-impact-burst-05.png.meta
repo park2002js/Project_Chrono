@@ -1,0 +1,741 @@
+fileFormatVersion: 2
+guid: 6e1d279af2352b34e8e7a763721cb763
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8299648500223660613
+    second: p5-impact-burst-05_0
+  - first:
+      213: 2000798792428522919
+    second: p5-impact-burst-05_1
+  - first:
+      213: -7327366451152352785
+    second: p5-impact-burst-05_2
+  - first:
+      213: -4433313260373928783
+    second: p5-impact-burst-05_3
+  - first:
+      213: -9183499596719784691
+    second: p5-impact-burst-05_4
+  - first:
+      213: -5759503135001549869
+    second: p5-impact-burst-05_5
+  - first:
+      213: -4574064969726454171
+    second: p5-impact-burst-05_6
+  - first:
+      213: 2569497460987331450
+    second: p5-impact-burst-05_7
+  - first:
+      213: 4922724369663879092
+    second: p5-impact-burst-05_8
+  - first:
+      213: 5602140036681785497
+    second: p5-impact-burst-05_9
+  - first:
+      213: 304228921644235055
+    second: p5-impact-burst-05_10
+  - first:
+      213: 3359141086396770167
+    second: p5-impact-burst-05_11
+  - first:
+      213: -3241228030413672979
+    second: p5-impact-burst-05_12
+  - first:
+      213: 2730406464341323530
+    second: p5-impact-burst-05_13
+  - first:
+      213: -7403059734783707090
+    second: p5-impact-burst-05_14
+  - first:
+      213: 7966497987020392319
+    second: p5-impact-burst-05_15
+  - first:
+      213: -8963316661777618312
+    second: p5-impact-burst-05_16
+  - first:
+      213: 491659971193808778
+    second: p5-impact-burst-05_17
+  - first:
+      213: -7117226893432120305
+    second: p5-impact-burst-05_18
+  - first:
+      213: -570861125244388817
+    second: p5-impact-burst-05_19
+  - first:
+      213: 2700682805173330062
+    second: p5-impact-burst-05_20
+  - first:
+      213: 811441850927120363
+    second: p5-impact-burst-05_21
+  - first:
+      213: -2246440748329940029
+    second: p5-impact-burst-05_22
+  - first:
+      213: -5632376205583890010
+    second: p5-impact-burst-05_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 9
+  spritePivot: {x: 0.44898, y: 0.161972}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: p5-impact-burst-05_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 120
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5425f6866564e2370800000000000000
+      internalID: 8299648500223660613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_1
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 131
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ad8bb9a6e344cb10800000000000000
+      internalID: 2000798792428522919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_2
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 137
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe903f3e807ff4a90800000000000000
+      internalID: -7327366451152352785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_3
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 129
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b412611415b972c0800000000000000
+      internalID: -4433313260373928783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_4
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 127
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0df296e5c7ad8080800000000000000
+      internalID: -9183499596719784691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_5
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 126
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d3eb73f9622210b0800000000000000
+      internalID: -5759503135001549869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_6
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 108
+        width: 19
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56695ebf428a580c0800000000000000
+      internalID: -4574064969726454171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_7
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 120
+        width: 18
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a730b65b350b8a320800000000000000
+      internalID: 2569497460987331450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_8
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 110
+        width: 21
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b769f48bb7015440800000000000000
+      internalID: 4922724369663879092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_9
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 102
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99069649eaccebd40800000000000000
+      internalID: 5602140036681785497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_10
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 82
+        width: 64
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f293105a796d83400800000000000000
+      internalID: 304228921644235055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_11
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 82
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 777691545011e9e20800000000000000
+      internalID: 3359141086396770167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_12
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 101
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ded67237748d403d0800000000000000
+      internalID: -3241228030413672979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_13
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 75
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0fae77863a54e520800000000000000
+      internalID: 2730406464341323530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_14
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 62
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e283831f46c034990800000000000000
+      internalID: -7403059734783707090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 74
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f77073cf5bfae8e60800000000000000
+      internalID: 7966497987020392319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_16
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 53
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87aa76d5cf6eb9380800000000000000
+      internalID: -8963316661777618312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_17
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 68
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a87294d832ab2d600800000000000000
+      internalID: 491659971193808778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_18
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 59
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0c1f1f59d78a3d90800000000000000
+      internalID: -7117226893432120305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 69
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f2a7ab5c4d4e318f0800000000000000
+      internalID: -570861125244388817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_20
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 31
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80ac55d3b0ca7520800000000000000
+      internalID: 2700682805173330062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_21
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 43
+        width: 9
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bef75607012d24b00800000000000000
+      internalID: 811441850927120363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_22
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 33
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cbc4d2aa0a03d0e0800000000000000
+      internalID: -2246440748329940029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: p5-impact-burst-05_23
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 39
+        width: 18
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a94fc0cea7c5d1b0800000000000000
+      internalID: -5632376205583890010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      p5-impact-burst-05_0: 8299648500223660613
+      p5-impact-burst-05_1: 2000798792428522919
+      p5-impact-burst-05_10: 304228921644235055
+      p5-impact-burst-05_11: 3359141086396770167
+      p5-impact-burst-05_12: -3241228030413672979
+      p5-impact-burst-05_13: 2730406464341323530
+      p5-impact-burst-05_14: -7403059734783707090
+      p5-impact-burst-05_15: 7966497987020392319
+      p5-impact-burst-05_16: -8963316661777618312
+      p5-impact-burst-05_17: 491659971193808778
+      p5-impact-burst-05_18: -7117226893432120305
+      p5-impact-burst-05_19: -570861125244388817
+      p5-impact-burst-05_2: -7327366451152352785
+      p5-impact-burst-05_20: 2700682805173330062
+      p5-impact-burst-05_21: 811441850927120363
+      p5-impact-burst-05_22: -2246440748329940029
+      p5-impact-burst-05_23: -5632376205583890010
+      p5-impact-burst-05_3: -4433313260373928783
+      p5-impact-burst-05_4: -9183499596719784691
+      p5-impact-burst-05_5: -5759503135001549869
+      p5-impact-burst-05_6: -4574064969726454171
+      p5-impact-burst-05_7: 2569497460987331450
+      p5-impact-burst-05_8: 4922724369663879092
+      p5-impact-burst-05_9: 5602140036681785497
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
